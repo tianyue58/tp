@@ -21,7 +21,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 ### Modi Trushti Sanjaybhai
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/tsm1820.png" width="200px">
 
 [[github](http://github.com/tsm1820)]
 [[portfolio](team/tsm1820.md)]
