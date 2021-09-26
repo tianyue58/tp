@@ -257,13 +257,13 @@ _{Explain here how the data archiving feature will be implemented}_
 
 **Target user profile**:
 
-* has a need to manage a significant number of contacts
+* has a need to manage a significant number of internship applications
 * prefer desktop apps over other types
 * can type fast
 * prefers typing to mouse interactions
 * is reasonably comfortable using CLI apps
 
-**Value proposition**: manage contacts faster than a typical mouse/GUI driven app
+**Value proposition**: manage internship applications faster than a typical mouse/GUI driven app
 
 
 ### User stories
@@ -272,12 +272,17 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 | Priority | As a …​                                    | I want to …​                     | So that I can…​                                                        |
 | -------- | ------------------------------------------ | ------------------------------ | ---------------------------------------------------------------------- |
-| `* * *`  | new user                                   | see usage instructions         | refer to instructions when I forget how to use the App                 |
-| `* * *`  | user                                       | add a new person               |                                                                        |
-| `* * *`  | user                                       | delete a person                | remove entries that I no longer need                                   |
-| `* * *`  | user                                       | find a person by name          | locate details of persons without having to go through the entire list |
-| `* *`    | user                                       | hide private contact details   | minimize chance of someone else seeing them by accident                |
-| `*`      | user with many persons in the address book | sort persons by name           | locate a person easily                                                 |
+| `* * *`  | student                                    | add a company I'm applying to  | keep track of the lists of companies I applied to                      |
+| `* * *`  | student                                    | add a deadline to the company I'm applying to | better organise my application submissions                      |
+| `* * *`  | student                                       | add details about my internship position               | remember the role I applied for                                  |
+| `* * *`  | student                                       | view a list of all companies I have applied to and other relevant details          | easily keep track of all companies I have applied to |
+| `* * *`  | student                                       | delete one of the companies/ internship applications in the list          | stop tracking an application that I have withdrawn/ decided not to make |                                               
+| `* * *`  | student                                       | delete all current entries in the app         | get rid of all sample data when I first start using the app, or start over with a completely clean list of entries |
+| `* * *`  | student                                       | edit my entry details (e.g. deadlines/ company/ information/ role)         | rectify any mistakes I made initially, or updat emy entry to reflect new updates with my application |
+| `* * *`  | student                                       | change the status of one of my entries         | update my entries to show my most up-to-date application status |
+
+
+
 
 *{More to be added}*
 
