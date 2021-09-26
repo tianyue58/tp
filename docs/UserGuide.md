@@ -67,7 +67,7 @@ Shows a message explaning how to access the help page.
 Format: `help`
 
 
-### Adding an application: `add`
+### Adding an application : `add`
 
 Adds a new entry to the list of applications. Application is set as uncompleted, and application status is set as pending by default.
 
@@ -101,23 +101,21 @@ Clears all entries from the application list.
 
 Format: `clear`
 
-### Updating the details of an existing entry: `update`
+### Editing the details of an existing entry : `edit`
 
-Updates the company name, position or deadline of a specific existing entry in InternSHIP.
+Edits the company name, position or deadline of a specific existing entry in InternSHIP.
 
-Format: `update INDEX/FIELD/NEW_VALUE`
+Format: `edit INDEX [c/COMPANY_NAME] [p/INTERNSHIP_POSITION] [d/DEADLINE_OF_APPLICATION]`
 
-* Updates the specified field at the specified index. 
-* Indices start from 1. 
+* Edits the person at the specified `INDEX`. The index refers to the index number shown in the displayed application list. The index **must be a positive integer** 1, 2, 3, …​
 * The fields available for updating are COMPANY_NAME, INTERNSHIP_POSITION, and DEADLINE_OF_APPLICATION.
-* To update the COMPANY_NAME, input `name`for the field.
-* To update the INTERNSHIP_POSITION, input `position`for the field.
-* To update the DEADLINE_OF_APPLICATION, input `deadline`for the field.
+* At least one of the optional fields must be provided.
+* Existing values will be updated to the input values.
 
 Examples:
-* `update 2/name/shopee` updates the COMPANY_NAME to `Shopee`
-* `update 2/position/web developer` updates the INTERNSHIP_POSITION to `web developer`
-* `update 2/deadline/2021-12-09` updates the DEADLINE_OF_APPLICATION to `2021-12-09`
+*  `edit 1 c/grab d/2021-12-20` Edits the company name and deadline of the 1st application to be `grab` and `2021-12-20` respectively.
+*  `edit 2 p/UI designer` Edits the internship position of the 2nd application to be `UI designer`.
+
 
 ### Deleting a person : `delete`
 
@@ -186,7 +184,7 @@ Action | Format, Examples
 **Add** | `add c/COMPANY_NAME p/INTERNSHIP_POSITION d/DEADLINE_OF_APPLICATION` <br> e.g., `add c/shopee p/software engineer d/2021-12-12`
 **Clear** | `clear`
 **Delete** | `delete INDEX`<br> e.g., `delete 3`
-**Edit** | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`
+**Edit** | `edit INDEX [c/COMPANY_NAME] [p/INTERSHIP_POSITION] [D/DEADLINE_OF_APPLICATION]`<br> e.g.,`edit 1 c/grab d/2021-12-20`
 **Find** | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`
 **List** | `list`
 **Help** | `help`
