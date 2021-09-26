@@ -154,17 +154,26 @@ Exits the program.
 
 Format: `exit`
 
-### Saving the data
+### Completing an application : `complete`
 
-AddressBook data are saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
+Marks a specified entry in InternSHIP as completed, meaning the user has completed the application for that internship.
 
-### Editing the data file
+Format: `complete INDEX`
+* Marks an entry as completed at the specified `INDEX`
+* The `INDEX` refers to the number shown in the list.
+* The index must be a positive integer e.g. 1, 2, 3,...
 
-AddressBook data are saved as a JSON file `[JAR file location]/data/addressbook.json`. Advanced users are welcome to update data directly by editing that data file.
+### Updating the application status : `accept/reject`
 
-<div markdown="span" class="alert alert-warning">:exclamation: **Caution:**
-If your changes to the data file makes its format invalid, AddressBook will discard all data and start with an empty data file at the next run.
-</div>
+Updates the status of an application.
+
+Format: `DECISION INDEX`
+
+Examples:
+* `accept` followed by `1` marks the first entry as Accepted.
+* `reject` followed by `2` marks the second entry as Rejected.
+
+
 
 ### Archiving data files `[coming in v2.0]`
 
@@ -190,3 +199,6 @@ Action | Format, Examples
 **Find** | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`
 **List** | `list`
 **Help** | `help`
+**Complete** | `complete INDEX` <br> e.g., `complete 2`
+**Accept** | `accept INDEX` <br> e.g., `accept 1`
+**Reject** | `reject INDEX` <br> e.g., `reject 3`
