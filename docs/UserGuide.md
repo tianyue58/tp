@@ -45,22 +45,16 @@ AddressBook Level 3 (AB3) is a **desktop app for managing contacts, optimized fo
 **:information_source: Notes about the command format:**<br>
 
 * Words in `UPPER_CASE` are the parameters to be supplied by the user.<br>
-  e.g. in `add n/NAME`, `NAME` is a parameter which can be used as `add n/John Doe`.
-
-* Items in square brackets are optional.<br>
-  e.g `n/NAME [t/TAG]` can be used as `n/John Doe t/friend` or as `n/John Doe`.
-
-* Items with `…`​ after them can be used multiple times including zero times.<br>
-  e.g. `[t/TAG]…​` can be used as ` ` (i.e. 0 times), `t/friend`, `t/friend t/family` etc.
+  e.g. in `add COMPANY_NAME`, `COMPANY_NAME` is a parameter which can be used as `add Shopee`.
 
 * Parameters can be in any order.<br>
-  e.g. if the command specifies `n/NAME p/PHONE_NUMBER`, `p/PHONE_NUMBER n/NAME` is also acceptable.
+  e.g. if the command specifies `COMPANY_NAME/INTERNSHIP_POSITION`, `INTERNSHIP_POSITION/COMPANY_NAME` is also acceptable.
 
 * If a parameter is expected only once in the command but you specified it multiple times, only the last occurrence of the parameter will be taken.<br>
-  e.g. if you specify `p/12341234 p/56785678`, only `p/56785678` will be taken.
+  e.g. if you specify `delete 1 2`, only `2` will be taken as the index to be deleted.
 
-* Extraneous parameters for commands that do not take in parameters (such as `help`, `list`, `exit` and `clear`) will be ignored.<br>
-  e.g. if the command specifies `help 123`, it will be interpreted as `help`.
+* Extraneous parameters for commands that do not take in parameters (such as `list` and `clear`) will be ignored.<br>
+  e.g. if the command specifies `list 123`, it will be interpreted as `list`.
 
 </div>
 
@@ -73,19 +67,19 @@ Shows a message explaning how to access the help page.
 Format: `help`
 
 
-### Adding a person: `add`
+### Adding an application: `add`
 
-Adds a person to the address book.
+Adds a new entry to the list of applications. Application is set as uncompleted, and application status is set as pending by default.
 
-Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​`
-
-<div markdown="span" class="alert alert-primary">:bulb: **Tip:**
-A person can have any number of tags (including 0)
-</div>
+Format: `add c/COMPANY_NAME p/INTERNSHIP_POSITION d/DEADLINE_OF_APPLICATION`
 
 Examples:
-* `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01`
-* `add n/Betsy Crowe t/friend e/betsycrowe@example.com a/Newgate Prison p/1234567 t/criminal`
+* `add c/shopee p/software engineer d/2021-12-12`
+
+### Listing all entries : `list`
+
+Shows a list of all the entries.
+
 
 ### Deleting an entry : `delete`
 
@@ -107,23 +101,23 @@ Clears all entries from the application list.
 
 Format: `clear`
 
-### Locating persons by name: `find`
+### Updating the details of an existing entry: `update`
 
-Finds persons whose names contain any of the given keywords.
+Updates the company name, position or deadline of a specific existing entry in InternSHIP.
 
-Format: `find KEYWORD [MORE_KEYWORDS]`
+Format: `update INDEX/FIELD/NEW_VALUE`
 
-* The search is case-insensitive. e.g `hans` will match `Hans`
-* The order of the keywords does not matter. e.g. `Hans Bo` will match `Bo Hans`
-* Only the name is searched.
-* Only full words will be matched e.g. `Han` will not match `Hans`
-* Persons matching at least one keyword will be returned (i.e. `OR` search).
-  e.g. `Hans Bo` will return `Hans Gruber`, `Bo Yang`
+* Updates the specified field at the specified index. 
+* Indices start from 1. 
+* The fields available for updating are COMPANY_NAME, INTERNSHIP_POSITION, and DEADLINE_OF_APPLICATION.
+* To update the COMPANY_NAME, input `name`for the field.
+* To update the INTERNSHIP_POSITION, input `position`for the field.
+* To update the DEADLINE_OF_APPLICATION, input `deadline`for the field.
 
 Examples:
-* `find John` returns `john` and `John Doe`
-* `find alex david` returns `Alex Yeoh`, `David Li`<br>
-  ![result for 'find alex david'](images/findAlexDavidResult.png)
+* `update 2/name/shopee` updates the COMPANY_NAME to `Shopee`
+* `update 2/position/web developer` updates the INTERNSHIP_POSITION to `web developer`
+* `update 2/deadline/2021-12-09` updates the DEADLINE_OF_APPLICATION to `2021-12-09`
 
 ### Deleting a person : `delete`
 
@@ -151,17 +145,26 @@ Exits the program.
 
 Format: `exit`
 
-### Saving the data
+### Completing an application : `complete`
 
-AddressBook data are saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
+Marks a specified entry in InternSHIP as completed, meaning the user has completed the application for that internship.
 
-### Editing the data file
+Format: `complete INDEX`
+* Marks an entry as completed at the specified `INDEX`
+* The `INDEX` refers to the number shown in the list.
+* The index must be a positive integer e.g. 1, 2, 3,...
 
-AddressBook data are saved as a JSON file `[JAR file location]/data/addressbook.json`. Advanced users are welcome to update data directly by editing that data file.
+### Updating the application status : `accept/reject`
 
-<div markdown="span" class="alert alert-warning">:exclamation: **Caution:**
-If your changes to the data file makes its format invalid, AddressBook will discard all data and start with an empty data file at the next run.
-</div>
+Updates the status of an application.
+
+Format: `DECISION INDEX`
+
+Examples:
+* `accept` followed by `1` marks the first entry as Accepted.
+* `reject` followed by `2` marks the second entry as Rejected.
+
+
 
 ### Archiving data files `[coming in v2.0]`
 
@@ -180,10 +183,13 @@ _Details coming soon ..._
 
 Action | Format, Examples
 --------|------------------
-**Add** | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague`
+**Add** | `add c/COMPANY_NAME p/INTERNSHIP_POSITION d/DEADLINE_OF_APPLICATION` <br> e.g., `add c/shopee p/software engineer d/2021-12-12`
 **Clear** | `clear`
 **Delete** | `delete INDEX`<br> e.g., `delete 3`
 **Edit** | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`
 **Find** | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`
 **List** | `list`
 **Help** | `help`
+**Complete** | `complete INDEX` <br> e.g., `complete 2`
+**Accept** | `accept INDEX` <br> e.g., `accept 1`
+**Reject** | `reject INDEX` <br> e.g., `reject 3`
