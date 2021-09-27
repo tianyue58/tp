@@ -80,7 +80,6 @@ Examples:
 
 Shows a list of all the entries.
 
-
 ### Deleting an entry : `delete`
 
 Deletes the specified entry from the list of applications.

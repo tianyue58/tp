@@ -278,8 +278,8 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* * *`  | student                                       | view a list of all companies I have applied to and other relevant details          | easily keep track of all companies I have applied to |
 | `* * *`  | student                                       | delete one of the companies/ internship applications in the list          | stop tracking an application that I have withdrawn/ decided not to make |                                               
 | `* * *`  | student                                       | delete all current entries in the app         | get rid of all sample data when I first start using the app, or start over with a completely clean list of entries |
-| `* * *`  | student                                       | edit my entry details (e.g. deadlines/ company/ information/ role)         | rectify any mistakes I made initially, or updat emy entry to reflect new updates with my application |
-| `* * *`  | student                                       | change the status of one of my entries         | update my entries to show my most up-to-date application status |
+| `* * *`  | student                                       | edit my entry details (e.g. deadlines/ company/ information/ role/ completion)         | rectify any mistakes I made initially, or update my entry to reflect new updates with my application |
+| `* * *`  | student                                       | change the status of one of my entries (pending to accepted/ rejected)        | update my entries to show my most up-to-date application status |
 
 
 
@@ -288,16 +288,35 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 ### Use cases
 
-(For all use cases below, the **System** is the `AddressBook` and the **Actor** is the `user`, unless specified otherwise)
+(For all use cases below, the **System** is `InternSHIP` and the **Actor** is the `user`, unless specified otherwise)
 
-**Use case: Delete a person**
+**Use case: Adding an application entry**
 
 **MSS**
 
-1.  User requests to list persons
-2.  AddressBook shows a list of persons
-3.  User requests to delete a specific person in the list
-4.  AddressBook deletes the person
+1. User requests to add a new internship application entry to track. User inputs the company name, role applied for and application deadline
+2. Internship adds the entry to its list of entries. Application status is set as pending and application is marked as uncompleted by default
+3. User requests to list all entries
+4. InternSHIP shows a list of all the application entries, including the newly added entry
+
+    Use case ends.
+
+**Extensions**
+
+* 1a. The user fails to specify the company name, role applied for or application deadline.
+
+    * 1a1. InternSHIP shows an error message.
+
+      Use case returns to step 1.
+
+**Use case: Delete an application entry**
+
+**MSS**
+
+1.  User requests to list all entries
+2.  InternSHIP shows a list of application entries
+3.  User requests to delete a specific entry in the list
+4.  InternSHIP deletes the entry
 
     Use case ends.
 
@@ -305,11 +324,34 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * 2a. The list is empty.
 
-  Use case ends.
+  Use case ends. There is nothing to delete.
 
 * 3a. The given index is invalid.
 
-    * 3a1. AddressBook shows an error message.
+    * 3a1. InternSHIP shows an error message.
+
+      Use case resumes at step 2.
+
+**Use case: Update an application entry/ Complete an application/ Update application status**
+
+**MSS**
+
+1.  User requests to list all entries
+2.  InternSHIP shows a list of application entries
+3.  User requests to update the details of a specific entry in the list/ mark the application as completed/ update the application status from pending to accepted
+4.  InternSHIP updates the entry accordingly
+
+    Use case ends.
+
+**Extensions**
+
+* 2a. The list is empty.
+
+  Use case ends. There is nothing to update.
+
+* 3a. The given index is invalid.
+
+    * 3a1. InternSHIP shows an error message.
 
       Use case resumes at step 2.
 
