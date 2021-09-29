@@ -1,11 +1,15 @@
 package seedu.address.testutil;
 
+import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
 import seedu.address.logic.commands.EditCommand.EditApplicationDescriptor;
 import seedu.address.model.application.Application;
 import seedu.address.model.application.Name;
 import seedu.address.model.application.Position;
 import seedu.address.model.application.Deadline;
-
+import seedu.address.model.tag.Tag;
 
 /**
  * A utility class to help with building EditPersonDescriptor objects.
@@ -53,6 +57,16 @@ public class EditApplicationDescriptorBuilder {
      */
     public EditApplicationDescriptorBuilder withDeadline(String deadline) {
         descriptor.setDeadline(new Deadline(deadline));
+        return this;
+    }
+
+    /**
+     * Parses the {@code tags} into a {@code Set<Tag>} and set it to the {@code EditPersonDescriptor}
+     * that we are building.
+     */
+    public EditApplicationDescriptorBuilder withTags(String... tags) {
+        Set<Tag> tagSet = Stream.of(tags).map(Tag::new).collect(Collectors.toSet());
+        descriptor.setTags(tagSet);
         return this;
     }
 

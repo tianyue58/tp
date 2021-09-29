@@ -36,20 +36,20 @@ public class TestUtil {
      * Returns the middle index of the application in the {@code model}'s application list.
      */
     public static Index getMidIndex(Model model) {
-        return Index.fromOneBased(model.getFilteredPersonList().size() / 2);
+        return Index.fromOneBased(model.getFilteredApplicationList().size() / 2);
     }
 
     /**
      * Returns the last index of the application in the {@code model}'s application list.
      */
     public static Index getLastIndex(Model model) {
-        return Index.fromOneBased(model.getFilteredPersonList().size());
+        return Index.fromOneBased(model.getFilteredApplicationList().size());
     }
 
     /**
      * Returns the application in the {@code model}'s application list at {@code index}.
      */
-    public static Application getPerson(Model model, Index index) {
-        return model.getFilteredPersonList().get(index.getZeroBased());
+    public static Application getApplication(Model model, Index index) {
+        return model.getFilteredApplicationList().get(index.getZeroBased());
     }
 }

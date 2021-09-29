@@ -47,7 +47,8 @@ public class AddCommandTest {
         AddCommand addCommand = new AddCommand(validApplication);
         ModelStub modelStub = new ModelStubWithPerson(validApplication);
 
-        assertThrows(CommandException.class, AddCommand.MESSAGE_DUPLICATE_PERSON, () -> addCommand.execute(modelStub));
+        assertThrows(CommandException.class, AddCommand.MESSAGE_DUPLICATE_APPLICATION,
+                () -> addCommand.execute(modelStub));
     }
 
     @Test
@@ -109,7 +110,7 @@ public class AddCommandTest {
         }
 
         @Override
-        public void addPerson(Application application) {
+        public void addApplication(Application application) {
             throw new AssertionError("This method should not be called.");
         }
 
@@ -124,27 +125,27 @@ public class AddCommandTest {
         }
 
         @Override
-        public boolean hasPerson(Application application) {
+        public boolean hasApplication(Application application) {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public void deletePerson(Application target) {
+        public void deleteApplication(Application target) {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public void setPerson(Application target, Application editedApplication) {
+        public void setApplication(Application target, Application editedApplication) {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public ObservableList<Application> getFilteredPersonList() {
+        public ObservableList<Application> getFilteredApplicationList() {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public void updateFilteredPersonList(Predicate<Application> predicate) {
+        public void updateFilteredApplicationList(Predicate<Application> predicate) {
             throw new AssertionError("This method should not be called.");
         }
     }
@@ -161,9 +162,9 @@ public class AddCommandTest {
         }
 
         @Override
-        public boolean hasPerson(Application application) {
+        public boolean hasApplication(Application application) {
             requireNonNull(application);
-            return this.application.isSamePerson(application);
+            return this.application.isSameApplication(application);
         }
     }
 
@@ -174,13 +175,13 @@ public class AddCommandTest {
         final ArrayList<Application> personsAdded = new ArrayList<>();
 
         @Override
-        public boolean hasPerson(Application application) {
+        public boolean hasApplication(Application application) {
             requireNonNull(application);
-            return personsAdded.stream().anyMatch(application::isSamePerson);
+            return personsAdded.stream().anyMatch(application::isSameApplication);
         }
 
         @Override
-        public void addPerson(Application application) {
+        public void addApplication(Application application) {
             requireNonNull(application);
             personsAdded.add(application);
         }

@@ -3,8 +3,8 @@ package seedu.address.model.application;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_ADDRESS_BOB;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_PENDING;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_REJECTED;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalPersons.ALICE;
 import static seedu.address.testutil.TypicalPersons.BOB;
@@ -42,7 +42,7 @@ public class UniqueApplicationListTest {
     @Test
     public void contains_personWithSameIdentityFieldsInList_returnsTrue() {
         uniqueApplicationList.add(ALICE);
-        Application editedAlice = new PersonBuilder(ALICE).withAddress(VALID_ADDRESS_BOB).withTags(VALID_TAG_HUSBAND)
+        Application editedAlice = new PersonBuilder(ALICE).withTags(VALID_TAG_PENDING)
                 .build();
         assertTrue(uniqueApplicationList.contains(editedAlice));
     }
@@ -85,7 +85,7 @@ public class UniqueApplicationListTest {
     @Test
     public void setPerson_editedPersonHasSameIdentity_success() {
         uniqueApplicationList.add(ALICE);
-        Application editedAlice = new PersonBuilder(ALICE).withAddress(VALID_ADDRESS_BOB).withTags(VALID_TAG_HUSBAND)
+        Application editedAlice = new PersonBuilder(ALICE).withTags(VALID_TAG_REJECTED)
                 .build();
         uniqueApplicationList.setPerson(ALICE, editedAlice);
         UniqueApplicationList expectedUniqueApplicationList = new UniqueApplicationList();
@@ -129,7 +129,7 @@ public class UniqueApplicationListTest {
 
     @Test
     public void setPersons_nullUniquePersonList_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> uniqueApplicationList.setPersons((UniqueApplicationList) null));
+        assertThrows(NullPointerException.class, () -> uniqueApplicationList.setApplications((UniqueApplicationList) null));
     }
 
     @Test
@@ -137,20 +137,20 @@ public class UniqueApplicationListTest {
         uniqueApplicationList.add(ALICE);
         UniqueApplicationList expectedUniqueApplicationList = new UniqueApplicationList();
         expectedUniqueApplicationList.add(BOB);
-        uniqueApplicationList.setPersons(expectedUniqueApplicationList);
+        uniqueApplicationList.setApplications(expectedUniqueApplicationList);
         assertEquals(expectedUniqueApplicationList, uniqueApplicationList);
     }
 
     @Test
     public void setPersons_nullList_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> uniqueApplicationList.setPersons((List<Application>) null));
+        assertThrows(NullPointerException.class, () -> uniqueApplicationList.setApplications((List<Application>) null));
     }
 
     @Test
     public void setPersons_list_replacesOwnListWithProvidedList() {
         uniqueApplicationList.add(ALICE);
         List<Application> applicationList = Collections.singletonList(BOB);
-        uniqueApplicationList.setPersons(applicationList);
+        uniqueApplicationList.setApplications(applicationList);
         UniqueApplicationList expectedUniqueApplicationList = new UniqueApplicationList();
         expectedUniqueApplicationList.add(BOB);
         assertEquals(expectedUniqueApplicationList, uniqueApplicationList);
@@ -159,7 +159,7 @@ public class UniqueApplicationListTest {
     @Test
     public void setPersons_listWithDuplicatePersons_throwsDuplicatePersonException() {
         List<Application> listWithDuplicateApplications = Arrays.asList(ALICE, ALICE);
-        assertThrows(DuplicatePersonException.class, () -> uniqueApplicationList.setPersons(listWithDuplicateApplications));
+        assertThrows(DuplicatePersonException.class, () -> uniqueApplicationList.setApplications(listWithDuplicateApplications));
     }
 
     @Test

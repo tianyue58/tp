@@ -3,11 +3,10 @@ package seedu.address.testutil;
 import java.util.HashSet;
 import java.util.Set;
 
-import seedu.address.model.application.Address;
 import seedu.address.model.application.Application;
-import seedu.address.model.application.Email;
+import seedu.address.model.application.Deadline;
 import seedu.address.model.application.Name;
-import seedu.address.model.application.Phone;
+import seedu.address.model.application.Position;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.util.SampleDataUtil;
 
@@ -19,12 +18,10 @@ public class PersonBuilder {
     public static final String DEFAULT_NAME = "Amy Bee";
     public static final String DEFAULT_PHONE = "85355255";
     public static final String DEFAULT_EMAIL = "amy@gmail.com";
-    public static final String DEFAULT_ADDRESS = "123, Jurong West Ave 6, #08-111";
 
     private Name name;
-    private Phone phone;
-    private Email email;
-    private Address address;
+    private Position phone;
+    private Deadline email;
     private Set<Tag> tags;
 
     /**
@@ -32,9 +29,8 @@ public class PersonBuilder {
      */
     public PersonBuilder() {
         name = new Name(DEFAULT_NAME);
-        phone = new Phone(DEFAULT_PHONE);
-        email = new Email(DEFAULT_EMAIL);
-        address = new Address(DEFAULT_ADDRESS);
+        phone = new Position(DEFAULT_PHONE);
+        email = new Deadline(DEFAULT_EMAIL);
         tags = new HashSet<>();
     }
 
@@ -43,9 +39,8 @@ public class PersonBuilder {
      */
     public PersonBuilder(Application applicationToCopy) {
         name = applicationToCopy.getName();
-        phone = applicationToCopy.getPhone();
-        email = applicationToCopy.getEmail();
-        address = applicationToCopy.getAddress();
+        phone = applicationToCopy.getPosition();
+        email = applicationToCopy.getDeadline();
         tags = new HashSet<>(applicationToCopy.getTags());
     }
 
@@ -66,31 +61,23 @@ public class PersonBuilder {
     }
 
     /**
-     * Sets the {@code Address} of the {@code Application} that we are building.
-     */
-    public PersonBuilder withAddress(String address) {
-        this.address = new Address(address);
-        return this;
-    }
-
-    /**
      * Sets the {@code Phone} of the {@code Application} that we are building.
      */
-    public PersonBuilder withPhone(String phone) {
-        this.phone = new Phone(phone);
+    public PersonBuilder withPosition(String phone) {
+        this.phone = new Position(phone);
         return this;
     }
 
     /**
      * Sets the {@code Email} of the {@code Application} that we are building.
      */
-    public PersonBuilder withEmail(String email) {
-        this.email = new Email(email);
+    public PersonBuilder withDeadline(String email) {
+        this.email = new Deadline(email);
         return this;
     }
 
     public Application build() {
-        return new Application(name, phone, email, address, tags);
+        return new Application(name, phone, email, tags);
     }
 
 }

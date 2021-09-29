@@ -81,14 +81,14 @@ public class LogicManagerTest {
         String addCommand = AddCommand.COMMAND_WORD + NAME_DESC_AMY + POSITION_DESC_AMY + DEADLINE_DESC_AMY;
         Application expectedApplication = new PersonBuilder(AMY).withTags().build();
         ModelManager expectedModel = new ModelManager();
-        expectedModel.addPerson(expectedApplication);
+        expectedModel.addApplication(expectedApplication);
         String expectedMessage = LogicManager.FILE_OPS_ERROR_MESSAGE + DUMMY_IO_EXCEPTION;
         assertCommandFailure(addCommand, CommandException.class, expectedMessage, expectedModel);
     }
 
     @Test
     public void getFilteredPersonList_modifyList_throwsUnsupportedOperationException() {
-        assertThrows(UnsupportedOperationException.class, () -> logic.getFilteredPersonList().remove(0));
+        assertThrows(UnsupportedOperationException.class, () -> logic.getFilteredApplicationList().remove(0));
     }
 
     /**

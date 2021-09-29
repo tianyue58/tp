@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_COMPANY_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DEADLINE_OF_APPLICATION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_INTERNSHIP_POSITION;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.address.testutil.Assert.assertThrows;
 
 import java.util.ArrayList;
@@ -24,37 +25,40 @@ import seedu.address.testutil.EditApplicationDescriptorBuilder;
  */
 public class CommandTestUtil {
 
-    public static final String VALID_NAME_AMY = "Amy Bee";
-    public static final String VALID_NAME_BOB = "Bob Choo";
-    public static final String VALID_POSITION_AMY = "11111111";
-    public static final String VALID_POSITION_BOB = "22222222";
-    public static final String VALID_DEADLINE_AMY = "amy@example.com";
-    public static final String VALID_DEADLINE_BOB = "bob@example.com";
+    public static final String VALID_NAME_AMAZON = "Amazon";
+    public static final String VALID_NAME_BYTEDANCE = "ByteDance";
+    public static final String VALID_POSITION_AMAZON = "software engineer";
+    public static final String VALID_POSITION_BYTEDANCE = "web developer";
+    public static final String VALID_DEADLINE_AMAZON = "2021-12-12";
+    public static final String VALID_DEADLINE_BYTEDANCE = "2021-12-29";
+    public static final String VALID_TAG_PENDING = "Pending";
+    public static final String VALID_TAG_REJECTED = "Rejected";
 
-    public static final String NAME_DESC_AMY = " " + PREFIX_COMPANY_NAME + VALID_NAME_AMY;
-    public static final String NAME_DESC_BOB = " " + PREFIX_COMPANY_NAME + VALID_NAME_BOB;
-    public static final String POSITION_DESC_AMY = " " + PREFIX_INTERNSHIP_POSITION + VALID_POSITION_AMY;
-    public static final String POSITION_DESC_BOB = " " + PREFIX_INTERNSHIP_POSITION + VALID_POSITION_BOB;
-    public static final String DEADLINE_DESC_AMY = " " + PREFIX_DEADLINE_OF_APPLICATION + VALID_DEADLINE_AMY;
-    public static final String DEADLINE_DESC_BOB = " " + PREFIX_DEADLINE_OF_APPLICATION + VALID_DEADLINE_BOB;
+    public static final String NAME_DESC_AMAZON = " " + PREFIX_COMPANY_NAME + VALID_NAME_AMAZON;
+    public static final String NAME_DESC_BYTEDANCE = " " + PREFIX_COMPANY_NAME + VALID_NAME_BYTEDANCE;
+    public static final String POSITION_DESC_AMAZON = " " + PREFIX_INTERNSHIP_POSITION + VALID_POSITION_AMAZON;
+    public static final String POSITION_DESC_BYTEDANCE = " " + PREFIX_INTERNSHIP_POSITION + VALID_POSITION_BYTEDANCE;
+    public static final String DEADLINE_DESC_AMAZON = " " + PREFIX_DEADLINE_OF_APPLICATION + VALID_DEADLINE_AMAZON;
+    public static final String DEADLINE_DESC_BYTEDANCE = " " + PREFIX_DEADLINE_OF_APPLICATION + VALID_DEADLINE_BYTEDANCE;
+    public static final String TAG_DESC_REJECTED = " " + PREFIX_TAG + VALID_TAG_REJECTED;
+    public static final String TAG_DESC_PENDING = " " + PREFIX_TAG + VALID_TAG_PENDING;
 
-
-    public static final String INVALID_NAME_DESC = " " + PREFIX_COMPANY_NAME + "James&"; // '&' not allowed in names
-    public static final String INVALID_PHONE_DESC = " " + PREFIX_INTERNSHIP_POSITION + "911a"; // 'a' not allowed in phones
-    public static final String INVALID_EMAIL_DESC = " " + PREFIX_DEADLINE_OF_APPLICATION + "bob!yahoo"; // missing '@' symbol
-    public static final String INVALID_ADDRESS_DESC = " " + PREFIX_DEADLINE_OF_APPLICATION; // empty string not allowed for addresses
+    public static final String INVALID_NAME_DESC = " " + PREFIX_COMPANY_NAME + "Google&"; // '&' not allowed in names
+    public static final String INVALID_POSITION_DESC = " " + PREFIX_INTERNSHIP_POSITION; // empty string not allowed for positions
+    public static final String INVALID_DEADLINE_DESC = " " + PREFIX_DEADLINE_OF_APPLICATION; //empty string not allowed for deadlines
+    public static final String INVALID_TAG_DESC = " " + PREFIX_TAG + "Pending*"; // '*' not allowed in tags
 
     public static final String PREAMBLE_WHITESPACE = "\t  \r  \n";
     public static final String PREAMBLE_NON_EMPTY = "NonEmptyPreamble";
 
-    public static final EditCommand.EditApplicationDescriptor DESC_AMY;
-    public static final EditCommand.EditApplicationDescriptor DESC_BOB;
+    public static final EditCommand.EditApplicationDescriptor DESC_AMAZON;
+    public static final EditCommand.EditApplicationDescriptor DESC_BYTEDANCE;
 
     static {
-        DESC_AMY = new EditApplicationDescriptorBuilder().withName(VALID_NAME_AMY)
-                .withPosition(VALID_POSITION_AMY).withDeadline(VALID_DEADLINE_AMY).build();
-        DESC_BOB = new EditApplicationDescriptorBuilder().withName(VALID_NAME_BOB)
-                .withPosition(VALID_POSITION_BOB).withDeadline(VALID_DEADLINE_BOB).build();
+        DESC_AMAZON = new EditApplicationDescriptorBuilder().withName(VALID_NAME_AMAZON)
+                .withPosition(VALID_POSITION_AMAZON).withDeadline(VALID_DEADLINE_AMAZON).build();
+        DESC_BYTEDANCE = new EditApplicationDescriptorBuilder().withName(VALID_NAME_BYTEDANCE)
+                .withPosition(VALID_POSITION_BYTEDANCE).withDeadline(VALID_DEADLINE_BYTEDANCE).build();
     }
 
     /**
@@ -93,24 +97,24 @@ public class CommandTestUtil {
         // we are unable to defensively copy the model for comparison later, so we can
         // only do so by copying its components.
         AddressBook expectedAddressBook = new AddressBook(actualModel.getAddressBook());
-        List<Application> expectedFilteredList = new ArrayList<>(actualModel.getFilteredPersonList());
+        List<Application> expectedFilteredList = new ArrayList<>(actualModel.getFilteredApplicationList());
 
         assertThrows(CommandException.class, expectedMessage, () -> command.execute(actualModel));
         assertEquals(expectedAddressBook, actualModel.getAddressBook());
-        assertEquals(expectedFilteredList, actualModel.getFilteredPersonList());
+        assertEquals(expectedFilteredList, actualModel.getFilteredApplicationList());
     }
     /**
      * Updates {@code model}'s filtered list to show only the application at the given {@code targetIndex} in the
      * {@code model}'s address book.
      */
     public static void showPersonAtIndex(Model model, Index targetIndex) {
-        assertTrue(targetIndex.getZeroBased() < model.getFilteredPersonList().size());
+        assertTrue(targetIndex.getZeroBased() < model.getFilteredApplicationList().size());
 
-        Application application = model.getFilteredPersonList().get(targetIndex.getZeroBased());
+        Application application = model.getFilteredApplicationList().get(targetIndex.getZeroBased());
         final String[] splitName = application.getName().fullName.split("\\s+");
-        model.updateFilteredPersonList(new NameContainsKeywordsPredicate(Arrays.asList(splitName[0])));
+        model.updateFilteredApplicationList(new NameContainsKeywordsPredicate(Arrays.asList(splitName[0])));
 
-        assertEquals(1, model.getFilteredPersonList().size());
+        assertEquals(1, model.getFilteredApplicationList().size());
     }
 
 }
