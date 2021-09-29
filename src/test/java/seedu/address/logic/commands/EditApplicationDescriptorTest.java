@@ -17,8 +17,8 @@ public class EditApplicationDescriptorTest {
     @Test
     public void equals() {
         // same values -> returns true
-        EditCommand.EditApplicationDescriptor descriptorWithSameValues
-                = new EditCommand.EditApplicationDescriptor(DESC_AMAZON);
+        EditCommand.EditApplicationDescriptor descriptorWithSameValues = new EditCommand
+                .EditApplicationDescriptor(DESC_AMAZON);
         assertTrue(DESC_AMAZON.equals(descriptorWithSameValues));
 
         // same object -> returns true
@@ -34,8 +34,8 @@ public class EditApplicationDescriptorTest {
         assertFalse(DESC_AMAZON.equals(DESC_BYTEDANCE));
 
         // different name -> returns false
-        EditCommand.EditApplicationDescriptor editedAmy
-                = new EditApplicationDescriptorBuilder(DESC_AMAZON).withName(VALID_NAME_BYTEDANCE).build();
+        EditCommand.EditApplicationDescriptor editedAmy = new EditApplicationDescriptorBuilder(DESC_AMAZON)
+                .withName(VALID_NAME_BYTEDANCE).build();
         assertFalse(DESC_AMAZON.equals(editedAmy));
 
         // different position -> returns false

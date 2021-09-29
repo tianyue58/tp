@@ -17,8 +17,8 @@ import static seedu.address.logic.commands.CommandTestUtil.VALID_DEADLINE_BYTEDA
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_AMAZON;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_POSITION_AMAZON;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_POSITION_BYTEDANCE;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_REJECTED;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_PENDING;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_REJECTED;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
