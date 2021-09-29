@@ -74,7 +74,7 @@ Adds a new entry to the list of applications. Application is set as uncompleted,
 Format: `add [c/COMPANY_NAME] [p/INTERNSHIP_POSITION] [d/DEADLINE_OF_APPLICATION]`
 
 Examples:
-* `add c/shopee p/software engineer d/2021-12-12`
+* `add c/Shopee p/software engineer d/2021-12-12`
 
 ### Listing all entries : `list`
 
@@ -106,29 +106,29 @@ Edits the company name, position or deadline of a specific existing entry in Int
 
 Format: `edit INDEX [c/COMPANY_NAME] [p/INTERNSHIP_POSITION] [d/DEADLINE_OF_APPLICATION]`
 
-* Edits the person at the specified `INDEX`. The index refers to the index number shown in the displayed application list. The index **must be a positive integer** 1, 2, 3, …​
+* Edits the application at the specified `INDEX`. The index refers to the index number shown in the displayed application list. The index **must be a positive integer** 1, 2, 3, …​
 * The fields available for updating are COMPANY_NAME, INTERNSHIP_POSITION, and DEADLINE_OF_APPLICATION.
 * At least one of the optional fields must be provided.
 * Existing values will be updated to the input values.
 
 Examples:
-*  `edit 1 c/grab d/2021-12-20` Edits the company name and deadline of the 1st application to be `grab` and `2021-12-20` respectively.
+*  `edit 1 c/Grab d/2021-12-20` Edits the company name and deadline of the 1st application to be `grab` and `2021-12-20` respectively.
 *  `edit 2 p/UI designer` Edits the internship position of the 2nd application to be `UI designer`.
 
 
-### Deleting a person : `delete`
+### Deleting an application : `delete`
 
-Deletes the specified person from the address book.
+Deletes the specified application from the address book.
 
 Format: `delete INDEX`
 
-* Deletes the person at the specified `INDEX`.
-* The index refers to the index number shown in the displayed person list.
+* Deletes the application at the specified `INDEX`.
+* The index refers to the index number shown in the displayed application list.
 * The index **must be a positive integer** 1, 2, 3, …​
 
 Examples:
-* `list` followed by `delete 2` deletes the 2nd person in the address book.
-* `find Betsy` followed by `delete 1` deletes the 1st person in the results of the `find` command.
+* `list` followed by `delete 2` deletes the 2nd application in the address book.
+* `find Google` followed by `delete 1` deletes the 1st application in the results of the `find` command.
 
 ### Clearing all entries : `clear`
 
@@ -183,10 +183,10 @@ _Details coming soon ..._
 
 Action | Format | Example | Notes
 --------|-------|----|----
-**Add** | `add [c/COMPANY_NAME] [p/INTERNSHIP_POSITION] [d/DEADLINE_OF_APPLICATION]` | `add c/shopee p/software engineer d/2021-12-12` | the fields to be added can be entered in any order, as long as the tag for each field is specified correctly
+**Add** | `add [c/COMPANY_NAME] [p/INTERNSHIP_POSITION] [d/DEADLINE_OF_APPLICATION]` | `add c/Shopee p/software engineer d/2021-12-12` | the fields to be added can be entered in any order, as long as the tag for each field is specified correctly
 **Delete** | `delete INDEX` | `delete 3` | the index refers to the index number shown in the displayed application list, and it must be a positive integer
 **Clear** | `clear` 
-**Edit** | `edit INDEX [c/COMPANY_NAME] [p/INTERNSHIP_POSITION] [d/DEADLINE_OF_APPLICATION]` | `edit 1 c/grab d/2021-12-20` |  multiple fields can be edited at the same time; they can be entered in any order, as long as the tag for each field is specified correctly
+**Edit** | `edit INDEX [c/COMPANY_NAME] [p/INTERNSHIP_POSITION] [d/DEADLINE_OF_APPLICATION]` | `edit 1 c/Grab d/2021-12-20` |  multiple fields can be edited at the same time; they can be entered in any order, as long as the tag for each field is specified correctly
 **Complete** | `complete INDEX` | `complete 1` | same as the notes for `delete` command
 **Accept/Reject** | `DECISION INDEX` | `accept 2` | `DECISION` can only be either `accept` or `reject`
 **List** | `list`
