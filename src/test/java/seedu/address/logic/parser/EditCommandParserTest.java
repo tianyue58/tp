@@ -10,8 +10,8 @@ import static seedu.address.logic.commands.CommandTestUtil.INVALID_TAG_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.NAME_DESC_AMAZON;
 import static seedu.address.logic.commands.CommandTestUtil.POSITION_DESC_AMAZON;
 import static seedu.address.logic.commands.CommandTestUtil.POSITION_DESC_BYTEDANCE;
-import static seedu.address.logic.commands.CommandTestUtil.TAG_DESC_REJECTED;
 import static seedu.address.logic.commands.CommandTestUtil.TAG_DESC_PENDING;
+import static seedu.address.logic.commands.CommandTestUtil.TAG_DESC_REJECTED;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_DEADLINE_AMAZON;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_DEADLINE_BYTEDANCE;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_AMAZON;
@@ -28,7 +28,6 @@ import static seedu.address.testutil.TypicalIndexes.INDEX_THIRD_PERSON;
 
 import org.junit.jupiter.api.Test;
 
-import javafx.geometry.Pos;
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.EditCommand;
 import seedu.address.logic.commands.EditCommand.EditApplicationDescriptor;
@@ -118,7 +117,8 @@ public class EditCommandParserTest {
         Index targetIndex = INDEX_FIRST_PERSON;
         String userInput = targetIndex.getOneBased() + POSITION_DESC_BYTEDANCE + DEADLINE_DESC_AMAZON;
 
-        EditApplicationDescriptor descriptor = new EditApplicationDescriptorBuilder().withPosition(VALID_POSITION_BYTEDANCE)
+        EditApplicationDescriptor descriptor = new EditApplicationDescriptorBuilder()
+                .withPosition(VALID_POSITION_BYTEDANCE)
                 .withDeadline(VALID_DEADLINE_AMAZON).build();
         EditCommand expectedCommand = new EditCommand(targetIndex, descriptor);
 
@@ -130,7 +130,8 @@ public class EditCommandParserTest {
         // name
         Index targetIndex = INDEX_THIRD_PERSON;
         String userInput = targetIndex.getOneBased() + NAME_DESC_AMAZON;
-        EditApplicationDescriptor descriptor = new EditApplicationDescriptorBuilder().withName(VALID_NAME_AMAZON).build();
+        EditApplicationDescriptor descriptor = new EditApplicationDescriptorBuilder()
+                .withName(VALID_NAME_AMAZON).build();
         EditCommand expectedCommand = new EditCommand(targetIndex, descriptor);
         assertParseSuccess(parser, userInput, expectedCommand);
 
@@ -160,7 +161,8 @@ public class EditCommandParserTest {
                 + TAG_DESC_REJECTED + POSITION_DESC_AMAZON + DEADLINE_DESC_AMAZON + TAG_DESC_REJECTED
                 + POSITION_DESC_BYTEDANCE + DEADLINE_DESC_BYTEDANCE + TAG_DESC_PENDING;
 
-        EditApplicationDescriptor descriptor = new EditApplicationDescriptorBuilder().withPosition(VALID_POSITION_BYTEDANCE)
+        EditApplicationDescriptor descriptor = new EditApplicationDescriptorBuilder()
+                .withPosition(VALID_POSITION_BYTEDANCE)
                 .withDeadline(VALID_DEADLINE_AMAZON).withTags(VALID_TAG_REJECTED)
                 .build();
         EditCommand expectedCommand = new EditCommand(targetIndex, descriptor);
@@ -173,15 +175,16 @@ public class EditCommandParserTest {
         // no other valid values specified
         Index targetIndex = INDEX_FIRST_PERSON;
         String userInput = targetIndex.getOneBased() + INVALID_POSITION_DESC + POSITION_DESC_BYTEDANCE;
-        EditApplicationDescriptor descriptor = new EditApplicationDescriptorBuilder().withPosition(VALID_POSITION_BYTEDANCE).build();
+        EditApplicationDescriptor descriptor = new EditApplicationDescriptorBuilder()
+                .withPosition(VALID_POSITION_BYTEDANCE).build();
         EditCommand expectedCommand = new EditCommand(targetIndex, descriptor);
         assertParseSuccess(parser, userInput, expectedCommand);
 
         // other valid values specified
         userInput = targetIndex.getOneBased() + DEADLINE_DESC_BYTEDANCE + INVALID_POSITION_DESC
                 + POSITION_DESC_BYTEDANCE;
-        descriptor = new EditApplicationDescriptorBuilder().withPosition(VALID_POSITION_BYTEDANCE).withDeadline(VALID_DEADLINE_BYTEDANCE)
-                .build();
+        descriptor = new EditApplicationDescriptorBuilder().withPosition(VALID_POSITION_BYTEDANCE)
+                .withDeadline(VALID_DEADLINE_BYTEDANCE).build();
         expectedCommand = new EditCommand(targetIndex, descriptor);
         assertParseSuccess(parser, userInput, expectedCommand);
     }

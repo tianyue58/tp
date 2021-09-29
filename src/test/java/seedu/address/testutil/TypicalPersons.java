@@ -46,11 +46,12 @@ public class TypicalPersons {
             .withDeadline("hans@example.com").build();
 
     // Manually added - Application's details found in {@code CommandTestUtil}
-    public static final Application AMY = new PersonBuilder().withName(VALID_NAME_AMAZON).withPosition(VALID_POSITION_AMAZON)
-            .withDeadline(VALID_DEADLINE_AMAZON).withTags(VALID_TAG_REJECTED).build();
-    public static final Application BOB = new PersonBuilder().withName(VALID_NAME_BYTEDANCE).withPosition(VALID_POSITION_BYTEDANCE)
-            .withDeadline(VALID_DEADLINE_BYTEDANCE).withTags(VALID_TAG_PENDING)
-            .build();
+    public static final Application AMY = new PersonBuilder().withName(VALID_NAME_AMAZON)
+            .withPosition(VALID_POSITION_AMAZON).withDeadline(VALID_DEADLINE_AMAZON)
+            .withTags(VALID_TAG_REJECTED).build();
+    public static final Application BOB = new PersonBuilder().withName(VALID_NAME_BYTEDANCE)
+            .withPosition(VALID_POSITION_BYTEDANCE).withDeadline(VALID_DEADLINE_BYTEDANCE)
+            .withTags(VALID_TAG_PENDING).build();
 
     public static final String KEYWORD_MATCHING_MEIER = "Meier"; // A keyword that matches MEIER
 

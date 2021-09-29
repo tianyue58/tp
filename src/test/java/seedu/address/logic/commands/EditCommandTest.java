@@ -5,9 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.commands.CommandTestUtil.DESC_AMAZON;
 import static seedu.address.logic.commands.CommandTestUtil.DESC_BYTEDANCE;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BYTEDANCE;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_POSITION_AMAZON;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_POSITION_BYTEDANCE;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_PENDING;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_PENDING;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
@@ -56,8 +54,8 @@ public class EditCommandTest {
         Application lastApplication = model.getFilteredApplicationList().get(indexLastPerson.getZeroBased());
 
         PersonBuilder personInList = new PersonBuilder(lastApplication);
-        Application editedApplication = personInList.withName(VALID_NAME_BYTEDANCE).withPosition(VALID_POSITION_BYTEDANCE)
-                .withTags(VALID_TAG_PENDING).build();
+        Application editedApplication = personInList.withName(VALID_NAME_BYTEDANCE)
+                .withPosition(VALID_POSITION_BYTEDANCE).withTags(VALID_TAG_PENDING).build();
 
         EditApplicationDescriptor descriptor = new EditApplicationDescriptorBuilder().withName(VALID_NAME_BYTEDANCE)
                 .withPosition(VALID_POSITION_BYTEDANCE).withTags(VALID_TAG_PENDING).build();
@@ -87,8 +85,10 @@ public class EditCommandTest {
     public void execute_filteredList_success() {
         showPersonAtIndex(model, INDEX_FIRST_PERSON);
 
-        Application applicationInFilteredList = model.getFilteredApplicationList().get(INDEX_FIRST_PERSON.getZeroBased());
-        Application editedApplication = new PersonBuilder(applicationInFilteredList).withName(VALID_NAME_BYTEDANCE).build();
+        Application applicationInFilteredList = model.getFilteredApplicationList()
+                .get(INDEX_FIRST_PERSON.getZeroBased());
+        Application editedApplication = new PersonBuilder(applicationInFilteredList)
+                .withName(VALID_NAME_BYTEDANCE).build();
         EditCommand editCommand = new EditCommand(INDEX_FIRST_PERSON,
                 new EditApplicationDescriptorBuilder().withName(VALID_NAME_BYTEDANCE).build());
 
@@ -124,7 +124,8 @@ public class EditCommandTest {
     @Test
     public void execute_invalidPersonIndexUnfilteredList_failure() {
         Index outOfBoundIndex = Index.fromOneBased(model.getFilteredApplicationList().size() + 1);
-        EditApplicationDescriptor descriptor = new EditApplicationDescriptorBuilder().withName(VALID_NAME_BYTEDANCE).build();
+        EditApplicationDescriptor descriptor = new EditApplicationDescriptorBuilder()
+                .withName(VALID_NAME_BYTEDANCE).build();
         EditCommand editCommand = new EditCommand(outOfBoundIndex, descriptor);
 
         assertCommandFailure(editCommand, model, Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);

@@ -129,7 +129,8 @@ public class UniqueApplicationListTest {
 
     @Test
     public void setPersons_nullUniquePersonList_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> uniqueApplicationList.setApplications((UniqueApplicationList) null));
+        assertThrows(NullPointerException.class, () -> uniqueApplicationList
+                .setApplications((UniqueApplicationList) null));
     }
 
     @Test
@@ -159,7 +160,8 @@ public class UniqueApplicationListTest {
     @Test
     public void setPersons_listWithDuplicatePersons_throwsDuplicatePersonException() {
         List<Application> listWithDuplicateApplications = Arrays.asList(ALICE, ALICE);
-        assertThrows(DuplicatePersonException.class, () -> uniqueApplicationList.setApplications(listWithDuplicateApplications));
+        assertThrows(DuplicatePersonException.class, () -> uniqueApplicationList
+                .setApplications(listWithDuplicateApplications));
     }
 
     @Test

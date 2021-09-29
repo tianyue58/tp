@@ -31,7 +31,8 @@ public class ApplicationTest {
         assertFalse(ALICE.isSameApplication(null));
 
         // same name, all other attributes different -> returns true
-        Application editedAlice = new PersonBuilder(ALICE).withPosition(VALID_POSITION_BYTEDANCE).withDeadline(VALID_DEADLINE_BYTEDANCE)
+        Application editedAlice = new PersonBuilder(ALICE).withPosition(VALID_POSITION_BYTEDANCE)
+                .withDeadline(VALID_DEADLINE_BYTEDANCE)
                 .withTags(VALID_TAG_PENDING).build();
         assertTrue(ALICE.isSameApplication(editedAlice));
 

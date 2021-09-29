@@ -6,7 +6,6 @@ import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalPersons.BENSON;
 
 import java.util.List;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 import org.junit.jupiter.api.Test;
@@ -15,7 +14,6 @@ import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.application.Deadline;
 import seedu.address.model.application.Name;
 import seedu.address.model.application.Position;
-import seedu.address.model.tag.Tag;
 
 public class JsonAdaptedApplicationTest {
     private static final String INVALID_NAME = "R@chel";

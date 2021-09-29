@@ -39,13 +39,16 @@ public class CommandTestUtil {
     public static final String POSITION_DESC_AMAZON = " " + PREFIX_INTERNSHIP_POSITION + VALID_POSITION_AMAZON;
     public static final String POSITION_DESC_BYTEDANCE = " " + PREFIX_INTERNSHIP_POSITION + VALID_POSITION_BYTEDANCE;
     public static final String DEADLINE_DESC_AMAZON = " " + PREFIX_DEADLINE_OF_APPLICATION + VALID_DEADLINE_AMAZON;
-    public static final String DEADLINE_DESC_BYTEDANCE = " " + PREFIX_DEADLINE_OF_APPLICATION + VALID_DEADLINE_BYTEDANCE;
+    public static final String DEADLINE_DESC_BYTEDANCE = " " + PREFIX_DEADLINE_OF_APPLICATION
+            + VALID_DEADLINE_BYTEDANCE;
     public static final String TAG_DESC_REJECTED = " " + PREFIX_TAG + VALID_TAG_REJECTED;
     public static final String TAG_DESC_PENDING = " " + PREFIX_TAG + VALID_TAG_PENDING;
 
     public static final String INVALID_NAME_DESC = " " + PREFIX_COMPANY_NAME + "Google&"; // '&' not allowed in names
-    public static final String INVALID_POSITION_DESC = " " + PREFIX_INTERNSHIP_POSITION; // empty string not allowed for positions
-    public static final String INVALID_DEADLINE_DESC = " " + PREFIX_DEADLINE_OF_APPLICATION; //empty string not allowed for deadlines
+    public static final String INVALID_POSITION_DESC = " "
+            + PREFIX_INTERNSHIP_POSITION; // empty string not allowed for positions
+    public static final String INVALID_DEADLINE_DESC = " "
+            + PREFIX_DEADLINE_OF_APPLICATION; //empty string not allowed for deadlines
     public static final String INVALID_TAG_DESC = " " + PREFIX_TAG + "Pending*"; // '*' not allowed in tags
 
     public static final String PREAMBLE_WHITESPACE = "\t  \r  \n";

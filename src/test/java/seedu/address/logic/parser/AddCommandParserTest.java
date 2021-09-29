@@ -43,29 +43,35 @@ public class AddCommandParserTest {
         Application expectedApplication = new PersonBuilder(BOB).withTags(VALID_TAG_REJECTED).build();
 
         // whitespace only preamble
-        assertParseSuccess(parser, PREAMBLE_WHITESPACE + NAME_DESC_BYTEDANCE + POSITION_DESC_BYTEDANCE + DEADLINE_DESC_BYTEDANCE
+        assertParseSuccess(parser, PREAMBLE_WHITESPACE + NAME_DESC_BYTEDANCE
+                + POSITION_DESC_BYTEDANCE + DEADLINE_DESC_BYTEDANCE
                 + TAG_DESC_REJECTED, new AddCommand(expectedApplication));
 
         // multiple names - last name accepted
-        assertParseSuccess(parser, NAME_DESC_AMAZON + NAME_DESC_BYTEDANCE + POSITION_DESC_BYTEDANCE + DEADLINE_DESC_BYTEDANCE
+        assertParseSuccess(parser, NAME_DESC_AMAZON + NAME_DESC_BYTEDANCE
+                + POSITION_DESC_BYTEDANCE + DEADLINE_DESC_BYTEDANCE
                 + TAG_DESC_REJECTED, new AddCommand(expectedApplication));
 
         // multiple phones - last phone accepted
-        assertParseSuccess(parser, NAME_DESC_BYTEDANCE + POSITION_DESC_AMAZON + POSITION_DESC_BYTEDANCE + DEADLINE_DESC_BYTEDANCE
+        assertParseSuccess(parser, NAME_DESC_BYTEDANCE + POSITION_DESC_AMAZON
+                + POSITION_DESC_BYTEDANCE + DEADLINE_DESC_BYTEDANCE
                 + TAG_DESC_REJECTED, new AddCommand(expectedApplication));
 
         // multiple emails - last email accepted
-        assertParseSuccess(parser, NAME_DESC_BYTEDANCE + POSITION_DESC_BYTEDANCE + DEADLINE_DESC_AMAZON + DEADLINE_DESC_BYTEDANCE
+        assertParseSuccess(parser, NAME_DESC_BYTEDANCE + POSITION_DESC_BYTEDANCE
+                + DEADLINE_DESC_AMAZON + DEADLINE_DESC_BYTEDANCE
                 + TAG_DESC_REJECTED, new AddCommand(expectedApplication));
 
         // multiple addresses - last address accepted
-        assertParseSuccess(parser, NAME_DESC_BYTEDANCE + POSITION_DESC_BYTEDANCE + DEADLINE_DESC_BYTEDANCE
+        assertParseSuccess(parser, NAME_DESC_BYTEDANCE + POSITION_DESC_BYTEDANCE
+                + DEADLINE_DESC_BYTEDANCE
                 + TAG_DESC_REJECTED, new AddCommand(expectedApplication));
 
         // multiple tags - all accepted
-        Application expectedApplicationMultipleTags = new PersonBuilder(BOB).withTags(VALID_TAG_REJECTED, VALID_TAG_PENDING)
-                .build();
-        assertParseSuccess(parser, NAME_DESC_BYTEDANCE + POSITION_DESC_BYTEDANCE + DEADLINE_DESC_BYTEDANCE
+        Application expectedApplicationMultipleTags = new PersonBuilder(BOB)
+                .withTags(VALID_TAG_REJECTED, VALID_TAG_PENDING).build();
+        assertParseSuccess(parser, NAME_DESC_BYTEDANCE
+                + POSITION_DESC_BYTEDANCE + DEADLINE_DESC_BYTEDANCE
                 + TAG_DESC_PENDING + TAG_DESC_REJECTED, new AddCommand(expectedApplicationMultipleTags));
     }
 
@@ -126,8 +132,8 @@ public class AddCommandParserTest {
                 Name.MESSAGE_CONSTRAINTS);
 
         // non-empty preamble
-        assertParseFailure(parser, PREAMBLE_NON_EMPTY + NAME_DESC_BYTEDANCE + POSITION_DESC_BYTEDANCE + DEADLINE_DESC_BYTEDANCE
-                + TAG_DESC_PENDING + TAG_DESC_REJECTED,
+        assertParseFailure(parser, PREAMBLE_NON_EMPTY + NAME_DESC_BYTEDANCE + POSITION_DESC_BYTEDANCE
+                + DEADLINE_DESC_BYTEDANCE + TAG_DESC_PENDING + TAG_DESC_REJECTED,
                 String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_USAGE));
     }
 }
