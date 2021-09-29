@@ -56,7 +56,7 @@ public class EditCommandTest {
         Application lastApplication = model.getFilteredApplicationList().get(indexLastPerson.getZeroBased());
 
         PersonBuilder personInList = new PersonBuilder(lastApplication);
-        Application editedApplication = personInList.withName(VALID_NAME_BYTEDANCE).withPhone(VALID_POSITION_BYTEDANCE)
+        Application editedApplication = personInList.withName(VALID_NAME_BYTEDANCE).withPosition(VALID_POSITION_BYTEDANCE)
                 .withTags(VALID_TAG_PENDING).build();
 
         EditApplicationDescriptor descriptor = new EditApplicationDescriptorBuilder().withName(VALID_NAME_BYTEDANCE)
