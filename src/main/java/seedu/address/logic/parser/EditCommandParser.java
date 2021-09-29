@@ -7,7 +7,6 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_DEADLINE_OF_APPLICATIO
 import static seedu.address.logic.parser.CliSyntax.PREFIX_INTERNSHIP_POSITION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 
-
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Optional;
@@ -32,7 +31,8 @@ public class EditCommandParser implements Parser<EditCommand> {
     public EditCommand parse(String args) throws ParseException {
         requireNonNull(args);
         ArgumentMultimap argMultimap =
-                ArgumentTokenizer.tokenize(args, PREFIX_COMPANY_NAME, PREFIX_INTERNSHIP_POSITION, PREFIX_DEADLINE_OF_APPLICATION, PREFIX_TAG);
+                ArgumentTokenizer.tokenize(args, PREFIX_COMPANY_NAME, PREFIX_INTERNSHIP_POSITION,
+                        PREFIX_DEADLINE_OF_APPLICATION, PREFIX_TAG);
 
         Index index;
 
@@ -47,10 +47,12 @@ public class EditCommandParser implements Parser<EditCommand> {
             editApplicationDescriptor.setName(ParserUtil.parseName(argMultimap.getValue(PREFIX_COMPANY_NAME).get()));
         }
         if (argMultimap.getValue(PREFIX_INTERNSHIP_POSITION).isPresent()) {
-            editApplicationDescriptor.setPosition(ParserUtil.parsePosition(argMultimap.getValue(PREFIX_INTERNSHIP_POSITION).get()));
+            editApplicationDescriptor.setPosition(ParserUtil.parsePosition(
+                    argMultimap.getValue(PREFIX_INTERNSHIP_POSITION).get()));
         }
         if (argMultimap.getValue(PREFIX_DEADLINE_OF_APPLICATION).isPresent()) {
-            editApplicationDescriptor.setDeadline(ParserUtil.parseDeadline(argMultimap.getValue(PREFIX_DEADLINE_OF_APPLICATION).get()));
+            editApplicationDescriptor.setDeadline(ParserUtil.parseDeadline(
+                    argMultimap.getValue(PREFIX_DEADLINE_OF_APPLICATION).get()));
         }
 
         parseTagsForEdit(argMultimap.getAllValues(PREFIX_TAG)).ifPresent(editApplicationDescriptor::setTags);

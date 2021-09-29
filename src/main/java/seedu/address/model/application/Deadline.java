@@ -29,9 +29,7 @@ public class Deadline {
     /**
      * Returns true if a given string is a valid deadline.
      */
-//    public static boolean isValidDeadline(String test) {
-//        return test.matches(VALIDATION_REGEX);
-//    }
+    //needs future update!!!
     public static boolean isValidDeadline(String test) {
         return true;
     }

@@ -85,15 +85,16 @@ public class EditCommand extends Command {
 
     /**
      * Creates and returns a {@code Application} with the details of {@code applicationToEdit}
-     * edited with {@code editPersonDescriptor}.
+     * edited with {@code editApplicationDescriptor}.
      */
-    private static Application createEditedPerson(Application applicationToEdit, EditApplicationDescriptor editPersonDescriptor) {
+    private static Application createEditedPerson(Application applicationToEdit,
+                                                  EditApplicationDescriptor editApplicationDescriptor) {
         assert applicationToEdit != null;
 
-        Name updatedName = editPersonDescriptor.getName().orElse(applicationToEdit.getName());
-        Position updatedPosition = editPersonDescriptor.getPosition().orElse(applicationToEdit.getPosition());
-        Deadline updatedDeadline = editPersonDescriptor.getDeadline().orElse(applicationToEdit.getDeadline());
-        Set<Tag> updatedTags = editPersonDescriptor.getTags().orElse(applicationToEdit.getTags());
+        Name updatedName = editApplicationDescriptor.getName().orElse(applicationToEdit.getName());
+        Position updatedPosition = editApplicationDescriptor.getPosition().orElse(applicationToEdit.getPosition());
+        Deadline updatedDeadline = editApplicationDescriptor.getDeadline().orElse(applicationToEdit.getDeadline());
+        Set<Tag> updatedTags = editApplicationDescriptor.getTags().orElse(applicationToEdit.getTags());
 
 
         return new Application(updatedName, updatedPosition, updatedDeadline, updatedTags);

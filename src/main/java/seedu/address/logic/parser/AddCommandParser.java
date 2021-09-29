@@ -2,8 +2,8 @@ package seedu.address.logic.parser;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_COMPANY_NAME;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_INTERNSHIP_POSITION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DEADLINE_OF_APPLICATION;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_INTERNSHIP_POSITION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 
 import java.util.Set;
@@ -29,19 +29,21 @@ public class AddCommandParser implements Parser<AddCommand> {
      */
     public AddCommand parse(String args) throws ParseException {
         ArgumentMultimap argMultimap =
-                ArgumentTokenizer.tokenize(args, PREFIX_COMPANY_NAME, PREFIX_INTERNSHIP_POSITION, PREFIX_DEADLINE_OF_APPLICATION, PREFIX_TAG);
+                ArgumentTokenizer.tokenize(args, PREFIX_COMPANY_NAME, PREFIX_INTERNSHIP_POSITION,
+                        PREFIX_DEADLINE_OF_APPLICATION, PREFIX_TAG);
 
-        if (!arePrefixesPresent(argMultimap, PREFIX_COMPANY_NAME, PREFIX_INTERNSHIP_POSITION, PREFIX_DEADLINE_OF_APPLICATION)
+        if (!arePrefixesPresent(argMultimap, PREFIX_COMPANY_NAME, PREFIX_INTERNSHIP_POSITION,
+                PREFIX_DEADLINE_OF_APPLICATION)
                 || !argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_USAGE));
         }
 
-        Name company_name = ParserUtil.parseName(argMultimap.getValue(PREFIX_COMPANY_NAME).get());
-        Position internship_position = ParserUtil.parsePosition(argMultimap.getValue(PREFIX_INTERNSHIP_POSITION).get());
+        Name name = ParserUtil.parseName(argMultimap.getValue(PREFIX_COMPANY_NAME).get());
+        Position position = ParserUtil.parsePosition(argMultimap.getValue(PREFIX_INTERNSHIP_POSITION).get());
         Deadline deadline = ParserUtil.parseDeadline(argMultimap.getValue(PREFIX_DEADLINE_OF_APPLICATION).get());
         Set<Tag> tagList = ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));
 
-        Application application = new Application(company_name, internship_position, deadline, tagList);
+        Application application = new Application(name, position, deadline, tagList);
 
         return new AddCommand(application);
     }

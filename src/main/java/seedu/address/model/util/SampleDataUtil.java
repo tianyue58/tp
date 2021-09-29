@@ -19,17 +19,13 @@ public class SampleDataUtil {
     public static Application[] getSampleApplications() {
         return new Application[] {
             new Application(new Name("Shopee"), new Position("software engineer"),
-                    new Deadline("2021-12-23"),
-                    getTagSet("Pending")),
-                new Application(new Name("Google"), new Position("frontend developer"), new Deadline("2021-12-14"),
-                        getTagSet("Pending")),
-
-                new Application(new Name("Huawei"), new Position("software engineer"), new Deadline("2021-12-30"),
-                        getTagSet("Pending")),
-
-                new Application(new Name("Deutsche Bank"), new Position("software engineer"), new Deadline("2021-12-25"),
-                        getTagSet("Pending")),
-
+                    new Deadline("2021-12-23"), getTagSet("Pending")),
+            new Application(new Name("Google"), new Position("frontend developer"),
+                        new Deadline("2021-12-14"), getTagSet("Pending")),
+            new Application(new Name("Huawei"), new Position("software engineer"),
+                        new Deadline("2021-12-30"), getTagSet("Pending")),
+            new Application(new Name("Deutsche Bank"), new Position("software engineer"),
+                        new Deadline("2021-12-25"), getTagSet("Pending")),
         };
     }
 

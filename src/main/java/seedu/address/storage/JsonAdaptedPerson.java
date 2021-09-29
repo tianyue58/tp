@@ -77,7 +77,8 @@ class JsonAdaptedPerson {
         final Name modelName = new Name(name);
 
         if (position == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Position.class.getSimpleName()));
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
+                    Position.class.getSimpleName()));
         }
         if (!Position.isValidPosition(position)) {
             throw new IllegalValueException(Position.MESSAGE_CONSTRAINTS);
@@ -85,7 +86,8 @@ class JsonAdaptedPerson {
         final Position modelPosition = new Position(position);
 
         if (deadline == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Deadline.class.getSimpleName()));
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
+                    Deadline.class.getSimpleName()));
         }
         if (!Deadline.isValidDeadline(deadline)) {
             throw new IllegalValueException(Deadline.MESSAGE_CONSTRAINTS);
