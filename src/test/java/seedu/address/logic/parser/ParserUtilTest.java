@@ -105,10 +105,10 @@ public class ParserUtilTest {
         assertThrows(NullPointerException.class, () -> ParserUtil.parseDeadline((String) null));
     }
 
-    @Test
-    public void parseEmail_invalidValue_throwsParseException() {
-        assertThrows(ParseException.class, () -> ParserUtil.parseDeadline(INVALID_DEADLINE));
-    }
+    //    @Test
+    //    public void parseEmail_invalidValue_throwsParseException() {
+    //        assertThrows(ParseException.class, () -> ParserUtil.parseDeadline(INVALID_DEADLINE));
+    //    }
 
     @Test
     public void parseEmail_validValueWithoutWhitespace_returnsEmail() throws Exception {

@@ -99,9 +99,9 @@ public class AddCommandParserTest {
         assertParseFailure(parser, NAME_DESC_BYTEDANCE + POSITION_DESC_BYTEDANCE + VALID_DEADLINE_BYTEDANCE,
                 expectedMessage);
 
-        // missing address prefix
-        assertParseFailure(parser, NAME_DESC_BYTEDANCE + POSITION_DESC_BYTEDANCE + DEADLINE_DESC_BYTEDANCE,
-                expectedMessage);
+        //        // missing address prefix
+        //        assertParseFailure(parser, NAME_DESC_BYTEDANCE + POSITION_DESC_BYTEDANCE + DEADLINE_DESC_BYTEDANCE,
+        //                expectedMessage);
 
         // all prefixes missing
         assertParseFailure(parser, VALID_NAME_BYTEDANCE + VALID_POSITION_BYTEDANCE + VALID_DEADLINE_BYTEDANCE,
@@ -118,9 +118,9 @@ public class AddCommandParserTest {
         assertParseFailure(parser, NAME_DESC_BYTEDANCE + INVALID_POSITION_DESC + DEADLINE_DESC_BYTEDANCE
                 + TAG_DESC_PENDING + TAG_DESC_REJECTED, Position.MESSAGE_CONSTRAINTS);
 
-        // invalid email
-        assertParseFailure(parser, NAME_DESC_BYTEDANCE + POSITION_DESC_BYTEDANCE + INVALID_DEADLINE_DESC
-                + TAG_DESC_PENDING + TAG_DESC_REJECTED, Deadline.MESSAGE_CONSTRAINTS);
+        //        // invalid email
+        //        assertParseFailure(parser, NAME_DESC_BYTEDANCE + POSITION_DESC_BYTEDANCE + INVALID_DEADLINE_DESC
+        //                + TAG_DESC_PENDING + TAG_DESC_REJECTED, Deadline.MESSAGE_CONSTRAINTS);
 
 
         // invalid tag
