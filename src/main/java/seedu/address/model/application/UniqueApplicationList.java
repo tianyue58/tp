@@ -8,7 +8,7 @@ import java.util.List;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import seedu.address.model.application.exceptions.DuplicatePersonException;
+import seedu.address.model.application.exceptions.DuplicateApplicationException;
 import seedu.address.model.application.exceptions.PersonNotFoundException;
 
 /**
@@ -44,7 +44,7 @@ public class UniqueApplicationList implements Iterable<Application> {
     public void add(Application toAdd) {
         requireNonNull(toAdd);
         if (contains(toAdd)) {
-            throw new DuplicatePersonException();
+            throw new DuplicateApplicationException();
         }
         internalList.add(toAdd);
     }
@@ -64,7 +64,7 @@ public class UniqueApplicationList implements Iterable<Application> {
         }
 
         if (!target.isSameApplication(editedApplication) && contains(editedApplication)) {
-            throw new DuplicatePersonException();
+            throw new DuplicateApplicationException();
         }
 
         internalList.set(index, editedApplication);
@@ -93,7 +93,7 @@ public class UniqueApplicationList implements Iterable<Application> {
     public void setApplications(List<Application> applications) {
         requireAllNonNull(applications);
         if (!applicationsAreUnique(applications)) {
-            throw new DuplicatePersonException();
+            throw new DuplicateApplicationException();
         }
 
         internalList.setAll(applications);

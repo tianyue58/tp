@@ -15,7 +15,7 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
-import seedu.address.model.application.exceptions.DuplicatePersonException;
+import seedu.address.model.application.exceptions.DuplicateApplicationException;
 import seedu.address.model.application.exceptions.PersonNotFoundException;
 import seedu.address.testutil.PersonBuilder;
 
@@ -55,7 +55,7 @@ public class UniqueApplicationListTest {
     @Test
     public void add_duplicatePerson_throwsDuplicatePersonException() {
         uniqueApplicationList.add(ALICE);
-        assertThrows(DuplicatePersonException.class, () -> uniqueApplicationList.add(ALICE));
+        assertThrows(DuplicateApplicationException.class, () -> uniqueApplicationList.add(ALICE));
     }
 
     @Test
@@ -106,7 +106,7 @@ public class UniqueApplicationListTest {
     public void setPerson_editedPersonHasNonUniqueIdentity_throwsDuplicatePersonException() {
         uniqueApplicationList.add(ALICE);
         uniqueApplicationList.add(BOB);
-        assertThrows(DuplicatePersonException.class, () -> uniqueApplicationList.setApplication(ALICE, BOB));
+        assertThrows(DuplicateApplicationException.class, () -> uniqueApplicationList.setApplication(ALICE, BOB));
     }
 
     @Test
@@ -160,7 +160,7 @@ public class UniqueApplicationListTest {
     @Test
     public void setPersons_listWithDuplicatePersons_throwsDuplicatePersonException() {
         List<Application> listWithDuplicateApplications = Arrays.asList(ALICE, ALICE);
-        assertThrows(DuplicatePersonException.class, () -> uniqueApplicationList
+        assertThrows(DuplicateApplicationException.class, () -> uniqueApplicationList
                 .setApplications(listWithDuplicateApplications));
     }
 
