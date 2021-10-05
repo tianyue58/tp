@@ -9,7 +9,7 @@ import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import seedu.address.model.application.exceptions.DuplicateApplicationException;
-import seedu.address.model.application.exceptions.PersonNotFoundException;
+import seedu.address.model.application.exceptions.ApplicationNotFoundException;
 
 /**
  * A list of applications that enforces uniqueness between its elements and does not allow nulls.
@@ -60,7 +60,7 @@ public class UniqueApplicationList implements Iterable<Application> {
 
         int index = internalList.indexOf(target);
         if (index == -1) {
-            throw new PersonNotFoundException();
+            throw new ApplicationNotFoundException();
         }
 
         if (!target.isSameApplication(editedApplication) && contains(editedApplication)) {
@@ -77,7 +77,7 @@ public class UniqueApplicationList implements Iterable<Application> {
     public void remove(Application toRemove) {
         requireNonNull(toRemove);
         if (!internalList.remove(toRemove)) {
-            throw new PersonNotFoundException();
+            throw new ApplicationNotFoundException();
         }
     }
 
