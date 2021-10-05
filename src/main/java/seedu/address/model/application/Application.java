@@ -10,7 +10,7 @@ import java.util.Set;
 import seedu.address.model.tag.Tag;
 
 /**
- * Represents a Application in the address book.
+ * Represents an Application in the address book.
  * Guarantees: details are present and not null, field values are validated, immutable.
  */
 public class Application {
@@ -55,8 +55,8 @@ public class Application {
     }
 
     /**
-     * Returns true if both persons have the same name.
-     * This defines a weaker notion of equality between two persons.
+     * Returns true if both applications have the same name.
+     * This defines a weaker notion of equality between two applications.
      */
     public boolean isSameApplication(Application otherApplication) {
         if (otherApplication == this) {
@@ -68,8 +68,8 @@ public class Application {
     }
 
     /**
-     * Returns true if both persons have the same identity and data fields.
-     * This defines a stronger notion of equality between two persons.
+     * Returns true if both applications have the same identity and data fields.
+     * This defines a stronger notion of equality between two applications.
      */
     @Override
     public boolean equals(Object other) {

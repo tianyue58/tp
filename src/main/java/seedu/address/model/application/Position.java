@@ -20,7 +20,7 @@ public class Position {
     public final String value;
 
     /**
-     * Constructs an {@code Position}.
+     * Constructs a {@code Position}.
      *
      * @param position A valid position.
      */
