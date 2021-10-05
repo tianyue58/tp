@@ -21,8 +21,8 @@ import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_REJECTED;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
-import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
-import static seedu.address.testutil.TypicalIndexes.INDEX_THIRD_PERSON;
+import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_APPLICATION;
+import static seedu.address.testutil.TypicalIndexes.INDEX_THIRD_APPLICATION;
 
 import org.junit.jupiter.api.Test;
 
@@ -113,7 +113,7 @@ public class EditCommandParserTest {
 
     @Test
     public void parse_someFieldsSpecified_success() {
-        Index targetIndex = INDEX_FIRST_PERSON;
+        Index targetIndex = INDEX_FIRST_APPLICATION;
         String userInput = targetIndex.getOneBased() + POSITION_DESC_BYTEDANCE + DEADLINE_DESC_AMAZON;
 
         EditApplicationDescriptor descriptor = new EditApplicationDescriptorBuilder()
@@ -127,7 +127,7 @@ public class EditCommandParserTest {
     @Test
     public void parse_oneFieldSpecified_success() {
         // name
-        Index targetIndex = INDEX_THIRD_PERSON;
+        Index targetIndex = INDEX_THIRD_APPLICATION;
         String userInput = targetIndex.getOneBased() + NAME_DESC_AMAZON;
         EditApplicationDescriptor descriptor = new EditApplicationDescriptorBuilder()
                 .withName(VALID_NAME_AMAZON).build();
@@ -172,7 +172,7 @@ public class EditCommandParserTest {
     @Test
     public void parse_invalidValueFollowedByValidValue_success() {
         // no other valid values specified
-        Index targetIndex = INDEX_FIRST_PERSON;
+        Index targetIndex = INDEX_FIRST_APPLICATION;
         String userInput = targetIndex.getOneBased() + INVALID_POSITION_DESC + POSITION_DESC_BYTEDANCE;
         EditApplicationDescriptor descriptor = new EditApplicationDescriptorBuilder()
                 .withPosition(VALID_POSITION_BYTEDANCE).build();
@@ -190,7 +190,7 @@ public class EditCommandParserTest {
 
     @Test
     public void parse_resetTags_success() {
-        Index targetIndex = INDEX_THIRD_PERSON;
+        Index targetIndex = INDEX_THIRD_APPLICATION;
         String userInput = targetIndex.getOneBased() + TAG_EMPTY;
 
         EditApplicationDescriptor descriptor = new EditApplicationDescriptorBuilder().withTags().build();
