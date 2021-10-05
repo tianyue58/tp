@@ -26,13 +26,13 @@ public class ApplicationListPanel extends UiPart<Region> {
     public ApplicationListPanel(ObservableList<Application> applicationList) {
         super(FXML);
         personListView.setItems(applicationList);
-        personListView.setCellFactory(listView -> new PersonListViewCell());
+        personListView.setCellFactory(listView -> new ApplicationListViewCell());
     }
 
     /**
      * Custom {@code ListCell} that displays the graphics of a {@code Application} using a {@code ApplicationCard}.
      */
-    class PersonListViewCell extends ListCell<Application> {
+    class ApplicationListViewCell extends ListCell<Application> {
         @Override
         protected void updateItem(Application application, boolean empty) {
             super.updateItem(application, empty);
