@@ -14,7 +14,7 @@ import seedu.address.model.application.UniqueApplicationList;
  */
 public class AddressBook implements ReadOnlyAddressBook {
 
-    private final UniqueApplicationList persons;
+    private final UniqueApplicationList applications;
 
     /*
      * The 'unusual' code block below is a non-static initialization block, sometimes used to avoid duplication
@@ -24,7 +24,7 @@ public class AddressBook implements ReadOnlyAddressBook {
      *   among constructors.
      */
     {
-        persons = new UniqueApplicationList();
+        applications = new UniqueApplicationList();
     }
 
     public AddressBook() {}
@@ -43,8 +43,8 @@ public class AddressBook implements ReadOnlyAddressBook {
      * Replaces the contents of the application list with {@code applications}.
      * {@code applications} must not contain duplicate applications.
      */
-    public void setPersons(List<Application> applications) {
-        this.persons.setApplications(applications);
+    public void setApplications(List<Application> applications) {
+        this.applications.setApplications(applications);
     }
 
     /**
@@ -53,25 +53,25 @@ public class AddressBook implements ReadOnlyAddressBook {
     public void resetData(ReadOnlyAddressBook newData) {
         requireNonNull(newData);
 
-        setPersons(newData.getPersonList());
+        setApplications(newData.getApplicationList());
     }
 
     //// application-level operations
 
     /**
-     * Returns true if a application with the same identity as {@code application} exists in the address book.
+     * Returns true if an application with the same identity as {@code application} exists in the address book.
      */
-    public boolean hasPerson(Application application) {
+    public boolean hasApplication(Application application) {
         requireNonNull(application);
-        return persons.contains(application);
+        return applications.contains(application);
     }
 
     /**
      * Adds a application to the address book.
      * The application must not already exist in the address book.
      */
-    public void addPerson(Application p) {
-        persons.add(p);
+    public void addApplication(Application p) {
+        applications.add(p);
     }
 
     /**
@@ -80,42 +80,42 @@ public class AddressBook implements ReadOnlyAddressBook {
      * The application identity of {@code editedApplication} must not be the same as another existing
      * application in the address book.
      */
-    public void setPerson(Application target, Application editedApplication) {
+    public void setApplication(Application target, Application editedApplication) {
         requireNonNull(editedApplication);
 
-        persons.setPerson(target, editedApplication);
+        applications.setApplication(target, editedApplication);
     }
 
     /**
      * Removes {@code key} from this {@code AddressBook}.
      * {@code key} must exist in the address book.
      */
-    public void removePerson(Application key) {
-        persons.remove(key);
+    public void removeApplication(Application key) {
+        applications.remove(key);
     }
 
     //// util methods
 
     @Override
     public String toString() {
-        return persons.asUnmodifiableObservableList().size() + " persons";
+        return applications.asUnmodifiableObservableList().size() + " applications";
         // TODO: refine later
     }
 
     @Override
-    public ObservableList<Application> getPersonList() {
-        return persons.asUnmodifiableObservableList();
+    public ObservableList<Application> getApplicationList() {
+        return applications.asUnmodifiableObservableList();
     }
 
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
                 || (other instanceof AddressBook // instanceof handles nulls
-                && persons.equals(((AddressBook) other).persons));
+                && applications.equals(((AddressBook) other).applications));
     }
 
     @Override
     public int hashCode() {
-        return persons.hashCode();
+        return applications.hashCode();
     }
 }

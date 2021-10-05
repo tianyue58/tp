@@ -32,7 +32,7 @@ public class SampleDataUtil {
     public static ReadOnlyAddressBook getSampleAddressBook() {
         AddressBook sampleAb = new AddressBook();
         for (Application sampleApplication : getSampleApplications()) {
-            sampleAb.addPerson(sampleApplication);
+            sampleAb.addApplication(sampleApplication);
         }
         return sampleAb;
     }

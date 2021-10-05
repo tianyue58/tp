@@ -55,7 +55,7 @@ public class UniqueApplicationList implements Iterable<Application> {
      * The application identity of {@code editedApplication} must not be the same as
      * another existing application in the list.
      */
-    public void setPerson(Application target, Application editedApplication) {
+    public void setApplication(Application target, Application editedApplication) {
         requireAllNonNull(target, editedApplication);
 
         int index = internalList.indexOf(target);
@@ -92,7 +92,7 @@ public class UniqueApplicationList implements Iterable<Application> {
      */
     public void setApplications(List<Application> applications) {
         requireAllNonNull(applications);
-        if (!personsAreUnique(applications)) {
+        if (!applicationsAreUnique(applications)) {
             throw new DuplicatePersonException();
         }
 
@@ -126,7 +126,7 @@ public class UniqueApplicationList implements Iterable<Application> {
     /**
      * Returns true if {@code applications} contains only unique applications.
      */
-    private boolean personsAreUnique(List<Application> applications) {
+    private boolean applicationsAreUnique(List<Application> applications) {
         for (int i = 0; i < applications.size() - 1; i++) {
             for (int j = i + 1; j < applications.size(); j++) {
                 if (applications.get(i).isSameApplication(applications.get(j))) {

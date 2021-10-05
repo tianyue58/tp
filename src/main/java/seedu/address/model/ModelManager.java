@@ -34,7 +34,7 @@ public class ModelManager implements Model {
 
         this.addressBook = new AddressBook(addressBook);
         this.userPrefs = new UserPrefs(userPrefs);
-        filteredApplications = new FilteredList<>(this.addressBook.getPersonList());
+        filteredApplications = new FilteredList<>(this.addressBook.getApplicationList());
     }
 
     public ModelManager() {
@@ -91,17 +91,17 @@ public class ModelManager implements Model {
     @Override
     public boolean hasApplication(Application application) {
         requireNonNull(application);
-        return addressBook.hasPerson(application);
+        return addressBook.hasApplication(application);
     }
 
     @Override
     public void deleteApplication(Application target) {
-        addressBook.removePerson(target);
+        addressBook.removeApplication(target);
     }
 
     @Override
     public void addApplication(Application application) {
-        addressBook.addPerson(application);
+        addressBook.addApplication(application);
         updateFilteredApplicationList(PREDICATE_SHOW_ALL_PERSONS);
     }
 
@@ -109,7 +109,7 @@ public class ModelManager implements Model {
     public void setApplication(Application target, Application editedApplication) {
         requireAllNonNull(target, editedApplication);
 
-        addressBook.setPerson(target, editedApplication);
+        addressBook.setApplication(target, editedApplication);
     }
 
     //=========== Filtered Application List Accessors =============================================================

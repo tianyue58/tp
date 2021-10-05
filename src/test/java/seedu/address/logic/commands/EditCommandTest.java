@@ -114,7 +114,7 @@ public class EditCommandTest {
         showPersonAtIndex(model, INDEX_FIRST_PERSON);
 
         // edit application in filtered list into a duplicate in address book
-        Application applicationInList = model.getAddressBook().getPersonList().get(INDEX_SECOND_PERSON.getZeroBased());
+        Application applicationInList = model.getAddressBook().getApplicationList().get(INDEX_SECOND_PERSON.getZeroBased());
         EditCommand editCommand = new EditCommand(INDEX_FIRST_PERSON,
                 new EditApplicationDescriptorBuilder(applicationInList).build());
 
@@ -140,7 +140,7 @@ public class EditCommandTest {
         showPersonAtIndex(model, INDEX_FIRST_PERSON);
         Index outOfBoundIndex = INDEX_SECOND_PERSON;
         // ensures that outOfBoundIndex is still in bounds of address book list
-        assertTrue(outOfBoundIndex.getZeroBased() < model.getAddressBook().getPersonList().size());
+        assertTrue(outOfBoundIndex.getZeroBased() < model.getAddressBook().getApplicationList().size());
 
         EditCommand editCommand = new EditCommand(outOfBoundIndex,
                 new EditApplicationDescriptorBuilder().withName(VALID_NAME_BYTEDANCE).build());

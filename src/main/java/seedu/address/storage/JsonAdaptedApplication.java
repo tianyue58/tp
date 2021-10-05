@@ -19,7 +19,7 @@ import seedu.address.model.tag.Tag;
 /**
  * Jackson-friendly version of {@link Application}.
  */
-class JsonAdaptedPerson {
+class JsonAdaptedApplication {
 
     public static final String MISSING_FIELD_MESSAGE_FORMAT = "Application's %s field is missing!";
 
@@ -29,12 +29,12 @@ class JsonAdaptedPerson {
     private final List<JsonAdaptedTag> tagged = new ArrayList<>();
 
     /**
-     * Constructs a {@code JsonAdaptedPerson} with the given application details.
+     * Constructs a {@code JsonAdaptedApplication} with the given application details.
      */
     @JsonCreator
-    public JsonAdaptedPerson(@JsonProperty("name") String name, @JsonProperty("position") String position,
-            @JsonProperty("deadline") String deadline,
-        @JsonProperty("tagged") List<JsonAdaptedTag> tagged) {
+    public JsonAdaptedApplication(@JsonProperty("name") String name, @JsonProperty("position") String position,
+                                  @JsonProperty("deadline") String deadline,
+                                  @JsonProperty("tagged") List<JsonAdaptedTag> tagged) {
 
         this.name = name;
         this.position = position;
@@ -47,7 +47,7 @@ class JsonAdaptedPerson {
     /**
      * Converts a given {@code Application} into this class for Jackson use.
      */
-    public JsonAdaptedPerson(Application source) {
+    public JsonAdaptedApplication(Application source) {
         name = source.getName().fullName;
         position = source.getPosition().value;
         deadline = source.getDeadline().value;

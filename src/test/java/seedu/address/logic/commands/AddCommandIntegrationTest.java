@@ -38,7 +38,7 @@ public class AddCommandIntegrationTest {
 
     @Test
     public void execute_duplicatePerson_throwsCommandException() {
-        Application applicationInList = model.getAddressBook().getPersonList().get(0);
+        Application applicationInList = model.getAddressBook().getApplicationList().get(0);
         assertCommandFailure(new AddCommand(applicationInList),
                 model, AddCommand.MESSAGE_DUPLICATE_APPLICATION);
     }

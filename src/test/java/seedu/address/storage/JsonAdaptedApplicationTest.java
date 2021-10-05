@@ -1,7 +1,7 @@
 package seedu.address.storage;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static seedu.address.storage.JsonAdaptedPerson.MISSING_FIELD_MESSAGE_FORMAT;
+import static seedu.address.storage.JsonAdaptedApplication.MISSING_FIELD_MESSAGE_FORMAT;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalPersons.BENSON;
 
@@ -28,21 +28,21 @@ public class JsonAdaptedApplicationTest {
 
     @Test
     public void toModelType_validPersonDetails_returnsPerson() throws Exception {
-        JsonAdaptedPerson person = new JsonAdaptedPerson(BENSON);
+        JsonAdaptedApplication person = new JsonAdaptedApplication(BENSON);
         assertEquals(BENSON, person.toModelType());
     }
 
     @Test
     public void toModelType_invalidName_throwsIllegalValueException() {
-        JsonAdaptedPerson person =
-                new JsonAdaptedPerson(INVALID_NAME, VALID_POSITION, VALID_DEADLINE, VALID_TAGS);
+        JsonAdaptedApplication person =
+                new JsonAdaptedApplication(INVALID_NAME, VALID_POSITION, VALID_DEADLINE, VALID_TAGS);
         String expectedMessage = Name.MESSAGE_CONSTRAINTS;
         assertThrows(IllegalValueException.class, expectedMessage, person::toModelType);
     }
 
     @Test
     public void toModelType_nullName_throwsIllegalValueException() {
-        JsonAdaptedPerson person = new JsonAdaptedPerson(null, VALID_POSITION, VALID_DEADLINE, VALID_TAGS);
+        JsonAdaptedApplication person = new JsonAdaptedApplication(null, VALID_POSITION, VALID_DEADLINE, VALID_TAGS);
         String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, Name.class.getSimpleName());
         assertThrows(IllegalValueException.class, expectedMessage, person::toModelType);
     }
@@ -50,30 +50,30 @@ public class JsonAdaptedApplicationTest {
 
     //@Test
     //public void toModelType_invalidPosition_throwsIllegalValueException() {
-    //    JsonAdaptedPerson person =
-    //            new JsonAdaptedPerson(VALID_NAME, VALID_POSITION, VALID_DEADLINE, VALID_TAGS);
+    //    JsonAdaptedApplication person =
+    //            new JsonAdaptedApplication(VALID_NAME, VALID_POSITION, VALID_DEADLINE, VALID_TAGS);
     //    String expectedMessage = Position.MESSAGE_CONSTRAINTS;
     //    assertThrows(IllegalValueException.class, expectedMessage, person::toModelType);
     //}
 
     //    @Test
     //    public void toModelType_nullPosition_throwsIllegalValueException() {
-    //        JsonAdaptedPerson person = new JsonAdaptedPerson(VALID_NAME, VALID_POSITION, VALID_DEADLINE, VALID_TAGS);
+    //        JsonAdaptedApplication person = new JsonAdaptedApplication(VALID_NAME, VALID_POSITION, VALID_DEADLINE, VALID_TAGS);
     //        String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, Position.class.getSimpleName());
     //        assertThrows(IllegalValueException.class, expectedMessage, person::toModelType);
     //    }
 
     //    @Test
     //    public void toModelType_invalidDeadline_throwsIllegalValueException() {
-    //        JsonAdaptedPerson person =
-    //                new JsonAdaptedPerson(VALID_NAME, VALID_POSITION, VALID_DEADLINE, VALID_TAGS);
+    //        JsonAdaptedApplication person =
+    //                new JsonAdaptedApplication(VALID_NAME, VALID_POSITION, VALID_DEADLINE, VALID_TAGS);
     //        String expectedMessage = Deadline.MESSAGE_CONSTRAINTS;
     //        assertThrows(IllegalValueException.class, expectedMessage, person::toModelType);
     //    }
 
     //    @Test
     //    public void toModelType_nullDeadline_throwsIllegalValueException() {
-    //        JsonAdaptedPerson person = new JsonAdaptedPerson(VALID_NAME, VALID_POSITION, VALID_DEADLINE, VALID_TAGS);
+    //        JsonAdaptedApplication person = new JsonAdaptedApplication(VALID_NAME, VALID_POSITION, VALID_DEADLINE, VALID_TAGS);
     //        String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, Deadline.class.getSimpleName());
     //        assertThrows(IllegalValueException.class, expectedMessage, person::toModelType);
     //    }
