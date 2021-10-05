@@ -58,7 +58,8 @@ public class JsonAdaptedApplicationTest {
 
     //    @Test
     //    public void toModelType_nullPosition_throwsIllegalValueException() {
-    //        JsonAdaptedApplication person = new JsonAdaptedApplication(VALID_NAME, VALID_POSITION, VALID_DEADLINE, VALID_TAGS);
+    //        JsonAdaptedApplication person = new JsonAdaptedApplication(VALID_NAME, VALID_POSITION,
+    //        VALID_DEADLINE, VALID_TAGS);
     //        String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, Position.class.getSimpleName());
     //        assertThrows(IllegalValueException.class, expectedMessage, person::toModelType);
     //    }
@@ -73,7 +74,8 @@ public class JsonAdaptedApplicationTest {
 
     //    @Test
     //    public void toModelType_nullDeadline_throwsIllegalValueException() {
-    //        JsonAdaptedApplication person = new JsonAdaptedApplication(VALID_NAME, VALID_POSITION, VALID_DEADLINE, VALID_TAGS);
+    //        JsonAdaptedApplication person = new JsonAdaptedApplication(VALID_NAME,
+    //        VALID_POSITION, VALID_DEADLINE, VALID_TAGS);
     //        String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, Deadline.class.getSimpleName());
     //        assertThrows(IllegalValueException.class, expectedMessage, person::toModelType);
     //    }

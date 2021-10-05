@@ -114,7 +114,8 @@ public class EditCommandTest {
         showPersonAtIndex(model, INDEX_FIRST_PERSON);
 
         // edit application in filtered list into a duplicate in address book
-        Application applicationInList = model.getAddressBook().getApplicationList().get(INDEX_SECOND_PERSON.getZeroBased());
+        Application applicationInList = model.getAddressBook().getApplicationList()
+                .get(INDEX_SECOND_PERSON.getZeroBased());
         EditCommand editCommand = new EditCommand(INDEX_FIRST_PERSON,
                 new EditApplicationDescriptorBuilder(applicationInList).build());
 
