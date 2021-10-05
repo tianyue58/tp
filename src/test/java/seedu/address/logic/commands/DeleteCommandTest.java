@@ -28,7 +28,8 @@ public class DeleteCommandTest {
 
     @Test
     public void execute_validIndexUnfilteredList_success() {
-        Application applicationToDelete = model.getFilteredApplicationList().get(INDEX_FIRST_APPLICATION.getZeroBased());
+        Application applicationToDelete = model.getFilteredApplicationList()
+                .get(INDEX_FIRST_APPLICATION.getZeroBased());
         DeleteCommand deleteCommand = new DeleteCommand(INDEX_FIRST_APPLICATION);
 
         String expectedMessage = String.format(DeleteCommand.MESSAGE_DELETE_PERSON_SUCCESS, applicationToDelete);
@@ -51,7 +52,8 @@ public class DeleteCommandTest {
     public void execute_validIndexFilteredList_success() {
         showPersonAtIndex(model, INDEX_FIRST_APPLICATION);
 
-        Application applicationToDelete = model.getFilteredApplicationList().get(INDEX_FIRST_APPLICATION.getZeroBased());
+        Application applicationToDelete = model.getFilteredApplicationList()
+                .get(INDEX_FIRST_APPLICATION.getZeroBased());
         DeleteCommand deleteCommand = new DeleteCommand(INDEX_FIRST_APPLICATION);
 
         String expectedMessage = String.format(DeleteCommand.MESSAGE_DELETE_PERSON_SUCCESS, applicationToDelete);
