@@ -13,24 +13,24 @@ import seedu.address.model.application.Application;
 /**
  * Panel containing the list of persons.
  */
-public class PersonListPanel extends UiPart<Region> {
-    private static final String FXML = "PersonListPanel.fxml";
-    private final Logger logger = LogsCenter.getLogger(PersonListPanel.class);
+public class ApplicationListPanel extends UiPart<Region> {
+    private static final String FXML = "ApplicationListPanel.fxml";
+    private final Logger logger = LogsCenter.getLogger(ApplicationListPanel.class);
 
     @FXML
     private ListView<Application> personListView;
 
     /**
-     * Creates a {@code PersonListPanel} with the given {@code ObservableList}.
+     * Creates a {@code ApplicationListPanel} with the given {@code ObservableList}.
      */
-    public PersonListPanel(ObservableList<Application> applicationList) {
+    public ApplicationListPanel(ObservableList<Application> applicationList) {
         super(FXML);
         personListView.setItems(applicationList);
         personListView.setCellFactory(listView -> new PersonListViewCell());
     }
 
     /**
-     * Custom {@code ListCell} that displays the graphics of a {@code Application} using a {@code PersonCard}.
+     * Custom {@code ListCell} that displays the graphics of a {@code Application} using a {@code ApplicationCard}.
      */
     class PersonListViewCell extends ListCell<Application> {
         @Override
@@ -41,7 +41,7 @@ public class PersonListPanel extends UiPart<Region> {
                 setGraphic(null);
                 setText(null);
             } else {
-                setGraphic(new PersonCard(application, getIndex() + 1).getRoot());
+                setGraphic(new ApplicationCard(application, getIndex() + 1).getRoot());
             }
         }
     }
