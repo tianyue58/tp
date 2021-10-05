@@ -5,8 +5,8 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_PENDING;
 import static seedu.address.testutil.Assert.assertThrows;
-import static seedu.address.testutil.TypicalPersons.ALICE;
-import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
+import static seedu.address.testutil.TypicalApplications.ALICE;
+import static seedu.address.testutil.TypicalApplications.getTypicalAddressBook;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -19,7 +19,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import seedu.address.model.application.Application;
 import seedu.address.model.application.exceptions.DuplicateApplicationException;
-import seedu.address.testutil.PersonBuilder;
+import seedu.address.testutil.ApplicationBuilder;
 
 public class AddressBookTest {
 
@@ -45,7 +45,7 @@ public class AddressBookTest {
     @Test
     public void resetData_withDuplicatePersons_throwsDuplicatePersonException() {
         // Two applications with the same identity fields
-        Application editedAlice = new PersonBuilder(ALICE).withTags(VALID_TAG_PENDING)
+        Application editedAlice = new ApplicationBuilder(ALICE).withTags(VALID_TAG_PENDING)
                 .build();
         List<Application> newApplications = Arrays.asList(ALICE, editedAlice);
         AddressBookStub newData = new AddressBookStub(newApplications);
@@ -72,7 +72,7 @@ public class AddressBookTest {
     @Test
     public void hasPerson_personWithSameIdentityFieldsInAddressBook_returnsTrue() {
         addressBook.addApplication(ALICE);
-        Application editedAlice = new PersonBuilder(ALICE).withTags(VALID_TAG_PENDING)
+        Application editedAlice = new ApplicationBuilder(ALICE).withTags(VALID_TAG_PENDING)
                 .build();
         assertTrue(addressBook.hasApplication(editedAlice));
     }

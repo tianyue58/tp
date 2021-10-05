@@ -21,8 +21,8 @@ import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_PENDING;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_REJECTED;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
-import static seedu.address.testutil.TypicalPersons.AMY;
-import static seedu.address.testutil.TypicalPersons.BOB;
+import static seedu.address.testutil.TypicalApplications.AMY;
+import static seedu.address.testutil.TypicalApplications.BOB;
 
 import org.junit.jupiter.api.Test;
 
@@ -31,14 +31,14 @@ import seedu.address.model.application.Application;
 import seedu.address.model.application.Name;
 import seedu.address.model.application.Position;
 import seedu.address.model.tag.Tag;
-import seedu.address.testutil.PersonBuilder;
+import seedu.address.testutil.ApplicationBuilder;
 
 public class AddCommandParserTest {
     private AddCommandParser parser = new AddCommandParser();
 
     @Test
     public void parse_allFieldsPresent_success() {
-        Application expectedApplication = new PersonBuilder(BOB).withTags(VALID_TAG_REJECTED).build();
+        Application expectedApplication = new ApplicationBuilder(BOB).withTags(VALID_TAG_REJECTED).build();
 
         // whitespace only preamble
         assertParseSuccess(parser, PREAMBLE_WHITESPACE + NAME_DESC_BYTEDANCE
@@ -66,7 +66,7 @@ public class AddCommandParserTest {
                 + TAG_DESC_REJECTED, new AddCommand(expectedApplication));
 
         // multiple tags - all accepted
-        Application expectedApplicationMultipleTags = new PersonBuilder(BOB)
+        Application expectedApplicationMultipleTags = new ApplicationBuilder(BOB)
                 .withTags(VALID_TAG_REJECTED, VALID_TAG_PENDING).build();
         assertParseSuccess(parser, NAME_DESC_BYTEDANCE
                 + POSITION_DESC_BYTEDANCE + DEADLINE_DESC_BYTEDANCE
@@ -76,7 +76,7 @@ public class AddCommandParserTest {
     @Test
     public void parse_optionalFieldsMissing_success() {
         // zero tags
-        Application expectedApplication = new PersonBuilder(AMY).withTags().build();
+        Application expectedApplication = new ApplicationBuilder(AMY).withTags().build();
         assertParseSuccess(parser, NAME_DESC_AMAZON + POSITION_DESC_AMAZON + DEADLINE_DESC_AMAZON,
                 new AddCommand(expectedApplication));
     }

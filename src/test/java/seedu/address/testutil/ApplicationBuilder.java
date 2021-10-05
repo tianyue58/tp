@@ -13,7 +13,7 @@ import seedu.address.model.util.SampleDataUtil;
 /**
  * A utility class to help with building Application objects.
  */
-public class PersonBuilder {
+public class ApplicationBuilder {
 
     public static final String DEFAULT_NAME = "Amy Bee";
     public static final String DEFAULT_PHONE = "85355255";
@@ -25,9 +25,9 @@ public class PersonBuilder {
     private Set<Tag> tags;
 
     /**
-     * Creates a {@code PersonBuilder} with the default details.
+     * Creates a {@code ApplicationBuilder} with the default details.
      */
-    public PersonBuilder() {
+    public ApplicationBuilder() {
         name = new Name(DEFAULT_NAME);
         phone = new Position(DEFAULT_PHONE);
         email = new Deadline(DEFAULT_EMAIL);
@@ -35,9 +35,9 @@ public class PersonBuilder {
     }
 
     /**
-     * Initializes the PersonBuilder with the data of {@code applicationToCopy}.
+     * Initializes the ApplicationBuilder with the data of {@code applicationToCopy}.
      */
-    public PersonBuilder(Application applicationToCopy) {
+    public ApplicationBuilder(Application applicationToCopy) {
         name = applicationToCopy.getName();
         phone = applicationToCopy.getPosition();
         email = applicationToCopy.getDeadline();
@@ -47,7 +47,7 @@ public class PersonBuilder {
     /**
      * Sets the {@code Name} of the {@code Application} that we are building.
      */
-    public PersonBuilder withName(String name) {
+    public ApplicationBuilder withName(String name) {
         this.name = new Name(name);
         return this;
     }
@@ -55,7 +55,7 @@ public class PersonBuilder {
     /**
      * Parses the {@code tags} into a {@code Set<Tag>} and set it to the {@code Application} that we are building.
      */
-    public PersonBuilder withTags(String ... tags) {
+    public ApplicationBuilder withTags(String ... tags) {
         this.tags = SampleDataUtil.getTagSet(tags);
         return this;
     }
@@ -63,7 +63,7 @@ public class PersonBuilder {
     /**
      * Sets the {@code Phone} of the {@code Application} that we are building.
      */
-    public PersonBuilder withPosition(String phone) {
+    public ApplicationBuilder withPosition(String phone) {
         this.phone = new Position(phone);
         return this;
     }
@@ -71,7 +71,7 @@ public class PersonBuilder {
     /**
      * Sets the {@code Email} of the {@code Application} that we are building.
      */
-    public PersonBuilder withDeadline(String email) {
+    public ApplicationBuilder withDeadline(String email) {
         this.email = new Deadline(email);
         return this;
     }

@@ -6,8 +6,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_PENDING;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_REJECTED;
 import static seedu.address.testutil.Assert.assertThrows;
-import static seedu.address.testutil.TypicalPersons.ALICE;
-import static seedu.address.testutil.TypicalPersons.BOB;
+import static seedu.address.testutil.TypicalApplications.ALICE;
+import static seedu.address.testutil.TypicalApplications.BOB;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -17,7 +17,7 @@ import org.junit.jupiter.api.Test;
 
 import seedu.address.model.application.exceptions.DuplicateApplicationException;
 import seedu.address.model.application.exceptions.PersonNotFoundException;
-import seedu.address.testutil.PersonBuilder;
+import seedu.address.testutil.ApplicationBuilder;
 
 public class UniqueApplicationListTest {
 
@@ -42,7 +42,7 @@ public class UniqueApplicationListTest {
     @Test
     public void contains_personWithSameIdentityFieldsInList_returnsTrue() {
         uniqueApplicationList.add(ALICE);
-        Application editedAlice = new PersonBuilder(ALICE).withTags(VALID_TAG_PENDING)
+        Application editedAlice = new ApplicationBuilder(ALICE).withTags(VALID_TAG_PENDING)
                 .build();
         assertTrue(uniqueApplicationList.contains(editedAlice));
     }
@@ -85,7 +85,7 @@ public class UniqueApplicationListTest {
     @Test
     public void setPerson_editedPersonHasSameIdentity_success() {
         uniqueApplicationList.add(ALICE);
-        Application editedAlice = new PersonBuilder(ALICE).withTags(VALID_TAG_REJECTED)
+        Application editedAlice = new ApplicationBuilder(ALICE).withTags(VALID_TAG_REJECTED)
                 .build();
         uniqueApplicationList.setApplication(ALICE, editedAlice);
         UniqueApplicationList expectedUniqueApplicationList = new UniqueApplicationList();

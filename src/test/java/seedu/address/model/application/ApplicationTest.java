@@ -7,18 +7,18 @@ import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BYTEDANCE;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_POSITION_BYTEDANCE;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_PENDING;
 import static seedu.address.testutil.Assert.assertThrows;
-import static seedu.address.testutil.TypicalPersons.ALICE;
-import static seedu.address.testutil.TypicalPersons.BOB;
+import static seedu.address.testutil.TypicalApplications.ALICE;
+import static seedu.address.testutil.TypicalApplications.BOB;
 
 import org.junit.jupiter.api.Test;
 
-import seedu.address.testutil.PersonBuilder;
+import seedu.address.testutil.ApplicationBuilder;
 
 public class ApplicationTest {
 
     @Test
     public void asObservableList_modifyList_throwsUnsupportedOperationException() {
-        Application application = new PersonBuilder().build();
+        Application application = new ApplicationBuilder().build();
         assertThrows(UnsupportedOperationException.class, () -> application.getTags().remove(0));
     }
 
@@ -31,29 +31,29 @@ public class ApplicationTest {
         assertFalse(ALICE.isSameApplication(null));
 
         // same name, all other attributes different -> returns true
-        Application editedAlice = new PersonBuilder(ALICE).withPosition(VALID_POSITION_BYTEDANCE)
+        Application editedAlice = new ApplicationBuilder(ALICE).withPosition(VALID_POSITION_BYTEDANCE)
                 .withDeadline(VALID_DEADLINE_BYTEDANCE)
                 .withTags(VALID_TAG_PENDING).build();
         assertTrue(ALICE.isSameApplication(editedAlice));
 
         // different name, all other attributes same -> returns false
-        editedAlice = new PersonBuilder(ALICE).withName(VALID_NAME_BYTEDANCE).build();
+        editedAlice = new ApplicationBuilder(ALICE).withName(VALID_NAME_BYTEDANCE).build();
         assertFalse(ALICE.isSameApplication(editedAlice));
 
         // name differs in case, all other attributes same -> returns false
-        Application editedBob = new PersonBuilder(BOB).withName(VALID_NAME_BYTEDANCE.toLowerCase()).build();
+        Application editedBob = new ApplicationBuilder(BOB).withName(VALID_NAME_BYTEDANCE.toLowerCase()).build();
         assertFalse(BOB.isSameApplication(editedBob));
 
         // name has trailing spaces, all other attributes same -> returns false
         String nameWithTrailingSpaces = VALID_NAME_BYTEDANCE + " ";
-        editedBob = new PersonBuilder(BOB).withName(nameWithTrailingSpaces).build();
+        editedBob = new ApplicationBuilder(BOB).withName(nameWithTrailingSpaces).build();
         assertFalse(BOB.isSameApplication(editedBob));
     }
 
     @Test
     public void equals() {
         // same values -> returns true
-        Application aliceCopy = new PersonBuilder(ALICE).build();
+        Application aliceCopy = new ApplicationBuilder(ALICE).build();
         assertTrue(ALICE.equals(aliceCopy));
 
         // same object -> returns true
@@ -69,20 +69,20 @@ public class ApplicationTest {
         assertFalse(ALICE.equals(BOB));
 
         // different name -> returns false
-        Application editedAlice = new PersonBuilder(ALICE).withName(VALID_NAME_BYTEDANCE).build();
+        Application editedAlice = new ApplicationBuilder(ALICE).withName(VALID_NAME_BYTEDANCE).build();
         assertFalse(ALICE.equals(editedAlice));
 
         // different phone -> returns false
-        editedAlice = new PersonBuilder(ALICE).withPosition(VALID_POSITION_BYTEDANCE).build();
+        editedAlice = new ApplicationBuilder(ALICE).withPosition(VALID_POSITION_BYTEDANCE).build();
         assertFalse(ALICE.equals(editedAlice));
 
         // different email -> returns false
-        editedAlice = new PersonBuilder(ALICE).withDeadline(VALID_DEADLINE_BYTEDANCE).build();
+        editedAlice = new ApplicationBuilder(ALICE).withDeadline(VALID_DEADLINE_BYTEDANCE).build();
         assertFalse(ALICE.equals(editedAlice));
 
 
         // different tags -> returns false
-        editedAlice = new PersonBuilder(ALICE).withTags(VALID_TAG_PENDING).build();
+        editedAlice = new ApplicationBuilder(ALICE).withTags(VALID_TAG_PENDING).build();
         assertFalse(ALICE.equals(editedAlice));
     }
 }

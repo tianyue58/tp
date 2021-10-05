@@ -12,7 +12,7 @@ import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.logic.commands.CommandTestUtil.showPersonAtIndex;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
 import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_PERSON;
-import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
+import static seedu.address.testutil.TypicalApplications.getTypicalAddressBook;
 
 import org.junit.jupiter.api.Test;
 
@@ -25,7 +25,7 @@ import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.application.Application;
 import seedu.address.testutil.EditApplicationDescriptorBuilder;
-import seedu.address.testutil.PersonBuilder;
+import seedu.address.testutil.ApplicationBuilder;
 
 /**
  * Contains integration tests (interaction with the Model) and unit tests for EditCommand.
@@ -36,7 +36,7 @@ public class EditCommandTest {
 
     //    @Test
     //    public void execute_allFieldsSpecifiedUnfilteredList_success() {
-    //        Application editedApplication = new PersonBuilder().build();
+    //        Application editedApplication = new ApplicationBuilder().build();
     //        EditApplicationDescriptor descriptor = new EditApplicationDescriptorBuilder(editedApplication).build();
     //        EditCommand editCommand = new EditCommand(INDEX_FIRST_PERSON, descriptor);
     //
@@ -53,7 +53,7 @@ public class EditCommandTest {
         Index indexLastPerson = Index.fromOneBased(model.getFilteredApplicationList().size());
         Application lastApplication = model.getFilteredApplicationList().get(indexLastPerson.getZeroBased());
 
-        PersonBuilder personInList = new PersonBuilder(lastApplication);
+        ApplicationBuilder personInList = new ApplicationBuilder(lastApplication);
         Application editedApplication = personInList.withName(VALID_NAME_BYTEDANCE)
                 .withPosition(VALID_POSITION_BYTEDANCE).withTags(VALID_TAG_PENDING).build();
 
@@ -87,7 +87,7 @@ public class EditCommandTest {
 
         Application applicationInFilteredList = model.getFilteredApplicationList()
                 .get(INDEX_FIRST_PERSON.getZeroBased());
-        Application editedApplication = new PersonBuilder(applicationInFilteredList)
+        Application editedApplication = new ApplicationBuilder(applicationInFilteredList)
                 .withName(VALID_NAME_BYTEDANCE).build();
         EditCommand editCommand = new EditCommand(INDEX_FIRST_PERSON,
                 new EditApplicationDescriptorBuilder().withName(VALID_NAME_BYTEDANCE).build());
