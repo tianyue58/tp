@@ -46,7 +46,7 @@ public class ApplicationBuilder {
         position = applicationToCopy.getPosition();
         deadline = applicationToCopy.getDeadline();
         tags = new HashSet<>(applicationToCopy.getTags());
-        completion = applicationToCopy.getComplete();
+        completion = applicationToCopy.getCompletion();
     }
 
     /**
