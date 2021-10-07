@@ -27,7 +27,7 @@ public class TypicalApplications {
             .withTags("friends").build();
     public static final Application BENSON = new ApplicationBuilder().withName("Benson Meier")
             .withDeadline("johnd@example.com").withPosition("98765432")
-            .withTags("owesMoney", "friends").build();
+            .withTags("owesMoney", "friends").withCompletion("Completed").build();
     public static final Application CARL = new ApplicationBuilder().withName("Carl Kurz").withPosition("95352563")
             .withDeadline("heinz@example.com").build();
     public static final Application DANIEL = new ApplicationBuilder().withName("Daniel Meier").withPosition("87652533")
