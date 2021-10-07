@@ -19,17 +19,16 @@ import seedu.address.model.tag.Tag;
  */
 public class SampleDataUtil {
     public static Application[] getSampleApplications() {
-        return new Application[] {
-                new Application(new Name("Shopee"), new Position("software engineer"),
-                        new Deadline("2021-12-23"), new Status("Pending"), getTagSet(),
+        return new Application[] { new Application(new Name("Shopee"), new Position("software engineer"),
+                new Deadline("2021-12-23"), new Status("Pending"), getTagSet(),
                         new Completion("Uncompleted")),
-                new Application(new Name("Google"), new Position("frontend developer"),
+            new Application(new Name("Google"), new Position("frontend developer"),
                         new Deadline("2021-12-14"), new Status("Pending"), getTagSet(),
                         new Completion("Uncompleted")),
-                new Application(new Name("Huawei"), new Position("software engineer"),
+            new Application(new Name("Huawei"), new Position("software engineer"),
                         new Deadline("2021-12-30"), new Status("Pending"), getTagSet(),
                         new Completion("Uncompleted")),
-                new Application(new Name("Deutsche Bank"), new Position("software engineer"),
+            new Application(new Name("Deutsche Bank"), new Position("software engineer"),
                         new Deadline("2021-12-25"), new Status("Pending"), getTagSet(),
                         new Completion("Uncompleted")),
         };

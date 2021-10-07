@@ -8,6 +8,7 @@ import seedu.address.model.application.Completion;
 import seedu.address.model.application.Deadline;
 import seedu.address.model.application.Name;
 import seedu.address.model.application.Position;
+import seedu.address.model.application.Status;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.util.SampleDataUtil;
 
@@ -20,10 +21,12 @@ public class ApplicationBuilder {
     public static final String DEFAULT_POSITION = "Machine Learning Engineer";
     public static final String DEFAULT_DEADLINE = "2021-12-04";
     public static final String DEFAULT_COMPLETION = "Uncompleted";
+    public static final String DEFAULT_STATUS = "Pending";
 
     private Name name;
     private Position position;
     private Deadline deadline;
+    private Status status;
     private Set<Tag> tags;
     private Completion completion;
 
@@ -34,6 +37,7 @@ public class ApplicationBuilder {
         name = new Name(DEFAULT_NAME);
         position = new Position(DEFAULT_POSITION);
         deadline = new Deadline(DEFAULT_DEADLINE);
+        status = new Status(DEFAULT_STATUS);
         tags = new HashSet<>();
         completion = new Completion(DEFAULT_COMPLETION);
     }
@@ -45,6 +49,7 @@ public class ApplicationBuilder {
         name = applicationToCopy.getName();
         position = applicationToCopy.getPosition();
         deadline = applicationToCopy.getDeadline();
+        status = applicationToCopy.getStatus();
         tags = new HashSet<>(applicationToCopy.getTags());
         completion = applicationToCopy.getCompletion();
     }
@@ -74,6 +79,15 @@ public class ApplicationBuilder {
     }
 
     /**
+     * Sets the {@code Status} of the {@code Application} that we are building.
+     */
+    public ApplicationBuilder withStatus(String status) {
+        this.status = new Status(status);
+        return this;
+    }
+
+
+    /**
      * Parses the {@code tags} into a {@code Set<Tag>} and set it to the {@code Application} that we are building.
      */
     public ApplicationBuilder withTags(String ... tags) {
@@ -90,7 +104,7 @@ public class ApplicationBuilder {
     }
 
     public Application build() {
-        return new Application(name, position, deadline, tags, completion);
+        return new Application(name, position, deadline, status, tags, completion);
     }
 
 }
