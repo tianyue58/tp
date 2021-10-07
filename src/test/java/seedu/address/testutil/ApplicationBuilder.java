@@ -4,7 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import seedu.address.model.application.Application;
-import seedu.address.model.application.Complete;
+import seedu.address.model.application.Completion;
 import seedu.address.model.application.Deadline;
 import seedu.address.model.application.Name;
 import seedu.address.model.application.Position;
@@ -19,13 +19,13 @@ public class ApplicationBuilder {
     public static final String DEFAULT_NAME = "Gojek";
     public static final String DEFAULT_POSITION = "Machine Learning Engineer";
     public static final String DEFAULT_DEADLINE = "2021-12-04";
-    public static final String DEFAULT_COMPLETE = "Uncompleted";
+    public static final String DEFAULT_COMPLETION = "Uncompleted";
 
     private Name name;
     private Position position;
     private Deadline deadline;
     private Set<Tag> tags;
-    private Complete complete;
+    private Completion completion;
 
     /**
      * Creates a {@code ApplicationBuilder} with the default details.
@@ -35,7 +35,7 @@ public class ApplicationBuilder {
         position = new Position(DEFAULT_POSITION);
         deadline = new Deadline(DEFAULT_DEADLINE);
         tags = new HashSet<>();
-        complete = new Complete(DEFAULT_COMPLETE);
+        completion = new Completion(DEFAULT_COMPLETION);
     }
 
     /**
@@ -46,7 +46,7 @@ public class ApplicationBuilder {
         position = applicationToCopy.getPosition();
         deadline = applicationToCopy.getDeadline();
         tags = new HashSet<>(applicationToCopy.getTags());
-        complete = applicationToCopy.getComplete();
+        completion = applicationToCopy.getComplete();
     }
 
     /**
@@ -84,13 +84,13 @@ public class ApplicationBuilder {
     /**
      * Sets the {@code Deadline} of the {@code Application} that we are building.
      */
-    public ApplicationBuilder withComplete(String complete) {
-        this.complete = new Complete(complete);
+    public ApplicationBuilder withCompletion(String complete) {
+        this.completion = new Completion(complete);
         return this;
     }
 
     public Application build() {
-        return new Application(name, position, deadline, tags, complete);
+        return new Application(name, position, deadline, tags, completion);
     }
 
 }

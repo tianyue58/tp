@@ -39,7 +39,7 @@ public class ApplicationCard extends UiPart<Region> {
     @FXML
     private FlowPane tags;
     @FXML
-    private Label complete;
+    private Label completion;
 
 
 
@@ -53,7 +53,7 @@ public class ApplicationCard extends UiPart<Region> {
         name.setText(application.getName().fullName);
         position.setText(application.getPosition().value);
         deadline.setText(application.getDeadline().value);
-        complete.setText(application.getComplete().value);
+        completion.setText(application.getCompletion().value);
         application.getTags().stream()
                 .sorted(Comparator.comparing(tag -> tag.tagName))
                 .forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));

@@ -19,7 +19,7 @@ public class Application {
     private final Name name;
     private final Position position;
     private final Deadline deadline;
-    private final Complete complete;
+    private final Completion completion;
 
     // Data fields
     private final Set<Tag> tags = new HashSet<>();
@@ -27,13 +27,13 @@ public class Application {
     /**
      * Every field must be present and not null.
      */
-    public Application(Name name, Position position, Deadline deadline, Set<Tag> tags, Complete complete) {
-        requireAllNonNull(name, position, deadline, tags, complete);
+    public Application(Name name, Position position, Deadline deadline, Set<Tag> tags, Completion completion) {
+        requireAllNonNull(name, position, deadline, tags, completion);
         this.name = name;
         this.position = position;
         this.deadline = deadline;
         this.tags.addAll(tags);
-        this.complete = complete;
+        this.completion = completion;
     }
 
     public Name getName() {
@@ -56,11 +56,9 @@ public class Application {
         return Collections.unmodifiableSet(tags);
     }
 
-    public Complete getComplete() {
-        return this.complete;
+    public Completion getCompletion() {
+        return this.completion;
     }
-
-
 
     /**
      * Returns true if both applications have the same name.
@@ -111,7 +109,7 @@ public class Application {
                 .append("; Application deadline: ")
                 .append(getDeadline())
                 .append("; Application status: ")
-                .append(getComplete());
+                .append(getCompletion());
 
         Set<Tag> tags = getTags();
         if (!tags.isEmpty()) {

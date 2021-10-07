@@ -6,15 +6,15 @@ import static java.util.Objects.requireNonNull;
  * Represents an Application's completion status in InternSHIP.
  * ADD THE GUARANTEE LATER
  */
-public class Complete {
+public class Completion {
     public final String value;
 
     /**
-     * Constructs a {@code Complete}.
+     * Constructs a {@code Completion}.
      *
      * @param status A valid completion status.
      */
-    public Complete(String status) {
+    public Completion(String status) {
         requireNonNull(status);
         value = status;
     }
@@ -27,8 +27,8 @@ public class Complete {
     @Override
     public boolean equals(Object other) {
         return other == this
-                || (other instanceof Complete
-                && value.equals(((Complete) other).value));
+                || (other instanceof Completion
+                && value.equals(((Completion) other).value));
     }
 
     @Override
