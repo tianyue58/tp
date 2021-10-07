@@ -19,6 +19,7 @@ public class Application {
     private final Name name;
     private final Position position;
     private final Deadline deadline;
+    private final Complete complete;
 
     //add status field
     private final Status status;
@@ -29,13 +30,17 @@ public class Application {
     /**
      * Every field must be present and not null.
      */
-    public Application(Name name, Position position, Deadline deadline, Status status, Set<Tag> tags) {
-        requireAllNonNull(name, position, deadline, tags);
+
+    public Application(Name name, Position position, Deadline deadline, Status status, Set<Tag> tags, Complete complete) {
+        requireAllNonNull(name, position, deadline, tags, complete);
+
+   
         this.name = name;
         this.position = position;
         this.deadline = deadline;
         this.status = status;
         this.tags.addAll(tags);
+        this.complete = complete;
     }
 
     public Name getName() {
@@ -61,6 +66,12 @@ public class Application {
     public Set<Tag> getTags() {
         return Collections.unmodifiableSet(tags);
     }
+
+    public Complete getComplete() {
+        return this.complete;
+    }
+
+
 
     /**
      * Returns true if both applications have the same name.
@@ -111,8 +122,13 @@ public class Application {
                 .append(getPosition())
                 .append("; Application deadline: ")
                 .append(getDeadline())
-                .append("; Status: ")
-                .append(getStatus());
+
+                .append("; Status(Decision of the application): ")
+                .append(getStatus())
+
+                .append("; Application status: ")
+                .append(getComplete());
+
 
         Set<Tag> tags = getTags();
         if (!tags.isEmpty()) {

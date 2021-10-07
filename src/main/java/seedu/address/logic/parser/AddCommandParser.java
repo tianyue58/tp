@@ -12,6 +12,7 @@ import java.util.stream.Stream;
 import seedu.address.logic.commands.AddCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.application.Application;
+import seedu.address.model.application.Complete;
 import seedu.address.model.application.Deadline;
 import seedu.address.model.application.Name;
 import seedu.address.model.application.Position;
@@ -46,8 +47,10 @@ public class AddCommandParser implements Parser<AddCommand> {
         Status status = new Status("Pending");
 
         Set<Tag> tagList = ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));
+        Complete complete = new Complete("Uncompleted");
 
-        Application application = new Application(name, position, deadline, status, tagList);
+
+        Application application = new Application(name, position, deadline, status, tagList, complete);
 
         return new AddCommand(application);
     }
