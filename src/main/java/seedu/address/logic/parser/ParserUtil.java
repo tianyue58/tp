@@ -12,6 +12,7 @@ import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.application.Deadline;
 import seedu.address.model.application.Name;
 import seedu.address.model.application.Position;
+import seedu.address.model.application.Status;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -63,6 +64,21 @@ public class ParserUtil {
             throw new ParseException(Position.MESSAGE_CONSTRAINTS);
         }
         return new Position(trimmedPosition);
+    }
+
+    /**
+     * Parses a {@code String status} into an {@code Address}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code address} is invalid.
+     */
+    public static Status parseStatus(String status) throws ParseException {
+        requireNonNull(status);
+        String trimmedStatus = status.trim();
+        if (!Status.isValidStatus(trimmedStatus)) {
+            throw new ParseException(Status.MESSAGE_CONSTRAINTS);
+        }
+        return new Status(trimmedStatus);
     }
 
     /**

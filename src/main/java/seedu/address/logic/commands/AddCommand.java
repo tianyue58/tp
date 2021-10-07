@@ -27,8 +27,8 @@ public class AddCommand extends Command {
             + "Example: " + COMMAND_WORD + " "
             + PREFIX_COMPANY_NAME + "Shopee "
             + PREFIX_INTERNSHIP_POSITION + "software engineer "
-            + PREFIX_DEADLINE_OF_APPLICATION + "2021-12-12 "
-            + PREFIX_TAG + "Pending";
+            + PREFIX_DEADLINE_OF_APPLICATION + "2021-12-12 ";
+
 
 
     public static final String MESSAGE_SUCCESS = "New application added: %1$s";
