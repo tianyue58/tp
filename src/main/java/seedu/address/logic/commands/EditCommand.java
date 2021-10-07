@@ -19,6 +19,7 @@ import seedu.address.commons.util.CollectionUtil;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.application.Application;
+import seedu.address.model.application.Complete;
 import seedu.address.model.application.Deadline;
 import seedu.address.model.application.Name;
 import seedu.address.model.application.Position;
@@ -72,6 +73,7 @@ public class EditCommand extends Command {
         }
 
         Application applicationToEdit = lastShownList.get(index.getZeroBased());
+        //Should be APPLICATION
         Application editedApplication = createEditedPerson(applicationToEdit, editPersonDescriptor);
 
         if (!applicationToEdit.isSameApplication(editedApplication) && model.hasApplication(editedApplication)) {
@@ -95,9 +97,10 @@ public class EditCommand extends Command {
         Position updatedPosition = editApplicationDescriptor.getPosition().orElse(applicationToEdit.getPosition());
         Deadline updatedDeadline = editApplicationDescriptor.getDeadline().orElse(applicationToEdit.getDeadline());
         Set<Tag> updatedTags = editApplicationDescriptor.getTags().orElse(applicationToEdit.getTags());
+        Complete updatedComplete = applicationToEdit.getComplete();
 
 
-        return new Application(updatedName, updatedPosition, updatedDeadline, updatedTags);
+        return new Application(updatedName, updatedPosition, updatedDeadline, updatedTags, updatedComplete);
     }
 
     @Override

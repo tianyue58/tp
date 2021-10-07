@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.application.Application;
+import seedu.address.model.application.Complete;
 import seedu.address.model.application.Deadline;
 import seedu.address.model.application.Name;
 import seedu.address.model.application.Position;
@@ -27,6 +28,7 @@ class JsonAdaptedApplication {
     private final String position;
     private final String deadline;
     private final List<JsonAdaptedTag> tagged = new ArrayList<>();
+    private final String complete = "Uncompleted";
 
     /**
      * Constructs a {@code JsonAdaptedApplication} with the given application details.
@@ -54,7 +56,6 @@ class JsonAdaptedApplication {
         tagged.addAll(source.getTags().stream()
                 .map(JsonAdaptedTag::new)
                 .collect(Collectors.toList()));
-
     }
 
     /**
@@ -96,7 +97,9 @@ class JsonAdaptedApplication {
 
         final Set<Tag> modelTags = new HashSet<>(personTags);
 
-        return new Application(modelName, modelPosition, modelDeadline, modelTags);
+        final Complete modelComplete = new Complete(complete);
+
+        return new Application(modelName, modelPosition, modelDeadline, modelTags, modelComplete);
 
 
     }
