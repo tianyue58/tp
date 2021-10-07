@@ -6,6 +6,7 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.model.Model;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.application.Application;
+import seedu.address.model.application.Completion;
 import seedu.address.model.application.Status;
 import seedu.address.model.application.Deadline;
 import seedu.address.model.application.Name;
@@ -52,8 +53,9 @@ public class RejectCommand extends Command {
         Deadline deadline = applicationToComplete.getDeadline();
         Set<Tag> tagList = applicationToComplete.getTags();
         Status status = new Status("Rejected");
+        Completion completion = new Completion("Completed");
 
-        Application completedApplication = new Application(name, position, deadline, status, tagList);
+        Application completedApplication = new Application(name, position, deadline, status, tagList, completion);
         model.setApplication(applicationToComplete, completedApplication);
 
 

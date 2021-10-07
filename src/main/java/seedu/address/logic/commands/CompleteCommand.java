@@ -14,6 +14,7 @@ import seedu.address.model.application.Completion;
 import seedu.address.model.application.Deadline;
 import seedu.address.model.application.Name;
 import seedu.address.model.application.Position;
+import seedu.address.model.application.Status;
 import seedu.address.model.tag.Tag;
 
 
@@ -52,10 +53,11 @@ public class CompleteCommand extends Command {
         Name name = applicationToComplete.getName();
         Position position = applicationToComplete.getPosition();
         Deadline deadline = applicationToComplete.getDeadline();
+        Status status = applicationToComplete.getStatus();
         Set<Tag> tagList = applicationToComplete.getTags();
         Completion completion = new Completion("Completed");
 
-        Application completedApplication = new Application(name, position, deadline, tagList, completion);
+        Application completedApplication = new Application(name, position, deadline, status, tagList, completion);
         model.setApplication(applicationToComplete, completedApplication);
         //need to change PERSON
         //model.updateFilteredApplicationList(PREDICATE_SHOW_ALL_PERSONS);
