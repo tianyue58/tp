@@ -10,7 +10,7 @@ import java.util.Set;
 import seedu.address.model.tag.Tag;
 
 /**
- * Represents an Application in the address book.
+ * Represents an Application in InternSHIP.
  * Guarantees: details are present and not null, field values are validated, immutable.
  */
 public class Application {
@@ -36,14 +36,23 @@ public class Application {
         this.completion = completion;
     }
 
+    /**
+     * Returns the name of the company applied to in the {@code Application}.
+     */
     public Name getName() {
         return name;
     }
 
+    /**
+     * Returns the position applied for in the {@code Application}.
+     */
     public Position getPosition() {
         return position;
     }
 
+    /**
+     * Returns the application deadline of the {@code Application}.
+     */
     public Deadline getDeadline() {
         return deadline;
     }
@@ -56,6 +65,9 @@ public class Application {
         return Collections.unmodifiableSet(tags);
     }
 
+    /**
+     * Returns the completion status of the {@code Application}.
+     */
     public Completion getCompletion() {
         return this.completion;
     }
@@ -91,13 +103,14 @@ public class Application {
         return otherApplication.getName().equals(getName())
                 && otherApplication.getPosition().equals(getPosition())
                 && otherApplication.getDeadline().equals(getDeadline())
-                && otherApplication.getTags().equals(getTags());
+                && otherApplication.getTags().equals(getTags())
+                && otherApplication.getCompletion().equals(getCompletion());
     }
 
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, position, deadline, tags);
+        return Objects.hash(name, position, deadline, tags, completion);
     }
 
     @Override
@@ -108,7 +121,7 @@ public class Application {
                 .append(getPosition())
                 .append("; Application deadline: ")
                 .append(getDeadline())
-                .append("; Application status: ")
+                .append("; Application completion: ")
                 .append(getCompletion());
 
         Set<Tag> tags = getTags();

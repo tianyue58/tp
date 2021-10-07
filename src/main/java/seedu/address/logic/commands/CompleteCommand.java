@@ -27,9 +27,11 @@ public class CompleteCommand extends Command {
 
     public static final String MESSAGE_SUCCESS = "Completed application: %1$s";
 
-
     private final Index targetIndex;
 
+    /**
+     * Creates an CompleteCommand to mark the specified {@code Application} as completed.
+     */
     public CompleteCommand(Index targetIndex) {
         this.targetIndex = targetIndex;
     }

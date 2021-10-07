@@ -10,7 +10,7 @@ import javafx.scene.layout.Region;
 import seedu.address.model.application.Application;
 
 /**
- * An UI component that displays information of a {@code Application}.
+ * An UI component that displays information of an {@code Application}.
  */
 public class ApplicationCard extends UiPart<Region> {
 
@@ -22,6 +22,7 @@ public class ApplicationCard extends UiPart<Region> {
      * or an exception will be thrown by JavaFX during runtime.
      *
      * @see <a href="https://github.com/se-edu/addressbook-level4/issues/336">The issue on AddressBook level 4</a>
+     * TODO Delete this later on?
      */
 
     public final Application application;
@@ -44,7 +45,7 @@ public class ApplicationCard extends UiPart<Region> {
 
 
     /**
-     * Creates a {@code PersonCode} with the given {@code Application} and index to display.
+     * Creates an {@code ApplicationCode} with the given {@code Application} and index to display.
      */
     public ApplicationCard(Application application, int displayedIndex) {
         super(FXML);
