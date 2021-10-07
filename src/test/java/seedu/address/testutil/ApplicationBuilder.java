@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import seedu.address.model.application.Application;
+import seedu.address.model.application.Complete;
 import seedu.address.model.application.Deadline;
 import seedu.address.model.application.Name;
 import seedu.address.model.application.Position;
@@ -15,23 +16,26 @@ import seedu.address.model.util.SampleDataUtil;
  */
 public class ApplicationBuilder {
 
-    public static final String DEFAULT_NAME = "Amy Bee";
-    public static final String DEFAULT_PHONE = "85355255";
-    public static final String DEFAULT_EMAIL = "amy@gmail.com";
+    public static final String DEFAULT_NAME = "Gojek";
+    public static final String DEFAULT_POSITION = "Machine Learning Engineer";
+    public static final String DEFAULT_DEADLINE = "2021-12-04";
+    public static final String DEFAULT_COMPLETE = "Uncompleted";
 
     private Name name;
-    private Position phone;
-    private Deadline email;
+    private Position position;
+    private Deadline deadline;
     private Set<Tag> tags;
+    private Complete complete;
 
     /**
      * Creates a {@code ApplicationBuilder} with the default details.
      */
     public ApplicationBuilder() {
         name = new Name(DEFAULT_NAME);
-        phone = new Position(DEFAULT_PHONE);
-        email = new Deadline(DEFAULT_EMAIL);
+        position = new Position(DEFAULT_POSITION);
+        deadline = new Deadline(DEFAULT_DEADLINE);
         tags = new HashSet<>();
+        complete = new Complete(DEFAULT_COMPLETE);
     }
 
     /**
@@ -39,9 +43,10 @@ public class ApplicationBuilder {
      */
     public ApplicationBuilder(Application applicationToCopy) {
         name = applicationToCopy.getName();
-        phone = applicationToCopy.getPosition();
-        email = applicationToCopy.getDeadline();
+        position = applicationToCopy.getPosition();
+        deadline = applicationToCopy.getDeadline();
         tags = new HashSet<>(applicationToCopy.getTags());
+        complete = applicationToCopy.getComplete();
     }
 
     /**
@@ -49,6 +54,22 @@ public class ApplicationBuilder {
      */
     public ApplicationBuilder withName(String name) {
         this.name = new Name(name);
+        return this;
+    }
+
+    /**
+     * Sets the {@code Position} of the {@code Application} that we are building.
+     */
+    public ApplicationBuilder withPosition(String position) {
+        this.position = new Position(position);
+        return this;
+    }
+
+    /**
+     * Sets the {@code Deadline} of the {@code Application} that we are building.
+     */
+    public ApplicationBuilder withDeadline(String deadline) {
+        this.deadline = new Deadline(deadline);
         return this;
     }
 
@@ -61,23 +82,15 @@ public class ApplicationBuilder {
     }
 
     /**
-     * Sets the {@code Phone} of the {@code Application} that we are building.
+     * Sets the {@code Deadline} of the {@code Application} that we are building.
      */
-    public ApplicationBuilder withPosition(String phone) {
-        this.phone = new Position(phone);
-        return this;
-    }
-
-    /**
-     * Sets the {@code Email} of the {@code Application} that we are building.
-     */
-    public ApplicationBuilder withDeadline(String email) {
-        this.email = new Deadline(email);
+    public ApplicationBuilder withComplete(String complete) {
+        this.complete = new Complete(complete);
         return this;
     }
 
     public Application build() {
-        return new Application(name, phone, email, tags);
+        return new Application(name, position, deadline, tags, complete);
     }
 
 }

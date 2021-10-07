@@ -2,9 +2,18 @@ package seedu.address.model.application;
 
 import static java.util.Objects.requireNonNull;
 
+/**
+ * Represents an Application's completion status in InternSHIP.
+ * ADD THE GUARANTEE LATER
+ */
 public class Complete {
     public final String value;
 
+    /**
+     * Constructs a {@code Complete}.
+     *
+     * @param status A valid completion status.
+     */
     public Complete(String status) {
         requireNonNull(status);
         value = status;
