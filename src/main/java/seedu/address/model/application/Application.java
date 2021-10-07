@@ -20,17 +20,21 @@ public class Application {
     private final Position position;
     private final Deadline deadline;
 
+    //add status field
+    private final Status status;
+
     // Data fields
     private final Set<Tag> tags = new HashSet<>();
 
     /**
      * Every field must be present and not null.
      */
-    public Application(Name name, Position position, Deadline deadline, Set<Tag> tags) {
+    public Application(Name name, Position position, Deadline deadline, Status status, Set<Tag> tags) {
         requireAllNonNull(name, position, deadline, tags);
         this.name = name;
         this.position = position;
         this.deadline = deadline;
+        this.status = status;
         this.tags.addAll(tags);
     }
 
@@ -44,6 +48,10 @@ public class Application {
 
     public Deadline getDeadline() {
         return deadline;
+    }
+
+    public Status getStatus() {
+        return this.status;
     }
 
     /**
@@ -85,13 +93,14 @@ public class Application {
         return otherApplication.getName().equals(getName())
                 && otherApplication.getPosition().equals(getPosition())
                 && otherApplication.getDeadline().equals(getDeadline())
+                && otherApplication.getStatus().equals(getStatus())
                 && otherApplication.getTags().equals(getTags());
     }
 
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, position, deadline, tags);
+        return Objects.hash(name, position, deadline, status, tags);
     }
 
     @Override
@@ -101,7 +110,9 @@ public class Application {
                 .append("; Position: ")
                 .append(getPosition())
                 .append("; Application deadline: ")
-                .append(getDeadline());
+                .append(getDeadline())
+                .append("; Status: ")
+                .append(getStatus());
 
         Set<Tag> tags = getTags();
         if (!tags.isEmpty()) {
