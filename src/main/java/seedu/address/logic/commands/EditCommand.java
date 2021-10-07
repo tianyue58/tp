@@ -4,6 +4,7 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_COMPANY_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DEADLINE_OF_APPLICATION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_INTERNSHIP_POSITION;
+//import static seedu.address.logic.parser.CliSyntax.PREFIX_STATUS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 
@@ -23,6 +24,7 @@ import seedu.address.model.application.Completion;
 import seedu.address.model.application.Deadline;
 import seedu.address.model.application.Name;
 import seedu.address.model.application.Position;
+import seedu.address.model.application.Status;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -95,12 +97,12 @@ public class EditCommand extends Command {
 
         Name updatedName = editApplicationDescriptor.getName().orElse(applicationToEdit.getName());
         Position updatedPosition = editApplicationDescriptor.getPosition().orElse(applicationToEdit.getPosition());
+        Status updatedStatus = editApplicationDescriptor.getStatus().orElse(applicationToEdit.getStatus());
         Deadline updatedDeadline = editApplicationDescriptor.getDeadline().orElse(applicationToEdit.getDeadline());
         Set<Tag> updatedTags = editApplicationDescriptor.getTags().orElse(applicationToEdit.getTags());
         Completion completion = applicationToEdit.getCompletion();
 
-
-        return new Application(updatedName, updatedPosition, updatedDeadline, updatedTags, completion);
+        return new Application(updatedName, updatedPosition, updatedDeadline, updatedStatus, updatedTags, completion);
     }
 
     @Override
@@ -129,6 +131,7 @@ public class EditCommand extends Command {
         private Name name;
         private Position position;
         private Deadline deadline;
+        private Status status;
         private Set<Tag> tags;
 
         public EditApplicationDescriptor() {}
@@ -141,6 +144,7 @@ public class EditCommand extends Command {
             setName(toCopy.name);
             setPosition(toCopy.position);
             setDeadline(toCopy.deadline);
+            setStatus(toCopy.status);
             setTags(toCopy.tags);
         }
 
@@ -148,7 +152,7 @@ public class EditCommand extends Command {
          * Returns true if at least one field is edited.
          */
         public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyNonNull(name, position, deadline, tags);
+            return CollectionUtil.isAnyNonNull(name, position, deadline, status, tags);
         }
 
         public void setName(Name name) {
@@ -163,6 +167,10 @@ public class EditCommand extends Command {
             this.position = position;
         }
 
+        public void setStatus(Status status) {
+            this.status = status;
+        }
+
         public Optional<Position> getPosition() {
             return Optional.ofNullable(position);
         }
@@ -170,6 +178,11 @@ public class EditCommand extends Command {
         public void setDeadline(Deadline deadline) {
             this.deadline = deadline;
         }
+
+        public Optional<Status> getStatus() {
+            return Optional.ofNullable(status);
+        }
+
 
         public Optional<Deadline> getDeadline() {
             return Optional.ofNullable(deadline);
@@ -211,6 +224,7 @@ public class EditCommand extends Command {
             return getName().equals(e.getName())
                     && getPosition().equals(e.getPosition())
                     && getDeadline().equals(e.getDeadline())
+                    && getStatus().equals(e.getStatus())
                     && getTags().equals(e.getTags());
         }
     }

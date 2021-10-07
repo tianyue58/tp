@@ -16,6 +16,7 @@ import seedu.address.model.application.Completion;
 import seedu.address.model.application.Deadline;
 import seedu.address.model.application.Name;
 import seedu.address.model.application.Position;
+import seedu.address.model.application.Status;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -42,10 +43,11 @@ public class AddCommandParser implements Parser<AddCommand> {
         Name name = ParserUtil.parseName(argMultimap.getValue(PREFIX_COMPANY_NAME).get());
         Position position = ParserUtil.parsePosition(argMultimap.getValue(PREFIX_INTERNSHIP_POSITION).get());
         Deadline deadline = ParserUtil.parseDeadline(argMultimap.getValue(PREFIX_DEADLINE_OF_APPLICATION).get());
+        Status status = new Status("Pending");
         Set<Tag> tagList = ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));
         Completion completion = new Completion("Uncompleted");
 
-        Application application = new Application(name, position, deadline, tagList, completion);
+        Application application = new Application(name, position, deadline, status, tagList, completion);
 
         return new AddCommand(application);
     }

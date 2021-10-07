@@ -15,6 +15,7 @@ import seedu.address.model.application.Completion;
 import seedu.address.model.application.Deadline;
 import seedu.address.model.application.Name;
 import seedu.address.model.application.Position;
+import seedu.address.model.application.Status;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -27,6 +28,7 @@ class JsonAdaptedApplication {
     private final String name;
     private final String position;
     private final String deadline;
+    private final String status = "Pending";
     private final List<JsonAdaptedTag> tagged = new ArrayList<>();
     private final String completion;
 
@@ -87,6 +89,10 @@ class JsonAdaptedApplication {
         if (!Position.isValidPosition(position)) {
             throw new IllegalValueException(Position.MESSAGE_CONSTRAINTS);
         }
+
+        if (!Status.isValidStatus(status)) {
+            throw new IllegalValueException(Status.MESSAGE_CONSTRAINTS);
+        }
         final Position modelPosition = new Position(position);
 
         if (deadline == null) {
@@ -98,6 +104,8 @@ class JsonAdaptedApplication {
         }
         final Deadline modelDeadline = new Deadline(deadline);
 
+        final Status modelStatus = new Status(status);
+
         final Set<Tag> modelTags = new HashSet<>(personTags);
 
         if (completion == null) {
@@ -107,9 +115,7 @@ class JsonAdaptedApplication {
         //TODO validity check for Completion
         final Completion modelCompletion = new Completion(completion);
 
-        return new Application(modelName, modelPosition, modelDeadline, modelTags, modelCompletion);
-
-
+        return new Application(modelName, modelPosition, modelDeadline, modelStatus, modelTags, modelCompletion);
     }
 
 }

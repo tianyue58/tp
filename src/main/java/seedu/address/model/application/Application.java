@@ -21,17 +21,22 @@ public class Application {
     private final Deadline deadline;
     private final Completion completion;
 
+    //add status field
+    private final Status status;
+
     // Data fields
     private final Set<Tag> tags = new HashSet<>();
 
     /**
      * Every field must be present and not null.
      */
-    public Application(Name name, Position position, Deadline deadline, Set<Tag> tags, Completion completion) {
+    public Application(Name name, Position position, Deadline deadline, Status status,
+                       Set<Tag> tags, Completion completion) {
         requireAllNonNull(name, position, deadline, tags, completion);
         this.name = name;
         this.position = position;
         this.deadline = deadline;
+        this.status = status;
         this.tags.addAll(tags);
         this.completion = completion;
     }
@@ -55,6 +60,10 @@ public class Application {
      */
     public Deadline getDeadline() {
         return deadline;
+    }
+
+    public Status getStatus() {
+        return this.status;
     }
 
     /**
@@ -103,6 +112,7 @@ public class Application {
         return otherApplication.getName().equals(getName())
                 && otherApplication.getPosition().equals(getPosition())
                 && otherApplication.getDeadline().equals(getDeadline())
+                && otherApplication.getStatus().equals(getStatus())
                 && otherApplication.getTags().equals(getTags())
                 && otherApplication.getCompletion().equals(getCompletion());
     }
@@ -110,7 +120,7 @@ public class Application {
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, position, deadline, tags, completion);
+        return Objects.hash(name, position, deadline, status, tags, completion);
     }
 
     @Override
@@ -122,7 +132,9 @@ public class Application {
                 .append("; Application deadline: ")
                 .append(getDeadline())
                 .append("; Application completion: ")
-                .append(getCompletion());
+                .append(getCompletion())
+                .append("; Status(Decision of the application): ")
+                .append(getStatus());
 
         Set<Tag> tags = getTags();
         if (!tags.isEmpty()) {
