@@ -10,14 +10,14 @@ import static seedu.address.logic.commands.CommandTestUtil.INVALID_TAG_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.NAME_DESC_AMAZON;
 import static seedu.address.logic.commands.CommandTestUtil.POSITION_DESC_AMAZON;
 import static seedu.address.logic.commands.CommandTestUtil.POSITION_DESC_BYTEDANCE;
-import static seedu.address.logic.commands.CommandTestUtil.TAG_DESC_PENDING;
-import static seedu.address.logic.commands.CommandTestUtil.TAG_DESC_REJECTED;
+import static seedu.address.logic.commands.CommandTestUtil.STATUS_DESC_AMAZON;
+import static seedu.address.logic.commands.CommandTestUtil.STATUS_DESC_BYTEDANCE;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_DEADLINE_AMAZON;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_DEADLINE_BYTEDANCE;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_AMAZON;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_POSITION_AMAZON;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_POSITION_BYTEDANCE;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_REJECTED;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_BYTEDANCE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
@@ -88,9 +88,9 @@ public class EditCommandParserTest {
 
         // while parsing {@code PREFIX_TAG} alone will reset the tags of the {@code Application} being edited,
         // parsing it together with a valid tag results in error
-        assertParseFailure(parser, "1" + TAG_DESC_REJECTED + TAG_EMPTY, Tag.MESSAGE_CONSTRAINTS);
-        assertParseFailure(parser, "1" + TAG_DESC_REJECTED + TAG_EMPTY + TAG_DESC_PENDING, Tag.MESSAGE_CONSTRAINTS);
-        assertParseFailure(parser, "1" + TAG_EMPTY + TAG_DESC_REJECTED + TAG_DESC_PENDING, Tag.MESSAGE_CONSTRAINTS);
+        assertParseFailure(parser, "1" + STATUS_DESC_BYTEDANCE + TAG_EMPTY, Tag.MESSAGE_CONSTRAINTS);
+        assertParseFailure(parser, "1" + STATUS_DESC_BYTEDANCE + TAG_EMPTY + STATUS_DESC_AMAZON, Tag.MESSAGE_CONSTRAINTS);
+        assertParseFailure(parser, "1" + TAG_EMPTY + STATUS_DESC_BYTEDANCE + STATUS_DESC_AMAZON, Tag.MESSAGE_CONSTRAINTS);
 
         // multiple invalid values, but only the first invalid value is captured
         assertParseFailure(parser, "1" + INVALID_NAME_DESC + INVALID_DEADLINE_DESC + VALID_DEADLINE_AMAZON,
@@ -147,8 +147,8 @@ public class EditCommandParserTest {
         assertParseSuccess(parser, userInput, expectedCommand);
 
         // tags
-        userInput = targetIndex.getOneBased() + TAG_DESC_REJECTED;
-        descriptor = new EditApplicationDescriptorBuilder().withTags(VALID_TAG_REJECTED).build();
+        userInput = targetIndex.getOneBased() + STATUS_DESC_BYTEDANCE;
+        descriptor = new EditApplicationDescriptorBuilder().withTags(VALID_TAG_BYTEDANCE).build();
         expectedCommand = new EditCommand(targetIndex, descriptor);
         assertParseSuccess(parser, userInput, expectedCommand);
     }

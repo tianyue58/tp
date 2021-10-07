@@ -5,10 +5,11 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_DEADLINE_BYTEDANCE;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BYTEDANCE;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_POSITION_BYTEDANCE;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_PENDING;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_STATUS_AMAZON;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_AMAZON;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalApplications.ALICE;
-import static seedu.address.testutil.TypicalApplications.BOB;
+import static seedu.address.testutil.TypicalApplications.BYTEDANCE;
 
 import org.junit.jupiter.api.Test;
 
@@ -33,7 +34,7 @@ public class ApplicationTest {
         // same name, all other attributes different -> returns true
         Application editedAlice = new ApplicationBuilder(ALICE).withPosition(VALID_POSITION_BYTEDANCE)
                 .withDeadline(VALID_DEADLINE_BYTEDANCE)
-                .withTags(VALID_TAG_PENDING).build();
+                .withTags(VALID_TAG_AMAZON).build();
         assertTrue(ALICE.isSameApplication(editedAlice));
 
         // different name, all other attributes same -> returns false
@@ -41,13 +42,13 @@ public class ApplicationTest {
         assertFalse(ALICE.isSameApplication(editedAlice));
 
         // name differs in case, all other attributes same -> returns false
-        Application editedBob = new ApplicationBuilder(BOB).withName(VALID_NAME_BYTEDANCE.toLowerCase()).build();
-        assertFalse(BOB.isSameApplication(editedBob));
+        Application editedBytedance = new ApplicationBuilder(BYTEDANCE).withName(VALID_NAME_BYTEDANCE.toLowerCase()).build();
+        assertFalse(BYTEDANCE.isSameApplication(editedBytedance));
 
         // name has trailing spaces, all other attributes same -> returns false
         String nameWithTrailingSpaces = VALID_NAME_BYTEDANCE + " ";
-        editedBob = new ApplicationBuilder(BOB).withName(nameWithTrailingSpaces).build();
-        assertFalse(BOB.isSameApplication(editedBob));
+        editedBytedance = new ApplicationBuilder(BYTEDANCE).withName(nameWithTrailingSpaces).build();
+        assertFalse(BYTEDANCE.isSameApplication(editedBytedance));
     }
 
     @Test
@@ -66,7 +67,7 @@ public class ApplicationTest {
         assertFalse(ALICE.equals(5));
 
         // different application -> returns false
-        assertFalse(ALICE.equals(BOB));
+        assertFalse(ALICE.equals(BYTEDANCE));
 
         // different name -> returns false
         Application editedAlice = new ApplicationBuilder(ALICE).withName(VALID_NAME_BYTEDANCE).build();
@@ -82,7 +83,7 @@ public class ApplicationTest {
 
 
         // different tags -> returns false
-        editedAlice = new ApplicationBuilder(ALICE).withTags(VALID_TAG_PENDING).build();
+        editedAlice = new ApplicationBuilder(ALICE).withTags(VALID_TAG_AMAZON).build();
         assertFalse(ALICE.equals(editedAlice));
     }
 }

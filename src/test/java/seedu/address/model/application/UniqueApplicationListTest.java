@@ -3,11 +3,12 @@ package seedu.address.model.application;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_PENDING;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_REJECTED;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_STATUS_AMAZON;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_STATUS_BYTEDANCE;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_AMAZON;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalApplications.ALICE;
-import static seedu.address.testutil.TypicalApplications.BOB;
+import static seedu.address.testutil.TypicalApplications.BYTEDANCE;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -42,7 +43,7 @@ public class UniqueApplicationListTest {
     @Test
     public void contains_personWithSameIdentityFieldsInList_returnsTrue() {
         uniqueApplicationList.add(ALICE);
-        Application editedAlice = new ApplicationBuilder(ALICE).withTags(VALID_TAG_PENDING)
+        Application editedAlice = new ApplicationBuilder(ALICE).withTags(VALID_TAG_AMAZON)
                 .build();
         assertTrue(uniqueApplicationList.contains(editedAlice));
     }
@@ -85,7 +86,7 @@ public class UniqueApplicationListTest {
     @Test
     public void setPerson_editedPersonHasSameIdentity_success() {
         uniqueApplicationList.add(ALICE);
-        Application editedAlice = new ApplicationBuilder(ALICE).withTags(VALID_TAG_REJECTED)
+        Application editedAlice = new ApplicationBuilder(ALICE).withTags(VALID_TAG_AMAZON)
                 .build();
         uniqueApplicationList.setApplication(ALICE, editedAlice);
         UniqueApplicationList expectedUniqueApplicationList = new UniqueApplicationList();
@@ -96,17 +97,17 @@ public class UniqueApplicationListTest {
     @Test
     public void setPerson_editedPersonHasDifferentIdentity_success() {
         uniqueApplicationList.add(ALICE);
-        uniqueApplicationList.setApplication(ALICE, BOB);
+        uniqueApplicationList.setApplication(ALICE, BYTEDANCE);
         UniqueApplicationList expectedUniqueApplicationList = new UniqueApplicationList();
-        expectedUniqueApplicationList.add(BOB);
+        expectedUniqueApplicationList.add(BYTEDANCE);
         assertEquals(expectedUniqueApplicationList, uniqueApplicationList);
     }
 
     @Test
     public void setPerson_editedPersonHasNonUniqueIdentity_throwsDuplicatePersonException() {
         uniqueApplicationList.add(ALICE);
-        uniqueApplicationList.add(BOB);
-        assertThrows(DuplicateApplicationException.class, () -> uniqueApplicationList.setApplication(ALICE, BOB));
+        uniqueApplicationList.add(BYTEDANCE);
+        assertThrows(DuplicateApplicationException.class, () -> uniqueApplicationList.setApplication(ALICE, BYTEDANCE));
     }
 
     @Test
@@ -137,7 +138,7 @@ public class UniqueApplicationListTest {
     public void setPersons_uniquePersonList_replacesOwnListWithProvidedUniquePersonList() {
         uniqueApplicationList.add(ALICE);
         UniqueApplicationList expectedUniqueApplicationList = new UniqueApplicationList();
-        expectedUniqueApplicationList.add(BOB);
+        expectedUniqueApplicationList.add(BYTEDANCE);
         uniqueApplicationList.setApplications(expectedUniqueApplicationList);
         assertEquals(expectedUniqueApplicationList, uniqueApplicationList);
     }
@@ -150,10 +151,10 @@ public class UniqueApplicationListTest {
     @Test
     public void setPersons_list_replacesOwnListWithProvidedList() {
         uniqueApplicationList.add(ALICE);
-        List<Application> applicationList = Collections.singletonList(BOB);
+        List<Application> applicationList = Collections.singletonList(BYTEDANCE);
         uniqueApplicationList.setApplications(applicationList);
         UniqueApplicationList expectedUniqueApplicationList = new UniqueApplicationList();
-        expectedUniqueApplicationList.add(BOB);
+        expectedUniqueApplicationList.add(BYTEDANCE);
         assertEquals(expectedUniqueApplicationList, uniqueApplicationList);
     }
 

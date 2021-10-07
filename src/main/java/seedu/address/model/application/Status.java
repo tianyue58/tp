@@ -44,8 +44,8 @@ public class Status {
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof Position // instanceof handles nulls
-                && value.equals(((Position) other).value)); // state check
+                || (other instanceof Status // instanceof handles nulls
+                && value.equals(((Status) other).value)); // state check
     }
 
     @Override

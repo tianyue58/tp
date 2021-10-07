@@ -6,7 +6,8 @@ import static seedu.address.logic.commands.CommandTestUtil.DESC_AMAZON;
 import static seedu.address.logic.commands.CommandTestUtil.DESC_BYTEDANCE;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BYTEDANCE;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_POSITION_BYTEDANCE;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_PENDING;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_STATUS_AMAZON;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_AMAZON;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.logic.commands.CommandTestUtil.showPersonAtIndex;
@@ -55,10 +56,10 @@ public class EditCommandTest {
 
         ApplicationBuilder personInList = new ApplicationBuilder(lastApplication);
         Application editedApplication = personInList.withName(VALID_NAME_BYTEDANCE)
-                .withPosition(VALID_POSITION_BYTEDANCE).withTags(VALID_TAG_PENDING).build();
+                .withPosition(VALID_POSITION_BYTEDANCE).withTags(VALID_TAG_AMAZON).build();
 
         EditApplicationDescriptor descriptor = new EditApplicationDescriptorBuilder().withName(VALID_NAME_BYTEDANCE)
-                .withPosition(VALID_POSITION_BYTEDANCE).withTags(VALID_TAG_PENDING).build();
+                .withPosition(VALID_POSITION_BYTEDANCE).withTags(VALID_TAG_AMAZON).build();
         EditCommand editCommand = new EditCommand(indexLastPerson, descriptor);
 
         String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_PERSON_SUCCESS, editedApplication);
