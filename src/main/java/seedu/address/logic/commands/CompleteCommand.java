@@ -57,7 +57,7 @@ public class CompleteCommand extends Command {
         model.setApplication(applicationToComplete, completedApplication);
         //need to change PERSON
         //model.updateFilteredApplicationList(PREDICATE_SHOW_ALL_PERSONS);
-        return new CommandResult(String.format(MESSAGE_SUCCESS, applicationToComplete));
+        return new CommandResult(String.format(MESSAGE_SUCCESS, completedApplication));
 
     }
 
