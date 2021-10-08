@@ -66,13 +66,11 @@ public class NameContainsKeywordsPredicateTest {
         // Non-matching keyword
         predicate = new NameContainsKeywordsPredicate(Arrays.asList("DBS"));
         assertFalse(predicate.test(new ApplicationBuilder().withCompany("Shopee Grab").build()));
-
+        
         //this test case needs to be fixed!
-
         //Keywords match position, but does not match name
-//        predicate = new NameContainsKeywordsPredicate(Arrays.asList("Software Engineer"));
-//        assertFalse(predicate.test(new ApplicationBuilder().
-//                withCompany("Shopee").withPosition("Software Engineer").withDeadline("2021-12-25").build()));
-
+        predicate = new NameContainsKeywordsPredicate(Arrays.asList("Software Engineer"));
+        assertFalse(predicate.test(new ApplicationBuilder().withCompany("Shopee")
+                .withPosition("Software Engineer").withDeadline("2021-12-25").build()));
     }
 }
