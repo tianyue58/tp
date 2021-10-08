@@ -7,7 +7,7 @@ import java.util.stream.Stream;
 import seedu.address.logic.commands.EditCommand.EditApplicationDescriptor;
 import seedu.address.model.application.Application;
 import seedu.address.model.application.Deadline;
-import seedu.address.model.application.Name;
+import seedu.address.model.application.Company;
 import seedu.address.model.application.Position;
 import seedu.address.model.tag.Tag;
 
@@ -31,7 +31,7 @@ public class EditApplicationDescriptorBuilder {
      */
     public EditApplicationDescriptorBuilder(Application application) {
         descriptor = new EditApplicationDescriptor();
-        descriptor.setName(application.getName());
+        descriptor.setCompany(application.getCompany());
         descriptor.setPosition(application.getPosition());
         descriptor.setDeadline(application.getDeadline());
     }
@@ -39,8 +39,8 @@ public class EditApplicationDescriptorBuilder {
     /**
      * Sets the {@code Name} of the {@code EditPersonDescriptor} that we are building.
      */
-    public EditApplicationDescriptorBuilder withName(String name) {
-        descriptor.setName(new Name(name));
+    public EditApplicationDescriptorBuilder withCompany(String company) {
+        descriptor.setCompany(new Company(company));
         return this;
     }
 

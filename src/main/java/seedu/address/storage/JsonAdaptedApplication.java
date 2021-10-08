@@ -13,7 +13,7 @@ import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.application.Application;
 import seedu.address.model.application.Completion;
 import seedu.address.model.application.Deadline;
-import seedu.address.model.application.Name;
+import seedu.address.model.application.Company;
 import seedu.address.model.application.Position;
 import seedu.address.model.application.Status;
 import seedu.address.model.tag.Tag;
@@ -25,25 +25,29 @@ class JsonAdaptedApplication {
 
     public static final String MISSING_FIELD_MESSAGE_FORMAT = "Application's %s field is missing!";
 
-    private final String name;
+    private final String company;
     private final String position;
     private final String deadline;
-    private final String status = "Pending";
+    private final String status;
     private final List<JsonAdaptedTag> tagged = new ArrayList<>();
     private final String completion;
+
 
     /**
      * Constructs a {@code JsonAdaptedApplication} with the given application details.
      */
     @JsonCreator
-    public JsonAdaptedApplication(@JsonProperty("name") String name, @JsonProperty("position") String position,
+    public JsonAdaptedApplication(@JsonProperty("company") String company,
+                                  @JsonProperty("position") String position,
                                   @JsonProperty("deadline") String deadline,
+                                  @JsonProperty("status") String status,
                                   @JsonProperty("tagged") List<JsonAdaptedTag> tagged,
-                                  @JsonProperty("completion") String completion) {
-
-        this.name = name;
+                                  @JsonProperty("completion") String completion
+                                  ) {
+        this.company = company;
         this.position = position;
         this.deadline = deadline;
+        this.status = status;
         if (tagged != null) {
             this.tagged.addAll(tagged);
         }
@@ -54,9 +58,10 @@ class JsonAdaptedApplication {
      * Converts a given {@code Application} into this class for Jackson use.
      */
     public JsonAdaptedApplication(Application source) {
-        name = source.getName().fullName;
+        company = source.getCompany().fullCompanyName;
         position = source.getPosition().value;
         deadline = source.getDeadline().value;
+        status = source.getStatus().value;
         tagged.addAll(source.getTags().stream()
                 .map(JsonAdaptedTag::new)
                 .collect(Collectors.toList()));
@@ -69,18 +74,18 @@ class JsonAdaptedApplication {
      * @throws IllegalValueException if there were any data constraints violated in the adapted application.
      */
     public Application toModelType() throws IllegalValueException {
-        final List<Tag> personTags = new ArrayList<>();
+        final List<Tag> applicationTags = new ArrayList<>();
         for (JsonAdaptedTag tag : tagged) {
-            personTags.add(tag.toModelType());
+            applicationTags.add(tag.toModelType());
         }
 
-        if (name == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Name.class.getSimpleName()));
+        if (company == null) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Company.class.getSimpleName()));
         }
-        if (!Name.isValidName(name)) {
-            throw new IllegalValueException(Name.MESSAGE_CONSTRAINTS);
+        if (!Company.isValidCompanyName(company)) {
+            throw new IllegalValueException(Company.MESSAGE_CONSTRAINTS);
         }
-        final Name modelName = new Name(name);
+        final Company modelName = new Company(company);
 
         if (position == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
@@ -89,11 +94,12 @@ class JsonAdaptedApplication {
         if (!Position.isValidPosition(position)) {
             throw new IllegalValueException(Position.MESSAGE_CONSTRAINTS);
         }
+        final Position modelPosition = new Position(position);
 
         if (!Status.isValidStatus(status)) {
             throw new IllegalValueException(Status.MESSAGE_CONSTRAINTS);
         }
-        final Position modelPosition = new Position(position);
+        final Status modelStatus = new Status(status);
 
         if (deadline == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
@@ -104,15 +110,15 @@ class JsonAdaptedApplication {
         }
         final Deadline modelDeadline = new Deadline(deadline);
 
-        final Status modelStatus = new Status(status);
-
-        final Set<Tag> modelTags = new HashSet<>(personTags);
+        final Set<Tag> modelTags = new HashSet<>(applicationTags);
 
         if (completion == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
                     Completion.class.getSimpleName()));
         }
-        //TODO validity check for Completion
+        if (!Completion.isValidCompletion(completion)) {
+            throw new IllegalValueException(Completion.MESSAGE_CONSTRAINTS);
+        }
         final Completion modelCompletion = new Completion(completion);
 
         return new Application(modelName, modelPosition, modelDeadline, modelStatus, modelTags, modelCompletion);

@@ -4,9 +4,9 @@ import java.util.HashSet;
 import java.util.Set;
 
 import seedu.address.model.application.Application;
+import seedu.address.model.application.Company;
 import seedu.address.model.application.Completion;
 import seedu.address.model.application.Deadline;
-import seedu.address.model.application.Name;
 import seedu.address.model.application.Position;
 import seedu.address.model.application.Status;
 import seedu.address.model.tag.Tag;
@@ -17,13 +17,13 @@ import seedu.address.model.util.SampleDataUtil;
  */
 public class ApplicationBuilder {
 
-    public static final String DEFAULT_NAME = "Gojek";
+    public static final String DEFAULT_COMPANY = "Gojek";
     public static final String DEFAULT_POSITION = "Machine Learning Engineer";
     public static final String DEFAULT_DEADLINE = "2021-12-04";
     public static final String DEFAULT_COMPLETION = "Uncompleted";
     public static final String DEFAULT_STATUS = "Pending";
 
-    private Name name;
+    private Company company;
     private Position position;
     private Deadline deadline;
     private Status status;
@@ -34,7 +34,7 @@ public class ApplicationBuilder {
      * Creates a {@code ApplicationBuilder} with the default details.
      */
     public ApplicationBuilder() {
-        name = new Name(DEFAULT_NAME);
+        company = new Company(DEFAULT_COMPANY);
         position = new Position(DEFAULT_POSITION);
         deadline = new Deadline(DEFAULT_DEADLINE);
         status = new Status(DEFAULT_STATUS);
@@ -46,7 +46,7 @@ public class ApplicationBuilder {
      * Initializes the ApplicationBuilder with the data of {@code applicationToCopy}.
      */
     public ApplicationBuilder(Application applicationToCopy) {
-        name = applicationToCopy.getName();
+        company = applicationToCopy.getCompany();
         position = applicationToCopy.getPosition();
         deadline = applicationToCopy.getDeadline();
         status = applicationToCopy.getStatus();
@@ -57,8 +57,8 @@ public class ApplicationBuilder {
     /**
      * Sets the {@code Name} of the {@code Application} that we are building.
      */
-    public ApplicationBuilder withName(String name) {
-        this.name = new Name(name);
+    public ApplicationBuilder withCompany(String company) {
+        this.company = new Company(company);
         return this;
     }
 
@@ -104,7 +104,7 @@ public class ApplicationBuilder {
     }
 
     public Application build() {
-        return new Application(name, position, deadline, status, tags, completion);
+        return new Application(company, position, deadline, status, tags, completion);
     }
 
 }

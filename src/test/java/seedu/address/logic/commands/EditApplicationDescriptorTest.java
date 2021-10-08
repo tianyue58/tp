@@ -35,7 +35,7 @@ public class EditApplicationDescriptorTest {
 
         // different name -> returns false
         EditCommand.EditApplicationDescriptor editedAmy = new EditApplicationDescriptorBuilder(DESC_AMAZON)
-                .withName(VALID_NAME_BYTEDANCE).build();
+                .withCompany(VALID_NAME_BYTEDANCE).build();
         assertFalse(DESC_AMAZON.equals(editedAmy));
 
         // different position -> returns false

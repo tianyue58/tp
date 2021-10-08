@@ -12,7 +12,7 @@ import seedu.address.model.Model;
 import seedu.address.model.application.Application;
 import seedu.address.model.application.Completion;
 import seedu.address.model.application.Deadline;
-import seedu.address.model.application.Name;
+import seedu.address.model.application.Company;
 import seedu.address.model.application.Position;
 import seedu.address.model.application.Status;
 import seedu.address.model.tag.Tag;
@@ -50,17 +50,16 @@ public class CompleteCommand extends Command {
 
         Application applicationToComplete = lastShownList.get(targetIndex.getZeroBased());
 
-        Name name = applicationToComplete.getName();
+        Company company = applicationToComplete.getCompany();
         Position position = applicationToComplete.getPosition();
         Deadline deadline = applicationToComplete.getDeadline();
         Status status = applicationToComplete.getStatus();
         Set<Tag> tagList = applicationToComplete.getTags();
         Completion completion = new Completion("Completed");
 
-        Application completedApplication = new Application(name, position, deadline, status, tagList, completion);
+        Application completedApplication = new Application(company, position, deadline, status, tagList, completion);
         model.setApplication(applicationToComplete, completedApplication);
-        //need to change PERSON
-        //model.updateFilteredApplicationList(PREDICATE_SHOW_ALL_PERSONS);
+        model.updateFilteredApplicationList(Model.PREDICATE_SHOW_ALL_APPLICATIONS);
         return new CommandResult(String.format(MESSAGE_SUCCESS, completedApplication));
 
     }

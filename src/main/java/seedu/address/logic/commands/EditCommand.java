@@ -6,8 +6,9 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_DEADLINE_OF_APPLICATIO
 import static seedu.address.logic.parser.CliSyntax.PREFIX_INTERNSHIP_POSITION;
 //import static seedu.address.logic.parser.CliSyntax.PREFIX_STATUS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
-import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
+import static seedu.address.model.Model.PREDICATE_SHOW_ALL_APPLICATIONS;
 
+import java.security.cert.CertificateParsingException;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
@@ -22,7 +23,7 @@ import seedu.address.model.Model;
 import seedu.address.model.application.Application;
 import seedu.address.model.application.Completion;
 import seedu.address.model.application.Deadline;
-import seedu.address.model.application.Name;
+import seedu.address.model.application.Company;
 import seedu.address.model.application.Position;
 import seedu.address.model.application.Status;
 import seedu.address.model.tag.Tag;
@@ -38,7 +39,7 @@ public class EditCommand extends Command {
             + "by the index number used in the displayed application list. "
             + "Existing values will be overwritten by the input values.\n"
             + "Parameters: INDEX (must be a positive integer) "
-            + "[" + PREFIX_COMPANY_NAME + "NAME] "
+            + "[" + PREFIX_COMPANY_NAME + "COMPANY] "
             + "[" + PREFIX_INTERNSHIP_POSITION + "POSITION] "
             + "[" + PREFIX_DEADLINE_OF_APPLICATION + "DEADLINE] "
             + "[" + PREFIX_TAG + "TAG]...\n"
@@ -83,7 +84,7 @@ public class EditCommand extends Command {
         }
 
         model.setApplication(applicationToEdit, editedApplication);
-        model.updateFilteredApplicationList(PREDICATE_SHOW_ALL_PERSONS);
+        model.updateFilteredApplicationList(PREDICATE_SHOW_ALL_APPLICATIONS);
         return new CommandResult(String.format(MESSAGE_EDIT_PERSON_SUCCESS, editedApplication));
     }
 
@@ -95,14 +96,14 @@ public class EditCommand extends Command {
                                                   EditApplicationDescriptor editApplicationDescriptor) {
         assert applicationToEdit != null;
 
-        Name updatedName = editApplicationDescriptor.getName().orElse(applicationToEdit.getName());
+        Company updatedCompany = editApplicationDescriptor.getCompany().orElse(applicationToEdit.getCompany());
         Position updatedPosition = editApplicationDescriptor.getPosition().orElse(applicationToEdit.getPosition());
         Status updatedStatus = editApplicationDescriptor.getStatus().orElse(applicationToEdit.getStatus());
         Deadline updatedDeadline = editApplicationDescriptor.getDeadline().orElse(applicationToEdit.getDeadline());
         Set<Tag> updatedTags = editApplicationDescriptor.getTags().orElse(applicationToEdit.getTags());
         Completion completion = applicationToEdit.getCompletion();
 
-        return new Application(updatedName, updatedPosition, updatedDeadline, updatedStatus, updatedTags, completion);
+        return new Application(updatedCompany, updatedPosition, updatedDeadline, updatedStatus, updatedTags, completion);
     }
 
     @Override
@@ -128,7 +129,7 @@ public class EditCommand extends Command {
      * corresponding field value of the application.
      */
     public static class EditApplicationDescriptor {
-        private Name name;
+        private Company company;
         private Position position;
         private Deadline deadline;
         private Status status;
@@ -141,7 +142,7 @@ public class EditCommand extends Command {
          * A defensive copy of {@code tags} is used internally.
          */
         public EditApplicationDescriptor(EditApplicationDescriptor toCopy) {
-            setName(toCopy.name);
+            setCompany(toCopy.company);
             setPosition(toCopy.position);
             setDeadline(toCopy.deadline);
             setStatus(toCopy.status);
@@ -152,15 +153,15 @@ public class EditCommand extends Command {
          * Returns true if at least one field is edited.
          */
         public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyNonNull(name, position, deadline, status, tags);
+            return CollectionUtil.isAnyNonNull(company, position, deadline, status, tags);
         }
 
-        public void setName(Name name) {
-            this.name = name;
+        public void setCompany(Company company) {
+            this.company = company;
         }
 
-        public Optional<Name> getName() {
-            return Optional.ofNullable(name);
+        public Optional<Company> getCompany() {
+            return Optional.ofNullable(company);
         }
 
         public void setPosition(Position position) {
@@ -221,7 +222,7 @@ public class EditCommand extends Command {
             // state check
             EditApplicationDescriptor e = (EditApplicationDescriptor) other;
 
-            return getName().equals(e.getName())
+            return getCompany().equals(e.getCompany())
                     && getPosition().equals(e.getPosition())
                     && getDeadline().equals(e.getDeadline())
                     && getStatus().equals(e.getStatus())
