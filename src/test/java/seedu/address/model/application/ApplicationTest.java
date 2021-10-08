@@ -10,7 +10,8 @@ import static seedu.address.logic.commands.CommandTestUtil.VALID_POSITION_BYTEDA
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_AMAZON;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_BYTEDANCE;
 import static seedu.address.testutil.Assert.assertThrows;
-import static seedu.address.testutil.TypicalApplications.*;
+import static seedu.address.testutil.TypicalApplications.AMAZON;
+import static seedu.address.testutil.TypicalApplications.BYTEDANCE;
 
 import org.junit.jupiter.api.Test;
 

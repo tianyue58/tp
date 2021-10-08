@@ -38,7 +38,7 @@ public class JsonAdaptedApplicationTest {
     }
 
     @Test
-    public void toModelType_invalidCOMPANY_throwsIllegalValueException() {
+    public void toModelType_invalidCompany_throwsIllegalValueException() {
         JsonAdaptedApplication application =
                 new JsonAdaptedApplication(INVALID_COMPANY, VALID_POSITION, VALID_DEADLINE,
                         VALID_STATUS, VALID_TAGS, VALID_COMPLETION);
@@ -47,7 +47,7 @@ public class JsonAdaptedApplicationTest {
     }
 
     @Test
-    public void toModelType_nullCOMPANY_throwsIllegalValueException() {
+    public void toModelType_nullCompany_throwsIllegalValueException() {
         JsonAdaptedApplication application = new JsonAdaptedApplication(null, VALID_POSITION,
                 VALID_DEADLINE, VALID_STATUS,
                 VALID_TAGS, VALID_COMPLETION);

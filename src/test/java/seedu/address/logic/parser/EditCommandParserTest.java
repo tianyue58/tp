@@ -89,10 +89,10 @@ public class EditCommandParserTest {
         // while parsing {@code PREFIX_TAG} alone will reset the tags of the {@code Application} being edited,
         // parsing it together with a valid tag results in error
         assertParseFailure(parser, "1" + STATUS_DESC_BYTEDANCE + TAG_EMPTY, Tag.MESSAGE_CONSTRAINTS);
-        assertParseFailure(parser, "1" + STATUS_DESC_BYTEDANCE + TAG_EMPTY +
-                STATUS_DESC_AMAZON, Tag.MESSAGE_CONSTRAINTS);
-        assertParseFailure(parser, "1" + TAG_EMPTY + STATUS_DESC_BYTEDANCE +
-                STATUS_DESC_AMAZON, Tag.MESSAGE_CONSTRAINTS);
+        assertParseFailure(parser, "1" + STATUS_DESC_BYTEDANCE + TAG_EMPTY
+                + STATUS_DESC_AMAZON, Tag.MESSAGE_CONSTRAINTS);
+        assertParseFailure(parser, "1" + TAG_EMPTY + STATUS_DESC_BYTEDANCE
+                + STATUS_DESC_AMAZON, Tag.MESSAGE_CONSTRAINTS);
 
         // multiple invalid values, but only the first invalid value is captured
         assertParseFailure(parser, "1" + INVALID_NAME_DESC + INVALID_DEADLINE_DESC + VALID_DEADLINE_AMAZON,
