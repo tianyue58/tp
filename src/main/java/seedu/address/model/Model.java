@@ -42,12 +42,12 @@ public interface Model {
     /**
      * Sets the user prefs' Internship file path.
      */
-    void setInternshipFilePath(Path InternshipFilePath);
+    void setInternshipFilePath(Path internshipFilePath);
 
     /**
-     * Replaces Internship data with the data in {@code Internship}.
+     * Replaces Internship data with the data in {@code internship}.
      */
-    void setInternship(ReadOnlyInternship Internship);
+    void setInternship(ReadOnlyInternship internship);
 
     /** Returns the Internship */
     ReadOnlyInternship getInternship();

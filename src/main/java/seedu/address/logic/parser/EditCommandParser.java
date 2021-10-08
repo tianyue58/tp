@@ -44,7 +44,8 @@ public class EditCommandParser implements Parser<EditCommand> {
 
         EditApplicationDescriptor editApplicationDescriptor = new EditApplicationDescriptor();
         if (argMultimap.getValue(PREFIX_COMPANY_NAME).isPresent()) {
-            editApplicationDescriptor.setCompany(ParserUtil.parseCompany(argMultimap.getValue(PREFIX_COMPANY_NAME).get()));
+            editApplicationDescriptor.setCompany(ParserUtil.parseCompany(
+                    argMultimap.getValue(PREFIX_COMPANY_NAME).get()));
         }
         if (argMultimap.getValue(PREFIX_INTERNSHIP_POSITION).isPresent()) {
             editApplicationDescriptor.setPosition(ParserUtil.parsePosition(

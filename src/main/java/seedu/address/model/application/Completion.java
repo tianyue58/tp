@@ -11,21 +11,18 @@ public class Completion {
 
     public static final String MESSAGE_CONSTRAINTS = "Completion can be 'Completed' or 'Uncompleted'."
             + "It will be 'Uncompleted' by default for a new Application that is added.";
-
-    public final String value;
-
-    /**
-     * Constructs a {@code Completion}.
-     *
-     * @param status A valid completion status.
-     */
-
     /*
      * The first character of the completion must not be
      * a whitespace.
      */
     public static final String VALIDATION_REGEX = "[^\\s].*";
 
+    public final String value;
+
+    /**
+     * Constructs a {@code Completion}.
+     *
+     */
     public Completion(String status) {
         requireNonNull(status);
         checkArgument(isValidCompletion(status), MESSAGE_CONSTRAINTS);
