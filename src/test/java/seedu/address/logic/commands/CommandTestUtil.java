@@ -14,7 +14,7 @@ import java.util.List;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.exceptions.CommandException;
-import seedu.address.model.AddressBook;
+import seedu.address.model.Internship;
 import seedu.address.model.Model;
 import seedu.address.model.application.Application;
 import seedu.address.model.application.NameContainsKeywordsPredicate;
@@ -62,9 +62,9 @@ public class CommandTestUtil {
     public static final EditCommand.EditApplicationDescriptor DESC_BYTEDANCE;
 
     static {
-        DESC_AMAZON = new EditApplicationDescriptorBuilder().withName(VALID_NAME_AMAZON)
+        DESC_AMAZON = new EditApplicationDescriptorBuilder().withCompany(VALID_NAME_AMAZON)
                 .withPosition(VALID_POSITION_AMAZON).withDeadline(VALID_DEADLINE_AMAZON).build();
-        DESC_BYTEDANCE = new EditApplicationDescriptorBuilder().withName(VALID_NAME_BYTEDANCE)
+        DESC_BYTEDANCE = new EditApplicationDescriptorBuilder().withCompany(VALID_NAME_BYTEDANCE)
                 .withPosition(VALID_POSITION_BYTEDANCE).withDeadline(VALID_DEADLINE_BYTEDANCE).build();
     }
 
@@ -103,11 +103,11 @@ public class CommandTestUtil {
     public static void assertCommandFailure(Command command, Model actualModel, String expectedMessage) {
         // we are unable to defensively copy the model for comparison later, so we can
         // only do so by copying its components.
-        AddressBook expectedAddressBook = new AddressBook(actualModel.getAddressBook());
+        Internship expectedAddressBook = new Internship(actualModel.getInternship());
         List<Application> expectedFilteredList = new ArrayList<>(actualModel.getFilteredApplicationList());
 
         assertThrows(CommandException.class, expectedMessage, () -> command.execute(actualModel));
-        assertEquals(expectedAddressBook, actualModel.getAddressBook());
+        assertEquals(expectedAddressBook, actualModel.getInternship());
         assertEquals(expectedFilteredList, actualModel.getFilteredApplicationList());
     }
     /**
@@ -118,7 +118,7 @@ public class CommandTestUtil {
         assertTrue(targetIndex.getZeroBased() < model.getFilteredApplicationList().size());
 
         Application application = model.getFilteredApplicationList().get(targetIndex.getZeroBased());
-        final String[] splitName = application.getName().fullName.split("\\s+");
+        final String[] splitName = application.getCompany().fullCompanyName.split("\\s+");
         model.updateFilteredApplicationList(new NameContainsKeywordsPredicate(Arrays.asList(splitName[0])));
 
         assertEquals(1, model.getFilteredApplicationList().size());

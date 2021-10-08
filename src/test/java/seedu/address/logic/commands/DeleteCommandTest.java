@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.logic.commands.CommandTestUtil.showPersonAtIndex;
-import static seedu.address.testutil.TypicalApplications.getTypicalAddressBook;
+import static seedu.address.testutil.TypicalApplications.getTypicalInternship;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_APPLICATION;
 import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_APPLICATION;
 
@@ -24,7 +24,7 @@ import seedu.address.model.application.Application;
  */
 public class DeleteCommandTest {
 
-    private Model model = new ModelManager(getTypicalAddressBook(), new UserPrefs());
+    private Model model = new ModelManager(getTypicalInternship(), new UserPrefs());
 
     @Test
     public void execute_validIndexUnfilteredList_success() {
@@ -34,7 +34,7 @@ public class DeleteCommandTest {
 
         String expectedMessage = String.format(DeleteCommand.MESSAGE_DELETE_PERSON_SUCCESS, applicationToDelete);
 
-        ModelManager expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
+        ModelManager expectedModel = new ModelManager(model.getInternship(), new UserPrefs());
         expectedModel.deleteApplication(applicationToDelete);
 
         assertCommandSuccess(deleteCommand, model, expectedMessage, expectedModel);
@@ -58,7 +58,7 @@ public class DeleteCommandTest {
 
         String expectedMessage = String.format(DeleteCommand.MESSAGE_DELETE_PERSON_SUCCESS, applicationToDelete);
 
-        Model expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
+        Model expectedModel = new ModelManager(model.getInternship(), new UserPrefs());
         expectedModel.deleteApplication(applicationToDelete);
         showNoPerson(expectedModel);
 
@@ -70,8 +70,8 @@ public class DeleteCommandTest {
         showPersonAtIndex(model, INDEX_FIRST_APPLICATION);
 
         Index outOfBoundIndex = INDEX_SECOND_APPLICATION;
-        // ensures that outOfBoundIndex is still in bounds of address book list
-        assertTrue(outOfBoundIndex.getZeroBased() < model.getAddressBook().getApplicationList().size());
+        // ensures that outOfBoundIndex is still in bounds of Internship list
+        assertTrue(outOfBoundIndex.getZeroBased() < model.getInternship().getApplicationList().size());
 
         DeleteCommand deleteCommand = new DeleteCommand(outOfBoundIndex);
 

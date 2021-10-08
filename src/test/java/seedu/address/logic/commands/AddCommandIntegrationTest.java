@@ -2,7 +2,7 @@ package seedu.address.logic.commands;
 
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
-import static seedu.address.testutil.TypicalApplications.getTypicalAddressBook;
+import static seedu.address.testutil.TypicalApplications.getTypicalInternship;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -22,14 +22,14 @@ public class AddCommandIntegrationTest {
 
     @BeforeEach
     public void setUp() {
-        model = new ModelManager(getTypicalAddressBook(), new UserPrefs());
+        model = new ModelManager(getTypicalInternship(), new UserPrefs());
     }
 
     @Test
-    public void execute_newPerson_success() {
+    public void execute_newApplication_success() {
         Application validApplication = new ApplicationBuilder().build();
 
-        Model expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
+        Model expectedModel = new ModelManager(model.getInternship(), new UserPrefs());
         expectedModel.addApplication(validApplication);
 
         assertCommandSuccess(new AddCommand(validApplication), model,
@@ -37,8 +37,8 @@ public class AddCommandIntegrationTest {
     }
 
     @Test
-    public void execute_duplicatePerson_throwsCommandException() {
-        Application applicationInList = model.getAddressBook().getApplicationList().get(0);
+    public void execute_duplicateApplication_throwsCommandException() {
+        Application applicationInList = model.getInternship().getApplicationList().get(0);
         assertCommandFailure(new AddCommand(applicationInList),
                 model, AddCommand.MESSAGE_DUPLICATE_APPLICATION);
     }
