@@ -29,7 +29,7 @@ import org.junit.jupiter.api.Test;
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.EditCommand;
 import seedu.address.logic.commands.EditCommand.EditApplicationDescriptor;
-import seedu.address.model.application.Name;
+import seedu.address.model.application.Company;
 import seedu.address.model.application.Position;
 import seedu.address.model.tag.Tag;
 import seedu.address.testutil.EditApplicationDescriptorBuilder;
@@ -72,7 +72,7 @@ public class EditCommandParserTest {
 
     @Test
     public void parse_invalidValue_failure() {
-        assertParseFailure(parser, "1" + INVALID_NAME_DESC, Name.MESSAGE_CONSTRAINTS); // invalid name
+        assertParseFailure(parser, "1" + INVALID_NAME_DESC, Company.MESSAGE_CONSTRAINTS); // invalid name
         assertParseFailure(parser, "1" + INVALID_POSITION_DESC, Position.MESSAGE_CONSTRAINTS); // invalid phone
         // assertParseFailure(parser, "1" + INVALID_DEADLINE_DESC, Deadline.MESSAGE_CONSTRAINTS);// invalid email
         assertParseFailure(parser, "1" + INVALID_TAG_DESC, Tag.MESSAGE_CONSTRAINTS); // invalid tag
@@ -94,7 +94,7 @@ public class EditCommandParserTest {
 
         // multiple invalid values, but only the first invalid value is captured
         assertParseFailure(parser, "1" + INVALID_NAME_DESC + INVALID_DEADLINE_DESC + VALID_DEADLINE_AMAZON,
-                Name.MESSAGE_CONSTRAINTS);
+                Company.MESSAGE_CONSTRAINTS);
     }
 
     //    @Test
@@ -103,7 +103,7 @@ public class EditCommandParserTest {
     //        String userInput = targetIndex.getOneBased() + POSITION_DESC_BYTEDANCE + TAG_DESC_PENDING
     //                + DEADLINE_DESC_AMAZON + NAME_DESC_AMAZON + TAG_DESC_REJECTED;
     //
-    //        EditApplicationDescriptor descriptor = new EditApplicationDescriptorBuilder().withName(VALID_NAME_AMAZON)
+    //        EditApplicationDescriptor descriptor = new EditApplicationDescriptorBuilder().withCompany(VALID_NAME_AMAZON)
     //                .withPosition(VALID_POSITION_BYTEDANCE).withDeadline(VALID_DEADLINE_AMAZON)
     //                .withTags(VALID_TAG_PENDING).build();
     //        EditCommand expectedCommand = new EditCommand(targetIndex, descriptor);
@@ -130,7 +130,7 @@ public class EditCommandParserTest {
         Index targetIndex = INDEX_THIRD_APPLICATION;
         String userInput = targetIndex.getOneBased() + NAME_DESC_AMAZON;
         EditApplicationDescriptor descriptor = new EditApplicationDescriptorBuilder()
-                .withName(VALID_NAME_AMAZON).build();
+                .withCompany(VALID_NAME_AMAZON).build();
         EditCommand expectedCommand = new EditCommand(targetIndex, descriptor);
         assertParseSuccess(parser, userInput, expectedCommand);
 
