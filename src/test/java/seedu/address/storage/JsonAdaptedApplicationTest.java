@@ -16,6 +16,7 @@ import seedu.address.model.application.Deadline;
 import seedu.address.model.application.Position;
 
 public class JsonAdaptedApplicationTest {
+
     private static final String INVALID_COMPANY = "433#$%";
     private static final String INVALID_POSITION = " ";
     private static final String INVALID_DEADLINE = "243114";
@@ -39,49 +40,54 @@ public class JsonAdaptedApplicationTest {
     @Test
     public void toModelType_invalidCOMPANY_throwsIllegalValueException() {
         JsonAdaptedApplication application =
-                new JsonAdaptedApplication(INVALID_COMPANY, VALID_POSITION, VALID_DEADLINE, VALID_STATUS, VALID_TAGS, VALID_COMPLETION);
+                new JsonAdaptedApplication(INVALID_COMPANY, VALID_POSITION, VALID_DEADLINE,
+                        VALID_STATUS, VALID_TAGS, VALID_COMPLETION);
         String expectedMessage = Company.MESSAGE_CONSTRAINTS;
         assertThrows(IllegalValueException.class, expectedMessage, application::toModelType);
     }
 
     @Test
     public void toModelType_nullCOMPANY_throwsIllegalValueException() {
-        JsonAdaptedApplication application = new JsonAdaptedApplication(null, VALID_POSITION, VALID_DEADLINE, VALID_STATUS,
+        JsonAdaptedApplication application = new JsonAdaptedApplication(null, VALID_POSITION,
+                VALID_DEADLINE, VALID_STATUS,
                 VALID_TAGS, VALID_COMPLETION);
         String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, Company.class.getSimpleName());
         assertThrows(IllegalValueException.class, expectedMessage, application::toModelType);
     }
 
-
     @Test
     public void toModelType_invalidPosition_throwsIllegalValueException() {
         JsonAdaptedApplication application =
-                new JsonAdaptedApplication(VALID_COMPANY, INVALID_POSITION, VALID_DEADLINE, VALID_STATUS, VALID_TAGS, VALID_COMPLETION);
+                new JsonAdaptedApplication(VALID_COMPANY, INVALID_POSITION, VALID_DEADLINE, VALID_STATUS,
+                        VALID_TAGS, VALID_COMPLETION);
         String expectedMessage = Position.MESSAGE_CONSTRAINTS;
         assertThrows(IllegalValueException.class, expectedMessage, application::toModelType);
     }
 
-        @Test
-        public void toModelType_nullPosition_throwsIllegalValueException() {
-            JsonAdaptedApplication application = new JsonAdaptedApplication(VALID_COMPANY, null, VALID_DEADLINE, VALID_STATUS, VALID_TAGS, VALID_COMPLETION);
-            String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, Position.class.getSimpleName());
-            assertThrows(IllegalValueException.class, expectedMessage, application::toModelType);
-        }
+    @Test
+    public void toModelType_nullPosition_throwsIllegalValueException() {
+        JsonAdaptedApplication application = new JsonAdaptedApplication(VALID_COMPANY, null,
+                VALID_DEADLINE, VALID_STATUS, VALID_TAGS, VALID_COMPLETION);
+        String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, Position.class.getSimpleName());
+        assertThrows(IllegalValueException.class, expectedMessage, application::toModelType);
+    }
 
-        @Test
-        public void toModelType_invalidDeadline_throwsIllegalValueException() {
-            JsonAdaptedApplication application =
-                    new JsonAdaptedApplication(VALID_COMPANY, VALID_POSITION, INVALID_DEADLINE, VALID_STATUS, VALID_TAGS, VALID_COMPLETION);
-            String expectedMessage = Deadline.MESSAGE_CONSTRAINTS;
-            assertThrows(IllegalValueException.class, expectedMessage, application::toModelType);
-        }
+    @Test
+    public void toModelType_invalidDeadline_throwsIllegalValueException() {
+        JsonAdaptedApplication application =
+                new JsonAdaptedApplication(VALID_COMPANY, VALID_POSITION, INVALID_DEADLINE,
+                        VALID_STATUS, VALID_TAGS, VALID_COMPLETION);
+        String expectedMessage = Deadline.MESSAGE_CONSTRAINTS;
+        assertThrows(IllegalValueException.class, expectedMessage, application::toModelType);
+    }
 
-        @Test
-        public void toModelType_nullDeadline_throwsIllegalValueException() {
-            JsonAdaptedApplication application = new JsonAdaptedApplication(VALID_COMPANY, VALID_POSITION, null, VALID_STATUS, VALID_TAGS, VALID_COMPLETION);
-            String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, Deadline.class.getSimpleName());
-            assertThrows(IllegalValueException.class, expectedMessage, application::toModelType);
-        }
+    @Test
+    public void toModelType_nullDeadline_throwsIllegalValueException() {
+        JsonAdaptedApplication application = new JsonAdaptedApplication(VALID_COMPANY, VALID_POSITION,
+                null, VALID_STATUS, VALID_TAGS, VALID_COMPLETION);
+        String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, Deadline.class.getSimpleName());
+        assertThrows(IllegalValueException.class, expectedMessage, application::toModelType);
+    }
 
 
 }

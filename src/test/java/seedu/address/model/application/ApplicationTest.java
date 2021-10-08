@@ -4,7 +4,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static seedu.address.logic.commands.CommandTestUtil.*;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_DEADLINE_BYTEDANCE;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BYTEDANCE;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_POSITION_BYTEDANCE;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_AMAZON;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_BYTEDANCE;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalApplications.*;
 
@@ -29,17 +33,18 @@ public class ApplicationTest {
         assertFalse(AMAZON.isSameApplication(null));
 
         // same name, all other attributes different -> returns true
-        Application editedAMAZON = new ApplicationBuilder(AMAZON).withPosition(VALID_POSITION_BYTEDANCE)
+        Application editedAmazon = new ApplicationBuilder(AMAZON).withPosition(VALID_POSITION_BYTEDANCE)
                 .withDeadline(VALID_DEADLINE_BYTEDANCE)
                 .withTags(VALID_TAG_AMAZON).build();
-        assertTrue(AMAZON.isSameApplication(editedAMAZON));
+        assertTrue(AMAZON.isSameApplication(editedAmazon));
 
         // different name, all other attributes same -> returns false
-        editedAMAZON = new ApplicationBuilder(AMAZON).withCompany(VALID_NAME_BYTEDANCE).build();
-        assertFalse(AMAZON.isSameApplication(editedAMAZON));
+        editedAmazon = new ApplicationBuilder(AMAZON).withCompany(VALID_NAME_BYTEDANCE).build();
+        assertFalse(AMAZON.isSameApplication(editedAmazon));
 
         // name differs in case, all other attributes same -> returns false
-        Application editedBytedance = new ApplicationBuilder(BYTEDANCE).withCompany(VALID_NAME_BYTEDANCE.toLowerCase()).build();
+        Application editedBytedance = new ApplicationBuilder(BYTEDANCE).withCompany(
+                VALID_NAME_BYTEDANCE.toLowerCase()).build();
         assertFalse(BYTEDANCE.isSameApplication(editedBytedance));
 
         // name has trailing spaces, all other attributes same -> returns false
@@ -67,19 +72,19 @@ public class ApplicationTest {
         assertNotEquals(AMAZON, BYTEDANCE);
 
         // different name -> returns false
-        Application editedAMAZON = new ApplicationBuilder(AMAZON).withCompany(VALID_NAME_BYTEDANCE).build();
-        assertNotEquals(AMAZON, editedAMAZON);
+        Application editedAmazon = new ApplicationBuilder(AMAZON).withCompany(VALID_NAME_BYTEDANCE).build();
+        assertNotEquals(AMAZON, editedAmazon);
 
         // different phone -> returns false
-        editedAMAZON = new ApplicationBuilder(AMAZON).withPosition(VALID_POSITION_BYTEDANCE).build();
-        assertNotEquals(AMAZON, editedAMAZON);
+        editedAmazon = new ApplicationBuilder(AMAZON).withPosition(VALID_POSITION_BYTEDANCE).build();
+        assertNotEquals(AMAZON, editedAmazon);
 
         // different email -> returns false
-        editedAMAZON = new ApplicationBuilder(AMAZON).withDeadline(VALID_DEADLINE_BYTEDANCE).build();
-        assertNotEquals(AMAZON, editedAMAZON);
+        editedAmazon = new ApplicationBuilder(AMAZON).withDeadline(VALID_DEADLINE_BYTEDANCE).build();
+        assertNotEquals(AMAZON, editedAmazon);
 
         // different tags -> returns false
-        editedAMAZON = new ApplicationBuilder(AMAZON).withTags(VALID_TAG_BYTEDANCE).build();
-        assertNotEquals(AMAZON, editedAMAZON);
+        editedAmazon = new ApplicationBuilder(AMAZON).withTags(VALID_TAG_BYTEDANCE).build();
+        assertNotEquals(AMAZON, editedAmazon);
     }
 }

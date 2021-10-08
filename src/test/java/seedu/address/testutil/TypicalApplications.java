@@ -1,13 +1,13 @@
 package seedu.address.testutil;
 
+import static seedu.address.logic.commands.CommandTestUtil.VALID_COMPLETION_AMAZON;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_COMPLETION_BYTEDANCE;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_DEADLINE_AMAZON;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_DEADLINE_BYTEDANCE;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_AMAZON;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BYTEDANCE;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_POSITION_AMAZON;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_POSITION_BYTEDANCE;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_COMPLETION_AMAZON;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_COMPLETION_BYTEDANCE;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_STATUS_AMAZON;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_STATUS_BYTEDANCE;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_AMAZON;

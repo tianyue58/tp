@@ -89,8 +89,10 @@ public class EditCommandParserTest {
         // while parsing {@code PREFIX_TAG} alone will reset the tags of the {@code Application} being edited,
         // parsing it together with a valid tag results in error
         assertParseFailure(parser, "1" + STATUS_DESC_BYTEDANCE + TAG_EMPTY, Tag.MESSAGE_CONSTRAINTS);
-        assertParseFailure(parser, "1" + STATUS_DESC_BYTEDANCE + TAG_EMPTY + STATUS_DESC_AMAZON, Tag.MESSAGE_CONSTRAINTS);
-        assertParseFailure(parser, "1" + TAG_EMPTY + STATUS_DESC_BYTEDANCE + STATUS_DESC_AMAZON, Tag.MESSAGE_CONSTRAINTS);
+        assertParseFailure(parser, "1" + STATUS_DESC_BYTEDANCE + TAG_EMPTY +
+                STATUS_DESC_AMAZON, Tag.MESSAGE_CONSTRAINTS);
+        assertParseFailure(parser, "1" + TAG_EMPTY + STATUS_DESC_BYTEDANCE +
+                STATUS_DESC_AMAZON, Tag.MESSAGE_CONSTRAINTS);
 
         // multiple invalid values, but only the first invalid value is captured
         assertParseFailure(parser, "1" + INVALID_NAME_DESC + INVALID_DEADLINE_DESC + VALID_DEADLINE_AMAZON,
@@ -103,7 +105,8 @@ public class EditCommandParserTest {
     //        String userInput = targetIndex.getOneBased() + POSITION_DESC_BYTEDANCE + TAG_DESC_PENDING
     //                + DEADLINE_DESC_AMAZON + NAME_DESC_AMAZON + TAG_DESC_REJECTED;
     //
-    //        EditApplicationDescriptor descriptor = new EditApplicationDescriptorBuilder().withCompany(VALID_NAME_AMAZON)
+    //        EditApplicationDescriptor descriptor = new EditApplicationDescriptorBuilder().withCompany(
+    //        VALID_NAME_AMAZON)
     //                .withPosition(VALID_POSITION_BYTEDANCE).withDeadline(VALID_DEADLINE_AMAZON)
     //                .withTags(VALID_TAG_PENDING).build();
     //        EditCommand expectedCommand = new EditCommand(targetIndex, descriptor);

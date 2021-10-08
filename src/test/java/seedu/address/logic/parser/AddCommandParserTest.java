@@ -1,7 +1,25 @@
 package seedu.address.logic.parser;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.address.logic.commands.CommandTestUtil.*;
+import static seedu.address.logic.commands.CommandTestUtil.DEADLINE_DESC_AMAZON;
+import static seedu.address.logic.commands.CommandTestUtil.DEADLINE_DESC_BYTEDANCE;
+import static seedu.address.logic.commands.CommandTestUtil.INVALID_NAME_DESC;
+import static seedu.address.logic.commands.CommandTestUtil.INVALID_POSITION_DESC;
+import static seedu.address.logic.commands.CommandTestUtil.INVALID_TAG_DESC;
+import static seedu.address.logic.commands.CommandTestUtil.NAME_DESC_AMAZON;
+import static seedu.address.logic.commands.CommandTestUtil.NAME_DESC_BYTEDANCE;
+import static seedu.address.logic.commands.CommandTestUtil.POSITION_DESC_AMAZON;
+import static seedu.address.logic.commands.CommandTestUtil.POSITION_DESC_BYTEDANCE;
+import static seedu.address.logic.commands.CommandTestUtil.PREAMBLE_NON_EMPTY;
+import static seedu.address.logic.commands.CommandTestUtil.PREAMBLE_WHITESPACE;
+import static seedu.address.logic.commands.CommandTestUtil.STATUS_DESC_AMAZON;
+import static seedu.address.logic.commands.CommandTestUtil.STATUS_DESC_BYTEDANCE;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_DEADLINE_BYTEDANCE;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BYTEDANCE;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_POSITION_BYTEDANCE;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_STATUS_BYTEDANCE;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_AMAZON;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_BYTEDANCE;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
 import static seedu.address.testutil.TypicalApplications.*;

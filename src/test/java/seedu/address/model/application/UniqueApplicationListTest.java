@@ -105,7 +105,8 @@ public class UniqueApplicationListTest {
     public void setApplication_editedApplicationHasNonUniqueIdentity_throwsDuplicateApplicationException() {
         uniqueApplicationList.add(AMAZON);
         uniqueApplicationList.add(BYTEDANCE);
-        assertThrows(DuplicateApplicationException.class, () -> uniqueApplicationList.setApplication(AMAZON, BYTEDANCE));
+        assertThrows(DuplicateApplicationException.class, () -> uniqueApplicationList.setApplication(
+                AMAZON, BYTEDANCE));
     }
 
     @Test
