@@ -11,7 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.application.Application;
-import seedu.address.model.application.Complete;
+import seedu.address.model.application.Completion;
 import seedu.address.model.application.Deadline;
 import seedu.address.model.application.Name;
 import seedu.address.model.application.Position;
@@ -30,7 +30,7 @@ class JsonAdaptedApplication {
     private final String deadline;
     private final String status = "Pending";
     private final List<JsonAdaptedTag> tagged = new ArrayList<>();
-    private final String complete = "Uncompleted";
+    private final String completion;
 
     /**
      * Constructs a {@code JsonAdaptedApplication} with the given application details.
@@ -38,7 +38,8 @@ class JsonAdaptedApplication {
     @JsonCreator
     public JsonAdaptedApplication(@JsonProperty("name") String name, @JsonProperty("position") String position,
                                   @JsonProperty("deadline") String deadline,
-                                  @JsonProperty("tagged") List<JsonAdaptedTag> tagged) {
+                                  @JsonProperty("tagged") List<JsonAdaptedTag> tagged,
+                                  @JsonProperty("completion") String completion) {
 
         this.name = name;
         this.position = position;
@@ -46,6 +47,7 @@ class JsonAdaptedApplication {
         if (tagged != null) {
             this.tagged.addAll(tagged);
         }
+        this.completion = completion;
     }
 
     /**
@@ -58,6 +60,7 @@ class JsonAdaptedApplication {
         tagged.addAll(source.getTags().stream()
                 .map(JsonAdaptedTag::new)
                 .collect(Collectors.toList()));
+        completion = source.getCompletion().value;
     }
 
     /**
@@ -104,15 +107,15 @@ class JsonAdaptedApplication {
         final Status modelStatus = new Status(status);
 
         final Set<Tag> modelTags = new HashSet<>(personTags);
-      
-        final Complete modelComplete = new Complete(complete);
 
+        if (completion == null) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
+                    Completion.class.getSimpleName()));
+        }
+        //TODO validity check for Completion
+        final Completion modelCompletion = new Completion(completion);
 
-        return new Application(modelName, modelPosition, modelDeadline, modelStatus, modelTags, modelComplete);
-
-
-
-
+        return new Application(modelName, modelPosition, modelDeadline, modelStatus, modelTags, modelCompletion);
     }
 
 }

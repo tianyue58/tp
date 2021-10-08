@@ -31,8 +31,12 @@ public class CommandTestUtil {
     public static final String VALID_POSITION_BYTEDANCE = "web developer";
     public static final String VALID_DEADLINE_AMAZON = "2021-12-12";
     public static final String VALID_DEADLINE_BYTEDANCE = "2021-12-29";
-    public static final String VALID_TAG_PENDING = "Pending";
-    public static final String VALID_TAG_REJECTED = "Rejected";
+    public static final String VALID_COMPLETION_AMAZON = "Uncompleted";
+    public static final String VALID_COMPLETION_BYTEDANCE = "Completed";
+    public static final String VALID_STATUS_AMAZON = "Pending";
+    public static final String VALID_STATUS_BYTEDANCE = "Rejected";
+    public static final String VALID_TAG_AMAZON = "Important";
+    public static final String VALID_TAG_BYTEDANCE = "Selective";
 
     public static final String NAME_DESC_AMAZON = " " + PREFIX_COMPANY_NAME + VALID_NAME_AMAZON;
     public static final String NAME_DESC_BYTEDANCE = " " + PREFIX_COMPANY_NAME + VALID_NAME_BYTEDANCE;
@@ -41,8 +45,8 @@ public class CommandTestUtil {
     public static final String DEADLINE_DESC_AMAZON = " " + PREFIX_DEADLINE_OF_APPLICATION + VALID_DEADLINE_AMAZON;
     public static final String DEADLINE_DESC_BYTEDANCE = " " + PREFIX_DEADLINE_OF_APPLICATION
             + VALID_DEADLINE_BYTEDANCE;
-    public static final String TAG_DESC_REJECTED = " " + PREFIX_TAG + VALID_TAG_REJECTED;
-    public static final String TAG_DESC_PENDING = " " + PREFIX_TAG + VALID_TAG_PENDING;
+    public static final String STATUS_DESC_AMAZON = " " + VALID_STATUS_AMAZON;
+    public static final String STATUS_DESC_BYTEDANCE = " " + VALID_STATUS_BYTEDANCE;
 
     public static final String INVALID_NAME_DESC = " " + PREFIX_COMPANY_NAME + "Google&"; // '&' not allowed in names
     public static final String INVALID_POSITION_DESC = " "

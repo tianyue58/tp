@@ -24,6 +24,7 @@ public class JsonAdaptedApplicationTest {
     private static final List<JsonAdaptedTag> VALID_TAGS = BENSON.getTags().stream()
             .map(JsonAdaptedTag::new)
             .collect(Collectors.toList());
+    private static final String VALID_COMPLETION = BENSON.getCompletion().toString();
 
 
     @Test
@@ -35,14 +36,15 @@ public class JsonAdaptedApplicationTest {
     @Test
     public void toModelType_invalidName_throwsIllegalValueException() {
         JsonAdaptedApplication person =
-                new JsonAdaptedApplication(INVALID_NAME, VALID_POSITION, VALID_DEADLINE, VALID_TAGS);
+                new JsonAdaptedApplication(INVALID_NAME, VALID_POSITION, VALID_DEADLINE, VALID_TAGS, VALID_COMPLETION);
         String expectedMessage = Name.MESSAGE_CONSTRAINTS;
         assertThrows(IllegalValueException.class, expectedMessage, person::toModelType);
     }
 
     @Test
     public void toModelType_nullName_throwsIllegalValueException() {
-        JsonAdaptedApplication person = new JsonAdaptedApplication(null, VALID_POSITION, VALID_DEADLINE, VALID_TAGS);
+        JsonAdaptedApplication person = new JsonAdaptedApplication(null, VALID_POSITION, VALID_DEADLINE,
+                VALID_TAGS, VALID_COMPLETION);
         String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, Name.class.getSimpleName());
         assertThrows(IllegalValueException.class, expectedMessage, person::toModelType);
     }

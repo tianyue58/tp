@@ -12,7 +12,7 @@ import java.util.stream.Stream;
 import seedu.address.logic.commands.AddCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.application.Application;
-import seedu.address.model.application.Complete;
+import seedu.address.model.application.Completion;
 import seedu.address.model.application.Deadline;
 import seedu.address.model.application.Name;
 import seedu.address.model.application.Position;
@@ -26,7 +26,7 @@ public class AddCommandParser implements Parser<AddCommand> {
 
     /**
      * Parses the given {@code String} of arguments in the context of the AddCommand
-     * and returns an AddCommand object for execution.
+     * and returns an AddCommand object for execution. Completion is set to "Uncompleted" by default.
      * @throws ParseException if the user input does not conform the expected format
      */
     public AddCommand parse(String args) throws ParseException {
@@ -43,14 +43,11 @@ public class AddCommandParser implements Parser<AddCommand> {
         Name name = ParserUtil.parseName(argMultimap.getValue(PREFIX_COMPANY_NAME).get());
         Position position = ParserUtil.parsePosition(argMultimap.getValue(PREFIX_INTERNSHIP_POSITION).get());
         Deadline deadline = ParserUtil.parseDeadline(argMultimap.getValue(PREFIX_DEADLINE_OF_APPLICATION).get());
-
         Status status = new Status("Pending");
-
         Set<Tag> tagList = ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));
-        Complete complete = new Complete("Uncompleted");
+        Completion completion = new Completion("Uncompleted");
 
-
-        Application application = new Application(name, position, deadline, status, tagList, complete);
+        Application application = new Application(name, position, deadline, status, tagList, completion);
 
         return new AddCommand(application);
     }

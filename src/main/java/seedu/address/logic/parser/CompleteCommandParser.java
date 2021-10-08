@@ -1,13 +1,21 @@
 package seedu.address.logic.parser;
 
+import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.CompleteCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 
-import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-
+/**
+ * Parses input arguments and creates a new CompleteCommand object
+ */
 public class CompleteCommandParser {
 
+    /**
+     * Parses the given {@code String} of arguments in the context of the CompleteCommand
+     * and returns a CompleteCommand object for execution.
+     * @throws ParseException if the user input does not conform the expected format
+     */
     public CompleteCommand parse(String args) throws ParseException {
         try {
             Index index = ParserUtil.parseIndex(args);

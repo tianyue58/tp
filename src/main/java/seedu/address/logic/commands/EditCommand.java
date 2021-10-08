@@ -20,7 +20,7 @@ import seedu.address.commons.util.CollectionUtil;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.application.Application;
-import seedu.address.model.application.Complete;
+import seedu.address.model.application.Completion;
 import seedu.address.model.application.Deadline;
 import seedu.address.model.application.Name;
 import seedu.address.model.application.Position;
@@ -100,11 +100,9 @@ public class EditCommand extends Command {
         Status updatedStatus = editApplicationDescriptor.getStatus().orElse(applicationToEdit.getStatus());
         Deadline updatedDeadline = editApplicationDescriptor.getDeadline().orElse(applicationToEdit.getDeadline());
         Set<Tag> updatedTags = editApplicationDescriptor.getTags().orElse(applicationToEdit.getTags());
-        Complete updatedComplete = applicationToEdit.getComplete();
+        Completion completion = applicationToEdit.getCompletion();
 
-
-        return new Application(updatedName, updatedPosition, updatedDeadline, updatedStatus, updatedTags, updatedComplete);
-
+        return new Application(updatedName, updatedPosition, updatedDeadline, updatedStatus, updatedTags, completion);
     }
 
     @Override

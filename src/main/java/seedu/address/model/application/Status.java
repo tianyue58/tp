@@ -4,10 +4,10 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
 public class Status {
-    public static final String MESSAGE_CONSTRAINTS = "Status can be 'Pending', 'Accepted' or 'Rejected'." +
-            "It will be 'Pending' by default for a new Application that is added.";
+    public static final String MESSAGE_CONSTRAINTS = "Status can be 'Pending', 'Accepted' or 'Rejected'."
+            + "It will be 'Pending' by default for a new Application that is added.";
 
-   // TODO:
+    // TODO:
     //could add the 3 values that a status can take as enums
 
     /*
@@ -44,8 +44,8 @@ public class Status {
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof Position // instanceof handles nulls
-                && value.equals(((Position) other).value)); // state check
+                || (other instanceof Status // instanceof handles nulls
+                && value.equals(((Status) other).value)); // state check
     }
 
     @Override

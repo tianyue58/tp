@@ -12,21 +12,25 @@ import static seedu.address.logic.commands.CommandTestUtil.POSITION_DESC_AMAZON;
 import static seedu.address.logic.commands.CommandTestUtil.POSITION_DESC_BYTEDANCE;
 import static seedu.address.logic.commands.CommandTestUtil.PREAMBLE_NON_EMPTY;
 import static seedu.address.logic.commands.CommandTestUtil.PREAMBLE_WHITESPACE;
-import static seedu.address.logic.commands.CommandTestUtil.TAG_DESC_PENDING;
-import static seedu.address.logic.commands.CommandTestUtil.TAG_DESC_REJECTED;
+import static seedu.address.logic.commands.CommandTestUtil.STATUS_DESC_AMAZON;
+import static seedu.address.logic.commands.CommandTestUtil.STATUS_DESC_BYTEDANCE;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_DEADLINE_BYTEDANCE;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BYTEDANCE;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_POSITION_BYTEDANCE;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_PENDING;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_REJECTED;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_STATUS_AMAZON;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_STATUS_BYTEDANCE;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_AMAZON;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_BYTEDANCE;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
-import static seedu.address.testutil.TypicalApplications.AMY;
-import static seedu.address.testutil.TypicalApplications.BOB;
+import static seedu.address.testutil.TypicalApplications.AMAZON;
+import static seedu.address.testutil.TypicalApplications.BYTEDANCE;
 
 import org.junit.jupiter.api.Test;
 
 import seedu.address.logic.commands.AddCommand;
+import seedu.address.logic.commands.Command;
+import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.application.Application;
 import seedu.address.model.application.Name;
 import seedu.address.model.application.Position;
@@ -38,45 +42,45 @@ public class AddCommandParserTest {
 
     @Test
     public void parse_allFieldsPresent_success() {
-        Application expectedApplication = new ApplicationBuilder(BOB).withTags(VALID_TAG_REJECTED).build();
+        Application expectedApplication = new ApplicationBuilder(BYTEDANCE).withTags(VALID_TAG_BYTEDANCE).build();
 
         // whitespace only preamble
         assertParseSuccess(parser, PREAMBLE_WHITESPACE + NAME_DESC_BYTEDANCE
                 + POSITION_DESC_BYTEDANCE + DEADLINE_DESC_BYTEDANCE
-                + TAG_DESC_REJECTED, new AddCommand(expectedApplication));
+                + STATUS_DESC_BYTEDANCE, new AddCommand(expectedApplication));
 
         // multiple names - last name accepted
         assertParseSuccess(parser, NAME_DESC_AMAZON + NAME_DESC_BYTEDANCE
                 + POSITION_DESC_BYTEDANCE + DEADLINE_DESC_BYTEDANCE
-                + TAG_DESC_REJECTED, new AddCommand(expectedApplication));
+                + STATUS_DESC_BYTEDANCE, new AddCommand(expectedApplication));
 
         // multiple phones - last phone accepted
         assertParseSuccess(parser, NAME_DESC_BYTEDANCE + POSITION_DESC_AMAZON
                 + POSITION_DESC_BYTEDANCE + DEADLINE_DESC_BYTEDANCE
-                + TAG_DESC_REJECTED, new AddCommand(expectedApplication));
+                + STATUS_DESC_BYTEDANCE, new AddCommand(expectedApplication));
 
         // multiple emails - last email accepted
         assertParseSuccess(parser, NAME_DESC_BYTEDANCE + POSITION_DESC_BYTEDANCE
                 + DEADLINE_DESC_AMAZON + DEADLINE_DESC_BYTEDANCE
-                + TAG_DESC_REJECTED, new AddCommand(expectedApplication));
+                + STATUS_DESC_BYTEDANCE, new AddCommand(expectedApplication));
 
         // multiple addresses - last address accepted
         assertParseSuccess(parser, NAME_DESC_BYTEDANCE + POSITION_DESC_BYTEDANCE
                 + DEADLINE_DESC_BYTEDANCE
-                + TAG_DESC_REJECTED, new AddCommand(expectedApplication));
+                + STATUS_DESC_BYTEDANCE, new AddCommand(expectedApplication));
 
         // multiple tags - all accepted
-        Application expectedApplicationMultipleTags = new ApplicationBuilder(BOB)
-                .withTags(VALID_TAG_REJECTED, VALID_TAG_PENDING).build();
+        Application expectedApplicationMultipleTags = new ApplicationBuilder(BYTEDANCE)
+                .withTags(VALID_TAG_BYTEDANCE, VALID_TAG_AMAZON).build();
         assertParseSuccess(parser, NAME_DESC_BYTEDANCE
                 + POSITION_DESC_BYTEDANCE + DEADLINE_DESC_BYTEDANCE
-                + TAG_DESC_PENDING + TAG_DESC_REJECTED, new AddCommand(expectedApplicationMultipleTags));
+                + STATUS_DESC_AMAZON + STATUS_DESC_BYTEDANCE, new AddCommand(expectedApplicationMultipleTags));
     }
 
     @Test
     public void parse_optionalFieldsMissing_success() {
         // zero tags
-        Application expectedApplication = new ApplicationBuilder(AMY).withTags().build();
+        Application expectedApplication = new ApplicationBuilder(AMAZON).withTags().build();
         assertParseSuccess(parser, NAME_DESC_AMAZON + POSITION_DESC_AMAZON + DEADLINE_DESC_AMAZON,
                 new AddCommand(expectedApplication));
     }
@@ -110,11 +114,11 @@ public class AddCommandParserTest {
     public void parse_invalidValue_failure() {
         // invalid name
         assertParseFailure(parser, INVALID_NAME_DESC + POSITION_DESC_BYTEDANCE + DEADLINE_DESC_BYTEDANCE
-                + TAG_DESC_PENDING + TAG_DESC_REJECTED, Name.MESSAGE_CONSTRAINTS);
+                + STATUS_DESC_AMAZON + STATUS_DESC_BYTEDANCE, Name.MESSAGE_CONSTRAINTS);
 
         // invalid phone
         assertParseFailure(parser, NAME_DESC_BYTEDANCE + INVALID_POSITION_DESC + DEADLINE_DESC_BYTEDANCE
-                + TAG_DESC_PENDING + TAG_DESC_REJECTED, Position.MESSAGE_CONSTRAINTS);
+                + STATUS_DESC_AMAZON + STATUS_DESC_BYTEDANCE, Position.MESSAGE_CONSTRAINTS);
 
         //        // invalid email
         //        assertParseFailure(parser, NAME_DESC_BYTEDANCE + POSITION_DESC_BYTEDANCE + INVALID_DEADLINE_DESC
@@ -123,7 +127,7 @@ public class AddCommandParserTest {
 
         // invalid tag
         assertParseFailure(parser, NAME_DESC_BYTEDANCE + POSITION_DESC_BYTEDANCE + DEADLINE_DESC_BYTEDANCE
-                + INVALID_TAG_DESC + VALID_TAG_REJECTED, Tag.MESSAGE_CONSTRAINTS);
+                + INVALID_TAG_DESC + VALID_STATUS_BYTEDANCE, Tag.MESSAGE_CONSTRAINTS);
 
         // two invalid values, only first invalid value reported
         assertParseFailure(parser, INVALID_NAME_DESC + POSITION_DESC_BYTEDANCE + DEADLINE_DESC_BYTEDANCE,
@@ -131,7 +135,7 @@ public class AddCommandParserTest {
 
         // non-empty preamble
         assertParseFailure(parser, PREAMBLE_NON_EMPTY + NAME_DESC_BYTEDANCE + POSITION_DESC_BYTEDANCE
-                + DEADLINE_DESC_BYTEDANCE + TAG_DESC_PENDING + TAG_DESC_REJECTED,
+                + DEADLINE_DESC_BYTEDANCE + STATUS_DESC_AMAZON + STATUS_DESC_BYTEDANCE,
                 String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_USAGE));
     }
 }

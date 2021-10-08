@@ -4,9 +4,11 @@ import java.util.HashSet;
 import java.util.Set;
 
 import seedu.address.model.application.Application;
+import seedu.address.model.application.Completion;
 import seedu.address.model.application.Deadline;
 import seedu.address.model.application.Name;
 import seedu.address.model.application.Position;
+import seedu.address.model.application.Status;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.util.SampleDataUtil;
 
@@ -15,23 +17,29 @@ import seedu.address.model.util.SampleDataUtil;
  */
 public class ApplicationBuilder {
 
-    public static final String DEFAULT_NAME = "Amy Bee";
-    public static final String DEFAULT_PHONE = "85355255";
-    public static final String DEFAULT_EMAIL = "amy@gmail.com";
+    public static final String DEFAULT_NAME = "Gojek";
+    public static final String DEFAULT_POSITION = "Machine Learning Engineer";
+    public static final String DEFAULT_DEADLINE = "2021-12-04";
+    public static final String DEFAULT_COMPLETION = "Uncompleted";
+    public static final String DEFAULT_STATUS = "Pending";
 
     private Name name;
-    private Position phone;
-    private Deadline email;
+    private Position position;
+    private Deadline deadline;
+    private Status status;
     private Set<Tag> tags;
+    private Completion completion;
 
     /**
      * Creates a {@code ApplicationBuilder} with the default details.
      */
     public ApplicationBuilder() {
         name = new Name(DEFAULT_NAME);
-        phone = new Position(DEFAULT_PHONE);
-        email = new Deadline(DEFAULT_EMAIL);
+        position = new Position(DEFAULT_POSITION);
+        deadline = new Deadline(DEFAULT_DEADLINE);
+        status = new Status(DEFAULT_STATUS);
         tags = new HashSet<>();
+        completion = new Completion(DEFAULT_COMPLETION);
     }
 
     /**
@@ -39,9 +47,11 @@ public class ApplicationBuilder {
      */
     public ApplicationBuilder(Application applicationToCopy) {
         name = applicationToCopy.getName();
-        phone = applicationToCopy.getPosition();
-        email = applicationToCopy.getDeadline();
+        position = applicationToCopy.getPosition();
+        deadline = applicationToCopy.getDeadline();
+        status = applicationToCopy.getStatus();
         tags = new HashSet<>(applicationToCopy.getTags());
+        completion = applicationToCopy.getCompletion();
     }
 
     /**
@@ -53,6 +63,31 @@ public class ApplicationBuilder {
     }
 
     /**
+     * Sets the {@code Position} of the {@code Application} that we are building.
+     */
+    public ApplicationBuilder withPosition(String position) {
+        this.position = new Position(position);
+        return this;
+    }
+
+    /**
+     * Sets the {@code Deadline} of the {@code Application} that we are building.
+     */
+    public ApplicationBuilder withDeadline(String deadline) {
+        this.deadline = new Deadline(deadline);
+        return this;
+    }
+
+    /**
+     * Sets the {@code Status} of the {@code Application} that we are building.
+     */
+    public ApplicationBuilder withStatus(String status) {
+        this.status = new Status(status);
+        return this;
+    }
+
+
+    /**
      * Parses the {@code tags} into a {@code Set<Tag>} and set it to the {@code Application} that we are building.
      */
     public ApplicationBuilder withTags(String ... tags) {
@@ -61,23 +96,15 @@ public class ApplicationBuilder {
     }
 
     /**
-     * Sets the {@code Phone} of the {@code Application} that we are building.
+     * Sets the {@code Deadline} of the {@code Application} that we are building.
      */
-    public ApplicationBuilder withPosition(String phone) {
-        this.phone = new Position(phone);
-        return this;
-    }
-
-    /**
-     * Sets the {@code Email} of the {@code Application} that we are building.
-     */
-    public ApplicationBuilder withDeadline(String email) {
-        this.email = new Deadline(email);
+    public ApplicationBuilder withCompletion(String complete) {
+        this.completion = new Completion(complete);
         return this;
     }
 
     public Application build() {
-        return new Application(name, phone, email, tags);
+        return new Application(name, position, deadline, status, tags, completion);
     }
 
 }

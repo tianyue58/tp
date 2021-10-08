@@ -1,22 +1,21 @@
 package seedu.address.logic.commands;
 
-import seedu.address.commons.core.Messages;
-import seedu.address.commons.core.index.Index;
-
-import seedu.address.model.Model;
-import seedu.address.logic.commands.exceptions.CommandException;
-import seedu.address.model.application.Application;
-import seedu.address.model.application.Complete;
-import seedu.address.model.application.Deadline;
-import seedu.address.model.application.Name;
-import seedu.address.model.application.Position;
-import seedu.address.model.tag.Tag;
-
+import static java.util.Objects.requireNonNull;
 
 import java.util.List;
 import java.util.Set;
 
-import static java.util.Objects.requireNonNull;
+import seedu.address.commons.core.Messages;
+import seedu.address.commons.core.index.Index;
+import seedu.address.logic.commands.exceptions.CommandException;
+import seedu.address.model.Model;
+import seedu.address.model.application.Application;
+import seedu.address.model.application.Completion;
+import seedu.address.model.application.Deadline;
+import seedu.address.model.application.Name;
+import seedu.address.model.application.Position;
+import seedu.address.model.application.Status;
+import seedu.address.model.tag.Tag;
 
 
 public class CompleteCommand extends Command {
@@ -29,9 +28,11 @@ public class CompleteCommand extends Command {
 
     public static final String MESSAGE_SUCCESS = "Completed application: %1$s";
 
-
     private final Index targetIndex;
 
+    /**
+     * Creates an CompleteCommand to mark the specified {@code Application} as completed.
+     */
     public CompleteCommand(Index targetIndex) {
         this.targetIndex = targetIndex;
     }
@@ -52,14 +53,15 @@ public class CompleteCommand extends Command {
         Name name = applicationToComplete.getName();
         Position position = applicationToComplete.getPosition();
         Deadline deadline = applicationToComplete.getDeadline();
+        Status status = applicationToComplete.getStatus();
         Set<Tag> tagList = applicationToComplete.getTags();
-        Complete complete = new Complete("Completed");
+        Completion completion = new Completion("Completed");
 
-        Application completedApplication = new Application(name, position, deadline, tagList, complete);
+        Application completedApplication = new Application(name, position, deadline, status, tagList, completion);
         model.setApplication(applicationToComplete, completedApplication);
         //need to change PERSON
         //model.updateFilteredApplicationList(PREDICATE_SHOW_ALL_PERSONS);
-        return new CommandResult(String.format(MESSAGE_SUCCESS, applicationToComplete));
+        return new CommandResult(String.format(MESSAGE_SUCCESS, completedApplication));
 
     }
 

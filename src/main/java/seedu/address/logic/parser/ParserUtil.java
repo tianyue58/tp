@@ -50,12 +50,11 @@ public class ParserUtil {
         return new Name(trimmedName);
     }
 
-
     /**
-     * Parses a {@code String position} into an {@code Address}.
+     * Parses a {@code String position} into an {@code Position}.
      * Leading and trailing whitespaces will be trimmed.
      *
-     * @throws ParseException if the given {@code address} is invalid.
+     * @throws ParseException if the given {@code position} is invalid.
      */
     public static Position parsePosition(String position) throws ParseException {
         requireNonNull(position);
@@ -67,25 +66,10 @@ public class ParserUtil {
     }
 
     /**
-     * Parses a {@code String status} into an {@code Address}.
+     * Parses a {@code String deadline} into an {@code Deadline}.
      * Leading and trailing whitespaces will be trimmed.
      *
-     * @throws ParseException if the given {@code address} is invalid.
-     */
-    public static Status parseStatus(String status) throws ParseException {
-        requireNonNull(status);
-        String trimmedStatus = status.trim();
-        if (!Status.isValidStatus(trimmedStatus)) {
-            throw new ParseException(Status.MESSAGE_CONSTRAINTS);
-        }
-        return new Status(trimmedStatus);
-    }
-
-    /**
-     * Parses a {@code String address} into an {@code Address}.
-     * Leading and trailing whitespaces will be trimmed.
-     *
-     * @throws ParseException if the given {@code address} is invalid.
+     * @throws ParseException if the given {@code deadline} is invalid.
      */
     public static Deadline parseDeadline(String deadline) throws ParseException {
         requireNonNull(deadline);
@@ -94,6 +78,21 @@ public class ParserUtil {
             throw new ParseException(Deadline.MESSAGE_CONSTRAINTS);
         }
         return new Deadline(trimmedDeadline);
+    }
+
+    /**
+     * Parses a {@code String status} into an {@code Status}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code status} is invalid.
+     */
+    public static Status parseStatus(String status) throws ParseException {
+        requireNonNull(status);
+        String trimmedStatus = status.trim();
+        if (!Status.isValidStatus(trimmedStatus)) {
+            throw new ParseException(Status.MESSAGE_CONSTRAINTS);
+        }
+        return new Status(trimmedStatus);
     }
 
     /**
@@ -110,6 +109,8 @@ public class ParserUtil {
         }
         return new Tag(trimmedTag);
     }
+
+    //TODO ADD FOR COMPLETION (parseCompletion)
 
     /**
      * Parses {@code Collection<String> tags} into a {@code Set<Tag>}.
