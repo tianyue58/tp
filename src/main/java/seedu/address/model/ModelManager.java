@@ -19,26 +19,26 @@ import seedu.address.model.application.Application;
 public class ModelManager implements Model {
     private static final Logger logger = LogsCenter.getLogger(ModelManager.class);
 
-    private final AddressBook addressBook;
+    private final Internship internship;
     private final UserPrefs userPrefs;
     private final FilteredList<Application> filteredApplications;
 
     /**
-     * Initializes a ModelManager with the given addressBook and userPrefs.
+     * Initializes a ModelManager with the given internship and userPrefs.
      */
-    public ModelManager(ReadOnlyAddressBook addressBook, ReadOnlyUserPrefs userPrefs) {
+    public ModelManager(ReadOnlyInternship internship, ReadOnlyUserPrefs userPrefs) {
         super();
-        requireAllNonNull(addressBook, userPrefs);
+        requireAllNonNull(internship, userPrefs);
 
-        logger.fine("Initializing with InternSHIP: " + addressBook + " and user prefs " + userPrefs);
+        logger.fine("Initializing with InternSHIP: " + internship + " and user preferences " + userPrefs);
 
-        this.addressBook = new AddressBook(addressBook);
+        this.internship = new Internship(internship);
         this.userPrefs = new UserPrefs(userPrefs);
-        filteredApplications = new FilteredList<>(this.addressBook.getApplicationList());
+        filteredApplications = new FilteredList<>(this.internship.getApplicationList());
     }
 
     public ModelManager() {
-        this(new AddressBook(), new UserPrefs());
+        this(new Internship(), new UserPrefs());
     }
 
     //=========== UserPrefs ==================================================================================
@@ -66,57 +66,57 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public Path getAddressBookFilePath() {
-        return userPrefs.getAddressBookFilePath();
+    public Path getInternshipFilePath() {
+        return userPrefs.getInternshipFilePath();
     }
 
     @Override
-    public void setAddressBookFilePath(Path addressBookFilePath) {
-        requireNonNull(addressBookFilePath);
-        userPrefs.setAddressBookFilePath(addressBookFilePath);
+    public void setInternshipFilePath(Path InternshipFilePath) {
+        requireNonNull(InternshipFilePath);
+        userPrefs.setInternshipFilePath(InternshipFilePath);
     }
 
-    //=========== AddressBook ================================================================================
+    //=========== Internship ================================================================================
 
     @Override
-    public void setAddressBook(ReadOnlyAddressBook addressBook) {
-        this.addressBook.resetData(addressBook);
+    public void setInternship(ReadOnlyInternship internship) {
+        this.internship.resetData(internship);
     }
 
     @Override
-    public ReadOnlyAddressBook getAddressBook() {
-        return addressBook;
+    public ReadOnlyInternship getInternship() {
+        return internship;
     }
 
     @Override
     public boolean hasApplication(Application application) {
         requireNonNull(application);
-        return addressBook.hasApplication(application);
+        return internship.hasApplication(application);
     }
 
     @Override
     public void deleteApplication(Application target) {
-        addressBook.removeApplication(target);
+        internship.removeApplication(target);
     }
 
     @Override
     public void addApplication(Application application) {
-        addressBook.addApplication(application);
-        updateFilteredApplicationList(PREDICATE_SHOW_ALL_PERSONS);
+        internship.addApplication(application);
+        updateFilteredApplicationList(PREDICATE_SHOW_ALL_APPLICATIONS);
     }
 
     @Override
     public void setApplication(Application target, Application editedApplication) {
         requireAllNonNull(target, editedApplication);
 
-        addressBook.setApplication(target, editedApplication);
+        internship.setApplication(target, editedApplication);
     }
 
     //=========== Filtered Application List Accessors =============================================================
 
     /**
      * Returns an unmodifiable view of the list of {@code Application} backed by the internal list of
-     * {@code versionedAddressBook}
+     * {@code versionedInternship}
      */
     @Override
     public ObservableList<Application> getFilteredApplicationList() {
@@ -143,7 +143,7 @@ public class ModelManager implements Model {
 
         // state check
         ModelManager other = (ModelManager) obj;
-        return addressBook.equals(other.addressBook)
+        return internship.equals(other.internship)
                 && userPrefs.equals(other.userPrefs)
                 && filteredApplications.equals(other.filteredApplications);
     }
