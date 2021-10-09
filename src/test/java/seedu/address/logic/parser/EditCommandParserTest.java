@@ -12,6 +12,7 @@ import static seedu.address.logic.commands.CommandTestUtil.POSITION_DESC_AMAZON;
 import static seedu.address.logic.commands.CommandTestUtil.POSITION_DESC_BYTEDANCE;
 import static seedu.address.logic.commands.CommandTestUtil.STATUS_DESC_AMAZON;
 import static seedu.address.logic.commands.CommandTestUtil.STATUS_DESC_BYTEDANCE;
+import static seedu.address.logic.commands.CommandTestUtil.TAG_DESC_BYTEDANCE;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_DEADLINE_AMAZON;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_DEADLINE_BYTEDANCE;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_AMAZON;
@@ -88,8 +89,8 @@ public class EditCommandParserTest {
 
         // while parsing {@code PREFIX_TAG} alone will reset the tags of the {@code Application} being edited,
         // parsing it together with a valid tag results in error
-        assertParseFailure(parser, "1" + STATUS_DESC_BYTEDANCE + TAG_EMPTY, Tag.MESSAGE_CONSTRAINTS);
-        assertParseFailure(parser, "1" + STATUS_DESC_BYTEDANCE + TAG_EMPTY
+        assertParseFailure(parser, "1" + TAG_DESC_BYTEDANCE + INVALID_TAG_DESC, Tag.MESSAGE_CONSTRAINTS);
+        assertParseFailure(parser, "1" + TAG_DESC_BYTEDANCE + INVALID_TAG_DESC
                 + STATUS_DESC_AMAZON, Tag.MESSAGE_CONSTRAINTS);
         assertParseFailure(parser, "1" + TAG_EMPTY + STATUS_DESC_BYTEDANCE
                 + STATUS_DESC_AMAZON, Tag.MESSAGE_CONSTRAINTS);
@@ -150,7 +151,7 @@ public class EditCommandParserTest {
         assertParseSuccess(parser, userInput, expectedCommand);
 
         // tags
-        userInput = targetIndex.getOneBased() + STATUS_DESC_BYTEDANCE;
+        userInput = targetIndex.getOneBased() + TAG_DESC_BYTEDANCE;
         descriptor = new EditApplicationDescriptorBuilder().withTags(VALID_TAG_BYTEDANCE).build();
         expectedCommand = new EditCommand(targetIndex, descriptor);
         assertParseSuccess(parser, userInput, expectedCommand);

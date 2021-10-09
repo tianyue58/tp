@@ -45,6 +45,7 @@ public class CommandTestUtil {
     public static final String DEADLINE_DESC_AMAZON = " " + PREFIX_DEADLINE_OF_APPLICATION + VALID_DEADLINE_AMAZON;
     public static final String DEADLINE_DESC_BYTEDANCE = " " + PREFIX_DEADLINE_OF_APPLICATION
             + VALID_DEADLINE_BYTEDANCE;
+    public static final String TAG_DESC_BYTEDANCE = " " + PREFIX_TAG + VALID_TAG_BYTEDANCE;
     public static final String STATUS_DESC_AMAZON = " " + VALID_STATUS_AMAZON;
     public static final String STATUS_DESC_BYTEDANCE = " " + VALID_STATUS_BYTEDANCE;
 
