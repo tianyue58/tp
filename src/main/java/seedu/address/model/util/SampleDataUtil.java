@@ -4,12 +4,12 @@ import java.util.Arrays;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import seedu.address.model.AddressBook;
-import seedu.address.model.ReadOnlyAddressBook;
+import seedu.address.model.Internship;
+import seedu.address.model.ReadOnlyInternship;
 import seedu.address.model.application.Application;
+import seedu.address.model.application.Company;
 import seedu.address.model.application.Completion;
 import seedu.address.model.application.Deadline;
-import seedu.address.model.application.Name;
 import seedu.address.model.application.Position;
 import seedu.address.model.application.Status;
 import seedu.address.model.tag.Tag;
@@ -19,23 +19,23 @@ import seedu.address.model.tag.Tag;
  */
 public class SampleDataUtil {
     public static Application[] getSampleApplications() {
-        return new Application[] { new Application(new Name("Shopee"), new Position("software engineer"),
+        return new Application[] { new Application(new Company("Shopee"), new Position("software engineer"),
                 new Deadline("2021-12-23"), new Status("Pending"), getTagSet(),
                         new Completion("Uncompleted")),
-            new Application(new Name("Google"), new Position("frontend developer"),
+            new Application(new Company("Google"), new Position("frontend developer"),
                         new Deadline("2021-12-14"), new Status("Pending"), getTagSet(),
                         new Completion("Uncompleted")),
-            new Application(new Name("Huawei"), new Position("software engineer"),
+            new Application(new Company("Huawei"), new Position("software engineer"),
                         new Deadline("2021-12-30"), new Status("Pending"), getTagSet(),
                         new Completion("Uncompleted")),
-            new Application(new Name("Deutsche Bank"), new Position("software engineer"),
+            new Application(new Company("Deutsche Bank"), new Position("software engineer"),
                         new Deadline("2021-12-25"), new Status("Pending"), getTagSet(),
                         new Completion("Uncompleted")),
         };
     }
 
-    public static ReadOnlyAddressBook getSampleAddressBook() {
-        AddressBook sampleAb = new AddressBook();
+    public static ReadOnlyInternship getSampleInternship() {
+        Internship sampleAb = new Internship();
         for (Application sampleApplication : getSampleApplications()) {
             sampleAb.addApplication(sampleApplication);
         }

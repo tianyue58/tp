@@ -17,7 +17,6 @@ import static seedu.address.logic.commands.CommandTestUtil.STATUS_DESC_BYTEDANCE
 import static seedu.address.logic.commands.CommandTestUtil.VALID_DEADLINE_BYTEDANCE;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BYTEDANCE;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_POSITION_BYTEDANCE;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_STATUS_AMAZON;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_STATUS_BYTEDANCE;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_AMAZON;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_BYTEDANCE;
@@ -29,10 +28,8 @@ import static seedu.address.testutil.TypicalApplications.BYTEDANCE;
 import org.junit.jupiter.api.Test;
 
 import seedu.address.logic.commands.AddCommand;
-import seedu.address.logic.commands.Command;
-import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.application.Application;
-import seedu.address.model.application.Name;
+import seedu.address.model.application.Company;
 import seedu.address.model.application.Position;
 import seedu.address.model.tag.Tag;
 import seedu.address.testutil.ApplicationBuilder;
@@ -114,7 +111,7 @@ public class AddCommandParserTest {
     public void parse_invalidValue_failure() {
         // invalid name
         assertParseFailure(parser, INVALID_NAME_DESC + POSITION_DESC_BYTEDANCE + DEADLINE_DESC_BYTEDANCE
-                + STATUS_DESC_AMAZON + STATUS_DESC_BYTEDANCE, Name.MESSAGE_CONSTRAINTS);
+                + STATUS_DESC_AMAZON + STATUS_DESC_BYTEDANCE, Company.MESSAGE_CONSTRAINTS);
 
         // invalid phone
         assertParseFailure(parser, NAME_DESC_BYTEDANCE + INVALID_POSITION_DESC + DEADLINE_DESC_BYTEDANCE
@@ -131,7 +128,7 @@ public class AddCommandParserTest {
 
         // two invalid values, only first invalid value reported
         assertParseFailure(parser, INVALID_NAME_DESC + POSITION_DESC_BYTEDANCE + DEADLINE_DESC_BYTEDANCE,
-                Name.MESSAGE_CONSTRAINTS);
+                Company.MESSAGE_CONSTRAINTS);
 
         // non-empty preamble
         assertParseFailure(parser, PREAMBLE_NON_EMPTY + NAME_DESC_BYTEDANCE + POSITION_DESC_BYTEDANCE

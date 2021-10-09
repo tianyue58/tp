@@ -16,7 +16,7 @@ import seedu.address.model.tag.Tag;
 public class Application {
 
     // Identity fields
-    private final Name name;
+    private final Company company;
     private final Position position;
     private final Deadline deadline;
     private final Completion completion;
@@ -30,10 +30,10 @@ public class Application {
     /**
      * Every field must be present and not null.
      */
-    public Application(Name name, Position position, Deadline deadline, Status status,
+    public Application(Company company, Position position, Deadline deadline, Status status,
                        Set<Tag> tags, Completion completion) {
-        requireAllNonNull(name, position, deadline, tags, completion);
-        this.name = name;
+        requireAllNonNull(company, position, deadline, tags, completion);
+        this.company = company;
         this.position = position;
         this.deadline = deadline;
         this.status = status;
@@ -44,8 +44,8 @@ public class Application {
     /**
      * Returns the name of the company applied to in the {@code Application}.
      */
-    public Name getName() {
-        return name;
+    public Company getCompany() {
+        return company;
     }
 
     /**
@@ -91,7 +91,7 @@ public class Application {
         }
 
         return otherApplication != null
-                && otherApplication.getName().equals(getName());
+                && otherApplication.getCompany().equals(getCompany());
     }
 
     /**
@@ -109,7 +109,7 @@ public class Application {
         }
 
         Application otherApplication = (Application) other;
-        return otherApplication.getName().equals(getName())
+        return otherApplication.getCompany().equals(getCompany())
                 && otherApplication.getPosition().equals(getPosition())
                 && otherApplication.getDeadline().equals(getDeadline())
                 && otherApplication.getStatus().equals(getStatus())
@@ -120,13 +120,13 @@ public class Application {
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, position, deadline, status, tags, completion);
+        return Objects.hash(company, position, deadline, status, tags, completion);
     }
 
     @Override
     public String toString() {
         final StringBuilder builder = new StringBuilder();
-        builder.append(getName())
+        builder.append(getCompany())
                 .append("; Position: ")
                 .append(getPosition())
                 .append("; Application deadline: ")

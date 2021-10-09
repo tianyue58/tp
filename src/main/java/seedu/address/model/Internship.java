@@ -12,27 +12,20 @@ import seedu.address.model.application.UniqueApplicationList;
  * Wraps all data at the address-book level
  * Duplicates are not allowed (by .isSameApplication comparison)
  */
-public class AddressBook implements ReadOnlyAddressBook {
+public class Internship implements ReadOnlyInternship {
 
     private final UniqueApplicationList applications;
 
-    /*
-     * The 'unusual' code block below is a non-static initialization block, sometimes used to avoid duplication
-     * between constructors. See https://docs.oracle.com/javase/tutorial/java/javaOO/initial.html
-     *
-     * Note that non-static init blocks are not recommended to use. There are other ways to avoid duplication
-     *   among constructors.
-     */
     {
         applications = new UniqueApplicationList();
     }
 
-    public AddressBook() {}
+    public Internship() {}
 
     /**
-     * Creates an AddressBook using the Persons in the {@code toBeCopied}
+     * Creates an AddressBook using the Applications in the InterSHIP data storage
      */
-    public AddressBook(ReadOnlyAddressBook toBeCopied) {
+    public Internship(ReadOnlyInternship toBeCopied) {
         this();
         resetData(toBeCopied);
     }
@@ -50,7 +43,7 @@ public class AddressBook implements ReadOnlyAddressBook {
     /**
      * Resets the existing data of this {@code AddressBook} with {@code newData}.
      */
-    public void resetData(ReadOnlyAddressBook newData) {
+    public void resetData(ReadOnlyInternship newData) {
         requireNonNull(newData);
 
         setApplications(newData.getApplicationList());
@@ -110,8 +103,8 @@ public class AddressBook implements ReadOnlyAddressBook {
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof AddressBook // instanceof handles nulls
-                && applications.equals(((AddressBook) other).applications));
+                || (other instanceof Internship // instanceof handles nulls
+                && applications.equals(((Internship) other).applications));
     }
 
     @Override

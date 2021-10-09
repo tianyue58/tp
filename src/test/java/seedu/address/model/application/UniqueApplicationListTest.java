@@ -3,11 +3,9 @@ package seedu.address.model.application;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_STATUS_AMAZON;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_STATUS_BYTEDANCE;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_AMAZON;
 import static seedu.address.testutil.Assert.assertThrows;
-import static seedu.address.testutil.TypicalApplications.ALICE;
+import static seedu.address.testutil.TypicalApplications.AMAZON;
 import static seedu.address.testutil.TypicalApplications.BYTEDANCE;
 
 import java.util.Arrays;
@@ -25,118 +23,119 @@ public class UniqueApplicationListTest {
     private final UniqueApplicationList uniqueApplicationList = new UniqueApplicationList();
 
     @Test
-    public void contains_nullPerson_throwsNullPointerException() {
+    public void contains_nullApplication_throwsNullPointerException() {
         assertThrows(NullPointerException.class, () -> uniqueApplicationList.contains(null));
     }
 
     @Test
-    public void contains_personNotInList_returnsFalse() {
-        assertFalse(uniqueApplicationList.contains(ALICE));
+    public void contains_applicationNotInList_returnsFalse() {
+        assertFalse(uniqueApplicationList.contains(AMAZON));
     }
 
     @Test
-    public void contains_personInList_returnsTrue() {
-        uniqueApplicationList.add(ALICE);
-        assertTrue(uniqueApplicationList.contains(ALICE));
+    public void contains_applicationInList_returnsTrue() {
+        uniqueApplicationList.add(AMAZON);
+        assertTrue(uniqueApplicationList.contains(AMAZON));
     }
 
     @Test
-    public void contains_personWithSameIdentityFieldsInList_returnsTrue() {
-        uniqueApplicationList.add(ALICE);
-        Application editedAlice = new ApplicationBuilder(ALICE).withTags(VALID_TAG_AMAZON)
+    public void contains_applicationWithSameIdentityFieldsInList_returnsTrue() {
+        uniqueApplicationList.add(AMAZON);
+        Application editedAlice = new ApplicationBuilder(AMAZON).withTags(VALID_TAG_AMAZON)
                 .build();
         assertTrue(uniqueApplicationList.contains(editedAlice));
     }
 
     @Test
-    public void add_nullPerson_throwsNullPointerException() {
+    public void add_nullApplication_throwsNullPointerException() {
         assertThrows(NullPointerException.class, () -> uniqueApplicationList.add(null));
     }
 
     @Test
-    public void add_duplicatePerson_throwsDuplicatePersonException() {
-        uniqueApplicationList.add(ALICE);
-        assertThrows(DuplicateApplicationException.class, () -> uniqueApplicationList.add(ALICE));
+    public void add_duplicateApplication_throwsDuplicateApplicationException() {
+        uniqueApplicationList.add(AMAZON);
+        assertThrows(DuplicateApplicationException.class, () -> uniqueApplicationList.add(AMAZON));
     }
 
     @Test
-    public void setPerson_nullTargetPerson_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> uniqueApplicationList.setApplication(null, ALICE));
+    public void setApplication_nullTargetApplication_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> uniqueApplicationList.setApplication(null, AMAZON));
     }
 
     @Test
-    public void setPerson_nullEditedPerson_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> uniqueApplicationList.setApplication(ALICE, null));
+    public void setApplication_nullEditedApplication_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> uniqueApplicationList.setApplication(AMAZON, null));
     }
 
     @Test
-    public void setPerson_targetPersonNotInList_throwsPersonNotFoundException() {
-        assertThrows(ApplicationNotFoundException.class, () -> uniqueApplicationList.setApplication(ALICE, ALICE));
+    public void setApplication_targetApplicationNotInList_throwsApplicationNotFoundException() {
+        assertThrows(ApplicationNotFoundException.class, () -> uniqueApplicationList.setApplication(AMAZON, AMAZON));
     }
 
     @Test
-    public void setPerson_editedPersonIsSamePerson_success() {
-        uniqueApplicationList.add(ALICE);
-        uniqueApplicationList.setApplication(ALICE, ALICE);
+    public void setApplication_editedApplicationIsSameApplication_success() {
+        uniqueApplicationList.add(AMAZON);
+        uniqueApplicationList.setApplication(AMAZON, AMAZON);
         UniqueApplicationList expectedUniqueApplicationList = new UniqueApplicationList();
-        expectedUniqueApplicationList.add(ALICE);
+        expectedUniqueApplicationList.add(AMAZON);
         assertEquals(expectedUniqueApplicationList, uniqueApplicationList);
     }
 
     @Test
-    public void setPerson_editedPersonHasSameIdentity_success() {
-        uniqueApplicationList.add(ALICE);
-        Application editedAlice = new ApplicationBuilder(ALICE).withTags(VALID_TAG_AMAZON)
+    public void setApplication_editedApplicationHasSameIdentity_success() {
+        uniqueApplicationList.add(AMAZON);
+        Application editedAlice = new ApplicationBuilder(AMAZON).withTags(VALID_TAG_AMAZON)
                 .build();
-        uniqueApplicationList.setApplication(ALICE, editedAlice);
+        uniqueApplicationList.setApplication(AMAZON, editedAlice);
         UniqueApplicationList expectedUniqueApplicationList = new UniqueApplicationList();
         expectedUniqueApplicationList.add(editedAlice);
         assertEquals(expectedUniqueApplicationList, uniqueApplicationList);
     }
 
     @Test
-    public void setPerson_editedPersonHasDifferentIdentity_success() {
-        uniqueApplicationList.add(ALICE);
-        uniqueApplicationList.setApplication(ALICE, BYTEDANCE);
+    public void setApplication_editedApplicationHasDifferentIdentity_success() {
+        uniqueApplicationList.add(AMAZON);
+        uniqueApplicationList.setApplication(AMAZON, BYTEDANCE);
         UniqueApplicationList expectedUniqueApplicationList = new UniqueApplicationList();
         expectedUniqueApplicationList.add(BYTEDANCE);
         assertEquals(expectedUniqueApplicationList, uniqueApplicationList);
     }
 
     @Test
-    public void setPerson_editedPersonHasNonUniqueIdentity_throwsDuplicatePersonException() {
-        uniqueApplicationList.add(ALICE);
+    public void setApplication_editedApplicationHasNonUniqueIdentity_throwsDuplicateApplicationException() {
+        uniqueApplicationList.add(AMAZON);
         uniqueApplicationList.add(BYTEDANCE);
-        assertThrows(DuplicateApplicationException.class, () -> uniqueApplicationList.setApplication(ALICE, BYTEDANCE));
+        assertThrows(DuplicateApplicationException.class, () -> uniqueApplicationList.setApplication(
+                AMAZON, BYTEDANCE));
     }
 
     @Test
-    public void remove_nullPerson_throwsNullPointerException() {
+    public void remove_nullApplication_throwsNullPointerException() {
         assertThrows(NullPointerException.class, () -> uniqueApplicationList.remove(null));
     }
 
     @Test
-    public void remove_personDoesNotExist_throwsPersonNotFoundException() {
-        assertThrows(ApplicationNotFoundException.class, () -> uniqueApplicationList.remove(ALICE));
+    public void remove_applicationDoesNotExist_throwsApplicationNotFoundException() {
+        assertThrows(ApplicationNotFoundException.class, () -> uniqueApplicationList.remove(AMAZON));
     }
 
     @Test
-    public void remove_existingPerson_removesPerson() {
-        uniqueApplicationList.add(ALICE);
-        uniqueApplicationList.remove(ALICE);
+    public void remove_existingApplication_removesApplication() {
+        uniqueApplicationList.add(AMAZON);
+        uniqueApplicationList.remove(AMAZON);
         UniqueApplicationList expectedUniqueApplicationList = new UniqueApplicationList();
         assertEquals(expectedUniqueApplicationList, uniqueApplicationList);
     }
 
     @Test
-    public void setPersons_nullUniquePersonList_throwsNullPointerException() {
+    public void setApplications_nullUniqueApplicationList_throwsNullPointerException() {
         assertThrows(NullPointerException.class, () -> uniqueApplicationList
                 .setApplications((UniqueApplicationList) null));
     }
 
     @Test
-    public void setPersons_uniquePersonList_replacesOwnListWithProvidedUniquePersonList() {
-        uniqueApplicationList.add(ALICE);
+    public void setApplications_uniqueApplicationList_replacesOwnListWithProvidedUniqueApplicationList() {
+        uniqueApplicationList.add(AMAZON);
         UniqueApplicationList expectedUniqueApplicationList = new UniqueApplicationList();
         expectedUniqueApplicationList.add(BYTEDANCE);
         uniqueApplicationList.setApplications(expectedUniqueApplicationList);
@@ -144,13 +143,13 @@ public class UniqueApplicationListTest {
     }
 
     @Test
-    public void setPersons_nullList_throwsNullPointerException() {
+    public void setApplications_nullList_throwsNullPointerException() {
         assertThrows(NullPointerException.class, () -> uniqueApplicationList.setApplications((List<Application>) null));
     }
 
     @Test
-    public void setPersons_list_replacesOwnListWithProvidedList() {
-        uniqueApplicationList.add(ALICE);
+    public void setApplications_list_replacesOwnListWithProvidedList() {
+        uniqueApplicationList.add(AMAZON);
         List<Application> applicationList = Collections.singletonList(BYTEDANCE);
         uniqueApplicationList.setApplications(applicationList);
         UniqueApplicationList expectedUniqueApplicationList = new UniqueApplicationList();
@@ -159,8 +158,8 @@ public class UniqueApplicationListTest {
     }
 
     @Test
-    public void setPersons_listWithDuplicatePersons_throwsDuplicatePersonException() {
-        List<Application> listWithDuplicateApplications = Arrays.asList(ALICE, ALICE);
+    public void setApplications_listWithDuplicateApplications_throwsDuplicateApplicationException() {
+        List<Application> listWithDuplicateApplications = Arrays.asList(AMAZON, AMAZON);
         assertThrows(DuplicateApplicationException.class, () -> uniqueApplicationList
                 .setApplications(listWithDuplicateApplications));
     }

@@ -21,15 +21,15 @@ public class ApplicationUtil {
      * Returns an add command string for adding the {@code application}.
      */
     public static String getAddCommand(Application application) {
-        return AddCommand.COMMAND_WORD + " " + getPersonDetails(application);
+        return AddCommand.COMMAND_WORD + " " + getApplicationDetails(application);
     }
 
     /**
      * Returns the part of command string for the given {@code application}'s details.
      */
-    public static String getPersonDetails(Application application) {
+    public static String getApplicationDetails(Application application) {
         StringBuilder sb = new StringBuilder();
-        sb.append(PREFIX_COMPANY_NAME + application.getName().fullName + " ");
+        sb.append(PREFIX_COMPANY_NAME + application.getCompany().fullCompanyName + " ");
         sb.append(PREFIX_INTERNSHIP_POSITION + application.getPosition().value + " ");
         sb.append(PREFIX_DEADLINE_OF_APPLICATION + application.getDeadline().value + " ");
         application.getTags().stream().forEach(
@@ -39,12 +39,12 @@ public class ApplicationUtil {
     }
 
     /**
-     * Returns the part of command string for the given {@code EditPersonDescriptor}'s details.
+     * Returns the part of command string for the given {@code EditApplicationDescriptor}'s details.
      */
-    public static String getEditPersonDescriptorDetails(EditApplicationDescriptor descriptor) {
+    public static String getEditApplicationDescriptorDetails(EditApplicationDescriptor descriptor) {
         StringBuilder sb = new StringBuilder();
-        descriptor.getName().ifPresent(name -> sb.append(PREFIX_COMPANY_NAME)
-                .append(name.fullName).append(" "));
+        descriptor.getCompany().ifPresent(name -> sb.append(PREFIX_COMPANY_NAME)
+                .append(name.fullCompanyName).append(" "));
         descriptor.getPosition().ifPresent(phone -> sb.append(PREFIX_INTERNSHIP_POSITION)
                 .append(phone.value).append(" "));
         descriptor.getDeadline().ifPresent(email -> sb.append(PREFIX_DEADLINE_OF_APPLICATION)

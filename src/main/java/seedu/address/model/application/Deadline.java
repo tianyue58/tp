@@ -12,7 +12,7 @@ public class Deadline {
 
     public static final String MESSAGE_CONSTRAINTS =
             "Deadline should be in YYYY-MM-DD format";
-    public static final String VALIDATION_REGEX = "[\\p{Alnum}][\\p{Alnum} ]*"; // what should i put here
+    public static final String VALIDATION_REGEX = "^\\d{4}\\-(0[1-9]|1[012])\\-(0[1-9]|[12][0-9]|3[01])$";
     public final String value;
 
     /**
@@ -29,9 +29,8 @@ public class Deadline {
     /**
      * Returns true if a given string is a valid deadline.
      */
-    //needs future update!!!
     public static boolean isValidDeadline(String test) {
-        return true;
+        return test.matches(VALIDATION_REGEX);
     }
 
     @Override

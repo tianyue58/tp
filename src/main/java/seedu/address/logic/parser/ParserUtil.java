@@ -9,8 +9,9 @@ import java.util.Set;
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.application.Company;
+import seedu.address.model.application.Completion;
 import seedu.address.model.application.Deadline;
-import seedu.address.model.application.Name;
 import seedu.address.model.application.Position;
 import seedu.address.model.application.Status;
 import seedu.address.model.tag.Tag;
@@ -36,18 +37,18 @@ public class ParserUtil {
     }
 
     /**
-     * Parses a {@code String name} into a {@code Name}.
+     * Parses a {@code String company} into a {@code Company}.
      * Leading and trailing whitespaces will be trimmed.
      *
-     * @throws ParseException if the given {@code name} is invalid.
+     * @throws ParseException if the given {@code company} is invalid.
      */
-    public static Name parseName(String name) throws ParseException {
-        requireNonNull(name);
-        String trimmedName = name.trim();
-        if (!Name.isValidName(trimmedName)) {
-            throw new ParseException(Name.MESSAGE_CONSTRAINTS);
+    public static Company parseCompany(String company) throws ParseException {
+        requireNonNull(company);
+        String trimmedCompanyName = company.trim();
+        if (!Company.isValidCompanyName(trimmedCompanyName)) {
+            throw new ParseException(Company.MESSAGE_CONSTRAINTS);
         }
-        return new Name(trimmedName);
+        return new Company(trimmedCompanyName);
     }
 
     /**
@@ -110,7 +111,20 @@ public class ParserUtil {
         return new Tag(trimmedTag);
     }
 
-    //TODO ADD FOR COMPLETION (parseCompletion)
+    /**
+     * Parses a {@code String completion} into an {@code Completion}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code completion} is invalid.
+     */
+    public static Status parseCompletion(String completion) throws ParseException {
+        requireNonNull(completion);
+        String trimmedCompletion = completion.trim();
+        if (!Completion.isValidCompletion(trimmedCompletion)) {
+            throw new ParseException(Completion.MESSAGE_CONSTRAINTS);
+        }
+        return new Status(trimmedCompletion);
+    }
 
     /**
      * Parses {@code Collection<String> tags} into a {@code Set<Tag>}.

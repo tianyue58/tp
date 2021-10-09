@@ -5,8 +5,8 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_AMAZON;
 import static seedu.address.testutil.Assert.assertThrows;
-import static seedu.address.testutil.TypicalApplications.ALICE;
-import static seedu.address.testutil.TypicalApplications.getTypicalAddressBook;
+import static seedu.address.testutil.TypicalApplications.AMAZON;
+import static seedu.address.testutil.TypicalApplications.getTypicalInternship;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -21,9 +21,9 @@ import seedu.address.model.application.Application;
 import seedu.address.model.application.exceptions.DuplicateApplicationException;
 import seedu.address.testutil.ApplicationBuilder;
 
-public class AddressBookTest {
+public class InternshipTest {
 
-    private final AddressBook addressBook = new AddressBook();
+    private final Internship addressBook = new Internship();
 
     @Test
     public void constructor() {
@@ -36,59 +36,59 @@ public class AddressBookTest {
     }
 
     @Test
-    public void resetData_withValidReadOnlyAddressBook_replacesData() {
-        AddressBook newData = getTypicalAddressBook();
+    public void resetData_withValidReadOnlyInternship_replacesData() {
+        Internship newData = getTypicalInternship();
         addressBook.resetData(newData);
         assertEquals(newData, addressBook);
     }
 
     @Test
-    public void resetData_withDuplicatePersons_throwsDuplicatePersonException() {
+    public void resetData_withDuplicateApplications_throwsDuplicateApplicationException() {
         // Two applications with the same identity fields
-        Application editedAlice = new ApplicationBuilder(ALICE).withTags(VALID_TAG_AMAZON)
+        Application editedAlice = new ApplicationBuilder(AMAZON).withTags(VALID_TAG_AMAZON)
                 .build();
-        List<Application> newApplications = Arrays.asList(ALICE, editedAlice);
-        AddressBookStub newData = new AddressBookStub(newApplications);
+        List<Application> newApplications = Arrays.asList(AMAZON, editedAlice);
+        InternshipStub newData = new InternshipStub(newApplications);
 
         assertThrows(DuplicateApplicationException.class, () -> addressBook.resetData(newData));
     }
 
     @Test
-    public void hasPerson_nullPerson_throwsNullPointerException() {
+    public void hasApplication_nullApplication_throwsNullPointerException() {
         assertThrows(NullPointerException.class, () -> addressBook.hasApplication(null));
     }
 
     @Test
-    public void hasPerson_personNotInAddressBook_returnsFalse() {
-        assertFalse(addressBook.hasApplication(ALICE));
+    public void hasApplication_applicationNotInInternship_returnsFalse() {
+        assertFalse(addressBook.hasApplication(AMAZON));
     }
 
     @Test
-    public void hasPerson_personInAddressBook_returnsTrue() {
-        addressBook.addApplication(ALICE);
-        assertTrue(addressBook.hasApplication(ALICE));
+    public void hasApplication_applicationInInternship_returnsTrue() {
+        addressBook.addApplication(AMAZON);
+        assertTrue(addressBook.hasApplication(AMAZON));
     }
 
     @Test
-    public void hasPerson_personWithSameIdentityFieldsInAddressBook_returnsTrue() {
-        addressBook.addApplication(ALICE);
-        Application editedAlice = new ApplicationBuilder(ALICE).withTags(VALID_TAG_AMAZON)
+    public void hasApplication_applicationWithSameIdentityFieldsInInternship_returnsTrue() {
+        addressBook.addApplication(AMAZON);
+        Application editedAlice = new ApplicationBuilder(AMAZON).withTags(VALID_TAG_AMAZON)
                 .build();
         assertTrue(addressBook.hasApplication(editedAlice));
     }
 
     @Test
-    public void getPersonList_modifyList_throwsUnsupportedOperationException() {
+    public void getApplicationList_modifyList_throwsUnsupportedOperationException() {
         assertThrows(UnsupportedOperationException.class, () -> addressBook.getApplicationList().remove(0));
     }
 
     /**
-     * A stub ReadOnlyAddressBook whose applications list can violate interface constraints.
+     * A stub ReadOnlyInternship whose applications list can violate interface constraints.
      */
-    private static class AddressBookStub implements ReadOnlyAddressBook {
+    private static class InternshipStub implements ReadOnlyInternship {
         private final ObservableList<Application> applications = FXCollections.observableArrayList();
 
-        AddressBookStub(Collection<Application> applications) {
+        InternshipStub(Collection<Application> applications) {
             this.applications.setAll(applications);
         }
 

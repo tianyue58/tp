@@ -7,10 +7,10 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
  * Represents an Application's name in InternSHIP.
  * Guarantees: immutable; is valid as declared in {@link #isValidName(String)}
  */
-public class Name {
+public class Company {
 
     public static final String MESSAGE_CONSTRAINTS =
-            "Names should only contain alphanumeric characters and spaces, and it should not be blank";
+            "Company name should only contain alphanumeric characters and spaces, and it should not be blank";
 
     /*
      * The first character of the name must not be a whitespace,
@@ -18,42 +18,42 @@ public class Name {
      */
     public static final String VALIDATION_REGEX = "[\\p{Alnum}][\\p{Alnum} ]*";
 
-    public final String fullName;
+    public final String fullCompanyName;
 
     /**
-     * Constructs a {@code Name}.
+     * Constructs a {@code Company}.
      *
-     * @param name A valid name.
+     * @param company A valid name.
      */
-    public Name(String name) {
-        requireNonNull(name);
-        checkArgument(isValidName(name), MESSAGE_CONSTRAINTS);
-        fullName = name;
+    public Company(String company) {
+        requireNonNull(company);
+        checkArgument(isValidCompanyName(company), MESSAGE_CONSTRAINTS);
+        fullCompanyName = company;
     }
 
     /**
      * Returns true if a given string is a valid name.
      */
-    public static boolean isValidName(String test) {
+    public static boolean isValidCompanyName(String test) {
         return test.matches(VALIDATION_REGEX);
     }
 
 
     @Override
     public String toString() {
-        return fullName;
+        return fullCompanyName;
     }
 
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof Name // instanceof handles nulls
-                && fullName.equals(((Name) other).fullName)); // state check
+                || (other instanceof Company // instanceof handles nulls
+                && fullCompanyName.equals(((Company) other).fullCompanyName)); // state check
     }
 
     @Override
     public int hashCode() {
-        return fullName.hashCode();
+        return fullCompanyName.hashCode();
     }
 
 }

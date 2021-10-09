@@ -53,7 +53,7 @@ public class ApplicationCard extends UiPart<Region> {
         super(FXML);
         this.application = application;
         id.setText(displayedIndex + ". ");
-        name.setText(application.getName().fullName);
+        name.setText(application.getCompany().fullCompanyName);
         position.setText(application.getPosition().value);
         deadline.setText(application.getDeadline().value);
         status.setText(application.getStatus().value);

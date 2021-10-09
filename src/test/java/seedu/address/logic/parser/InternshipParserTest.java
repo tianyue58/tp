@@ -9,7 +9,6 @@ import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_APPLICATION;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import org.junit.jupiter.api.Test;
 
@@ -29,9 +28,10 @@ import seedu.address.testutil.ApplicationBuilder;
 import seedu.address.testutil.ApplicationUtil;
 import seedu.address.testutil.EditApplicationDescriptorBuilder;
 
-public class AddressBookParserTest {
+public class InternshipParserTest {
 
-    private final AddressBookParser parser = new AddressBookParser();
+    private final InternshipParser parser = new InternshipParser();
+
 
     @Test
     public void parseCommand_add() throws Exception {
@@ -59,7 +59,7 @@ public class AddressBookParserTest {
         EditApplicationDescriptor descriptor = new EditApplicationDescriptorBuilder(application).build();
         EditCommand command = (EditCommand) parser.parseCommand(EditCommand.COMMAND_WORD + " "
                 + INDEX_FIRST_APPLICATION.getOneBased() + " "
-                + ApplicationUtil.getEditPersonDescriptorDetails(descriptor));
+                + ApplicationUtil.getEditApplicationDescriptorDetails(descriptor));
         assertEquals(new EditCommand(INDEX_FIRST_APPLICATION, descriptor), command);
     }
 
@@ -73,7 +73,7 @@ public class AddressBookParserTest {
     public void parseCommand_find() throws Exception {
         List<String> keywords = Arrays.asList("foo", "bar", "baz");
         FindCommand command = (FindCommand) parser.parseCommand(
-                FindCommand.COMMAND_WORD + " " + keywords.stream().collect(Collectors.joining(" ")));
+                FindCommand.COMMAND_WORD + " " + String.join(" ", keywords));
         assertEquals(new FindCommand(new NameContainsKeywordsPredicate(keywords)), command);
     }
 
