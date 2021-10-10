@@ -58,7 +58,8 @@ public class RejectCommand extends Command {
         model.setApplication(applicationToComplete, completedApplication);
 
 
-        return new CommandResult(String.format(MESSAGE_SUCCESS, applicationToComplete));
+
+        return new CommandResult(String.format(MESSAGE_SUCCESS, completedApplication));
 
     }
 
