@@ -97,6 +97,21 @@ public class ParserUtil {
     }
 
     /**
+     * Parses a {@code String completion} into an {@code Completion}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code completion} is invalid.
+     */
+    public static Completion parseCompletion(String completion) throws ParseException {
+        requireNonNull(completion);
+        String trimmedCompletion = completion.trim();
+        if (!Completion.isValidCompletion(trimmedCompletion)) {
+            throw new ParseException(Completion.MESSAGE_CONSTRAINTS);
+        }
+        return new Completion(trimmedCompletion);
+    }
+
+    /**
      * Parses a {@code String tag} into a {@code Tag}.
      * Leading and trailing whitespaces will be trimmed.
      *
@@ -109,21 +124,6 @@ public class ParserUtil {
             throw new ParseException(Tag.MESSAGE_CONSTRAINTS);
         }
         return new Tag(trimmedTag);
-    }
-
-    /**
-     * Parses a {@code String completion} into an {@code Completion}.
-     * Leading and trailing whitespaces will be trimmed.
-     *
-     * @throws ParseException if the given {@code completion} is invalid.
-     */
-    public static Status parseCompletion(String completion) throws ParseException {
-        requireNonNull(completion);
-        String trimmedCompletion = completion.trim();
-        if (!Completion.isValidCompletion(trimmedCompletion)) {
-            throw new ParseException(Completion.MESSAGE_CONSTRAINTS);
-        }
-        return new Status(trimmedCompletion);
     }
 
     /**

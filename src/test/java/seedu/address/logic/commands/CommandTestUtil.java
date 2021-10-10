@@ -45,6 +45,7 @@ public class CommandTestUtil {
     public static final String DEADLINE_DESC_AMAZON = " " + PREFIX_DEADLINE_OF_APPLICATION + VALID_DEADLINE_AMAZON;
     public static final String DEADLINE_DESC_BYTEDANCE = " " + PREFIX_DEADLINE_OF_APPLICATION
             + VALID_DEADLINE_BYTEDANCE;
+    public static final String TAG_DESC_AMAZON = " " + PREFIX_TAG + VALID_TAG_AMAZON;
     public static final String TAG_DESC_BYTEDANCE = " " + PREFIX_TAG + VALID_TAG_BYTEDANCE;
     public static final String STATUS_DESC_AMAZON = " " + VALID_STATUS_AMAZON;
     public static final String STATUS_DESC_BYTEDANCE = " " + VALID_STATUS_BYTEDANCE;
@@ -53,7 +54,7 @@ public class CommandTestUtil {
     public static final String INVALID_POSITION_DESC = " "
             + PREFIX_INTERNSHIP_POSITION; // empty string not allowed for positions
     public static final String INVALID_DEADLINE_DESC = " "
-            + PREFIX_DEADLINE_OF_APPLICATION; //empty string not allowed for deadlines
+            + PREFIX_DEADLINE_OF_APPLICATION + "03-12-2001"; // wrong date format (DD-MM-YYY) not allowed
     public static final String INVALID_TAG_DESC = " " + PREFIX_TAG + "Pending*"; // '*' not allowed in tags
 
     public static final String PREAMBLE_WHITESPACE = "\t  \r  \n";
