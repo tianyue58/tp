@@ -3,8 +3,7 @@ package seedu.address.storage;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static seedu.address.testutil.Assert.assertThrows;
-import static seedu.address.testutil.TypicalApplications.AMAZON;
-import static seedu.address.testutil.TypicalApplications.getTypicalInternship;
+import static seedu.address.testutil.TypicalApplications.*;
 
 import java.io.IOException;
 import java.nio.file.Path;
@@ -70,14 +69,14 @@ public class JsonInternshipStorageTest {
         assertEquals(original, new Internship(readBack));
 
         // Modify data, overwrite exiting file, and read back
-        original.addApplication(AMAZON);
-        original.removeApplication(AMAZON);
+        original.addApplication(GRAB);
+        original.removeApplication(GRAB);
         jsonInternshipStorage.saveInternship(original, filePath);
         readBack = jsonInternshipStorage.readInternship(filePath).get();
         assertEquals(original, new Internship(readBack));
 
         // Save and read without specifying file path
-        original.addApplication(AMAZON);
+        original.addApplication(GRAB);
         jsonInternshipStorage.saveInternship(original); // file path not specified
         readBack = jsonInternshipStorage.readInternship().get(); // file path not specified
         assertEquals(original, new Internship(readBack));
