@@ -71,9 +71,9 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public void setInternshipFilePath(Path InternshipFilePath) {
-        requireNonNull(InternshipFilePath);
-        userPrefs.setInternshipFilePath(InternshipFilePath);
+    public void setInternshipFilePath(Path internshipFilePath) {
+        requireNonNull(internshipFilePath);
+        userPrefs.setInternshipFilePath(internshipFilePath);
     }
 
     //=========== Internship ================================================================================

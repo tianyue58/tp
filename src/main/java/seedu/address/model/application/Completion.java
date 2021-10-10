@@ -11,11 +11,6 @@ public class Completion {
 
     public static final String MESSAGE_CONSTRAINTS = "Completion can be 'Completed' or 'Uncompleted'."
             + "It will be 'Uncompleted' by default for a new Application that is added.";
-    /*
-     * The first character of the completion must not be
-     * a whitespace.
-     */
-    public static final String VALIDATION_REGEX = "[^\\s].*";
 
     public final String value;
 
@@ -33,7 +28,7 @@ public class Completion {
      * Returns true if a given string is a valid status.
      */
     public static boolean isValidCompletion(String test) {
-        return test.matches(VALIDATION_REGEX);
+        return test.equals("Completed") || test.equals("Uncompleted");
     }
 
     @Override

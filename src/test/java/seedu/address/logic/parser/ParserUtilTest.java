@@ -23,9 +23,9 @@ import seedu.address.model.tag.Tag;
 
 public class ParserUtilTest {
     private static final String INVALID_COMPANY = "3$#*(";
-    private static final String INVALID_POSITION = "*A&#4";
+    private static final String INVALID_POSITION = " *A&#4";
     private static final String INVALID_DEADLINE = "21421341";
-    private static final String INVALID_STATUS = "abc";
+    private static final String INVALID_STATUS = "Maybe";
     private static final String INVALID_TAG = "#rejected";
     private static final String INVALID_COMPLETION = "abc";
 

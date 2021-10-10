@@ -30,10 +30,10 @@ public class Status {
     }
 
     /**
-     * Returns true if a given string is a valid status.
+     * Returns true if a given string is a valid status ("Pending" or "Accepted" or "Rejected").
      */
     public static boolean isValidStatus(String test) {
-        return test.matches(VALIDATION_REGEX);
+        return test.equals("Pending") || test.equals("Accepted") || test.equals("Rejected");
     }
 
     @Override
