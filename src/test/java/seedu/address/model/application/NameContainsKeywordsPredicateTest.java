@@ -68,8 +68,8 @@ public class NameContainsKeywordsPredicateTest {
         assertFalse(predicate.test(new ApplicationBuilder().withCompany("Shopee Grab").build()));
 
         //Keywords match position, but does not match name -- this test case needs to be fixed
-        predicate = new NameContainsKeywordsPredicate(Arrays.asList("Software Engineer"));
+        predicate = new NameContainsKeywordsPredicate(Arrays.asList("Engineer"));
         assertFalse(predicate.test(new ApplicationBuilder().withCompany("Shopee")
-                .withPosition("Software Engineer").withDeadline("2021-12-25").build()));
+                .withPosition("Engineer").withDeadline("2021-12-25").build()));
     }
 }
