@@ -26,26 +26,26 @@ import seedu.address.testutil.ApplicationBuilder;
 public class AddCommandTest {
 
     @Test
-    public void constructor_nullPerson_throwsNullPointerException() {
+    public void constructor_nullApplication_throwsNullPointerException() {
         assertThrows(NullPointerException.class, () -> new AddCommand(null));
     }
 
     @Test
-    public void execute_personAcceptedByModel_addSuccessful() throws Exception {
-        ModelStubAcceptingPersonAdded modelStub = new ModelStubAcceptingPersonAdded();
+    public void execute_applicationAcceptedByModel_addSuccessful() throws Exception {
+        ModelStubAcceptingApplicationAdded modelStub = new ModelStubAcceptingApplicationAdded();
         Application validApplication = new ApplicationBuilder().build();
 
         CommandResult commandResult = new AddCommand(validApplication).execute(modelStub);
 
         assertEquals(String.format(AddCommand.MESSAGE_SUCCESS, validApplication), commandResult.getFeedbackToUser());
-        assertEquals(Arrays.asList(validApplication), modelStub.personsAdded);
+        assertEquals(Arrays.asList(validApplication), modelStub.applicationsAdded);
     }
 
     @Test
     public void execute_duplicatePerson_throwsCommandException() {
         Application validApplication = new ApplicationBuilder().build();
         AddCommand addCommand = new AddCommand(validApplication);
-        ModelStub modelStub = new ModelStubWithPerson(validApplication);
+        ModelStub modelStub = new ModelStubWithApplication(validApplication);
 
         assertThrows(CommandException.class, AddCommand.MESSAGE_DUPLICATE_APPLICATION, (
            ) -> addCommand.execute(modelStub));
@@ -53,26 +53,26 @@ public class AddCommandTest {
 
     @Test
     public void equals() {
-        Application alice = new ApplicationBuilder().withCompany("Alice").build();
-        Application bob = new ApplicationBuilder().withCompany("Bob").build();
-        AddCommand addAliceCommand = new AddCommand(alice);
-        AddCommand addBobCommand = new AddCommand(bob);
+        Application amazon = new ApplicationBuilder().withCompany("Amazon").build();
+        Application byteDance = new ApplicationBuilder().withCompany("ByteDance").build();
+        AddCommand addAmazonCommand = new AddCommand(amazon);
+        AddCommand addBytedanceCommand = new AddCommand(byteDance);
 
         // same object -> returns true
-        assertTrue(addAliceCommand.equals(addAliceCommand));
+        assertTrue(addAmazonCommand.equals(addAmazonCommand));
 
         // same values -> returns true
-        AddCommand addAliceCommandCopy = new AddCommand(alice);
-        assertTrue(addAliceCommand.equals(addAliceCommandCopy));
+        AddCommand addAliceCommandCopy = new AddCommand(amazon);
+        assertTrue(addAmazonCommand.equals(addAliceCommandCopy));
 
         // different types -> returns false
-        assertFalse(addAliceCommand.equals(1));
+        assertFalse(addAmazonCommand.equals(1));
 
         // null -> returns false
-        assertFalse(addAliceCommand.equals(null));
+        assertFalse(addAmazonCommand.equals(null));
 
         // different application -> returns false
-        assertFalse(addAliceCommand.equals(addBobCommand));
+        assertFalse(addAmazonCommand.equals(addBytedanceCommand));
     }
 
     /**
@@ -153,10 +153,10 @@ public class AddCommandTest {
     /**
      * A Model stub that contains a single application.
      */
-    private class ModelStubWithPerson extends ModelStub {
+    private class ModelStubWithApplication extends ModelStub {
         private final Application application;
 
-        ModelStubWithPerson(Application application) {
+        ModelStubWithApplication(Application application) {
             requireNonNull(application);
             this.application = application;
         }
@@ -171,19 +171,19 @@ public class AddCommandTest {
     /**
      * A Model stub that always accept the application being added.
      */
-    private class ModelStubAcceptingPersonAdded extends ModelStub {
-        final ArrayList<Application> personsAdded = new ArrayList<>();
+    private class ModelStubAcceptingApplicationAdded extends ModelStub {
+        final ArrayList<Application> applicationsAdded = new ArrayList<>();
 
         @Override
         public boolean hasApplication(Application application) {
             requireNonNull(application);
-            return personsAdded.stream().anyMatch(application::isSameApplication);
+            return applicationsAdded.stream().anyMatch(application::isSameApplication);
         }
 
         @Override
         public void addApplication(Application application) {
             requireNonNull(application);
-            personsAdded.add(application);
+            applicationsAdded.add(application);
         }
 
         @Override
