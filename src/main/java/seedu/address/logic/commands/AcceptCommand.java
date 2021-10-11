@@ -57,10 +57,7 @@ public class AcceptCommand extends Command {
         Application completedApplication = new Application(company, position, deadline, status, tagList, completion);
         model.setApplication(applicationToComplete, completedApplication);
 
-
-        
         return new CommandResult(String.format(MESSAGE_SUCCESS, completedApplication));
-
     }
 
     @Override
