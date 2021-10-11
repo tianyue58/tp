@@ -6,14 +6,21 @@
     "deadline": "2021-12-12",
     "completion": "Uncompleted",
     "status": "Pending",
-    "tags": "Important"
+    "tags": [ "Important" ]
   }, {
+      "company": "Amazon Singapore",
+      "position": "Software Engineer",
+      "deadline": "2021-12-12",
+      "completion": "Uncompleted",
+      "status": "Pending",
+      "tags": [ "Important" ]
+    },{
     "company": "ByteDance",
     "position": "Web Developer",
     "deadline": "2021-12-19",
     "completion": "Completed",
     "status": "Rejected",
-    "tags": "Selective"
+    "tags": [ "Selective" ]
   }
  ]
 }
