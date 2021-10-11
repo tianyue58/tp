@@ -123,57 +123,47 @@ public class EditCommandTest {
             assertCommandFailure(editCommand, model, EditCommand.MESSAGE_DUPLICATE_APPLICATION);
         }
 
+
     /**
      * Edit filtered list where index is larger than size of filtered list,
-     * but smaller than size of address book
+     * but smaller than size of Internship
      */
     @Test
-    public void execute_invalidApplicationIndexFilteredList_failure() {
-        showApplicationAtIndex(model, INDEX_FIRST_APPLICATION);
-        Index outOfBoundIndex = INDEX_SECOND_APPLICATION;
-        // ensures that outOfBoundIndex is still in bounds of address book list
-        assertTrue(outOfBoundIndex.getZeroBased() < model.getInternship().getApplicationList().size());
-
-        /**
-         * Edit filtered list where index is larger than size of filtered list,
-         * but smaller than size of Internship
-         */
-        @Test
         public void execute_invalidApplicationIndexFilteredList_failure() {
-                showApplicationAtIndex(model, INDEX_FIRST_APPLICATION);
-                Index outOfBoundIndex = INDEX_SECOND_APPLICATION;
-                // ensures that outOfBoundIndex is still in bounds of Internship list
-                assertTrue(outOfBoundIndex.getZeroBased() < model.getInternship().getApplicationList().size());
+            showApplicationAtIndex(model, INDEX_FIRST_APPLICATION);
+            Index outOfBoundIndex = INDEX_SECOND_APPLICATION;
+            // ensures that outOfBoundIndex is still in bounds of Internship list
+            assertTrue(outOfBoundIndex.getZeroBased() < model.getInternship().getApplicationList().size());
 
-                EditCommand editCommand = new EditCommand(outOfBoundIndex,
-                        new EditApplicationDescriptorBuilder().withCompany(VALID_NAME_BYTEDANCE).build());
+            EditCommand editCommand = new EditCommand(outOfBoundIndex,
+                    new EditApplicationDescriptorBuilder().withCompany(VALID_NAME_BYTEDANCE).build());
 
-                assertCommandFailure(editCommand, model, Messages.MESSAGE_INVALID_APPLICATION_DISPLAYED_INDEX);
-            }
-
-            @Test
-            public void equals() {
-                final EditCommand standardCommand = new EditCommand(INDEX_FIRST_APPLICATION, DESC_AMAZON);
-
-                // same values -> returns true
-                EditApplicationDescriptor copyDescriptor = new EditApplicationDescriptor(DESC_AMAZON);
-                EditCommand commandWithSameValues = new EditCommand(INDEX_FIRST_APPLICATION, copyDescriptor);
-                assertTrue(standardCommand.equals(commandWithSameValues));
-
-                // same object -> returns true
-                assertTrue(standardCommand.equals(standardCommand));
-
-                // null -> returns false
-                assertFalse(standardCommand.equals(null));
-
-                // different types -> returns false
-                assertFalse(standardCommand.equals(new ClearCommand()));
-
-                // different index -> returns false
-                assertFalse(standardCommand.equals(new EditCommand(INDEX_SECOND_APPLICATION, DESC_AMAZON)));
-
-                // different descriptor -> returns false
-                assertFalse(standardCommand.equals(new EditCommand(INDEX_FIRST_APPLICATION, DESC_BYTEDANCE)));
-            }
-
+            assertCommandFailure(editCommand, model, Messages.MESSAGE_INVALID_APPLICATION_DISPLAYED_INDEX);
         }
+
+    @Test
+    public void equals() {
+        final EditCommand standardCommand = new EditCommand(INDEX_FIRST_APPLICATION, DESC_AMAZON);
+
+        // same values -> returns true
+        EditApplicationDescriptor copyDescriptor = new EditApplicationDescriptor(DESC_AMAZON);
+        EditCommand commandWithSameValues = new EditCommand(INDEX_FIRST_APPLICATION, copyDescriptor);
+        assertTrue(standardCommand.equals(commandWithSameValues));
+
+        // same object -> returns true
+        assertTrue(standardCommand.equals(standardCommand));
+
+        // null -> returns false
+        assertFalse(standardCommand.equals(null));
+
+        // different types -> returns false
+        assertFalse(standardCommand.equals(new ClearCommand()));
+
+        // different index -> returns false
+        assertFalse(standardCommand.equals(new EditCommand(INDEX_SECOND_APPLICATION, DESC_AMAZON)));
+
+        // different descriptor -> returns false
+        assertFalse(standardCommand.equals(new EditCommand(INDEX_FIRST_APPLICATION, DESC_BYTEDANCE)));
+    }
+
+}
