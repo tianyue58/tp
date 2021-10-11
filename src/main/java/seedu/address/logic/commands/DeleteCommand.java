@@ -22,7 +22,7 @@ public class DeleteCommand extends Command {
             + "Parameters: INDEX (must be a positive integer)\n"
             + "Example: " + COMMAND_WORD + " 1";
 
-    public static final String MESSAGE_DELETE_PERSON_SUCCESS = "Deleted Application: %1$s";
+    public static final String MESSAGE_DELETE_APPLICATION_SUCCESS = "Deleted Application: %1$s";
 
     private final Index targetIndex;
 
@@ -41,7 +41,7 @@ public class DeleteCommand extends Command {
 
         Application applicationToDelete = lastShownList.get(targetIndex.getZeroBased());
         model.deleteApplication(applicationToDelete);
-        return new CommandResult(String.format(MESSAGE_DELETE_PERSON_SUCCESS, applicationToDelete));
+        return new CommandResult(String.format(MESSAGE_DELETE_APPLICATION_SUCCESS, applicationToDelete));
     }
 
     @Override

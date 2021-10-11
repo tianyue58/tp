@@ -34,17 +34,17 @@ public class EditApplicationDescriptorTest {
         assertFalse(DESC_AMAZON.equals(DESC_BYTEDANCE));
 
         // different name -> returns false
-        EditCommand.EditApplicationDescriptor editedAmy = new EditApplicationDescriptorBuilder(DESC_AMAZON)
+        EditCommand.EditApplicationDescriptor editedAmazon = new EditApplicationDescriptorBuilder(DESC_AMAZON)
                 .withCompany(VALID_NAME_BYTEDANCE).build();
-        assertFalse(DESC_AMAZON.equals(editedAmy));
+        assertFalse(DESC_AMAZON.equals(editedAmazon));
 
         // different position -> returns false
-        editedAmy = new EditApplicationDescriptorBuilder(DESC_AMAZON).withPosition(VALID_POSITION_BYTEDANCE).build();
-        assertFalse(DESC_AMAZON.equals(editedAmy));
+        editedAmazon = new EditApplicationDescriptorBuilder(DESC_AMAZON).withPosition(VALID_POSITION_BYTEDANCE).build();
+        assertFalse(DESC_AMAZON.equals(editedAmazon));
 
         // different deadline -> returns false
-        editedAmy = new EditApplicationDescriptorBuilder(DESC_AMAZON).withDeadline(VALID_DEADLINE_BYTEDANCE).build();
-        assertFalse(DESC_AMAZON.equals(editedAmy));
+        editedAmazon = new EditApplicationDescriptorBuilder(DESC_AMAZON).withDeadline(VALID_DEADLINE_BYTEDANCE).build();
+        assertFalse(DESC_AMAZON.equals(editedAmazon));
 
     }
 }
