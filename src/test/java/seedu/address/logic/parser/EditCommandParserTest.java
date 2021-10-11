@@ -12,17 +12,20 @@ import static seedu.address.logic.commands.CommandTestUtil.POSITION_DESC_AMAZON;
 import static seedu.address.logic.commands.CommandTestUtil.POSITION_DESC_BYTEDANCE;
 import static seedu.address.logic.commands.CommandTestUtil.STATUS_DESC_AMAZON;
 import static seedu.address.logic.commands.CommandTestUtil.STATUS_DESC_BYTEDANCE;
+import static seedu.address.logic.commands.CommandTestUtil.TAG_DESC_AMAZON;
 import static seedu.address.logic.commands.CommandTestUtil.TAG_DESC_BYTEDANCE;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_DEADLINE_AMAZON;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_DEADLINE_BYTEDANCE;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_AMAZON;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_POSITION_AMAZON;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_POSITION_BYTEDANCE;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_AMAZON;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_BYTEDANCE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_APPLICATION;
+import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_APPLICATION;
 import static seedu.address.testutil.TypicalIndexes.INDEX_THIRD_APPLICATION;
 
 import org.junit.jupiter.api.Test;
@@ -89,9 +92,9 @@ public class EditCommandParserTest {
 
         // while parsing {@code PREFIX_TAG} alone will reset the tags of the {@code Application} being edited,
         // parsing it together with a valid tag results in error
-        assertParseFailure(parser, "1" + TAG_DESC_BYTEDANCE + INVALID_TAG_DESC, Tag.MESSAGE_CONSTRAINTS);
-        assertParseFailure(parser, "1" + TAG_DESC_BYTEDANCE + INVALID_TAG_DESC
-                + STATUS_DESC_AMAZON, Tag.MESSAGE_CONSTRAINTS);
+        assertParseFailure(parser, "1" + TAG_DESC_BYTEDANCE + TAG_EMPTY, Tag.MESSAGE_CONSTRAINTS);
+        assertParseFailure(parser, "1" + TAG_DESC_BYTEDANCE + TAG_EMPTY
+                + TAG_DESC_AMAZON, Tag.MESSAGE_CONSTRAINTS);
         assertParseFailure(parser, "1" + TAG_EMPTY + STATUS_DESC_BYTEDANCE
                 + STATUS_DESC_AMAZON, Tag.MESSAGE_CONSTRAINTS);
 
@@ -100,20 +103,20 @@ public class EditCommandParserTest {
                 Company.MESSAGE_CONSTRAINTS);
     }
 
-    //    @Test
-    //    public void parse_allFieldsSpecified_success() {
-    //        Index targetIndex = INDEX_SECOND_PERSON;
-    //        String userInput = targetIndex.getOneBased() + POSITION_DESC_BYTEDANCE + TAG_DESC_PENDING
-    //                + DEADLINE_DESC_AMAZON + NAME_DESC_AMAZON + TAG_DESC_REJECTED;
-    //
-    //        EditApplicationDescriptor descriptor = new EditApplicationDescriptorBuilder().withCompany(
-    //        VALID_NAME_AMAZON)
-    //                .withPosition(VALID_POSITION_BYTEDANCE).withDeadline(VALID_DEADLINE_AMAZON)
-    //                .withTags(VALID_TAG_PENDING).build();
-    //        EditCommand expectedCommand = new EditCommand(targetIndex, descriptor);
-    //
-    //        assertParseSuccess(parser, userInput, expectedCommand);
-    //    }
+        @Test
+        public void parse_allFieldsSpecified_success() {
+            Index targetIndex = INDEX_SECOND_APPLICATION;
+            String userInput = targetIndex.getOneBased() + POSITION_DESC_BYTEDANCE + TAG_DESC_BYTEDANCE
+                    + DEADLINE_DESC_AMAZON + NAME_DESC_AMAZON;
+
+            EditApplicationDescriptor descriptor = new EditApplicationDescriptorBuilder().withCompany(
+            VALID_NAME_AMAZON)
+                    .withPosition(VALID_POSITION_BYTEDANCE).withDeadline(VALID_DEADLINE_AMAZON)
+                    .withTags(VALID_TAG_BYTEDANCE).build();
+            EditCommand expectedCommand = new EditCommand(targetIndex, descriptor);
+
+            assertParseSuccess(parser, userInput, expectedCommand);
+        }
 
     @Test
     public void parse_someFieldsSpecified_success() {
@@ -157,21 +160,21 @@ public class EditCommandParserTest {
         assertParseSuccess(parser, userInput, expectedCommand);
     }
 
-    //    @Test
-    //    public void parse_multipleRepeatedFields_acceptsLast() {
-    //        Index targetIndex = INDEX_FIRST_PERSON;
-    //        String userInput = targetIndex.getOneBased() + POSITION_DESC_AMAZON + DEADLINE_DESC_AMAZON
-    //                + TAG_DESC_REJECTED + POSITION_DESC_AMAZON + DEADLINE_DESC_AMAZON + TAG_DESC_REJECTED
-    //                + POSITION_DESC_BYTEDANCE + DEADLINE_DESC_BYTEDANCE + TAG_DESC_PENDING;
-    //
-    //        EditApplicationDescriptor descriptor = new EditApplicationDescriptorBuilder()
-    //                .withPosition(VALID_POSITION_BYTEDANCE)
-    //                .withDeadline(VALID_DEADLINE_AMAZON).withTags(VALID_TAG_REJECTED)
-    //                .build();
-    //        EditCommand expectedCommand = new EditCommand(targetIndex, descriptor);
-    //
-    //        assertParseSuccess(parser, userInput, expectedCommand);
-    //    }
+    @Test
+    public void parse_multipleRepeatedFields_acceptsLast() {
+        Index targetIndex = INDEX_FIRST_APPLICATION;
+        String userInput = targetIndex.getOneBased() + POSITION_DESC_AMAZON + DEADLINE_DESC_AMAZON
+                + TAG_DESC_BYTEDANCE + POSITION_DESC_AMAZON + DEADLINE_DESC_AMAZON + TAG_DESC_AMAZON
+                + POSITION_DESC_BYTEDANCE + DEADLINE_DESC_BYTEDANCE;
+
+        EditApplicationDescriptor descriptor = new EditApplicationDescriptorBuilder()
+                .withPosition(VALID_POSITION_BYTEDANCE)
+                .withDeadline(VALID_DEADLINE_BYTEDANCE).withTags(VALID_TAG_BYTEDANCE, VALID_TAG_AMAZON)
+                .build();
+        EditCommand expectedCommand = new EditCommand(targetIndex, descriptor);
+
+        assertParseSuccess(parser, userInput, expectedCommand);
+    }
 
     @Test
     public void parse_invalidValueFollowedByValidValue_success() {
