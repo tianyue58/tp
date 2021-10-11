@@ -1,17 +1,28 @@
 {
   "_comment": "Internship save file which contains the same Application values as in TypicalApplications#getTypicalInternship()",
   "internships" : [ {
-    "company": "Shopee",
+    "company": "Amazon",
     "position": "Software Engineer",
-    "deadline": "2021-12-25"
+    "deadline": "2021-12-12",
+    "completion": "Uncompleted",
+    "status": "Pending",
+    "tags": [ "Important" ]
   }, {
-    "company": "Grab",
-    "position": "Backend Developer",
-    "deadline": "2021-12-26"
-  }, {
-    "company": "DBS",
-    "position": "Frontend Developer",
-    "deadline": "2021-12-27"
+      "company": "Amazon Singapore",
+      "position": "Software Engineer",
+      "deadline": "2021-12-12",
+      "completion": "Uncompleted",
+      "status": "Pending",
+      "tags": [ "Important" ]
+    },{
+    "company": "ByteDance",
+    "position": "Web Developer",
+    "deadline": "2021-12-19",
+    "completion": "Completed",
+    "status": "Rejected",
+    "tags": [ "Selective" ]
   }
  ]
 }
+
+

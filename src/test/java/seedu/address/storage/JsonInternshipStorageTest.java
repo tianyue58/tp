@@ -60,7 +60,7 @@ public class JsonInternshipStorageTest {
 
     @Test
     public void readAndSaveInternship_allInOrder_success() throws Exception {
-        Path filePath = testFolder.resolve("TempInternship.json");
+        Path filePath = testFolder.resolve("typicalApplicationInternship.json");
         Internship original = getTypicalInternship();
         JsonInternshipStorage jsonInternshipStorage = new JsonInternshipStorage(filePath);
 

@@ -7,6 +7,7 @@ import static seedu.address.logic.commands.CommandTestUtil.VALID_DEADLINE_AMAZON
 import static seedu.address.logic.commands.CommandTestUtil.VALID_DEADLINE_BYTEDANCE;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_DEADLINE_GRAB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_AMAZON;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_AMAZON_SG;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BYTEDANCE;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_GRAB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_POSITION_AMAZON;
@@ -36,6 +37,10 @@ public class TypicalApplications {
             .withPosition(VALID_POSITION_AMAZON).withDeadline(VALID_DEADLINE_AMAZON)
             .withCompletion(VALID_COMPLETION_AMAZON)
             .withStatus(VALID_STATUS_AMAZON).withTags(VALID_TAG_AMAZON).build();
+    public static final Application AMAZON_SG = new ApplicationBuilder().withCompany(VALID_NAME_AMAZON_SG)
+            .withPosition(VALID_POSITION_AMAZON).withDeadline(VALID_DEADLINE_AMAZON)
+            .withCompletion(VALID_COMPLETION_AMAZON)
+            .withStatus(VALID_STATUS_AMAZON).withTags(VALID_TAG_AMAZON).build();
     public static final Application BYTEDANCE = new ApplicationBuilder().withCompany(VALID_NAME_BYTEDANCE)
             .withPosition(VALID_POSITION_BYTEDANCE).withDeadline(VALID_DEADLINE_BYTEDANCE)
             .withCompletion(VALID_COMPLETION_BYTEDANCE)
@@ -44,6 +49,7 @@ public class TypicalApplications {
             .withPosition(VALID_POSITION_GRAB).withDeadline(VALID_DEADLINE_GRAB)
             .withCompletion(VALID_COMPLETION_GRAB)
             .withStatus(VALID_STATUS_GRAB).withTags(VALID_TAG_GRAB).build();
+
 
 
     private TypicalApplications() {} // prevents instantiation
@@ -60,6 +66,6 @@ public class TypicalApplications {
     }
 
     public static List<Application> getTypicalApplications() {
-        return new ArrayList<>(Arrays.asList(AMAZON, BYTEDANCE, GRAB));
+        return new ArrayList<>(Arrays.asList(AMAZON, AMAZON_SG, BYTEDANCE));
     }
 }

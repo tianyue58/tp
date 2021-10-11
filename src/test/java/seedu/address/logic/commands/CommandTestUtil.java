@@ -26,6 +26,7 @@ import seedu.address.testutil.EditApplicationDescriptorBuilder;
 public class CommandTestUtil {
 
     public static final String VALID_NAME_AMAZON = "Amazon";
+    public static final String VALID_NAME_AMAZON_SG = "Amazon Singapore";
     public static final String VALID_NAME_BYTEDANCE = "ByteDance";
     public static final String VALID_NAME_GRAB = "Grab";
     public static final String VALID_POSITION_AMAZON = "Software Engineer";
@@ -43,6 +44,8 @@ public class CommandTestUtil {
     public static final String VALID_TAG_AMAZON = "Important";
     public static final String VALID_TAG_BYTEDANCE = "Selective";
     public static final String VALID_TAG_GRAB = "Essential";
+
+
 
     public static final String NAME_DESC_AMAZON = " " + PREFIX_COMPANY_NAME + VALID_NAME_AMAZON;
     public static final String NAME_DESC_BYTEDANCE = " " + PREFIX_COMPANY_NAME + VALID_NAME_BYTEDANCE;
