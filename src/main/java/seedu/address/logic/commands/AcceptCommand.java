@@ -42,7 +42,7 @@ public class AcceptCommand extends Command {
 
 
         if (targetIndex.getZeroBased() >= lastShownList.size()) {
-            throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+            throw new CommandException(Messages.MESSAGE_INVALID_APPLICATION_DISPLAYED_INDEX);
         }
 
         Application applicationToComplete = lastShownList.get(targetIndex.getZeroBased());
