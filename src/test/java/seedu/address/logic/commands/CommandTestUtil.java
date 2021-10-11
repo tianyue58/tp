@@ -106,7 +106,7 @@ public class CommandTestUtil {
      * Executes the given {@code command}, confirms that <br>
      * - a {@code CommandException} is thrown <br>
      * - the CommandException message matches {@code expectedMessage} <br>
-     * - the address book, filtered application list and selected application in {@code actualModel} remain unchanged
+     * - the Internship, filtered application list and selected application in {@code actualModel} remain unchanged
      */
     public static void assertCommandFailure(Command command, Model actualModel, String expectedMessage) {
         // we are unable to defensively copy the model for comparison later, so we can
@@ -119,8 +119,8 @@ public class CommandTestUtil {
         assertEquals(expectedFilteredList, actualModel.getFilteredApplicationList());
     }
     /**
-     * Updates {@code model}'s filtered list to show only the application at the given {@code targetIndex} in the
-     * {@code model}'s address book.
+     * Updates Internship's filtered list to show only the application at the given {@code targetIndex} in the
+     * Internship's application list.
      */
     public static void showApplicationAtIndex(Model model, Index targetIndex) {
         assertTrue(targetIndex.getZeroBased() < model.getFilteredApplicationList().size());

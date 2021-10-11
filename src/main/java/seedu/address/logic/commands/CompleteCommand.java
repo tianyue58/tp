@@ -44,7 +44,6 @@ public class CompleteCommand extends Command {
 
 
         if (targetIndex.getZeroBased() >= lastShownList.size()) {
-            //need to change PERSON
             throw new CommandException(Messages.MESSAGE_INVALID_APPLICATION_DISPLAYED_INDEX);
         }
 

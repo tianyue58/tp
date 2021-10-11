@@ -16,9 +16,11 @@ import seedu.address.testutil.TypicalApplications;
 public class JsonSerializableInternshipTest {
 
     private static final Path TEST_DATA_FOLDER = Paths.get("src", "test", "data", "JsonSerializableInternshipTest");
-    private static final Path TYPICAL_APPLICATIONS_FILE = TEST_DATA_FOLDER.resolve("typicalApplicationsInternship.json");
+    private static final Path TYPICAL_APPLICATIONS_FILE =
+            TEST_DATA_FOLDER.resolve("typicalApplicationsInternship.json");
     private static final Path INVALID_APPLICATION_FILE = TEST_DATA_FOLDER.resolve("invalidApplicationInternship.json");
-    private static final Path DUPLICATE_APPLICATION_FILE = TEST_DATA_FOLDER.resolve("duplicateApplicationInternship.json");
+    private static final Path DUPLICATE_APPLICATION_FILE =
+            TEST_DATA_FOLDER.resolve("duplicateApplicationInternship.json");
 
     @Test
     public void toModelType_typicalApplicationsFile_success() throws Exception {

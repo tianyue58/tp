@@ -74,7 +74,7 @@ public class JsonAdaptedApplicationTest {
     @Test
     public void toModelType_invalidDeadline_throwsIllegalValueException() {
         JsonAdaptedApplication application =
-                new JsonAdaptedApplication(VALID_COMPANY, VALID_POSITION, INVALID_DEADLINE,VALID_COMPLETION,
+                new JsonAdaptedApplication(VALID_COMPANY, VALID_POSITION, INVALID_DEADLINE, VALID_COMPLETION,
                         VALID_STATUS, VALID_TAGS);
         String expectedMessage = Deadline.MESSAGE_CONSTRAINTS;
         assertThrows(IllegalValueException.class, expectedMessage, application::toModelType);

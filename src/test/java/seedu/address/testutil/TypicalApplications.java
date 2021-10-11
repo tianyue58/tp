@@ -45,7 +45,6 @@ public class TypicalApplications {
             .withCompletion(VALID_COMPLETION_GRAB)
             .withStatus(VALID_STATUS_GRAB).withTags(VALID_TAG_GRAB).build();
 
-
     private TypicalApplications() {} // prevents instantiation
 
     /**
