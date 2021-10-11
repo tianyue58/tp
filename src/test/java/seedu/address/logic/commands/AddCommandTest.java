@@ -42,7 +42,7 @@ public class AddCommandTest {
     }
 
     @Test
-    public void execute_duplicatePerson_throwsCommandException() {
+    public void execute_duplicateApplication_throwsCommandException() {
         Application validApplication = new ApplicationBuilder().build();
         AddCommand addCommand = new AddCommand(validApplication);
         ModelStub modelStub = new ModelStubWithApplication(validApplication);

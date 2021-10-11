@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.commons.core.Messages.MESSAGE_APPLICATIONS_LISTED_OVERVIEW;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
+import static seedu.address.logic.commands.FindCommand.MESSAGE_NO_MATCHING;
 import static seedu.address.testutil.TypicalApplications.AMAZON;
 import static seedu.address.testutil.TypicalApplications.BYTEDANCE;
 import static seedu.address.testutil.TypicalApplications.GRAB;
@@ -56,8 +57,9 @@ public class FindCommandTest {
 
     @Test
     public void execute_zeroKeywords_noApplicationFound() {
-        String expectedMessage = String.format(MESSAGE_APPLICATIONS_LISTED_OVERVIEW, 0);
-        NameContainsKeywordsPredicate predicate = preparePredicate("Gojek");
+        String expectedMessage = MESSAGE_NO_MATCHING;
+        NameContainsKeywordsPredicate predicate = preparePredicate(" ");
+
         FindCommand command = new FindCommand(predicate);
         expectedModel.updateFilteredApplicationList(predicate);
         assertCommandSuccess(command, model, expectedMessage, expectedModel);
