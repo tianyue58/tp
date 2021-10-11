@@ -7,7 +7,6 @@ import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_APPLICATION;
 
 import org.junit.jupiter.api.Test;
 
-import seedu.address.logic.commands.AcceptCommand;
 import seedu.address.logic.commands.RejectCommand;
 
 public class RejectCommandParserTest {
