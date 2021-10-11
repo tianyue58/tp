@@ -3,11 +3,12 @@ package seedu.address.logic.commands;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static seedu.address.commons.core.Messages.MESSAGE_APPLICATION_LISTED_OVERVIEW;
+import static seedu.address.commons.core.Messages.MESSAGE_APPLICATIONS_LISTED_OVERVIEW;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.logic.commands.FindCommand.MESSAGE_NO_MATCHING;
 import static seedu.address.testutil.TypicalApplications.AMAZON;
 import static seedu.address.testutil.TypicalApplications.BYTEDANCE;
+import static seedu.address.testutil.TypicalApplications.GRAB;
 import static seedu.address.testutil.TypicalApplications.getTypicalInternship;
 
 import java.util.Arrays;
@@ -58,6 +59,7 @@ public class FindCommandTest {
     public void execute_zeroKeywords_noApplicationFound() {
         String expectedMessage = MESSAGE_NO_MATCHING;
         NameContainsKeywordsPredicate predicate = preparePredicate(" ");
+
         FindCommand command = new FindCommand(predicate);
         expectedModel.updateFilteredApplicationList(predicate);
         assertCommandSuccess(command, model, expectedMessage, expectedModel);
@@ -66,12 +68,12 @@ public class FindCommandTest {
 
     @Test
     public void execute_multipleKeywords_multipleApplicationsFound() {
-        String expectedMessage = String.format(MESSAGE_APPLICATION_LISTED_OVERVIEW, 2, "applications");
-        NameContainsKeywordsPredicate predicate = preparePredicate("AMAZON BYTEDANCE");
+        String expectedMessage = String.format(MESSAGE_APPLICATIONS_LISTED_OVERVIEW, 3);
+        NameContainsKeywordsPredicate predicate = preparePredicate("Amazon Bytedance Grab");
         FindCommand command = new FindCommand(predicate);
         expectedModel.updateFilteredApplicationList(predicate);
         assertCommandSuccess(command, model, expectedMessage, expectedModel);
-        assertEquals(Arrays.asList(AMAZON, BYTEDANCE), model.getFilteredApplicationList());
+        assertEquals(Arrays.asList(AMAZON, BYTEDANCE, GRAB), model.getFilteredApplicationList());
     }
 
     /**

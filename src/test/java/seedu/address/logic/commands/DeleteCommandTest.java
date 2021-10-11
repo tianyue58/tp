@@ -32,7 +32,7 @@ public class DeleteCommandTest {
                 .get(INDEX_FIRST_APPLICATION.getZeroBased());
         DeleteCommand deleteCommand = new DeleteCommand(INDEX_FIRST_APPLICATION);
 
-        String expectedMessage = String.format(DeleteCommand.MESSAGE_DELETE_PERSON_SUCCESS, applicationToDelete);
+        String expectedMessage = String.format(DeleteCommand.MESSAGE_DELETE_APPLICATION_SUCCESS, applicationToDelete);
 
         ModelManager expectedModel = new ModelManager(model.getInternship(), new UserPrefs());
         expectedModel.deleteApplication(applicationToDelete);
@@ -56,7 +56,7 @@ public class DeleteCommandTest {
                 .get(INDEX_FIRST_APPLICATION.getZeroBased());
         DeleteCommand deleteCommand = new DeleteCommand(INDEX_FIRST_APPLICATION);
 
-        String expectedMessage = String.format(DeleteCommand.MESSAGE_DELETE_PERSON_SUCCESS, applicationToDelete);
+        String expectedMessage = String.format(DeleteCommand.MESSAGE_DELETE_APPLICATION_SUCCESS, applicationToDelete);
 
         Model expectedModel = new ModelManager(model.getInternship(), new UserPrefs());
         expectedModel.deleteApplication(applicationToDelete);

@@ -111,7 +111,6 @@ public class EditCommandTest {
     }
 
     @Test
-
         public void execute_duplicateApplicationFilteredList_failure() {
             showApplicationAtIndex(model, INDEX_FIRST_APPLICATION);
 
@@ -124,15 +123,16 @@ public class EditCommandTest {
             assertCommandFailure(editCommand, model, EditCommand.MESSAGE_DUPLICATE_APPLICATION);
         }
 
-        @Test
-        public void execute_invalidApplicationIndexUnfilteredList_failure() {
-            Index outOfBoundIndex = Index.fromOneBased(model.getFilteredApplicationList().size() + 1);
-            EditApplicationDescriptor descriptor = new EditApplicationDescriptorBuilder()
-                    .withCompany(VALID_NAME_BYTEDANCE).build();
-            EditCommand editCommand = new EditCommand(outOfBoundIndex, descriptor);
-
-            assertCommandFailure(editCommand, model, Messages.MESSAGE_INVALID_APPLICATION_DISPLAYED_INDEX);
-        }
+    /**
+     * Edit filtered list where index is larger than size of filtered list,
+     * but smaller than size of address book
+     */
+    @Test
+    public void execute_invalidApplicationIndexFilteredList_failure() {
+        showApplicationAtIndex(model, INDEX_FIRST_APPLICATION);
+        Index outOfBoundIndex = INDEX_SECOND_APPLICATION;
+        // ensures that outOfBoundIndex is still in bounds of address book list
+        assertTrue(outOfBoundIndex.getZeroBased() < model.getInternship().getApplicationList().size());
 
         /**
          * Edit filtered list where index is larger than size of filtered list,
