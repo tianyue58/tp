@@ -9,7 +9,7 @@ import static seedu.address.logic.commands.CommandTestUtil.VALID_POSITION_AMAZON
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_AMAZON;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
-import static seedu.address.logic.commands.CommandTestUtil.showPersonAtIndex;
+import static seedu.address.logic.commands.CommandTestUtil.showApplicationAtIndex;
 import static seedu.address.testutil.TypicalApplications.getTypicalInternship;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_APPLICATION;
 import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_APPLICATION;
@@ -50,16 +50,16 @@ public class EditCommandTest {
 
     @Test
     public void execute_someFieldsSpecifiedUnfilteredList_success() {
-        Index indexLastPerson = Index.fromOneBased(model.getFilteredApplicationList().size());
-        Application lastApplication = model.getFilteredApplicationList().get(indexLastPerson.getZeroBased());
+        Index indexLastApplication = Index.fromOneBased(model.getFilteredApplicationList().size());
+        Application lastApplication = model.getFilteredApplicationList().get(indexLastApplication.getZeroBased());
 
-        ApplicationBuilder personInList = new ApplicationBuilder(lastApplication);
-        Application editedApplication = personInList.withCompany(VALID_NAME_BYTEDANCE)
+        ApplicationBuilder applicationInList = new ApplicationBuilder(lastApplication);
+        Application editedApplication = applicationInList.withCompany(VALID_NAME_BYTEDANCE)
                 .withPosition(VALID_POSITION_AMAZON).withTags(VALID_TAG_AMAZON).build();
 
         EditApplicationDescriptor descriptor = new EditApplicationDescriptorBuilder().withCompany(VALID_NAME_BYTEDANCE)
                 .withPosition(VALID_POSITION_AMAZON).withTags(VALID_TAG_AMAZON).build();
-        EditCommand editCommand = new EditCommand(indexLastPerson, descriptor);
+        EditCommand editCommand = new EditCommand(indexLastApplication, descriptor);
 
         String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_APPLICATION_SUCCESS, editedApplication);
 
@@ -83,7 +83,7 @@ public class EditCommandTest {
 
     @Test
     public void execute_filteredList_success() {
-        showPersonAtIndex(model, INDEX_FIRST_APPLICATION);
+        showApplicationAtIndex(model, INDEX_FIRST_APPLICATION);
 
         Application applicationInFilteredList = model.getFilteredApplicationList()
                 .get(INDEX_FIRST_APPLICATION.getZeroBased());
@@ -111,7 +111,7 @@ public class EditCommandTest {
 
     @Test
     public void execute_duplicatePersonFilteredList_failure() {
-        showPersonAtIndex(model, INDEX_FIRST_APPLICATION);
+        showApplicationAtIndex(model, INDEX_FIRST_APPLICATION);
 
         // edit application in filtered list into a duplicate in address book
         Application applicationInList = model.getInternship().getApplicationList()
@@ -138,7 +138,7 @@ public class EditCommandTest {
      */
     @Test
     public void execute_invalidPersonIndexFilteredList_failure() {
-        showPersonAtIndex(model, INDEX_FIRST_APPLICATION);
+        showApplicationAtIndex(model, INDEX_FIRST_APPLICATION);
         Index outOfBoundIndex = INDEX_SECOND_APPLICATION;
         // ensures that outOfBoundIndex is still in bounds of address book list
         assertTrue(outOfBoundIndex.getZeroBased() < model.getInternship().getApplicationList().size());
