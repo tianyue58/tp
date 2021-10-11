@@ -111,17 +111,17 @@ public class EditCommandTest {
     }
 
     @Test
-        public void execute_duplicateApplicationFilteredList_failure() {
-            showApplicationAtIndex(model, INDEX_FIRST_APPLICATION);
+    public void execute_duplicateApplicationFilteredList_failure() {
+        showApplicationAtIndex(model, INDEX_FIRST_APPLICATION);
 
-            // edit application in filtered list into a duplicate in Internship
-            Application applicationInList = model.getInternship().getApplicationList()
-                    .get(INDEX_SECOND_APPLICATION.getZeroBased());
-            EditCommand editCommand = new EditCommand(INDEX_FIRST_APPLICATION,
-                    new EditApplicationDescriptorBuilder(applicationInList).build());
+        // edit application in filtered list into a duplicate in Internship
+        Application applicationInList = model.getInternship().getApplicationList()
+                .get(INDEX_SECOND_APPLICATION.getZeroBased());
+        EditCommand editCommand = new EditCommand(INDEX_FIRST_APPLICATION,
+                new EditApplicationDescriptorBuilder(applicationInList).build());
 
-            assertCommandFailure(editCommand, model, EditCommand.MESSAGE_DUPLICATE_APPLICATION);
-        }
+        assertCommandFailure(editCommand, model, EditCommand.MESSAGE_DUPLICATE_APPLICATION);
+    }
 
 
     /**
@@ -129,17 +129,17 @@ public class EditCommandTest {
      * but smaller than size of Internship
      */
     @Test
-        public void execute_invalidApplicationIndexFilteredList_failure() {
-            showApplicationAtIndex(model, INDEX_FIRST_APPLICATION);
-            Index outOfBoundIndex = INDEX_SECOND_APPLICATION;
-            // ensures that outOfBoundIndex is still in bounds of Internship list
-            assertTrue(outOfBoundIndex.getZeroBased() < model.getInternship().getApplicationList().size());
+    public void execute_invalidApplicationIndexFilteredList_failure() {
+        showApplicationAtIndex(model, INDEX_FIRST_APPLICATION);
+        Index outOfBoundIndex = INDEX_SECOND_APPLICATION;
+        // ensures that outOfBoundIndex is still in bounds of Internship list
+        assertTrue(outOfBoundIndex.getZeroBased() < model.getInternship().getApplicationList().size());
 
-            EditCommand editCommand = new EditCommand(outOfBoundIndex,
-                    new EditApplicationDescriptorBuilder().withCompany(VALID_NAME_BYTEDANCE).build());
+        EditCommand editCommand = new EditCommand(outOfBoundIndex,
+                new EditApplicationDescriptorBuilder().withCompany(VALID_NAME_BYTEDANCE).build());
 
-            assertCommandFailure(editCommand, model, Messages.MESSAGE_INVALID_APPLICATION_DISPLAYED_INDEX);
-        }
+        assertCommandFailure(editCommand, model, Messages.MESSAGE_INVALID_APPLICATION_DISPLAYED_INDEX);
+    }
 
     @Test
     public void equals() {

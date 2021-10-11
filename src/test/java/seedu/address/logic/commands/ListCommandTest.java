@@ -42,7 +42,7 @@ public class ListCommandTest {
 
     @Test
     public void execute_emptyList() {
-        model =  new ModelManager(new Internship(), new UserPrefs());
+        model = new ModelManager(new Internship(), new UserPrefs());
         expectedModel = new ModelManager(model.getInternship(), new UserPrefs());
         assertCommandSuccess(new ListCommand(), model, MESSAGE_EMPTY_LIST, expectedModel);
     }
