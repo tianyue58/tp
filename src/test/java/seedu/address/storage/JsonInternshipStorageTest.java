@@ -3,6 +3,8 @@ package seedu.address.storage;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static seedu.address.testutil.Assert.assertThrows;
+import static seedu.address.testutil.TypicalApplications.AMAZON;
+import static seedu.address.testutil.TypicalApplications.BYTEDANCE;
 import static seedu.address.testutil.TypicalApplications.GRAB;
 import static seedu.address.testutil.TypicalApplications.getTypicalInternship;
 
@@ -60,7 +62,7 @@ public class JsonInternshipStorageTest {
 
     @Test
     public void readAndSaveInternship_allInOrder_success() throws Exception {
-        Path filePath = testFolder.resolve("TempInternship.json");
+        Path filePath = testFolder.resolve("typicalApplicationInternship.json");
         Internship original = getTypicalInternship();
         JsonInternshipStorage jsonInternshipStorage = new JsonInternshipStorage(filePath);
 

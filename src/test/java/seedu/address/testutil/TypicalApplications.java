@@ -60,6 +60,6 @@ public class TypicalApplications {
     }
 
     public static List<Application> getTypicalApplications() {
-        return new ArrayList<>(Arrays.asList(AMAZON, BYTEDANCE, GRAB));
+        return new ArrayList<>(Arrays.asList(AMAZON, BYTEDANCE));
     }
 }
