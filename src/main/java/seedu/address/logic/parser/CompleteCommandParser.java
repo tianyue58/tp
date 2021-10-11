@@ -9,7 +9,7 @@ import seedu.address.logic.parser.exceptions.ParseException;
 /**
  * Parses input arguments and creates a new CompleteCommand object
  */
-public class CompleteCommandParser implements Parser<CompleteCommand>{
+public class CompleteCommandParser implements Parser<CompleteCommand> {
 
     /**
      * Parses the given {@code String} of arguments in the context of the CompleteCommand
