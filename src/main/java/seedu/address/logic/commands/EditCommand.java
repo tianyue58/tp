@@ -47,21 +47,21 @@ public class EditCommand extends Command {
 
     public static final String MESSAGE_EDIT_APPLICATION_SUCCESS = "Edited Application: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
-    public static final String MESSAGE_DUPLICATE_PERSON = "This application already exists in the address book.";
+    public static final String MESSAGE_DUPLICATE_APPLICATION = "This application already exists in the address book.";
 
     private final Index index;
-    private final EditApplicationDescriptor editPersonDescriptor;
+    private final EditApplicationDescriptor editApplicationDescriptor;
 
     /**
      * @param index of the application in the filtered application list to edit
-     * @param editPersonDescriptor details to edit the application with
+     * @param editApplicationDescriptor details to edit the application with
      */
-    public EditCommand(Index index, EditApplicationDescriptor editPersonDescriptor) {
+    public EditCommand(Index index, EditApplicationDescriptor editApplicationDescriptor) {
         requireNonNull(index);
-        requireNonNull(editPersonDescriptor);
+        requireNonNull(editApplicationDescriptor);
 
         this.index = index;
-        this.editPersonDescriptor = new EditApplicationDescriptor(editPersonDescriptor);
+        this.editApplicationDescriptor = new EditApplicationDescriptor(editApplicationDescriptor);
     }
 
     @Override
@@ -74,11 +74,10 @@ public class EditCommand extends Command {
         }
 
         Application applicationToEdit = lastShownList.get(index.getZeroBased());
-        //Should be APPLICATION
-        Application editedApplication = createEditedPerson(applicationToEdit, editPersonDescriptor);
+        Application editedApplication = createEditedApplication(applicationToEdit, editApplicationDescriptor);
 
         if (!applicationToEdit.isSameApplication(editedApplication) && model.hasApplication(editedApplication)) {
-            throw new CommandException(MESSAGE_DUPLICATE_PERSON);
+            throw new CommandException(MESSAGE_DUPLICATE_APPLICATION);
         }
 
         model.setApplication(applicationToEdit, editedApplication);
@@ -90,7 +89,7 @@ public class EditCommand extends Command {
      * Creates and returns a {@code Application} with the details of {@code applicationToEdit}
      * edited with {@code editApplicationDescriptor}.
      */
-    private static Application createEditedPerson(Application applicationToEdit,
+    private static Application createEditedApplication(Application applicationToEdit,
                                                   EditApplicationDescriptor editApplicationDescriptor) {
         assert applicationToEdit != null;
 
@@ -120,7 +119,7 @@ public class EditCommand extends Command {
         // state check
         EditCommand e = (EditCommand) other;
         return index.equals(e.index)
-                && editPersonDescriptor.equals(e.editPersonDescriptor);
+                && editApplicationDescriptor.equals(e.editApplicationDescriptor);
     }
 
     /**

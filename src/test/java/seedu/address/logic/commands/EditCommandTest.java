@@ -59,6 +59,7 @@ public class EditCommandTest {
 
         EditApplicationDescriptor descriptor = new EditApplicationDescriptorBuilder().withCompany(VALID_NAME_BYTEDANCE)
                 .withPosition(VALID_POSITION_AMAZON).withTags(VALID_TAG_AMAZON).build();
+
         EditCommand editCommand = new EditCommand(indexLastApplication, descriptor);
 
         String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_APPLICATION_SUCCESS, editedApplication);
@@ -101,53 +102,44 @@ public class EditCommandTest {
     }
 
     @Test
-    public void execute_duplicatePersonUnfilteredList_failure() {
+    public void execute_duplicateApplicationUnfilteredList_failure() {
         Application firstApplication = model.getFilteredApplicationList().get(INDEX_FIRST_APPLICATION.getZeroBased());
         EditApplicationDescriptor descriptor = new EditApplicationDescriptorBuilder(firstApplication).build();
         EditCommand editCommand = new EditCommand(INDEX_SECOND_APPLICATION, descriptor);
 
-        assertCommandFailure(editCommand, model, EditCommand.MESSAGE_DUPLICATE_PERSON);
+        assertCommandFailure(editCommand, model, EditCommand.MESSAGE_DUPLICATE_APPLICATION);
     }
 
     @Test
-    public void execute_duplicatePersonFilteredList_failure() {
-        showApplicationAtIndex(model, INDEX_FIRST_APPLICATION);
+        public void execute_duplicateApplicationFilteredList_failure() {
+            showApplicationAtIndex(model, INDEX_FIRST_APPLICATION);
 
-        // edit application in filtered list into a duplicate in address book
-        Application applicationInList = model.getInternship().getApplicationList()
-                .get(INDEX_SECOND_APPLICATION.getZeroBased());
-        EditCommand editCommand = new EditCommand(INDEX_FIRST_APPLICATION,
-                new EditApplicationDescriptorBuilder(applicationInList).build());
+            // edit application in filtered list into a duplicate in Internship
+            Application applicationInList = model.getInternship().getApplicationList()
+                    .get(INDEX_SECOND_APPLICATION.getZeroBased());
+            EditCommand editCommand = new EditCommand(INDEX_FIRST_APPLICATION,
+                    new EditApplicationDescriptorBuilder(applicationInList).build());
 
-        assertCommandFailure(editCommand, model, EditCommand.MESSAGE_DUPLICATE_PERSON);
-    }
+            assertCommandFailure(editCommand, model, EditCommand.MESSAGE_DUPLICATE_APPLICATION);
+        }
 
-    @Test
-    public void execute_invalidPersonIndexUnfilteredList_failure() {
-        Index outOfBoundIndex = Index.fromOneBased(model.getFilteredApplicationList().size() + 1);
-        EditApplicationDescriptor descriptor = new EditApplicationDescriptorBuilder()
-                .withCompany(VALID_NAME_BYTEDANCE).build();
-        EditCommand editCommand = new EditCommand(outOfBoundIndex, descriptor);
-
-        assertCommandFailure(editCommand, model, Messages.MESSAGE_INVALID_APPLICATION_DISPLAYED_INDEX);
-    }
 
     /**
      * Edit filtered list where index is larger than size of filtered list,
-     * but smaller than size of address book
+     * but smaller than size of Internship
      */
     @Test
-    public void execute_invalidPersonIndexFilteredList_failure() {
-        showApplicationAtIndex(model, INDEX_FIRST_APPLICATION);
-        Index outOfBoundIndex = INDEX_SECOND_APPLICATION;
-        // ensures that outOfBoundIndex is still in bounds of address book list
-        assertTrue(outOfBoundIndex.getZeroBased() < model.getInternship().getApplicationList().size());
+        public void execute_invalidApplicationIndexFilteredList_failure() {
+            showApplicationAtIndex(model, INDEX_FIRST_APPLICATION);
+            Index outOfBoundIndex = INDEX_SECOND_APPLICATION;
+            // ensures that outOfBoundIndex is still in bounds of Internship list
+            assertTrue(outOfBoundIndex.getZeroBased() < model.getInternship().getApplicationList().size());
 
-        EditCommand editCommand = new EditCommand(outOfBoundIndex,
-                new EditApplicationDescriptorBuilder().withCompany(VALID_NAME_BYTEDANCE).build());
+            EditCommand editCommand = new EditCommand(outOfBoundIndex,
+                    new EditApplicationDescriptorBuilder().withCompany(VALID_NAME_BYTEDANCE).build());
 
-        assertCommandFailure(editCommand, model, Messages.MESSAGE_INVALID_APPLICATION_DISPLAYED_INDEX);
-    }
+            assertCommandFailure(editCommand, model, Messages.MESSAGE_INVALID_APPLICATION_DISPLAYED_INDEX);
+        }
 
     @Test
     public void equals() {
