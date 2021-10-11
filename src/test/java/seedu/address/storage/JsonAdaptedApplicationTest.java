@@ -32,7 +32,7 @@ public class JsonAdaptedApplicationTest {
 
 
     @Test
-    public void toModelType_validPersonDetails_returnsPerson() throws Exception {
+    public void toModelType_validCompanyDetails_returnsCompany() throws Exception {
         JsonAdaptedApplication application = new JsonAdaptedApplication(AMAZON);
         assertEquals(AMAZON, application.toModelType());
     }

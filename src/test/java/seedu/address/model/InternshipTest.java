@@ -23,63 +23,63 @@ import seedu.address.testutil.ApplicationBuilder;
 
 public class InternshipTest {
 
-    private final Internship addressBook = new Internship();
+    private final Internship internship = new Internship();
 
     @Test
     public void constructor() {
-        assertEquals(Collections.emptyList(), addressBook.getApplicationList());
+        assertEquals(Collections.emptyList(), internship.getApplicationList());
     }
 
     @Test
     public void resetData_null_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> addressBook.resetData(null));
+        assertThrows(NullPointerException.class, () -> internship.resetData(null));
     }
 
     @Test
     public void resetData_withValidReadOnlyInternship_replacesData() {
         Internship newData = getTypicalInternship();
-        addressBook.resetData(newData);
-        assertEquals(newData, addressBook);
+        internship.resetData(newData);
+        assertEquals(newData, internship);
     }
 
     @Test
     public void resetData_withDuplicateApplications_throwsDuplicateApplicationException() {
         // Two applications with the same identity fields
-        Application editedAlice = new ApplicationBuilder(AMAZON).withTags(VALID_TAG_AMAZON)
+        Application editedAmazon = new ApplicationBuilder(AMAZON).withTags(VALID_TAG_AMAZON)
                 .build();
-        List<Application> newApplications = Arrays.asList(AMAZON, editedAlice);
+        List<Application> newApplications = Arrays.asList(AMAZON, editedAmazon);
         InternshipStub newData = new InternshipStub(newApplications);
 
-        assertThrows(DuplicateApplicationException.class, () -> addressBook.resetData(newData));
+        assertThrows(DuplicateApplicationException.class, () -> internship.resetData(newData));
     }
 
     @Test
     public void hasApplication_nullApplication_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> addressBook.hasApplication(null));
+        assertThrows(NullPointerException.class, () -> internship.hasApplication(null));
     }
 
     @Test
     public void hasApplication_applicationNotInInternship_returnsFalse() {
-        assertFalse(addressBook.hasApplication(AMAZON));
+        assertFalse(internship.hasApplication(AMAZON));
     }
 
     @Test
     public void hasApplication_applicationInInternship_returnsTrue() {
-        addressBook.addApplication(AMAZON);
-        assertTrue(addressBook.hasApplication(AMAZON));
+        internship.addApplication(AMAZON);
+        assertTrue(internship.hasApplication(AMAZON));
     }
 
     @Test
     public void hasApplication_applicationWithSameIdentityFieldsInInternship_returnsTrue() {
-        addressBook.addApplication(AMAZON);
+        internship.addApplication(AMAZON);
         Application editedAlice = new ApplicationBuilder(AMAZON).withTags(VALID_TAG_AMAZON)
                 .build();
-        assertTrue(addressBook.hasApplication(editedAlice));
+        assertTrue(internship.hasApplication(editedAlice));
     }
 
     @Test
     public void getApplicationList_modifyList_throwsUnsupportedOperationException() {
-        assertThrows(UnsupportedOperationException.class, () -> addressBook.getApplicationList().remove(0));
+        assertThrows(UnsupportedOperationException.class, () -> internship.getApplicationList().remove(0));
     }
 
     /**

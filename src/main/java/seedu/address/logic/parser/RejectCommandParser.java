@@ -6,7 +6,7 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.RejectCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 
-public class RejectCommandParser {
+public class RejectCommandParser implements Parser<RejectCommand> {
 
     /**
      * TO ADD JAVADOCS
