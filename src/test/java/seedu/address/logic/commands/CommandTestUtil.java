@@ -28,9 +28,9 @@ public class CommandTestUtil {
     public static final String VALID_NAME_AMAZON = "Amazon";
     public static final String VALID_NAME_BYTEDANCE = "ByteDance";
     public static final String VALID_NAME_GRAB = "Grab";
-    public static final String VALID_POSITION_AMAZON = "software engineer";
-    public static final String VALID_POSITION_BYTEDANCE = "web developer";
-    public static final String VALID_POSITION_GRAB = "backend engineer";
+    public static final String VALID_POSITION_AMAZON = "Software Engineer";
+    public static final String VALID_POSITION_BYTEDANCE = "Web Developer";
+    public static final String VALID_POSITION_GRAB = "Backend Engineer";
     public static final String VALID_DEADLINE_AMAZON = "2021-12-12";
     public static final String VALID_DEADLINE_BYTEDANCE = "2021-12-29";
     public static final String VALID_DEADLINE_GRAB = "2021-12-30";

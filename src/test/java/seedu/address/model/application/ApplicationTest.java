@@ -33,14 +33,22 @@ public class ApplicationTest {
         // null -> returns false
         assertFalse(AMAZON.isSameApplication(null));
 
-        // same name, all other attributes different -> returns true
-        Application editedAmazon = new ApplicationBuilder(AMAZON).withPosition(VALID_POSITION_BYTEDANCE)
-                .withDeadline(VALID_DEADLINE_BYTEDANCE)
+        // same name and position, all other attributes different -> returns true
+        Application editedAmazon = new ApplicationBuilder(AMAZON).withDeadline(VALID_DEADLINE_BYTEDANCE)
                 .withTags(VALID_TAG_AMAZON).build();
         assertTrue(AMAZON.isSameApplication(editedAmazon));
 
+        // different name and position, all other attributes same -> returns false
+        editedAmazon = new ApplicationBuilder(AMAZON).withCompany(VALID_NAME_BYTEDANCE)
+                .withPosition(VALID_POSITION_BYTEDANCE).build();
+        assertFalse(AMAZON.isSameApplication(editedAmazon));
+
         // different name, all other attributes same -> returns false
         editedAmazon = new ApplicationBuilder(AMAZON).withCompany(VALID_NAME_BYTEDANCE).build();
+        assertFalse(AMAZON.isSameApplication(editedAmazon));
+
+        // different position, all other attributes same -> returns false
+        editedAmazon = new ApplicationBuilder(AMAZON).withPosition(VALID_POSITION_BYTEDANCE).build();
         assertFalse(AMAZON.isSameApplication(editedAmazon));
 
         // name differs in case, all other attributes same -> returns false
@@ -48,17 +56,27 @@ public class ApplicationTest {
                 VALID_NAME_BYTEDANCE.toLowerCase()).build();
         assertFalse(BYTEDANCE.isSameApplication(editedBytedance));
 
+        // position differs in case, all other attributes same -> returns false
+        editedBytedance = new ApplicationBuilder(BYTEDANCE).withPosition(
+                VALID_POSITION_BYTEDANCE.toLowerCase()).build();
+        assertFalse(BYTEDANCE.isSameApplication(editedBytedance));
+
         // name has trailing spaces, all other attributes same -> returns false
         String nameWithTrailingSpaces = VALID_NAME_BYTEDANCE + " ";
         editedBytedance = new ApplicationBuilder(BYTEDANCE).withCompany(nameWithTrailingSpaces).build();
+        assertFalse(BYTEDANCE.isSameApplication(editedBytedance));
+
+        // name has trailing spaces, all other attributes same -> returns false
+        String positionWithTrailingSpaces = VALID_POSITION_BYTEDANCE + " ";
+        editedBytedance = new ApplicationBuilder(BYTEDANCE).withPosition(positionWithTrailingSpaces).build();
         assertFalse(BYTEDANCE.isSameApplication(editedBytedance));
     }
 
     @Test
     public void equals() {
         // same values -> returns true
-        Application aliceCopy = new ApplicationBuilder(AMAZON).build();
-        assertEquals(AMAZON, aliceCopy);
+        Application amazonCopy = new ApplicationBuilder(AMAZON).build();
+        assertEquals(AMAZON, amazonCopy);
 
         // same object -> returns true
         assertEquals(AMAZON, AMAZON);
@@ -76,11 +94,11 @@ public class ApplicationTest {
         Application editedAmazon = new ApplicationBuilder(AMAZON).withCompany(VALID_NAME_BYTEDANCE).build();
         assertNotEquals(AMAZON, editedAmazon);
 
-        // different phone -> returns false
+        // different position -> returns false
         editedAmazon = new ApplicationBuilder(AMAZON).withPosition(VALID_POSITION_BYTEDANCE).build();
         assertNotEquals(AMAZON, editedAmazon);
 
-        // different email -> returns false
+        // different deadline -> returns false
         editedAmazon = new ApplicationBuilder(AMAZON).withDeadline(VALID_DEADLINE_BYTEDANCE).build();
         assertNotEquals(AMAZON, editedAmazon);
 

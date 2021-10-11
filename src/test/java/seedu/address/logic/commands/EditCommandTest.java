@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.commands.CommandTestUtil.DESC_AMAZON;
 import static seedu.address.logic.commands.CommandTestUtil.DESC_BYTEDANCE;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BYTEDANCE;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_POSITION_BYTEDANCE;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_POSITION_AMAZON;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_AMAZON;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
@@ -34,19 +34,19 @@ public class EditCommandTest {
 
     private Model model = new ModelManager(getTypicalInternship(), new UserPrefs());
 
-    //    @Test
-    //    public void execute_allFieldsSpecifiedUnfilteredList_success() {
-    //        Application editedApplication = new ApplicationBuilder().build();
-    //        EditApplicationDescriptor descriptor = new EditApplicationDescriptorBuilder(editedApplication).build();
-    //        EditCommand editCommand = new EditCommand(INDEX_FIRST_PERSON, descriptor);
-    //
-    //        String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_PERSON_SUCCESS, editedApplication);
-    //
-    //        Model expectedModel = new ModelManager(new AddressBook(model.getAddressBook()), new UserPrefs());
-    //        expectedModel.setApplication(model.getFilteredApplicationList().get(0), editedApplication);
-    //
-    //        assertCommandSuccess(editCommand, model, expectedMessage, expectedModel);
-    //    }
+    @Test
+    public void execute_allFieldsSpecifiedUnfilteredList_success() {
+        Application editedApplication = new ApplicationBuilder().withTags(VALID_TAG_AMAZON).build();
+        EditApplicationDescriptor descriptor = new EditApplicationDescriptorBuilder(editedApplication).build();
+        EditCommand editCommand = new EditCommand(INDEX_FIRST_APPLICATION, descriptor);
+
+        String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_APPLICATION_SUCCESS, editedApplication);
+
+        Model expectedModel = new ModelManager(new Internship(model.getInternship()), new UserPrefs());
+        expectedModel.setApplication(model.getFilteredApplicationList().get(0), editedApplication);
+
+        assertCommandSuccess(editCommand, model, expectedMessage, expectedModel);
+    }
 
     @Test
     public void execute_someFieldsSpecifiedUnfilteredList_success() {
@@ -55,13 +55,13 @@ public class EditCommandTest {
 
         ApplicationBuilder personInList = new ApplicationBuilder(lastApplication);
         Application editedApplication = personInList.withCompany(VALID_NAME_BYTEDANCE)
-                .withPosition(VALID_POSITION_BYTEDANCE).withTags(VALID_TAG_AMAZON).build();
+                .withPosition(VALID_POSITION_AMAZON).withTags(VALID_TAG_AMAZON).build();
 
         EditApplicationDescriptor descriptor = new EditApplicationDescriptorBuilder().withCompany(VALID_NAME_BYTEDANCE)
-                .withPosition(VALID_POSITION_BYTEDANCE).withTags(VALID_TAG_AMAZON).build();
+                .withPosition(VALID_POSITION_AMAZON).withTags(VALID_TAG_AMAZON).build();
         EditCommand editCommand = new EditCommand(indexLastPerson, descriptor);
 
-        String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_PERSON_SUCCESS, editedApplication);
+        String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_APPLICATION_SUCCESS, editedApplication);
 
         Model expectedModel = new ModelManager(new Internship(model.getInternship()), new UserPrefs());
         expectedModel.setApplication(lastApplication, editedApplication);
@@ -74,7 +74,7 @@ public class EditCommandTest {
         EditCommand editCommand = new EditCommand(INDEX_FIRST_APPLICATION, new EditApplicationDescriptor());
         Application editedApplication = model.getFilteredApplicationList().get(INDEX_FIRST_APPLICATION.getZeroBased());
 
-        String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_PERSON_SUCCESS, editedApplication);
+        String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_APPLICATION_SUCCESS, editedApplication);
 
         Model expectedModel = new ModelManager(new Internship(model.getInternship()), new UserPrefs());
 
@@ -92,7 +92,7 @@ public class EditCommandTest {
         EditCommand editCommand = new EditCommand(INDEX_FIRST_APPLICATION,
                 new EditApplicationDescriptorBuilder().withCompany(VALID_NAME_BYTEDANCE).build());
 
-        String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_PERSON_SUCCESS, editedApplication);
+        String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_APPLICATION_SUCCESS, editedApplication);
 
         Model expectedModel = new ModelManager(new Internship(model.getInternship()), new UserPrefs());
         expectedModel.setApplication(model.getFilteredApplicationList().get(0), editedApplication);

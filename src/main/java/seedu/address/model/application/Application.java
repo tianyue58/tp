@@ -82,7 +82,7 @@ public class Application {
     }
 
     /**
-     * Returns true if both applications have the same name.
+     * Returns true if both applications have the same name and position.
      * This defines a weaker notion of equality between two applications.
      */
     public boolean isSameApplication(Application otherApplication) {
@@ -91,7 +91,8 @@ public class Application {
         }
 
         return otherApplication != null
-                && otherApplication.getCompany().equals(getCompany());
+                && otherApplication.getCompany().equals(getCompany())
+                && otherApplication.getPosition().equals(getPosition());
     }
 
     /**

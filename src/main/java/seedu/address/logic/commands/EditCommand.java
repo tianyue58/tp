@@ -45,7 +45,7 @@ public class EditCommand extends Command {
             + PREFIX_INTERNSHIP_POSITION + "UI designer "
             + PREFIX_DEADLINE_OF_APPLICATION + "2021-12-23";
 
-    public static final String MESSAGE_EDIT_PERSON_SUCCESS = "Edited Application: %1$s";
+    public static final String MESSAGE_EDIT_APPLICATION_SUCCESS = "Edited Application: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
     public static final String MESSAGE_DUPLICATE_PERSON = "This application already exists in the address book.";
 
@@ -83,7 +83,7 @@ public class EditCommand extends Command {
 
         model.setApplication(applicationToEdit, editedApplication);
         model.updateFilteredApplicationList(PREDICATE_SHOW_ALL_APPLICATIONS);
-        return new CommandResult(String.format(MESSAGE_EDIT_PERSON_SUCCESS, editedApplication));
+        return new CommandResult(String.format(MESSAGE_EDIT_APPLICATION_SUCCESS, editedApplication));
     }
 
     /**
