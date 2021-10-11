@@ -42,7 +42,7 @@ public class AcceptCommand extends Command {
 
 
         if (targetIndex.getZeroBased() >= lastShownList.size()) {
-            throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+            throw new CommandException(Messages.MESSAGE_INVALID_APPLICATION_DISPLAYED_INDEX);
         }
 
         Application applicationToComplete = lastShownList.get(targetIndex.getZeroBased());
@@ -57,10 +57,7 @@ public class AcceptCommand extends Command {
         Application completedApplication = new Application(company, position, deadline, status, tagList, completion);
         model.setApplication(applicationToComplete, completedApplication);
 
-
-        
         return new CommandResult(String.format(MESSAGE_SUCCESS, completedApplication));
-
     }
 
     @Override
