@@ -31,14 +31,14 @@ public class AddCommandTest {
     }
 
     @Test
-    public void execute_personAcceptedByModel_addSuccessful() throws Exception {
+    public void execute_applicationAcceptedByModel_addSuccessful() throws Exception {
         ModelStubAcceptingApplicationAdded modelStub = new ModelStubAcceptingApplicationAdded();
         Application validApplication = new ApplicationBuilder().build();
 
         CommandResult commandResult = new AddCommand(validApplication).execute(modelStub);
 
         assertEquals(String.format(AddCommand.MESSAGE_SUCCESS, validApplication), commandResult.getFeedbackToUser());
-        assertEquals(Arrays.asList(validApplication), modelStub.applicationAdded);
+        assertEquals(Arrays.asList(validApplication), modelStub.applicationsAdded);
     }
 
     @Test
@@ -53,26 +53,26 @@ public class AddCommandTest {
 
     @Test
     public void equals() {
-        Application shopee = new ApplicationBuilder().withCompany("Shopee").build();
-        Application grab = new ApplicationBuilder().withCompany("Grab").build();
-        AddCommand addShopeeCommand = new AddCommand(shopee);
-        AddCommand addGrabCommand = new AddCommand(grab);
+        Application amazon = new ApplicationBuilder().withCompany("Amazon").build();
+        Application byteDance = new ApplicationBuilder().withCompany("ByteDance").build();
+        AddCommand addAmazonCommand = new AddCommand(amazon);
+        AddCommand addBytedanceCommand = new AddCommand(byteDance);
 
         // same object -> returns true
-        assertTrue(addShopeeCommand.equals(addShopeeCommand));
+        assertTrue(addAmazonCommand.equals(addAmazonCommand));
 
         // same values -> returns true
-        AddCommand addShopeeCommandCopy = new AddCommand(shopee);
-        assertTrue(addShopeeCommand.equals(addShopeeCommandCopy));
+        AddCommand addAliceCommandCopy = new AddCommand(amazon);
+        assertTrue(addAmazonCommand.equals(addAliceCommandCopy));
 
         // different types -> returns false
-        assertFalse(addShopeeCommand.equals(1));
+        assertFalse(addAmazonCommand.equals(1));
 
         // null -> returns false
-        assertFalse(addShopeeCommand.equals(null));
+        assertFalse(addAmazonCommand.equals(null));
 
         // different application -> returns false
-        assertFalse(addShopeeCommand.equals(addGrabCommand));
+        assertFalse(addAmazonCommand.equals(addBytedanceCommand));
     }
 
     /**
@@ -172,18 +172,18 @@ public class AddCommandTest {
      * A Model stub that always accept the application being added.
      */
     private class ModelStubAcceptingApplicationAdded extends ModelStub {
-        final ArrayList<Application> applicationAdded = new ArrayList<>();
+        final ArrayList<Application> applicationsAdded = new ArrayList<>();
 
         @Override
         public boolean hasApplication(Application application) {
             requireNonNull(application);
-            return applicationAdded.stream().anyMatch(application::isSameApplication);
+            return applicationsAdded.stream().anyMatch(application::isSameApplication);
         }
 
         @Override
         public void addApplication(Application application) {
             requireNonNull(application);
-            applicationAdded.add(application);
+            applicationsAdded.add(application);
         }
 
         @Override
