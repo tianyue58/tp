@@ -32,7 +32,8 @@ public class FindCommand extends Command {
         int listSize = model.getFilteredApplicationList().size();
         if (listSize == 0) return new CommandResult(Messages.MESSAGE_NO_MATCHING);
         return new CommandResult(
-                String.format(Messages.MESSAGE_APPLICATION_LISTED_OVERVIEW, model.getFilteredApplicationList().size()));
+                String.format(Messages.MESSAGE_APPLICATION_LISTED_OVERVIEW,
+                        listSize, listSize == 1 ? "application" : "applications"));
     }
 
     @Override
