@@ -103,20 +103,20 @@ public class EditCommandParserTest {
                 Company.MESSAGE_CONSTRAINTS);
     }
 
-        @Test
-        public void parse_allFieldsSpecified_success() {
-            Index targetIndex = INDEX_SECOND_APPLICATION;
-            String userInput = targetIndex.getOneBased() + POSITION_DESC_BYTEDANCE + TAG_DESC_BYTEDANCE
-                    + DEADLINE_DESC_AMAZON + NAME_DESC_AMAZON;
+    @Test
+    public void parse_allFieldsSpecified_success() {
+        Index targetIndex = INDEX_SECOND_APPLICATION;
+        String userInput = targetIndex.getOneBased() + POSITION_DESC_BYTEDANCE + TAG_DESC_BYTEDANCE
+                + DEADLINE_DESC_AMAZON + NAME_DESC_AMAZON;
 
-            EditApplicationDescriptor descriptor = new EditApplicationDescriptorBuilder().withCompany(
-            VALID_NAME_AMAZON)
-                    .withPosition(VALID_POSITION_BYTEDANCE).withDeadline(VALID_DEADLINE_AMAZON)
-                    .withTags(VALID_TAG_BYTEDANCE).build();
-            EditCommand expectedCommand = new EditCommand(targetIndex, descriptor);
+        EditApplicationDescriptor descriptor = new EditApplicationDescriptorBuilder().withCompany(
+                VALID_NAME_AMAZON)
+                .withPosition(VALID_POSITION_BYTEDANCE).withDeadline(VALID_DEADLINE_AMAZON)
+                .withTags(VALID_TAG_BYTEDANCE).build();
+        EditCommand expectedCommand = new EditCommand(targetIndex, descriptor);
 
-            assertParseSuccess(parser, userInput, expectedCommand);
-        }
+        assertParseSuccess(parser, userInput, expectedCommand);
+    }
 
     @Test
     public void parse_someFieldsSpecified_success() {
