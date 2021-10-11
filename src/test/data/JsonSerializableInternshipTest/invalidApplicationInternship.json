@@ -1,7 +1,9 @@
 {
-  "internships": [ {
-    "company": "#*A%t4w",
-    "position": "A#($g5r",
-    "deadline": "12345"
-  } ]
+  "applications": [ {
+      "company": "Google&",
+      "position": "",
+      "deadline": "03-12-2001",
+      "completion": "done",
+      "status": "unknown"
+    } ]
 }

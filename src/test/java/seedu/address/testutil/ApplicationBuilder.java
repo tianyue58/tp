@@ -104,7 +104,7 @@ public class ApplicationBuilder {
     }
 
     public Application build() {
-        return new Application(company, position, deadline, status, tags, completion);
+        return new Application(company, position, deadline, completion, status, tags);
     }
 
 }

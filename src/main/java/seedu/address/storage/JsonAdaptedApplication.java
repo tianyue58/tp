@@ -28,9 +28,9 @@ class JsonAdaptedApplication {
     private final String company;
     private final String position;
     private final String deadline;
+    private final String completion;
     private final String status;
     private final List<JsonAdaptedTag> tagged = new ArrayList<>();
-    private final String completion;
 
 
     /**
@@ -40,18 +40,18 @@ class JsonAdaptedApplication {
     public JsonAdaptedApplication(@JsonProperty("company") String company,
                                   @JsonProperty("position") String position,
                                   @JsonProperty("deadline") String deadline,
+                                  @JsonProperty("completion") String completion,
                                   @JsonProperty("status") String status,
-                                  @JsonProperty("tagged") List<JsonAdaptedTag> tagged,
-                                  @JsonProperty("completion") String completion
+                                  @JsonProperty("tagged") List<JsonAdaptedTag> tagged
                                   ) {
         this.company = company;
         this.position = position;
         this.deadline = deadline;
+        this.completion = completion;
         this.status = status;
         if (tagged != null) {
             this.tagged.addAll(tagged);
         }
-        this.completion = completion;
     }
 
     /**
@@ -61,11 +61,11 @@ class JsonAdaptedApplication {
         company = source.getCompany().fullCompanyName;
         position = source.getPosition().value;
         deadline = source.getDeadline().value;
+        completion = source.getCompletion().value;
         status = source.getStatus().value;
         tagged.addAll(source.getTags().stream()
                 .map(JsonAdaptedTag::new)
                 .collect(Collectors.toList()));
-        completion = source.getCompletion().value;
     }
 
     /**
@@ -96,11 +96,6 @@ class JsonAdaptedApplication {
         }
         final Position modelPosition = new Position(position);
 
-        if (!Status.isValidStatus(status)) {
-            throw new IllegalValueException(Status.MESSAGE_CONSTRAINTS);
-        }
-        final Status modelStatus = new Status(status);
-
         if (deadline == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
                     Deadline.class.getSimpleName()));
@@ -109,8 +104,6 @@ class JsonAdaptedApplication {
             throw new IllegalValueException(Deadline.MESSAGE_CONSTRAINTS);
         }
         final Deadline modelDeadline = new Deadline(deadline);
-
-        final Set<Tag> modelTags = new HashSet<>(applicationTags);
 
         if (completion == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
@@ -121,7 +114,14 @@ class JsonAdaptedApplication {
         }
         final Completion modelCompletion = new Completion(completion);
 
-        return new Application(modelName, modelPosition, modelDeadline, modelStatus, modelTags, modelCompletion);
+        if (!Status.isValidStatus(status)) {
+            throw new IllegalValueException(Status.MESSAGE_CONSTRAINTS);
+        }
+        final Status modelStatus = new Status(status);
+
+        final Set<Tag> modelTags = new HashSet<>(applicationTags);
+
+        return new Application(modelName, modelPosition, modelDeadline, modelCompletion, modelStatus, modelTags);
     }
 
 }

@@ -49,7 +49,7 @@ public class TypicalApplications {
     private TypicalApplications() {} // prevents instantiation
 
     /**
-     * Returns an {@code AddressBook} with all the typical persons.
+     * Returns an {@code Internship} with all the typical applications.
      */
     public static Internship getTypicalInternship() {
         Internship internship = new Internship();

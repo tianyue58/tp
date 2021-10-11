@@ -30,15 +30,15 @@ public class Application {
     /**
      * Every field must be present and not null.
      */
-    public Application(Company company, Position position, Deadline deadline, Status status,
-                       Set<Tag> tags, Completion completion) {
+    public Application(Company company, Position position, Deadline deadline, Completion completion, Status status,
+                       Set<Tag> tags) {
         requireAllNonNull(company, position, deadline, tags, completion);
         this.company = company;
         this.position = position;
         this.deadline = deadline;
+        this.completion = completion;
         this.status = status;
         this.tags.addAll(tags);
-        this.completion = completion;
     }
 
     /**
@@ -62,6 +62,16 @@ public class Application {
         return deadline;
     }
 
+    /**
+     * Returns the completion status of the {@code Application}.
+     */
+    public Completion getCompletion() {
+        return this.completion;
+    }
+
+    /**
+     * Returns the status (Pending/ Accepted/ Rejected) of the {@code Application}.
+     */
     public Status getStatus() {
         return this.status;
     }
@@ -72,13 +82,6 @@ public class Application {
      */
     public Set<Tag> getTags() {
         return Collections.unmodifiableSet(tags);
-    }
-
-    /**
-     * Returns the completion status of the {@code Application}.
-     */
-    public Completion getCompletion() {
-        return this.completion;
     }
 
     /**
@@ -113,15 +116,15 @@ public class Application {
         return otherApplication.getCompany().equals(getCompany())
                 && otherApplication.getPosition().equals(getPosition())
                 && otherApplication.getDeadline().equals(getDeadline())
+                && otherApplication.getCompletion().equals(getCompletion())
                 && otherApplication.getStatus().equals(getStatus())
-                && otherApplication.getTags().equals(getTags())
-                && otherApplication.getCompletion().equals(getCompletion());
+                && otherApplication.getTags().equals(getTags());
     }
 
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(company, position, deadline, status, tags, completion);
+        return Objects.hash(company, position, deadline, completion, status, tags);
     }
 
     @Override
