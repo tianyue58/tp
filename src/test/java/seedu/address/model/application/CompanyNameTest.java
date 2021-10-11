@@ -14,13 +14,13 @@ public class CompanyNameTest {
     }
 
     @Test
-    public void constructor_invalidName_throwsIllegalArgumentException() {
-        String invalidName = "";
-        assertThrows(IllegalArgumentException.class, () -> new Company(invalidName));
+    public void constructor_invalidCompanyName_throwsIllegalArgumentException() {
+        String invalidCompanyName = "";
+        assertThrows(IllegalArgumentException.class, () -> new Company(invalidCompanyName));
     }
 
     @Test
-    public void isValidName() {
+    public void isValidCompanyName() {
         // null name
         assertThrows(NullPointerException.class, () -> Company.isValidCompanyName(null));
 
