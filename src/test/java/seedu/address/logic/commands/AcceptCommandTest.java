@@ -62,7 +62,7 @@ public class AcceptCommandTest {
         Status status = new Status("Accepted");
         Completion completion = new Completion("Completed");
 
-        Application addedApplication = new Application(company, position, deadline, status, tagList, completion);
+        Application addedApplication = new Application(company, position, deadline, completion, status, tagList);
 
         String expectedMessage = String.format(AcceptCommand.MESSAGE_SUCCESS, addedApplication);
         ModelManager expectedModel = new ModelManager(model.getInternship(), new UserPrefs());
