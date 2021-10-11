@@ -54,7 +54,7 @@ public class RejectCommand extends Command {
         Status status = new Status("Rejected");
         Completion completion = new Completion("Completed");
 
-        Application completedApplication = new Application(company, position, deadline, status, tagList, completion);
+        Application completedApplication = new Application(company, position, deadline, completion, status, tagList);
         model.setApplication(applicationToComplete, completedApplication);
 
 

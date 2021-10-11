@@ -56,7 +56,7 @@ public class CompleteCommand extends Command {
         Set<Tag> tagList = applicationToComplete.getTags();
         Completion completion = new Completion("Completed");
 
-        Application completedApplication = new Application(company, position, deadline, status, tagList, completion);
+        Application completedApplication = new Application(company, position, deadline, completion, status, tagList);
         model.setApplication(applicationToComplete, completedApplication);
         model.updateFilteredApplicationList(Model.PREDICATE_SHOW_ALL_APPLICATIONS);
         return new CommandResult(String.format(MESSAGE_SUCCESS, completedApplication));

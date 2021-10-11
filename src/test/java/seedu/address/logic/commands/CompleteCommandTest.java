@@ -25,6 +25,7 @@ import seedu.address.model.application.Position;
 import seedu.address.model.application.Status;
 import seedu.address.model.tag.Tag;
 
+
 public class CompleteCommandTest {
 
     private Model model = new ModelManager(getTypicalInternship(), new UserPrefs());
@@ -40,7 +41,7 @@ public class CompleteCommandTest {
         Status status = applicationToComplete.getStatus();
         Set<Tag> tagList = applicationToComplete.getTags();
         Completion completion = new Completion("Completed");
-        Application completedApplication = new Application(company, position, deadline, status, tagList, completion);
+        Application completedApplication = new Application(company, position, deadline, completion, status, tagList);
 
         String expectedMessage = String.format(CompleteCommand.MESSAGE_SUCCESS, completedApplication);
         ModelManager expectedModel = new ModelManager(model.getInternship(), new UserPrefs());
@@ -62,23 +63,23 @@ public class CompleteCommandTest {
 
     @Test
     public void equals() {
-        CompleteCommand CompleteFirstCommand = new CompleteCommand(INDEX_FIRST_APPLICATION);
-        CompleteCommand CompleteSecondCommand = new CompleteCommand(INDEX_SECOND_APPLICATION);
+        CompleteCommand completeFirstCommand = new CompleteCommand(INDEX_FIRST_APPLICATION);
+        CompleteCommand completeSecondCommand = new CompleteCommand(INDEX_SECOND_APPLICATION);
 
         // same object -> returns true
-        assertTrue(CompleteFirstCommand.equals(CompleteFirstCommand));
+        assertTrue(completeFirstCommand.equals(completeFirstCommand));
 
         // same values -> returns true
-        CompleteCommand CompleteFirstCommandCopy = new CompleteCommand(INDEX_FIRST_APPLICATION);
-        assertTrue(CompleteFirstCommand.equals(CompleteFirstCommandCopy));
+        CompleteCommand completeFirstCommandCopy = new CompleteCommand(INDEX_FIRST_APPLICATION);
+        assertTrue(completeFirstCommand.equals(completeFirstCommandCopy));
 
         // different types -> returns false
-        assertFalse(CompleteFirstCommand.equals(1));
+        assertFalse(completeFirstCommand.equals(1));
 
         // null -> returns false
-        assertFalse(CompleteFirstCommand.equals(null));
+        assertFalse(completeFirstCommand.equals(null));
 
         // different application -> returns false
-        assertFalse(CompleteFirstCommand.equals(CompleteSecondCommand));
+        assertFalse(completeFirstCommand.equals(completeSecondCommand));
     }
 }

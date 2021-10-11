@@ -54,7 +54,7 @@ public class AcceptCommand extends Command {
         Status status = new Status("Accepted");
         Completion completion = new Completion("Completed");
 
-        Application completedApplication = new Application(company, position, deadline, status, tagList, completion);
+        Application completedApplication = new Application(company, position, deadline, completion, status, tagList);
         model.setApplication(applicationToComplete, completedApplication);
 
         return new CommandResult(String.format(MESSAGE_SUCCESS, completedApplication));

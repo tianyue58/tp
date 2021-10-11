@@ -47,7 +47,7 @@ public class AddCommandParser implements Parser<AddCommand> {
         Set<Tag> tagList = ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));
         Completion completion = new Completion("Uncompleted");
 
-        Application application = new Application(company, position, deadline, status, tagList, completion);
+        Application application = new Application(company, position, deadline, completion, status, tagList);
 
         return new AddCommand(application);
     }
