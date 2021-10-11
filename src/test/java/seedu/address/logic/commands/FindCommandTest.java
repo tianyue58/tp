@@ -7,7 +7,6 @@ import static seedu.address.commons.core.Messages.MESSAGE_APPLICATION_LISTED_OVE
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.logic.commands.FindCommand.MESSAGE_NO_MATCHING;
 import static seedu.address.testutil.TypicalApplications.AMAZON;
-import static seedu.address.testutil.TypicalApplications.AMAZON_SG;
 import static seedu.address.testutil.TypicalApplications.BYTEDANCE;
 import static seedu.address.testutil.TypicalApplications.getTypicalInternship;
 
@@ -69,11 +68,11 @@ public class FindCommandTest {
     @Test
     public void execute_multipleKeywords_multipleApplicationsFound() {
         String expectedMessage = String.format(MESSAGE_APPLICATION_LISTED_OVERVIEW, 2, "applications");
-        NameContainsKeywordsPredicate predicate = preparePredicate("Amazon");
+        NameContainsKeywordsPredicate predicate = preparePredicate("Amazon ByteDance");
         FindCommand command = new FindCommand(predicate);
         expectedModel.updateFilteredApplicationList(predicate);
         assertCommandSuccess(command, model, expectedMessage, expectedModel);
-        assertEquals(Arrays.asList(AMAZON, AMAZON_SG), model.getFilteredApplicationList());
+        assertEquals(Arrays.asList(AMAZON, BYTEDANCE), model.getFilteredApplicationList());
     }
 
     /**
