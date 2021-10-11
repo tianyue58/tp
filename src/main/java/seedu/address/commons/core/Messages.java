@@ -11,6 +11,5 @@ public class Messages {
             "The application index provided is invalid";
     public static final String MESSAGE_EMPTY_LIST = "There is no application in your Internship list";
     public static final String MESSAGE_NO_MATCHING = "No matching result found in your Internship list";
-    public static final String MESSAGE_APPLICATION_LISTED_OVERVIEW = "%1$d application listed";
-
+    public static final String MESSAGE_APPLICATION_LISTED_OVERVIEW = "%1$d %2$s listed";
 }
