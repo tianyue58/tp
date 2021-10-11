@@ -2,18 +2,18 @@ package seedu.address.logic.commands;
 
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.logic.commands.CommandTestUtil.showApplicationAtIndex;
+import static seedu.address.logic.commands.ListCommand.MESSAGE_EMPTY_LIST;
 import static seedu.address.testutil.TypicalApplications.getTypicalInternship;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_APPLICATION;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import seedu.address.commons.core.Messages;
 import seedu.address.model.Internship;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
-import seedu.address.model.application.Company;
+
 
 /**
  * Contains integration tests (interaction with the Model) and unit tests for ListCommand.
@@ -44,7 +44,7 @@ public class ListCommandTest {
     public void execute_emptyList() {
         model =  new ModelManager(new Internship(), new UserPrefs());
         expectedModel = new ModelManager(model.getInternship(), new UserPrefs());
-        assertCommandSuccess(new ListCommand(), model, Messages.MESSAGE_EMPTY_LIST, expectedModel);
+        assertCommandSuccess(new ListCommand(), model, MESSAGE_EMPTY_LIST, expectedModel);
     }
 
 }

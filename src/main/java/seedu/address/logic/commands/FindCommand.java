@@ -18,6 +18,7 @@ public class FindCommand extends Command {
             + "the specified keywords (case-insensitive) and displays them as a list with index numbers.\n"
             + "Parameters: KEYWORD [MORE_KEYWORDS]...\n"
             + "Example: " + COMMAND_WORD + " Amazon ByteDance Google";
+    public static final String MESSAGE_NO_MATCHING = "No matching result found in your Internship list";
 
     private final NameContainsKeywordsPredicate predicate;
 
@@ -30,7 +31,7 @@ public class FindCommand extends Command {
         requireNonNull(model);
         model.updateFilteredApplicationList(predicate);
         int listSize = model.getFilteredApplicationList().size();
-        if (listSize == 0) return new CommandResult(Messages.MESSAGE_NO_MATCHING);
+        if (listSize == 0) return new CommandResult(MESSAGE_NO_MATCHING);
         return new CommandResult(
                 String.format(Messages.MESSAGE_APPLICATION_LISTED_OVERVIEW,
                         listSize, listSize == 1 ? "application" : "applications"));
