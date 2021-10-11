@@ -113,9 +113,16 @@ public class UniqueApplicationList implements Iterable<Application> {
 
     @Override
     public boolean equals(Object other) {
-        return other == this // short circuit if same object
-                || (other instanceof UniqueApplicationList // instanceof handles nulls
-                        && internalList.equals(((UniqueApplicationList) other).internalList));
+        if (other == this) {
+            return true; // short circuit if same object
+        }
+
+        if (!(other instanceof UniqueApplicationList)) {
+            return false; // instanceof handles nulls
+        }
+
+        UniqueApplicationList uniqueApplicationList = (UniqueApplicationList) other;
+        return internalList.toString().equals(uniqueApplicationList.internalList.toString());
     }
 
     @Override
