@@ -122,12 +122,7 @@ public class UniqueApplicationList implements Iterable<Application> {
         }
 
         UniqueApplicationList uniqueApplicationList = (UniqueApplicationList) other;
-        for (int i = 0; i < internalList.size(); i++) {
-            if (!(internalList.get(i).equals(uniqueApplicationList.internalList.get(i)))) {
-                return false;
-            }
-        }
-        return true;
+        return internalList.toString().equals(uniqueApplicationList.internalList.toString());
     }
 
     @Override
