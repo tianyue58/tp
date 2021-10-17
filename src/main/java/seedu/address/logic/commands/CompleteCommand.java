@@ -58,7 +58,6 @@ public class CompleteCommand extends Command {
 
         Application completedApplication = new Application(company, position, deadline, completion, status, tagList);
         model.setApplication(applicationToComplete, completedApplication);
-        model.updateFilteredApplicationList(Model.PREDICATE_SHOW_ALL_APPLICATIONS);
         return new CommandResult(String.format(MESSAGE_SUCCESS, completedApplication));
 
     }
