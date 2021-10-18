@@ -19,8 +19,7 @@ public class AddCommand extends Command {
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds an application to InternSHIP. "
             + "Parameters: "
-            +
-            PREFIX_COMPANY_NAME + "COMPANY_NAME "
+            + PREFIX_COMPANY_NAME + "COMPANY_NAME "
             + PREFIX_INTERNSHIP_POSITION + "INTERNSHIP_POSITION "
             + PREFIX_DEADLINE_OF_APPLICATION + "DEADLINE_OF_APPLICATION "
             + "[" + PREFIX_TAG + "TAG]...\n"
