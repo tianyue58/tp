@@ -77,15 +77,14 @@ public class EditCommandParserTest {
     @Test
     public void parse_invalidValue_failure() {
         assertParseFailure(parser, "1" + INVALID_NAME_DESC, Company.MESSAGE_CONSTRAINTS); // invalid name
-        assertParseFailure(parser, "1" + INVALID_POSITION_DESC, Position.MESSAGE_CONSTRAINTS); // invalid phone
-        // assertParseFailure(parser, "1" + INVALID_DEADLINE_DESC, Deadline.MESSAGE_CONSTRAINTS);// invalid email
+        assertParseFailure(parser, "1" + INVALID_POSITION_DESC, Position.MESSAGE_CONSTRAINTS); // invalid position
         assertParseFailure(parser, "1" + INVALID_TAG_DESC, Tag.MESSAGE_CONSTRAINTS); // invalid tag
 
-        // invalid phone followed by valid email
+        // invalid position followed by valid deadline
         assertParseFailure(parser, "1" + INVALID_POSITION_DESC + DEADLINE_DESC_AMAZON,
                 Position.MESSAGE_CONSTRAINTS);
 
-        // valid phone followed by invalid phone. The test case for invalid phone followed by valid phone
+        // valid position followed by invalid position. The test case for invalid position followed by valid position
         // is tested at {@code parse_invalidValueFollowedByValidValue_success()}
         assertParseFailure(parser, "1" + POSITION_DESC_BYTEDANCE + INVALID_POSITION_DESC,
                 Position.MESSAGE_CONSTRAINTS);
@@ -141,13 +140,13 @@ public class EditCommandParserTest {
         EditCommand expectedCommand = new EditCommand(targetIndex, descriptor);
         assertParseSuccess(parser, userInput, expectedCommand);
 
-        // phone
+        // position
         userInput = targetIndex.getOneBased() + POSITION_DESC_AMAZON;
         descriptor = new EditApplicationDescriptorBuilder().withPosition(VALID_POSITION_AMAZON).build();
         expectedCommand = new EditCommand(targetIndex, descriptor);
         assertParseSuccess(parser, userInput, expectedCommand);
 
-        // email
+        // deadline
         userInput = targetIndex.getOneBased() + DEADLINE_DESC_AMAZON;
         descriptor = new EditApplicationDescriptorBuilder().withDeadline(VALID_DEADLINE_AMAZON).build();
         expectedCommand = new EditCommand(targetIndex, descriptor);

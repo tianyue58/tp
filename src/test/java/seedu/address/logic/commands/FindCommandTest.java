@@ -19,7 +19,11 @@ import org.junit.jupiter.api.Test;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
+import seedu.address.model.application.CompletionContainsKeywordsPredicate;
+import seedu.address.model.application.DeadlineContainsKeywordsPredicate;
 import seedu.address.model.application.NameContainsKeywordsPredicate;
+import seedu.address.model.application.PositionContainsKeywordsPredicate;
+import seedu.address.model.application.StatusContainsKeywordsPredicate;
 
 /**
  * Contains integration tests (interaction with the Model) for {@code FindCommand}.
@@ -56,9 +60,53 @@ public class FindCommandTest {
     }
 
     @Test
-    public void execute_zeroKeywords_noApplicationFound() {
+    public void execute_zeroNameKeywords_noApplicationFound() {
         String expectedMessage = MESSAGE_NO_MATCHING;
-        NameContainsKeywordsPredicate predicate = preparePredicate(" ");
+        NameContainsKeywordsPredicate predicate = prepareNamePredicate(" ");
+
+        FindCommand command = new FindCommand(predicate);
+        expectedModel.updateFilteredApplicationList(predicate);
+        assertCommandSuccess(command, model, expectedMessage, expectedModel);
+        assertEquals(Collections.emptyList(), model.getFilteredApplicationList());
+    }
+
+    @Test
+    public void execute_zeroPositionKeywords_noApplicationFound() {
+        String expectedMessage = MESSAGE_NO_MATCHING;
+        PositionContainsKeywordsPredicate predicate = preparePositionPredicate(" ");
+
+        FindCommand command = new FindCommand(predicate);
+        expectedModel.updateFilteredApplicationList(predicate);
+        assertCommandSuccess(command, model, expectedMessage, expectedModel);
+        assertEquals(Collections.emptyList(), model.getFilteredApplicationList());
+    }
+
+    @Test
+    public void execute_zeroDeadlineKeywords_noApplicationFound() {
+        String expectedMessage = MESSAGE_NO_MATCHING;
+        DeadlineContainsKeywordsPredicate predicate = prepareDeadlinePredicate(" ");
+
+        FindCommand command = new FindCommand(predicate);
+        expectedModel.updateFilteredApplicationList(predicate);
+        assertCommandSuccess(command, model, expectedMessage, expectedModel);
+        assertEquals(Collections.emptyList(), model.getFilteredApplicationList());
+    }
+
+    @Test
+    public void execute_zeroCompletionKeywords_noApplicationFound() {
+        String expectedMessage = MESSAGE_NO_MATCHING;
+        CompletionContainsKeywordsPredicate predicate = prepareCompletionPredicate(" ");
+
+        FindCommand command = new FindCommand(predicate);
+        expectedModel.updateFilteredApplicationList(predicate);
+        assertCommandSuccess(command, model, expectedMessage, expectedModel);
+        assertEquals(Collections.emptyList(), model.getFilteredApplicationList());
+    }
+
+    @Test
+    public void execute_zeroStatusKeywords_noApplicationFound() {
+        String expectedMessage = MESSAGE_NO_MATCHING;
+        StatusContainsKeywordsPredicate predicate = prepareStatusPredicate(" ");
 
         FindCommand command = new FindCommand(predicate);
         expectedModel.updateFilteredApplicationList(predicate);
@@ -69,7 +117,7 @@ public class FindCommandTest {
     @Test
     public void execute_multipleKeywords_multipleApplicationsFound() {
         String expectedMessage = String.format(MESSAGE_APPLICATION_LISTED_OVERVIEW, 3, "applications");
-        NameContainsKeywordsPredicate predicate = preparePredicate("Amazon Bytedance Grab");
+        NameContainsKeywordsPredicate predicate = prepareNamePredicate("Amazon Bytedance Grab");
         FindCommand command = new FindCommand(predicate);
         expectedModel.updateFilteredApplicationList(predicate);
         assertCommandSuccess(command, model, expectedMessage, expectedModel);
@@ -79,7 +127,35 @@ public class FindCommandTest {
     /**
      * Parses {@code userInput} into a {@code NameContainsKeywordsPredicate}.
      */
-    private NameContainsKeywordsPredicate preparePredicate(String userInput) {
+    private NameContainsKeywordsPredicate prepareNamePredicate(String userInput) {
         return new NameContainsKeywordsPredicate(Arrays.asList(userInput.split("\\s+")));
+    }
+
+    /**
+     * Parses {@code userInput} into a {@code PositionContainsKeywordsPredicate}.
+     */
+    private PositionContainsKeywordsPredicate preparePositionPredicate(String userInput) {
+        return new PositionContainsKeywordsPredicate(Arrays.asList(userInput.split("\\s+")));
+    }
+
+    /**
+     * Parses {@code userInput} into a {@code DeadlineContainsKeywordsPredicate}.
+     */
+    private DeadlineContainsKeywordsPredicate prepareDeadlinePredicate(String userInput) {
+        return new DeadlineContainsKeywordsPredicate(Arrays.asList(userInput.split("\\s+")));
+    }
+
+    /**
+     * Parses {@code userInput} into a {@code CompletionContainsKeywordsPredicate}.
+     */
+    private CompletionContainsKeywordsPredicate prepareCompletionPredicate(String userInput) {
+        return new CompletionContainsKeywordsPredicate(Arrays.asList(userInput.split("\\s+")));
+    }
+
+    /**
+     * Parses {@code userInput} into a {@code StatusContainsKeywordsPredicate}.
+     */
+    private StatusContainsKeywordsPredicate prepareStatusPredicate(String userInput) {
+        return new StatusContainsKeywordsPredicate(Arrays.asList(userInput.split("\\s+")));
     }
 }
