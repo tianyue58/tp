@@ -98,7 +98,7 @@ public class InternshipParserTest {
     public void parseCommand_findByDeadline() throws Exception {
         List<String> keywords = Arrays.asList("2021-11-13", "2021-11-14", "2021-11-15");
         FindCommand command = (FindCommand) parser.parseCommand(
-                FindCommand.COMMAND_WORD + " " + PREFIX_DEADLINE_OF_APPLICATION +String.join(" ", keywords));
+                FindCommand.COMMAND_WORD + " " + PREFIX_DEADLINE_OF_APPLICATION + String.join(" ", keywords));
         assertEquals(new FindCommand(new DeadlineContainsKeywordsPredicate(keywords)), command);
     }
 
