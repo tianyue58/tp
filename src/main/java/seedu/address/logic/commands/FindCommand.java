@@ -16,7 +16,6 @@ import seedu.address.model.application.CompletionContainsKeywordsPredicate;
 import seedu.address.model.application.DeadlineContainsKeywordsPredicate;
 import seedu.address.model.application.NameContainsKeywordsPredicate;
 import seedu.address.model.application.PositionContainsKeywordsPredicate;
-import seedu.address.model.application.Status;
 import seedu.address.model.application.StatusContainsKeywordsPredicate;
 
 /**
