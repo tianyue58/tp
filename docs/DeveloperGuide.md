@@ -154,6 +154,27 @@ Classes used by multiple components are in the `seedu.addressbook.commons` packa
 
 This section describes some noteworthy details on how certain features are implemented.
 
+### Complete feature
+The complete feature is implemented by adding a `completion` field to the `Application` class.
+
+`CompleteCommandParser` class is responsible for parsing the index received from the user
+
+`CompleteCommand` class is responsible for changing the completion status of the application from `Uncompleted` to `Completed`
+
+`Completion` class is a wrapper class that contains the completion status
+
+#### Design considerations:
+
+* **Alternative 1 (current choice):** Completes an application after the application has been added
+    * Pros: Easy to implement.
+    * Cons: User cannot add an application that has already been completed.
+
+* **Alternative 2:** Provides the ability to specify the completion status of an application when it is added to the list
+    * Pros: Everything can be done in one shot.
+    * Cons: `add` feature will require many parameters.
+
+
+
 ### \[Proposed\] Undo/redo feature
 
 #### Proposed Implementation
