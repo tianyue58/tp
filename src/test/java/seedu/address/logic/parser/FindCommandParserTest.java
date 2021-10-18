@@ -48,7 +48,8 @@ public class FindCommandParserTest {
         assertParseSuccess(parser, " " + PREFIX_INTERNSHIP_POSITION + "engineer designer", expectedFindCommand);
 
         // multiple whitespaces between keywords
-        assertParseSuccess(parser, " " + PREFIX_INTERNSHIP_POSITION + " \n engineer \n \t designer  \t", expectedFindCommand);
+        assertParseSuccess(parser, " " + PREFIX_INTERNSHIP_POSITION
+                + " \n engineer \n \t designer  \t", expectedFindCommand);
     }
 
     @Test
@@ -59,7 +60,8 @@ public class FindCommandParserTest {
         assertParseSuccess(parser, " " + PREFIX_DEADLINE_OF_APPLICATION + "2021-11-12 2021-11-13", expectedFindCommand);
 
         // multiple whitespaces between keywords
-        assertParseSuccess(parser, " " + PREFIX_DEADLINE_OF_APPLICATION + " \n 2021-11-12 \n \t 2021-11-13  \t", expectedFindCommand);
+        assertParseSuccess(parser, " " + PREFIX_DEADLINE_OF_APPLICATION
+                + " \n 2021-11-12 \n \t 2021-11-13  \t", expectedFindCommand);
     }
 
     @Test
@@ -70,7 +72,8 @@ public class FindCommandParserTest {
         assertParseSuccess(parser, " " + PREFIX_COMPLETION + "Completed Uncompleted", expectedFindCommand);
 
         // multiple whitespaces between keywords
-        assertParseSuccess(parser, " " + PREFIX_COMPLETION + " \n Completed \n \t Uncompleted  \t", expectedFindCommand);
+        assertParseSuccess(parser, " " + PREFIX_COMPLETION
+                + " \n Completed \n \t Uncompleted  \t", expectedFindCommand);
     }
 
     @Test
