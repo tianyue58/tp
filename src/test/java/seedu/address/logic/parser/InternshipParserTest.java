@@ -4,6 +4,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_COMPANY_NAME;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_COMPLETION;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_DEADLINE_OF_APPLICATION;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_INTERNSHIP_POSITION;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_STATUS;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_APPLICATION;
 
@@ -23,7 +28,11 @@ import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.ListCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.application.Application;
+import seedu.address.model.application.CompletionContainsKeywordsPredicate;
+import seedu.address.model.application.DeadlineContainsKeywordsPredicate;
 import seedu.address.model.application.NameContainsKeywordsPredicate;
+import seedu.address.model.application.PositionContainsKeywordsPredicate;
+import seedu.address.model.application.StatusContainsKeywordsPredicate;
 import seedu.address.testutil.ApplicationBuilder;
 import seedu.address.testutil.ApplicationUtil;
 import seedu.address.testutil.EditApplicationDescriptorBuilder;
@@ -70,11 +79,43 @@ public class InternshipParserTest {
     }
 
     @Test
-    public void parseCommand_find() throws Exception {
-        List<String> keywords = Arrays.asList("foo", "bar", "baz");
+    public void parseCommand_findByCompany() throws Exception {
+        List<String> keywords = Arrays.asList("google", "grab", "shopee");
         FindCommand command = (FindCommand) parser.parseCommand(
-                FindCommand.COMMAND_WORD + " " + String.join(" ", keywords));
+                FindCommand.COMMAND_WORD + " " + PREFIX_COMPANY_NAME + String.join(" ", keywords));
         assertEquals(new FindCommand(new NameContainsKeywordsPredicate(keywords)), command);
+    }
+
+    @Test
+    public void parseCommand_findByPosition() throws Exception {
+        List<String> keywords = Arrays.asList("engineer", "designer");
+        FindCommand command = (FindCommand) parser.parseCommand(
+                FindCommand.COMMAND_WORD + " " + PREFIX_INTERNSHIP_POSITION + String.join(" ", keywords));
+        assertEquals(new FindCommand(new PositionContainsKeywordsPredicate(keywords)), command);
+    }
+
+    @Test
+    public void parseCommand_findByDeadline() throws Exception {
+        List<String> keywords = Arrays.asList("2021-11-13", "2021-11-14", "2021-11-15");
+        FindCommand command = (FindCommand) parser.parseCommand(
+                FindCommand.COMMAND_WORD + " " + PREFIX_DEADLINE_OF_APPLICATION +String.join(" ", keywords));
+        assertEquals(new FindCommand(new DeadlineContainsKeywordsPredicate(keywords)), command);
+    }
+
+    @Test
+    public void parseCommand_findByCompletion() throws Exception {
+        List<String> keywords = Arrays.asList("completed");
+        FindCommand command = (FindCommand) parser.parseCommand(
+                FindCommand.COMMAND_WORD + " " + PREFIX_COMPLETION + String.join(" ", keywords));
+        assertEquals(new FindCommand(new CompletionContainsKeywordsPredicate(keywords)), command);
+    }
+
+    @Test
+    public void parseCommand_findByStatus() throws Exception {
+        List<String> keywords = Arrays.asList("accepted");
+        FindCommand command = (FindCommand) parser.parseCommand(
+                FindCommand.COMMAND_WORD + " " + PREFIX_STATUS + String.join(" ", keywords));
+        assertEquals(new FindCommand(new StatusContainsKeywordsPredicate(keywords)), command);
     }
 
     @Test
