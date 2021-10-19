@@ -18,6 +18,7 @@ import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.ListCommand;
 import seedu.address.logic.commands.RejectCommand;
+import seedu.address.logic.commands.SoonCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 
 /**
@@ -79,6 +80,9 @@ public class InternshipParser {
 
         case CompleteCommand.COMMAND_WORD:
             return new CompleteCommandParser().parse(arguments);
+
+        case SoonCommand.COMMAND_WORD:
+            return new SoonCommand();
 
         default:
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
