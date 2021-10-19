@@ -85,4 +85,15 @@ public interface Model {
      * @throws NullPointerException if {@code predicate} is null.
      */
     void updateFilteredApplicationList(Predicate<Application> predicate);
+
+    void commitInternship(ReadOnlyInternship currentVersion);
+
+    void undoInternship();
+
+    void redoInternship();
+
+    boolean canUndoInternship();
+
+    boolean canRedoInternship();
+
 }

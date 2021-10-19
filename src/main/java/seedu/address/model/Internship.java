@@ -91,8 +91,12 @@ public class Internship implements ReadOnlyInternship {
 
     @Override
     public String toString() {
-        return applications.asUnmodifiableObservableList().size() + " applications";
-        // TODO: refine later
+        String applicationList = "===== Application List ===== \n";
+        for (Application internship: applications) {
+            applicationList += internship + "\n";
+        }
+        applicationList += "===== End of Application list =====";
+        return applicationList;
     }
 
     @Override
