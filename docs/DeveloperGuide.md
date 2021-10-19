@@ -173,6 +173,73 @@ The complete feature is implemented by adding a `completion` field to the `Appli
     * Pros: Everything can be done in one shot.
     * Cons: `add` feature will require many parameters.
 
+### Accept feature
+
+The `accept` command is modelled by the `Status` class which represents the 
+'Status' entity. The `Status` field is also added as a private attribute to the
+`Application` class. This field can take the following values:
+* `Pending`
+* `Accepted`
+* `Rejected`
+
+Note: When a new internship application is added, the value of the
+`Status` field is 'Pending' by default. 
+
+The Accept command is facilitated by the `AcceptCommand` class. It extends the `Command` class
+and implements the `AcceptCommand#execute()` method which wraps the main
+logic of the command. This command can be used to change the status of 
+the application from `Pending` to `Accepted`.
+
+The `AcceptCommandParser` class is responsible for parsing the index received from the user. This 
+class implements the `Parser` interface. The `AcceptCommandParser#parse()` method of 
+this class parses the index and returns an `AcceptCommand` object with the index
+as the parameter. 
+
+#### Design considerations:
+
+* **Alternative 1 (current choice):** The default status when an application is added is `Pending`. 
+It can later be changed to `Accepted` using the `accept` command.
+    * Pros: Convenient for the user to use.
+    * Cons: User cannot add an application whose status is already known.
+
+* **Alternative 2:** Provide the ability to specify the status of an application at the time of adding.
+    * Pros: Easy to specify the desired status field while adding an application.
+    * Cons: The `add` command would become unnecessarily long.
+
+### Reject feature
+
+The `reject` command is modelled by the `Status` class which represents the
+'Status' entity. The `Status` field is also added as a private attribute to the
+`Application` class. This field can take the following values:
+* `Pending`
+* `Accepted`
+* `Rejected`
+
+Note: When a new internship application is added, the value of the
+`Status` field is 'Pending' by default.
+
+The Reject command is facilitated by the `RejectCommand` class. It extends the `Command` class
+and implements the `RejectCommand#execute()` method which wraps the main
+logic of the command. This command can be used to change the status of
+the application from `Pending` to `Rejected`.
+
+The `RejectCommandParser` class is responsible for parsing the index received from the user. This
+class implements the `Parser` interface. The `RejectCommandParser#parse()` method of
+this class parses the index and returns an `RejectCommand` object with the index
+as the parameter.
+
+#### Design considerations:
+
+* **Alternative 1 (current choice):** The default status when an application is added is `Pending`.
+  It can later be changed to `Rejected` using the `reject` command.
+    * Pros: Convenient for the user to use.
+    * Cons: User cannot add an application whose status is already known.
+
+* **Alternative 2:** Provide the ability to specify the status of an application at the time of adding.
+    * Pros: Easy to specify the desired status field while adding an application.
+    * Cons: The `add` command would become unnecessarily long.
+
+
 
 
 ### \[Proposed\] Undo/redo feature
