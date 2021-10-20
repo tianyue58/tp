@@ -150,9 +150,7 @@ public class AddCommandTest {
         }
 
         @Override
-        public void commitInternship(ReadOnlyInternship currentVersion) {
-            throw new AssertionError("This method should not be called.");
-        }
+        public void commitInternship(ReadOnlyInternship currentVersion) {}
 
         @Override
         public void undoInternship() {
