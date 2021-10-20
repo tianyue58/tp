@@ -145,6 +145,6 @@ public class InternshipParserTest {
     @Test
     public void parseCommand_soon() throws Exception {
         assertTrue(parser.parseCommand(SoonCommand.COMMAND_WORD) instanceof SoonCommand);
-        assertTrue(parser.parseCommand(SoonCommand.COMMAND_WORD + " 3") instanceof ListCommand);
+        assertTrue(parser.parseCommand(SoonCommand.COMMAND_WORD + " 3") instanceof SoonCommand);
     }
 }
