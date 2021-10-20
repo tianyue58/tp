@@ -4,8 +4,8 @@ import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.testutil.TypicalApplications.AMAZON;
 import static seedu.address.testutil.TypicalApplications.BYTEDANCE;
-import static seedu.address.testutil.TypicalApplications.getTypicalInternship;
 import static seedu.address.testutil.TypicalApplications.SHOPEE;
+import static seedu.address.testutil.TypicalApplications.getTypicalInternship;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_APPLICATION;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -20,7 +20,6 @@ import seedu.address.model.application.Application;
 import seedu.address.model.application.Completion;
 import seedu.address.model.application.Deadline;
 import seedu.address.model.application.Status;
-import seedu.address.testutil.ApplicationBuilder;
 import seedu.address.testutil.EditApplicationDescriptorBuilder;
 
 public class RedoCommandTest {

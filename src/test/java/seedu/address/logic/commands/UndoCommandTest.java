@@ -3,8 +3,8 @@ package seedu.address.logic.commands;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.testutil.TypicalApplications.AMAZON;
-import static seedu.address.testutil.TypicalApplications.getTypicalInternship;
 import static seedu.address.testutil.TypicalApplications.SHOPEE;
+import static seedu.address.testutil.TypicalApplications.getTypicalInternship;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_APPLICATION;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -99,7 +99,8 @@ public class UndoCommandTest {
     @Test
     public void execute_undoEditCommandSuccess() {
         Application editedApplication = new ApplicationBuilder().withDeadline("2021-11-11").build();
-        EditCommand.EditApplicationDescriptor descriptor = new EditApplicationDescriptorBuilder(editedApplication).build();
+        EditCommand.EditApplicationDescriptor descriptor =
+                new EditApplicationDescriptorBuilder(editedApplication).build();
         EditCommand editCommand = new EditCommand(INDEX_FIRST_APPLICATION, descriptor);
         try {
             editCommand.execute(model);
