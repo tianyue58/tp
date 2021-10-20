@@ -5,6 +5,7 @@ import static seedu.address.logic.commands.CommandTestUtil.showApplicationAtInde
 import static seedu.address.logic.commands.ListCommand.MESSAGE_EMPTY_LIST;
 import static seedu.address.testutil.TypicalApplications.getTypicalInternship;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_APPLICATION;
+import static seedu.address.testutil.TypicalIndexes.INDEX_THIRD_APPLICATION;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -29,14 +30,18 @@ public class SoonCommandTest {
         expectedModel = new ModelManager(model.getInternship(), new UserPrefs());
     }
 
+    //FAIL
     @Test
     public void execute_listIsNotFiltered_showsSameList() {
+        model = new ModelManager(getTypicalInternship(), new UserPrefs());
+        expectedModel = new ModelManager(model.getInternship(), new UserPrefs());
         assertCommandSuccess(new SoonCommand(), model, SoonCommand.MESSAGE_SUCCESS, expectedModel);
     }
 
+    //FAIL
     @Test
     public void execute_listIsFiltered_showsEverything() {
-        showApplicationAtIndex(model, INDEX_FIRST_APPLICATION);
+        showApplicationAtIndex(model, INDEX_THIRD_APPLICATION);
         assertCommandSuccess(new SoonCommand(), model, SoonCommand.MESSAGE_SUCCESS, expectedModel);
     }
 
@@ -44,7 +49,7 @@ public class SoonCommandTest {
     public void execute_emptyList() {
         model = new ModelManager(new Internship(), new UserPrefs());
         expectedModel = new ModelManager(model.getInternship(), new UserPrefs());
-        assertCommandSuccess(new SoonCommand(), model, MESSAGE_EMPTY_LIST, expectedModel);
+        assertCommandSuccess(new SoonCommand(), model, SoonCommand.MESSAGE_EMPTY_LIST, expectedModel);
     }
 
 }
