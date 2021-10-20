@@ -5,18 +5,14 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_COMPANY_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DEADLINE_OF_APPLICATION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_INTERNSHIP_POSITION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_REQUIREMENTS;
 
 import java.util.Set;
 import java.util.stream.Stream;
 
 import seedu.address.logic.commands.AddCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.application.Application;
-import seedu.address.model.application.Company;
-import seedu.address.model.application.Completion;
-import seedu.address.model.application.Deadline;
-import seedu.address.model.application.Position;
-import seedu.address.model.application.Status;
+import seedu.address.model.application.*;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -32,7 +28,7 @@ public class AddCommandParser implements Parser<AddCommand> {
     public AddCommand parse(String args) throws ParseException {
         ArgumentMultimap argMultimap =
                 ArgumentTokenizer.tokenize(args, PREFIX_COMPANY_NAME, PREFIX_INTERNSHIP_POSITION,
-                        PREFIX_DEADLINE_OF_APPLICATION, PREFIX_TAG);
+                        PREFIX_DEADLINE_OF_APPLICATION, PREFIX_REQUIREMENTS, PREFIX_TAG);
 
         if (!arePrefixesPresent(argMultimap, PREFIX_COMPANY_NAME, PREFIX_INTERNSHIP_POSITION,
                 PREFIX_DEADLINE_OF_APPLICATION)
@@ -44,10 +40,11 @@ public class AddCommandParser implements Parser<AddCommand> {
         Position position = ParserUtil.parsePosition(argMultimap.getValue(PREFIX_INTERNSHIP_POSITION).get());
         Deadline deadline = ParserUtil.parseDeadline(argMultimap.getValue(PREFIX_DEADLINE_OF_APPLICATION).get());
         Status status = new Status("Pending");
+        Requirements requirements = ParserUtil.parseRequirements(argMultimap.getValueReq(PREFIX_REQUIREMENTS).get());
         Set<Tag> tagList = ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));
         Completion completion = new Completion("Uncompleted");
 
-        Application application = new Application(company, position, deadline, completion, status, tagList);
+        Application application = new Application(company, position, deadline, completion, status, requirements, tagList);
 
         return new AddCommand(application);
     }

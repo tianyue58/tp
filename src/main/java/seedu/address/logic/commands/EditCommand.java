@@ -5,6 +5,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_COMPANY_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DEADLINE_OF_APPLICATION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_INTERNSHIP_POSITION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_REQUIREMENTS;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_APPLICATIONS;
 
 import java.util.Collections;
@@ -24,6 +25,7 @@ import seedu.address.model.application.Completion;
 import seedu.address.model.application.Deadline;
 import seedu.address.model.application.Position;
 import seedu.address.model.application.Status;
+import seedu.address.model.application.Requirements;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -96,12 +98,13 @@ public class EditCommand extends Command {
         Company updatedCompany = editApplicationDescriptor.getCompany().orElse(applicationToEdit.getCompany());
         Position updatedPosition = editApplicationDescriptor.getPosition().orElse(applicationToEdit.getPosition());
         Status updatedStatus = editApplicationDescriptor.getStatus().orElse(applicationToEdit.getStatus());
+        Requirements updatedRequirements = editApplicationDescriptor.getRequirements().orElse(applicationToEdit.getRequirements());
         Deadline updatedDeadline = editApplicationDescriptor.getDeadline().orElse(applicationToEdit.getDeadline());
         Set<Tag> updatedTags = editApplicationDescriptor.getTags().orElse(applicationToEdit.getTags());
         Completion completion = applicationToEdit.getCompletion();
 
         return new Application(updatedCompany, updatedPosition, updatedDeadline, completion,
-                updatedStatus, updatedTags);
+                updatedStatus, updatedRequirements, updatedTags);
     }
 
     @Override
@@ -131,6 +134,7 @@ public class EditCommand extends Command {
         private Position position;
         private Deadline deadline;
         private Status status;
+        private Requirements requirements;
         private Set<Tag> tags;
 
         public EditApplicationDescriptor() {}
@@ -144,6 +148,7 @@ public class EditCommand extends Command {
             setPosition(toCopy.position);
             setDeadline(toCopy.deadline);
             setStatus(toCopy.status);
+            setRequirements(toCopy.requirements);
             setTags(toCopy.tags);
         }
 
@@ -151,7 +156,7 @@ public class EditCommand extends Command {
          * Returns true if at least one field is edited.
          */
         public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyNonNull(company, position, deadline, status, tags);
+            return CollectionUtil.isAnyNonNull(company, position, deadline, status, requirements, tags);
         }
 
         public void setCompany(Company company) {
@@ -170,8 +175,16 @@ public class EditCommand extends Command {
             this.status = status;
         }
 
+        public void setRequirements(Requirements requirements) {
+            this.requirements = requirements;
+        }
+
         public Optional<Position> getPosition() {
             return Optional.ofNullable(position);
+        }
+
+        public Optional<Requirements> getRequirements() {
+            return Optional.ofNullable(requirements);
         }
 
         public void setDeadline(Deadline deadline) {

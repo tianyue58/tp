@@ -16,6 +16,7 @@ import seedu.address.model.application.Completion;
 import seedu.address.model.application.Deadline;
 import seedu.address.model.application.Position;
 import seedu.address.model.application.Status;
+import seedu.address.model.application.Requirements;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -30,6 +31,7 @@ class JsonAdaptedApplication {
     private final String deadline;
     private final String completion;
     private final String status;
+    private final String requirements;
     private final List<JsonAdaptedTag> tagged = new ArrayList<>();
 
 
@@ -42,6 +44,7 @@ class JsonAdaptedApplication {
                                   @JsonProperty("deadline") String deadline,
                                   @JsonProperty("completion") String completion,
                                   @JsonProperty("status") String status,
+                                  @JsonProperty("requirements") String requirements,
                                   @JsonProperty("tagged") List<JsonAdaptedTag> tagged
                                   ) {
         this.company = company;
@@ -49,6 +52,7 @@ class JsonAdaptedApplication {
         this.deadline = deadline;
         this.completion = completion;
         this.status = status;
+        this.requirements = requirements;
         if (tagged != null) {
             this.tagged.addAll(tagged);
         }
@@ -63,6 +67,7 @@ class JsonAdaptedApplication {
         deadline = source.getDeadline().value;
         completion = source.getCompletion().value;
         status = source.getStatus().value;
+        requirements = source.getRequirements().value;
         tagged.addAll(source.getTags().stream()
                 .map(JsonAdaptedTag::new)
                 .collect(Collectors.toList()));
@@ -119,9 +124,18 @@ class JsonAdaptedApplication {
         }
         final Status modelStatus = new Status(status);
 
+        if (requirements == null) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
+                    Requirements.class.getSimpleName()));
+        }
+        if (!Requirements.isValidRequirements(requirements)) {
+            throw new IllegalValueException(Requirements.MESSAGE_CONSTRAINTS);
+        }
+        final Requirements modelRequirements = new Requirements(requirements);
+
         final Set<Tag> modelTags = new HashSet<>(applicationTags);
 
-        return new Application(modelName, modelPosition, modelDeadline, modelCompletion, modelStatus, modelTags);
+        return new Application(modelName, modelPosition, modelDeadline, modelCompletion, modelStatus, modelRequirements, modelTags);
     }
 
 }

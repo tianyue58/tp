@@ -9,11 +9,13 @@ import java.util.Set;
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.application.Application;
 import seedu.address.model.application.Company;
 import seedu.address.model.application.Completion;
 import seedu.address.model.application.Deadline;
 import seedu.address.model.application.Position;
 import seedu.address.model.application.Status;
+import seedu.address.model.application.Requirements;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -94,6 +96,21 @@ public class ParserUtil {
             throw new ParseException(Status.MESSAGE_CONSTRAINTS);
         }
         return new Status(trimmedStatus);
+    }
+
+    /**
+     * Parses a {@code String requirements} into an {@code Requirements}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code requirements} is invalid.
+     */
+    public static Requirements parseRequirements(String requirements) throws ParseException {
+        requireNonNull(requirements);
+        String trimmedRequirements = requirements.trim();
+        if (!Requirements.isValidRequirements(trimmedRequirements)) {
+            throw new ParseException(Requirements.MESSAGE_CONSTRAINTS);
+        }
+        return new Requirements(trimmedRequirements);
     }
 
     /**

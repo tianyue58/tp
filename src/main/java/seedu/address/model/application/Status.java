@@ -19,7 +19,7 @@ public class Status {
     public final String value;
 
     /**
-     * Constructs a {@code Position}.
+     * Constructs a {@code Status}.
      *
      * @param status A valid status.
      */

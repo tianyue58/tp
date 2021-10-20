@@ -12,5 +12,6 @@ public class CliSyntax {
     public static final Prefix PREFIX_STATUS = new Prefix("s/");
     public static final Prefix PREFIX_COMPLETION = new Prefix("c1/");
     public static final Prefix PREFIX_TAG = new Prefix("t/");
+    public static final Prefix PREFIX_REQUIREMENTS = new Prefix("r/");
 
 }
