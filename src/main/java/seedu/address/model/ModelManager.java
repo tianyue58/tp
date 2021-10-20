@@ -26,6 +26,7 @@ public class ModelManager implements Model {
 
     /**
      * Initializes a ModelManager with the given internship and userPrefs.
+     * The VersionedInternship is initialized to the current version of Internship retrieved from storage
      */
     public ModelManager(ReadOnlyInternship internship, ReadOnlyUserPrefs userPrefs) {
         super();
@@ -152,7 +153,7 @@ public class ModelManager implements Model {
                 && filteredApplications.equals(other.filteredApplications);
     }
 
-    //==== New methods for handling undo feature ====
+    //=========== Methods for handling undo and undo feature ======================================================
     @Override
     public void commitInternship(ReadOnlyInternship currentVersion) {
         versionedInternship.commit(currentVersion);

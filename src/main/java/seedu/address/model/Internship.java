@@ -9,7 +9,7 @@ import seedu.address.model.application.Application;
 import seedu.address.model.application.UniqueApplicationList;
 
 /**
- * Wraps all data at the address-book level
+ * Wraps all data at the Internship level
  * Duplicates are not allowed (by .isSameApplication comparison)
  */
 public class Internship implements ReadOnlyInternship {
@@ -23,7 +23,7 @@ public class Internship implements ReadOnlyInternship {
     public Internship() {}
 
     /**
-     * Creates an AddressBook using the Applications in the InterSHIP data storage
+     * Creates an Internship using the Applications in the InterSHIP data storage
      */
     public Internship(ReadOnlyInternship toBeCopied) {
         this();
@@ -41,7 +41,7 @@ public class Internship implements ReadOnlyInternship {
     }
 
     /**
-     * Resets the existing data of this {@code AddressBook} with {@code newData}.
+     * Resets the existing data of this {@code Internship} with {@code newData}.
      */
     public void resetData(ReadOnlyInternship newData) {
         requireNonNull(newData);
@@ -52,7 +52,7 @@ public class Internship implements ReadOnlyInternship {
     //// application-level operations
 
     /**
-     * Returns true if an application with the same identity as {@code application} exists in the address book.
+     * Returns true if an application with the same identity as {@code application} exists in the Internship.
      */
     public boolean hasApplication(Application application) {
         requireNonNull(application);
@@ -60,8 +60,8 @@ public class Internship implements ReadOnlyInternship {
     }
 
     /**
-     * Adds a application to the address book.
-     * The application must not already exist in the address book.
+     * Adds an application to the Internship.
+     * The application must not already exist in the Internship.
      */
     public void addApplication(Application p) {
         applications.add(p);
@@ -69,9 +69,9 @@ public class Internship implements ReadOnlyInternship {
 
     /**
      * Replaces the given application {@code target} in the list with {@code editedApplication}.
-     * {@code target} must exist in the address book.
+     * {@code target} must exist in the Internship.
      * The application identity of {@code editedApplication} must not be the same as another existing
-     * application in the address book.
+     * application in the Internship.
      */
     public void setApplication(Application target, Application editedApplication) {
         requireNonNull(editedApplication);
@@ -80,8 +80,8 @@ public class Internship implements ReadOnlyInternship {
     }
 
     /**
-     * Removes {@code key} from this {@code AddressBook}.
-     * {@code key} must exist in the address book.
+     * Removes {@code key} from this {@code Internship}.
+     * {@code key} must exist in the Internship.
      */
     public void removeApplication(Application key) {
         applications.remove(key);
@@ -89,6 +89,11 @@ public class Internship implements ReadOnlyInternship {
 
     //// util methods
 
+    /**
+     * Prints the Application list in a more reader-friendly format
+     * Used for testing purpose only
+     * @return the Application list as displayed a more reader-friendly format
+     */
     @Override
     public String toString() {
         String applicationList = "===== Application List ===== \n";

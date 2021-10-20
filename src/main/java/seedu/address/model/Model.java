@@ -86,14 +86,32 @@ public interface Model {
      */
     void updateFilteredApplicationList(Predicate<Application> predicate);
 
+    /**
+     * Commits the change made to Internship data to the versionedInternship
+     * @param currentVersion the current version of Internship data as a result of change
+     */
     void commitInternship(ReadOnlyInternship currentVersion);
 
+    /**
+     * Undo the most recent change made to Internship data
+     */
     void undoInternship();
 
+    /**
+     * Redo the most recent change made to Internship data
+     */
     void redoInternship();
 
+    /**
+     * Determines whether the undo action is allowed at the current state
+     * @return whether the undo action is allowed
+     */
     boolean canUndoInternship();
 
+    /**
+     * Determines whether the redo action is allowed at the current state
+     * @return whether the redo action is allowed
+     */
     boolean canRedoInternship();
 
 }
