@@ -23,7 +23,7 @@ public class SoonDeadlinePredicate implements Predicate<Application> {
         } catch (java.text.ParseException e) {
             e.printStackTrace();
         }
-        return diff >= 0 && diff <=3;
+        return diff >= 0 && diff <= 3;
     }
 
     @Override

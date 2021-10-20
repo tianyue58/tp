@@ -4,10 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.text.SimpleDateFormat;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.Date;
-import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
@@ -31,7 +28,7 @@ public class SoonDeadlinePredicateTest {
     }
 
     @Test
-    public void test_SoonDeadline_returnsTrue() {
+    public void test_soonDeadline_returnsTrue() {
         // Soon deadline
         SoonDeadlinePredicate predicate = new SoonDeadlinePredicate();
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
@@ -41,7 +38,7 @@ public class SoonDeadlinePredicateTest {
     }
 
     @Test
-    public void test_NotSoonDeadline_returnsFalse() {
+    public void test_notSoonDeadline_returnsFalse() {
         SoonDeadlinePredicate predicate = new SoonDeadlinePredicate();
 
         // Far deadline

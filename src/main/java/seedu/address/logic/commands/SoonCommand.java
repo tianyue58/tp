@@ -2,11 +2,15 @@ package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
 
+import java.util.function.Predicate;
+
 import seedu.address.model.Model;
 import seedu.address.model.application.Application;
 import seedu.address.model.application.SoonDeadlinePredicate;
 
-import java.util.function.Predicate;
+
+
+
 
 /**
  * Lists all applications whose deadlines are near in InternSHIP to the user.
