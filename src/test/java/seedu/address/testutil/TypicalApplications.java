@@ -12,6 +12,7 @@ import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_GRAB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_POSITION_AMAZON;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_POSITION_BYTEDANCE;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_POSITION_GRAB;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_SOON_DEADLINE;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_STATUS_AMAZON;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_STATUS_BYTEDANCE;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_STATUS_GRAB;
@@ -42,6 +43,10 @@ public class TypicalApplications {
             .withStatus(VALID_STATUS_BYTEDANCE).withTags(VALID_TAG_BYTEDANCE).build();
     public static final Application GRAB = new ApplicationBuilder().withCompany(VALID_NAME_GRAB)
             .withPosition(VALID_POSITION_GRAB).withDeadline(VALID_DEADLINE_GRAB)
+            .withCompletion(VALID_COMPLETION_GRAB)
+            .withStatus(VALID_STATUS_GRAB).withTags(VALID_TAG_GRAB).build();
+    public static final Application GRAB2 = new ApplicationBuilder().withCompany(VALID_NAME_GRAB)
+            .withPosition(VALID_POSITION_GRAB).withDeadline(VALID_SOON_DEADLINE)
             .withCompletion(VALID_COMPLETION_GRAB)
             .withStatus(VALID_STATUS_GRAB).withTags(VALID_TAG_GRAB).build();
 
