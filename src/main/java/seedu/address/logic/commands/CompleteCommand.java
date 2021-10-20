@@ -58,6 +58,8 @@ public class CompleteCommand extends Command {
 
         Application completedApplication = new Application(company, position, deadline, completion, status, tagList);
         model.setApplication(applicationToComplete, completedApplication);
+        model.commitInternship(model.getInternship());
+
         return new CommandResult(String.format(MESSAGE_SUCCESS, completedApplication));
 
     }

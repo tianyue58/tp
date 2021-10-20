@@ -3,22 +3,28 @@ package seedu.address.testutil;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_COMPLETION_AMAZON;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_COMPLETION_BYTEDANCE;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_COMPLETION_GRAB;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_COMPLETION_SHOPEE;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_DEADLINE_AMAZON;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_DEADLINE_BYTEDANCE;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_DEADLINE_GRAB;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_DEADLINE_SHOPEE;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_AMAZON;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BYTEDANCE;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_GRAB;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_SHOPEE;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_POSITION_AMAZON;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_POSITION_BYTEDANCE;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_POSITION_GRAB;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_POSITION_SHOPEE;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_SOON_DEADLINE;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_STATUS_AMAZON;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_STATUS_BYTEDANCE;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_STATUS_GRAB;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_STATUS_SHOPEE;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_AMAZON;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_BYTEDANCE;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_GRAB;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_SHOPEE;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -45,6 +51,10 @@ public class TypicalApplications {
             .withPosition(VALID_POSITION_GRAB).withDeadline(VALID_DEADLINE_GRAB)
             .withCompletion(VALID_COMPLETION_GRAB)
             .withStatus(VALID_STATUS_GRAB).withTags(VALID_TAG_GRAB).build();
+    public static final Application SHOPEE = new ApplicationBuilder().withCompany(VALID_NAME_SHOPEE)
+            .withPosition(VALID_POSITION_SHOPEE).withDeadline(VALID_DEADLINE_SHOPEE)
+            .withCompletion(VALID_COMPLETION_SHOPEE)
+            .withStatus(VALID_STATUS_SHOPEE).withTags(VALID_TAG_SHOPEE).build();
     public static final Application GRAB2 = new ApplicationBuilder().withCompany(VALID_NAME_GRAB)
             .withPosition(VALID_POSITION_GRAB).withDeadline(VALID_SOON_DEADLINE)
             .withCompletion(VALID_COMPLETION_GRAB)
@@ -66,4 +76,5 @@ public class TypicalApplications {
     public static List<Application> getTypicalApplications() {
         return new ArrayList<>(Arrays.asList(AMAZON, BYTEDANCE, GRAB));
     }
+
 }

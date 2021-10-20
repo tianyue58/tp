@@ -29,6 +29,7 @@ import seedu.address.model.application.StatusContainsKeywordsPredicate;
  * Contains integration tests (interaction with the Model) for {@code FindCommand}.
  */
 public class FindCommandTest {
+
     private Model model = new ModelManager(getTypicalInternship(), new UserPrefs());
     private Model expectedModel = new ModelManager(getTypicalInternship(), new UserPrefs());
 
