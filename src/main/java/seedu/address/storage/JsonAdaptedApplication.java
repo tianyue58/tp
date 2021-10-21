@@ -16,6 +16,7 @@ import seedu.address.model.application.Completion;
 import seedu.address.model.application.Deadline;
 import seedu.address.model.application.Position;
 import seedu.address.model.application.Status;
+import seedu.address.model.application.Priority;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -28,8 +29,9 @@ class JsonAdaptedApplication {
     private final String company;
     private final String position;
     private final String deadline;
-    private final String completion;
     private final String status;
+    private final String completion;
+    private final String priority;
     private final List<JsonAdaptedTag> tagged = new ArrayList<>();
 
 
@@ -42,6 +44,7 @@ class JsonAdaptedApplication {
                                   @JsonProperty("deadline") String deadline,
                                   @JsonProperty("completion") String completion,
                                   @JsonProperty("status") String status,
+                                  @JsonProperty("priority") String priority,
                                   @JsonProperty("tagged") List<JsonAdaptedTag> tagged
                                   ) {
         this.company = company;
@@ -49,6 +52,7 @@ class JsonAdaptedApplication {
         this.deadline = deadline;
         this.completion = completion;
         this.status = status;
+        this.priority = priority;
         if (tagged != null) {
             this.tagged.addAll(tagged);
         }
@@ -63,6 +67,7 @@ class JsonAdaptedApplication {
         deadline = source.getDeadline().value;
         completion = source.getCompletion().value;
         status = source.getStatus().value;
+        priority = source.getPriority().value;
         tagged.addAll(source.getTags().stream()
                 .map(JsonAdaptedTag::new)
                 .collect(Collectors.toList()));
@@ -114,14 +119,28 @@ class JsonAdaptedApplication {
         }
         final Completion modelCompletion = new Completion(completion);
 
+        if (status == null) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
+                    Status.class.getSimpleName()));
+        }
         if (!Status.isValidStatus(status)) {
             throw new IllegalValueException(Status.MESSAGE_CONSTRAINTS);
         }
         final Status modelStatus = new Status(status);
 
+        if (priority == null) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
+                    Priority.class.getSimpleName()));
+        }
+        if (!Priority.isValidPriority(priority)) {
+            throw new IllegalValueException(Priority.MESSAGE_CONSTRAINTS);
+        }
+        final Priority modelPriority = new Priority(priority);
+
         final Set<Tag> modelTags = new HashSet<>(applicationTags);
 
-        return new Application(modelName, modelPosition, modelDeadline, modelCompletion, modelStatus, modelTags);
+        return new Application(modelName, modelPosition, modelDeadline, modelCompletion, modelStatus, modelPriority,
+                modelTags);
     }
 
 }

@@ -5,7 +5,7 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
 
 /**
  * Represents an Application's completion status in InternSHIP.
- * ADD THE GUARANTEE LATER
+ * Guarantees: immutable; is valid as declared in {@link #isValidCompletion(String)}
  */
 public class Completion {
 

@@ -12,6 +12,7 @@ import seedu.address.model.application.Completion;
 import seedu.address.model.application.Deadline;
 import seedu.address.model.application.Position;
 import seedu.address.model.application.Status;
+import seedu.address.model.application.Priority;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -20,16 +21,17 @@ import seedu.address.model.tag.Tag;
 public class SampleDataUtil {
     public static Application[] getSampleApplications() {
         return new Application[] { new Application(new Company("Shopee"), new Position("software engineer"),
-                new Deadline("2021-12-23"), new Completion("Uncompleted"), new Status("Pending"), getTagSet()),
+                new Deadline("2021-12-23"), new Completion("Uncompleted"),
+                new Status("Pending"), new Priority("Medium"), getTagSet()),
             new Application(new Company("Google"), new Position("frontend developer"),
                     new Deadline("2021-12-14"), new Completion("Uncompleted"),
-                    new Status("Pending"), getTagSet()),
+                    new Status("Pending"), new Priority("High"), getTagSet()),
             new Application(new Company("Huawei"), new Position("software engineer"),
                     new Deadline("2021-12-30"), new Completion("Uncompleted"),
-                    new Status("Pending"), getTagSet()),
+                    new Status("Pending"), new Priority("Medium"), getTagSet()),
             new Application(new Company("Deutsche Bank"), new Position("software engineer"),
                     new Deadline("2021-12-25"), new Completion("Uncompleted"),
-                    new Status("Pending"), getTagSet()),
+                    new Status("Pending"), new Priority("Low"), getTagSet()),
         };
     }
 

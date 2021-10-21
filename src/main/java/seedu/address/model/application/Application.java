@@ -19,10 +19,11 @@ public class Application {
     private final Company company;
     private final Position position;
     private final Deadline deadline;
-    private final Completion completion;
 
-    //add status field
+    // Default fields
+    private final Completion completion;
     private final Status status;
+    private final Priority priority;
 
     // Data fields
     private final Set<Tag> tags = new HashSet<>();
@@ -31,13 +32,14 @@ public class Application {
      * Every field must be present and not null.
      */
     public Application(Company company, Position position, Deadline deadline, Completion completion, Status status,
-                       Set<Tag> tags) {
+                       Priority priority, Set<Tag> tags) {
         requireAllNonNull(company, position, deadline, tags, completion);
         this.company = company;
         this.position = position;
         this.deadline = deadline;
         this.completion = completion;
         this.status = status;
+        this.priority = priority;
         this.tags.addAll(tags);
     }
 
@@ -74,6 +76,13 @@ public class Application {
      */
     public Status getStatus() {
         return this.status;
+    }
+
+    /**
+     * Returns the priority (Low/ Medium/ High) of the {@code Application}.
+     */
+    public Priority getPriority() {
+        return this.priority;
     }
 
     /**

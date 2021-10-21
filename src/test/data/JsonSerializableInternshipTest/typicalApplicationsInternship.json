@@ -6,6 +6,7 @@
     "deadline": "2021-12-12",
     "completion": "Uncompleted",
     "status": "Pending",
+    "priority": "Medium",
     "tagged": [ "Important" ]
   }, {
     "company": "ByteDance",
@@ -13,6 +14,7 @@
     "deadline": "2021-12-29",
     "completion": "Completed",
     "status": "Rejected",
+    "priority": "High",
     "tagged": [ "Selective" ]
   }, {
     "company": "Grab",
@@ -20,6 +22,15 @@
     "deadline": "2021-12-30",
     "completion": "Uncompleted",
     "status": "Pending",
+    "priority": "Medium",
     "tagged": [ "Essential" ]
+  }, {
+    "company": "Shopee",
+    "position": "Frontend Engineer",
+    "deadline": "2021-12-31",
+    "completion": "Uncompleted",
+    "status": "Pending",
+    "priority": "Low",
+    "tagged": [ "Optional" ]
   } ]
 }

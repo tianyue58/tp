@@ -47,12 +47,15 @@ public class CommandTestUtil {
     public static final String VALID_COMPLETION_GRAB = "Uncompleted";
     public static final String VALID_COMPLETION_SHOPEE = "Uncompleted";
 
-    public static final String VALID_SOON_DEADLINE = getCurrentDate();
-
     public static final String VALID_STATUS_AMAZON = "Pending";
     public static final String VALID_STATUS_BYTEDANCE = "Rejected";
     public static final String VALID_STATUS_GRAB = "Pending";
     public static final String VALID_STATUS_SHOPEE = "Pending";
+
+    public static final String VALID_PRIORITY_AMAZON = "Medium";
+    public static final String VALID_PRIORITY_BYTEDANCE = "High";
+    public static final String VALID_PRIORITY_GRAB = "Medium";
+    public static final String VALID_PRIORITY_SHOPEE = "Low";
 
     public static final String VALID_TAG_AMAZON = "Important";
     public static final String VALID_TAG_BYTEDANCE = "Selective";

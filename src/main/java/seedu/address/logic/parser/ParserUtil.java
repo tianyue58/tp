@@ -13,6 +13,7 @@ import seedu.address.model.application.Company;
 import seedu.address.model.application.Completion;
 import seedu.address.model.application.Deadline;
 import seedu.address.model.application.Position;
+import seedu.address.model.application.Priority;
 import seedu.address.model.application.Status;
 import seedu.address.model.tag.Tag;
 
@@ -82,6 +83,21 @@ public class ParserUtil {
     }
 
     /**
+     * Parses a {@code String completion} into an {@code Completion}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code completion} is invalid.
+     */
+    public static Completion parseCompletion(String completion) throws ParseException {
+        requireNonNull(completion);
+        String trimmedCompletion = completion.trim();
+        if (!Completion.isValidCompletion(trimmedCompletion)) {
+            throw new ParseException(Completion.MESSAGE_CONSTRAINTS);
+        }
+        return new Completion(trimmedCompletion);
+    }
+
+    /**
      * Parses a {@code String status} into an {@code Status}.
      * Leading and trailing whitespaces will be trimmed.
      *
@@ -97,18 +113,18 @@ public class ParserUtil {
     }
 
     /**
-     * Parses a {@code String completion} into an {@code Completion}.
+     * Parses a {@code String priority} into an {@code Priority}.
      * Leading and trailing whitespaces will be trimmed.
      *
-     * @throws ParseException if the given {@code completion} is invalid.
+     * @throws ParseException if the given {@code priority} is invalid.
      */
-    public static Completion parseCompletion(String completion) throws ParseException {
-        requireNonNull(completion);
-        String trimmedCompletion = completion.trim();
-        if (!Completion.isValidCompletion(trimmedCompletion)) {
-            throw new ParseException(Completion.MESSAGE_CONSTRAINTS);
+    public static Priority parsePriority(String priority) throws ParseException {
+        requireNonNull(priority);
+        String trimmedPriority = priority.trim();
+        if (!Priority.isValidPriority(trimmedPriority)) {
+            throw new ParseException(Priority.MESSAGE_CONSTRAINTS);
         }
-        return new Completion(trimmedCompletion);
+        return new Priority(trimmedPriority);
     }
 
     /**

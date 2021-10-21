@@ -24,6 +24,7 @@ import seedu.address.model.application.Completion;
 import seedu.address.model.application.Deadline;
 import seedu.address.model.application.Position;
 import seedu.address.model.application.Status;
+import seedu.address.model.application.Priority;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -97,13 +98,15 @@ public class EditCommand extends Command {
 
         Company updatedCompany = editApplicationDescriptor.getCompany().orElse(applicationToEdit.getCompany());
         Position updatedPosition = editApplicationDescriptor.getPosition().orElse(applicationToEdit.getPosition());
-        Status updatedStatus = editApplicationDescriptor.getStatus().orElse(applicationToEdit.getStatus());
         Deadline updatedDeadline = editApplicationDescriptor.getDeadline().orElse(applicationToEdit.getDeadline());
-        Set<Tag> updatedTags = editApplicationDescriptor.getTags().orElse(applicationToEdit.getTags());
         Completion completion = applicationToEdit.getCompletion();
+        Status updatedStatus = editApplicationDescriptor.getStatus().orElse(applicationToEdit.getStatus());
+        Priority priority = applicationToEdit.getPriority();
+        Set<Tag> updatedTags = editApplicationDescriptor.getTags().orElse(applicationToEdit.getTags());
+
 
         return new Application(updatedCompany, updatedPosition, updatedDeadline, completion,
-                updatedStatus, updatedTags);
+                updatedStatus, priority, updatedTags);
     }
 
     @Override
