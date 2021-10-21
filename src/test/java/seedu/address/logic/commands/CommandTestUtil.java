@@ -6,6 +6,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_COMPANY_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DEADLINE_OF_APPLICATION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_INTERNSHIP_POSITION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_REQUIREMENTS;
 import static seedu.address.testutil.Assert.assertThrows;
 
 import java.util.ArrayList;
@@ -40,6 +41,9 @@ public class CommandTestUtil {
     public static final String VALID_STATUS_AMAZON = "Pending";
     public static final String VALID_STATUS_BYTEDANCE = "Rejected";
     public static final String VALID_STATUS_GRAB = "Pending";
+    public static final String VALID_REQUIREMENTS_AMAZON = "Resume";
+    public static final String VALID_REQUIREMENTS_BYTEDANCE = "CV";
+    public static final String VALID_REQUIREMENTS_GRAB = "Coding Challenge";
     public static final String VALID_TAG_AMAZON = "Important";
     public static final String VALID_TAG_BYTEDANCE = "Selective";
     public static final String VALID_TAG_GRAB = "Essential";
@@ -55,6 +59,8 @@ public class CommandTestUtil {
     public static final String TAG_DESC_BYTEDANCE = " " + PREFIX_TAG + VALID_TAG_BYTEDANCE;
     public static final String STATUS_DESC_AMAZON = " " + VALID_STATUS_AMAZON;
     public static final String STATUS_DESC_BYTEDANCE = " " + VALID_STATUS_BYTEDANCE;
+    public static final String REQUIREMENTS_DESC_AMAZON = " " + PREFIX_REQUIREMENTS + VALID_REQUIREMENTS_AMAZON;
+    public static final String REQUIREMENTS_DESC_BYTEDANCE = " " + PREFIX_REQUIREMENTS + VALID_REQUIREMENTS_BYTEDANCE;
 
     public static final String INVALID_NAME_DESC = " " + PREFIX_COMPANY_NAME + "Google&"; // '&' not allowed in names
     public static final String INVALID_POSITION_DESC = " "
@@ -71,9 +77,9 @@ public class CommandTestUtil {
 
     static {
         DESC_AMAZON = new EditApplicationDescriptorBuilder().withCompany(VALID_NAME_AMAZON)
-                .withPosition(VALID_POSITION_AMAZON).withDeadline(VALID_DEADLINE_AMAZON).build();
+                .withPosition(VALID_POSITION_AMAZON).withDeadline(VALID_DEADLINE_AMAZON).withRequirements(VALID_REQUIREMENTS_AMAZON).build();
         DESC_BYTEDANCE = new EditApplicationDescriptorBuilder().withCompany(VALID_NAME_BYTEDANCE)
-                .withPosition(VALID_POSITION_BYTEDANCE).withDeadline(VALID_DEADLINE_BYTEDANCE).build();
+                .withPosition(VALID_POSITION_BYTEDANCE).withDeadline(VALID_DEADLINE_BYTEDANCE).withRequirements(VALID_REQUIREMENTS_BYTEDANCE).build();
     }
 
     /**

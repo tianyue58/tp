@@ -18,6 +18,9 @@ import static seedu.address.logic.commands.CommandTestUtil.VALID_STATUS_GRAB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_AMAZON;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_BYTEDANCE;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_GRAB;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_REQUIREMENTS_AMAZON;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_REQUIREMENTS_BYTEDANCE;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_REQUIREMENTS_GRAB;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -35,15 +38,15 @@ public class TypicalApplications {
     public static final Application AMAZON = new ApplicationBuilder().withCompany(VALID_NAME_AMAZON)
             .withPosition(VALID_POSITION_AMAZON).withDeadline(VALID_DEADLINE_AMAZON)
             .withCompletion(VALID_COMPLETION_AMAZON)
-            .withStatus(VALID_STATUS_AMAZON).withTags(VALID_TAG_AMAZON).build();
+            .withStatus(VALID_STATUS_AMAZON).withRequirements(VALID_REQUIREMENTS_AMAZON).withTags(VALID_TAG_AMAZON).build();
     public static final Application BYTEDANCE = new ApplicationBuilder().withCompany(VALID_NAME_BYTEDANCE)
             .withPosition(VALID_POSITION_BYTEDANCE).withDeadline(VALID_DEADLINE_BYTEDANCE)
             .withCompletion(VALID_COMPLETION_BYTEDANCE)
-            .withStatus(VALID_STATUS_BYTEDANCE).withTags(VALID_TAG_BYTEDANCE).build();
+            .withStatus(VALID_STATUS_BYTEDANCE).withRequirements(VALID_REQUIREMENTS_BYTEDANCE).withTags(VALID_TAG_BYTEDANCE).build();
     public static final Application GRAB = new ApplicationBuilder().withCompany(VALID_NAME_GRAB)
             .withPosition(VALID_POSITION_GRAB).withDeadline(VALID_DEADLINE_GRAB)
             .withCompletion(VALID_COMPLETION_GRAB)
-            .withStatus(VALID_STATUS_GRAB).withTags(VALID_TAG_GRAB).build();
+            .withStatus(VALID_STATUS_GRAB).withRequirements(VALID_REQUIREMENTS_GRAB).withTags(VALID_TAG_GRAB).build();
 
     private TypicalApplications() {} // prevents instantiation
 

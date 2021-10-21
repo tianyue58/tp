@@ -20,6 +20,7 @@ import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BYTEDANCE;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_POSITION_BYTEDANCE;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_AMAZON;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_BYTEDANCE;
+import static seedu.address.logic.commands.CommandTestUtil.REQUIREMENTS_DESC_AMAZON;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
 import static seedu.address.testutil.TypicalApplications.AMAZON;
@@ -43,27 +44,27 @@ public class AddCommandParserTest {
 
         // whitespace only preamble
         assertParseSuccess(parser, PREAMBLE_WHITESPACE + NAME_DESC_AMAZON
-                + POSITION_DESC_AMAZON + DEADLINE_DESC_AMAZON + TAG_DESC_AMAZON, new AddCommand(expectedApplication));
+                + POSITION_DESC_AMAZON + DEADLINE_DESC_AMAZON + REQUIREMENTS_DESC_AMAZON + TAG_DESC_AMAZON, new AddCommand(expectedApplication));
 
         // multiple company names - last company name accepted
         assertParseSuccess(parser, NAME_DESC_BYTEDANCE + NAME_DESC_AMAZON
-                + POSITION_DESC_AMAZON + DEADLINE_DESC_AMAZON + TAG_DESC_AMAZON, new AddCommand(expectedApplication));
+                + POSITION_DESC_AMAZON + DEADLINE_DESC_AMAZON + REQUIREMENTS_DESC_AMAZON + TAG_DESC_AMAZON, new AddCommand(expectedApplication));
 
         // multiple positions - last position accepted
         assertParseSuccess(parser, NAME_DESC_AMAZON + POSITION_DESC_BYTEDANCE
-                + POSITION_DESC_AMAZON + DEADLINE_DESC_AMAZON
+                + POSITION_DESC_AMAZON + DEADLINE_DESC_AMAZON + REQUIREMENTS_DESC_AMAZON
                 + TAG_DESC_AMAZON, new AddCommand(expectedApplication));
 
         // multiple deadlines - last deadline accepted
         assertParseSuccess(parser, NAME_DESC_AMAZON + POSITION_DESC_AMAZON
-                + DEADLINE_DESC_BYTEDANCE + DEADLINE_DESC_AMAZON
+                + DEADLINE_DESC_BYTEDANCE + DEADLINE_DESC_AMAZON + REQUIREMENTS_DESC_AMAZON
                 + TAG_DESC_AMAZON, new AddCommand(expectedApplication));
 
         // multiple tags - all accepted
         Application expectedApplicationMultipleTags = new ApplicationBuilder(AMAZON)
                 .withTags(VALID_TAG_AMAZON, VALID_TAG_BYTEDANCE).build();
         assertParseSuccess(parser, NAME_DESC_AMAZON
-                + POSITION_DESC_AMAZON + DEADLINE_DESC_AMAZON
+                + POSITION_DESC_AMAZON + DEADLINE_DESC_AMAZON + REQUIREMENTS_DESC_AMAZON
                 + TAG_DESC_AMAZON + TAG_DESC_BYTEDANCE, new AddCommand(expectedApplicationMultipleTags));
     }
 
@@ -71,7 +72,7 @@ public class AddCommandParserTest {
     public void parse_optionalFieldsMissing_success() {
         // zero tags
         Application expectedApplication = new ApplicationBuilder(AMAZON).withTags().build();
-        assertParseSuccess(parser, NAME_DESC_AMAZON + POSITION_DESC_AMAZON + DEADLINE_DESC_AMAZON,
+        assertParseSuccess(parser, NAME_DESC_AMAZON + POSITION_DESC_AMAZON + DEADLINE_DESC_AMAZON + REQUIREMENTS_DESC_AMAZON,
                 new AddCommand(expectedApplication));
     }
 
