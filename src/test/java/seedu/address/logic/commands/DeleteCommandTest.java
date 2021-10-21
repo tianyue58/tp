@@ -101,7 +101,7 @@ public class DeleteCommandTest {
     }
 
     /**
-     * Updates {@code model}'s filtered list to show no one.
+     * Updates {@code model}'s filtered list to show no application.
      */
     private void showNoApplication(Model model) {
         model.updateFilteredApplicationList(p -> false);

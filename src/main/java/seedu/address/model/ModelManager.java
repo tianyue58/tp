@@ -22,9 +22,11 @@ public class ModelManager implements Model {
     private final Internship internship;
     private final UserPrefs userPrefs;
     private final FilteredList<Application> filteredApplications;
+    private final VersionedInternship versionedInternship;
 
     /**
      * Initializes a ModelManager with the given internship and userPrefs.
+     * The VersionedInternship is initialized to the current version of Internship retrieved from storage
      */
     public ModelManager(ReadOnlyInternship internship, ReadOnlyUserPrefs userPrefs) {
         super();
@@ -35,6 +37,9 @@ public class ModelManager implements Model {
         this.internship = new Internship(internship);
         this.userPrefs = new UserPrefs(userPrefs);
         filteredApplications = new FilteredList<>(this.internship.getApplicationList());
+
+        Internship copied = new Internship(internship);
+        versionedInternship = new VersionedInternship(copied);
     }
 
     public ModelManager() {
@@ -146,6 +151,34 @@ public class ModelManager implements Model {
         return internship.equals(other.internship)
                 && userPrefs.equals(other.userPrefs)
                 && filteredApplications.equals(other.filteredApplications);
+    }
+
+    //=========== Methods for handling undo and undo feature ======================================================
+    @Override
+    public void commitInternship(ReadOnlyInternship currentVersion) {
+        versionedInternship.commit(currentVersion);
+    }
+
+    @Override
+    public void undoInternship() {
+        ReadOnlyInternship versionToBeRecovered = versionedInternship.undo();
+        setInternship(versionToBeRecovered);
+    }
+
+    @Override
+    public boolean canUndoInternship() {
+        return versionedInternship.canUndo();
+    }
+
+    @Override
+    public void redoInternship() {
+        ReadOnlyInternship versionToBeRecovered = versionedInternship.redo();
+        setInternship(versionToBeRecovered);
+    }
+
+    @Override
+    public boolean canRedoInternship() {
+        return versionedInternship.canRedo();
     }
 
 }

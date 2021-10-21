@@ -41,7 +41,6 @@ public class RejectCommand extends Command {
         requireNonNull(model);
         List<Application> lastShownList = model.getFilteredApplicationList();
 
-
         if (targetIndex.getZeroBased() >= lastShownList.size()) {
             throw new CommandException(Messages.MESSAGE_INVALID_APPLICATION_DISPLAYED_INDEX);
         }
@@ -59,8 +58,7 @@ public class RejectCommand extends Command {
         Application completedApplication = new Application(company, position, deadline,
                 completion, status, requirements, tagList);
         model.setApplication(applicationToComplete, completedApplication);
-
-
+        model.commitInternship(model.getInternship());
 
         return new CommandResult(String.format(MESSAGE_SUCCESS, completedApplication));
 

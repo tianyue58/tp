@@ -33,7 +33,7 @@ import seedu.address.model.tag.Tag;
  */
 public class RejectCommandTest {
 
-    private Model model = new ModelManager(getTypicalInternship(), new UserPrefs());
+    private final Model model = new ModelManager(getTypicalInternship(), new UserPrefs());
 
     @Test
     public void execute_invalidIndexUnfilteredList_throwsCommandException() {
@@ -103,12 +103,4 @@ public class RejectCommandTest {
         assertFalse(rejectFirstCommand.equals(rejectSecondCommand));
     }
 
-    /**
-     * Updates {@code model}'s filtered list to show no one.
-     */
-    private void showNoApplication(Model model) {
-        model.updateFilteredApplicationList(p -> false);
-
-        assertTrue(model.getFilteredApplicationList().isEmpty());
-    }
 }

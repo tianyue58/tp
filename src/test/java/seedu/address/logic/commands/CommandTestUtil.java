@@ -9,8 +9,10 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_REQUIREMENTS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.address.testutil.Assert.assertThrows;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 import seedu.address.commons.core.index.Index;
@@ -29,24 +31,43 @@ public class CommandTestUtil {
     public static final String VALID_NAME_AMAZON = "Amazon";
     public static final String VALID_NAME_BYTEDANCE = "ByteDance";
     public static final String VALID_NAME_GRAB = "Grab";
+    public static final String VALID_NAME_SHOPEE = "Shopee";
+
     public static final String VALID_POSITION_AMAZON = "Software Engineer";
     public static final String VALID_POSITION_BYTEDANCE = "Web Developer";
     public static final String VALID_POSITION_GRAB = "Backend Engineer";
+    public static final String VALID_POSITION_SHOPEE = "Frontend Engineer";
+
     public static final String VALID_DEADLINE_AMAZON = "2021-12-12";
     public static final String VALID_DEADLINE_BYTEDANCE = "2021-12-29";
     public static final String VALID_DEADLINE_GRAB = "2021-12-30";
+    public static final String VALID_DEADLINE_SHOPEE = "2021-12-31";
+
     public static final String VALID_COMPLETION_AMAZON = "Uncompleted";
     public static final String VALID_COMPLETION_BYTEDANCE = "Completed";
     public static final String VALID_COMPLETION_GRAB = "Uncompleted";
+    public static final String VALID_COMPLETION_SHOPEE = "Uncompleted";
+
+    public static final String VALID_SOON_DEADLINE = getCurrentDate();
+
     public static final String VALID_STATUS_AMAZON = "Pending";
     public static final String VALID_STATUS_BYTEDANCE = "Rejected";
     public static final String VALID_STATUS_GRAB = "Pending";
+    public static final String VALID_STATUS_SHOPEE = "Pending";
+
     public static final String VALID_REQUIREMENTS_AMAZON = "Resume";
     public static final String VALID_REQUIREMENTS_BYTEDANCE = "CV";
     public static final String VALID_REQUIREMENTS_GRAB = "Coding Challenge";
+    public static final String VALID_REQUIREMENTS_SHOPEE = "Coding Challenge and Resume";
+
+    
+
+
     public static final String VALID_TAG_AMAZON = "Important";
     public static final String VALID_TAG_BYTEDANCE = "Selective";
     public static final String VALID_TAG_GRAB = "Essential";
+    public static final String VALID_TAG_SHOPEE = "Optional";
+
 
     public static final String NAME_DESC_AMAZON = " " + PREFIX_COMPANY_NAME + VALID_NAME_AMAZON;
     public static final String NAME_DESC_BYTEDANCE = " " + PREFIX_COMPANY_NAME + VALID_NAME_BYTEDANCE;
@@ -119,11 +140,11 @@ public class CommandTestUtil {
     public static void assertCommandFailure(Command command, Model actualModel, String expectedMessage) {
         // we are unable to defensively copy the model for comparison later, so we can
         // only do so by copying its components.
-        Internship expectedAddressBook = new Internship(actualModel.getInternship());
+        Internship expectedInternship = new Internship(actualModel.getInternship());
         List<Application> expectedFilteredList = new ArrayList<>(actualModel.getFilteredApplicationList());
 
         assertThrows(CommandException.class, expectedMessage, () -> command.execute(actualModel));
-        assertEquals(expectedAddressBook, actualModel.getInternship());
+        assertEquals(expectedInternship, actualModel.getInternship());
         assertEquals(expectedFilteredList, actualModel.getFilteredApplicationList());
     }
     /**
@@ -138,6 +159,17 @@ public class CommandTestUtil {
         model.updateFilteredApplicationList(new NameContainsKeywordsPredicate(Arrays.asList(splitName[0])));
 
         assertEquals(1, model.getFilteredApplicationList().size());
+    }
+
+    /**
+     * Gets the current date.
+     *
+     * @return The string representation of the current date.
+     */
+    public static String getCurrentDate() {
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        Date currentDate = new Date();
+        return formatter.format(currentDate);
     }
 
 }
