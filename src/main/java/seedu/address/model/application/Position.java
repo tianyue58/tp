@@ -3,6 +3,9 @@ package seedu.address.model.application;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
+import java.util.Comparator;
+import java.util.Locale;
+
 /**
  * Represents an Application's position in InternSHIP.
  * Guarantees: immutable; is valid as declared in {@link #isValidPosition(String)}
@@ -35,6 +38,17 @@ public class Position {
      */
     public static boolean isValidPosition(String test) {
         return test.matches(VALIDATION_REGEX);
+    }
+
+    public static Comparator<Application> getComparator() {
+        return new Comparator<Application>() {
+            @Override
+            public int compare(Application application, Application otherApplication) {
+                String position = application.getPosition().value.toUpperCase();
+                String otherPosition = otherApplication.getPosition().value.toUpperCase();
+                return position.compareTo(otherPosition);
+            }
+        };
     }
 
     @Override

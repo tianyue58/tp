@@ -3,6 +3,7 @@ package seedu.address.model.application;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
+import java.util.Comparator;
 import java.util.Locale;
 
 /**
@@ -33,6 +34,48 @@ public class Priority {
     public static boolean isValidPriority(String test) {
         String lowerCaseTest = test.toLowerCase();
         return lowerCaseTest.equals("low") || lowerCaseTest.equals("medium") || lowerCaseTest.equals("high");
+    }
+
+    public static Comparator<Application> getComparator() {
+        return new Comparator<Application>() {
+            @Override
+            public int compare(Application application, Application otherApplication) {
+                String priority = application.getPriority().value;
+                String otherPriority = otherApplication.getPriority().value;
+
+                String numericPriority = "0";
+                switch (priority) {
+                case "High":
+                    numericPriority = "1";
+                    break;
+                case "Medium":
+                    numericPriority = "2";
+                    break;
+                case "Low":
+                    numericPriority = "3";
+                    break;
+                default:
+                    // Should not reach this line.
+                }
+
+                String otherNumericPriority = "0";
+                switch (otherPriority) {
+                case "High":
+                    otherNumericPriority = "1";
+                    break;
+                case "Medium":
+                    otherNumericPriority = "2";
+                    break;
+                case "Low":
+                    otherNumericPriority = "3";
+                    break;
+                default:
+                    // Should not reach this line.
+                }
+
+                return numericPriority.compareTo(otherNumericPriority);
+            }
+        };
     }
 
     @Override

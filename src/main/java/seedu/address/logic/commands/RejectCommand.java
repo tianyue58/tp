@@ -27,6 +27,9 @@ public class RejectCommand extends Command {
             + "Parameters: INDEX (must be a positive integer)\n"
             + "Example: " + COMMAND_WORD + " 1";
 
+    public static final String MESSAGE_SUCCESS = "Marked application as 'Rejected': %1$s";
+
+
     private final Index targetIndex;
 
     public RejectCommand(Index targetIndex) {
@@ -57,7 +60,7 @@ public class RejectCommand extends Command {
         model.setApplication(applicationToComplete, completedApplication);
         model.commitInternship(model.getInternship());
 
-        return new CommandResult(String.format(Messages.MESSAGE_APPLICATION_REJECTED, completedApplication));
+        return new CommandResult(String.format(MESSAGE_SUCCESS, completedApplication));
 
     }
 

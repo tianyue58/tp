@@ -3,6 +3,9 @@ package seedu.address.model.application;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
+import java.util.Comparator;
+import java.util.Locale;
+
 /**
  * Represents an Application's name in InternSHIP.
  * Guarantees: immutable; is valid as declared in {@link #isValidCompanyName(String)}
@@ -38,6 +41,16 @@ public class Company {
         return test.matches(VALIDATION_REGEX);
     }
 
+    public static Comparator<Application> getComparator() {
+        return new Comparator<Application>() {
+            @Override
+            public int compare(Application application, Application otherApplication) {
+                String company = application.getCompany().fullCompanyName.toUpperCase();
+                String otherCompany = otherApplication.getCompany().fullCompanyName.toUpperCase();
+                return company.compareTo(otherCompany);
+            }
+        };
+    }
 
     @Override
     public String toString() {

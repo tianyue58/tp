@@ -7,7 +7,6 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_INTERNSHIP_POSITION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PRIORITY;
 
 import seedu.address.logic.commands.SortCommand;
-import seedu.address.logic.commands.SortCommand.SortDescriptor;
 import seedu.address.logic.parser.exceptions.ParseException;
 
 /**
@@ -26,29 +25,26 @@ public class SortCommandParser implements Parser<SortCommand> {
                 ArgumentTokenizer.tokenize(args, PREFIX_COMPANY_NAME, PREFIX_INTERNSHIP_POSITION,
                         PREFIX_DEADLINE_OF_APPLICATION, PREFIX_PRIORITY);
 
-        SortCommand.SortDescriptor sortDescriptor = new SortDescriptor();
+        String parameter = null;
+
         if (argMultimap.getValue(PREFIX_COMPANY_NAME).isPresent()) {
-            sortDescriptor.setCompanySort(true);
-            sortDescriptor.setOtherSortsFalse();
+            parameter = "company";
         }
         if (argMultimap.getValue(PREFIX_INTERNSHIP_POSITION).isPresent()) {
-            sortDescriptor.setPositionSort(true);
-            sortDescriptor.setOtherSortsFalse();
+            parameter = "position";
         }
         if (argMultimap.getValue(PREFIX_DEADLINE_OF_APPLICATION).isPresent()) {
-            sortDescriptor.setDeadlineSort(true);
-            sortDescriptor.setOtherSortsFalse();
+            parameter = "deadline";
         }
         if (argMultimap.getValue(PREFIX_PRIORITY).isPresent()) {
-            sortDescriptor.setPrioritySort(true);
-            sortDescriptor.setOtherSortsFalse();
+            parameter = "priority";
         }
 
-        if (!sortDescriptor.isAnyParameterSpecified()) {
+        if (parameter == null) {
             throw new ParseException(SortCommand.MESSAGE_PARAMETER_NOT_SPECIFIED);
         }
 
-        return new SortCommand(sortDescriptor);
+        return new SortCommand(parameter);
     }
 
 }
