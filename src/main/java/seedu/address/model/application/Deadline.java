@@ -35,6 +35,12 @@ public class Deadline {
         return test.matches(VALIDATION_REGEX);
     }
 
+    /**
+     * Returns a Comparator object that compares two applications by their deadlines.
+     * The application with a deadline that comes first is taken to be greater.
+     *
+     * @return Comparator object that compares applications by their deadlines.
+     */
     public static Comparator<Application> getComparator() {
         return new Comparator<Application>() {
             @Override

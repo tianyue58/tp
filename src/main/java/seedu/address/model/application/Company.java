@@ -41,6 +41,13 @@ public class Company {
         return test.matches(VALIDATION_REGEX);
     }
 
+    /**
+     * Returns a Comparator object that compares two applications by their company names.
+     * The application with a company name that comes first alphabetically is taken to be greater.
+     * Capitalisation of letters are ignored in the comparison.
+     *
+     * @return Comparator object that compares applications by their company names.
+     */
     public static Comparator<Application> getComparator() {
         return new Comparator<Application>() {
             @Override

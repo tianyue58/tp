@@ -22,8 +22,7 @@ import seedu.address.model.application.Position;
 import seedu.address.model.application.Priority;
 
 /**
- * Finds and lists all applications in InternSHIP whose name or fields contain any of the argument keywords.
- * Keyword matching is case insensitive.
+ * Sorts all the applications in InternSHIP by the specified parameter (an application detail).
  */
 public class SortCommand extends Command {
 
@@ -46,11 +45,17 @@ public class SortCommand extends Command {
             + "Sort by priority: " + COMMAND_WORD + " " + PREFIX_COMPLETION + "\n";
 
     public final String MESSAGE_SUCCESS = "Sorted applications by %s";
-    public static final String MESSAGE_PARAMETER_NOT_SPECIFIED = "At least one parameter to sort by "
-            + "(application detail) must be provided.";
+    public static final String MESSAGE_PARAMETER_NOT_SPECIFIED = "At least one parameter (application detail) "
+            + "to sort by must be provided.";
 
     private final String parameter;
 
+    /**
+     * Creates a SortCommand to sort the applications in InternSHIP by the specified parameter.
+     *
+     * @param parameter Application detail used to sort the list of applications.
+     * (e.g. company name, application deadline)
+     */
     public SortCommand(String parameter) {
         requireNonNull(parameter);
 
@@ -82,6 +87,11 @@ public class SortCommand extends Command {
                 String.format(MESSAGE_SUCCESS, this.parameter));
     }
 
+    /**
+     * Returns the appropriate Comparator depending on the parameter to sort by.
+     *
+     * @return Comparator object that allows applications to be compared to each other based on the sorting parameter.
+     */
     public Comparator<Application> getComparator() {
         switch (this.parameter) {
         case "company":

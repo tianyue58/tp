@@ -36,6 +36,12 @@ public class Priority {
         return lowerCaseTest.equals("low") || lowerCaseTest.equals("medium") || lowerCaseTest.equals("high");
     }
 
+    /**
+     * Returns a Comparator object that compares two applications by their priority.
+     * The application with a higher priority is taken to be greater.
+     *
+     * @return Comparator object that compares applications by their priority.
+     */
     public static Comparator<Application> getComparator() {
         return new Comparator<Application>() {
             @Override
@@ -43,37 +49,24 @@ public class Priority {
                 String priority = application.getPriority().value;
                 String otherPriority = otherApplication.getPriority().value;
 
-                String numericPriority = "0";
-                switch (priority) {
-                case "High":
-                    numericPriority = "1";
-                    break;
-                case "Medium":
-                    numericPriority = "2";
-                    break;
-                case "Low":
-                    numericPriority = "3";
-                    break;
-                default:
-                    // Should not reach this line.
-                }
-
-                String otherNumericPriority = "0";
-                switch (otherPriority) {
-                case "High":
-                    otherNumericPriority = "1";
-                    break;
-                case "Medium":
-                    otherNumericPriority = "2";
-                    break;
-                case "Low":
-                    otherNumericPriority = "3";
-                    break;
-                default:
-                    // Should not reach this line.
-                }
+                String numericPriority = getNumericPriority(priority);
+                String otherNumericPriority = getNumericPriority(otherPriority);
 
                 return numericPriority.compareTo(otherNumericPriority);
+            }
+
+            private String getNumericPriority(String priority) {
+                switch (priority) {
+                case "High":
+                    return "1";
+                case "Medium":
+                    return "2";
+                case "Low":
+                    return "3";
+                default:
+                    // Should not reach this line.
+                }
+                return "0"; // Should not reach this line.
             }
         };
     }

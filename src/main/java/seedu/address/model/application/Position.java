@@ -40,6 +40,13 @@ public class Position {
         return test.matches(VALIDATION_REGEX);
     }
 
+    /**
+     * Returns a Comparator object that compares two applications by their internship positions.
+     * The application with an internship position that comes first alphabetically is taken to be greater.
+     * Capitalisation of letters are ignored in the comparison.
+     *
+     * @return Comparator object that compares applications by their internship positions.
+     */
     public static Comparator<Application> getComparator() {
         return new Comparator<Application>() {
             @Override
