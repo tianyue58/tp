@@ -22,6 +22,7 @@ import seedu.address.model.application.Company;
 import seedu.address.model.application.Completion;
 import seedu.address.model.application.Deadline;
 import seedu.address.model.application.Position;
+import seedu.address.model.application.Requirements;
 import seedu.address.model.application.Status;
 import seedu.address.model.tag.Tag;
 
@@ -41,7 +42,10 @@ public class CompleteCommandTest {
         Status status = applicationToComplete.getStatus();
         Set<Tag> tagList = applicationToComplete.getTags();
         Completion completion = new Completion("Completed");
-        Application completedApplication = new Application(company, position, deadline, completion, status, tagList);
+        Requirements requirements = applicationToComplete.getRequirements();
+
+        Application completedApplication = new Application(company, position, deadline,
+                completion, status, requirements, tagList);
 
         String expectedMessage = String.format(CompleteCommand.MESSAGE_SUCCESS, completedApplication);
         ModelManager expectedModel = new ModelManager(model.getInternship(), new UserPrefs());

@@ -27,17 +27,21 @@ public class Application {
     // Data fields
     private final Set<Tag> tags = new HashSet<>();
 
+    //Optional fields
+    private final Requirements requirements;
+
     /**
      * Every field must be present and not null.
      */
-    public Application(Company company, Position position, Deadline deadline, Completion completion, Status status,
-                       Set<Tag> tags) {
+    public Application(Company company, Position position, Deadline deadline, Completion completion,
+                       Status status, Requirements requirements, Set<Tag> tags) {
         requireAllNonNull(company, position, deadline, tags, completion);
         this.company = company;
         this.position = position;
         this.deadline = deadline;
         this.completion = completion;
         this.status = status;
+        this.requirements = requirements;
         this.tags.addAll(tags);
     }
 
@@ -74,6 +78,13 @@ public class Application {
      */
     public Status getStatus() {
         return this.status;
+    }
+
+    /**
+     * Returns the application requirements of the {@code Application}.
+     */
+    public Requirements getRequirements() {
+        return this.requirements;
     }
 
     /**
@@ -118,13 +129,14 @@ public class Application {
                 && otherApplication.getDeadline().equals(getDeadline())
                 && otherApplication.getCompletion().equals(getCompletion())
                 && otherApplication.getStatus().equals(getStatus())
+                && otherApplication.getRequirements().equals(getRequirements())
                 && otherApplication.getTags().equals(getTags());
     }
 
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(company, position, deadline, completion, status, tags);
+        return Objects.hash(company, position, deadline, completion, status, requirements, tags);
     }
 
     @Override
