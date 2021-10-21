@@ -4,6 +4,7 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_COMPANY_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DEADLINE_OF_APPLICATION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_INTERNSHIP_POSITION;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_PRIORITY;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_APPLICATIONS;
 
@@ -41,6 +42,7 @@ public class EditCommand extends Command {
             + "[" + PREFIX_COMPANY_NAME + "COMPANY] "
             + "[" + PREFIX_INTERNSHIP_POSITION + "POSITION] "
             + "[" + PREFIX_DEADLINE_OF_APPLICATION + "DEADLINE] "
+            + "[" + PREFIX_PRIORITY + "PRIORITY] "
             + "[" + PREFIX_TAG + "TAG]...\n"
             + "Example: " + COMMAND_WORD + " 1 "
             + PREFIX_INTERNSHIP_POSITION + "UI designer "
@@ -100,13 +102,13 @@ public class EditCommand extends Command {
         Position updatedPosition = editApplicationDescriptor.getPosition().orElse(applicationToEdit.getPosition());
         Deadline updatedDeadline = editApplicationDescriptor.getDeadline().orElse(applicationToEdit.getDeadline());
         Completion completion = applicationToEdit.getCompletion();
-        Status updatedStatus = editApplicationDescriptor.getStatus().orElse(applicationToEdit.getStatus());
-        Priority priority = applicationToEdit.getPriority();
+        Status status = applicationToEdit.getStatus();
+        Priority priority = editApplicationDescriptor.getPriority().orElse(applicationToEdit.getPriority());
         Set<Tag> updatedTags = editApplicationDescriptor.getTags().orElse(applicationToEdit.getTags());
 
 
         return new Application(updatedCompany, updatedPosition, updatedDeadline, completion,
-                updatedStatus, priority, updatedTags);
+                status, priority, updatedTags);
     }
 
     @Override
@@ -135,7 +137,7 @@ public class EditCommand extends Command {
         private Company company;
         private Position position;
         private Deadline deadline;
-        private Status status;
+        private Priority priority;
         private Set<Tag> tags;
 
         public EditApplicationDescriptor() {}
@@ -148,7 +150,7 @@ public class EditCommand extends Command {
             setCompany(toCopy.company);
             setPosition(toCopy.position);
             setDeadline(toCopy.deadline);
-            setStatus(toCopy.status);
+            setPriority(toCopy.priority);
             setTags(toCopy.tags);
         }
 
@@ -156,7 +158,7 @@ public class EditCommand extends Command {
          * Returns true if at least one field is edited.
          */
         public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyNonNull(company, position, deadline, status, tags);
+            return CollectionUtil.isAnyNonNull(company, position, deadline, priority, tags);
         }
 
         public void setCompany(Company company) {
@@ -171,8 +173,8 @@ public class EditCommand extends Command {
             this.position = position;
         }
 
-        public void setStatus(Status status) {
-            this.status = status;
+        public void setPriority(Priority priority) {
+            this.priority = priority;
         }
 
         public Optional<Position> getPosition() {
@@ -183,8 +185,8 @@ public class EditCommand extends Command {
             this.deadline = deadline;
         }
 
-        public Optional<Status> getStatus() {
-            return Optional.ofNullable(status);
+        public Optional<Priority> getPriority() {
+            return Optional.ofNullable(priority);
         }
 
 
@@ -228,7 +230,7 @@ public class EditCommand extends Command {
             return getCompany().equals(e.getCompany())
                     && getPosition().equals(e.getPosition())
                     && getDeadline().equals(e.getDeadline())
-                    && getStatus().equals(e.getStatus())
+                    && getPriority().equals(e.getPriority())
                     && getTags().equals(e.getTags());
         }
     }

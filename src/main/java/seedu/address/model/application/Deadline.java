@@ -11,7 +11,7 @@ public class Deadline {
 
 
     public static final String MESSAGE_CONSTRAINTS =
-            "Deadline should be in YYYY-MM-DD format";
+            "Deadline should be in YYYY-MM-DD format.";
     public static final String VALIDATION_REGEX = "^\\d{4}\\-(0[1-9]|1[012])\\-(0[1-9]|[12][0-9]|3[01])$";
     public final String value;
 

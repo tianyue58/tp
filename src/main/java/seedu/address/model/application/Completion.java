@@ -9,8 +9,7 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
  */
 public class Completion {
 
-    public static final String MESSAGE_CONSTRAINTS = "Completion can be 'Completed' or 'Uncompleted'."
-            + "It will be 'Uncompleted' by default for a new Application that is added.";
+    public static final String MESSAGE_CONSTRAINTS = "Completion can only be 'Completed' or 'Uncompleted'.";
 
     public final String value;
 

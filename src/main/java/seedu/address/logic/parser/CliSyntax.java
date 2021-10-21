@@ -11,6 +11,7 @@ public class CliSyntax {
     public static final Prefix PREFIX_DEADLINE_OF_APPLICATION = new Prefix("d/");
     public static final Prefix PREFIX_STATUS = new Prefix("s/");
     public static final Prefix PREFIX_COMPLETION = new Prefix("c1/");
+    public static final Prefix PREFIX_PRIORITY = new Prefix("pr/");
     public static final Prefix PREFIX_TAG = new Prefix("t/");
 
 }

@@ -147,7 +147,9 @@ public class Application {
                 .append("; Application completion: ")
                 .append(getCompletion())
                 .append("; Status(Decision of the application): ")
-                .append(getStatus());
+                .append(getStatus())
+                .append("; Priority: ")
+                .append(getPriority());
 
         Set<Tag> tags = getTags();
         if (!tags.isEmpty()) {
