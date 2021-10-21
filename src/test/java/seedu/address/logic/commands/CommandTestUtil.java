@@ -5,8 +5,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_COMPANY_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DEADLINE_OF_APPLICATION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_INTERNSHIP_POSITION;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_REQUIREMENTS;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.address.testutil.Assert.assertThrows;
 
 import java.util.ArrayList;
@@ -77,9 +77,11 @@ public class CommandTestUtil {
 
     static {
         DESC_AMAZON = new EditApplicationDescriptorBuilder().withCompany(VALID_NAME_AMAZON)
-                .withPosition(VALID_POSITION_AMAZON).withDeadline(VALID_DEADLINE_AMAZON).withRequirements(VALID_REQUIREMENTS_AMAZON).build();
+                .withPosition(VALID_POSITION_AMAZON).withDeadline(VALID_DEADLINE_AMAZON)
+                .withRequirements(VALID_REQUIREMENTS_AMAZON).build();
         DESC_BYTEDANCE = new EditApplicationDescriptorBuilder().withCompany(VALID_NAME_BYTEDANCE)
-                .withPosition(VALID_POSITION_BYTEDANCE).withDeadline(VALID_DEADLINE_BYTEDANCE).withRequirements(VALID_REQUIREMENTS_BYTEDANCE).build();
+                .withPosition(VALID_POSITION_BYTEDANCE).withDeadline(VALID_DEADLINE_BYTEDANCE)
+                .withRequirements(VALID_REQUIREMENTS_BYTEDANCE).build();
     }
 
     /**
