@@ -14,11 +14,13 @@ import seedu.address.model.application.Company;
 import seedu.address.model.application.Completion;
 import seedu.address.model.application.Deadline;
 import seedu.address.model.application.Position;
-import seedu.address.model.application.Status;
 import seedu.address.model.application.Priority;
+import seedu.address.model.application.Status;
 import seedu.address.model.tag.Tag;
 
-
+/**
+ * Sets the Completion of an application to "Completed".
+ */
 public class CompleteCommand extends Command {
     public static final String COMMAND_WORD = "complete";
 

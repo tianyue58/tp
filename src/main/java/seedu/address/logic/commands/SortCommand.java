@@ -44,7 +44,7 @@ public class SortCommand extends Command {
             + "Sort by deadline: " + COMMAND_WORD + " " + PREFIX_DEADLINE_OF_APPLICATION + "\n"
             + "Sort by priority: " + COMMAND_WORD + " " + PREFIX_COMPLETION + "\n";
 
-    public final String MESSAGE_SUCCESS = "Sorted applications by %s";
+    public static final String MESSAGE_SUCCESS = "Sorted applications by %s";
     public static final String MESSAGE_PARAMETER_NOT_SPECIFIED = "At least one parameter (application detail) "
             + "to sort by must be provided.";
 
@@ -67,7 +67,7 @@ public class SortCommand extends Command {
         requireNonNull(model);
         List<Application> lastShownList = model.getFilteredApplicationList();
         final List<Application> immutableLastShownList = new ArrayList<>(lastShownList);
-        final Predicate<Application> PREDICATE_SHOW_PREVIOUSLY_SHOWN_APPLICATIONS = immutableLastShownList::contains;
+        final Predicate<Application> containedInLastShownListPredicate = immutableLastShownList::contains;
 
         model.updateFilteredApplicationList(PREDICATE_SHOW_ALL_APPLICATIONS);
         List<Application> allApplications = model.getFilteredApplicationList();
@@ -81,7 +81,7 @@ public class SortCommand extends Command {
         newSortedInternship.setApplications(sortedApplicationList);
         model.setInternship(newSortedInternship);
 
-        model.updateFilteredApplicationList(PREDICATE_SHOW_PREVIOUSLY_SHOWN_APPLICATIONS);
+        model.updateFilteredApplicationList(containedInLastShownListPredicate);
 
         return new CommandResult(
                 String.format(MESSAGE_SUCCESS, this.parameter));
