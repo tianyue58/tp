@@ -4,6 +4,7 @@ import static java.util.Objects.requireNonNull;
 
 import java.util.List;
 import java.util.Set;
+import java.util.logging.Logger;
 
 import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
@@ -32,6 +33,8 @@ public class AcceptCommand extends Command {
 
     private final Index targetIndex;
 
+    private Logger logger = Logger.getLogger("InfoLogging");
+
     public AcceptCommand(Index targetIndex) {
         this.targetIndex = targetIndex;
     }
@@ -41,7 +44,7 @@ public class AcceptCommand extends Command {
         requireNonNull(model);
         List<Application> lastShownList = model.getFilteredApplicationList();
 
-
+        logger.info("Logging an INFO-level message");
         if (targetIndex.getZeroBased() >= lastShownList.size()) {
             throw new CommandException(Messages.MESSAGE_INVALID_APPLICATION_DISPLAYED_INDEX);
         }
