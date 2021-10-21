@@ -58,16 +58,11 @@ public class CommandTestUtil {
     public static final String VALID_REQUIREMENTS_AMAZON = "Resume";
     public static final String VALID_REQUIREMENTS_BYTEDANCE = "CV";
     public static final String VALID_REQUIREMENTS_GRAB = "Coding Challenge";
-    public static final String VALID_REQUIREMENTS_SHOPEE = "Coding Challenge and Resume";
-
-    
-
-
+    public static final String VALID_REQUIREMENTS_SHOPEE = "Coding Challenge and Resume";    
     public static final String VALID_TAG_AMAZON = "Important";
     public static final String VALID_TAG_BYTEDANCE = "Selective";
     public static final String VALID_TAG_GRAB = "Essential";
     public static final String VALID_TAG_SHOPEE = "Optional";
-
 
     public static final String NAME_DESC_AMAZON = " " + PREFIX_COMPANY_NAME + VALID_NAME_AMAZON;
     public static final String NAME_DESC_BYTEDANCE = " " + PREFIX_COMPANY_NAME + VALID_NAME_BYTEDANCE;
