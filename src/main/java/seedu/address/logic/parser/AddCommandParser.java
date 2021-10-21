@@ -4,15 +4,21 @@ import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT
 import static seedu.address.logic.parser.CliSyntax.PREFIX_COMPANY_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DEADLINE_OF_APPLICATION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_INTERNSHIP_POSITION;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_REQUIREMENTS;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 
 import java.util.Set;
 import java.util.stream.Stream;
 
 import seedu.address.logic.commands.AddCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.application.*;
+import seedu.address.model.application.Application;
+import seedu.address.model.application.Company;
+import seedu.address.model.application.Completion;
+import seedu.address.model.application.Deadline;
+import seedu.address.model.application.Position;
+import seedu.address.model.application.Requirements;
+import seedu.address.model.application.Status;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -44,7 +50,8 @@ public class AddCommandParser implements Parser<AddCommand> {
         Set<Tag> tagList = ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));
         Completion completion = new Completion("Uncompleted");
 
-        Application application = new Application(company, position, deadline, completion, status, requirements, tagList);
+        Application application = new Application(company, position, deadline,
+                completion, status, requirements, tagList);
 
         return new AddCommand(application);
     }

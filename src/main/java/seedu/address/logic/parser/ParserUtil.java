@@ -9,13 +9,12 @@ import java.util.Set;
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.application.Application;
 import seedu.address.model.application.Company;
 import seedu.address.model.application.Completion;
 import seedu.address.model.application.Deadline;
 import seedu.address.model.application.Position;
-import seedu.address.model.application.Status;
 import seedu.address.model.application.Requirements;
+import seedu.address.model.application.Status;
 import seedu.address.model.tag.Tag;
 
 /**

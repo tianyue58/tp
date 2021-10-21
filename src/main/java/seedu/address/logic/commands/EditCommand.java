@@ -5,7 +5,6 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_COMPANY_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DEADLINE_OF_APPLICATION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_INTERNSHIP_POSITION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_REQUIREMENTS;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_APPLICATIONS;
 
 import java.util.Collections;
@@ -24,8 +23,8 @@ import seedu.address.model.application.Company;
 import seedu.address.model.application.Completion;
 import seedu.address.model.application.Deadline;
 import seedu.address.model.application.Position;
-import seedu.address.model.application.Status;
 import seedu.address.model.application.Requirements;
+import seedu.address.model.application.Status;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -35,7 +34,9 @@ public class EditCommand extends Command {
 
     public static final String COMMAND_WORD = "edit";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits the details of the application identified "
+    public static final String MESSAGE_USAGE = COMMAND_WORD
+            + ": Edits the details of "
+            + "the application identified "
             + "by the index number used in the displayed application list. "
             + "Existing values will be overwritten by the input values.\n"
             + "Parameters: INDEX (must be a positive integer) "
@@ -49,7 +50,8 @@ public class EditCommand extends Command {
 
     public static final String MESSAGE_EDIT_APPLICATION_SUCCESS = "Edited Application: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
-    public static final String MESSAGE_DUPLICATE_APPLICATION = "This application already exists in the address book.";
+    public static final String MESSAGE_DUPLICATE_APPLICATION = "This application already "
+            + "exists in the address book.";
 
     private final Index index;
     private final EditApplicationDescriptor editApplicationDescriptor;
@@ -98,7 +100,8 @@ public class EditCommand extends Command {
         Company updatedCompany = editApplicationDescriptor.getCompany().orElse(applicationToEdit.getCompany());
         Position updatedPosition = editApplicationDescriptor.getPosition().orElse(applicationToEdit.getPosition());
         Status updatedStatus = editApplicationDescriptor.getStatus().orElse(applicationToEdit.getStatus());
-        Requirements updatedRequirements = editApplicationDescriptor.getRequirements().orElse(applicationToEdit.getRequirements());
+        Requirements updatedRequirements = editApplicationDescriptor.getRequirements()
+                .orElse(applicationToEdit.getRequirements());
         Deadline updatedDeadline = editApplicationDescriptor.getDeadline().orElse(applicationToEdit.getDeadline());
         Set<Tag> updatedTags = editApplicationDescriptor.getTags().orElse(applicationToEdit.getTags());
         Completion completion = applicationToEdit.getCompletion();

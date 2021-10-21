@@ -15,8 +15,8 @@ import seedu.address.model.application.Company;
 import seedu.address.model.application.Completion;
 import seedu.address.model.application.Deadline;
 import seedu.address.model.application.Position;
-import seedu.address.model.application.Status;
 import seedu.address.model.application.Requirements;
+import seedu.address.model.application.Status;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -85,7 +85,8 @@ class JsonAdaptedApplication {
         }
 
         if (company == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Company.class.getSimpleName()));
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
+                    Company.class.getSimpleName()));
         }
         if (!Company.isValidCompanyName(company)) {
             throw new IllegalValueException(Company.MESSAGE_CONSTRAINTS);
@@ -135,7 +136,8 @@ class JsonAdaptedApplication {
 
         final Set<Tag> modelTags = new HashSet<>(applicationTags);
 
-        return new Application(modelName, modelPosition, modelDeadline, modelCompletion, modelStatus, modelRequirements, modelTags);
+        return new Application(modelName, modelPosition, modelDeadline,
+                modelCompletion, modelStatus, modelRequirements, modelTags);
     }
 
 }

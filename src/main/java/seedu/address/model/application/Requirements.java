@@ -4,8 +4,8 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
 public class Requirements {
-    public static final String MESSAGE_CONSTRAINTS = "Requirements is an optional field and " +
-            "you can add your submission requirements as a String using '/r' in the add command.";
+    public static final String MESSAGE_CONSTRAINTS = "Requirements is an optional field and "
+            + "you can add your submission requirements as a String using '/r' in the add command.";
 
     /*
      * The first character of the position must not be a whitespace,

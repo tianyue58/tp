@@ -14,8 +14,8 @@ import seedu.address.model.application.Company;
 import seedu.address.model.application.Completion;
 import seedu.address.model.application.Deadline;
 import seedu.address.model.application.Position;
-import seedu.address.model.application.Status;
 import seedu.address.model.application.Requirements;
+import seedu.address.model.application.Status;
 import seedu.address.model.tag.Tag;
 
 public class RejectCommand extends Command {
@@ -56,7 +56,8 @@ public class RejectCommand extends Command {
         Status status = new Status("Rejected");
         Completion completion = new Completion("Completed");
 
-        Application completedApplication = new Application(company, position, deadline, completion, status, requirements, tagList);
+        Application completedApplication = new Application(company, position, deadline,
+                completion, status, requirements, tagList);
         model.setApplication(applicationToComplete, completedApplication);
 
 
