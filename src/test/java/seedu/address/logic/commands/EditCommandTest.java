@@ -123,7 +123,6 @@ public class EditCommandTest {
         assertCommandFailure(editCommand, model, EditCommand.MESSAGE_DUPLICATE_APPLICATION);
     }
 
-
     /**
      * Edit filtered list where index is larger than size of filtered list,
      * but smaller than size of Internship

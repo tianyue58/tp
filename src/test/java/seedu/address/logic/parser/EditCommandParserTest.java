@@ -6,10 +6,12 @@ import static seedu.address.logic.commands.CommandTestUtil.DEADLINE_DESC_BYTEDAN
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_DEADLINE_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_NAME_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_POSITION_DESC;
+import static seedu.address.logic.commands.CommandTestUtil.INVALID_PRIORITY_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_TAG_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.NAME_DESC_AMAZON;
 import static seedu.address.logic.commands.CommandTestUtil.POSITION_DESC_AMAZON;
 import static seedu.address.logic.commands.CommandTestUtil.POSITION_DESC_BYTEDANCE;
+import static seedu.address.logic.commands.CommandTestUtil.PRIORITY_DESC_AMAZON;
 import static seedu.address.logic.commands.CommandTestUtil.STATUS_DESC_AMAZON;
 import static seedu.address.logic.commands.CommandTestUtil.STATUS_DESC_BYTEDANCE;
 import static seedu.address.logic.commands.CommandTestUtil.TAG_DESC_AMAZON;
@@ -19,6 +21,7 @@ import static seedu.address.logic.commands.CommandTestUtil.VALID_DEADLINE_BYTEDA
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_AMAZON;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_POSITION_AMAZON;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_POSITION_BYTEDANCE;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_PRIORITY_AMAZON;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_AMAZON;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_BYTEDANCE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
@@ -35,6 +38,7 @@ import seedu.address.logic.commands.EditCommand;
 import seedu.address.logic.commands.EditCommand.EditApplicationDescriptor;
 import seedu.address.model.application.Company;
 import seedu.address.model.application.Position;
+import seedu.address.model.application.Priority;
 import seedu.address.model.tag.Tag;
 import seedu.address.testutil.EditApplicationDescriptorBuilder;
 
@@ -78,6 +82,7 @@ public class EditCommandParserTest {
     public void parse_invalidValue_failure() {
         assertParseFailure(parser, "1" + INVALID_NAME_DESC, Company.MESSAGE_CONSTRAINTS); // invalid name
         assertParseFailure(parser, "1" + INVALID_POSITION_DESC, Position.MESSAGE_CONSTRAINTS); // invalid position
+        assertParseFailure(parser, "1" + INVALID_PRIORITY_DESC, Priority.MESSAGE_CONSTRAINTS); // invalid priority
         assertParseFailure(parser, "1" + INVALID_TAG_DESC, Tag.MESSAGE_CONSTRAINTS); // invalid tag
 
         // invalid position followed by valid deadline
@@ -106,12 +111,12 @@ public class EditCommandParserTest {
     public void parse_allFieldsSpecified_success() {
         Index targetIndex = INDEX_SECOND_APPLICATION;
         String userInput = targetIndex.getOneBased() + POSITION_DESC_BYTEDANCE + TAG_DESC_BYTEDANCE
-                + DEADLINE_DESC_AMAZON + NAME_DESC_AMAZON;
+                + DEADLINE_DESC_AMAZON + PRIORITY_DESC_AMAZON + NAME_DESC_AMAZON;
 
         EditApplicationDescriptor descriptor = new EditApplicationDescriptorBuilder().withCompany(
                 VALID_NAME_AMAZON)
                 .withPosition(VALID_POSITION_BYTEDANCE).withDeadline(VALID_DEADLINE_AMAZON)
-                .withTags(VALID_TAG_BYTEDANCE).build();
+                .withPriority(VALID_PRIORITY_AMAZON).withTags(VALID_TAG_BYTEDANCE).build();
         EditCommand expectedCommand = new EditCommand(targetIndex, descriptor);
 
         assertParseSuccess(parser, userInput, expectedCommand);
@@ -149,6 +154,12 @@ public class EditCommandParserTest {
         // deadline
         userInput = targetIndex.getOneBased() + DEADLINE_DESC_AMAZON;
         descriptor = new EditApplicationDescriptorBuilder().withDeadline(VALID_DEADLINE_AMAZON).build();
+        expectedCommand = new EditCommand(targetIndex, descriptor);
+        assertParseSuccess(parser, userInput, expectedCommand);
+
+        // priority
+        userInput = targetIndex.getOneBased() + PRIORITY_DESC_AMAZON;
+        descriptor = new EditApplicationDescriptorBuilder().withPriority(VALID_PRIORITY_AMAZON).build();
         expectedCommand = new EditCommand(targetIndex, descriptor);
         assertParseSuccess(parser, userInput, expectedCommand);
 

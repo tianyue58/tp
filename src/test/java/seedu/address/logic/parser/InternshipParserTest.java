@@ -8,6 +8,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_COMPANY_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_COMPLETION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DEADLINE_OF_APPLICATION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_INTERNSHIP_POSITION;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_PRIORITY;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_STATUS;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_APPLICATION;
@@ -19,6 +20,7 @@ import org.junit.jupiter.api.Test;
 
 import seedu.address.logic.commands.AddCommand;
 import seedu.address.logic.commands.ClearCommand;
+import seedu.address.logic.commands.CompleteCommand;
 import seedu.address.logic.commands.DeleteCommand;
 import seedu.address.logic.commands.EditCommand;
 import seedu.address.logic.commands.EditCommand.EditApplicationDescriptor;
@@ -27,6 +29,7 @@ import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.ListCommand;
 import seedu.address.logic.commands.SoonCommand;
+import seedu.address.logic.commands.SortCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.application.Application;
 import seedu.address.model.application.CompletionContainsKeywordsPredicate;
@@ -132,6 +135,47 @@ public class InternshipParserTest {
     }
 
     @Test
+    public void parseCommand_complete() throws Exception {
+        CompleteCommand command = (CompleteCommand) parser.parseCommand(
+                CompleteCommand.COMMAND_WORD + " " + INDEX_FIRST_APPLICATION.getOneBased());
+        assertEquals(new CompleteCommand(INDEX_FIRST_APPLICATION), command);
+    }
+
+    @Test
+    public void parseCommand_soon() throws Exception {
+        assertTrue(parser.parseCommand(SoonCommand.COMMAND_WORD) instanceof SoonCommand);
+        assertTrue(parser.parseCommand(SoonCommand.COMMAND_WORD + " 3") instanceof SoonCommand);
+    }
+
+    @Test
+    public void parseCommand_sortByCompany() throws Exception {
+        SortCommand command = (SortCommand) parser.parseCommand(
+                SortCommand.COMMAND_WORD + " " + PREFIX_COMPANY_NAME);
+        assertEquals(new SortCommand("company"), command);
+    }
+
+    @Test
+    public void parseCommand_sortByPosition() throws Exception {
+        SortCommand command = (SortCommand) parser.parseCommand(
+                SortCommand.COMMAND_WORD + " " + PREFIX_INTERNSHIP_POSITION);
+        assertEquals(new SortCommand("position"), command);
+    }
+
+    @Test
+    public void parseCommand_sortByDeadline() throws Exception {
+        SortCommand command = (SortCommand) parser.parseCommand(
+                SortCommand.COMMAND_WORD + " " + PREFIX_DEADLINE_OF_APPLICATION);
+        assertEquals(new SortCommand("deadline"), command);
+    }
+
+    @Test
+    public void parseCommand_sortByPriority() throws Exception {
+        SortCommand command = (SortCommand) parser.parseCommand(
+                SortCommand.COMMAND_WORD + " " + PREFIX_PRIORITY);
+        assertEquals(new SortCommand("priority"), command);
+    }
+
+    @Test
     public void parseCommand_unrecognisedInput_throwsParseException() {
         assertThrows(ParseException.class, String.format(MESSAGE_INVALID_COMMAND_FORMAT, HelpCommand.MESSAGE_USAGE), ()
             -> parser.parseCommand(""));
@@ -140,11 +184,5 @@ public class InternshipParserTest {
     @Test
     public void parseCommand_unknownCommand_throwsParseException() {
         assertThrows(ParseException.class, MESSAGE_UNKNOWN_COMMAND, () -> parser.parseCommand("unknownCommand"));
-    }
-
-    @Test
-    public void parseCommand_soon() throws Exception {
-        assertTrue(parser.parseCommand(SoonCommand.COMMAND_WORD) instanceof SoonCommand);
-        assertTrue(parser.parseCommand(SoonCommand.COMMAND_WORD + " 3") instanceof SoonCommand);
     }
 }
