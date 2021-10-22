@@ -2,7 +2,6 @@ package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_COMPANY_NAME;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_COMPLETION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DEADLINE_OF_APPLICATION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_INTERNSHIP_POSITION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PRIORITY;
@@ -34,19 +33,20 @@ public class SortCommand extends Command {
             + "Sorting by deadline sorts applications from closer deadlines to later deadlines.\n"
             + "Sorting by priority sorts applications from higher to lower priority.\n"
             + "Parameters:\n"
-            + PREFIX_COMPANY_NAME + "COMPANY_NAME "
-            + PREFIX_INTERNSHIP_POSITION + "INTERNSHIP_POSITION "
-            + PREFIX_DEADLINE_OF_APPLICATION + "DEADLINE_OF_APPLICATION "
-            + PREFIX_PRIORITY + "PRIORITY\n"
+            + PREFIX_COMPANY_NAME + " "
+            + PREFIX_INTERNSHIP_POSITION + " "
+            + PREFIX_DEADLINE_OF_APPLICATION + " "
+            + PREFIX_PRIORITY + "\n"
             + "Example:\n"
             + "Sort by company name: " + COMMAND_WORD + " " + PREFIX_COMPANY_NAME + "\n"
             + "Sort by position: " + COMMAND_WORD + " " + PREFIX_INTERNSHIP_POSITION + "\n"
             + "Sort by deadline: " + COMMAND_WORD + " " + PREFIX_DEADLINE_OF_APPLICATION + "\n"
-            + "Sort by priority: " + COMMAND_WORD + " " + PREFIX_COMPLETION + "\n";
+            + "Sort by priority: " + COMMAND_WORD + " " + PREFIX_PRIORITY + "\n";
 
     public static final String MESSAGE_SUCCESS = "Sorted applications by %s";
     public static final String MESSAGE_PARAMETER_NOT_SPECIFIED = "At least one parameter (application detail) "
-            + "to sort by must be provided.";
+            + "to sort by must be provided.\n";
+    public static final String MESSAGE_EMPTY_LIST = "There is no application in your Internship list to sort";
 
     private final String parameter;
 
@@ -83,8 +83,10 @@ public class SortCommand extends Command {
 
         model.updateFilteredApplicationList(containedInLastShownListPredicate);
 
-        return new CommandResult(
-                String.format(MESSAGE_SUCCESS, this.parameter));
+        int listSize = model.getFilteredApplicationList().size();
+        return new CommandResult(listSize == 0
+                ? MESSAGE_EMPTY_LIST
+                : String.format(MESSAGE_SUCCESS, this.parameter));
     }
 
     /**
