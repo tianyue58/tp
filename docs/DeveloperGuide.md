@@ -188,7 +188,8 @@ Note: When a new internship application is added, the value of the
 The Accept command is facilitated by the `AcceptCommand` class. It extends the `Command` class
 and implements the `AcceptCommand#execute()` method which wraps the main
 logic of the command. This command can be used to change the status of 
-the application from `Pending` to `Accepted`.
+the application from `Pending` to `Accepted`. When the status changes, the application completion
+field would change from `Uncompleted` to `Completed` automatically.
 
 The `AcceptCommandParser` class is responsible for parsing the index received from the user. This 
 class implements the `Parser` interface. The `AcceptCommandParser#parse()` method of 
@@ -221,7 +222,8 @@ Note: When a new internship application is added, the value of the
 The Reject command is facilitated by the `RejectCommand` class. It extends the `Command` class
 and implements the `RejectCommand#execute()` method which wraps the main
 logic of the command. This command can be used to change the status of
-the application from `Pending` to `Rejected`.
+the application from `Pending` to `Rejected`. When the status changes, the application completion
+field would change from `Uncompleted` to `Completed` automatically.
 
 The `RejectCommandParser` class is responsible for parsing the index received from the user. This
 class implements the `Parser` interface. The `RejectCommandParser#parse()` method of
@@ -242,7 +244,7 @@ as the parameter.
 ### Sort feature
 The sort feature is implemented by the `SortCommandParser` and `SortCommand` classes.
 
-`SortCommandParser` class is responsible for parsing the parameter received from the user
+`SortCommandParser` class is responsible for parsing the parameter received from the user.
 
 `SortCommand` class is responsible for sorting the list of applications according to the given parameter.
 
@@ -255,6 +257,23 @@ The sort feature is implemented by the `SortCommandParser` and `SortCommand` cla
 * **Alternative 2:** Provides the ability to specify the parameter to sort the list by as well as the direction of sorting.
     * Pros: Users have more options on how to view their list of applications.
     * Cons: `sort` command will require more parameters.
+
+### Find feature
+The find feature is implemented by the `FindCommandParser` and `FindCommand` classes.
+
+`FindCommandParser` class is responsible for parsing the parameter received from the user.
+
+`FindCommand` class is responsible for finding the matching applications with specified fields according to the given syntax and keyword.
+
+#### Design considerations:
+
+* **Alternative 1 (current choice):** Matches applications using specified fields (e.g. user can specify deadline field with d/) and keywords.
+    * Pros: User can specify fields to match similar to the way in `AddCommand` and `EditCommand`. 
+    * Cons: `find` will require more parameters.
+
+* **Alternative 2:** Uses different command word for finding different fields (e.g. findD for matching application with deadlines).
+    * Pros: Shorter command for user to input.
+    * Cons: Harder for user to remember the command word as this format is not used in other methods.
     
 ### Undo/Redo feature
 
