@@ -47,11 +47,17 @@ InternSHIP is a **desktop app for university students to manage their internship
 * Words in `UPPER_CASE` are the parameters to be supplied by the user.<br>
   e.g. in `add COMPANY_NAME`, `COMPANY_NAME` is a parameter which can be used as `add Shopee`.
 
+* Items in square brackets are optional.
+  e.g `c/COMPANY_NAME [t/TAG]` can be used as `c/Shopee t/Selective` or as `c/Shopee`.
+
+* Items with `…​` after them can be used multiple times including zero times.
+e.g. `[t/TAG]…​` can be used as ` ` (i.e. 0 times), `t/Selective`, `t/Selective t/Important` etc.
+
 * Parameters can be in any order.<br>
-  e.g. if the command specifies `COMPANY_NAME/INTERNSHIP_POSITION`, `INTERNSHIP_POSITION/COMPANY_NAME` is also acceptable.
+  e.g. if the command specifies `c/COMPANY_NAME p/INTERNSHIP_POSITION`, `p/INTERNSHIP_POSITION c//COMPANY_NAME` is also acceptable.
 
 * If a parameter is expected only once in the command but you specified it multiple times, only the last occurrence of the parameter will be taken.<br>
-  e.g. if you specify `delete 1 2`, only `2` will be taken as the index to be deleted.
+  e.g. if you specify `c/Grab c/Shopee`, only `c/Shopee` will be taken.
 
 * Extraneous parameters for commands that do not take in parameters (such as `list` and `clear`) will be ignored.<br>
   e.g. if the command specifies `list 123`, it will be interpreted as `list`.
@@ -71,34 +77,11 @@ Format: `help`
 
 Adds a new entry to the list of applications. Application is set as uncompleted, and application status is set as pending by default.
 
-Format: `add [c/COMPANY_NAME] [p/INTERNSHIP_POSITION] [d/DEADLINE_OF_APPLICATION]`
+Format: `add c/COMPANY_NAME p/INTERNSHIP_POSITION d/DEADLINE_OF_APPLICATION [t/TAG]…​`
 
 Examples:
 * `add c/Shopee p/software engineer d/2021-12-12`
 
-### Listing all entries : `list`
-
-Shows a list of all the entries.
-
-### Deleting an entry : `delete`
-
-Deletes the specified entry from the list of applications.
-
-Format: `delete INDEX`
-
-* Deletes the entry at the specified `INDEX`. 
-* The index refers to the index number shown in the displayed application list.
-* The index must be a positive integer 1, 2, 3, ...
-
-Examples:
-
-* `list` followed by delete 2` deletes the 2nd entry in the application list.
-
-### Clearing all entries : `clear`
-
-Clears all entries from the application list.
-
-Format: `clear`
 
 ### Editing the details of an existing entry : `edit`
 
@@ -112,44 +95,24 @@ Format: `edit INDEX [c/COMPANY_NAME] [p/INTERNSHIP_POSITION] [d/DEADLINE_OF_APPL
 * Existing values will be updated to the input values.
 
 Examples:
-*  `edit 1 c/Grab d/2021-12-20` Edits the company name and deadline of the 1st application to be `grab` and `2021-12-20` respectively.
-*  `edit 2 p/UI designer` Edits the internship position of the 2nd application to be `UI designer`.
+* `edit 1 c/Grab d/2021-12-20` Edits the company name and deadline of the 1st application to be `grab` and `2021-12-20` respectively.
+* `edit 2 p/UI designer` Edits the internship position of the 2nd application to be `UI designer`.
 
-
-### Deleting an application : `delete`
-
-Deletes the specified application from the address book.
-
-Format: `delete INDEX`
-
-* Deletes the application at the specified `INDEX`.
-* The index refers to the index number shown in the displayed application list.
-* The index **must be a positive integer** 1, 2, 3, …​
-
-Examples:
-* `list` followed by `delete 2` deletes the 2nd application in the address book.
-* `find Google` followed by `delete 1` deletes the 1st application in the results of the `find` command.
-
-### Clearing all entries : `clear`
-
-Clears all entries from the address book.
-
-Format: `clear`
-
-### Exiting the program : `exit`
-
-Exits the program.
-
-Format: `exit`
 
 ### Completing an application : `complete`
 
-Marks a specified entry in InternSHIP as completed, meaning the user has completed the application for that internship.
+Marks the specified entry in the list of applications as completed, meaning the user has completed the application for that internship.
 
 Format: `complete INDEX`
-* Marks an entry as completed at the specified `INDEX`
-* The `INDEX` refers to the number shown in the list.
+
+* Marks the entry at the specified `INDEX` as completed
+* The index refers to the index number shown in the displayed application list.
 * The index must be a positive integer e.g. 1, 2, 3,...
+
+Examples:
+
+* `list` followed by `complete 2` marks the 2nd entry in the application list as completed.
+
 
 ### Updating the application status : `accept/reject`
 
@@ -162,10 +125,85 @@ Examples:
 * `reject` followed by `2` marks the second entry as Rejected.
 
 
+### Listing all entries : `list`
 
-### Archiving data files `[coming in v2.0]`
+Shows a list of all the entries.
 
-_Details coming soon ..._
+
+### Deleting an entry : `delete`
+
+Deletes the specified entry from the list of applications.
+
+Format: `delete INDEX`
+
+* Deletes the entry at the specified `INDEX`. 
+* The index refers to the index number shown in the displayed application list.
+* The index must be a positive integer 1, 2, 3, ...
+
+Examples:
+
+* `list` followed by `delete 2` deletes the 2nd entry in the application list.
+
+
+### Clearing all entries : `clear`
+
+Clears all entries from the application list.
+
+Format: `clear`
+
+
+### Sorting all visible entries : `sort`
+
+Sorts all entries in the application list currently seen by the user.
+
+Format: `sort PREFIX`
+
+* The fields available to sort by are:
+  * COMPANY_NAME `c/` (ascending alphabetical order)
+  * INTERNSHIP_POSITION `p/` (ascending alphabetical order)
+  * DEADLINE_OF_APPLICATION `d/` (sooner to later deadline)
+  * PRIORITY `pr/` (higher to lower priority)
+* At least one of the optional fields must be provided.
+
+Examples:
+
+* `list` followed by `sort c/` shows all the applications saved in the current InternSHIP sorted by company name, in alphabetical order.
+* `find c/Grab` followed by `sort pr/` shows all the applications for the company Grab, sorted by priority, from higher to lower priority.
+
+
+### FIND : `find`
+
+Clears all entries from the application list.
+
+Format: `clear`
+
+
+### SOON : `soon`
+
+Clears all entries from the application list.
+
+Format: `clear`
+
+
+### UNDO : `undo`
+
+Clears all entries from the application list.
+
+Format: `clear`
+
+
+### REDO : `redo`
+
+Clears all entries from the application list.
+
+Format: `clear`
+
+
+### Exiting the program : `exit`
+
+Exits the program.
+
+Format: `exit`
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -175,7 +213,7 @@ _Details coming soon ..._
 **A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous InterSHIP app home folder.
 
 **Q**: How can I save my data in the app?<br>
-**A**: InternSHIP data are saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
+**A**: InternSHIP data is saved in the hard disk automatically after any command changes the data. There is no need to save manually.
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -183,13 +221,18 @@ _Details coming soon ..._
 
 Action | Format | Example | Notes
 --------|-------|----|----
-**Add** | `add [c/COMPANY_NAME] [p/INTERNSHIP_POSITION] [d/DEADLINE_OF_APPLICATION]` | `add c/Shopee p/software engineer d/2021-12-12` | the fields to be added can be entered in any order, as long as the tag for each field is specified correctly
-**Delete** | `delete INDEX` | `delete 3` | the index refers to the index number shown in the displayed application list, and it must be a positive integer
-**Clear** | `clear` 
-**Edit** | `edit INDEX [c/COMPANY_NAME] [p/INTERNSHIP_POSITION] [d/DEADLINE_OF_APPLICATION]` | `edit 1 c/Grab d/2021-12-20` |  multiple fields can be edited at the same time; they can be entered in any order, as long as the tag for each field is specified correctly
-**Complete** | `complete INDEX` | `complete 1` | same as the notes for `delete` command
 **Accept/Reject** | `DECISION INDEX` | `accept 2` | `DECISION` can only be either `accept` or `reject`
-**List** | `list`
-**Exit** | `exit` 
+**Add** | `add c/COMPANY_NAME p/INTERNSHIP_POSITION d/DEADLINE_OF_APPLICATION` | `add c/Shopee p/software engineer d/2021-12-12` | the fields to be added can be entered in any order, as long as the tag for each field is specified correctly
+**Clear** | `clear`
+**Complete** | `complete INDEX` | `complete 1` | the index refers to the index number shown in the displayed application list, and it must be a positive integer
+**Delete** | `delete INDEX` | `delete 3` | refer to `complete` command notes
+**Edit** | `edit INDEX [c/COMPANY_NAME] [p/INTERNSHIP_POSITION] [d/DEADLINE_OF_APPLICATION]` | `edit 1 c/Grab d/2021-12-20` |  multiple fields can be edited at the same time; they can be entered in any order, as long as the tag for each field is specified correctly
+**Exit** | `exit`
+**Find** | `find`
 **Help** | `help`
+**List** | `list`
+**Redo** | `list`
+**Soon** | `list`
+**Sort** | `sort PREFIX` | `sort c/` | `PREFIX` refers to the application detail to be sorted by (`c/`: company name, `p/`: internship position, `d/`: application deadline, `pr/`: application priority)
+**Undo** | `list`
 
