@@ -6,6 +6,7 @@
     "completion": "Uncompleted",
     "status": "Pending",
     "priority": "Medium",
+    "requirements": "CV",
     "tagged": [ "Important" ]
   }, {
     "company": "Amazon",
@@ -13,6 +14,7 @@
     "deadline": "2021-12-10",
     "completion": "Completed",
     "status": "Accepted",
-    "priority": "Low"
+    "priority": "Low",
+    "requirements": "CV"
   } ]
 }

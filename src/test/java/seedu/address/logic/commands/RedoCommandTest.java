@@ -93,8 +93,8 @@ public class RedoCommandTest {
         }
         Application originalAmazon = model.getFilteredApplicationList().get(0);
         Application completedAmazon = new Application(originalAmazon.getCompany(), originalAmazon.getPosition(),
-                originalAmazon.getDeadline(), new Completion("Completed"),
-                originalAmazon.getStatus(), originalAmazon.getPriority(), originalAmazon.getTags());
+                originalAmazon.getDeadline(), new Completion("Completed"), originalAmazon.getStatus(),
+                originalAmazon.getPriority(), originalAmazon.getRequirements(), originalAmazon.getTags());
         expectedModel.setApplication(AMAZON, completedAmazon);
         assertCommandSuccess(new RedoCommand(), model, RedoCommand.MESSAGE_SUCCESS, expectedModel);
     }
@@ -111,8 +111,8 @@ public class RedoCommandTest {
         }
         Application originalAmazon = model.getFilteredApplicationList().get(0);
         Application acceptedAmazon = new Application(originalAmazon.getCompany(), originalAmazon.getPosition(),
-                originalAmazon.getDeadline(), new Completion("Completed"),
-                new Status("Accepted"), originalAmazon.getPriority(), originalAmazon.getTags());
+                originalAmazon.getDeadline(), new Completion("Completed"), new Status("Accepted"),
+                originalAmazon.getPriority(), originalAmazon.getRequirements(), originalAmazon.getTags());
         expectedModel.setApplication(AMAZON, acceptedAmazon);
         assertCommandSuccess(new RedoCommand(), model, RedoCommand.MESSAGE_SUCCESS, expectedModel);
     }
@@ -129,8 +129,8 @@ public class RedoCommandTest {
         }
         Application originalAmazon = model.getFilteredApplicationList().get(0);
         Application rejectedAmazon = new Application(originalAmazon.getCompany(), originalAmazon.getPosition(),
-                originalAmazon.getDeadline(), new Completion("Completed"),
-                new Status("Rejected"), originalAmazon.getPriority(), originalAmazon.getTags());
+                originalAmazon.getDeadline(), new Completion("Completed"), new Status("Rejected"),
+                originalAmazon.getPriority(), originalAmazon.getRequirements(), originalAmazon.getTags());
         expectedModel.setApplication(AMAZON, rejectedAmazon);
         assertCommandSuccess(new RedoCommand(), model, RedoCommand.MESSAGE_SUCCESS, expectedModel);
     }
@@ -139,8 +139,8 @@ public class RedoCommandTest {
     public void execute_redoEditCommandSuccess() {
         Application originalAmazon = model.getFilteredApplicationList().get(0);
         Application editedAmazon = new Application(originalAmazon.getCompany(), originalAmazon.getPosition(),
-                new Deadline("2021-11-11"), originalAmazon.getCompletion(),
-                originalAmazon.getStatus(), originalAmazon.getPriority(), originalAmazon.getTags());
+                new Deadline("2021-11-11"), originalAmazon.getCompletion(), originalAmazon.getStatus(),
+                originalAmazon.getPriority(), originalAmazon.getRequirements(), originalAmazon.getTags());
         EditCommand.EditApplicationDescriptor descriptor = new EditApplicationDescriptorBuilder(editedAmazon).build();
         EditCommand editCommand = new EditCommand(INDEX_FIRST_APPLICATION, descriptor);
         UndoCommand undoCommand = new UndoCommand();

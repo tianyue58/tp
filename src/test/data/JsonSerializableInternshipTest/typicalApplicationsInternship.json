@@ -7,6 +7,7 @@
     "completion": "Uncompleted",
     "status": "Pending",
     "priority": "Medium",
+    "requirements": "Resume",
     "tagged": [ "Important" ]
   }, {
     "company": "ByteDance",
@@ -15,6 +16,7 @@
     "completion": "Completed",
     "status": "Rejected",
     "priority": "High",
+    "requirements": "CV",
     "tagged": [ "Selective" ]
   }, {
     "company": "Grab",
@@ -23,6 +25,7 @@
     "completion": "Uncompleted",
     "status": "Pending",
     "priority": "Medium",
+    "requirements": "Coding challenge",
     "tagged": [ "Essential" ]
   }, {
     "company": "Shopee",
@@ -31,6 +34,7 @@
     "completion": "Uncompleted",
     "status": "Pending",
     "priority": "Low",
+    "requirements": "Coding Challenge and Resume",
     "tagged": [ "Optional" ]
   } ]
 }

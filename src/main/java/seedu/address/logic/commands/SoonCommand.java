@@ -8,10 +8,6 @@ import seedu.address.model.Model;
 import seedu.address.model.application.Application;
 import seedu.address.model.application.SoonDeadlinePredicate;
 
-
-
-
-
 /**
  * Lists all applications whose deadlines are near in InternSHIP to the user.
  */

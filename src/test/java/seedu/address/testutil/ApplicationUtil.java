@@ -3,6 +3,7 @@ package seedu.address.testutil;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_COMPANY_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DEADLINE_OF_APPLICATION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_INTERNSHIP_POSITION;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_REQUIREMENTS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 
 import java.util.Set;
@@ -32,6 +33,7 @@ public class ApplicationUtil {
         sb.append(PREFIX_COMPANY_NAME + application.getCompany().fullCompanyName + " ");
         sb.append(PREFIX_INTERNSHIP_POSITION + application.getPosition().value + " ");
         sb.append(PREFIX_DEADLINE_OF_APPLICATION + application.getDeadline().value + " ");
+        sb.append(PREFIX_REQUIREMENTS + application.getRequirements().value + " ");
         application.getTags().stream().forEach(
             s -> sb.append(PREFIX_TAG + s.tagName + " ")
         );
@@ -49,6 +51,8 @@ public class ApplicationUtil {
                 .append(phone.value).append(" "));
         descriptor.getDeadline().ifPresent(email -> sb.append(PREFIX_DEADLINE_OF_APPLICATION)
                 .append(email.value).append(" "));
+        descriptor.getRequirements().ifPresent(phone -> sb.append(PREFIX_REQUIREMENTS)
+                .append(phone.value).append(" "));
         if (descriptor.getTags().isPresent()) {
             Set<Tag> tags = descriptor.getTags().get();
             if (tags.isEmpty()) {

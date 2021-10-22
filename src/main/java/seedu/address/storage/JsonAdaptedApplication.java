@@ -16,6 +16,7 @@ import seedu.address.model.application.Completion;
 import seedu.address.model.application.Deadline;
 import seedu.address.model.application.Position;
 import seedu.address.model.application.Priority;
+import seedu.address.model.application.Requirements;
 import seedu.address.model.application.Status;
 import seedu.address.model.tag.Tag;
 
@@ -32,6 +33,7 @@ class JsonAdaptedApplication {
     private final String status;
     private final String completion;
     private final String priority;
+    private final String requirements;
     private final List<JsonAdaptedTag> tagged = new ArrayList<>();
 
 
@@ -45,6 +47,7 @@ class JsonAdaptedApplication {
                                   @JsonProperty("completion") String completion,
                                   @JsonProperty("status") String status,
                                   @JsonProperty("priority") String priority,
+                                  @JsonProperty("requirements") String requirements,
                                   @JsonProperty("tagged") List<JsonAdaptedTag> tagged
                                   ) {
         this.company = company;
@@ -53,6 +56,7 @@ class JsonAdaptedApplication {
         this.completion = completion;
         this.status = status;
         this.priority = priority;
+        this.requirements = requirements;
         if (tagged != null) {
             this.tagged.addAll(tagged);
         }
@@ -68,6 +72,7 @@ class JsonAdaptedApplication {
         completion = source.getCompletion().value;
         status = source.getStatus().value;
         priority = source.getPriority().value;
+        requirements = source.getRequirements().value;
         tagged.addAll(source.getTags().stream()
                 .map(JsonAdaptedTag::new)
                 .collect(Collectors.toList()));
@@ -85,7 +90,8 @@ class JsonAdaptedApplication {
         }
 
         if (company == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Company.class.getSimpleName()));
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
+                    Company.class.getSimpleName()));
         }
         if (!Company.isValidCompanyName(company)) {
             throw new IllegalValueException(Company.MESSAGE_CONSTRAINTS);
@@ -137,10 +143,19 @@ class JsonAdaptedApplication {
         }
         final Priority modelPriority = new Priority(priority);
 
+        if (requirements == null) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
+                    Requirements.class.getSimpleName()));
+        }
+        if (!Requirements.isValidRequirements(requirements)) {
+            throw new IllegalValueException(Requirements.MESSAGE_CONSTRAINTS);
+        }
+        final Requirements modelRequirements = new Requirements(requirements);
+
         final Set<Tag> modelTags = new HashSet<>(applicationTags);
 
         return new Application(modelName, modelPosition, modelDeadline, modelCompletion, modelStatus, modelPriority,
-                modelTags);
+                modelRequirements, modelTags);
     }
 
 }

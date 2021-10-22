@@ -9,6 +9,7 @@ import seedu.address.model.application.Completion;
 import seedu.address.model.application.Deadline;
 import seedu.address.model.application.Position;
 import seedu.address.model.application.Priority;
+import seedu.address.model.application.Requirements;
 import seedu.address.model.application.Status;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.util.SampleDataUtil;
@@ -24,6 +25,7 @@ public class ApplicationBuilder {
     public static final String DEFAULT_COMPLETION = "Uncompleted";
     public static final String DEFAULT_STATUS = "Pending";
     public static final String DEFAULT_PRIORITY = "Medium";
+    public static final String DEFAULT_REQUIREMENTS = "Resume";
 
     private Company company;
     private Position position;
@@ -31,6 +33,7 @@ public class ApplicationBuilder {
     private Completion completion;
     private Status status;
     private Priority priority;
+    private Requirements requirements;
     private Set<Tag> tags;
 
     /**
@@ -43,6 +46,7 @@ public class ApplicationBuilder {
         completion = new Completion(DEFAULT_COMPLETION);
         status = new Status(DEFAULT_STATUS);
         priority = new Priority(DEFAULT_PRIORITY);
+        requirements = new Requirements(DEFAULT_REQUIREMENTS);
         tags = new HashSet<>();
     }
 
@@ -56,6 +60,7 @@ public class ApplicationBuilder {
         status = applicationToCopy.getStatus();
         tags = new HashSet<>(applicationToCopy.getTags());
         completion = applicationToCopy.getCompletion();
+        requirements = applicationToCopy.getRequirements();
     }
 
     /**
@@ -107,6 +112,14 @@ public class ApplicationBuilder {
     }
 
     /**
+     * Sets the {@code Requirements} of the {@code Application} that we are building.
+     */
+    public ApplicationBuilder withRequirements(String requirements) {
+        this.requirements = new Requirements(requirements);
+        return this;
+    }
+
+    /**
      * Parses the {@code tags} into a {@code Set<Tag>} and set it to the {@code Application} that we are building.
      */
     public ApplicationBuilder withTags(String ... tags) {
@@ -115,7 +128,7 @@ public class ApplicationBuilder {
     }
 
     public Application build() {
-        return new Application(company, position, deadline, completion, status, priority, tags);
+        return new Application(company, position, deadline, completion, status, priority, requirements, tags);
     }
 
 }

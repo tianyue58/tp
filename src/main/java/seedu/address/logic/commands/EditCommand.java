@@ -25,6 +25,7 @@ import seedu.address.model.application.Completion;
 import seedu.address.model.application.Deadline;
 import seedu.address.model.application.Position;
 import seedu.address.model.application.Priority;
+import seedu.address.model.application.Requirements;
 import seedu.address.model.application.Status;
 import seedu.address.model.tag.Tag;
 
@@ -35,7 +36,9 @@ public class EditCommand extends Command {
 
     public static final String COMMAND_WORD = "edit";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits the details of the application identified "
+    public static final String MESSAGE_USAGE = COMMAND_WORD
+            + ": Edits the details of "
+            + "the application identified "
             + "by the index number used in the displayed application list. "
             + "Existing values will be overwritten by the input values.\n"
             + "Parameters: INDEX (must be a positive integer) "
@@ -50,7 +53,8 @@ public class EditCommand extends Command {
 
     public static final String MESSAGE_EDIT_APPLICATION_SUCCESS = "Edited Application: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
-    public static final String MESSAGE_DUPLICATE_APPLICATION = "This application already exists in the address book.";
+    public static final String MESSAGE_DUPLICATE_APPLICATION = "This application already "
+            + "exists in the address book.";
 
     private final Index index;
     private final EditApplicationDescriptor editApplicationDescriptor;
@@ -104,11 +108,13 @@ public class EditCommand extends Command {
         Completion completion = applicationToEdit.getCompletion();
         Status status = applicationToEdit.getStatus();
         Priority priority = editApplicationDescriptor.getPriority().orElse(applicationToEdit.getPriority());
+        Requirements updatedRequirements = editApplicationDescriptor.getRequirements()
+                .orElse(applicationToEdit.getRequirements());
         Set<Tag> updatedTags = editApplicationDescriptor.getTags().orElse(applicationToEdit.getTags());
 
 
         return new Application(updatedCompany, updatedPosition, updatedDeadline, completion,
-                status, priority, updatedTags);
+                status, priority, updatedRequirements, updatedTags);
     }
 
     @Override
@@ -138,6 +144,7 @@ public class EditCommand extends Command {
         private Position position;
         private Deadline deadline;
         private Priority priority;
+        private Requirements requirements;
         private Set<Tag> tags;
 
         public EditApplicationDescriptor() {}
@@ -151,6 +158,7 @@ public class EditCommand extends Command {
             setPosition(toCopy.position);
             setDeadline(toCopy.deadline);
             setPriority(toCopy.priority);
+            setRequirements(toCopy.requirements);
             setTags(toCopy.tags);
         }
 
@@ -158,7 +166,7 @@ public class EditCommand extends Command {
          * Returns true if at least one field is edited.
          */
         public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyNonNull(company, position, deadline, priority, tags);
+            return CollectionUtil.isAnyNonNull(company, position, deadline, priority, requirements, tags);
         }
 
         public void setCompany(Company company) {
@@ -173,10 +181,6 @@ public class EditCommand extends Command {
             this.position = position;
         }
 
-        public void setPriority(Priority priority) {
-            this.priority = priority;
-        }
-
         public Optional<Position> getPosition() {
             return Optional.ofNullable(position);
         }
@@ -185,15 +189,25 @@ public class EditCommand extends Command {
             this.deadline = deadline;
         }
 
-        public Optional<Priority> getPriority() {
-            return Optional.ofNullable(priority);
-        }
-
-
         public Optional<Deadline> getDeadline() {
             return Optional.ofNullable(deadline);
         }
 
+        public void setPriority(Priority priority) {
+            this.priority = priority;
+        }
+
+        public Optional<Priority> getPriority() {
+            return Optional.ofNullable(priority);
+        }
+
+        public void setRequirements(Requirements requirements) {
+            this.requirements = requirements;
+        }
+
+        public Optional<Requirements> getRequirements() {
+            return Optional.ofNullable(requirements);
+        }
 
         /**
          * Sets {@code tags} to this object's {@code tags}.
