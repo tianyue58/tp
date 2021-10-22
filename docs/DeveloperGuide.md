@@ -155,13 +155,24 @@ Classes used by multiple components are in the `seedu.addressbook.commons` packa
 This section describes some noteworthy details on how certain features are implemented.
 
 ### Complete feature
-The complete feature is implemented by adding a `completion` field to the `Application` class.
+The `complete` command is modelled by the `Completion` class which represents the
+'Completion' entity. The `Completion` field is also added as a private attribute to the 
+`Application` class. This field can take the following values:
+* `Completed`
+* `Uncompleted`
 
-`CompleteCommandParser` class is responsible for parsing the index received from the user
+Note: When a new internship application is added, the value of the
+`Completion` field is 'Uncompleted' by default.
 
-`CompleteCommand` class is responsible for changing the completion status of the application from `Uncompleted` to `Completed`
+The `Complete` command is facilitated by the `CompleteCommand` class. It extends the `Command` class
+and implements the `CompleteCommand#execute()` method which wraps the main
+logic of the command. This command can be used to change the completion status of 
+the application from `Uncompleted` to `Completed`.
 
-`Completion` class is a wrapper class that contains the completion status
+The `CompleteCommandParser` class is responsible for parsing the index received from the user. This 
+class implements the `Parser` interface. The `CompleteCommandParser#parse()` method of 
+this class parses the index and returns an `CompleteCommand` object with the index
+as the parameter.
 
 #### Design considerations:
 
@@ -188,7 +199,8 @@ Note: When a new internship application is added, the value of the
 The Accept command is facilitated by the `AcceptCommand` class. It extends the `Command` class
 and implements the `AcceptCommand#execute()` method which wraps the main
 logic of the command. This command can be used to change the status of 
-the application from `Pending` to `Accepted`.
+the application from `Pending` to `Accepted`. When the status changes, the application completion
+field would change from `Uncompleted` to `Completed` automatically.
 
 The `AcceptCommandParser` class is responsible for parsing the index received from the user. This 
 class implements the `Parser` interface. The `AcceptCommandParser#parse()` method of 
@@ -221,7 +233,8 @@ Note: When a new internship application is added, the value of the
 The Reject command is facilitated by the `RejectCommand` class. It extends the `Command` class
 and implements the `RejectCommand#execute()` method which wraps the main
 logic of the command. This command can be used to change the status of
-the application from `Pending` to `Rejected`.
+the application from `Pending` to `Rejected`. When the status changes, the application completion
+field would change from `Uncompleted` to `Completed` automatically.
 
 The `RejectCommandParser` class is responsible for parsing the index received from the user. This
 class implements the `Parser` interface. The `RejectCommandParser#parse()` method of
@@ -242,7 +255,7 @@ as the parameter.
 ### Sort feature
 The sort feature is implemented by the `SortCommandParser` and `SortCommand` classes.
 
-`SortCommandParser` class is responsible for parsing the parameter received from the user
+`SortCommandParser` class is responsible for parsing the parameter received from the user.
 
 `SortCommand` class is responsible for sorting the list of applications according to the given parameter.
 
@@ -255,6 +268,23 @@ The sort feature is implemented by the `SortCommandParser` and `SortCommand` cla
 * **Alternative 2:** Provides the ability to specify the parameter to sort the list by as well as the direction of sorting.
     * Pros: Users have more options on how to view their list of applications.
     * Cons: `sort` command will require more parameters.
+
+### Find feature
+The find feature is implemented by the `FindCommandParser` and `FindCommand` classes.
+
+`FindCommandParser` class is responsible for parsing the parameter received from the user.
+
+`FindCommand` class is responsible for finding the matching applications with specified fields according to the given syntax and keyword.
+
+#### Design considerations:
+
+* **Alternative 1 (current choice):** Matches applications using specified fields (e.g. user can specify deadline field with d/) and keywords.
+    * Pros: User can specify fields to match similar to the way in `AddCommand` and `EditCommand`. 
+    * Cons: `find` will require more parameters.
+
+* **Alternative 2:** Uses different command word for finding different fields (e.g. findD for matching application with deadlines).
+    * Pros: Shorter command for user to input.
+    * Cons: Harder for user to remember the command word as this format is not used in other methods.
     
 ### Undo/Redo feature
 
