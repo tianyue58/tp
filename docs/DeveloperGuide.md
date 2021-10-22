@@ -155,13 +155,24 @@ Classes used by multiple components are in the `seedu.addressbook.commons` packa
 This section describes some noteworthy details on how certain features are implemented.
 
 ### Complete feature
-The complete feature is implemented by adding a `completion` field to the `Application` class.
+The `complete` command is modelled by the `Completion` class which represents the
+'Completion' entity. The `Completion` field is also added as a private attribute to the 
+`Application` class. This field can take the following values:
+* `Completed`
+* `Uncompleted`
 
-`CompleteCommandParser` class is responsible for parsing the index received from the user
+Note: When a new internship application is added, the value of the
+`Completion` field is 'Uncompleted' by default.
 
-`CompleteCommand` class is responsible for changing the completion status of the application from `Uncompleted` to `Completed`
+The `Complete` command is facilitated by the `CompleteCommand` class. It extends the `Command` class
+and implements the `CompleteCommand#execute()` method which wraps the main
+logic of the command. This command can be used to change the completion status of 
+the application from `Uncompleted` to `Completed`.
 
-`Completion` class is a wrapper class that contains the completion status
+The `CompleteCommandParser` class is responsible for parsing the index received from the user. This 
+class implements the `Parser` interface. The `CompleteCommandParser#parse()` method of 
+this class parses the index and returns an `CompleteCommand` object with the index
+as the parameter.
 
 #### Design considerations:
 
