@@ -239,6 +239,22 @@ as the parameter.
     * Pros: Easy to specify the desired status field while adding an application.
     * Cons: The `add` command would become unnecessarily long.
 
+### Sort feature
+The sort feature is implemented by the `SortCommandParser` and `SortCommand` classes.
+
+`SortCommandParser` class is responsible for parsing the parameter received from the user
+
+`SortCommand` class is responsible for sorting the list of applications according to the given parameter.
+
+#### Design considerations:
+
+* **Alternative 1 (current choice):** Only allows lists to be sorted in one direction per parameter (e.g. sooner to later for deadline, alphabetically for company name)
+    * Pros: Easier to implement. The implemented direction of sorting is also the more logical one. (e.g. users are unlikely to want to view their applications from lower to higher priority)
+    * Cons: User cannot specify the direction of sorting (e.g. later deadlines first)
+
+* **Alternative 2:** Provides the ability to specify the parameter to sort the list by as well as the direction of sorting.
+    * Pros: Users have more options on how to view their list of applications.
+    * Cons: `sort` command will require more parameters.
     
 ### Undo/Redo feature
 
