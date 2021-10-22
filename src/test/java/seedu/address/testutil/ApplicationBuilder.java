@@ -60,6 +60,7 @@ public class ApplicationBuilder {
         status = applicationToCopy.getStatus();
         tags = new HashSet<>(applicationToCopy.getTags());
         completion = applicationToCopy.getCompletion();
+        priority = applicationToCopy.getPriority();
         requirements = applicationToCopy.getRequirements();
     }
 

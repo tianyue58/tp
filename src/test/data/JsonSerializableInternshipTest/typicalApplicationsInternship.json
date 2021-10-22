@@ -27,14 +27,5 @@
     "priority": "Medium",
     "requirements": "Coding challenge",
     "tagged": [ "Essential" ]
-  }, {
-    "company": "Shopee",
-    "position": "Frontend Engineer",
-    "deadline": "2021-12-31",
-    "completion": "Uncompleted",
-    "status": "Pending",
-    "priority": "Low",
-    "requirements": "Coding Challenge and Resume",
-    "tagged": [ "Optional" ]
   } ]
 }
