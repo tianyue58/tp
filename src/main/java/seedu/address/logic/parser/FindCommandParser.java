@@ -35,7 +35,8 @@ public class FindCommandParser implements Parser<FindCommand> {
 
         ArgumentMultimap argMultimap =
                 ArgumentTokenizer.tokenize(args, PREFIX_COMPANY_NAME, PREFIX_INTERNSHIP_POSITION,
-                        PREFIX_DEADLINE_OF_APPLICATION, PREFIX_COMPLETION, PREFIX_STATUS, PREFIX_PRIORITY, PREFIX_REQUIREMENTS);
+                        PREFIX_DEADLINE_OF_APPLICATION, PREFIX_COMPLETION,
+                        PREFIX_STATUS, PREFIX_PRIORITY, PREFIX_REQUIREMENTS);
 
         if (!argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(
