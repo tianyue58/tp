@@ -24,7 +24,7 @@ import seedu.address.model.application.StatusContainsKeywordsPredicate;
 
 /**
  * Finds and lists all applications in InternSHIP whose name or fields contain any of the argument keywords.
- * Keyword matching is case insensitive.
+ * Keyword matching is not case sensitive.
  */
 public class FindCommand extends Command {
 
@@ -54,30 +54,51 @@ public class FindCommand extends Command {
 
     private final Predicate<Application> predicate;
 
+    /**
+     * Creates a FindCommand to find the specified {@code Application}
+     */
     public FindCommand(NameContainsKeywordsPredicate predicate) {
         this.predicate = predicate;
     }
 
+    /**
+     * Creates a FindCommand to find the specified {@code Application}
+     */
     public FindCommand(PositionContainsKeywordsPredicate predicate) {
         this.predicate = predicate;
     }
 
+    /**
+     * Creates a FindCommand to find the specified {@code Application}
+     */
     public FindCommand(DeadlineContainsKeywordsPredicate predicate) {
         this.predicate = predicate;
     }
 
+    /**
+     * Creates a FindCommand to find the specified {@code Application}
+     */
     public FindCommand(CompletionContainsKeywordsPredicate predicate) {
         this.predicate = predicate;
     }
 
+    /**
+     * Creates a FindCommand to find the specified {@code Application}
+     */
     public FindCommand(StatusContainsKeywordsPredicate predicate) {
         this.predicate = predicate;
     }
 
+    /**
+     * Creates a FindCommand to find the specified {@code Application}
+     */
     public FindCommand(PriorityContainsKeywordsPredicate predicate) {
         this.predicate = predicate;
     }
 
+    /**
+     * Creates a FindCommand to find the specified {@code Application}
+     */
     public FindCommand(RequirementsContainsKeywordsPredicate predicate) {
         this.predicate = predicate;
     }

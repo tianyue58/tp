@@ -20,6 +20,9 @@ import seedu.address.model.application.Requirement;
 import seedu.address.model.application.Status;
 import seedu.address.model.tag.Tag;
 
+/**
+ * Changes the status of an application in InternSHIP to Accepted.
+ */
 public class AcceptCommand extends Command {
     public static final String COMMAND_WORD = "accept";
 
@@ -36,6 +39,11 @@ public class AcceptCommand extends Command {
 
     private Logger logger = Logger.getLogger("InfoLogging");
 
+    /**
+     * Creates an AcceptCommand to mark the specified {@code Application} as Accepted.
+     *
+     * @param targetIndex Index of the application to be marked as Accepted.
+     */
     public AcceptCommand(Index targetIndex) {
         this.targetIndex = targetIndex;
     }

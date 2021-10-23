@@ -18,6 +18,9 @@ import seedu.address.model.application.Application;
 import seedu.address.testutil.ApplicationBuilder;
 import seedu.address.testutil.EditApplicationDescriptorBuilder;
 
+/**
+ * Contains integration tests (interaction with the Model) and unit tests for UndoCommand.
+ */
 public class UndoCommandTest {
 
     private Model model;

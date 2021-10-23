@@ -16,6 +16,7 @@ public class Completion {
     /**
      * Constructs a {@code Completion}.
      *
+     * @param status Status of the completion value.
      */
     public Completion(String status) {
         requireNonNull(status);
@@ -24,7 +25,7 @@ public class Completion {
     }
 
     /**
-     * Returns true if a given string is a valid status.
+     * Returns true if a given string is a valid completion value.
      */
     public static boolean isValidCompletion(String test) {
         return test.equals("Completed") || test.equals("Uncompleted");

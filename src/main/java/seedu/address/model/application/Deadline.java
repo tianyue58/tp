@@ -3,6 +3,9 @@ package seedu.address.model.application;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.Comparator;
 
 /**
@@ -16,6 +19,7 @@ public class Deadline {
             "Deadline should be in YYYY-MM-DD format.";
     public static final String VALIDATION_REGEX = "^\\d{4}\\-(0[1-9]|1[012])\\-(0[1-9]|[12][0-9]|3[01])$";
     public final String value;
+    public final LocalDate date;
 
     /**
      * Constructs a {@code Deadline}.
@@ -25,14 +29,42 @@ public class Deadline {
     public Deadline(String deadline) {
         requireNonNull(deadline);
         checkArgument(isValidDeadline(deadline), MESSAGE_CONSTRAINTS);
+        this.date = LocalDate.parse(deadline);
         value = deadline;
+    }
+
+    /**
+     * Returns the date format of the deadline
+     *
+     * @return The LocalDate object
+     */
+    public LocalDate getDate() {
+        return this.date;
     }
 
     /**
      * Returns true if a given string is a valid deadline.
      */
     public static boolean isValidDeadline(String test) {
-        return test.matches(VALIDATION_REGEX);
+        try {
+            if (test.matches(VALIDATION_REGEX)) {
+                return true;
+            }
+            LocalDate.parse(test);
+            return true;
+        } catch (DateTimeParseException e) {
+            return false;
+        }
+    }
+
+    /**
+     * Returns the month, date,
+     * and year pattern of the deadline.
+     *
+     * @return The formatted String.
+     */
+    public String toFormattedString() {
+        return date.format(DateTimeFormatter.ofPattern("MMM d yyyy"));
     }
 
     /**

@@ -6,13 +6,15 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.RejectCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 
+/**
+ * Parses input arguments and creates a new RejectCommand object
+ */
 public class RejectCommandParser implements Parser<RejectCommand> {
 
     /**
-     * TO ADD JAVADOCS
-     * @param args ADD
-     * @return ADD
-     * @throws ParseException ADD
+     * Parses the given {@code String} of arguments in the context of the RejectCommand
+     * and returns an RejectCommand object for execution.
+     * @throws ParseException if the user input does not conform the expected format
      */
     public RejectCommand parse(String args) throws ParseException {
         try {
