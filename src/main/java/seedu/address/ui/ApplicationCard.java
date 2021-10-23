@@ -4,10 +4,12 @@ import java.util.Comparator;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import seedu.address.model.application.Application;
+import seedu.address.model.application.Requirement;
 
 /**
  * An UI component that displays information of an {@code Application}.
@@ -21,8 +23,6 @@ public class ApplicationCard extends UiPart<Region> {
      * As a consequence, UI elements' variable names cannot be set to such keywords
      * or an exception will be thrown by JavaFX during runtime.
      *
-     * @see <a href="https://github.com/se-edu/addressbook-level4/issues/336">The issue on AddressBook level 4</a>
-     * TODO Delete this later on?
      */
 
     public final Application application;
@@ -44,11 +44,9 @@ public class ApplicationCard extends UiPart<Region> {
     @FXML
     private Label priority;
     @FXML
-    private Label requirements;
+    private FlowPane requirements;
     @FXML
     private FlowPane tags;
-
-
 
     /**
      * Creates an {@code ApplicationCode} with the given {@code Application} and index to display.
@@ -62,10 +60,12 @@ public class ApplicationCard extends UiPart<Region> {
         deadline.setText(application.getDeadline().value);
         status.setText(application.getStatus().value);
         priority.setText(application.getPriority().value);
-        requirements.setText(application.getRequirements().value);
-        application.getTags().stream()
-                .sorted(Comparator.comparing(tag -> tag.tagName))
-                .forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));
+        application.getRequirements().stream()
+                .sorted(Comparator.comparing(requirement -> requirement.value))
+                .forEach(requirement -> requirements.getChildren().add(new Label(requirement.value)));
+//        application.getTags().stream()
+//                .sorted(Comparator.comparing(tag -> tag.tagName))
+//                .forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));
         completion.setText(application.getCompletion().value);
     }
 

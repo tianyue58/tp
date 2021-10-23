@@ -11,22 +11,22 @@ import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.application.Application;
 
 /**
- * Panel containing the list of persons.
+ * Panel containing the list of applications.
  */
 public class ApplicationListPanel extends UiPart<Region> {
     private static final String FXML = "ApplicationListPanel.fxml";
     private final Logger logger = LogsCenter.getLogger(ApplicationListPanel.class);
 
     @FXML
-    private ListView<Application> personListView;
+    private ListView<Application> applicationListView;
 
     /**
      * Creates a {@code ApplicationListPanel} with the given {@code ObservableList}.
      */
     public ApplicationListPanel(ObservableList<Application> applicationList) {
         super(FXML);
-        personListView.setItems(applicationList);
-        personListView.setCellFactory(listView -> new ApplicationListViewCell());
+        applicationListView.setItems(applicationList);
+        applicationListView.setCellFactory(listView -> new ApplicationListViewCell());
     }
 
     /**
