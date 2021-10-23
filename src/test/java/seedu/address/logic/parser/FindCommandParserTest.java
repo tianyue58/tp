@@ -86,4 +86,15 @@ public class FindCommandParserTest {
         // multiple whitespaces between keywords
         assertParseSuccess(parser, " " + PREFIX_STATUS + " \n accepted \n \t pending  \t", expectedFindCommand);
     }
+
+    @Test
+    public void parse_validPriorityArgs_returnsFindCommand() {
+        // no leading and trailing whitespaces
+        FindCommand expectedFindCommand =
+                new FindCommand(new StatusContainsKeywordsPredicate(Arrays.asList("High", "Medium")));
+        assertParseSuccess(parser, " " + PREFIX_STATUS + "High Medium", expectedFindCommand);
+
+        // multiple whitespaces between keywords
+        assertParseSuccess(parser, " " + PREFIX_STATUS + " \n High \n \t Medium  \t", expectedFindCommand);
+    }
 }
