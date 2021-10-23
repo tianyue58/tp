@@ -3,6 +3,8 @@ package seedu.address.model.application;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
+import java.util.Comparator;
+
 /**
  * Represents an Application's deadline in InternSHIP.
  * Guarantees: immutable; is valid as declared in {@link #isValidDeadline(String)}
@@ -11,7 +13,7 @@ public class Deadline {
 
 
     public static final String MESSAGE_CONSTRAINTS =
-            "Deadline should be in YYYY-MM-DD format";
+            "Deadline should be in YYYY-MM-DD format.";
     public static final String VALIDATION_REGEX = "^\\d{4}\\-(0[1-9]|1[012])\\-(0[1-9]|[12][0-9]|3[01])$";
     public final String value;
 
@@ -31,6 +33,44 @@ public class Deadline {
      */
     public static boolean isValidDeadline(String test) {
         return test.matches(VALIDATION_REGEX);
+    }
+
+    /**
+     * Returns a Comparator object that compares two applications by their deadlines.
+     * The application with a deadline that comes first is taken to be greater.
+     *
+     * @return Comparator object that compares applications by their deadlines.
+     */
+    public static Comparator<Application> getComparator() {
+        return new Comparator<Application>() {
+            @Override
+            public int compare(Application application, Application otherApplication) {
+                String deadline = application.getDeadline().value;
+                String otherDeadline = otherApplication.getDeadline().value;
+
+                String[] splitDeadline = deadline.split("-");
+                String year = splitDeadline[0];
+                String month = splitDeadline[1];
+                String day = splitDeadline[2];
+
+                String[] splitOtherDeadline = otherDeadline.split("-");
+                String otherYear = splitOtherDeadline[0];
+                String otherMonth = splitOtherDeadline[1];
+                String otherDay = splitOtherDeadline[2];
+
+                if (year.compareTo(otherYear) != 0) {
+                    return year.compareTo(otherYear);
+                }
+                if (month.compareTo(otherMonth) != 0) {
+                    return month.compareTo(otherMonth);
+                }
+                if (day.compareTo(otherDay) != 0) {
+                    return day.compareTo(otherDay);
+                }
+
+                return 0;
+            }
+        };
     }
 
     @Override

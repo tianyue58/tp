@@ -3,6 +3,8 @@ package seedu.address.model.application;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
+import java.util.Comparator;
+
 /**
  * Represents an Application's name in InternSHIP.
  * Guarantees: immutable; is valid as declared in {@link #isValidCompanyName(String)}
@@ -10,7 +12,7 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
 public class Company {
 
     public static final String MESSAGE_CONSTRAINTS =
-            "Company name should only contain alphanumeric characters and spaces, and it should not be blank";
+            "Company name should only contain alphanumeric characters and spaces, and it should not be blank.";
 
     /*
      * The first character of the name must not be a whitespace,
@@ -38,6 +40,23 @@ public class Company {
         return test.matches(VALIDATION_REGEX);
     }
 
+    /**
+     * Returns a Comparator object that compares two applications by their company names.
+     * The application with a company name that comes first alphabetically is taken to be greater.
+     * Capitalisation of letters are ignored in the comparison.
+     *
+     * @return Comparator object that compares applications by their company names.
+     */
+    public static Comparator<Application> getComparator() {
+        return new Comparator<Application>() {
+            @Override
+            public int compare(Application application, Application otherApplication) {
+                String company = application.getCompany().fullCompanyName.toUpperCase();
+                String otherCompany = otherApplication.getCompany().fullCompanyName.toUpperCase();
+                return company.compareTo(otherCompany);
+            }
+        };
+    }
 
     @Override
     public String toString() {

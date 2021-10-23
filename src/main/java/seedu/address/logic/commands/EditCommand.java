@@ -4,6 +4,7 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_COMPANY_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DEADLINE_OF_APPLICATION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_INTERNSHIP_POSITION;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_PRIORITY;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_APPLICATIONS;
 
@@ -23,6 +24,7 @@ import seedu.address.model.application.Company;
 import seedu.address.model.application.Completion;
 import seedu.address.model.application.Deadline;
 import seedu.address.model.application.Position;
+import seedu.address.model.application.Priority;
 import seedu.address.model.application.Requirements;
 import seedu.address.model.application.Status;
 import seedu.address.model.tag.Tag;
@@ -43,6 +45,7 @@ public class EditCommand extends Command {
             + "[" + PREFIX_COMPANY_NAME + "COMPANY] "
             + "[" + PREFIX_INTERNSHIP_POSITION + "POSITION] "
             + "[" + PREFIX_DEADLINE_OF_APPLICATION + "DEADLINE] "
+            + "[" + PREFIX_PRIORITY + "PRIORITY] "
             + "[" + PREFIX_TAG + "TAG]...\n"
             + "Example: " + COMMAND_WORD + " 1 "
             + PREFIX_INTERNSHIP_POSITION + "UI designer "
@@ -101,15 +104,17 @@ public class EditCommand extends Command {
 
         Company updatedCompany = editApplicationDescriptor.getCompany().orElse(applicationToEdit.getCompany());
         Position updatedPosition = editApplicationDescriptor.getPosition().orElse(applicationToEdit.getPosition());
-        Status updatedStatus = editApplicationDescriptor.getStatus().orElse(applicationToEdit.getStatus());
+        Deadline updatedDeadline = editApplicationDescriptor.getDeadline().orElse(applicationToEdit.getDeadline());
+        Completion completion = applicationToEdit.getCompletion();
+        Status status = applicationToEdit.getStatus();
+        Priority priority = editApplicationDescriptor.getPriority().orElse(applicationToEdit.getPriority());
         Requirements updatedRequirements = editApplicationDescriptor.getRequirements()
                 .orElse(applicationToEdit.getRequirements());
-        Deadline updatedDeadline = editApplicationDescriptor.getDeadline().orElse(applicationToEdit.getDeadline());
         Set<Tag> updatedTags = editApplicationDescriptor.getTags().orElse(applicationToEdit.getTags());
-        Completion completion = applicationToEdit.getCompletion();
+
 
         return new Application(updatedCompany, updatedPosition, updatedDeadline, completion,
-                updatedStatus, updatedRequirements, updatedTags);
+                status, priority, updatedRequirements, updatedTags);
     }
 
     @Override
@@ -138,7 +143,7 @@ public class EditCommand extends Command {
         private Company company;
         private Position position;
         private Deadline deadline;
-        private Status status;
+        private Priority priority;
         private Requirements requirements;
         private Set<Tag> tags;
 
@@ -152,7 +157,7 @@ public class EditCommand extends Command {
             setCompany(toCopy.company);
             setPosition(toCopy.position);
             setDeadline(toCopy.deadline);
-            setStatus(toCopy.status);
+            setPriority(toCopy.priority);
             setRequirements(toCopy.requirements);
             setTags(toCopy.tags);
         }
@@ -161,7 +166,7 @@ public class EditCommand extends Command {
          * Returns true if at least one field is edited.
          */
         public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyNonNull(company, position, deadline, status, requirements, tags);
+            return CollectionUtil.isAnyNonNull(company, position, deadline, priority, requirements, tags);
         }
 
         public void setCompany(Company company) {
@@ -176,35 +181,33 @@ public class EditCommand extends Command {
             this.position = position;
         }
 
-        public void setStatus(Status status) {
-            this.status = status;
-        }
-
-        public void setRequirements(Requirements requirements) {
-            this.requirements = requirements;
-        }
-
         public Optional<Position> getPosition() {
             return Optional.ofNullable(position);
-        }
-
-        public Optional<Requirements> getRequirements() {
-            return Optional.ofNullable(requirements);
         }
 
         public void setDeadline(Deadline deadline) {
             this.deadline = deadline;
         }
 
-        public Optional<Status> getStatus() {
-            return Optional.ofNullable(status);
-        }
-
-
         public Optional<Deadline> getDeadline() {
             return Optional.ofNullable(deadline);
         }
 
+        public void setPriority(Priority priority) {
+            this.priority = priority;
+        }
+
+        public Optional<Priority> getPriority() {
+            return Optional.ofNullable(priority);
+        }
+
+        public void setRequirements(Requirements requirements) {
+            this.requirements = requirements;
+        }
+
+        public Optional<Requirements> getRequirements() {
+            return Optional.ofNullable(requirements);
+        }
 
         /**
          * Sets {@code tags} to this object's {@code tags}.
@@ -241,7 +244,8 @@ public class EditCommand extends Command {
             return getCompany().equals(e.getCompany())
                     && getPosition().equals(e.getPosition())
                     && getDeadline().equals(e.getDeadline())
-                    && getStatus().equals(e.getStatus())
+                    && getPriority().equals(e.getPriority())
+                    && getRequirements().equals(e.getRequirements())
                     && getTags().equals(e.getTags());
         }
     }

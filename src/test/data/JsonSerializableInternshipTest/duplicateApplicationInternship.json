@@ -5,6 +5,7 @@
     "deadline": "2021-12-12",
     "completion": "Uncompleted",
     "status": "Pending",
+    "priority": "Medium",
     "requirements": "CV",
     "tagged": [ "Important" ]
   }, {
@@ -13,6 +14,7 @@
     "deadline": "2021-12-10",
     "completion": "Completed",
     "status": "Accepted",
+    "priority": "Low",
     "requirements": "CV"
   } ]
 }

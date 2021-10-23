@@ -18,6 +18,7 @@ import seedu.address.model.application.Company;
 import seedu.address.model.application.Completion;
 import seedu.address.model.application.Deadline;
 import seedu.address.model.application.Position;
+import seedu.address.model.application.Priority;
 import seedu.address.model.application.Status;
 import seedu.address.model.tag.Tag;
 
@@ -28,6 +29,7 @@ public class ParserUtilTest {
     private static final String INVALID_STATUS = "Maybe";
     private static final String INVALID_TAG = "#rejected";
     private static final String INVALID_COMPLETION = "abc";
+    private static final String INVALID_PRIORITY = "prioritised";
 
     private static final String VALID_COMPANY = "Shopee";
     private static final String VALID_POSITION = "Software Engineer";
@@ -36,6 +38,7 @@ public class ParserUtilTest {
     private static final String VALID_TAG_1 = "important";
     private static final String VALID_TAG_2 = "unimportant";
     private static final String VALID_COMPLETION = "Uncompleted";
+    private static final String VALID_PRIORITY = "High";
 
     private static final String WHITESPACE = " \t\r\n";
 
@@ -218,6 +221,29 @@ public class ParserUtilTest {
         String nameWithWhitespace = WHITESPACE + VALID_COMPLETION + WHITESPACE;
         Completion expectedCompletion = new Completion(VALID_COMPLETION);
         assertEquals(expectedCompletion, ParserUtil.parseCompletion(nameWithWhitespace));
+    }
+
+    @Test
+    public void parsePriority_null_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> ParserUtil.parsePriority((String) null));
+    }
+
+    @Test
+    public void parsePriority_invalidValue_throwsParseException() {
+        assertThrows(ParseException.class, () -> ParserUtil.parsePriority(INVALID_PRIORITY));
+    }
+
+    @Test
+    public void parsePriority_validValueWithoutWhitespace_returnsPriority() throws Exception {
+        Priority expectedPriority = new Priority(VALID_PRIORITY);
+        assertEquals(expectedPriority, ParserUtil.parsePriority(VALID_PRIORITY));
+    }
+
+    @Test
+    public void parsePriority_validValueWithWhitespace_returnsTrimmedPriority() throws Exception {
+        String nameWithWhitespace = WHITESPACE + VALID_PRIORITY + WHITESPACE;
+        Priority expectedPriority = new Priority(VALID_PRIORITY);
+        assertEquals(expectedPriority, ParserUtil.parsePriority(nameWithWhitespace));
     }
 
 }

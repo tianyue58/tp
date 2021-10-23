@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_COMPANY_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DEADLINE_OF_APPLICATION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_INTERNSHIP_POSITION;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_PRIORITY;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_REQUIREMENTS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.address.testutil.Assert.assertThrows;
@@ -38,27 +39,32 @@ public class CommandTestUtil {
     public static final String VALID_POSITION_GRAB = "Backend Engineer";
     public static final String VALID_POSITION_SHOPEE = "Frontend Engineer";
 
-    public static final String VALID_DEADLINE_AMAZON = "2021-12-12";
+    public static final String VALID_DEADLINE_AMAZON = "2021-12-30";
     public static final String VALID_DEADLINE_BYTEDANCE = "2021-12-29";
-    public static final String VALID_DEADLINE_GRAB = "2021-12-30";
+    public static final String VALID_DEADLINE_GRAB = "2021-12-12";
     public static final String VALID_DEADLINE_SHOPEE = "2021-12-31";
+    public static final String VALID_SOON_DEADLINE = getCurrentDate();
 
     public static final String VALID_COMPLETION_AMAZON = "Uncompleted";
     public static final String VALID_COMPLETION_BYTEDANCE = "Completed";
     public static final String VALID_COMPLETION_GRAB = "Uncompleted";
     public static final String VALID_COMPLETION_SHOPEE = "Uncompleted";
 
-    public static final String VALID_SOON_DEADLINE = getCurrentDate();
-
     public static final String VALID_STATUS_AMAZON = "Pending";
     public static final String VALID_STATUS_BYTEDANCE = "Rejected";
     public static final String VALID_STATUS_GRAB = "Pending";
     public static final String VALID_STATUS_SHOPEE = "Pending";
 
+    public static final String VALID_PRIORITY_AMAZON = "Medium";
+    public static final String VALID_PRIORITY_BYTEDANCE = "High";
+    public static final String VALID_PRIORITY_GRAB = "Medium";
+    public static final String VALID_PRIORITY_SHOPEE = "Low";
+
     public static final String VALID_REQUIREMENTS_AMAZON = "Resume";
     public static final String VALID_REQUIREMENTS_BYTEDANCE = "CV";
     public static final String VALID_REQUIREMENTS_GRAB = "Coding Challenge";
     public static final String VALID_REQUIREMENTS_SHOPEE = "Coding Challenge and Resume";
+
     public static final String VALID_TAG_AMAZON = "Important";
     public static final String VALID_TAG_BYTEDANCE = "Selective";
     public static final String VALID_TAG_GRAB = "Essential";
@@ -71,6 +77,7 @@ public class CommandTestUtil {
     public static final String DEADLINE_DESC_AMAZON = " " + PREFIX_DEADLINE_OF_APPLICATION + VALID_DEADLINE_AMAZON;
     public static final String DEADLINE_DESC_BYTEDANCE = " " + PREFIX_DEADLINE_OF_APPLICATION
             + VALID_DEADLINE_BYTEDANCE;
+    public static final String PRIORITY_DESC_AMAZON = " " + PREFIX_PRIORITY + VALID_PRIORITY_AMAZON;
     public static final String TAG_DESC_AMAZON = " " + PREFIX_TAG + VALID_TAG_AMAZON;
     public static final String TAG_DESC_BYTEDANCE = " " + PREFIX_TAG + VALID_TAG_BYTEDANCE;
     public static final String STATUS_DESC_AMAZON = " " + VALID_STATUS_AMAZON;
@@ -83,6 +90,8 @@ public class CommandTestUtil {
             + PREFIX_INTERNSHIP_POSITION; // empty string not allowed for positions
     public static final String INVALID_DEADLINE_DESC = " "
             + PREFIX_DEADLINE_OF_APPLICATION + "03-12-2001"; // wrong date format (DD-MM-YYY) not allowed
+    public static final String INVALID_PRIORITY_DESC = " " + PREFIX_PRIORITY
+            + "higher"; // not an allowed priority value
     public static final String INVALID_TAG_DESC = " " + PREFIX_TAG + "Pending*"; // '*' not allowed in tags
 
     public static final String PREAMBLE_WHITESPACE = "\t  \r  \n";

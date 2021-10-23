@@ -9,6 +9,7 @@ import seedu.address.model.application.Application;
 import seedu.address.model.application.Company;
 import seedu.address.model.application.Deadline;
 import seedu.address.model.application.Position;
+import seedu.address.model.application.Priority;
 import seedu.address.model.application.Requirements;
 import seedu.address.model.tag.Tag;
 
@@ -67,6 +68,14 @@ public class EditApplicationDescriptorBuilder {
      */
     public EditApplicationDescriptorBuilder withRequirements(String requirements) {
         descriptor.setRequirements(new Requirements(requirements));
+        return this;
+    }
+
+    /**
+     * Sets the {@code Priority} of the {@code EditPersonDescriptor} that we are building.
+     */
+    public EditApplicationDescriptorBuilder withPriority(String priority) {
+        descriptor.setPriority(new Priority(priority));
         return this;
     }
 

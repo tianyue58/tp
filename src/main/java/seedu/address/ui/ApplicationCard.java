@@ -38,13 +38,15 @@ public class ApplicationCard extends UiPart<Region> {
     @FXML
     private Label deadline;
     @FXML
+    private Label completion;
+    @FXML
     private Label status;
+    @FXML
+    private Label priority;
     @FXML
     private Label requirements;
     @FXML
     private FlowPane tags;
-    @FXML
-    private Label completion;
 
 
 
@@ -59,6 +61,7 @@ public class ApplicationCard extends UiPart<Region> {
         position.setText(application.getPosition().value);
         deadline.setText(application.getDeadline().value);
         status.setText(application.getStatus().value);
+        priority.setText(application.getPriority().value);
         requirements.setText(application.getRequirements().value);
         application.getTags().stream()
                 .sorted(Comparator.comparing(tag -> tag.tagName))

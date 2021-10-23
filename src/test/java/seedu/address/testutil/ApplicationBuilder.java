@@ -8,6 +8,7 @@ import seedu.address.model.application.Company;
 import seedu.address.model.application.Completion;
 import seedu.address.model.application.Deadline;
 import seedu.address.model.application.Position;
+import seedu.address.model.application.Priority;
 import seedu.address.model.application.Requirements;
 import seedu.address.model.application.Status;
 import seedu.address.model.tag.Tag;
@@ -23,15 +24,17 @@ public class ApplicationBuilder {
     public static final String DEFAULT_DEADLINE = "2021-12-04";
     public static final String DEFAULT_COMPLETION = "Uncompleted";
     public static final String DEFAULT_STATUS = "Pending";
+    public static final String DEFAULT_PRIORITY = "Medium";
     public static final String DEFAULT_REQUIREMENTS = "Resume";
 
     private Company company;
     private Position position;
     private Deadline deadline;
-    private Status status;
-    private Set<Tag> tags;
     private Completion completion;
+    private Status status;
+    private Priority priority;
     private Requirements requirements;
+    private Set<Tag> tags;
 
     /**
      * Creates a {@code ApplicationBuilder} with the default details.
@@ -40,10 +43,11 @@ public class ApplicationBuilder {
         company = new Company(DEFAULT_COMPANY);
         position = new Position(DEFAULT_POSITION);
         deadline = new Deadline(DEFAULT_DEADLINE);
-        status = new Status(DEFAULT_STATUS);
-        tags = new HashSet<>();
         completion = new Completion(DEFAULT_COMPLETION);
+        status = new Status(DEFAULT_STATUS);
+        priority = new Priority(DEFAULT_PRIORITY);
         requirements = new Requirements(DEFAULT_REQUIREMENTS);
+        tags = new HashSet<>();
     }
 
     /**
@@ -56,6 +60,7 @@ public class ApplicationBuilder {
         status = applicationToCopy.getStatus();
         tags = new HashSet<>(applicationToCopy.getTags());
         completion = applicationToCopy.getCompletion();
+        priority = applicationToCopy.getPriority();
         requirements = applicationToCopy.getRequirements();
     }
 
@@ -84,10 +89,26 @@ public class ApplicationBuilder {
     }
 
     /**
+     * Sets the {@code Completion} of the {@code Application} that we are building.
+     */
+    public ApplicationBuilder withCompletion(String complete) {
+        this.completion = new Completion(complete);
+        return this;
+    }
+
+    /**
      * Sets the {@code Status} of the {@code Application} that we are building.
      */
     public ApplicationBuilder withStatus(String status) {
         this.status = new Status(status);
+        return this;
+    }
+
+    /**
+     * Sets the {@code Priority} of the {@code Application} that we are building.
+     */
+    public ApplicationBuilder withPriority(String priority) {
+        this.priority = new Priority(priority);
         return this;
     }
 
@@ -99,7 +120,6 @@ public class ApplicationBuilder {
         return this;
     }
 
-
     /**
      * Parses the {@code tags} into a {@code Set<Tag>} and set it to the {@code Application} that we are building.
      */
@@ -108,16 +128,8 @@ public class ApplicationBuilder {
         return this;
     }
 
-    /**
-     * Sets the {@code Deadline} of the {@code Application} that we are building.
-     */
-    public ApplicationBuilder withCompletion(String complete) {
-        this.completion = new Completion(complete);
-        return this;
-    }
-
     public Application build() {
-        return new Application(company, position, deadline, completion, status, requirements, tags);
+        return new Application(company, position, deadline, completion, status, priority, requirements, tags);
     }
 
 }

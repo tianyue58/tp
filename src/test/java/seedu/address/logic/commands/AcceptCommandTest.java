@@ -23,6 +23,7 @@ import seedu.address.model.application.Company;
 import seedu.address.model.application.Completion;
 import seedu.address.model.application.Deadline;
 import seedu.address.model.application.Position;
+import seedu.address.model.application.Priority;
 import seedu.address.model.application.Requirements;
 import seedu.address.model.application.Status;
 import seedu.address.model.tag.Tag;
@@ -64,13 +65,14 @@ public class AcceptCommandTest {
         Company company = applicationToAccept.getCompany();
         Position position = applicationToAccept.getPosition();
         Deadline deadline = applicationToAccept.getDeadline();
-        Set<Tag> tagList = applicationToAccept.getTags();
-        Status status = new Status("Accepted");
         Completion completion = new Completion("Completed");
+        Status status = new Status("Accepted");
+        Priority priority = applicationToAccept.getPriority();
         Requirements requirements = applicationToAccept.getRequirements();
+        Set<Tag> tagList = applicationToAccept.getTags();
 
-        Application addedApplication = new Application(company, position, deadline,
-                completion, status, requirements, tagList);
+        Application addedApplication = new Application(company, position, deadline, completion, status, priority,
+                requirements, tagList);
 
         String expectedMessage = String.format(AcceptCommand.MESSAGE_SUCCESS, addedApplication);
         ModelManager expectedModel = new ModelManager(model.getInternship(), new UserPrefs());

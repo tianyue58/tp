@@ -11,7 +11,7 @@ import seedu.address.model.Model;
 import seedu.address.model.application.Application;
 
 /**
- * Adds an application to the address book.
+ * Adds an application to InternSHIP.
  */
 public class AddCommand extends Command {
 

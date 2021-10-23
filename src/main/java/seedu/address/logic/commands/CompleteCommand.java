@@ -14,11 +14,14 @@ import seedu.address.model.application.Company;
 import seedu.address.model.application.Completion;
 import seedu.address.model.application.Deadline;
 import seedu.address.model.application.Position;
+import seedu.address.model.application.Priority;
 import seedu.address.model.application.Requirements;
 import seedu.address.model.application.Status;
 import seedu.address.model.tag.Tag;
 
-
+/**
+ * Sets the Completion of an application to "Completed".
+ */
 public class CompleteCommand extends Command {
     public static final String COMMAND_WORD = "complete";
 
@@ -43,7 +46,6 @@ public class CompleteCommand extends Command {
         requireNonNull(model);
         List<Application> lastShownList = model.getFilteredApplicationList();
 
-
         if (targetIndex.getZeroBased() >= lastShownList.size()) {
             throw new CommandException(Messages.MESSAGE_INVALID_APPLICATION_DISPLAYED_INDEX);
         }
@@ -53,13 +55,14 @@ public class CompleteCommand extends Command {
         Company company = applicationToComplete.getCompany();
         Position position = applicationToComplete.getPosition();
         Deadline deadline = applicationToComplete.getDeadline();
-        Status status = applicationToComplete.getStatus();
-        Set<Tag> tagList = applicationToComplete.getTags();
-        Requirements requirements = applicationToComplete.getRequirements();
         Completion completion = new Completion("Completed");
+        Status status = applicationToComplete.getStatus();
+        Priority priority = applicationToComplete.getPriority();
+        Requirements requirements = applicationToComplete.getRequirements();
+        Set<Tag> tagList = applicationToComplete.getTags();
 
-        Application completedApplication = new Application(company, position, deadline,
-                completion, status, requirements, tagList);
+        Application completedApplication = new Application(company, position, deadline, completion, status, priority,
+                requirements, tagList);
         model.setApplication(applicationToComplete, completedApplication);
         model.commitInternship(model.getInternship());
 

@@ -17,6 +17,7 @@ import seedu.address.model.application.Company;
 import seedu.address.model.application.Completion;
 import seedu.address.model.application.Deadline;
 import seedu.address.model.application.Position;
+import seedu.address.model.application.Priority;
 import seedu.address.model.application.Requirements;
 import seedu.address.model.application.Status;
 import seedu.address.model.tag.Tag;
@@ -45,13 +46,14 @@ public class AddCommandParser implements Parser<AddCommand> {
         Company company = ParserUtil.parseCompany(argMultimap.getValue(PREFIX_COMPANY_NAME).get());
         Position position = ParserUtil.parsePosition(argMultimap.getValue(PREFIX_INTERNSHIP_POSITION).get());
         Deadline deadline = ParserUtil.parseDeadline(argMultimap.getValue(PREFIX_DEADLINE_OF_APPLICATION).get());
+        Completion completion = new Completion("Uncompleted");
         Status status = new Status("Pending");
+        Priority priority = new Priority("Medium");
         Requirements requirements = ParserUtil.parseRequirements(argMultimap.getValueReq(PREFIX_REQUIREMENTS).get());
         Set<Tag> tagList = ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));
-        Completion completion = new Completion("Uncompleted");
 
-        Application application = new Application(company, position, deadline,
-                completion, status, requirements, tagList);
+        Application application = new Application(company, position, deadline, completion, status, priority,
+                requirements, tagList);
 
         return new AddCommand(application);
     }
