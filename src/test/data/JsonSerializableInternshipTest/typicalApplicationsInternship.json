@@ -7,7 +7,7 @@
     "completion": "Uncompleted",
     "status": "Pending",
     "priority": "Medium",
-    "requirements": "Resume",
+    "requirements": [ "Resume" ],
     "tagged": [ "Important" ]
   }, {
     "company": "ByteDance",
@@ -16,7 +16,7 @@
     "completion": "Completed",
     "status": "Rejected",
     "priority": "High",
-    "requirements": "CV",
+    "requirements": [ "CV" ],
     "tagged": [ "Selective" ]
   }, {
     "company": "Grab",
@@ -25,7 +25,7 @@
     "completion": "Uncompleted",
     "status": "Pending",
     "priority": "Medium",
-    "requirements": "Coding challenge",
+    "requirements": [ "Interview" ],
     "tagged": [ "Essential" ]
   } ]
 }

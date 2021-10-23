@@ -43,10 +43,10 @@ public class CompleteCommandTest {
         Completion completion = new Completion("Completed");
         Status status = applicationToComplete.getStatus();
         Priority priority = applicationToComplete.getPriority();
-        Requirement requirement = applicationToComplete.getRequirements();
+        Set<Requirement> requirementList = applicationToComplete.getRequirements();
         Set<Tag> tagList = applicationToComplete.getTags();
         Application completedApplication = new Application(company, position, deadline, completion, status, priority,
-                requirement, tagList);
+                requirementList, tagList);
 
         String expectedMessage = String.format(CompleteCommand.MESSAGE_SUCCESS, completedApplication);
         ModelManager expectedModel = new ModelManager(model.getInternship(), new UserPrefs());

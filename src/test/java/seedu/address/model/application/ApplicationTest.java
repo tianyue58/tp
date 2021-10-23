@@ -7,8 +7,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_DEADLINE_BYTEDANCE;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BYTEDANCE;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_POSITION_BYTEDANCE;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_ONE;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_TWO;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_AMAZON;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_BYTEDANCE;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalApplications.AMAZON;
 import static seedu.address.testutil.TypicalApplications.BYTEDANCE;
@@ -35,7 +35,7 @@ public class ApplicationTest {
 
         // same name and position, all other attributes different -> returns true
         Application editedAmazon = new ApplicationBuilder(AMAZON).withDeadline(VALID_DEADLINE_BYTEDANCE)
-                .withTags(VALID_TAG_ONE).build();
+                .withTags(VALID_TAG_AMAZON).build();
         assertTrue(AMAZON.isSameApplication(editedAmazon));
 
         // different name and position, all other attributes same -> returns false
@@ -103,7 +103,7 @@ public class ApplicationTest {
         assertNotEquals(AMAZON, editedAmazon);
 
         // different tags -> returns false
-        editedAmazon = new ApplicationBuilder(AMAZON).withTags(VALID_TAG_TWO).build();
+        editedAmazon = new ApplicationBuilder(AMAZON).withTags(VALID_TAG_BYTEDANCE).build();
         assertNotEquals(AMAZON, editedAmazon);
     }
 }

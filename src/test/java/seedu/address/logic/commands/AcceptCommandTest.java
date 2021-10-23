@@ -68,11 +68,11 @@ public class AcceptCommandTest {
         Completion completion = new Completion("Completed");
         Status status = new Status("Accepted");
         Priority priority = applicationToAccept.getPriority();
-        Requirement requirement = applicationToAccept.getRequirements();
+        Set<Requirement> requirementList = applicationToAccept.getRequirements();
         Set<Tag> tagList = applicationToAccept.getTags();
 
         Application addedApplication = new Application(company, position, deadline, completion, status, priority,
-                requirement, tagList);
+                requirementList, tagList);
 
         String expectedMessage = String.format(AcceptCommand.MESSAGE_SUCCESS, addedApplication);
         ModelManager expectedModel = new ModelManager(model.getInternship(), new UserPrefs());

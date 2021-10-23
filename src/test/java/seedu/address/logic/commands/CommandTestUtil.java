@@ -43,7 +43,6 @@ public class CommandTestUtil {
     public static final String VALID_DEADLINE_BYTEDANCE = "2021-12-29";
     public static final String VALID_DEADLINE_GRAB = "2021-12-12";
     public static final String VALID_DEADLINE_SHOPEE = "2021-12-31";
-    public static final String VALID_SOON_DEADLINE = getCurrentDate();
 
     public static final String VALID_COMPLETION_AMAZON = "Uncompleted";
     public static final String VALID_COMPLETION_BYTEDANCE = "Completed";
@@ -60,31 +59,35 @@ public class CommandTestUtil {
     public static final String VALID_PRIORITY_GRAB = "Medium";
     public static final String VALID_PRIORITY_SHOPEE = "Low";
 
-    public static final String VALID_REQUIREMENTS_ONE = "Resume";
-    public static final String VALID_REQUIREMENTS_TWO = "CV";
-    public static final String VALID_REQUIREMENTS_THREE = "Coding Challenge";
+    public static final String VALID_REQUIREMENTS_AMAZON = "Resume";
+    public static final String VALID_REQUIREMENTS_BYTEDANCE = "CV";
+    public static final String VALID_REQUIREMENTS_GRAB = "Interview";
 
-    public static final String VALID_TAG_ONE = "Near home";
-    public static final String VALID_TAG_TWO = "High salary";
-    public static final String VALID_TAG_THREE = "Good environment";
-
-
-
+    public static final String VALID_TAG_AMAZON = "Important";
+    public static final String VALID_TAG_BYTEDANCE = "Selective";
+    public static final String VALID_TAG_GRAB = "Essential";
 
     public static final String NAME_DESC_AMAZON = " " + PREFIX_COMPANY_NAME + VALID_NAME_AMAZON;
     public static final String NAME_DESC_BYTEDANCE = " " + PREFIX_COMPANY_NAME + VALID_NAME_BYTEDANCE;
+
     public static final String POSITION_DESC_AMAZON = " " + PREFIX_INTERNSHIP_POSITION + VALID_POSITION_AMAZON;
     public static final String POSITION_DESC_BYTEDANCE = " " + PREFIX_INTERNSHIP_POSITION + VALID_POSITION_BYTEDANCE;
+
     public static final String DEADLINE_DESC_AMAZON = " " + PREFIX_DEADLINE_OF_APPLICATION + VALID_DEADLINE_AMAZON;
     public static final String DEADLINE_DESC_BYTEDANCE = " " + PREFIX_DEADLINE_OF_APPLICATION
             + VALID_DEADLINE_BYTEDANCE;
+
     public static final String PRIORITY_DESC_AMAZON = " " + PREFIX_PRIORITY + VALID_PRIORITY_AMAZON;
-    public static final String TAG_DESC_AMAZON = " " + PREFIX_TAG + VALID_TAG_ONE;
-    public static final String TAG_DESC_BYTEDANCE = " " + PREFIX_TAG + VALID_TAG_TWO;
+    public static final String PRIORITY_DESC_BYTEDANCE = " " + PREFIX_PRIORITY + VALID_PRIORITY_BYTEDANCE;
+
+    public static final String TAG_DESC_AMAZON = " " + PREFIX_TAG + VALID_TAG_AMAZON;
+    public static final String TAG_DESC_BYTEDANCE = " " + PREFIX_TAG + VALID_TAG_BYTEDANCE;
+
     public static final String STATUS_DESC_AMAZON = " " + VALID_STATUS_AMAZON;
     public static final String STATUS_DESC_BYTEDANCE = " " + VALID_STATUS_BYTEDANCE;
-    public static final String REQUIREMENTS_DESC_AMAZON = " " + PREFIX_REQUIREMENT + VALID_REQUIREMENTS_ONE;
-    public static final String REQUIREMENTS_DESC_BYTEDANCE = " " + PREFIX_REQUIREMENT + VALID_REQUIREMENTS_TWO;
+
+    public static final String REQUIREMENTS_DESC_AMAZON = " " + PREFIX_REQUIREMENT + VALID_REQUIREMENTS_AMAZON;
+    public static final String REQUIREMENTS_DESC_BYTEDANCE = " " + PREFIX_REQUIREMENT + VALID_TAG_BYTEDANCE;
 
     public static final String INVALID_NAME_DESC = " " + PREFIX_COMPANY_NAME + "Google&"; // '&' not allowed in names
     public static final String INVALID_POSITION_DESC = " "
@@ -102,12 +105,18 @@ public class CommandTestUtil {
     public static final EditCommand.EditApplicationDescriptor DESC_BYTEDANCE;
 
     static {
-        DESC_AMAZON = new EditApplicationDescriptorBuilder().withCompany(VALID_NAME_AMAZON)
-                .withPosition(VALID_POSITION_AMAZON).withDeadline(VALID_DEADLINE_AMAZON)
-                .withRequirements(VALID_REQUIREMENTS_ONE).build();
-        DESC_BYTEDANCE = new EditApplicationDescriptorBuilder().withCompany(VALID_NAME_BYTEDANCE)
-                .withPosition(VALID_POSITION_BYTEDANCE).withDeadline(VALID_DEADLINE_BYTEDANCE)
-                .withRequirements(VALID_REQUIREMENTS_TWO).build();
+        DESC_AMAZON = new EditApplicationDescriptorBuilder()
+                .withCompany(VALID_NAME_AMAZON)
+                .withPosition(VALID_POSITION_AMAZON)
+                .withDeadline(VALID_DEADLINE_AMAZON)
+                .withRequirements(VALID_REQUIREMENTS_AMAZON)
+                .withTags(VALID_TAG_AMAZON).build();
+        DESC_BYTEDANCE = new EditApplicationDescriptorBuilder()
+                .withCompany(VALID_NAME_BYTEDANCE)
+                .withPosition(VALID_POSITION_BYTEDANCE)
+                .withDeadline(VALID_DEADLINE_BYTEDANCE)
+                .withRequirements(VALID_REQUIREMENTS_BYTEDANCE)
+                .withTags(VALID_TAG_AMAZON).build();
     }
 
     /**

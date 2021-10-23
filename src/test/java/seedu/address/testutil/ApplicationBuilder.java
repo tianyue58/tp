@@ -25,7 +25,6 @@ public class ApplicationBuilder {
     public static final String DEFAULT_COMPLETION = "Uncompleted";
     public static final String DEFAULT_STATUS = "Pending";
     public static final String DEFAULT_PRIORITY = "Medium";
-    public static final String DEFAULT_REQUIREMENTS = "Resume";
 
     private Company company;
     private Position position;

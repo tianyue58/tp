@@ -22,8 +22,8 @@ import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_AMAZON;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_POSITION_AMAZON;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_POSITION_BYTEDANCE;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_PRIORITY_AMAZON;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_ONE;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_TWO;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_AMAZON;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_BYTEDANCE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
@@ -116,7 +116,7 @@ public class EditCommandParserTest {
         EditApplicationDescriptor descriptor = new EditApplicationDescriptorBuilder().withCompany(
                 VALID_NAME_AMAZON)
                 .withPosition(VALID_POSITION_BYTEDANCE).withDeadline(VALID_DEADLINE_AMAZON)
-                .withPriority(VALID_PRIORITY_AMAZON).withTags(VALID_TAG_TWO).build();
+                .withPriority(VALID_PRIORITY_AMAZON).withTags(VALID_TAG_BYTEDANCE).build();
         EditCommand expectedCommand = new EditCommand(targetIndex, descriptor);
 
         assertParseSuccess(parser, userInput, expectedCommand);
@@ -165,7 +165,7 @@ public class EditCommandParserTest {
 
         // tags
         userInput = targetIndex.getOneBased() + TAG_DESC_BYTEDANCE;
-        descriptor = new EditApplicationDescriptorBuilder().withTags(VALID_TAG_TWO).build();
+        descriptor = new EditApplicationDescriptorBuilder().withTags(VALID_TAG_BYTEDANCE).build();
         expectedCommand = new EditCommand(targetIndex, descriptor);
         assertParseSuccess(parser, userInput, expectedCommand);
     }
@@ -179,7 +179,7 @@ public class EditCommandParserTest {
 
         EditApplicationDescriptor descriptor = new EditApplicationDescriptorBuilder()
                 .withPosition(VALID_POSITION_BYTEDANCE)
-                .withDeadline(VALID_DEADLINE_BYTEDANCE).withTags(VALID_TAG_ONE, VALID_TAG_TWO)
+                .withDeadline(VALID_DEADLINE_BYTEDANCE).withTags(VALID_TAG_AMAZON, VALID_TAG_BYTEDANCE)
                 .build();
         EditCommand expectedCommand = new EditCommand(targetIndex, descriptor);
 

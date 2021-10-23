@@ -68,11 +68,11 @@ public class RejectCommandTest {
         Completion completion = new Completion("Completed");
         Status status = new Status("Rejected");
         Priority priority = applicationToReject.getPriority();
-        Requirement requirement = applicationToReject.getRequirements();
+        Set<Requirement> requirementList = applicationToReject.getRequirements();
         Set<Tag> tagList = applicationToReject.getTags();
 
         Application addedApplication = new Application(company, position, deadline, completion, status, priority,
-                requirement, tagList);
+                requirementList, tagList);
 
         String expectedMessage = String.format(RejectCommand.MESSAGE_SUCCESS, addedApplication);
         ModelManager expectedModel = new ModelManager(model.getInternship(), new UserPrefs());
