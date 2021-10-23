@@ -36,7 +36,7 @@ public class ApplicationUtil {
         sb.append(PREFIX_DEADLINE_OF_APPLICATION + application.getDeadline().value + " ");
 
         application.getRequirements().stream().forEach(
-                s -> sb.append(PREFIX_REQUIREMENT + s.value + " ")
+            s -> sb.append(PREFIX_REQUIREMENT + s.value + " ")
         );
         application.getTags().stream().forEach(
             s -> sb.append(PREFIX_TAG + s.tagName + " ")

@@ -21,8 +21,6 @@ import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BYTEDANCE;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_POSITION_BYTEDANCE;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_AMAZON;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_BYTEDANCE;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_GRAB;
-
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
 import static seedu.address.testutil.TypicalApplications.AMAZON;
@@ -34,8 +32,6 @@ import seedu.address.model.application.Application;
 import seedu.address.model.application.Company;
 import seedu.address.model.application.Deadline;
 import seedu.address.model.application.Position;
-import seedu.address.model.application.Priority;
-import seedu.address.model.application.Requirement;
 import seedu.address.model.tag.Tag;
 import seedu.address.testutil.ApplicationBuilder;
 
