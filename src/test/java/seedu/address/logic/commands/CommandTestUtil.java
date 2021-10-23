@@ -6,7 +6,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_COMPANY_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DEADLINE_OF_APPLICATION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_INTERNSHIP_POSITION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PRIORITY;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_REQUIREMENTS;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_REQUIREMENT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.address.testutil.Assert.assertThrows;
 
@@ -60,15 +60,16 @@ public class CommandTestUtil {
     public static final String VALID_PRIORITY_GRAB = "Medium";
     public static final String VALID_PRIORITY_SHOPEE = "Low";
 
-    public static final String VALID_REQUIREMENTS_AMAZON = "Resume";
-    public static final String VALID_REQUIREMENTS_BYTEDANCE = "CV";
-    public static final String VALID_REQUIREMENTS_GRAB = "Coding Challenge";
-    public static final String VALID_REQUIREMENTS_SHOPEE = "Coding Challenge and Resume";
+    public static final String VALID_REQUIREMENTS_ONE = "Resume";
+    public static final String VALID_REQUIREMENTS_TWO = "CV";
+    public static final String VALID_REQUIREMENTS_THREE = "Coding Challenge";
 
-    public static final String VALID_TAG_AMAZON = "Important";
-    public static final String VALID_TAG_BYTEDANCE = "Selective";
-    public static final String VALID_TAG_GRAB = "Essential";
-    public static final String VALID_TAG_SHOPEE = "Optional";
+    public static final String VALID_TAG_ONE = "Near home";
+    public static final String VALID_TAG_TWO = "High salary";
+    public static final String VALID_TAG_THREE = "Good environment";
+
+
+
 
     public static final String NAME_DESC_AMAZON = " " + PREFIX_COMPANY_NAME + VALID_NAME_AMAZON;
     public static final String NAME_DESC_BYTEDANCE = " " + PREFIX_COMPANY_NAME + VALID_NAME_BYTEDANCE;
@@ -78,12 +79,12 @@ public class CommandTestUtil {
     public static final String DEADLINE_DESC_BYTEDANCE = " " + PREFIX_DEADLINE_OF_APPLICATION
             + VALID_DEADLINE_BYTEDANCE;
     public static final String PRIORITY_DESC_AMAZON = " " + PREFIX_PRIORITY + VALID_PRIORITY_AMAZON;
-    public static final String TAG_DESC_AMAZON = " " + PREFIX_TAG + VALID_TAG_AMAZON;
-    public static final String TAG_DESC_BYTEDANCE = " " + PREFIX_TAG + VALID_TAG_BYTEDANCE;
+    public static final String TAG_DESC_AMAZON = " " + PREFIX_TAG + VALID_TAG_ONE;
+    public static final String TAG_DESC_BYTEDANCE = " " + PREFIX_TAG + VALID_TAG_TWO;
     public static final String STATUS_DESC_AMAZON = " " + VALID_STATUS_AMAZON;
     public static final String STATUS_DESC_BYTEDANCE = " " + VALID_STATUS_BYTEDANCE;
-    public static final String REQUIREMENTS_DESC_AMAZON = " " + PREFIX_REQUIREMENTS + VALID_REQUIREMENTS_AMAZON;
-    public static final String REQUIREMENTS_DESC_BYTEDANCE = " " + PREFIX_REQUIREMENTS + VALID_REQUIREMENTS_BYTEDANCE;
+    public static final String REQUIREMENTS_DESC_AMAZON = " " + PREFIX_REQUIREMENT + VALID_REQUIREMENTS_ONE;
+    public static final String REQUIREMENTS_DESC_BYTEDANCE = " " + PREFIX_REQUIREMENT + VALID_REQUIREMENTS_TWO;
 
     public static final String INVALID_NAME_DESC = " " + PREFIX_COMPANY_NAME + "Google&"; // '&' not allowed in names
     public static final String INVALID_POSITION_DESC = " "
@@ -103,10 +104,10 @@ public class CommandTestUtil {
     static {
         DESC_AMAZON = new EditApplicationDescriptorBuilder().withCompany(VALID_NAME_AMAZON)
                 .withPosition(VALID_POSITION_AMAZON).withDeadline(VALID_DEADLINE_AMAZON)
-                .withRequirements(VALID_REQUIREMENTS_AMAZON).build();
+                .withRequirements(VALID_REQUIREMENTS_ONE).build();
         DESC_BYTEDANCE = new EditApplicationDescriptorBuilder().withCompany(VALID_NAME_BYTEDANCE)
                 .withPosition(VALID_POSITION_BYTEDANCE).withDeadline(VALID_DEADLINE_BYTEDANCE)
-                .withRequirements(VALID_REQUIREMENTS_BYTEDANCE).build();
+                .withRequirements(VALID_REQUIREMENTS_TWO).build();
     }
 
     /**

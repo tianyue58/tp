@@ -19,8 +19,8 @@ import static seedu.address.logic.commands.CommandTestUtil.TAG_DESC_BYTEDANCE;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_DEADLINE_BYTEDANCE;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BYTEDANCE;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_POSITION_BYTEDANCE;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_AMAZON;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_BYTEDANCE;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_ONE;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_TWO;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
 import static seedu.address.testutil.TypicalApplications.AMAZON;
@@ -40,7 +40,7 @@ public class AddCommandParserTest {
 
     @Test
     public void parse_allFieldsPresent_success() {
-        Application expectedApplication = new ApplicationBuilder(AMAZON).withTags(VALID_TAG_AMAZON).build();
+        Application expectedApplication = new ApplicationBuilder(AMAZON).withTags(VALID_TAG_ONE).build();
 
         // whitespace only preamble
         assertParseSuccess(parser, PREAMBLE_WHITESPACE + NAME_DESC_AMAZON
@@ -64,7 +64,7 @@ public class AddCommandParserTest {
 
         // multiple tags - all accepted
         Application expectedApplicationMultipleTags = new ApplicationBuilder(AMAZON)
-                .withTags(VALID_TAG_AMAZON, VALID_TAG_BYTEDANCE).build();
+                .withTags(VALID_TAG_ONE, VALID_TAG_TWO).build();
         assertParseSuccess(parser, NAME_DESC_AMAZON
                 + POSITION_DESC_AMAZON + DEADLINE_DESC_AMAZON + REQUIREMENTS_DESC_AMAZON
                 + TAG_DESC_AMAZON + TAG_DESC_BYTEDANCE, new AddCommand(expectedApplicationMultipleTags));

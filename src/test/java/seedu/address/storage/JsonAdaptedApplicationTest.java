@@ -30,8 +30,9 @@ public class JsonAdaptedApplicationTest {
             .collect(Collectors.toList());
     private static final String VALID_COMPLETION = AMAZON.getCompletion().toString();
     private static final String VALID_PRIORITY = AMAZON.getPriority().toString();
-    private static final String VALID_REQUIREMENTS = AMAZON.getRequirements().toString();
-
+    private static final List<JsonAdaptedRequirement> VALID_REQUIREMENTS = AMAZON.getRequirements().stream()
+            .map(JsonAdaptedRequirement::new)
+            .collect(Collectors.toList());
 
     @Test
     public void toModelType_validCompanyDetails_returnsCompany() throws Exception {
