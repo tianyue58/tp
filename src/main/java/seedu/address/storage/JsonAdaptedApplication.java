@@ -16,7 +16,7 @@ import seedu.address.model.application.Completion;
 import seedu.address.model.application.Deadline;
 import seedu.address.model.application.Position;
 import seedu.address.model.application.Priority;
-import seedu.address.model.application.Requirements;
+import seedu.address.model.application.Requirement;
 import seedu.address.model.application.Status;
 import seedu.address.model.tag.Tag;
 
@@ -33,9 +33,8 @@ class JsonAdaptedApplication {
     private final String status;
     private final String completion;
     private final String priority;
-    private final String requirements;
+    private final List<JsonAdaptedRequirement> requirements = new ArrayList<>();
     private final List<JsonAdaptedTag> tagged = new ArrayList<>();
-
 
     /**
      * Constructs a {@code JsonAdaptedApplication} with the given application details.
@@ -47,7 +46,7 @@ class JsonAdaptedApplication {
                                   @JsonProperty("completion") String completion,
                                   @JsonProperty("status") String status,
                                   @JsonProperty("priority") String priority,
-                                  @JsonProperty("requirements") String requirements,
+                                  @JsonProperty("requirements") List<JsonAdaptedRequirement> requirements,
                                   @JsonProperty("tagged") List<JsonAdaptedTag> tagged
                                   ) {
         this.company = company;
@@ -56,7 +55,9 @@ class JsonAdaptedApplication {
         this.completion = completion;
         this.status = status;
         this.priority = priority;
-        this.requirements = requirements;
+        if (requirements != null) {
+            this.requirements.addAll(requirements);
+        }
         if (tagged != null) {
             this.tagged.addAll(tagged);
         }
@@ -72,7 +73,11 @@ class JsonAdaptedApplication {
         completion = source.getCompletion().value;
         status = source.getStatus().value;
         priority = source.getPriority().value;
-        requirements = source.getRequirements().value;
+
+        requirements.addAll(source.getRequirements().stream()
+                .map(JsonAdaptedRequirement::new)
+                .collect(Collectors.toList()));
+
         tagged.addAll(source.getTags().stream()
                 .map(JsonAdaptedTag::new)
                 .collect(Collectors.toList()));
@@ -87,6 +92,11 @@ class JsonAdaptedApplication {
         final List<Tag> applicationTags = new ArrayList<>();
         for (JsonAdaptedTag tag : tagged) {
             applicationTags.add(tag.toModelType());
+        }
+
+        final List<Requirement> applicationRequirements = new ArrayList<>();
+        for (JsonAdaptedRequirement requirement : requirements) {
+            applicationRequirements.add(requirement.toModelType());
         }
 
         if (company == null) {
@@ -143,19 +153,12 @@ class JsonAdaptedApplication {
         }
         final Priority modelPriority = new Priority(priority);
 
-        if (requirements == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
-                    Requirements.class.getSimpleName()));
-        }
-        if (!Requirements.isValidRequirements(requirements)) {
-            throw new IllegalValueException(Requirements.MESSAGE_CONSTRAINTS);
-        }
-        final Requirements modelRequirements = new Requirements(requirements);
+        final Set<Requirement> modelRequirement = new HashSet<>(applicationRequirements);
 
         final Set<Tag> modelTags = new HashSet<>(applicationTags);
 
         return new Application(modelName, modelPosition, modelDeadline, modelCompletion, modelStatus, modelPriority,
-                modelRequirements, modelTags);
+                modelRequirement, modelTags);
     }
 
 }

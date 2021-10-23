@@ -179,7 +179,7 @@ public class EditCommandParserTest {
 
         EditApplicationDescriptor descriptor = new EditApplicationDescriptorBuilder()
                 .withPosition(VALID_POSITION_BYTEDANCE)
-                .withDeadline(VALID_DEADLINE_BYTEDANCE).withTags(VALID_TAG_BYTEDANCE, VALID_TAG_AMAZON)
+                .withDeadline(VALID_DEADLINE_BYTEDANCE).withTags(VALID_TAG_AMAZON, VALID_TAG_BYTEDANCE)
                 .build();
         EditCommand expectedCommand = new EditCommand(targetIndex, descriptor);
 

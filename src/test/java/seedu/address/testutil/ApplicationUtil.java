@@ -3,7 +3,7 @@ package seedu.address.testutil;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_COMPANY_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DEADLINE_OF_APPLICATION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_INTERNSHIP_POSITION;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_REQUIREMENTS;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_REQUIREMENT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 
 import java.util.Set;
@@ -11,6 +11,7 @@ import java.util.Set;
 import seedu.address.logic.commands.AddCommand;
 import seedu.address.logic.commands.EditCommand.EditApplicationDescriptor;
 import seedu.address.model.application.Application;
+import seedu.address.model.application.Requirement;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -33,7 +34,10 @@ public class ApplicationUtil {
         sb.append(PREFIX_COMPANY_NAME + application.getCompany().fullCompanyName + " ");
         sb.append(PREFIX_INTERNSHIP_POSITION + application.getPosition().value + " ");
         sb.append(PREFIX_DEADLINE_OF_APPLICATION + application.getDeadline().value + " ");
-        sb.append(PREFIX_REQUIREMENTS + application.getRequirements().value + " ");
+
+        application.getRequirements().stream().forEach(
+            s -> sb.append(PREFIX_REQUIREMENT + s.value + " ")
+        );
         application.getTags().stream().forEach(
             s -> sb.append(PREFIX_TAG + s.tagName + " ")
         );
@@ -47,12 +51,20 @@ public class ApplicationUtil {
         StringBuilder sb = new StringBuilder();
         descriptor.getCompany().ifPresent(name -> sb.append(PREFIX_COMPANY_NAME)
                 .append(name.fullCompanyName).append(" "));
-        descriptor.getPosition().ifPresent(phone -> sb.append(PREFIX_INTERNSHIP_POSITION)
-                .append(phone.value).append(" "));
-        descriptor.getDeadline().ifPresent(email -> sb.append(PREFIX_DEADLINE_OF_APPLICATION)
-                .append(email.value).append(" "));
-        descriptor.getRequirements().ifPresent(phone -> sb.append(PREFIX_REQUIREMENTS)
-                .append(phone.value).append(" "));
+        descriptor.getPosition().ifPresent(position -> sb.append(PREFIX_INTERNSHIP_POSITION)
+                .append(position.value).append(" "));
+        descriptor.getDeadline().ifPresent(deadline -> sb.append(PREFIX_DEADLINE_OF_APPLICATION)
+                .append(deadline.value).append(" "));
+
+        if (descriptor.getRequirements().isPresent()) {
+            Set<Requirement> requirements = descriptor.getRequirements().get();
+            if (requirements.isEmpty()) {
+                sb.append(PREFIX_TAG);
+            } else {
+                requirements.forEach(s -> sb.append(PREFIX_TAG).append(s.value).append(" "));
+            }
+        }
+
         if (descriptor.getTags().isPresent()) {
             Set<Tag> tags = descriptor.getTags().get();
             if (tags.isEmpty()) {

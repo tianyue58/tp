@@ -6,7 +6,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_COMPLETION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DEADLINE_OF_APPLICATION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_INTERNSHIP_POSITION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PRIORITY;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_REQUIREMENTS;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_REQUIREMENT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_STATUS;
 
 import java.util.Arrays;
@@ -36,7 +36,7 @@ public class FindCommandParser implements Parser<FindCommand> {
         ArgumentMultimap argMultimap =
                 ArgumentTokenizer.tokenize(args, PREFIX_COMPANY_NAME, PREFIX_INTERNSHIP_POSITION,
                         PREFIX_DEADLINE_OF_APPLICATION, PREFIX_COMPLETION,
-                        PREFIX_STATUS, PREFIX_PRIORITY, PREFIX_REQUIREMENTS);
+                        PREFIX_STATUS, PREFIX_PRIORITY, PREFIX_REQUIREMENT);
 
         if (!argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(
@@ -103,8 +103,8 @@ public class FindCommandParser implements Parser<FindCommand> {
             return new FindCommand(new PriorityContainsKeywordsPredicate(Arrays.asList(priorityKeywords)));
         }
 
-        if (argMultimap.getValue(PREFIX_REQUIREMENTS).isPresent()) {
-            String trimmedArgs = argMultimap.getValue(PREFIX_REQUIREMENTS).get().trim();
+        if (argMultimap.getValue(PREFIX_REQUIREMENT).isPresent()) {
+            String trimmedArgs = argMultimap.getValue(PREFIX_REQUIREMENT).get().trim();
             if (trimmedArgs.isEmpty()) {
                 throw new ParseException(
                         String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindCommand.MESSAGE_USAGE));

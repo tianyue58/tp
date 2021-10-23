@@ -42,34 +42,31 @@ public class Deadline {
      * @return Comparator object that compares applications by their deadlines.
      */
     public static Comparator<Application> getComparator() {
-        return new Comparator<Application>() {
-            @Override
-            public int compare(Application application, Application otherApplication) {
-                String deadline = application.getDeadline().value;
-                String otherDeadline = otherApplication.getDeadline().value;
+        return (application, otherApplication) -> {
+            String deadline = application.getDeadline().value;
+            String otherDeadline = otherApplication.getDeadline().value;
 
-                String[] splitDeadline = deadline.split("-");
-                String year = splitDeadline[0];
-                String month = splitDeadline[1];
-                String day = splitDeadline[2];
+            String[] splitDeadline = deadline.split("-");
+            String year = splitDeadline[0];
+            String month = splitDeadline[1];
+            String day = splitDeadline[2];
 
-                String[] splitOtherDeadline = otherDeadline.split("-");
-                String otherYear = splitOtherDeadline[0];
-                String otherMonth = splitOtherDeadline[1];
-                String otherDay = splitOtherDeadline[2];
+            String[] splitOtherDeadline = otherDeadline.split("-");
+            String otherYear = splitOtherDeadline[0];
+            String otherMonth = splitOtherDeadline[1];
+            String otherDay = splitOtherDeadline[2];
 
-                if (year.compareTo(otherYear) != 0) {
-                    return year.compareTo(otherYear);
-                }
-                if (month.compareTo(otherMonth) != 0) {
-                    return month.compareTo(otherMonth);
-                }
-                if (day.compareTo(otherDay) != 0) {
-                    return day.compareTo(otherDay);
-                }
-
-                return 0;
+            if (year.compareTo(otherYear) != 0) {
+                return year.compareTo(otherYear);
             }
+            if (month.compareTo(otherMonth) != 0) {
+                return month.compareTo(otherMonth);
+            }
+            if (day.compareTo(otherDay) != 0) {
+                return day.compareTo(otherDay);
+            }
+
+            return 0;
         };
     }
 

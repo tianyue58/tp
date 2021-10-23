@@ -5,6 +5,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_COMPANY_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DEADLINE_OF_APPLICATION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_INTERNSHIP_POSITION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PRIORITY;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_REQUIREMENT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_APPLICATIONS;
 
@@ -25,7 +26,7 @@ import seedu.address.model.application.Completion;
 import seedu.address.model.application.Deadline;
 import seedu.address.model.application.Position;
 import seedu.address.model.application.Priority;
-import seedu.address.model.application.Requirements;
+import seedu.address.model.application.Requirement;
 import seedu.address.model.application.Status;
 import seedu.address.model.tag.Tag;
 
@@ -46,6 +47,7 @@ public class EditCommand extends Command {
             + "[" + PREFIX_INTERNSHIP_POSITION + "POSITION] "
             + "[" + PREFIX_DEADLINE_OF_APPLICATION + "DEADLINE] "
             + "[" + PREFIX_PRIORITY + "PRIORITY] "
+            + "[" + PREFIX_REQUIREMENT + "REQUIREMENT]...\n"
             + "[" + PREFIX_TAG + "TAG]...\n"
             + "Example: " + COMMAND_WORD + " 1 "
             + PREFIX_INTERNSHIP_POSITION + "UI designer "
@@ -53,8 +55,7 @@ public class EditCommand extends Command {
 
     public static final String MESSAGE_EDIT_APPLICATION_SUCCESS = "Edited Application: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
-    public static final String MESSAGE_DUPLICATE_APPLICATION = "This application already "
-            + "exists in the address book.";
+    public static final String MESSAGE_DUPLICATE_APPLICATION = "This application already exists in the InternSHIP.";
 
     private final Index index;
     private final EditApplicationDescriptor editApplicationDescriptor;
@@ -108,10 +109,9 @@ public class EditCommand extends Command {
         Completion completion = applicationToEdit.getCompletion();
         Status status = applicationToEdit.getStatus();
         Priority priority = editApplicationDescriptor.getPriority().orElse(applicationToEdit.getPriority());
-        Requirements updatedRequirements = editApplicationDescriptor.getRequirements()
+        Set<Requirement> updatedRequirements = editApplicationDescriptor.getRequirements()
                 .orElse(applicationToEdit.getRequirements());
         Set<Tag> updatedTags = editApplicationDescriptor.getTags().orElse(applicationToEdit.getTags());
-
 
         return new Application(updatedCompany, updatedPosition, updatedDeadline, completion,
                 status, priority, updatedRequirements, updatedTags);
@@ -144,7 +144,7 @@ public class EditCommand extends Command {
         private Position position;
         private Deadline deadline;
         private Priority priority;
-        private Requirements requirements;
+        private Set<Requirement> requirements;
         private Set<Tag> tags;
 
         public EditApplicationDescriptor() {}
@@ -201,12 +201,22 @@ public class EditCommand extends Command {
             return Optional.ofNullable(priority);
         }
 
-        public void setRequirements(Requirements requirements) {
-            this.requirements = requirements;
+
+        /**
+         * Sets {@code tags} to this object's {@code tags}.
+         * A defensive copy of {@code tags} is used internally.
+         */
+        public void setRequirements(Set<Requirement> requirements) {
+            this.requirements = (requirements != null) ? new HashSet<>(requirements) : null;
         }
 
-        public Optional<Requirements> getRequirements() {
-            return Optional.ofNullable(requirements);
+        /**
+         * Returns an unmodifiable tag set, which throws {@code UnsupportedOperationException}
+         * if modification is attempted.
+         * Returns {@code Optional#empty()} if {@code tags} is null.
+         */
+        public Optional<Set<Requirement>> getRequirements() {
+            return (requirements != null) ? Optional.of(Collections.unmodifiableSet(requirements)) : Optional.empty();
         }
 
         /**

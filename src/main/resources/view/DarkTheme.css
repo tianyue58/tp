@@ -350,3 +350,10 @@
     -fx-background-radius: 2;
     -fx-font-size: 11;
 }
+
+#requirements {
+    -fx-hgap: 7;
+    -fx-vgap: 3;
+}
+
+}

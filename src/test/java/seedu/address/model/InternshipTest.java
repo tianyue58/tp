@@ -72,9 +72,9 @@ public class InternshipTest {
     @Test
     public void hasApplication_applicationWithSameIdentityFieldsInInternship_returnsTrue() {
         internship.addApplication(AMAZON);
-        Application editedAlice = new ApplicationBuilder(AMAZON).withTags(VALID_TAG_AMAZON)
+        Application editedApplication = new ApplicationBuilder(AMAZON).withTags(VALID_TAG_AMAZON)
                 .build();
-        assertTrue(internship.hasApplication(editedAlice));
+        assertTrue(internship.hasApplication(editedApplication));
     }
 
     @Test

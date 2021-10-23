@@ -29,21 +29,21 @@ public class Application {
     private final Set<Tag> tags = new HashSet<>();
 
     //Optional fields
-    private final Requirements requirements;
+    private final Set<Requirement> requirements = new HashSet<>();
 
     /**
      * Every field must be present and not null.
      */
     public Application(Company company, Position position, Deadline deadline, Completion completion, Status status,
-                       Priority priority, Requirements requirements, Set<Tag> tags) {
-        requireAllNonNull(company, position, deadline, tags, completion);
+                       Priority priority, Set<Requirement> requirements, Set<Tag> tags) {
+        requireAllNonNull(company, position, deadline, completion, requirements, tags);
         this.company = company;
         this.position = position;
         this.deadline = deadline;
         this.completion = completion;
         this.status = status;
         this.priority = priority;
-        this.requirements = requirements;
+        this.requirements.addAll(requirements);
         this.tags.addAll(tags);
     }
 
@@ -90,10 +90,11 @@ public class Application {
     }
 
     /**
-     * Returns the application requirements of the {@code Application}.
+     * Returns an immutable requirement set, which throws {@code UnsupportedOperationException}
+     * if modification is attempted.
      */
-    public Requirements getRequirements() {
-        return this.requirements;
+    public Set<Requirement> getRequirements() {
+        return Collections.unmodifiableSet(requirements);
     }
 
     /**
@@ -150,18 +151,24 @@ public class Application {
 
     @Override
     public String toString() {
-        final StringBuilder builder = new StringBuilder();
+        final StringBuilder builder = new StringBuilder("Company: ");
         builder.append(getCompany())
                 .append("; Position: ")
                 .append(getPosition())
-                .append("; Application deadline: ")
+                .append("; Deadline: ")
                 .append(getDeadline())
-                .append("; Application completion: ")
+                .append("; Completion: ")
                 .append(getCompletion())
-                .append("; Status(Decision of the application): ")
+                .append("; Decision: ")
                 .append(getStatus())
                 .append("; Priority: ")
                 .append(getPriority());
+
+        Set<Requirement> requirements = getRequirements();
+        if (!requirements.isEmpty()) {
+            builder.append("; Requirements: ");
+            requirements.forEach(builder::append);
+        }
 
         Set<Tag> tags = getTags();
         if (!tags.isEmpty()) {

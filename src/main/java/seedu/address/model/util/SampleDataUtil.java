@@ -12,27 +12,27 @@ import seedu.address.model.application.Completion;
 import seedu.address.model.application.Deadline;
 import seedu.address.model.application.Position;
 import seedu.address.model.application.Priority;
-import seedu.address.model.application.Requirements;
+import seedu.address.model.application.Requirement;
 import seedu.address.model.application.Status;
 import seedu.address.model.tag.Tag;
 
 /**
- * Contains utility methods for populating {@code AddressBook} with sample data.
+ * Contains utility methods for populating {@code Internship} with sample data.
  */
 public class SampleDataUtil {
     public static Application[] getSampleApplications() {
         return new Application[] { new Application(new Company("Shopee"), new Position("software engineer"),
                 new Deadline("2021-12-23"), new Completion("Uncompleted"),
-                new Status("Pending"), new Priority("Medium"), new Requirements("resume"), getTagSet()),
+                new Status("Pending"), new Priority("Medium"), getRequirementSet(), getTagSet()),
             new Application(new Company("Google"), new Position("frontend developer"),
                     new Deadline("2021-12-14"), new Completion("Uncompleted"),
-                    new Status("Pending"), new Priority("High"), new Requirements("resume, cv"), getTagSet()),
+                    new Status("Pending"), new Priority("High"), getRequirementSet(), getTagSet()),
             new Application(new Company("Huawei"), new Position("software engineer"),
                     new Deadline("2021-12-30"), new Completion("Uncompleted"),
-                    new Status("Pending"), new Priority("Medium"), new Requirements("cv"), getTagSet()),
+                    new Status("Pending"), new Priority("Medium"), getRequirementSet(), getTagSet()),
             new Application(new Company("Deutsche Bank"), new Position("software engineer"),
                     new Deadline("2021-12-25"), new Completion("Uncompleted"),
-                    new Status("Pending"), new Priority("Low"), new Requirements("coding challenge"), getTagSet()),
+                    new Status("Pending"), new Priority("Low"), getRequirementSet(), getTagSet()),
         };
     }
 
@@ -42,6 +42,15 @@ public class SampleDataUtil {
             sampleAb.addApplication(sampleApplication);
         }
         return sampleAb;
+    }
+
+    /**
+     * Returns a requirement set containing the list of strings given.
+     */
+    public static Set<Requirement> getRequirementSet(String... strings) {
+        return Arrays.stream(strings)
+                .map(Requirement::new)
+                .collect(Collectors.toSet());
     }
 
     /**
