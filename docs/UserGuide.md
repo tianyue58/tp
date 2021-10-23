@@ -118,11 +118,27 @@ Examples:
 
 Updates the status of an application.
 
-Format: `DECISION INDEX`
+**IMPORTANT NOTE:**
+The status of an application is the decision provided by the company
+on whether the candidate has been 'Accepted' or 'Rejected'. 
+
+When a new application is added, the status is 'Pending' by default as it 
+is assumed that the user has not received the decision from the company 
+yet. 
+
+To change the status to 'Accepted' the user can use the `accept INDEX` 
+command, and to change it to 'Rejected' the `reject INDEX` command 
+can be used.
+
+Format: `accept INDEX` or `reject INDEX`
+
+* Marks the entry at the specified `INDEX` as 'Accepted' or 'Rejected'. 
+* The index refers to the index number shown in the displayed application list.
+* The index must be a positive integer e.g. 1, 2, 3,...
 
 Examples:
-* `accept` followed by `1` marks the first entry as Accepted.
-* `reject` followed by `2` marks the second entry as Rejected.
+* `accept` followed by `1` marks the first entry as 'Accepted'.
+* `reject` followed by `2` marks the second entry as 'Rejected'.
 
 
 ### Listing all entries : `list`
