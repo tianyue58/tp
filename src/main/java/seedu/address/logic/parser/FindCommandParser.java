@@ -5,8 +5,6 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_COMPANY_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_COMPLETION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DEADLINE_OF_APPLICATION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_INTERNSHIP_POSITION;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_PRIORITY;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_REQUIREMENTS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_STATUS;
 
 import java.util.Arrays;
@@ -17,8 +15,6 @@ import seedu.address.model.application.CompletionContainsKeywordsPredicate;
 import seedu.address.model.application.DeadlineContainsKeywordsPredicate;
 import seedu.address.model.application.NameContainsKeywordsPredicate;
 import seedu.address.model.application.PositionContainsKeywordsPredicate;
-import seedu.address.model.application.PriorityContainsKeywordsPredicate;
-import seedu.address.model.application.RequirementsContainsKeywordsPredicate;
 import seedu.address.model.application.StatusContainsKeywordsPredicate;
 
 /**
@@ -35,7 +31,7 @@ public class FindCommandParser implements Parser<FindCommand> {
 
         ArgumentMultimap argMultimap =
                 ArgumentTokenizer.tokenize(args, PREFIX_COMPANY_NAME, PREFIX_INTERNSHIP_POSITION,
-                        PREFIX_DEADLINE_OF_APPLICATION, PREFIX_COMPLETION, PREFIX_STATUS, PREFIX_PRIORITY, PREFIX_REQUIREMENTS);
+                        PREFIX_DEADLINE_OF_APPLICATION, PREFIX_COMPLETION, PREFIX_STATUS);
 
         if (!argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(
@@ -90,26 +86,6 @@ public class FindCommandParser implements Parser<FindCommand> {
             }
             String[] statusKeywords = trimmedArgs.split("\\s+");
             return new FindCommand(new StatusContainsKeywordsPredicate(Arrays.asList(statusKeywords)));
-        }
-
-        if (argMultimap.getValue(PREFIX_PRIORITY).isPresent()) {
-            String trimmedArgs = argMultimap.getValue(PREFIX_PRIORITY).get().trim();
-            if (trimmedArgs.isEmpty()) {
-                throw new ParseException(
-                        String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindCommand.MESSAGE_USAGE));
-            }
-            String[] priorityKeywords = trimmedArgs.split("\\s+");
-            return new FindCommand(new PriorityContainsKeywordsPredicate(Arrays.asList(priorityKeywords)));
-        }
-
-        if (argMultimap.getValue(PREFIX_REQUIREMENTS).isPresent()) {
-            String trimmedArgs = argMultimap.getValue(PREFIX_REQUIREMENTS).get().trim();
-            if (trimmedArgs.isEmpty()) {
-                throw new ParseException(
-                        String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindCommand.MESSAGE_USAGE));
-            }
-            String[] requirementsKeywords = trimmedArgs.split("\\s+");
-            return new FindCommand(new RequirementsContainsKeywordsPredicate(Arrays.asList(requirementsKeywords)));
         }
 
         throw new ParseException(
