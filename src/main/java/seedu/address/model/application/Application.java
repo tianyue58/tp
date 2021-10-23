@@ -25,10 +25,8 @@ public class Application {
     private final Status status;
     private final Priority priority;
 
-    // Data fields
+    // Optional fields
     private final Set<Tag> tags = new HashSet<>();
-
-    //Optional fields
     private final Set<Requirement> requirements = new HashSet<>();
 
     /**
@@ -145,7 +143,6 @@ public class Application {
 
     @Override
     public int hashCode() {
-        // use this method for custom fields hashing instead of implementing your own
         return Objects.hash(company, position, deadline, completion, status, requirements, tags);
     }
 
@@ -156,7 +153,7 @@ public class Application {
                 .append("; Position: ")
                 .append(getPosition())
                 .append("; Deadline: ")
-                .append(getDeadline())
+                .append(getDeadline().toFormattedString())
                 .append("; Completion: ")
                 .append(getCompletion())
                 .append("; Decision: ")

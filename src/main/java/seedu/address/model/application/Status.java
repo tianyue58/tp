@@ -3,12 +3,14 @@ package seedu.address.model.application;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
+/**
+ * Represents an Application's status(decision given by the company) in InternSHIP.
+ * Is valid as declared in {@link #isValidStatus(String)}
+ */
 public class Status {
+
     public static final String MESSAGE_CONSTRAINTS = "Status can be 'Pending', 'Accepted' or 'Rejected'."
             + "It will be 'Pending' by default for a new Application that is added.";
-
-    // TODO:
-    //could add the 3 values that a status can take as enums
 
     /*
      * The first character of the status must not be

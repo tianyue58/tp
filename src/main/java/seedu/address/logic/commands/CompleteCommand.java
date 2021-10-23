@@ -36,6 +36,8 @@ public class CompleteCommand extends Command {
 
     /**
      * Creates an CompleteCommand to mark the specified {@code Application} as completed.
+     *
+     * @param targetIndex Index of the application to be marked as Completed.
      */
     public CompleteCommand(Index targetIndex) {
         this.targetIndex = targetIndex;

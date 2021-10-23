@@ -22,6 +22,9 @@ import seedu.address.model.application.Deadline;
 import seedu.address.model.application.Status;
 import seedu.address.testutil.EditApplicationDescriptorBuilder;
 
+/**
+ * Contains integration tests (interaction with the Model) and unit tests for RedoCommand.
+ */
 public class RedoCommandTest {
 
     private Model model;
