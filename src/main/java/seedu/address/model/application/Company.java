@@ -48,13 +48,10 @@ public class Company {
      * @return Comparator object that compares applications by their company names.
      */
     public static Comparator<Application> getComparator() {
-        return new Comparator<Application>() {
-            @Override
-            public int compare(Application application, Application otherApplication) {
-                String company = application.getCompany().fullCompanyName.toUpperCase();
-                String otherCompany = otherApplication.getCompany().fullCompanyName.toUpperCase();
-                return company.compareTo(otherCompany);
-            }
+        return (application, otherApplication) -> {
+            String company = application.getCompany().fullCompanyName.toUpperCase();
+            String otherCompany = otherApplication.getCompany().fullCompanyName.toUpperCase();
+            return company.compareTo(otherCompany);
         };
     }
 

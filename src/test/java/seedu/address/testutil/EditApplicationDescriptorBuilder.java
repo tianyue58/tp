@@ -10,11 +10,11 @@ import seedu.address.model.application.Company;
 import seedu.address.model.application.Deadline;
 import seedu.address.model.application.Position;
 import seedu.address.model.application.Priority;
-import seedu.address.model.application.Requirements;
+import seedu.address.model.application.Requirement;
 import seedu.address.model.tag.Tag;
 
 /**
- * A utility class to help with building EditPersonDescriptor objects.
+ * A utility class to help with building EditApplicationDescriptor objects.
  */
 public class EditApplicationDescriptorBuilder {
 
@@ -29,18 +29,18 @@ public class EditApplicationDescriptorBuilder {
     }
 
     /**
-     * Returns an {@code EditPersonDescriptor} with fields containing {@code application}'s details
+     * Returns an {@code EditApplicationDescriptor} with fields containing {@code application}'s details
      */
     public EditApplicationDescriptorBuilder(Application application) {
         descriptor = new EditApplicationDescriptor();
         descriptor.setCompany(application.getCompany());
         descriptor.setPosition(application.getPosition());
         descriptor.setDeadline(application.getDeadline());
-        descriptor.setRequirements(application.getRequirements());
+        descriptor.setDeadline(application.getDeadline());
     }
 
     /**
-     * Sets the {@code Name} of the {@code EditPersonDescriptor} that we are building.
+     * Sets the {@code Name} of the {@code EditApplicationDescriptor} that we are building.
      */
     public EditApplicationDescriptorBuilder withCompany(String company) {
         descriptor.setCompany(new Company(company));
@@ -48,7 +48,7 @@ public class EditApplicationDescriptorBuilder {
     }
 
     /**
-     * Sets the {@code Position} of the {@code EditPersonDescriptor} that we are building.
+     * Sets the {@code Position} of the {@code EditApplicationDescriptor} that we are building.
      */
     public EditApplicationDescriptorBuilder withPosition(String position) {
         descriptor.setPosition(new Position(position));
@@ -56,7 +56,7 @@ public class EditApplicationDescriptorBuilder {
     }
 
     /**
-     * Sets the {@code Email} of the {@code EditPersonDescriptor} that we are building.
+     * Sets the {@code Deadline} of the {@code EditApplicationDescriptor} that we are building.
      */
     public EditApplicationDescriptorBuilder withDeadline(String deadline) {
         descriptor.setDeadline(new Deadline(deadline));
@@ -64,15 +64,7 @@ public class EditApplicationDescriptorBuilder {
     }
 
     /**
-     * Sets the {@code Requirements} of the {@code EditPersonDescriptor} that we are building.
-     */
-    public EditApplicationDescriptorBuilder withRequirements(String requirements) {
-        descriptor.setRequirements(new Requirements(requirements));
-        return this;
-    }
-
-    /**
-     * Sets the {@code Priority} of the {@code EditPersonDescriptor} that we are building.
+     * Sets the {@code Priority} of the {@code EditApplicationDescriptor} that we are building.
      */
     public EditApplicationDescriptorBuilder withPriority(String priority) {
         descriptor.setPriority(new Priority(priority));
@@ -80,7 +72,16 @@ public class EditApplicationDescriptorBuilder {
     }
 
     /**
-     * Parses the {@code tags} into a {@code Set<Tag>} and set it to the {@code EditPersonDescriptor}
+     * Sets the {@code Requirements} of the {@code EditApplicationDescriptor} that we are building.
+     */
+    public EditApplicationDescriptorBuilder withRequirements(String... requirements) {
+        Set<Requirement> requirementSet = Stream.of(requirements).map(Requirement::new).collect(Collectors.toSet());
+        descriptor.setRequirements(requirementSet);
+        return this;
+    }
+
+    /**
+     * Parses the {@code tags} into a {@code Set<Tag>} and set it to the {@code EditApplicationDescriptor}
      * that we are building.
      */
     public EditApplicationDescriptorBuilder withTags(String... tags) {

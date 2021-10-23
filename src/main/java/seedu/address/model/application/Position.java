@@ -47,13 +47,10 @@ public class Position {
      * @return Comparator object that compares applications by their internship positions.
      */
     public static Comparator<Application> getComparator() {
-        return new Comparator<Application>() {
-            @Override
-            public int compare(Application application, Application otherApplication) {
-                String position = application.getPosition().value.toUpperCase();
-                String otherPosition = otherApplication.getPosition().value.toUpperCase();
-                return position.compareTo(otherPosition);
-            }
+        return (application, otherApplication) -> {
+            String position = application.getPosition().value.toUpperCase();
+            String otherPosition = otherApplication.getPosition().value.toUpperCase();
+            return position.compareTo(otherPosition);
         };
     }
 

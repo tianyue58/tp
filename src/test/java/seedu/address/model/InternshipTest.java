@@ -3,7 +3,7 @@ package seedu.address.model;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_AMAZON;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_ONE;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalApplications.AMAZON;
 import static seedu.address.testutil.TypicalApplications.getTypicalInternship;
@@ -45,7 +45,7 @@ public class InternshipTest {
     @Test
     public void resetData_withDuplicateApplications_throwsDuplicateApplicationException() {
         // Two applications with the same identity fields
-        Application editedAmazon = new ApplicationBuilder(AMAZON).withTags(VALID_TAG_AMAZON)
+        Application editedAmazon = new ApplicationBuilder(AMAZON).withTags(VALID_TAG_ONE)
                 .build();
         List<Application> newApplications = Arrays.asList(AMAZON, editedAmazon);
         InternshipStub newData = new InternshipStub(newApplications);
@@ -72,9 +72,9 @@ public class InternshipTest {
     @Test
     public void hasApplication_applicationWithSameIdentityFieldsInInternship_returnsTrue() {
         internship.addApplication(AMAZON);
-        Application editedAlice = new ApplicationBuilder(AMAZON).withTags(VALID_TAG_AMAZON)
+        Application editedApplication = new ApplicationBuilder(AMAZON).withTags(VALID_TAG_ONE)
                 .build();
-        assertTrue(internship.hasApplication(editedAlice));
+        assertTrue(internship.hasApplication(editedApplication));
     }
 
     @Test

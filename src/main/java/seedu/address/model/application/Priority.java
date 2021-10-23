@@ -42,7 +42,7 @@ public class Priority {
      * @return Comparator object that compares applications by their priority.
      */
     public static Comparator<Application> getComparator() {
-        return new Comparator<Application>() {
+        return new Comparator<>() {
             @Override
             public int compare(Application application, Application otherApplication) {
                 String priority = application.getPriority().value;

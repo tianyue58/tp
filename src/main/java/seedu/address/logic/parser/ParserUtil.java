@@ -14,7 +14,7 @@ import seedu.address.model.application.Completion;
 import seedu.address.model.application.Deadline;
 import seedu.address.model.application.Position;
 import seedu.address.model.application.Priority;
-import seedu.address.model.application.Requirements;
+import seedu.address.model.application.Requirement;
 import seedu.address.model.application.Status;
 import seedu.address.model.tag.Tag;
 
@@ -114,21 +114,6 @@ public class ParserUtil {
     }
 
     /**
-     * Parses a {@code String requirements} into an {@code Requirements}.
-     * Leading and trailing whitespaces will be trimmed.
-     *
-     * @throws ParseException if the given {@code requirements} is invalid.
-     */
-    public static Requirements parseRequirements(String requirements) throws ParseException {
-        requireNonNull(requirements);
-        String trimmedRequirements = requirements.trim();
-        if (!Requirements.isValidRequirements(trimmedRequirements)) {
-            throw new ParseException(Requirements.MESSAGE_CONSTRAINTS);
-        }
-        return new Requirements(trimmedRequirements);
-    }
-
-    /**
      * Parses a {@code String priority} into an {@code Priority}.
      * Leading and trailing whitespaces will be trimmed.
      *
@@ -141,6 +126,33 @@ public class ParserUtil {
             throw new ParseException(Priority.MESSAGE_CONSTRAINTS);
         }
         return new Priority(trimmedPriority);
+    }
+
+    /**
+     * Parses a {@code String tag} into a {@code Tag}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code tag} is invalid.
+     */
+    public static Requirement parseRequirement(String tag) throws ParseException {
+        requireNonNull(tag);
+        String trimmedRequirement = tag.trim();
+        if (!Requirement.isValidRequirement(trimmedRequirement)) {
+            throw new ParseException(Requirement.MESSAGE_CONSTRAINTS);
+        }
+        return new Requirement(trimmedRequirement);
+    }
+
+    /**
+     * Parses {@code Collection<String> requirements} into a {@code Set<Requirement>}.
+     */
+    public static Set<Requirement> parseRequirements(Collection<String> requirements) throws ParseException {
+        requireNonNull(requirements);
+        final Set<Requirement> tagSet = new HashSet<>();
+        for (String tagName : requirements) {
+            tagSet.add(parseRequirement(tagName));
+        }
+        return tagSet;
     }
 
     /**

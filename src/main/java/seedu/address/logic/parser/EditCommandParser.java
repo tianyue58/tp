@@ -6,7 +6,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_COMPANY_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DEADLINE_OF_APPLICATION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_INTERNSHIP_POSITION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PRIORITY;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_REQUIREMENTS;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_REQUIREMENT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 
 import java.util.Collection;
@@ -18,6 +18,7 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.EditCommand;
 import seedu.address.logic.commands.EditCommand.EditApplicationDescriptor;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.application.Requirement;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -34,7 +35,7 @@ public class EditCommandParser implements Parser<EditCommand> {
         requireNonNull(args);
         ArgumentMultimap argMultimap =
                 ArgumentTokenizer.tokenize(args, PREFIX_COMPANY_NAME, PREFIX_INTERNSHIP_POSITION,
-                        PREFIX_DEADLINE_OF_APPLICATION, PREFIX_PRIORITY, PREFIX_REQUIREMENTS, PREFIX_TAG);
+                        PREFIX_DEADLINE_OF_APPLICATION, PREFIX_PRIORITY, PREFIX_REQUIREMENT, PREFIX_TAG);
 
         Index index;
 
@@ -61,10 +62,9 @@ public class EditCommandParser implements Parser<EditCommand> {
             editApplicationDescriptor.setPriority(ParserUtil.parsePriority(
                     argMultimap.getValue(PREFIX_PRIORITY).get()));
         }
-        if (argMultimap.getValue(PREFIX_REQUIREMENTS).isPresent()) {
-            editApplicationDescriptor.setRequirements(ParserUtil.parseRequirements(
-                    argMultimap.getValueReq(PREFIX_REQUIREMENTS).get()));
-        }
+
+        parseRequirementsForEdit(argMultimap.getAllValues(PREFIX_REQUIREMENT))
+                .ifPresent(editApplicationDescriptor::setRequirements);
 
         parseTagsForEdit(argMultimap.getAllValues(PREFIX_TAG)).ifPresent(editApplicationDescriptor::setTags);
 
@@ -73,6 +73,22 @@ public class EditCommandParser implements Parser<EditCommand> {
         }
 
         return new EditCommand(index, editApplicationDescriptor);
+    }
+
+    /**
+     * Parses {@code Collection<String> requirements} into a {@code Set<Tag>} if {@code requirements} is non-empty.
+     * If {@code requirements} contain only one element which is an empty string, it will be parsed into a
+     * {@code Set<Tag>} containing zero requirements.
+     */
+    private Optional<Set<Requirement>> parseRequirementsForEdit(Collection<String> requirements) throws ParseException {
+        assert requirements != null;
+
+        if (requirements.isEmpty()) {
+            return Optional.empty();
+        }
+        Collection<String> requirementSet = requirements.size() == 1 && requirements.contains("")
+                ? Collections.emptySet() : requirements;
+        return Optional.of(ParserUtil.parseRequirements(requirementSet));
     }
 
     /**
