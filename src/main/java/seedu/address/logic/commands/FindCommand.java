@@ -6,7 +6,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_COMPLETION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DEADLINE_OF_APPLICATION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_INTERNSHIP_POSITION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PRIORITY;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_REQUIREMENTS;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_REQUIREMENT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_STATUS;
 
 import java.util.function.Predicate;
@@ -47,7 +47,7 @@ public class FindCommand extends Command {
             + "Find by completion: " + COMMAND_WORD + " " + PREFIX_COMPLETION + "uncompleted\n"
             + "Find by status: " + COMMAND_WORD + " " + PREFIX_STATUS + "accepted\n"
             + "Find by priority: " + COMMAND_WORD + " " + PREFIX_PRIORITY + "High\n"
-            + "Find by requirement: " + COMMAND_WORD + " " + PREFIX_REQUIREMENTS + "cv\n";
+            + "Find by requirement: " + COMMAND_WORD + " " + PREFIX_REQUIREMENT + "cv\n";
 
 
     public static final String MESSAGE_NO_MATCHING = "No matching result found in your Internship list";
