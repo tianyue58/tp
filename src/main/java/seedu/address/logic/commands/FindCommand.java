@@ -5,6 +5,8 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_COMPANY_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_COMPLETION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DEADLINE_OF_APPLICATION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_INTERNSHIP_POSITION;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_PRIORITY;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_REQUIREMENTS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_STATUS;
 
 import java.util.function.Predicate;
@@ -16,6 +18,8 @@ import seedu.address.model.application.CompletionContainsKeywordsPredicate;
 import seedu.address.model.application.DeadlineContainsKeywordsPredicate;
 import seedu.address.model.application.NameContainsKeywordsPredicate;
 import seedu.address.model.application.PositionContainsKeywordsPredicate;
+import seedu.address.model.application.PriorityContainsKeywordsPredicate;
+import seedu.address.model.application.RequirementsContainsKeywordsPredicate;
 import seedu.address.model.application.StatusContainsKeywordsPredicate;
 
 /**
@@ -27,7 +31,7 @@ public class FindCommand extends Command {
     public static final String COMMAND_WORD = "find";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Finds all applications whose names, positions, deadline, completion or status contain any of "
+            + ": Finds all applications whose names, positions, deadline, completion, status, priority or requirements contain any of "
             + "the specified keywords (case-insensitive) and displays them as a list with index numbers.\n"
             + "Parameters:\n"
             + PREFIX_COMPANY_NAME + "COMPANY_NAME "
@@ -40,7 +44,10 @@ public class FindCommand extends Command {
             + "Find by position: " + COMMAND_WORD + " " + PREFIX_INTERNSHIP_POSITION + "engineer\n"
             + "Find by deadline: " + COMMAND_WORD + " " + PREFIX_DEADLINE_OF_APPLICATION + "2021-11-12\n"
             + "Find by completion: " + COMMAND_WORD + " " + PREFIX_COMPLETION + "uncompleted\n"
-            + "Find by status: " + COMMAND_WORD + " " + PREFIX_STATUS + "accepted\n";
+            + "Find by status: " + COMMAND_WORD + " " + PREFIX_STATUS + "accepted\n"
+            + "Find by priority: " + COMMAND_WORD + " " + PREFIX_PRIORITY + "High\n"
+            + "Find by requirement: " + COMMAND_WORD + " " + PREFIX_REQUIREMENTS + "cv\n";
+
 
     public static final String MESSAGE_NO_MATCHING = "No matching result found in your Internship list";
 
@@ -63,6 +70,14 @@ public class FindCommand extends Command {
     }
 
     public FindCommand(StatusContainsKeywordsPredicate predicate) {
+        this.predicate = predicate;
+    }
+
+    public FindCommand(PriorityContainsKeywordsPredicate predicate) {
+        this.predicate = predicate;
+    }
+
+    public FindCommand(RequirementsContainsKeywordsPredicate predicate) {
         this.predicate = predicate;
     }
 
