@@ -171,11 +171,27 @@ Examples:
 * `find c/Grab` followed by `sort pr/` shows all the applications for the company Grab, sorted by priority, from higher to lower priority.
 
 
-### FIND : `find`
+### Finding entries by keyword: `find`
 
-Clears all entries from the application list.
+Finds all entries from the application list that match the keyword in the given field. More than one keyword and field can be provided.
 
-Format: `clear`
+Format: `find PREFIX keyword`
+
+* The fields available to find are:
+    * COMPANY_NAME `c/` 
+    * INTERNSHIP_POSITION `p/` 
+    * DEADLINE_OF_APPLICATION `d/` 
+    * COMPLETION `c1/` 
+    * STATUS `s/`
+    * PRIORITY `pr/`
+    * REQUIREMENTS `r/`
+
+* At least one field and one keyword must be provided.
+
+Examples:
+
+* `find pr/High` shows all the applications whose priority is High.
+* `find c1/Completed s/Pending` shows all the applications that match any of the given field and keyword.
 
 
 ### SOON : `soon`
@@ -226,9 +242,9 @@ Action | Format | Example | Notes
 **Clear** | `clear`
 **Complete** | `complete INDEX` | `complete 1` | the index refers to the index number shown in the displayed application list, and it must be a positive integer
 **Delete** | `delete INDEX` | `delete 3` | refer to `complete` command notes
-**Edit** | `edit INDEX [c/COMPANY_NAME] [p/INTERNSHIP_POSITION] [d/DEADLINE_OF_APPLICATION]` | `edit 1 c/Grab d/2021-12-20` |  multiple fields can be edited at the same time; they can be entered in any order, as long as the tag for each field is specified correctly
+**Edit** | `edit INDEX [c/COMPANY_NAME] [p/INTERNSHIP_POSITION] [d/DEADLINE_OF_APPLICATION] [pr/PRIORITY] [r/REQUIREMENTS]` | `edit 1 c/Grab d/2021-12-20` |  multiple fields can be edited at the same time; they can be entered in any order, as long as the tag for each field is specified correctly
 **Exit** | `exit`
-**Find** | `find`
+**Find** | `find PREFIX KEYWORD` |  `find pr/High` | `PREFIX` refers to the field to match the keyword (`c/`: company name, `p/`: internship position, `d/`: application deadline, `c1/`: completion, `s/`: decision status, `pr/`: application priority, `r/`: requirements)
 **Help** | `help`
 **List** | `list`
 **Redo** | `list`
