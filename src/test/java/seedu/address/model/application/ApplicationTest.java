@@ -17,6 +17,9 @@ import org.junit.jupiter.api.Test;
 
 import seedu.address.testutil.ApplicationBuilder;
 
+/**
+ * Contains tests for the Application entity.
+ */
 public class ApplicationTest {
 
     @Test
