@@ -23,7 +23,7 @@ public class SampleDataUtil {
     public static Application[] getSampleApplications() {
         return new Application[] { new Application(new Company("Shopee"), new Position("software engineer"),
                 new Deadline("2021-12-23"), new Completion("Uncompleted"),
-                new Status("Pending"), new Priority("Medium"),getRequirementSet(), getTagSet()),
+                new Status("Pending"), new Priority("Medium"), getRequirementSet(), getTagSet()),
             new Application(new Company("Google"), new Position("frontend developer"),
                     new Deadline("2021-12-14"), new Completion("Uncompleted"),
                     new Status("Pending"), new Priority("High"), getRequirementSet(), getTagSet()),

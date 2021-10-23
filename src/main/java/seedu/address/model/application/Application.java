@@ -36,7 +36,7 @@ public class Application {
      */
     public Application(Company company, Position position, Deadline deadline, Completion completion, Status status,
                        Priority priority, Set<Requirement> requirements, Set<Tag> tags) {
-        requireAllNonNull(company, position, deadline, completion ,requirements, tags);
+        requireAllNonNull(company, position, deadline, completion, requirements, tags);
         this.company = company;
         this.position = position;
         this.deadline = deadline;

@@ -4,12 +4,11 @@ import java.util.Comparator;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import seedu.address.model.application.Application;
-import seedu.address.model.application.Requirement;
+
 
 /**
  * An UI component that displays information of an {@code Application}.
@@ -63,9 +62,9 @@ public class ApplicationCard extends UiPart<Region> {
         application.getRequirements().stream()
                 .sorted(Comparator.comparing(requirement -> requirement.value))
                 .forEach(requirement -> requirements.getChildren().add(new Label(requirement.value)));
-//        application.getTags().stream()
-//                .sorted(Comparator.comparing(tag -> tag.tagName))
-//                .forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));
+        application.getTags().stream()
+                .sorted(Comparator.comparing(tag -> tag.tagName))
+                .forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));
         completion.setText(application.getCompletion().value);
     }
 

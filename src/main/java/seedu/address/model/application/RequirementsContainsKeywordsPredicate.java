@@ -21,7 +21,9 @@ public class RequirementsContainsKeywordsPredicate implements Predicate<Applicat
         for (Requirement requirement: application.getRequirements()) {
             boolean found = keywords.stream()
                     .anyMatch(keyword -> StringUtil.containsWordIgnoreCase(requirement.value, keyword));
-            if (found) return true;
+            if (found) {
+                return true;
+            }
         }
         return false;
 

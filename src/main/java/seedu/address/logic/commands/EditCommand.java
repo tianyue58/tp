@@ -47,7 +47,7 @@ public class EditCommand extends Command {
             + "[" + PREFIX_INTERNSHIP_POSITION + "POSITION] "
             + "[" + PREFIX_DEADLINE_OF_APPLICATION + "DEADLINE] "
             + "[" + PREFIX_PRIORITY + "PRIORITY] "
-            +  "[" + PREFIX_REQUIREMENT + "REQUIREMENT]...\n"
+            + "[" + PREFIX_REQUIREMENT + "REQUIREMENT]...\n"
             + "[" + PREFIX_TAG + "TAG]...\n"
             + "Example: " + COMMAND_WORD + " 1 "
             + PREFIX_INTERNSHIP_POSITION + "UI designer "
