@@ -34,9 +34,9 @@ public class Deadline {
     }
 
     /**
-     * Returns the date format of the deadline
+     * Returns the LocalDate object of the deadline.
      *
-     * @return The LocalDate object
+     * @return The LocalDate object.
      */
     public LocalDate getDate() {
         return this.date;
