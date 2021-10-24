@@ -28,7 +28,6 @@ import seedu.address.model.application.Application;
 import seedu.address.model.application.Company;
 import seedu.address.model.application.Deadline;
 import seedu.address.model.application.Position;
-import seedu.address.model.tag.Tag;
 import seedu.address.testutil.ApplicationBuilder;
 
 public class AddCommandParserTest {

@@ -12,7 +12,6 @@ import seedu.address.logic.commands.AddCommand;
 import seedu.address.logic.commands.EditCommand.EditApplicationDescriptor;
 import seedu.address.model.application.Application;
 import seedu.address.model.application.Requirement;
-import seedu.address.model.tag.Tag;
 
 /**
  * A utility class for Application.

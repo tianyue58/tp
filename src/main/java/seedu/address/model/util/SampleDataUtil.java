@@ -14,7 +14,6 @@ import seedu.address.model.application.Position;
 import seedu.address.model.application.Priority;
 import seedu.address.model.application.Requirement;
 import seedu.address.model.application.Status;
-import seedu.address.model.tag.Tag;
 
 /**
  * Contains utility methods for populating {@code Internship} with sample data.
@@ -23,16 +22,16 @@ public class SampleDataUtil {
     public static Application[] getSampleApplications() {
         return new Application[] { new Application(new Company("Shopee"), new Position("software engineer"),
                 new Deadline("2021-12-23"), new Completion("Uncompleted"),
-                new Status("Pending"), new Priority("Medium"), getRequirementSet(), getTagSet()),
+                new Status("Pending"), new Priority("Medium"), getRequirementSet()),
             new Application(new Company("Google"), new Position("frontend developer"),
                     new Deadline("2021-12-14"), new Completion("Uncompleted"),
-                    new Status("Pending"), new Priority("High"), getRequirementSet(), getTagSet()),
+                    new Status("Pending"), new Priority("High"), getRequirementSet()),
             new Application(new Company("Huawei"), new Position("software engineer"),
                     new Deadline("2021-12-30"), new Completion("Uncompleted"),
-                    new Status("Pending"), new Priority("Medium"), getRequirementSet(), getTagSet()),
+                    new Status("Pending"), new Priority("Medium"), getRequirementSet()),
             new Application(new Company("Deutsche Bank"), new Position("software engineer"),
                     new Deadline("2021-12-25"), new Completion("Uncompleted"),
-                    new Status("Pending"), new Priority("Low"), getRequirementSet(), getTagSet()),
+                    new Status("Pending"), new Priority("Low"), getRequirementSet()),
         };
     }
 
@@ -50,15 +49,6 @@ public class SampleDataUtil {
     public static Set<Requirement> getRequirementSet(String... strings) {
         return Arrays.stream(strings)
                 .map(Requirement::new)
-                .collect(Collectors.toSet());
-    }
-
-    /**
-     * Returns a tag set containing the list of strings given.
-     */
-    public static Set<Tag> getTagSet(String... strings) {
-        return Arrays.stream(strings)
-                .map(Tag::new)
                 .collect(Collectors.toSet());
     }
 

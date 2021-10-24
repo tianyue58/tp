@@ -18,7 +18,6 @@ import seedu.address.model.application.Position;
 import seedu.address.model.application.Priority;
 import seedu.address.model.application.Requirement;
 import seedu.address.model.application.Status;
-import seedu.address.model.tag.Tag;
 
 /**
  * Jackson-friendly version of {@link Application}.
@@ -34,7 +33,6 @@ class JsonAdaptedApplication {
     private final String completion;
     private final String priority;
     private final List<JsonAdaptedRequirement> requirements = new ArrayList<>();
-    private final List<JsonAdaptedTag> tagged = new ArrayList<>();
 
     /**
      * Constructs a {@code JsonAdaptedApplication} with the given application details.
@@ -46,9 +44,8 @@ class JsonAdaptedApplication {
                                   @JsonProperty("completion") String completion,
                                   @JsonProperty("status") String status,
                                   @JsonProperty("priority") String priority,
-                                  @JsonProperty("requirements") List<JsonAdaptedRequirement> requirements,
-                                  @JsonProperty("tagged") List<JsonAdaptedTag> tagged
-                                  ) {
+                                  @JsonProperty("requirements") List<JsonAdaptedRequirement> requirements
+    ) {
         this.company = company;
         this.position = position;
         this.deadline = deadline;
@@ -57,9 +54,6 @@ class JsonAdaptedApplication {
         this.priority = priority;
         if (requirements != null) {
             this.requirements.addAll(requirements);
-        }
-        if (tagged != null) {
-            this.tagged.addAll(tagged);
         }
     }
 
@@ -77,10 +71,6 @@ class JsonAdaptedApplication {
         requirements.addAll(source.getRequirements().stream()
                 .map(JsonAdaptedRequirement::new)
                 .collect(Collectors.toList()));
-
-        tagged.addAll(source.getTags().stream()
-                .map(JsonAdaptedTag::new)
-                .collect(Collectors.toList()));
     }
 
     /**
@@ -89,11 +79,6 @@ class JsonAdaptedApplication {
      * @throws IllegalValueException if there were any data constraints violated in the adapted application.
      */
     public Application toModelType() throws IllegalValueException {
-        final List<Tag> applicationTags = new ArrayList<>();
-        for (JsonAdaptedTag tag : tagged) {
-            applicationTags.add(tag.toModelType());
-        }
-
         final List<Requirement> applicationRequirements = new ArrayList<>();
         for (JsonAdaptedRequirement requirement : requirements) {
             applicationRequirements.add(requirement.toModelType());
@@ -155,10 +140,8 @@ class JsonAdaptedApplication {
 
         final Set<Requirement> modelRequirement = new HashSet<>(applicationRequirements);
 
-        final Set<Tag> modelTags = new HashSet<>(applicationTags);
-
         return new Application(modelName, modelPosition, modelDeadline, modelCompletion, modelStatus, modelPriority,
-                modelRequirement, modelTags);
+                modelRequirement);
     }
 
 }

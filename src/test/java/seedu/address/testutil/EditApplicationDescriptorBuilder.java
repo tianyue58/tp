@@ -11,7 +11,6 @@ import seedu.address.model.application.Deadline;
 import seedu.address.model.application.Position;
 import seedu.address.model.application.Priority;
 import seedu.address.model.application.Requirement;
-import seedu.address.model.tag.Tag;
 
 /**
  * A utility class to help with building EditApplicationDescriptor objects.

@@ -7,7 +7,6 @@ import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
-
 /**
  * Represents an Application in InternSHIP.
  * Guarantees: details are present and not null, field values are validated, immutable.
@@ -154,7 +153,6 @@ public class Application {
             builder.append("; Requirements: ");
             requirements.forEach(builder::append);
         }
-
 
         return builder.toString();
     }
