@@ -17,7 +17,6 @@ import seedu.address.model.application.Position;
 import seedu.address.model.application.Priority;
 import seedu.address.model.application.Requirement;
 import seedu.address.model.application.Status;
-import seedu.address.model.tag.Tag;
 
 /**
  * Sets the Completion of an application to "Completed".
@@ -61,10 +60,9 @@ public class CompleteCommand extends Command {
         Status status = applicationToComplete.getStatus();
         Priority priority = applicationToComplete.getPriority();
         Set<Requirement> requirementList = applicationToComplete.getRequirements();
-        Set<Tag> tagList = applicationToComplete.getTags();
 
         Application completedApplication = new Application(company, position, deadline, completion, status, priority,
-                requirementList, tagList);
+                requirementList);
         model.setApplication(applicationToComplete, completedApplication);
         model.commitInternship(model.getInternship());
 

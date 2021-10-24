@@ -18,7 +18,6 @@ import seedu.address.model.application.Position;
 import seedu.address.model.application.Priority;
 import seedu.address.model.application.Requirement;
 import seedu.address.model.application.Status;
-import seedu.address.model.tag.Tag;
 
 /**
  * Changes the status of an application in InternSHIP to Accepted.
@@ -67,10 +66,9 @@ public class AcceptCommand extends Command {
         Status status = new Status("Accepted");
         Priority priority = applicationToComplete.getPriority();
         Set<Requirement> requirementList = applicationToComplete.getRequirements();
-        Set<Tag> tagList = applicationToComplete.getTags();
 
         Application completedApplication = new Application(company, position, deadline, completion, status, priority,
-                requirementList, tagList);
+                requirementList);
         model.setApplication(applicationToComplete, completedApplication);
         model.commitInternship(model.getInternship());
 

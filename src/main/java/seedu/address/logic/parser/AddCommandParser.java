@@ -5,7 +5,6 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_COMPANY_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DEADLINE_OF_APPLICATION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_INTERNSHIP_POSITION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_REQUIREMENT;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 
 import java.util.Set;
 import java.util.stream.Stream;
@@ -20,7 +19,6 @@ import seedu.address.model.application.Position;
 import seedu.address.model.application.Priority;
 import seedu.address.model.application.Requirement;
 import seedu.address.model.application.Status;
-import seedu.address.model.tag.Tag;
 
 /**
  * Parses input arguments and creates a new AddCommand object
@@ -35,7 +33,7 @@ public class AddCommandParser implements Parser<AddCommand> {
     public AddCommand parse(String args) throws ParseException {
         ArgumentMultimap argMultimap =
                 ArgumentTokenizer.tokenize(args, PREFIX_COMPANY_NAME, PREFIX_INTERNSHIP_POSITION,
-                        PREFIX_DEADLINE_OF_APPLICATION, PREFIX_REQUIREMENT, PREFIX_TAG);
+                        PREFIX_DEADLINE_OF_APPLICATION, PREFIX_REQUIREMENT);
 
         if (!arePrefixesPresent(argMultimap, PREFIX_COMPANY_NAME, PREFIX_INTERNSHIP_POSITION,
                 PREFIX_DEADLINE_OF_APPLICATION)
@@ -50,10 +48,9 @@ public class AddCommandParser implements Parser<AddCommand> {
         Status status = new Status("Pending");
         Priority priority = new Priority("Medium");
         Set<Requirement> requirementList = ParserUtil.parseRequirements(argMultimap.getAllValues(PREFIX_REQUIREMENT));
-        Set<Tag> tagList = ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));
 
         Application application = new Application(company, position, deadline, completion, status, priority,
-                requirementList, tagList);
+                requirementList);
 
         return new AddCommand(application);
     }

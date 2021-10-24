@@ -11,7 +11,6 @@ import seedu.address.model.application.Deadline;
 import seedu.address.model.application.Position;
 import seedu.address.model.application.Priority;
 import seedu.address.model.application.Requirement;
-import seedu.address.model.tag.Tag;
 
 /**
  * A utility class to help with building EditApplicationDescriptor objects.
@@ -79,17 +78,6 @@ public class EditApplicationDescriptorBuilder {
         descriptor.setRequirements(requirementSet);
         return this;
     }
-
-    /**
-     * Parses the {@code tags} into a {@code Set<Tag>} and set it to the {@code EditApplicationDescriptor}
-     * that we are building.
-     */
-    public EditApplicationDescriptorBuilder withTags(String... tags) {
-        Set<Tag> tagSet = Stream.of(tags).map(Tag::new).collect(Collectors.toSet());
-        descriptor.setTags(tagSet);
-        return this;
-    }
-
 
     public EditApplicationDescriptor build() {
         return descriptor;

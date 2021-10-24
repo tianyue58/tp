@@ -7,7 +7,6 @@ import static seedu.address.logic.commands.CommandTestUtil.DESC_BYTEDANCE;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BYTEDANCE;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_POSITION_AMAZON;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_REQUIREMENTS_AMAZON;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_AMAZON;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.logic.commands.CommandTestUtil.showApplicationAtIndex;
@@ -38,8 +37,7 @@ public class EditCommandTest {
     @Test
     public void execute_allFieldsSpecifiedUnfilteredList_success() {
         Application editedApplication = new ApplicationBuilder()
-                .withRequirements(VALID_REQUIREMENTS_AMAZON)
-                .withTags(VALID_TAG_AMAZON).build();
+                .withRequirements(VALID_REQUIREMENTS_AMAZON).build();
 
         EditApplicationDescriptor descriptor = new EditApplicationDescriptorBuilder(editedApplication).build();
         EditCommand editCommand = new EditCommand(INDEX_FIRST_APPLICATION, descriptor);
@@ -59,10 +57,10 @@ public class EditCommandTest {
 
         ApplicationBuilder applicationInList = new ApplicationBuilder(lastApplication);
         Application editedApplication = applicationInList.withCompany(VALID_NAME_BYTEDANCE)
-                .withPosition(VALID_POSITION_AMAZON).withTags(VALID_TAG_AMAZON).build();
+                .withPosition(VALID_POSITION_AMAZON).build();
 
         EditApplicationDescriptor descriptor = new EditApplicationDescriptorBuilder().withCompany(VALID_NAME_BYTEDANCE)
-                .withPosition(VALID_POSITION_AMAZON).withTags(VALID_TAG_AMAZON).build();
+                .withPosition(VALID_POSITION_AMAZON).build();
 
         EditCommand editCommand = new EditCommand(indexLastApplication, descriptor);
 

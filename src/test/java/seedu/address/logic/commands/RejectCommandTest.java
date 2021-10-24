@@ -26,7 +26,6 @@ import seedu.address.model.application.Position;
 import seedu.address.model.application.Priority;
 import seedu.address.model.application.Requirement;
 import seedu.address.model.application.Status;
-import seedu.address.model.tag.Tag;
 
 /**
  * Contains integration tests (interaction with the Model) and unit tests for
@@ -69,10 +68,9 @@ public class RejectCommandTest {
         Status status = new Status("Rejected");
         Priority priority = applicationToReject.getPriority();
         Set<Requirement> requirementList = applicationToReject.getRequirements();
-        Set<Tag> tagList = applicationToReject.getTags();
 
         Application addedApplication = new Application(company, position, deadline, completion, status, priority,
-                requirementList, tagList);
+                requirementList);
 
         String expectedMessage = String.format(RejectCommand.MESSAGE_SUCCESS, addedApplication);
         ModelManager expectedModel = new ModelManager(model.getInternship(), new UserPrefs());

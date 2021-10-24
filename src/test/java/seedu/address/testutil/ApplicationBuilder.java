@@ -11,7 +11,6 @@ import seedu.address.model.application.Position;
 import seedu.address.model.application.Priority;
 import seedu.address.model.application.Requirement;
 import seedu.address.model.application.Status;
-import seedu.address.model.tag.Tag;
 import seedu.address.model.util.SampleDataUtil;
 
 /**
@@ -33,7 +32,6 @@ public class ApplicationBuilder {
     private Status status;
     private Priority priority;
     private Set<Requirement> requirements;
-    private Set<Tag> tags;
 
     /**
      * Creates a {@code ApplicationBuilder} with the default details.
@@ -46,7 +44,6 @@ public class ApplicationBuilder {
         status = new Status(DEFAULT_STATUS);
         priority = new Priority(DEFAULT_PRIORITY);
         requirements = new HashSet<>();
-        tags = new HashSet<>();
     }
 
     /**
@@ -57,7 +54,6 @@ public class ApplicationBuilder {
         position = applicationToCopy.getPosition();
         deadline = applicationToCopy.getDeadline();
         status = applicationToCopy.getStatus();
-        tags = new HashSet<>(applicationToCopy.getTags());
         completion = applicationToCopy.getCompletion();
         priority = applicationToCopy.getPriority();
         requirements = new HashSet<>(applicationToCopy.getRequirements());
@@ -119,16 +115,9 @@ public class ApplicationBuilder {
         return this;
     }
 
-    /**
-     * Parses the {@code tags} into a {@code Set<Tag>} and set it to the {@code Application} that we are building.
-     */
-    public ApplicationBuilder withTags(String ... tags) {
-        this.tags = SampleDataUtil.getTagSet(tags);
-        return this;
-    }
 
     public Application build() {
-        return new Application(company, position, deadline, completion, status, priority, requirements, tags);
+        return new Application(company, position, deadline, completion, status, priority, requirements);
     }
 
 }

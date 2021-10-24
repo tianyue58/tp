@@ -81,7 +81,7 @@ public class LogicManagerTest {
         // Execute add command
         String addCommand = AddCommand.COMMAND_WORD + NAME_DESC_AMAZON + POSITION_DESC_AMAZON
                 + DEADLINE_DESC_AMAZON + REQUIREMENTS_DESC_AMAZON;
-        Application expectedApplication = new ApplicationBuilder(AMAZON).withTags().build();
+        Application expectedApplication = new ApplicationBuilder(AMAZON).build();
         ModelManager expectedModel = new ModelManager();
         expectedModel.addApplication(expectedApplication);
         String expectedMessage = LogicManager.FILE_OPS_ERROR_MESSAGE + DUMMY_IO_EXCEPTION;

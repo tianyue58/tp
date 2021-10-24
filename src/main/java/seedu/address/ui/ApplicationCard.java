@@ -44,8 +44,6 @@ public class ApplicationCard extends UiPart<Region> {
     private Label priority;
     @FXML
     private FlowPane requirements;
-    @FXML
-    private FlowPane tags;
 
     /**
      * Creates an {@code ApplicationCode} with the given {@code Application} and index to display.
@@ -62,9 +60,6 @@ public class ApplicationCard extends UiPart<Region> {
         application.getRequirements().stream()
                 .sorted(Comparator.comparing(requirement -> requirement.value))
                 .forEach(requirement -> requirements.getChildren().add(new Label(requirement.value)));
-        application.getTags().stream()
-                .sorted(Comparator.comparing(tag -> tag.tagName))
-                .forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));
         completion.setText(application.getCompletion().value);
     }
 

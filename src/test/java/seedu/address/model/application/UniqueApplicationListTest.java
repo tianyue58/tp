@@ -3,7 +3,6 @@ package seedu.address.model.application;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_AMAZON;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalApplications.AMAZON;
 import static seedu.address.testutil.TypicalApplications.BYTEDANCE;
@@ -41,7 +40,7 @@ public class UniqueApplicationListTest {
     @Test
     public void contains_applicationWithSameIdentityFieldsInList_returnsTrue() {
         uniqueApplicationList.add(AMAZON);
-        Application editedAlice = new ApplicationBuilder(AMAZON).withTags(VALID_TAG_AMAZON)
+        Application editedAlice = new ApplicationBuilder(AMAZON)
                 .build();
         assertTrue(uniqueApplicationList.contains(editedAlice));
     }
@@ -84,7 +83,7 @@ public class UniqueApplicationListTest {
     @Test
     public void setApplication_editedApplicationHasSameIdentity_success() {
         uniqueApplicationList.add(AMAZON);
-        Application editedAlice = new ApplicationBuilder(AMAZON).withTags(VALID_TAG_AMAZON)
+        Application editedAlice = new ApplicationBuilder(AMAZON)
                 .build();
         uniqueApplicationList.setApplication(AMAZON, editedAlice);
         UniqueApplicationList expectedUniqueApplicationList = new UniqueApplicationList();
