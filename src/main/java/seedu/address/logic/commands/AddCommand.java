@@ -4,7 +4,7 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_COMPANY_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DEADLINE_OF_APPLICATION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_INTERNSHIP_POSITION;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_REQUIREMENT;
 
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
@@ -22,12 +22,12 @@ public class AddCommand extends Command {
             + PREFIX_COMPANY_NAME + "COMPANY_NAME "
             + PREFIX_INTERNSHIP_POSITION + "INTERNSHIP_POSITION "
             + PREFIX_DEADLINE_OF_APPLICATION + "DEADLINE_OF_APPLICATION "
-            + "[" + PREFIX_TAG + "TAG]...\n"
+            + "[" + PREFIX_REQUIREMENT + "REQUIREMENT]...\n"
             + "Example: " + COMMAND_WORD + " "
             + PREFIX_COMPANY_NAME + "Shopee "
             + PREFIX_INTERNSHIP_POSITION + "software engineer "
             + PREFIX_DEADLINE_OF_APPLICATION + "2021-12-12 "
-            + PREFIX_TAG + "Pending";
+            + PREFIX_REQUIREMENT + "Resume";
 
     public static final String MESSAGE_SUCCESS = "New application added: %1$s";
     public static final String MESSAGE_DUPLICATE_APPLICATION = "This application already exists in InternSHIP";

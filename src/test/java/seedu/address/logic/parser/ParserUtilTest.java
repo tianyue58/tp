@@ -20,7 +20,6 @@ import seedu.address.model.application.Deadline;
 import seedu.address.model.application.Position;
 import seedu.address.model.application.Priority;
 import seedu.address.model.application.Status;
-import seedu.address.model.tag.Tag;
 
 public class ParserUtilTest {
     private static final String INVALID_COMPANY = "3$#*(";

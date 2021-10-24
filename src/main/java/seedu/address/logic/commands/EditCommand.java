@@ -6,7 +6,6 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_DEADLINE_OF_APPLICATIO
 import static seedu.address.logic.parser.CliSyntax.PREFIX_INTERNSHIP_POSITION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PRIORITY;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_REQUIREMENT;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_APPLICATIONS;
 
 import java.util.Collections;
@@ -28,7 +27,6 @@ import seedu.address.model.application.Position;
 import seedu.address.model.application.Priority;
 import seedu.address.model.application.Requirement;
 import seedu.address.model.application.Status;
-import seedu.address.model.tag.Tag;
 
 /**
  * Edits the details of an existing application in the address book.
@@ -48,7 +46,6 @@ public class EditCommand extends Command {
             + "[" + PREFIX_DEADLINE_OF_APPLICATION + "DEADLINE] "
             + "[" + PREFIX_PRIORITY + "PRIORITY] "
             + "[" + PREFIX_REQUIREMENT + "REQUIREMENT]...\n"
-            + "[" + PREFIX_TAG + "TAG]...\n"
             + "Example: " + COMMAND_WORD + " 1 "
             + PREFIX_INTERNSHIP_POSITION + "UI designer "
             + PREFIX_DEADLINE_OF_APPLICATION + "2021-12-23";
@@ -111,10 +108,9 @@ public class EditCommand extends Command {
         Priority priority = editApplicationDescriptor.getPriority().orElse(applicationToEdit.getPriority());
         Set<Requirement> updatedRequirements = editApplicationDescriptor.getRequirements()
                 .orElse(applicationToEdit.getRequirements());
-        Set<Tag> updatedTags = editApplicationDescriptor.getTags().orElse(applicationToEdit.getTags());
 
         return new Application(updatedCompany, updatedPosition, updatedDeadline, completion,
-                status, priority, updatedRequirements, updatedTags);
+                status, priority, updatedRequirements);
     }
 
     @Override
@@ -145,7 +141,6 @@ public class EditCommand extends Command {
         private Deadline deadline;
         private Priority priority;
         private Set<Requirement> requirements;
-        private Set<Tag> tags;
 
         public EditApplicationDescriptor() {}
 
@@ -159,14 +154,13 @@ public class EditCommand extends Command {
             setDeadline(toCopy.deadline);
             setPriority(toCopy.priority);
             setRequirements(toCopy.requirements);
-            setTags(toCopy.tags);
         }
 
         /**
          * Returns true if at least one field is edited.
          */
         public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyNonNull(company, position, deadline, priority, requirements, tags);
+            return CollectionUtil.isAnyNonNull(company, position, deadline, priority, requirements);
         }
 
         public void setCompany(Company company) {
@@ -219,23 +213,6 @@ public class EditCommand extends Command {
             return (requirements != null) ? Optional.of(Collections.unmodifiableSet(requirements)) : Optional.empty();
         }
 
-        /**
-         * Sets {@code tags} to this object's {@code tags}.
-         * A defensive copy of {@code tags} is used internally.
-         */
-        public void setTags(Set<Tag> tags) {
-            this.tags = (tags != null) ? new HashSet<>(tags) : null;
-        }
-
-        /**
-         * Returns an unmodifiable tag set, which throws {@code UnsupportedOperationException}
-         * if modification is attempted.
-         * Returns {@code Optional#empty()} if {@code tags} is null.
-         */
-        public Optional<Set<Tag>> getTags() {
-            return (tags != null) ? Optional.of(Collections.unmodifiableSet(tags)) : Optional.empty();
-        }
-
         @Override
         public boolean equals(Object other) {
             // short circuit if same object
@@ -255,8 +232,7 @@ public class EditCommand extends Command {
                     && getPosition().equals(e.getPosition())
                     && getDeadline().equals(e.getDeadline())
                     && getPriority().equals(e.getPriority())
-                    && getRequirements().equals(e.getRequirements())
-                    && getTags().equals(e.getTags());
+                    && getRequirements().equals(e.getRequirements());
         }
     }
 }

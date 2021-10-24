@@ -39,7 +39,6 @@ import seedu.address.logic.commands.EditCommand.EditApplicationDescriptor;
 import seedu.address.model.application.Company;
 import seedu.address.model.application.Position;
 import seedu.address.model.application.Priority;
-import seedu.address.model.tag.Tag;
 import seedu.address.testutil.EditApplicationDescriptorBuilder;
 
 public class EditCommandParserTest {

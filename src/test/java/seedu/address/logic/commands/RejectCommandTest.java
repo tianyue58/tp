@@ -26,7 +26,6 @@ import seedu.address.model.application.Position;
 import seedu.address.model.application.Priority;
 import seedu.address.model.application.Requirement;
 import seedu.address.model.application.Status;
-import seedu.address.model.tag.Tag;
 
 /**
  * Contains integration tests (interaction with the Model) and unit tests for
