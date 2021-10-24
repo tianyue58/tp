@@ -9,7 +9,9 @@ title: Developer Guide
 
 ## **Acknowledgements**
 
-* {list here sources of all reused/adapted ideas, code, documentation, and third-party libraries -- include links to the original source as well}
+* While this product uses a generic application called [AddressBook-Level3 (AB3)](https://se-education.org) 
+as the starting point, the idea for some advanced features, such as `undo` and `redo`, are adopted from 
+[AddressBook-Level4 (AB4)](https://se-education.org/addressbook-level4).
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -93,7 +95,7 @@ Here's a (partial) class diagram of the `Logic` component:
 <img src="images/LogicClassDiagram.png" width="550"/>
 
 How the `Logic` component works:
-1. When `Logic` is called upon to execute a command, it uses the `AddressBookParser` class to parse the user command.
+1. When `Logic` is called upon to execute a command, it uses the `InternshipParser` class to parse the user command.
 1. This results in a `Command` object (more precisely, an object of one of its subclasses e.g., `AddCommand`) which is executed by the `LogicManager`.
 1. The command can communicate with the `Model` when it is executed (e.g. to add an application).
 1. The result of the command execution is encapsulated as a `CommandResult` object which is returned back from `Logic`.
@@ -110,7 +112,7 @@ Here are the other classes in `Logic` (omitted from the class diagram above) tha
 <img src="images/ParserClasses.png" width="600"/>
 
 How the parsing works:
-* When called upon to parse a user command, the `AddressBookParser` class creates an `XYZCommandParser` (`XYZ` is a placeholder for the specific command name e.g., `AddCommandParser`) which uses the other classes shown above to parse the user command and create a `XYZCommand` object (e.g., `AddCommand`) which the `AddressBookParser` returns back as a `Command` object.
+* When called upon to parse a user command, the `InternshipParser` class creates an `XYZCommandParser` (`XYZ` is a placeholder for the specific command name e.g., `AddCommandParser`) which uses the other classes shown above to parse the user command and create a `XYZCommand` object (e.g., `AddCommand`) which the `InternshipParser` returns back as a `Command` object.
 * All `XYZCommandParser` classes (e.g., `AddCommandParser`, `DeleteCommandParser`, ...) inherit from the `Parser` interface so that they can be treated similarly where possible e.g, during testing.
 
 ### Model component
@@ -126,7 +128,7 @@ The `Model` component,
 * stores a `UserPref` object that represents the user’s preferences. This is exposed to the outside as a `ReadOnlyUserPref` objects.
 * does not depend on any of the other three components (as the `Model` represents data entities of the domain, they should make sense on their own without depending on other components)
 
-<div markdown="span" class="alert alert-info">:information_source: **Note:** An alternative (arguably, a more OOP) model is given below. It has a `Tag` list in the `AddressBook`, which `Person` references. This allows `AddressBook` to only require one `Tag` object per unique tag, instead of each `Person` needing their own `Tag` objects.<br>
+<div markdown="span" class="alert alert-info">:information_source: **Note:** An alternative (arguably, a more OOP) model is given below. It has a `Tag` list in the `Internship`, which `Person` references. This allows `Internship` to only require one `Tag` object per unique tag, instead of each `Person` needing their own `Tag` objects.<br>
 
 <img src="images/BetterModelClassDiagram.png" width="450" />
 
@@ -141,7 +143,7 @@ The `Model` component,
 
 The `Storage` component,
 * can save both address book data and user preference data in json format, and read them back into corresponding objects.
-* inherits from both `AddressBookStorage` and `UserPrefStorage`, which means it can be treated as either one (if only the functionality of only one is needed).
+* inherits from both `InternshipStorage` and `UserPrefStorage`, which means it can be treated as either one (if only the functionality of only one is needed).
 * depends on some classes in the `Model` component (because the `Storage` component's job is to save/retrieve objects that belong to the `Model`)
 
 ### Common classes
@@ -182,7 +184,7 @@ as the parameter.
 
 * **Alternative 2:** Provides the ability to specify the completion status of an application when it is added to the list
     * Pros: Everything can be done in one shot.
-    * Cons: `add` feature will require many parameters.
+    * Cons: The `add` command will require too many parameters.
 
 ### Accept feature
 
@@ -216,7 +218,7 @@ It can later be changed to `Accepted` using the `accept` command.
 
 * **Alternative 2:** Provide the ability to specify the status of an application at the time of adding.
     * Pros: Easy to specify the desired status field while adding an application.
-    * Cons: The `add` command would become unnecessarily long.
+    * Cons: The `add` command will require too many parameters.
 
 ### Reject feature
 
@@ -250,7 +252,7 @@ as the parameter.
 
 * **Alternative 2:** Provide the ability to specify the status of an application at the time of adding.
     * Pros: Easy to specify the desired status field while adding an application.
-    * Cons: The `add` command would become unnecessarily long.
+    * Cons: The `add` command will require too many parameters.
 
 ### Sort feature
 The sort feature is implemented by the `SortCommandParser` and `SortCommand` classes.
@@ -267,7 +269,7 @@ The sort feature is implemented by the `SortCommandParser` and `SortCommand` cla
 
 * **Alternative 2:** Provides the ability to specify the parameter to sort the list by as well as the direction of sorting.
     * Pros: Users have more options on how to view their list of applications.
-    * Cons: `sort` command will require more parameters.
+    * Cons: The `sort` command will require more parameters.
 
 ### Find feature
 The find feature is implemented by the `FindCommandParser` and `FindCommand` classes.
@@ -280,7 +282,7 @@ The find feature is implemented by the `FindCommandParser` and `FindCommand` cla
 
 * **Alternative 1 (current choice):** Matches applications using specified fields (e.g. user can specify deadline field with d/) and keywords.
     * Pros: User can specify fields to match similar to the way in `AddCommand` and `EditCommand`. 
-    * Cons: `find` will require more parameters.
+    * Cons: The `find` command will require more parameters.
 
 * **Alternative 2:** Uses different command word for finding different fields (e.g. findD for matching application with deadlines).
     * Pros: Shorter command for user to input.
@@ -318,7 +320,7 @@ Step 4. The user now decides that adding the application was a mistake, and deci
 
 ![UndoRedoState3](images/UndoRedoState3.png)
 
-<div markdown="span" class="alert alert-info">:information_source: **Note:** If the `currentStatePointer` is at index 0, pointing to the initial Internship state, then there are no previous Internship states to restore. The `undo` command uses `Model#canUndoAddressBook()` to check if this is the case. If so, it will return an error to the user rather
+<div markdown="span" class="alert alert-info">:information_source: **Note:** If the `currentStatePointer` is at index 0, pointing to the initial Internship state, then there are no previous Internship states to restore. The `undo` command uses `Model#canUndoInternship()` to check if this is the case. If so, it will return an error to the user rather
 than attempting to perform the undo.
 
 </div>
@@ -402,14 +404,22 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 | Priority | As a …​                                    | I want to …​                     | So that I can…​                                                        |
 | -------- | ------------------------------------------ | ------------------------------ | ---------------------------------------------------------------------- |
-| `* * *`  | student                                    | add a company I'm applying to  | keep track of the lists of companies I applied to                      |
-| `* * *`  | student                                    | add a deadline to the company I'm applying to | better organise my application submissions                      |
-| `* * *`  | student                                       | add details about my internship position               | remember the role I applied for                                  |
-| `* * *`  | student                                       | view a list of all companies I have applied to and other relevant details          | easily keep track of all companies I have applied to |
-| `* * *`  | student                                       | delete one of the companies/ internship applications in the list          | stop tracking an application that I have withdrawn/ decided not to make |                                               
-| `* * *`  | student                                       | delete all current entries in the app         | get rid of all sample data when I first start using the app, or start over with a completely clean list of entries |
-| `* * *`  | student                                       | edit my entry details (e.g. deadlines/ company/ information/ role/ completion)         | rectify any mistakes I made initially, or update my entry to reflect new updates with my application |
-| `* * *`  | student                                       | change the status of one of my entries (pending to accepted/ rejected)        | update my entries to show my most up-to-date application status |
+| `* * *`  | student                                    | add a company I have applied  | keep track of the lists of companies I have applied                 |
+| `* * *`  | student                                    | record the deadline of an application | better organize my time for preparation and complete the requirements in time                      |
+| `* * *`  | student                                    | record the position I have applied for an application | remember my responsibility for each application   
+| `* * *`  | student                                    | record the requirements for an application | better understand what I need to prepare in order to succeed during the application |
+| `* * *`  | student                                    | assign priority level to an application  | know clearly which applications I should prioritize and get started first |
+| `* * *`  | student                                    | view a list of all companies I have applied and the related details for each application | have a better picture about all the companies I have applied|
+| `* * *`  | student                                    | delete one of the applications in the application list | stop tracking an application that I have withdrawn from |                                               
+| `* * *`  | student                                    | clear the application list in the app | get rid of all sample data when I first start using the app, or start over with a brand new empty list |
+| `* * *`  | student                                    | edit the details of existing applications (e.g. company name/ applied position/ application deadline / requirement details, etc.) | rectify any mistakes I made initially, or update my entry to reflect new updates in my application |
+| `* * *`  | student                                    | set an application as completed once I have submitted all the requirements | shift my attention to the other uncompleted applications |
+| `* * *`  | student                                    | set the status of one of the existing applications (i.e., pending to accepted/ rejected) | update my entries to reflect the latest decision I received from the company | 
+| `* * *`  | student                                    | sort the applications based on different criteria (e.g., closeness to deadline, level of priority, etc.) | view the application list displayed in different forms and prioritize the applications that appear at the top of the list |
+| `* * *`  | student                                    | find the applications based on different criteria (e.g., company name contains a specified word, requirements involve a specific item, etc.)  | highlight the applications of my current interest and temporarily filtering out other unrelated ones |
+| `* *`    | student                                    | undo a change I have accidentally made to the application list | restore the information that has been unintentionally rectified and not losing any important information |
+| `* *`    | student                                    | redo a change I have just undone | retrieve the changes I have made previously and not having to manually redo it |
+
 
 
 
