@@ -60,7 +60,7 @@ done faster than traditional GUI apps.
 e.g. `[r/REQUIREMENT]…​` can be used as `r/` (0 time), `r/CV` (1 time), `r/CV r/Resume` (2 times) etc.
 
 * Parameters can be in any order.<br>
-  e.g. if the command specifies `c/COMPANY_NAME p/INTERNSHIP_POSITION`, `p/INTERNSHIP_POSITION c//COMPANY_NAME` 
+  e.g. if the command specifies `c/COMPANY_NAME p/INTERNSHIP_POSITION`, `p/INTERNSHIP_POSITION c/COMPANY_NAME` 
   is also acceptable.
 
 * If a parameter is expected only once in the command but you specified it multiple times,
@@ -271,7 +271,7 @@ Commands that make no change to the application list:
 - `sort`
 - `soon`
 
-When successive changes are made, the `undo` command will undoes the **most recent** change. 
+When successive changes are made, the `undo` command will undo the **most recent** change. 
 Successive `undo` commands will undo the previous changes from the most recent to the oldest, until there's no changes
 to be restored.
 
@@ -294,7 +294,7 @@ and it is followed by a command that makes some new changes to the application l
 the priority of the second entry to 'High'), then the previous undone action cannot be redone (i.e., the `delete 1`
 command which is previously undone cannot be redone).
 
-When successive undone actions are made, the `redo` command will redoes the **most recent** undone action.
+When successive undone actions are made, the `redo` command will redo the **most recent** undone action.
 Successive `redo` commands will redo the undone actions from the most recent to the oldest, until there's no undone
 actions to be redone.
 
