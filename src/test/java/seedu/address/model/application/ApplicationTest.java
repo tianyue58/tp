@@ -95,9 +95,5 @@ public class ApplicationTest {
         // different deadline -> returns false
         editedAmazon = new ApplicationBuilder(AMAZON).withDeadline(VALID_DEADLINE_BYTEDANCE).build();
         assertNotEquals(AMAZON, editedAmazon);
-
-        // different tags -> returns false
-        editedAmazon = new ApplicationBuilder(AMAZON).build();
-        assertNotEquals(AMAZON, editedAmazon);
     }
 }
