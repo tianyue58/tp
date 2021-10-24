@@ -27,9 +27,6 @@ import static seedu.address.logic.commands.CommandTestUtil.VALID_STATUS_AMAZON;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_STATUS_BYTEDANCE;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_STATUS_GRAB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_STATUS_SHOPEE;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_AMAZON;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_BYTEDANCE;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_GRAB;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -51,8 +48,7 @@ public class TypicalApplications {
             .withCompletion(VALID_COMPLETION_AMAZON)
             .withStatus(VALID_STATUS_AMAZON)
             .withPriority(VALID_PRIORITY_AMAZON)
-            .withRequirements(VALID_REQUIREMENTS_AMAZON)
-            .withTags(VALID_TAG_AMAZON).build();
+            .withRequirements(VALID_REQUIREMENTS_AMAZON).build();
     public static final Application BYTEDANCE = new ApplicationBuilder()
             .withCompany(VALID_NAME_BYTEDANCE)
             .withPosition(VALID_POSITION_BYTEDANCE)
@@ -60,8 +56,7 @@ public class TypicalApplications {
             .withCompletion(VALID_COMPLETION_BYTEDANCE)
             .withStatus(VALID_STATUS_BYTEDANCE)
             .withPriority(VALID_PRIORITY_BYTEDANCE)
-            .withRequirements(VALID_REQUIREMENTS_BYTEDANCE)
-            .withTags(VALID_TAG_BYTEDANCE).build();
+            .withRequirements(VALID_REQUIREMENTS_BYTEDANCE).build();
     public static final Application GRAB = new ApplicationBuilder()
             .withCompany(VALID_NAME_GRAB)
             .withPosition(VALID_POSITION_GRAB)
@@ -69,8 +64,7 @@ public class TypicalApplications {
             .withCompletion(VALID_COMPLETION_GRAB)
             .withStatus(VALID_STATUS_GRAB)
             .withPriority(VALID_PRIORITY_GRAB)
-            .withRequirements(VALID_REQUIREMENTS_GRAB)
-            .withTags(VALID_TAG_GRAB).build();
+            .withRequirements(VALID_REQUIREMENTS_GRAB).build();
     public static final Application SHOPEE = new ApplicationBuilder()
             .withCompany(VALID_NAME_SHOPEE)
             .withPosition(VALID_POSITION_SHOPEE)

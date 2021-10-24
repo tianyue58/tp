@@ -4,7 +4,6 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_COMPANY_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DEADLINE_OF_APPLICATION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_INTERNSHIP_POSITION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_REQUIREMENT;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 
 import java.util.Set;
 
@@ -37,9 +36,7 @@ public class ApplicationUtil {
         application.getRequirements().stream().forEach(
             s -> sb.append(PREFIX_REQUIREMENT + s.value + " ")
         );
-        application.getTags().stream().forEach(
-            s -> sb.append(PREFIX_TAG + s.tagName + " ")
-        );
+
         return sb.toString();
     }
 
@@ -58,20 +55,12 @@ public class ApplicationUtil {
         if (descriptor.getRequirements().isPresent()) {
             Set<Requirement> requirements = descriptor.getRequirements().get();
             if (requirements.isEmpty()) {
-                sb.append(PREFIX_TAG);
+                sb.append(PREFIX_REQUIREMENT);
             } else {
-                requirements.forEach(s -> sb.append(PREFIX_TAG).append(s.value).append(" "));
+                requirements.forEach(s -> sb.append(PREFIX_REQUIREMENT).append(s.value).append(" "));
             }
         }
 
-        if (descriptor.getTags().isPresent()) {
-            Set<Tag> tags = descriptor.getTags().get();
-            if (tags.isEmpty()) {
-                sb.append(PREFIX_TAG);
-            } else {
-                tags.forEach(s -> sb.append(PREFIX_TAG).append(s.tagName).append(" "));
-            }
-        }
         return sb.toString();
     }
 }

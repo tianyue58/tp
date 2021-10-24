@@ -7,9 +7,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_DEADLINE_BYTEDANCE;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BYTEDANCE;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_POSITION_BYTEDANCE;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_AMAZON;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_BYTEDANCE;
-import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalApplications.AMAZON;
 import static seedu.address.testutil.TypicalApplications.BYTEDANCE;
 
@@ -21,12 +18,6 @@ import seedu.address.testutil.ApplicationBuilder;
  * Contains tests for the Application entity.
  */
 public class ApplicationTest {
-
-    @Test
-    public void asObservableList_modifyList_throwsUnsupportedOperationException() {
-        Application application = new ApplicationBuilder().build();
-        assertThrows(UnsupportedOperationException.class, () -> application.getTags().remove(0));
-    }
 
     @Test
     public void isSameApplication() {
