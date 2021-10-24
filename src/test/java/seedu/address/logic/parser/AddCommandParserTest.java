@@ -38,30 +38,30 @@ public class AddCommandParserTest {
 
         // whitespace only preamble
         assertParseSuccess(parser, PREAMBLE_WHITESPACE + NAME_DESC_AMAZON
-                + POSITION_DESC_AMAZON + DEADLINE_DESC_AMAZON + REQUIREMENTS_DESC_AMAZON
-                , new AddCommand(expectedApplication));
+                + POSITION_DESC_AMAZON + DEADLINE_DESC_AMAZON + REQUIREMENTS_DESC_AMAZON,
+                new AddCommand(expectedApplication));
 
         // multiple company names - last company name accepted
         assertParseSuccess(parser, NAME_DESC_BYTEDANCE + NAME_DESC_AMAZON
-                + POSITION_DESC_AMAZON + DEADLINE_DESC_AMAZON + REQUIREMENTS_DESC_AMAZON
-                , new AddCommand(expectedApplication));
+                + POSITION_DESC_AMAZON + DEADLINE_DESC_AMAZON + REQUIREMENTS_DESC_AMAZON,
+                new AddCommand(expectedApplication));
 
         // multiple positions - last position accepted
         assertParseSuccess(parser, NAME_DESC_AMAZON + POSITION_DESC_BYTEDANCE
-                + POSITION_DESC_AMAZON + DEADLINE_DESC_AMAZON + REQUIREMENTS_DESC_AMAZON
-                , new AddCommand(expectedApplication));
+                + POSITION_DESC_AMAZON + DEADLINE_DESC_AMAZON + REQUIREMENTS_DESC_AMAZON,
+                new AddCommand(expectedApplication));
 
         // multiple deadlines - last deadline accepted
         assertParseSuccess(parser, NAME_DESC_AMAZON + POSITION_DESC_AMAZON
-                + DEADLINE_DESC_BYTEDANCE + DEADLINE_DESC_AMAZON + REQUIREMENTS_DESC_AMAZON
-                , new AddCommand(expectedApplication));
+                + DEADLINE_DESC_BYTEDANCE + DEADLINE_DESC_AMAZON + REQUIREMENTS_DESC_AMAZON,
+                new AddCommand(expectedApplication));
 
         // multiple tags - all accepted
         Application expectedApplicationMultipleTags = new ApplicationBuilder(AMAZON)
                 .build();
         assertParseSuccess(parser, NAME_DESC_AMAZON
-                + POSITION_DESC_AMAZON + DEADLINE_DESC_AMAZON + REQUIREMENTS_DESC_AMAZON
-                , new AddCommand(expectedApplicationMultipleTags));
+                + POSITION_DESC_AMAZON + DEADLINE_DESC_AMAZON + REQUIREMENTS_DESC_AMAZON,
+                new AddCommand(expectedApplicationMultipleTags));
     }
 
     @Test
