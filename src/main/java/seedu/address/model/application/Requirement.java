@@ -3,9 +3,13 @@ package seedu.address.model.application;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
+/**
+ * Represents an Application's submission requirements in InternSHIP.
+ * Guarantees: immutable; is valid as declared in {@link #isValidRequirement(String)}
+ */
 public class Requirement {
-    public static final String MESSAGE_CONSTRAINTS = "Requirements is an optional field and "
-            + "you can add your submission requirements as a String using '/r' in the add command.";
+    public static final String MESSAGE_CONSTRAINTS = "Submission requirements is an optional field and "
+            + "you can add your requirements using '/r' in the add command.";
 
     /*
      * The first character of the position must not be a whitespace,

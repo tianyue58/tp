@@ -26,21 +26,6 @@ public class SoonCommandTest {
         expectedModel = new ModelManager(model.getInternship(), new UserPrefs());
     }
 
-    /**
-    @Test
-    public void execute_listIsNotFiltered_showsSameList() {
-        model = new ModelManager(getTypicalInternship(), new UserPrefs());
-        expectedModel = new ModelManager(model.getInternship(), new UserPrefs());
-        assertCommandSuccess(new SoonCommand(), model, SoonCommand.MESSAGE_SUCCESS, expectedModel);
-    }
-
-    @Test
-    public void execute_listIsFiltered_showsEverything() {
-        showApplicationAtIndex(model, INDEX_THIRD_APPLICATION);
-        assertCommandSuccess(new SoonCommand(), model, SoonCommand.MESSAGE_SUCCESS, expectedModel);
-    }
-     **/
-
     @Test
     public void execute_emptyList() {
         model = new ModelManager(new Internship(), new UserPrefs());

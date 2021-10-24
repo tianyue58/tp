@@ -11,7 +11,7 @@ import seedu.address.model.Model;
 import seedu.address.model.application.Application;
 
 /**
- * Deletes a application identified using it's displayed index from the address book.
+ * Deletes an application identified using it's displayed index from the address book.
  */
 public class DeleteCommand extends Command {
 
@@ -26,6 +26,11 @@ public class DeleteCommand extends Command {
 
     private final Index targetIndex;
 
+    /**
+     * Creates a DeleteCommand to delete the specified {@code Application}
+     *
+     * @param targetIndex Inndex of the application to be deleted.
+     */
     public DeleteCommand(Index targetIndex) {
         this.targetIndex = targetIndex;
     }

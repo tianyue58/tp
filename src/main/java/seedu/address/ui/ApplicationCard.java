@@ -56,7 +56,7 @@ public class ApplicationCard extends UiPart<Region> {
         id.setText(displayedIndex + ". ");
         name.setText(application.getCompany().fullCompanyName);
         position.setText(application.getPosition().value);
-        deadline.setText(application.getDeadline().value);
+        deadline.setText(application.getDeadline().toFormattedString());
         status.setText(application.getStatus().value);
         priority.setText(application.getPriority().value);
         application.getRequirements().stream()

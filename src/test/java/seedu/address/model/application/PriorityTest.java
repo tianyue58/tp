@@ -6,6 +6,9 @@ import static seedu.address.testutil.Assert.assertThrows;
 
 import org.junit.jupiter.api.Test;
 
+/**
+ * Contains tests for the Priority entity.
+ */
 public class PriorityTest {
 
     @Test

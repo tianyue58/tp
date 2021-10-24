@@ -27,7 +27,9 @@ import seedu.address.model.application.Requirement;
 import seedu.address.model.application.Status;
 import seedu.address.model.tag.Tag;
 
-
+/**
+ * Contains integration tests (interaction with the Model) and unit tests for CompleteCommand.
+ */
 public class CompleteCommandTest {
 
     private Model model = new ModelManager(getTypicalInternship(), new UserPrefs());

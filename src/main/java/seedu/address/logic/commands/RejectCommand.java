@@ -19,6 +19,9 @@ import seedu.address.model.application.Requirement;
 import seedu.address.model.application.Status;
 import seedu.address.model.tag.Tag;
 
+/**
+ * Changes the status of an application in InternSHIP to Rejected.
+ */
 public class RejectCommand extends Command {
     public static final String COMMAND_WORD = "reject";
 
@@ -33,6 +36,11 @@ public class RejectCommand extends Command {
 
     private final Index targetIndex;
 
+    /**
+     * Creates a RejectCommand to mark the specified {@code Application} as Rejected.
+     *
+     * @param targetIndex Index pf the application to be marked as Rejected.
+     */
     public RejectCommand(Index targetIndex) {
         this.targetIndex = targetIndex;
     }
