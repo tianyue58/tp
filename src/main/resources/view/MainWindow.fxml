@@ -11,6 +11,12 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.FlowPane?>
 <fx:root type="javafx.stage.Stage" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
          title="InternSHIP" minWidth="450" minHeight="600" onCloseRequest="#handleExit">
   <icons>
@@ -23,7 +29,6 @@
         <URL value="@DarkTheme.css" />
         <URL value="@Extensions.css" />
       </stylesheets>
-
       <VBox>
         <MenuBar fx:id="menuBar" VBox.vgrow="NEVER">
           <Menu mnemonicParsing="false" text="File">
@@ -33,27 +38,59 @@
             <MenuItem fx:id="helpMenuItem" mnemonicParsing="false" onAction="#handleHelp" text="Help" />
           </Menu>
         </MenuBar>
-
         <StackPane VBox.vgrow="NEVER" fx:id="commandBoxPlaceholder" styleClass="pane-with-border">
           <padding>
             <Insets top="5" right="10" bottom="5" left="10" />
           </padding>
         </StackPane>
-
         <StackPane VBox.vgrow="NEVER" fx:id="resultDisplayPlaceholder" styleClass="pane-with-border"
                    minHeight="100" prefHeight="100" maxHeight="100">
           <padding>
             <Insets top="5" right="10" bottom="5" left="10" />
           </padding>
         </StackPane>
-
+        <StackPane>
+          <padding>
+            <Insets top="5" right="10" bottom="5" left="15" />
+          </padding>
+          <GridPane prefHeight = "25.0" HBox.hgrow="ALWAYS">
+            <columnConstraints>
+              <ColumnConstraints hgrow="SOMETIMES" minWidth="10" prefWidth="160" />
+              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="150.0" />
+              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="150.0" />
+              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="130.0" />
+              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="130.0" />
+              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="150.0" />
+              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="150.0" />
+            </columnConstraints>
+            <HBox spacing="5" alignment="CENTER_LEFT">
+              <Label fx:id="id" styleClass="cell_big_label">
+                <minWidth>
+                  <!-- Ensures that the label text is never truncated -->
+                  <Region fx:constant="USE_PREF_SIZE" />
+                </minWidth>
+              </Label>
+              <Label fx:id="name" text="Company" styleClass="cell_big_label">
+                <padding>
+                  <Insets left="10.0" />
+                </padding>
+              </Label>
+            </HBox>
+            <FlowPane fx:id="tags" />
+            <Label fx:id="position" styleClass="cell_big_label" text="Position" GridPane.columnIndex="1"/>
+            <Label fx:id="deadline" styleClass="cell_big_label" text="Deadline" GridPane.columnIndex="2"/>
+            <Label fx:id="requirements" styleClass="cell_big_label" text="Requirements" GridPane.columnIndex="3"/>
+            <Label fx:id="priority" styleClass="cell_big_label" text="Priority" GridPane.columnIndex="4"/>
+            <Label fx:id="completion" styleClass="cell_big_label" text="Completed?" GridPane.columnIndex="5"/>
+            <Label fx:id="status" styleClass="cell_big_label" text="Status" GridPane.columnIndex="6"/>
+          </GridPane>
+        </StackPane>
         <VBox fx:id="applicationList" styleClass="pane-with-border" minWidth="340" prefWidth="340" VBox.vgrow="ALWAYS">
           <padding>
             <Insets top="10" right="10" bottom="10" left="10" />
           </padding>
-          <StackPane fx:id="personListPanelPlaceholder" VBox.vgrow="ALWAYS"/>
+          <StackPane fx:id="applicationListPanelPlaceholder" VBox.vgrow="ALWAYS"/>
         </VBox>
-
         <StackPane fx:id="statusbarPlaceholder" VBox.vgrow="NEVER" />
       </VBox>
     </Scene>
