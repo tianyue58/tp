@@ -41,7 +41,7 @@ public class UniqueApplicationListTest {
     @Test
     public void contains_applicationWithSameIdentityFieldsInList_returnsTrue() {
         uniqueApplicationList.add(AMAZON);
-        Application editedAlice = new ApplicationBuilder(AMAZON).withTags(VALID_TAG_AMAZON)
+        Application editedAlice = new ApplicationBuilder(AMAZON)
                 .build();
         assertTrue(uniqueApplicationList.contains(editedAlice));
     }

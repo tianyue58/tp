@@ -7,7 +7,6 @@ import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
-import seedu.address.model.tag.Tag;
 
 /**
  * Represents an Application in InternSHIP.
@@ -26,15 +25,14 @@ public class Application {
     private final Priority priority;
 
     // Optional fields
-    private final Set<Tag> tags = new HashSet<>();
     private final Set<Requirement> requirements = new HashSet<>();
 
     /**
      * Every field must be present and not null.
      */
     public Application(Company company, Position position, Deadline deadline, Completion completion, Status status,
-                       Priority priority, Set<Requirement> requirements, Set<Tag> tags) {
-        requireAllNonNull(company, position, deadline, completion, requirements, tags);
+                       Priority priority, Set<Requirement> requirements) {
+        requireAllNonNull(company, position, deadline, completion, requirements);
         this.company = company;
         this.position = position;
         this.deadline = deadline;
@@ -42,7 +40,6 @@ public class Application {
         this.status = status;
         this.priority = priority;
         this.requirements.addAll(requirements);
-        this.tags.addAll(tags);
     }
 
     /**
@@ -96,14 +93,6 @@ public class Application {
     }
 
     /**
-     * Returns an immutable tag set, which throws {@code UnsupportedOperationException}
-     * if modification is attempted.
-     */
-    public Set<Tag> getTags() {
-        return Collections.unmodifiableSet(tags);
-    }
-
-    /**
      * Returns true if both applications have the same name and position.
      * This defines a weaker notion of equality between two applications.
      */
@@ -137,13 +126,12 @@ public class Application {
                 && otherApplication.getDeadline().equals(getDeadline())
                 && otherApplication.getCompletion().equals(getCompletion())
                 && otherApplication.getStatus().equals(getStatus())
-                && otherApplication.getRequirements().equals(getRequirements())
-                && otherApplication.getTags().equals(getTags());
+                && otherApplication.getRequirements().equals(getRequirements());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(company, position, deadline, completion, status, requirements, tags);
+        return Objects.hash(company, position, deadline, completion, status, requirements);
     }
 
     @Override
@@ -167,11 +155,6 @@ public class Application {
             requirements.forEach(builder::append);
         }
 
-        Set<Tag> tags = getTags();
-        if (!tags.isEmpty()) {
-            builder.append("; Tags: ");
-            tags.forEach(builder::append);
-        }
 
         return builder.toString();
     }

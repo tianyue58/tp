@@ -25,7 +25,6 @@ import seedu.address.model.application.Position;
 import seedu.address.model.application.Priority;
 import seedu.address.model.application.Requirement;
 import seedu.address.model.application.Status;
-import seedu.address.model.tag.Tag;
 
 /**
  * Contains integration tests (interaction with the Model) and unit tests for CompleteCommand.
@@ -46,9 +45,8 @@ public class CompleteCommandTest {
         Status status = applicationToComplete.getStatus();
         Priority priority = applicationToComplete.getPriority();
         Set<Requirement> requirementList = applicationToComplete.getRequirements();
-        Set<Tag> tagList = applicationToComplete.getTags();
         Application completedApplication = new Application(company, position, deadline, completion, status, priority,
-                requirementList, tagList);
+                requirementList);
 
         String expectedMessage = String.format(CompleteCommand.MESSAGE_SUCCESS, completedApplication);
         ModelManager expectedModel = new ModelManager(model.getInternship(), new UserPrefs());

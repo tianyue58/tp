@@ -38,7 +38,7 @@ public class ApplicationTest {
 
         // same name and position, all other attributes different -> returns true
         Application editedAmazon = new ApplicationBuilder(AMAZON).withDeadline(VALID_DEADLINE_BYTEDANCE)
-                .withTags(VALID_TAG_AMAZON).build();
+                .build();
         assertTrue(AMAZON.isSameApplication(editedAmazon));
 
         // different name and position, all other attributes same -> returns false
@@ -106,7 +106,7 @@ public class ApplicationTest {
         assertNotEquals(AMAZON, editedAmazon);
 
         // different tags -> returns false
-        editedAmazon = new ApplicationBuilder(AMAZON).withTags(VALID_TAG_BYTEDANCE).build();
+        editedAmazon = new ApplicationBuilder(AMAZON).build();
         assertNotEquals(AMAZON, editedAmazon);
     }
 }

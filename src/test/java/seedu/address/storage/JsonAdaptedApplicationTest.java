@@ -25,9 +25,6 @@ public class JsonAdaptedApplicationTest {
     private static final String VALID_POSITION = AMAZON.getPosition().toString();
     private static final String VALID_DEADLINE = AMAZON.getDeadline().toString();
     private static final String VALID_STATUS = AMAZON.getStatus().toString();
-    private static final List<JsonAdaptedTag> VALID_TAGS = AMAZON.getTags().stream()
-            .map(JsonAdaptedTag::new)
-            .collect(Collectors.toList());
     private static final String VALID_COMPLETION = AMAZON.getCompletion().toString();
     private static final String VALID_PRIORITY = AMAZON.getPriority().toString();
     private static final List<JsonAdaptedRequirement> VALID_REQUIREMENTS = AMAZON.getRequirements().stream()
@@ -44,7 +41,7 @@ public class JsonAdaptedApplicationTest {
     public void toModelType_invalidCompany_throwsIllegalValueException() {
         JsonAdaptedApplication application =
                 new JsonAdaptedApplication(INVALID_COMPANY, VALID_POSITION, VALID_DEADLINE, VALID_COMPLETION,
-                        VALID_STATUS, VALID_PRIORITY, VALID_REQUIREMENTS, VALID_TAGS);
+                        VALID_STATUS, VALID_PRIORITY, VALID_REQUIREMENTS);
         String expectedMessage = Company.MESSAGE_CONSTRAINTS;
         assertThrows(IllegalValueException.class, expectedMessage, application::toModelType);
     }
