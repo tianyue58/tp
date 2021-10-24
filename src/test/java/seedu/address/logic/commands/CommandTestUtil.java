@@ -7,7 +7,6 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_DEADLINE_OF_APPLICATIO
 import static seedu.address.logic.parser.CliSyntax.PREFIX_INTERNSHIP_POSITION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PRIORITY;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_REQUIREMENT;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.address.testutil.Assert.assertThrows;
 
 import java.text.SimpleDateFormat;
@@ -89,7 +88,6 @@ public class CommandTestUtil {
             + PREFIX_DEADLINE_OF_APPLICATION + "03-12-2001"; // wrong date format (DD-MM-YYY) not allowed
     public static final String INVALID_PRIORITY_DESC = " " + PREFIX_PRIORITY
             + "higher"; // not an allowed priority value
-    public static final String INVALID_TAG_DESC = " " + PREFIX_TAG + "Pending*"; // '*' not allowed in tags
 
     public static final String PREAMBLE_WHITESPACE = "\t  \r  \n";
     public static final String PREAMBLE_NON_EMPTY = "NonEmptyPreamble";

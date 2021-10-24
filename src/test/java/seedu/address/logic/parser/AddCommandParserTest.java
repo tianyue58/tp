@@ -6,7 +6,6 @@ import static seedu.address.logic.commands.CommandTestUtil.DEADLINE_DESC_BYTEDAN
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_DEADLINE_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_NAME_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_POSITION_DESC;
-import static seedu.address.logic.commands.CommandTestUtil.INVALID_TAG_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.NAME_DESC_AMAZON;
 import static seedu.address.logic.commands.CommandTestUtil.NAME_DESC_BYTEDANCE;
 import static seedu.address.logic.commands.CommandTestUtil.POSITION_DESC_AMAZON;
@@ -68,7 +67,7 @@ public class AddCommandParserTest {
     @Test
     public void parse_optionalFieldsMissing_success() {
         // zero tags
-        Application expectedApplication = new ApplicationBuilder(AMAZON).withTags().build();
+        Application expectedApplication = new ApplicationBuilder(AMAZON).build();
         assertParseSuccess(parser, NAME_DESC_AMAZON + POSITION_DESC_AMAZON
                         + DEADLINE_DESC_AMAZON + REQUIREMENTS_DESC_AMAZON,
                 new AddCommand(expectedApplication));
@@ -108,10 +107,6 @@ public class AddCommandParserTest {
         // invalid deadline
         assertParseFailure(parser, NAME_DESC_BYTEDANCE + POSITION_DESC_BYTEDANCE + INVALID_DEADLINE_DESC,
                 Deadline.MESSAGE_CONSTRAINTS);
-
-        // invalid tag
-        assertParseFailure(parser, NAME_DESC_BYTEDANCE + POSITION_DESC_BYTEDANCE + DEADLINE_DESC_BYTEDANCE
-                + INVALID_TAG_DESC, Tag.MESSAGE_CONSTRAINTS);
 
         // two invalid values, only first invalid value reported
         assertParseFailure(parser, INVALID_NAME_DESC + INVALID_POSITION_DESC + DEADLINE_DESC_BYTEDANCE,
