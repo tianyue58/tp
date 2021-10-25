@@ -22,6 +22,7 @@ import seedu.address.model.application.Application;
 import seedu.address.model.application.Company;
 import seedu.address.model.application.Completion;
 import seedu.address.model.application.Deadline;
+import seedu.address.model.application.InterviewDateAndTime;
 import seedu.address.model.application.Position;
 import seedu.address.model.application.Priority;
 import seedu.address.model.application.Requirement;
@@ -68,9 +69,10 @@ public class RejectCommandTest {
         Status status = new Status("Rejected");
         Priority priority = applicationToReject.getPriority();
         Set<Requirement> requirementList = applicationToReject.getRequirements();
+        Set<InterviewDateAndTime> interviewDateAndTimeList = applicationToReject.getInterviewDateAndTime();
 
         Application addedApplication = new Application(company, position, deadline, completion, status, priority,
-                requirementList);
+                requirementList, interviewDateAndTimeList);
 
         String expectedMessage = String.format(RejectCommand.MESSAGE_SUCCESS, addedApplication);
         ModelManager expectedModel = new ModelManager(model.getInternship(), new UserPrefs());

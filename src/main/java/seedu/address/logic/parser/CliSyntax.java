@@ -13,5 +13,6 @@ public class CliSyntax {
     public static final Prefix PREFIX_COMPLETION = new Prefix("c1/");
     public static final Prefix PREFIX_PRIORITY = new Prefix("pr/");
     public static final Prefix PREFIX_REQUIREMENT = new Prefix("r/");
+    public static final Prefix PREFIX_INTERVIEW_DATE_AND_TIME = new Prefix("i/");
 
 }

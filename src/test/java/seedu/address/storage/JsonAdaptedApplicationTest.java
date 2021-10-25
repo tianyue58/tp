@@ -30,6 +30,10 @@ public class JsonAdaptedApplicationTest {
     private static final List<JsonAdaptedRequirement> VALID_REQUIREMENTS = AMAZON.getRequirements().stream()
             .map(JsonAdaptedRequirement::new)
             .collect(Collectors.toList());
+    private static final List<JsonAdaptedInterviewDateAndTime> VALID_INTERVIEW_DATE_AND_TIME =
+            AMAZON.getInterviewDateAndTime().stream()
+            .map(JsonAdaptedInterviewDateAndTime::new)
+            .collect(Collectors.toList());
 
     @Test
     public void toModelType_validCompanyDetails_returnsCompany() throws Exception {
@@ -41,7 +45,7 @@ public class JsonAdaptedApplicationTest {
     public void toModelType_invalidCompany_throwsIllegalValueException() {
         JsonAdaptedApplication application =
                 new JsonAdaptedApplication(INVALID_COMPANY, VALID_POSITION, VALID_DEADLINE, VALID_COMPLETION,
-                        VALID_STATUS, VALID_PRIORITY, VALID_REQUIREMENTS);
+                        VALID_STATUS, VALID_PRIORITY, VALID_REQUIREMENTS, VALID_INTERVIEW_DATE_AND_TIME);
         String expectedMessage = Company.MESSAGE_CONSTRAINTS;
         assertThrows(IllegalValueException.class, expectedMessage, application::toModelType);
     }
@@ -49,7 +53,8 @@ public class JsonAdaptedApplicationTest {
     @Test
     public void toModelType_nullCompany_throwsIllegalValueException() {
         JsonAdaptedApplication application = new JsonAdaptedApplication(null, VALID_POSITION,
-                VALID_DEADLINE, VALID_COMPLETION, VALID_STATUS, VALID_PRIORITY, VALID_REQUIREMENTS);
+                VALID_DEADLINE, VALID_COMPLETION, VALID_STATUS, VALID_PRIORITY,
+                VALID_REQUIREMENTS, VALID_INTERVIEW_DATE_AND_TIME);
         String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, Company.class.getSimpleName());
         assertThrows(IllegalValueException.class, expectedMessage, application::toModelType);
     }
@@ -58,7 +63,7 @@ public class JsonAdaptedApplicationTest {
     public void toModelType_invalidPosition_throwsIllegalValueException() {
         JsonAdaptedApplication application =
                 new JsonAdaptedApplication(VALID_COMPANY, INVALID_POSITION, VALID_DEADLINE, VALID_COMPLETION,
-                        VALID_STATUS, VALID_PRIORITY, VALID_REQUIREMENTS);
+                        VALID_STATUS, VALID_PRIORITY, VALID_REQUIREMENTS, VALID_INTERVIEW_DATE_AND_TIME);
         String expectedMessage = Position.MESSAGE_CONSTRAINTS;
         assertThrows(IllegalValueException.class, expectedMessage, application::toModelType);
     }
@@ -66,7 +71,8 @@ public class JsonAdaptedApplicationTest {
     @Test
     public void toModelType_nullPosition_throwsIllegalValueException() {
         JsonAdaptedApplication application = new JsonAdaptedApplication(VALID_COMPANY, null,
-                VALID_DEADLINE, VALID_COMPLETION, VALID_STATUS, VALID_PRIORITY, VALID_REQUIREMENTS);
+                VALID_DEADLINE, VALID_COMPLETION, VALID_STATUS, VALID_PRIORITY,
+                VALID_REQUIREMENTS, VALID_INTERVIEW_DATE_AND_TIME);
         String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, Position.class.getSimpleName());
         assertThrows(IllegalValueException.class, expectedMessage, application::toModelType);
     }
@@ -75,7 +81,7 @@ public class JsonAdaptedApplicationTest {
     public void toModelType_invalidDeadline_throwsIllegalValueException() {
         JsonAdaptedApplication application =
                 new JsonAdaptedApplication(VALID_COMPANY, VALID_POSITION, INVALID_DEADLINE, VALID_COMPLETION,
-                        VALID_STATUS, VALID_PRIORITY, VALID_REQUIREMENTS);
+                        VALID_STATUS, VALID_PRIORITY, VALID_REQUIREMENTS, VALID_INTERVIEW_DATE_AND_TIME);
         String expectedMessage = Deadline.MESSAGE_CONSTRAINTS;
         assertThrows(IllegalValueException.class, expectedMessage, application::toModelType);
     }
@@ -83,7 +89,8 @@ public class JsonAdaptedApplicationTest {
     @Test
     public void toModelType_nullDeadline_throwsIllegalValueException() {
         JsonAdaptedApplication application = new JsonAdaptedApplication(VALID_COMPANY, VALID_POSITION,
-                null, VALID_COMPLETION, VALID_STATUS, VALID_PRIORITY, VALID_REQUIREMENTS);
+                null, VALID_COMPLETION, VALID_STATUS, VALID_PRIORITY,
+                VALID_REQUIREMENTS, VALID_INTERVIEW_DATE_AND_TIME);
         String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, Deadline.class.getSimpleName());
         assertThrows(IllegalValueException.class, expectedMessage, application::toModelType);
     }

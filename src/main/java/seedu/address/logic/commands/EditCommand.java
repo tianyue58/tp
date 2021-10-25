@@ -23,6 +23,7 @@ import seedu.address.model.application.Application;
 import seedu.address.model.application.Company;
 import seedu.address.model.application.Completion;
 import seedu.address.model.application.Deadline;
+import seedu.address.model.application.InterviewDateAndTime;
 import seedu.address.model.application.Position;
 import seedu.address.model.application.Priority;
 import seedu.address.model.application.Requirement;
@@ -108,9 +109,11 @@ public class EditCommand extends Command {
         Priority priority = editApplicationDescriptor.getPriority().orElse(applicationToEdit.getPriority());
         Set<Requirement> updatedRequirements = editApplicationDescriptor.getRequirements()
                 .orElse(applicationToEdit.getRequirements());
+        Set<InterviewDateAndTime> updatedInterviewDateAndTimes = editApplicationDescriptor.getInterviewDateAndTimes()
+                .orElse(applicationToEdit.getInterviewDateAndTime());
 
         return new Application(updatedCompany, updatedPosition, updatedDeadline, completion,
-                status, priority, updatedRequirements);
+                status, priority, updatedRequirements, updatedInterviewDateAndTimes);
     }
 
     @Override
@@ -141,6 +144,7 @@ public class EditCommand extends Command {
         private Deadline deadline;
         private Priority priority;
         private Set<Requirement> requirements;
+        private Set<InterviewDateAndTime> interviewDateAndTimes;
 
         public EditApplicationDescriptor() {}
 
@@ -154,13 +158,15 @@ public class EditCommand extends Command {
             setDeadline(toCopy.deadline);
             setPriority(toCopy.priority);
             setRequirements(toCopy.requirements);
+            setInterviewDateAndTimes(toCopy.interviewDateAndTimes);
         }
 
         /**
          * Returns true if at least one field is edited.
          */
         public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyNonNull(company, position, deadline, priority, requirements);
+            return CollectionUtil.isAnyNonNull(company, position, deadline, priority,
+                    requirements, interviewDateAndTimes);
         }
 
         public void setCompany(Company company) {
@@ -211,6 +217,24 @@ public class EditCommand extends Command {
          */
         public Optional<Set<Requirement>> getRequirements() {
             return (requirements != null) ? Optional.of(Collections.unmodifiableSet(requirements)) : Optional.empty();
+        }
+
+        /**
+         * Sets {@code interviewDateAndTimes} to this object's {@code interviewDateAndTimes}.
+         * A defensive copy of {@code interviewDateAndTimes} is used internally.
+         */
+        public void setInterviewDateAndTimes(Set<InterviewDateAndTime> interviewDateAndTimes) {
+            this.interviewDateAndTimes = (interviewDateAndTimes != null) ? new HashSet<>(interviewDateAndTimes) : null;
+        }
+
+        /**
+         * Returns an unmodifiable set, which throws {@code UnsupportedOperationException}
+         * if modification is attempted.
+         * Returns {@code Optional#empty()} if {@code interviewDateAndTimes} is null.
+         */
+        public Optional<Set<InterviewDateAndTime>> getInterviewDateAndTimes() {
+            return (interviewDateAndTimes != null) ? Optional.of(Collections.unmodifiableSet(interviewDateAndTimes))
+                    : Optional.empty();
         }
 
         @Override

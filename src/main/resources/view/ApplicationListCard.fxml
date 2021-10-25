@@ -25,6 +25,7 @@
       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="130.0" />
       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="150.0" />
       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="150.0" />
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="150.0" />
     </columnConstraints>
       <padding>
         <Insets top="5" right="5" bottom="5" left="15" />
@@ -59,22 +60,27 @@
           <Insets left="10.0" />
         </padding>
       </FlowPane>
+    <FlowPane fx:id="interviewDateAndTime" GridPane.columnIndex="4">
+      <padding>
+        <Insets left="10" />
+      </padding>
+    </FlowPane>
       <Label fx:id="priority" styleClass="cell_small_label"
-             text="\$priority" GridPane.columnIndex="4"
+             text="\$priority" GridPane.columnIndex="5"
       >
         <padding>
           <Insets left="8.0" />
         </padding>
       </Label>
       <Label fx:id="completion" styleClass="cell_small_label"
-             text="\$completion" GridPane.columnIndex="5"
+             text="\$completion" GridPane.columnIndex="6"
       >
         <padding>
           <Insets left="10.0" />
         </padding>
       </Label>
       <Label fx:id="status" styleClass="cell_small_label"
-             text="\$status" GridPane.columnIndex="6"
+             text="\$status" GridPane.columnIndex="7"
       >
         <padding>
           <Insets left="10.0" />
