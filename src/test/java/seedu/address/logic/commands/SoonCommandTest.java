@@ -6,6 +6,7 @@ import static seedu.address.testutil.TypicalApplications.getTypicalInternship;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import seedu.address.commons.core.index.Index;
 import seedu.address.model.Internship;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
@@ -30,7 +31,7 @@ public class SoonCommandTest {
     public void execute_emptyList() {
         model = new ModelManager(new Internship(), new UserPrefs());
         expectedModel = new ModelManager(model.getInternship(), new UserPrefs());
-        assertCommandSuccess(new SoonCommand(), model, SoonCommand.MESSAGE_EMPTY_LIST, expectedModel);
+        assertCommandSuccess(new SoonCommand(Index.fromZeroBased(1)), model,
+                SoonCommand.MESSAGE_EMPTY_LIST, expectedModel);
     }
-
 }

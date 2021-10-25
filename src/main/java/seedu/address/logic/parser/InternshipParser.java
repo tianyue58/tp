@@ -91,7 +91,7 @@ public class InternshipParser {
             return new RedoCommand();
 
         case SoonCommand.COMMAND_WORD:
-            return new SoonCommand();
+            return new SoonCommandParser().parse(arguments);
 
         case SortCommand.COMMAND_WORD:
             return new SortCommandParser().parse(arguments);
