@@ -247,9 +247,16 @@ Examples:
 
 ### SOON : `soon`
 
-Shows all the applications that are close to (i.e., within three days of) the application deadline.
+Shows all the applications that are close to the deadlines.
 
-Format: `soon`
+Format: `soon DAYS`
+- Find applications whose deadlines are within `DAYS` days
+- The number of days must be an **integer** 0, 1, 2, …​
+
+Examples:
+
+* `soon 5` shows applications whose deadlines are within 5 days from today's date.
+
 
 ### UNDO : `undo`
 
@@ -341,7 +348,7 @@ Action | Format | Example | Notes
 **Help** | `help` | `help`
 **List** | `list`| `list`
 **Redo** | `redo` | `redo`
-**Soon** | `soon`| `soon`
+**Soon** | `soon DAYS`| `soon 5` |
 **Sort** | `sort PREFIX` | `sort c/` | `PREFIX` refers to the application detail to be sorted by (`c/` COMPANY_NAME, `p/` APPLIED_POSITION, `d/` APPLICATION_DEADLINE, `pr/` APPLICATION_PRIORITY)
 **Undo** | `undo`  | `undo`
 
