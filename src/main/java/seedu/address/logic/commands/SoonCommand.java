@@ -46,6 +46,6 @@ public class SoonCommand extends Command {
     public boolean equals(Object other) {
         return other == this // short circuit if same object
                 || (other instanceof SoonCommand)
-                && days.equals(((SoonCommand) other).days);// instanceof handles nulls
+                && days.equals(((SoonCommand) other).days); // instanceof handles nulls
     }
 }

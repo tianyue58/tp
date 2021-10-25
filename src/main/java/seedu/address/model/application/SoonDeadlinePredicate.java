@@ -1,14 +1,14 @@
 package seedu.address.model.application;
 
-import seedu.address.MainApp;
-import seedu.address.commons.core.LogsCenter;
-import seedu.address.commons.core.index.Index;
-
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 import java.util.function.Predicate;
 import java.util.logging.Logger;
+
+import seedu.address.MainApp;
+import seedu.address.commons.core.LogsCenter;
+import seedu.address.commons.core.index.Index;
 
 /**
  * Tests that a {@code Application}'s {@code Deadline} is coming soon.
