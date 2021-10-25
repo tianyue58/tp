@@ -4,7 +4,6 @@ import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DEADLINE_OF_APPLICATION;
 
 import seedu.address.commons.core.index.Index;
-import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.commands.SoonCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 
@@ -24,7 +23,7 @@ public class SoonCommandParser implements Parser<SoonCommand> {
 
         if (!argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(
-                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindCommand.MESSAGE_USAGE));
+                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, SoonCommand.MESSAGE_USAGE));
         }
         if (argMultimap.getValue(PREFIX_DEADLINE_OF_APPLICATION).isPresent()) {
             try {
