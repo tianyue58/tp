@@ -8,13 +8,14 @@ import java.util.Date;
 
 import org.junit.jupiter.api.Test;
 
+import seedu.address.commons.core.index.Index;
 import seedu.address.testutil.ApplicationBuilder;
 
 public class SoonDeadlinePredicateTest {
 
     @Test
     public void equals() {
-        SoonDeadlinePredicate firstPredicate = new SoonDeadlinePredicate();
+        SoonDeadlinePredicate firstPredicate = new SoonDeadlinePredicate(Index.fromZeroBased(1));
 
         // same object -> returns true
         assertTrue(firstPredicate.equals(firstPredicate));
@@ -30,7 +31,7 @@ public class SoonDeadlinePredicateTest {
     @Test
     public void test_soonDeadline_returnsTrue() {
         // Soon deadline
-        SoonDeadlinePredicate predicate = new SoonDeadlinePredicate();
+        SoonDeadlinePredicate predicate = new SoonDeadlinePredicate(Index.fromZeroBased(1));
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
         Date currentDate = new Date();
         String date = formatter.format(currentDate);
@@ -39,7 +40,7 @@ public class SoonDeadlinePredicateTest {
 
     @Test
     public void test_notSoonDeadline_returnsFalse() {
-        SoonDeadlinePredicate predicate = new SoonDeadlinePredicate();
+        SoonDeadlinePredicate predicate = new SoonDeadlinePredicate(Index.fromZeroBased(1));
 
         // Far deadline
         String farDeadline = "2030-12-10";
