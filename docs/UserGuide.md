@@ -283,9 +283,15 @@ Examples:
 
 #### SOON(need to change this part hehe) : `soon`
 
-Shows all the applications that are close to (i.e., within three days of) the application deadline.
+Shows all the applications that are close to the deadlines.
 
-Format: `soon`
+Format: `soon DAYS`
+- Find applications whose deadlines are within `DAYS` days
+- The number of days must be an **integer** 0, 1, 2, …​
+
+Examples:
+
+* `soon 5` shows applications whose deadlines are within 5 days from today's date.
 
 #### Completing an application : `complete`
 
@@ -440,7 +446,7 @@ Action | Format | Example | Notes
 ### Finding upcoming deadlines & Others
 Action | Format | Example | Notes
 --------|-------|----|----
-**Soon** | `soon`| `soon`
+**Soon** | `soon DAYS`| `soon 5` |
 **Complete** | `complete INDEX` | `complete 1` |
 
 
