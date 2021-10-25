@@ -228,7 +228,7 @@ Finds all entries from the application list that match the keyword in the given 
 
 More than one keyword and field can be provided.
 
-Format: `find PREFIX keyword`
+Format: `find PREFIX KEYWORD`
 
 * The fields available to be found are:
     * COMPANY_NAME `c/` 
@@ -247,15 +247,18 @@ Examples:
 
 ### SOON : `soon`
 
-Shows all the applications that are close to the deadlines.
+Shows all the applications that are close to the submission deadlines or interview time within a specified number of days.
 
-Format: `soon DAYS`
-- Find applications whose deadlines are within `DAYS` days
+Format: `soon PREFIX DAYS`
+- Find applications that are within `DAYS` days
 - The number of days must be an **integer** 0, 1, 2, …​
+- The prefixes available are:
+    * APPLICATION_DEADLINE `d/`
+    * INTERVIEW_DATE_AND_TIME `i/`
 
 Examples:
 
-* `soon 5` shows applications whose deadlines are within 5 days from today's date.
+* `soon d/5` shows applications whose submission deadlines are within 5 days from today's date.
 
 
 ### UNDO : `undo`
