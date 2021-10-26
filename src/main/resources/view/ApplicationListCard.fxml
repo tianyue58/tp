@@ -1,90 +1,57 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.FlowPane?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Region?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 
-<?import javafx.scene.layout.RowConstraints?>
-<HBox
-        id="cardPane"
-        fx:id="cardPane"
-        xmlns="http://javafx.com/javafx/8"
-        xmlns:fx="http://javafx.com/fxml/1"
->
-  <GridPane prefHeight = "75.0" HBox.hgrow="ALWAYS">
+<HBox id="cardPane" fx:id="cardPane" alignment="BOTTOM_RIGHT" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1">
+  <GridPane alignment="CENTER_LEFT" prefHeight="75.0" HBox.hgrow="ALWAYS">
     <columnConstraints>
-      <ColumnConstraints hgrow="SOMETIMES" minWidth="10" prefWidth="140" />
-      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="150.0" />
-      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="150.0" />
-      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="140.0" />
-      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="130.0" />
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10" prefWidth="160.0" />
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="120.0" />
       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="150.0" />
       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="150.0" />
       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="150.0" />
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
     </columnConstraints>
       <padding>
-        <Insets top="5" right="5" bottom="5" left="15" />
+        <Insets bottom="5" left="15" right="5" top="5" />
       </padding>
-      <HBox spacing="5" alignment="CENTER_LEFT">
+      <HBox alignment="CENTER_LEFT" spacing="5">
         <Label fx:id="id" styleClass="cell_big_label">
           <minWidth>
             <!-- Ensures that the label text is never truncated -->
             <Region fx:constant="USE_PREF_SIZE" />
           </minWidth>
         </Label>
-        <Label fx:id="name" text="\$first" styleClass="cell_big_label" wrapText="true" textOverrun="CLIP"/>
+        <Label fx:id="name" styleClass="cell_big_label" text="\$name" textOverrun="CLIP" wrapText="true" />
       </HBox>
-      <FlowPane fx:id="tags" />
-      <Label fx:id="position" styleClass="cell_small_label"
-             text="\$position" GridPane.columnIndex="1" wrapText="true"
-             textOverrun="CLIP"
-      >
-      <padding>
-        <Insets left="10.0" />
-      </padding>
+      <Label fx:id="position" styleClass="cell_small_label" text="\$position" textOverrun="CLIP" wrapText="true"
+             GridPane.columnIndex="1">
       </Label>
-      <Label fx:id="deadline" styleClass="cell_small_label"
-             text="\$deadline" GridPane.columnIndex="2"
-      >
-      <padding>
-        <Insets left="10.0" />
-      </padding>
+      <Label fx:id="deadline" styleClass="cell_small_label" text="\$deadline" GridPane.columnIndex="2">
       </Label>
-      <FlowPane fx:id="requirements" GridPane.columnIndex="3">
-        <padding>
-          <Insets left="10.0" />
-        </padding>
-      </FlowPane>
-    <FlowPane fx:id="interviewDateAndTime" GridPane.columnIndex="4">
-      <padding>
-        <Insets left="10" />
-      </padding>
-    </FlowPane>
-      <Label fx:id="priority" styleClass="cell_small_label"
-             text="\$priority" GridPane.columnIndex="5"
-      >
-        <padding>
-          <Insets left="8.0" />
-        </padding>
-      </Label>
-      <Label fx:id="completion" styleClass="cell_small_label"
-             text="\$completion" GridPane.columnIndex="6"
-      >
+      <FlowPane fx:id="requirements" GridPane.columnIndex="3" />
+      <FlowPane fx:id="interviewDateAndTime" GridPane.columnIndex="4" />
+      <Label fx:id="priority" styleClass="cell_small_label" text="\$priority" GridPane.columnIndex="5">
         <padding>
           <Insets left="10.0" />
         </padding>
       </Label>
-      <Label fx:id="status" styleClass="cell_small_label"
-             text="\$status" GridPane.columnIndex="7"
-      >
+      <Label fx:id="completion" styleClass="cell_small_label" text="\$completion" GridPane.columnIndex="6">
         <padding>
           <Insets left="10.0" />
         </padding>
       </Label>
+      <Label fx:id="status" styleClass="cell_small_label" text="\$status" GridPane.columnIndex="7">
+        <padding>
+          <Insets left="10.0" />
+        </padding>
+      </Label>
+      <rowConstraints>
+         <RowConstraints />
+      </rowConstraints>
   </GridPane>
 </HBox>

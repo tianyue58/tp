@@ -57,6 +57,7 @@ public class ApplicationCard extends UiPart<Region> {
         name.setText(application.getCompany().fullCompanyName);
         position.setText(application.getPosition().value);
         deadline.setText(application.getDeadline().toFormattedString());
+        completion.setText(application.getCompletion().value);
         status.setText(application.getStatus().value);
         priority.setText(application.getPriority().value);
         application.getRequirements().stream()
@@ -66,7 +67,6 @@ public class ApplicationCard extends UiPart<Region> {
                 .sorted(Comparator.comparing(dt -> dt.value))
                 .forEach(dateAndTime -> interviewDateAndTime.getChildren()
                         .add(new Label(dateAndTime.toFormattedString())));
-        completion.setText(application.getCompletion().value);
     }
 
     @Override
