@@ -5,7 +5,6 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_COMPANY_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_COMPLETION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DEADLINE_OF_APPLICATION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_INTERNSHIP_POSITION;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_INTERVIEW_DATE_AND_TIME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_REQUIREMENT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_STATUS;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;
@@ -106,7 +105,7 @@ public class FindCommandParserTest {
     public void parse_validRequirementsArgs_returnsFindCommand() {
         // no leading and trailing whitespaces
         FindCommand expectedFindCommand =
-                new FindCommand(new RequirementsContainsKeywordsPredicate(Arrays.asList("cv","resume")));
+                new FindCommand(new RequirementsContainsKeywordsPredicate(Arrays.asList("cv", "resume")));
         assertParseSuccess(parser, " " + PREFIX_REQUIREMENT + "cv resume", expectedFindCommand);
 
         // multiple whitespaces between keywords
