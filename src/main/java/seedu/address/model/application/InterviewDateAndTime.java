@@ -14,7 +14,7 @@ import java.util.Comparator;
  * Guarantees: immutable; is valid as declared in {@link #isValidInterviewDateAndTime(String)}
  */
 public class InterviewDateAndTime {
-    public static final String MESSAGE_CONSTRAINTS = "The 'interview date and time' must be in yyyy-MM-dd HHmm format.";
+    public static final String MESSAGE_CONSTRAINTS = "The 'interview date and time' must be in YYYY-MM-DD HHmm format.";
 
     public final String value;
     public final LocalDateTime dateAndTime;

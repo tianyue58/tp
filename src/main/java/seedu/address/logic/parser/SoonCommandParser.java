@@ -15,6 +15,8 @@ import seedu.address.model.application.SoonDeadlinePredicate;
  */
 public class SoonCommandParser implements Parser<SoonCommand> {
 
+    private static final int PREFIX_AND_KEYWORD_SIZE = 2;
+
     /**
      * Parses the given {@code String} of arguments in the context of the SoonCommand
      * and returns a SoonCommand object for execution.
@@ -25,7 +27,7 @@ public class SoonCommandParser implements Parser<SoonCommand> {
                 ArgumentTokenizer.tokenize(args, PREFIX_DEADLINE_OF_APPLICATION,
                         PREFIX_INTERVIEW_DATE_AND_TIME);
 
-        if (!argMultimap.getPreamble().isEmpty()) {
+        if (argMultimap.getSize() != PREFIX_AND_KEYWORD_SIZE || !argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(
                     String.format(MESSAGE_INVALID_COMMAND_FORMAT, SoonCommand.MESSAGE_USAGE));
         }

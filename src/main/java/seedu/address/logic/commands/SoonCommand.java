@@ -27,6 +27,7 @@ public class SoonCommand extends Command {
             + "Parameters: \n"
             + PREFIX_DEADLINE_OF_APPLICATION + " DAYS (must be 0 or a positive integer)\n"
             + PREFIX_INTERVIEW_DATE_AND_TIME + " DAYS (must be 0 or a positive integer)\n"
+            + "Only one prefix should be supplied \n"
             + "Example: \n"
             + "Find by submission deadline: " + COMMAND_WORD + " "
             + PREFIX_DEADLINE_OF_APPLICATION + "1 \n"
