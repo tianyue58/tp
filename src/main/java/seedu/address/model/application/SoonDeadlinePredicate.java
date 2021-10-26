@@ -35,7 +35,7 @@ public class SoonDeadlinePredicate implements Predicate<Application> {
         } catch (java.text.ParseException e) {
             logger.info("Invalid deadline format");
         }
-        return diff >= 0 && diff <= days.getZeroBased();
+        return diff >= 0 && diff <= days.getZeroBased() - 1;
     }
 
     @Override

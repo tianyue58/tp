@@ -5,6 +5,7 @@ import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT
 import static seedu.address.logic.parser.CliSyntax.PREFIX_COMPANY_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DEADLINE_OF_APPLICATION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_INTERNSHIP_POSITION;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_INTERVIEW_DATE_AND_TIME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PRIORITY;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_REQUIREMENT;
 
@@ -17,6 +18,7 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.EditCommand;
 import seedu.address.logic.commands.EditCommand.EditApplicationDescriptor;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.application.InterviewDateAndTime;
 import seedu.address.model.application.Requirement;
 
 /**
@@ -33,7 +35,8 @@ public class EditCommandParser implements Parser<EditCommand> {
         requireNonNull(args);
         ArgumentMultimap argMultimap =
                 ArgumentTokenizer.tokenize(args, PREFIX_COMPANY_NAME, PREFIX_INTERNSHIP_POSITION,
-                        PREFIX_DEADLINE_OF_APPLICATION, PREFIX_PRIORITY, PREFIX_REQUIREMENT);
+                        PREFIX_DEADLINE_OF_APPLICATION, PREFIX_PRIORITY,
+                        PREFIX_REQUIREMENT, PREFIX_INTERVIEW_DATE_AND_TIME);
 
         Index index;
 
@@ -64,6 +67,10 @@ public class EditCommandParser implements Parser<EditCommand> {
         parseRequirementsForEdit(argMultimap.getAllValues(PREFIX_REQUIREMENT))
                 .ifPresent(editApplicationDescriptor::setRequirements);
 
+        parseInterviewDateAndTimeForEdit(argMultimap.getAllValues(PREFIX_INTERVIEW_DATE_AND_TIME))
+                .ifPresent(editApplicationDescriptor::setInterviewDateAndTimes);
+
+
         if (!editApplicationDescriptor.isAnyFieldEdited()) {
             throw new ParseException(EditCommand.MESSAGE_NOT_EDITED);
         }
@@ -85,6 +92,26 @@ public class EditCommandParser implements Parser<EditCommand> {
         Collection<String> requirementSet = requirements.size() == 1 && requirements.contains("")
                 ? Collections.emptySet() : requirements;
         return Optional.of(ParserUtil.parseRequirements(requirementSet));
+    }
+
+    /**
+     * Parses {@code Collection<String> interviewDateAndTimes} into a {@code Set<InterviewDateAndTime>}
+     * if {@code interviewDateAndTimes} is non-empty.
+     * If {@code interviewDateAndTimes} contain only one element
+     * which is an empty string, it will be parsed into a
+     * {@code Set<InterviewDateAndTime>} containing zero requirements.
+     */
+    private Optional<Set<InterviewDateAndTime>>
+        parseInterviewDateAndTimeForEdit(Collection<String> interviewDateAndTimes) throws ParseException {
+        assert interviewDateAndTimes != null;
+
+        if (interviewDateAndTimes.isEmpty()) {
+            return Optional.empty();
+        }
+        Collection<String> interviewDateAndTimeSet =
+                interviewDateAndTimes.size() == 1 && interviewDateAndTimes.contains("")
+                ? Collections.emptySet() : interviewDateAndTimes;
+        return Optional.of(ParserUtil.parseInterviewDateAndTimes(interviewDateAndTimeSet));
     }
 
 }
