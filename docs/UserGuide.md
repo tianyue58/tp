@@ -3,8 +3,10 @@ layout: page
 title: User Guide
 ---
 
+##Table of Contents
+
 * Table of Contents
-  {:toc}
+{:toc}
 
 ## Introduction
 
@@ -31,9 +33,9 @@ This section aims to provide some information on the purpose as well as target a
 This guide aims to:
 * Teach first-time users how to [start using InternSHIP](#quick-start).
 * Show users [how to use each command in detail](#features) should they encounter any difficulty using any of the commands in InternSHIP.
-* Provide existing users with a comprehensive [summary](#command-summary) of all the commands they can use in InternSHIP.
-* Provide experienced users with [tips](#tips-bulb) on how to further improve their experience using InternSHIP.
 * Answer some commonly asked questions in the [FAQ](#faq) section.
+* Provide experienced users with [tips](#tips-bulb) on how to further improve their experience using InternSHIP.
+* Provide existing users with a comprehensive summary of all the [commands](#command-summary) they can use in InternSHIP and the [prefixes](#prefix-summary) used in these commands.
 * Show any interested party (e.g. other developers) the [references](#acknowledgements) used in the creation of InternSHIP.
 
 ##Target Audience
@@ -46,18 +48,49 @@ This User Guide **does not assume that the reader has a technical background**. 
 
 This section aims to explain how to properly utilise our User Guide.
 
+### How to navigate this document
+This document is separated into different sections:
+1. [Quick Start](#quick-start): Download, install and start using InternSHIP as a first-time user.
+2. [Features](#features): Find detailed information about how to use each command in InternSHIP.
+3. [FAQ](#faq): Find answers to some commonly-asked questions.
+4. [Tips](#tips-bulb): View tips on how to enhance your experience with InternSHIP.
+5. [Command Summary](#command-summary): View a summary list of all the commands supported by InternSHIP.
+6. [Prefix Summary](#prefix-summary): View a summary list of all the prefixes for the different fields used in InternSHIP commands.
+7. [Glossary](#glossary): Find the definitions of terms used in this User Guide.
+8. [Acknowledgements](#acknowledgements): Find the references used in the creation of InternSHIP.
+For a more detailed overview, refer to this [Table of Contents](#table-of-contents) at the start of our User Guide.
 
-NOT DONE YET 
+### Special formats
 
+Below are some special formats used throughout this User Guide:
 
-<div markdown="block" class="alert alert-info">
+#### Information boxes
+<div markdown="span" class="alert alert-info"> :information_source: **Info** Information boxes provide extra information that might be useful!
+</div>
 
-**:information_source: Notes about the command format:**<br>
+#### Tips
+<div markdown="span" class="alert alert-primary"> :bulb: **Tip:** Tips are pointers that can help to improve your experience using InternSHIP!
+</div>
 
+#### Warnings
+<div markdown="span" class="alert alert-danger"> :warning: **Warning** Warnings are **very important** messages to take note of to avoid any unintended consequences of a command!!
+</div>
 
-### Notes about the command format in [Features](#features)
-* Words in `UPPER_CASE` are the [parameters](#glossary) to be supplied by the user.<br>
+#### Highlights
+`Highlights are used to emphasise special text such as parameters, field values, commands, file names or any user inputs.`
+
+### Navigating the GUI
+TO BE DONE AFTER WE FINALISE THE UI!!
+
+### Command format
+
+All the commands in the [Features](#features) section adhere to the following rules:
+
+* Words in `UPPER_CASE` are the parameters to be supplied by the user.<br>
   e.g. if the User Guide states `add COMPANY_NAME`, users can input `add Shopee`, or any other company name.
+
+<div markdown="span" class="alert alert-primary"> :bulb: **Tip:** Go to our [glossary](#glossary) and [parameters](#parameters) sections to find out more about parameters!
+</div>
 
 * Items in square brackets are optional. <br>
   e.g `c/COMPANY_NAME [r/REQUIREMENT]` can be used as `c/Shopee r/CV` or as `c/Shopee`.
@@ -69,16 +102,35 @@ NOT DONE YET
   e.g. if the command specifies `c/COMPANY_NAME p/INTERNSHIP_POSITION`, `p/INTERNSHIP_POSITION c/COMPANY_NAME`
   is also acceptable.
 
-* For any command that takes in `INDEX` as a parameter (e.g. `edit`, `delete`, `complete`), the index refers to the index number shown in the **currently displayed application list**. It must be a **positive integer** 1, 2, 3, …​
-
 * If a parameter is expected only once in the command but you specified it multiple times, only the last occurrence of the parameter will be taken.<br>
   e.g. if you specify `c/Grab c/Shopee`, only `c/Shopee` will be taken.
 
 * For commands that do not require any parameters (such as `list` and `clear`), any parameters input by the user will be ignored.<br>
   e.g. `list 123` will be interpreted as just `list`.
 
-</div>
+### Parameters
 
+Here is a summary of all the parameters used in InternSHIP commands:
+
+Parameter | Refers to | Required format | Notes
+--------|-------|-------|----
+**APPLICATION_DEADLINE** | The deadline for the application submission. | It should be a valid date in `YYYY-MM-DD` format. | An application field.
+**APPLICATION_PRIORITY** | The user-set priority of the application. | It can only take 3 values: high, medium or low. | An application field.
+**APPLICATION_REQUIREMENTS** | The required deliverables for the application submission. | It can take any value. | 
+* e.g. CV, portfolio...
+* An application field.
+**COMPANY_DECISION** | The company's decision on the user's application. | It can only take 3 values: pending, accepted or rejected. | 
+* This is **up to the company, not the user**.
+* An application field.
+**COMPANY_NAME** | The name of the company the application was made to. | It should only contain [alphanumeric](#glossary) characters and spaces, and should not be blank. | An application field.
+**COMPLETION_STATUS** | Whether or not the application has been submitted by the user. | It can only take 2 values: completed or uncompleted. | 
+* Conversely to COMPANY_DECISION, this is **up to the user, not the company**.
+* An application field.
+**DAYS** | WILLY FILL IN PLS HEHE
+**FIELD** | Any one of the application fields. | It should be in its prefix form, as shown in the [prefix summary](#prefix-summary).
+**INDEX** The index number of the application as shown in the **currently displayed application list**. | It must be a **positive integer** 1, 2, 3, ...
+**INTERNSHIP_POSITION** | The job applied for in the application. | It should only contain alphanumeric characters and spaces, and should not be blank. | An application field.
+**INTERVIEW_DATE_AND_TIME** | The date and time of the interview(s) required for an application. | It should be a valid date and time in `YYYY-MM-DD HHmm` format. The date and time are separated by a space, and the time is represented in a 24-hour system. | An application field.
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -111,11 +163,7 @@ NOT DONE YET
 
 6. Refer to the [Features](#features) below for details of each command.
 
-<div markdown="span" class="alert alert-primary">
-
-:bulb: **Tip:**
-
-Use `clear` to erase all the sample entries from InternSHIP when they are no longer needed!
+<div markdown="span" class="alert alert-primary"> :bulb: **Tip:** Use `clear` to erase all the sample entries from InternSHIP when they are no longer needed!
 </div>
 
 --------------------------------------------------------------------------------------------------------------------
@@ -130,15 +178,20 @@ The commands are split in terms of InternSHIP's main features:
 * [Finding upcoming deadlines](#finding-upcoming-deadlines)
 * [Others](#others)
 
+<div markdown="span" class="alert alert-primary"> :bulb: **Tip:** To make the best use of this section, make sure to familiarise yourself with the [command format rules](#command-format) and [parameters](#parameters) used!
+</div>
+
 ### Tracking application details
 
 #### Adding an application : `add`
 
 Adds a new entry to the application list in InternSHIP. <br>
 
+<div markdown="span" class="alert alert-info"> 
+:information_source: **Info**
 Minimally, the following fields are required when a new entry is added:
 - `COMPANY_NAME`
-- `APPLIED_POSITION`
+- `INTERNSHIP_POSITION`
 - `APPLICATION_DEADLINE` <br>
 
 There are three fields that receive their default values.
@@ -149,41 +202,31 @@ These fields can be changed later using the `edit`, `complete` or `accept/reject
 
 Additionally, `APPLICATION_REQUIREMENTS`, and `INTERVIEW_DATE_AND_TIME` are optional fields that can either be specified or not.
 If not specified at this stage, it can still be added and edited later using the `edit` command.
-
-:bulb: **Note:**
-
-The `INTERVIEW_DATE_AND_TIME` and `APPLICATION_DEADLINE` fields follow a fixed input format
-as follows:
-- The `APPLICATION_DEADLINE` must be entered in the `YYYY-MM-DD` format where `YYYY` 
-represents the four-digit year, `MM` represents the two-digit month, and `DD` represents 
-the two-digit day of the month. 
-- The `INTERVIEW_DATE_AND_TIME` must be entered in the `YYYY-MM-DD HHmm` format, where the date and 
-time are separated by a space. For the date, `YYYY` represents the four-digit year, `MM` represents the two-digit 
-month, and `dd` represents the two-digit day of the month. The time is represented in a 24-hour 
-system. `HH` represents the hours and `mm` represents the minutes. 
+</div>
 
 Format:
 `add c/COMPANY_NAME p/APPLIED_POSITION d/APPLICATION_DEADLINE [r/REQUIREMENTS]…​ [i/INTERVIEW_DATE_AND_TIME]…​`
 
+* Adds a new application with the specified field values to the list.
+
+<div markdown="span" class="alert alert-primary"> :bulb: **Tip:** The option to input more than one `INTERVIEW_DATE_AND_TIME` is provided because many companies have multiple rounds of interviews for a single application!
+</div>
+
 Examples:
-- `add c/Shopee p/software engineer d/2021-12-12`
-- `add c/Shopee p/software engineer d/2021-12-12 r/resume`
-- `add c/Shopee p/software engineer d/2021-12-12 i/2021-12-18 1030`
-- `add c/Shopee p/software engineer d/2021-12-12 r/resume i/2021-12-18 1030`
+* `add c/Shopee p/software engineer d/2021-12-12` adds a new internship application to `Shopee` as a `software engineer`, with the application deadline `12 December 2021`.
+* `add c/Shopee p/software engineer d/2021-12-12 r/resume` adds a new internship application with the same details as the previous example, but with an additional application requirement of a `resume`.
+* `add c/Shopee p/software engineer d/2021-12-12 r/resume i/2021-12-18 1030` adds a new internship application with the same details as the previous example, but with an interview on `18 Dec 2021 10:30`.
 
-:bulb: **Note:**
-
-The option to provide more than one `INTERVIEW_DATE_AND_TIME` has been provided 
-because, for internship applications, companies usually have multiple rounds of interviews. So the user can
-enter the date and time for all the interview rounds. 
 
 #### Editing the details of an existing entry : `edit`
 
 Edits the fields of a specified existing entry in the application list.
 
+<div markdown="span" class="alert alert-info"> 
+:information_source: **Info**
 The fields that can be edited using this command are:
 - `COMPANY_NAME`
-- `APPLIED_POSITION`
+- `INTERNSHIP_POSITION`
 - `APPLICATION_DEADLINE`
 - `APPLICATION_REQUIREMENTS`
 - `INTERVIEW_DATE_AND_TIME` <br>
@@ -191,11 +234,11 @@ The fields that can be edited using this command are:
   Multiple fields can be edited at the same time.
 
 For the edited fields, existing values will be overwritten and updated to the new input values. The values for the rest of the fields will remain the same.
+</div>
 
-Format: `edit INDEX [c/COMPANY_NAME] [p/APPLIED_POSITION] [d/APPLICATION_DEADLINE] [pr/APPLICATION_PRIORITY]
-[r/APPLICATION_REQUIREMENTS] [i/INTERVIEW_DATE_AND_TIME]`
+Format: `edit INDEX [c/COMPANY_NAME] [p/APPLIED_POSITION] [d/APPLICATION_DEADLINE] [pr/APPLICATION_PRIORITY] [r/APPLICATION_REQUIREMENTS] [i/INTERVIEW_DATE_AND_TIME]`
 
-- Edits the application at the specified `INDEX`.
+* Edits the application at the specified `INDEX`.
 
 Examples:
 * `edit 1 c/Grab d/2021-12-20` changes the company name and deadline of the 1st application to `Grab` and `2021-12-20` respectively.
@@ -230,13 +273,12 @@ Examples:
 
 ### Viewing specific applications
 
-#### Finding entries by keyword: `find`
+#### Finding entries by keyword(need to change this part hehe) : `find`
 
-<div markdown="span" class="alert alert-primary">
+<div markdown="span" class="alert alert-danger"> :warning: **Warning** This command cannot be undone! Use the `list` command (explained below) after this command to go back to displaying all the applications stored in InternSHIP!
+</div>
 
-:bulb: **Tip:**
-
-This command changes the displayed list in InternSHIP! The index of the entries will change too! Make sure to check the index again before using commands like `delete` or `complete`!
+<div markdown="span" class="alert alert-danger"> :warning: **Warning** This command changes the displayed list in InternSHIP! The index of the entries will change too! Make sure to check the index again before using commands like `delete` or `complete`!
 </div>
 
 Finds all entries from the application list that match the keyword in the given field.
@@ -245,27 +287,22 @@ More than one keyword and field can be provided.
 
 Format: `find FIELD keyword`
 
-* The fields available to be found are:
-    * COMPANY_NAME `c/`
-    * APPLIED_POSITION `p/`
-    * APPLICATION_DEADLINE `d/`
-    * COMPLETION_STATUS `c1/`
-    * COMPANY_DECISION (i.e. STATUS) `s/`
-    * APPLICATION_PRIORITY `pr/`
-    * APPLICATION_REQUIREMENTS `r/`
-    * INTERVIEW_DATE_AND_TIME `i/`
+<div markdown="span" class="alert alert-info">
+:information_source: **Info** 
+The fields available to be found are:
+* COMPANY_NAME `c/`
+* APPLIED_POSITION `p/`
+* APPLICATION_DEADLINE `d/`
+* COMPLETION_STATUS `c1/`
+* COMPANY_DECISION (i.e. STATUS) `s/`
+* APPLICATION_PRIORITY `pr/`
+* APPLICATION_REQUIREMENTS `r/`
+* INTERVIEW_DATE_AND_TIME `i/`
+</div>
 
 Examples:
-
 * `find pr/High` shows all the applications whose priority is High.
 * `find c1/Completed s/Pending` shows all the applications that match any of the given field and keyword.
-
-<div markdown="span" class="alert alert-primary">
-
-:bulb: **Tip:**
-
-Use the `list` command (explained below) after this command to go back to displaying all the applications stored in InternSHIP!
-</div>
 
 
 #### Listing all entries : `list`
@@ -277,25 +314,28 @@ Format: `list`
 
 #### Sorting the entries : `sort`
 
-<div markdown="span" class="alert alert-primary">
+<div markdown="span" class="alert alert-danger"> :warning: **Warning** This command cannot be undone!
+</div>
 
-:bulb: **Tip:**
-
-This command changes the displayed list in InternSHIP! The index of the entries will change too! Make sure to check the index again before using commands like `delete` or `complete`!
+<div markdown="span" class="alert alert-danger"> :warning: **Warning** This command changes the displayed list in InternSHIP! The index of the entries will change too! Make sure to check the index again before using commands like `delete` or `complete`!
 </div>
 
 Sorts all entries in the **currently displayed** application list by a specified field.
 
-Format: `sort FIELD`
-
+<div markdown="span" class="alert alert-info"> 
+:information_source: **Info** 
 The fields available to sort by are:
 * COMPANY_NAME `c/` (ascending alphabetical order)
 * APPLIED_POSITION `p/` (ascending alphabetical order)
 * APPLICATION_DEADLINE `d/` (sooner to later deadline)
 * APPLICATION_PRIORITY `pr/` (higher to lower priority)
+</div>
+
+Format: `sort FIELD`
+
+* Sorts the application list by `FIELD`.
 
 Examples:
-
 * `sort c/` shows all the applications saved in the current InternSHIP sorted by company name, in alphabetical order.
 
 
@@ -322,10 +362,9 @@ Marks the specified entry in the application list as completed, meaning the user
 
 Format: `complete INDEX`
 
-- Marks the entry at the specified `INDEX` as completed
+* Marks the entry at the specified `INDEX` as completed.
 
 Examples:
-
 * `complete 2` marks the 2nd entry in the application list as completed.
 
 
@@ -340,7 +379,6 @@ Format: `delete INDEX`
 * Deletes the entry at the specified `INDEX`.
 
 Examples:
-
 * `delete 2` deletes the 2nd entry in the main application list.
 
 
@@ -451,14 +489,16 @@ There is no need to save manually.
 This section gives an overview of all the commands supported by InternSHIP.
 
 ### Tracking application details
+
 Action | Format | Example | Notes
 --------|-------|----|----
-**Add** | `add c/COMPANY_NAME p/INTERNSHIP_POSITION d/DEADLINE_OF_APPLICATION` | `add c/Shopee p/software engineer d/2021-12-12` |
-**Edit** | `edit INDEX [c/COMPANY_NAME] [p/INTERNSHIP_POSITION] [d/DEADLINE_OF_APPLICATION] [pr/PRIORITY] [r/REQUIREMENTS]` | `edit 1 c/Grab d/2021-12-20`
+**Add** | `add c/COMPANY_NAME p/INTERNSHIP_POSITION d/DEADLINE_OF_APPLICATION [r/REQUIREMENTS] [i/INTERVIEW_DATE_AND_TIME]` | `add c/Shopee p/software engineer d/2021-12-12` |
+**Edit** | `edit INDEX [c/COMPANY_NAME] [p/INTERNSHIP_POSITION] [d/DEADLINE_OF_APPLICATION] [pr/PRIORITY] [r/REQUIREMENTS] [i/INTERVIEW_DATE_AND_TIME]` | `edit 1 c/Grab d/2021-12-20`
 **Accept/Reject** | `DECISION INDEX` | `accept 2` | `DECISION` can only be either `accept` or `reject`
 
 
 ### Viewing specific applications
+
 Action | Format | Example | Notes
 --------|-------|----|----
 **Find** | `find PREFIX KEYWORD` |  `find pr/High` | `PREFIX` refers to the field to match the keyword (`c/` COMPANY_NAME, `p/` APPLIED_POSITION, `d/` APPLICATION_DEADLINE, `c1/` COMPLETION_STATUS, `s/` COMPANY_DECISION (i.e. STATUS), `pr/` APPLICATION_PRIORITY `r/` APPLICATION_REQUIREMENTS)
@@ -467,6 +507,7 @@ Action | Format | Example | Notes
 
 
 ### Finding upcoming deadlines & Others
+
 Action | Format | Example | Notes
 --------|-------|----|----
 **Soon** | `soon DAYS`| `soon 5` |
@@ -474,6 +515,7 @@ Action | Format | Example | Notes
 
 
 ### Others
+
 Action | Format | Example | Notes
 --------|-------|----|----
 **Delete** | `delete INDEX` | `delete 3` |
@@ -487,18 +529,18 @@ Action | Format | Example | Notes
 
 ## Prefix summary
 
-This section provides a summary of all the prefixes for the different fields used in InternSHIP commands.
+This section provides a summary of all the fields and their corresponding prefixes as used in InternSHIP commands.
 
-Prefix | Field | Command
+Field | Prefix | Used in
 --------|-------|----
-**c/** | Company Name | `add`, `edit`, `find`, `sort`
-**p/** | Internship Position | `add`, `edit`, `find`, `sort`
-**d/** | Application Deadline | `add`, `edit`, `find`, `sort`
-**c1/** | Application Completion | `find`
-**s/** | Application Status | `find`
-**pr/** | Priority | `edit`, `find`, `sort`
-**r/** | Application Requirement | `add`, `edit`
-**i/** | Interview Date and Time | `add`, `edit`
+APPLICATION_DEADLINE | **d/** | `add`, `edit`, `find`, `sort`
+APPLICATION_PRIORITY | **pr/** | `edit`, `find`, `sort`
+APPLICATION_REQUIREMENTS | **r/** | `add`, `edit`
+COMPANY_DECISION | **s/** `find`
+COMPANY_NAME | **c/** | `add`, `edit`, `find`, `sort`
+COMPLETION_STATUS | **c1/** | `find`
+INTERNSHIP_POSITION | **p/** | `add`, `edit`, `find`, `sort`
+INTERVIEW_DATE_AND_TIME | **i/** | `add`, `edit`, `find`, `sort`
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -512,18 +554,11 @@ Term | Definition | Notes
 **Graphical User Interface (GUI)** | The display of an application with text formatting, background colours, etc... An application without any GUI would only show plain text to the user.
 **Java** | A software that allows certain applications (like InternSHIP) to run on the computer. | You will not be able to run InternSHIP on your computer without Java!
 **application** | The application for an internship at a specific company.
-**field** | The detail of an application. | The terms shown below, from company name to priority, are all application fields.
-**company name** | The name of the company the application was made to.
-**internship position** | The job applied for in the application.
-**application deadline** | The deadline for the application submission.
-**application requirements** | The required deliverables for the application submission. | e.g. CV, portfolio...
-**application completion** | Whether or not the application has been submitted by the user. | This is up to the user, not the company.
-**application status** | The company's decision on the user's application. | Conversely to application completion, this is up to the company, not the user.
-**priority** | The user-set priority of the application.
+**field** | The detail of an application. | e.g. company name, internship position, etc...
 **command** | The instruction typed by the user for InternSHIP to execute.
-**parameter** | A part of the command that consists of information input by the user. | In this context of InternSHIP, this information refers to the application fields.
+**parameter** | A part of the command that consists of information input by the user. | In the context of InternSHIP, this information refers to the actual data of the application fields.
 **prefix** | An abbreviation for the application field. For commands like `add` or `edit`, the prefix should be typed in right before the parameter for that field. | Always ends with a slash (/).
-
+**alphanumeric** | A character that is either a letter or a number.
 
 --------------------------------------------------------------------------------------------------------------------
 
