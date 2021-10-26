@@ -45,6 +45,7 @@ public class FindCommand extends Command {
             + PREFIX_PRIORITY + "PRIORITY"
             + PREFIX_COMPLETION + "APPLICATION_COMPLETION "
             + PREFIX_STATUS + "APPLICATION_STATUS\n"
+            + "Only one criteria (prefix) should be supplied each time\n"
             + "Example:\n"
             + "Find by company name: " + COMMAND_WORD + " " + PREFIX_COMPANY_NAME + "Amazon ByteDance Google\n"
             + "Find by position: " + COMMAND_WORD + " " + PREFIX_INTERNSHIP_POSITION + "engineer\n"
