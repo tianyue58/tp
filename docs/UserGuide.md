@@ -2,7 +2,6 @@
 layout: page
 title: User Guide
 ---
-<div style="text-align: justify">
 
 ## Table of Contents
 
@@ -13,11 +12,7 @@ title: User Guide
 
 Are you a university student looking to score a holiday internship? Do you feel overwhelmed by all the application details you have to keep track of? Have you missed any application deadlines because there are just too many to remember? Have you ever wished that there were a comprehensive app that could help you track your entire internship application process? If you answered yes to any of these questions, we have just the application for you!
 
-<div style="text-align: center">
-
 ![Logo](images/InternSHIP.png)
-
-</div>
 
 InternSHIP is a **desktop app for university students to manage their internship applications.** Here are its main features:
 * Tracking all essential internship application details
@@ -576,10 +571,3 @@ Term | Definition | Notes
 * The formatting and content of this User Guide is referenced from [AY2021S2-CS2103T-T11-2/tp](https://github.com/AY2021S2-CS2103T-T11-2/tp/blob/master/docs/UserGuide.md)
 * The ship in the InternSHIP icon was obtained from [flaticon.com](https://www.flaticon.com/free-icon/ship_4012401?term=ship&page=1&position=66&page=1&position=66&related_id=4012401&origin=search)
 * [Canva](https://www.canva.com) was used to make the InternSHIP icon.
-
-</div>
-
-
-
-
-
