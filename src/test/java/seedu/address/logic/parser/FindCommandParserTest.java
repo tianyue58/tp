@@ -17,7 +17,6 @@ import org.junit.jupiter.api.Test;
 import seedu.address.logic.commands.FindCommand;
 import seedu.address.model.application.CompletionContainsKeywordsPredicate;
 import seedu.address.model.application.DeadlineContainsKeywordsPredicate;
-import seedu.address.model.application.InterviewContainsKeywordsPredicate;
 import seedu.address.model.application.NameContainsKeywordsPredicate;
 import seedu.address.model.application.PositionContainsKeywordsPredicate;
 import seedu.address.model.application.RequirementsContainsKeywordsPredicate;
