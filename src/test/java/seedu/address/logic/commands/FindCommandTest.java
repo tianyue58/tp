@@ -21,11 +21,8 @@ import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.application.CompletionContainsKeywordsPredicate;
 import seedu.address.model.application.DeadlineContainsKeywordsPredicate;
-import seedu.address.model.application.InterviewContainsKeywordsPredicate;
 import seedu.address.model.application.NameContainsKeywordsPredicate;
 import seedu.address.model.application.PositionContainsKeywordsPredicate;
-import seedu.address.model.application.PriorityContainsKeywordsPredicate;
-import seedu.address.model.application.RequirementsContainsKeywordsPredicate;
 import seedu.address.model.application.StatusContainsKeywordsPredicate;
 
 /**
@@ -161,26 +158,5 @@ public class FindCommandTest {
      */
     private StatusContainsKeywordsPredicate prepareStatusPredicate(String userInput) {
         return new StatusContainsKeywordsPredicate(Arrays.asList(userInput.split("\\s+")));
-    }
-
-    /**
-     * Parses {@code userInput} into a {@code RequirementsContainsKeywordsPredicate}.
-     */
-    private RequirementsContainsKeywordsPredicate prepareRequirementsPredicate(String userInput) {
-        return new RequirementsContainsKeywordsPredicate(Arrays.asList(userInput.split("\\s+")));
-    }
-
-    /**
-     * Parses {@code userInput} into a {@code PriorityContainsKeywordsPredicate}.
-     */
-    private PriorityContainsKeywordsPredicate preparePriorityPredicate(String userInput) {
-        return new PriorityContainsKeywordsPredicate(Arrays.asList(userInput.split("\\s+")));
-    }
-
-    /**
-     * Parses {@code userInput} into a {@code InterviewContainsKeywordsPredicate}.
-     */
-    private InterviewContainsKeywordsPredicate prepareInterviewPredicate(String userInput) {
-        return new InterviewContainsKeywordsPredicate(Arrays.asList(userInput.split("\\s+")));
     }
 }
