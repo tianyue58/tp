@@ -7,6 +7,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.time.format.ResolverStyle;
+import java.util.Comparator;
 
 /**
  * Represents the interview date and time of an application in InternSHIP.
@@ -62,6 +63,31 @@ public class InterviewDateAndTime {
         } catch (DateTimeParseException e) {
             return false;
         }
+    }
+
+    /**
+     * Returns a Comparator object that compares two applications by their interview date and time.
+     * The application with an interview that comes first is taken to be greater.
+     *
+     * @return Comparator object that compares applications by their interview date and time.
+     */
+    public static Comparator<Application> getComparator() {
+        return (application, otherApplication) -> {
+            InterviewDateAndTime interviewDateAndTime = application.getInterviewDateAndTime()
+                    .stream().min(Comparator.comparing(dt -> dt.value)).orElse(null);
+            InterviewDateAndTime otherInterviewDateAndTime = otherApplication.getInterviewDateAndTime()
+                    .stream().min(Comparator.comparing(dt -> dt.value)).orElse(null);
+
+            if (interviewDateAndTime == null && otherInterviewDateAndTime == null) {
+                return 0;
+            } else if (interviewDateAndTime == null) {
+                return 1;
+            } else if (otherInterviewDateAndTime == null) {
+                return -1;
+            }
+
+            return interviewDateAndTime.dateAndTime.compareTo(otherInterviewDateAndTime.dateAndTime);
+        };
     }
 
     /**
