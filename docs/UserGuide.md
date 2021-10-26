@@ -147,16 +147,35 @@ These fields can be changed later using the `edit`, `complete` or `accept/reject
 - `COMPLETION_STATUS`  set as `Uncompleted`
 - `COMPANY_DECISION` (i.e., application status) set as `Pending`
 
-Additionally, `APPLICATION_REQUIREMENTS` is an optional field that can either be specified or not.
-If not specified at this stage, it can still be added and edited later by the `edit` command.
+Additionally, `APPLICATION_REQUIREMENTS`, and `INTERVIEW_DATE_AND_TIME` are optional fields that can either be specified or not.
+If not specified at this stage, it can still be added and edited later using the `edit` command.
+
+:bulb: **Note:**
+
+The `INTERVIEW_DATE_AND_TIME` and `APPLICATION_DEADLINE` fields follow a fixed input format
+as follows:
+- The `APPLICATION_DEADLINE` must be entered in the `YYYY-MM-DD` format where `YYYY` 
+represents the four-digit year, `MM` represents the two-digit month, and `DD` represents 
+the two-digit day of the month. 
+- The `INTERVIEW_DATE_AND_TIME` must be entered in the `YYYY-MM-DD HHmm` format, where the date and 
+time are separated by a space. For the date, `YYYY` represents the four-digit year, `MM` represents the two-digit 
+month, and `dd` represents the two-digit day of the month. The time is represented in a 24-hour 
+system. `HH` represents the hours and `mm` represents the minutes. 
 
 Format:
-`add c/COMPANY_NAME p/APPLIED_POSITION d/APPLICATION_DEADLINE [r/REQUIREMENTS]…​`
+`add c/COMPANY_NAME p/APPLIED_POSITION d/APPLICATION_DEADLINE [r/REQUIREMENTS]…​ [i/INTERVIEW_DATE_AND_TIME]…​`
 
 Examples:
 - `add c/Shopee p/software engineer d/2021-12-12`
 - `add c/Shopee p/software engineer d/2021-12-12 r/resume`
+- `add c/Shopee p/software engineer d/2021-12-12 i/2021-12-18 1030`
+- `add c/Shopee p/software engineer d/2021-12-12 r/resume i/2021-12-18 1030`
 
+:bulb: **Note:**
+
+The option to provide more than one `INTERVIEW_DATE_AND_TIME` has been provided 
+because, for internship applications, companies usually have multiple rounds of interviews. So the user can
+enter the date and time for all the interview rounds. 
 
 #### Editing the details of an existing entry : `edit`
 
@@ -166,14 +185,15 @@ The fields that can be edited using this command are:
 - `COMPANY_NAME`
 - `APPLIED_POSITION`
 - `APPLICATION_DEADLINE`
-- `APPLICATION_REQUIREMENTS` <br>
+- `APPLICATION_REQUIREMENTS`
+- `INTERVIEW_DATE_AND_TIME` <br>
   Editing any field is optional, but least one field must be edited each time.
   Multiple fields can be edited at the same time.
 
 For the edited fields, existing values will be overwritten and updated to the new input values. The values for the rest of the fields will remain the same.
 
 Format: `edit INDEX [c/COMPANY_NAME] [p/APPLIED_POSITION] [d/APPLICATION_DEADLINE] [pr/APPLICATION_PRIORITY]
-[r/APPLICATION_REQUIREMENTS]`
+[r/APPLICATION_REQUIREMENTS] [i/INTERVIEW_DATE_AND_TIME]`
 
 - Edits the application at the specified `INDEX`.
 
@@ -182,17 +202,16 @@ Examples:
 * `edit 2 p/UI designer` changes the internship position of the 2nd application to `UI designer`.
 
 
-#### Updating the application status : `accept/reject`
+#### Updating the application status `(COMPANY_DECISION)`: `accept/reject`
 
-Updates the status of an application.
+Updates the status (company decision) of an application. 
 
-**IMPORTANT NOTE** <br>
+:bulb: **Note:** <br>
 The status of an application is the **decision provided by the company**
 on whether the candidate has been `Accepted` or `Rejected`.
-
-<div markdown="span" class="alert alert-primary">:bulb: **Tip:**
-We can put the tip here! :D
-</div>
+It is different from the 'Completion Status', which represents whether the 
+user has completed submitting the application (and all related requirements) 
+or not.
 
 When a new application is added, the status is `Pending` by default as it is assumed that the user has not received
 the decision from the company yet. The status can later be changed to either `Accepted` or `Rejected` using the
@@ -205,8 +224,8 @@ Format: `accept INDEX` or `reject INDEX`
 - The index must be a **positive integer** 1, 2, 3, …​
 
 Examples:
-* `accept` followed by `1` marks the first entry as 'Accepted'.
-* `reject` followed by `2` marks the second entry as 'Rejected'.
+* `accept 1` marks the first entry as 'Accepted'.
+* `reject 2` marks the second entry as 'Rejected'.
 
 
 ### Viewing specific applications
@@ -234,6 +253,7 @@ Format: `find FIELD keyword`
     * COMPANY_DECISION (i.e. STATUS) `s/`
     * APPLICATION_PRIORITY `pr/`
     * APPLICATION_REQUIREMENTS `r/`
+    * INTERVIEW_DATE_AND_TIME `i/`
 
 Examples:
 
@@ -478,6 +498,7 @@ Prefix | Field | Command
 **s/** | Application Status | `find`
 **pr/** | Priority | `edit`, `find`, `sort`
 **r/** | Application Requirement | `add`, `edit`
+**i/** | Interview Date and Time | `add`, `edit`
 
 --------------------------------------------------------------------------------------------------------------------
 
