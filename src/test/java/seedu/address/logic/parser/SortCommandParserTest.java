@@ -6,6 +6,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_COMPANY_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_COMPLETION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DEADLINE_OF_APPLICATION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_INTERNSHIP_POSITION;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_INTERVIEW_DATE_AND_TIME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PRIORITY;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
@@ -34,6 +35,10 @@ public class SortCommandParserTest {
         // deadline parameter
         assertParseSuccess(parser, " " + PREFIX_DEADLINE_OF_APPLICATION,
                 new SortCommand("deadline"));
+
+        // interview parameter
+        assertParseSuccess(parser, " " + PREFIX_INTERVIEW_DATE_AND_TIME,
+                new SortCommand("interview"));
 
         // priority parameter
         assertParseSuccess(parser, " " + PREFIX_PRIORITY,
