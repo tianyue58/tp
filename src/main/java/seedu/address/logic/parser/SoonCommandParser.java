@@ -2,6 +2,7 @@ package seedu.address.logic.parser;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DEADLINE_OF_APPLICATION;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_INTERVIEW_DATE_AND_TIME;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.SoonCommand;
@@ -28,6 +29,18 @@ public class SoonCommandParser implements Parser<SoonCommand> {
         if (argMultimap.getValue(PREFIX_DEADLINE_OF_APPLICATION).isPresent()) {
             try {
                 Index days = ParserUtil.parseIndex(argMultimap.getValue(PREFIX_DEADLINE_OF_APPLICATION).get().trim());
+                return new SoonCommand(days);
+            } catch (ParseException pe) {
+                throw new ParseException(
+                        String.format(MESSAGE_INVALID_COMMAND_FORMAT, SoonCommand.MESSAGE_USAGE), pe);
+            }
+        }
+        if (argMultimap.getValue(PREFIX_INTERVIEW_DATE_AND_TIME).isPresent()) {
+            try {
+                Index days = ParserUtil.parseIndex(argMultimap
+                        .getValue(PREFIX_INTERVIEW_DATE_AND_TIME)
+                        .get()
+                        .trim());
                 return new SoonCommand(days);
             } catch (ParseException pe) {
                 throw new ParseException(
