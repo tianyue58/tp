@@ -14,6 +14,7 @@ import seedu.address.model.application.Application;
 import seedu.address.model.application.Company;
 import seedu.address.model.application.Completion;
 import seedu.address.model.application.Deadline;
+import seedu.address.model.application.InterviewDateAndTime;
 import seedu.address.model.application.Position;
 import seedu.address.model.application.Priority;
 import seedu.address.model.application.Requirement;
@@ -66,9 +67,10 @@ public class AcceptCommand extends Command {
         Status status = new Status("Accepted");
         Priority priority = applicationToComplete.getPriority();
         Set<Requirement> requirementList = applicationToComplete.getRequirements();
+        Set<InterviewDateAndTime> interviewDateAndTimeList = applicationToComplete.getInterviewDateAndTime();
 
         Application completedApplication = new Application(company, position, deadline, completion, status, priority,
-                requirementList);
+                requirementList, interviewDateAndTimeList);
         model.setApplication(applicationToComplete, completedApplication);
         model.commitInternship(model.getInternship());
 

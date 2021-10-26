@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_COMPANY_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DEADLINE_OF_APPLICATION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_INTERNSHIP_POSITION;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_INTERVIEW_DATE_AND_TIME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PRIORITY;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_REQUIREMENT;
 import static seedu.address.testutil.Assert.assertThrows;
@@ -62,6 +63,10 @@ public class CommandTestUtil {
     public static final String VALID_REQUIREMENTS_BYTEDANCE = "CV";
     public static final String VALID_REQUIREMENTS_GRAB = "Interview";
 
+    public static final String VALID_INTERVIEW_DATE_AND_TIME_AMAZON = "2021-12-12 0630";
+    public static final String VALID_INTERVIEW_DATE_AND_TIME_BYTEDANCE = "2021-12-12 0530";
+    public static final String VALID_INTERVIEW_DATE_AND_TIME_GRAB = "2021-12-12 0730";
+
     public static final String NAME_DESC_AMAZON = " " + PREFIX_COMPANY_NAME + VALID_NAME_AMAZON;
     public static final String NAME_DESC_BYTEDANCE = " " + PREFIX_COMPANY_NAME + VALID_NAME_BYTEDANCE;
 
@@ -80,6 +85,11 @@ public class CommandTestUtil {
 
     public static final String REQUIREMENTS_DESC_AMAZON = " " + PREFIX_REQUIREMENT + VALID_REQUIREMENTS_AMAZON;
     public static final String REQUIREMENTS_DESC_BYTEDANCE = " " + PREFIX_REQUIREMENT + VALID_REQUIREMENTS_BYTEDANCE;
+
+    public static final String INTERVIEW_DATE_AND_TIME_DESC_AMAZON = " " + PREFIX_INTERVIEW_DATE_AND_TIME
+            + VALID_INTERVIEW_DATE_AND_TIME_AMAZON;
+    public static final String INTERVIEW_DATE_AND_TIME_DESC_BYTEDANCE = " " + PREFIX_INTERVIEW_DATE_AND_TIME
+            + VALID_INTERVIEW_DATE_AND_TIME_BYTEDANCE;
 
     public static final String INVALID_NAME_DESC = " " + PREFIX_COMPANY_NAME + "Google&"; // '&' not allowed in names
     public static final String INVALID_POSITION_DESC = " "
@@ -100,12 +110,14 @@ public class CommandTestUtil {
                 .withCompany(VALID_NAME_AMAZON)
                 .withPosition(VALID_POSITION_AMAZON)
                 .withDeadline(VALID_DEADLINE_AMAZON)
-                .withRequirements(VALID_REQUIREMENTS_AMAZON).build();
+                .withRequirements(VALID_REQUIREMENTS_AMAZON)
+                .withInterviewDateAndTime(VALID_INTERVIEW_DATE_AND_TIME_AMAZON).build();
         DESC_BYTEDANCE = new EditApplicationDescriptorBuilder()
                 .withCompany(VALID_NAME_BYTEDANCE)
                 .withPosition(VALID_POSITION_BYTEDANCE)
                 .withDeadline(VALID_DEADLINE_BYTEDANCE)
-                .withRequirements(VALID_REQUIREMENTS_BYTEDANCE).build();
+                .withRequirements(VALID_REQUIREMENTS_BYTEDANCE)
+                .withInterviewDateAndTime(VALID_INTERVIEW_DATE_AND_TIME_BYTEDANCE).build();
     }
 
     /**
