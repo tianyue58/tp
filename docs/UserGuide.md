@@ -483,6 +483,7 @@ There is no need to save manually.
 This section gives an overview of all the commands supported by InternSHIP.
 
 ### Tracking application details
+
 Action | Format | Example | Notes
 --------|-------|----|----
 **Add** | `add c/COMPANY_NAME p/INTERNSHIP_POSITION d/DEADLINE_OF_APPLICATION` | `add c/Shopee p/software engineer d/2021-12-12` |
@@ -491,6 +492,7 @@ Action | Format | Example | Notes
 
 
 ### Viewing specific applications
+
 Action | Format | Example | Notes
 --------|-------|----|----
 **Find** | `find PREFIX KEYWORD` |  `find pr/High` | `PREFIX` refers to the field to match the keyword (`c/` COMPANY_NAME, `p/` APPLIED_POSITION, `d/` APPLICATION_DEADLINE, `c1/` COMPLETION_STATUS, `s/` COMPANY_DECISION (i.e. STATUS), `pr/` APPLICATION_PRIORITY `r/` APPLICATION_REQUIREMENTS)
@@ -499,6 +501,7 @@ Action | Format | Example | Notes
 
 
 ### Finding upcoming deadlines & Others
+
 Action | Format | Example | Notes
 --------|-------|----|----
 **Soon** | `soon DAYS`| `soon 5` |
@@ -506,6 +509,7 @@ Action | Format | Example | Notes
 
 
 ### Others
+
 Action | Format | Example | Notes
 --------|-------|----|----
 **Delete** | `delete INDEX` | `delete 3` |
