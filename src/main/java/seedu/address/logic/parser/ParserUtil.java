@@ -39,6 +39,19 @@ public class ParserUtil {
     }
 
     /**
+     * Parses {@code zeroBasedIndex} into an {@code Index} and returns it. Leading and trailing whitespaces will be
+     * trimmed.
+     * @throws ParseException if the specified index is invalid (not non-zero unsigned integer).
+     */
+    public static Index parseDays(String zeroBasedIndex) throws ParseException {
+        String trimmedIndex = zeroBasedIndex.trim();
+        if (!StringUtil.isNonNegativeInteger(trimmedIndex)) {
+            throw new ParseException(MESSAGE_INVALID_INDEX);
+        }
+        return Index.fromZeroBased(Integer.parseInt(trimmedIndex));
+    }
+
+    /**
      * Parses a {@code String company} into a {@code Company}.
      * Leading and trailing whitespaces will be trimmed.
      *
