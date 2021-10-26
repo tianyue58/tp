@@ -27,7 +27,7 @@ import seedu.address.model.application.StatusContainsKeywordsPredicate;
  * Parses input arguments and creates a new FindCommand object
  */
 public class FindCommandParser implements Parser<FindCommand> {
-    private static final int PREFIX_SIZE = 2;
+    private static final int PREFIX_AND_KEYWORD_SIZE = 2;
 
     /**
      * Parses the given {@code String} of arguments in the context of the FindCommand
@@ -41,7 +41,7 @@ public class FindCommandParser implements Parser<FindCommand> {
                         PREFIX_DEADLINE_OF_APPLICATION, PREFIX_COMPLETION,
                         PREFIX_STATUS, PREFIX_PRIORITY, PREFIX_REQUIREMENT);
 
-        if (argMultimap.getSize() != PREFIX_SIZE || !argMultimap.getPreamble().isEmpty()) {
+        if (argMultimap.getSize() != PREFIX_AND_KEYWORD_SIZE || !argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(
                     String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindCommand.MESSAGE_USAGE));
         }
