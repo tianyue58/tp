@@ -5,6 +5,7 @@ import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT
 import static seedu.address.logic.parser.CliSyntax.PREFIX_COMPANY_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DEADLINE_OF_APPLICATION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_INTERNSHIP_POSITION;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_INTERVIEW_DATE_AND_TIME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PRIORITY;
 
 import seedu.address.logic.commands.SortCommand;
@@ -24,12 +25,12 @@ public class SortCommandParser implements Parser<SortCommand> {
         requireNonNull(args);
         ArgumentMultimap argMultimap =
                 ArgumentTokenizer.tokenize(args, PREFIX_COMPANY_NAME, PREFIX_INTERNSHIP_POSITION,
-                        PREFIX_DEADLINE_OF_APPLICATION, PREFIX_PRIORITY);
+                        PREFIX_DEADLINE_OF_APPLICATION, PREFIX_INTERVIEW_DATE_AND_TIME, PREFIX_PRIORITY);
 
         if (numberOfPrefixesPresent(argMultimap, PREFIX_COMPANY_NAME, PREFIX_INTERNSHIP_POSITION,
-                PREFIX_DEADLINE_OF_APPLICATION, PREFIX_PRIORITY) == 0
+                PREFIX_DEADLINE_OF_APPLICATION, PREFIX_INTERVIEW_DATE_AND_TIME, PREFIX_PRIORITY) == 0
                 || numberOfPrefixesPresent(argMultimap, PREFIX_COMPANY_NAME, PREFIX_INTERNSHIP_POSITION,
-                PREFIX_DEADLINE_OF_APPLICATION, PREFIX_PRIORITY) > 1
+                PREFIX_DEADLINE_OF_APPLICATION, PREFIX_INTERVIEW_DATE_AND_TIME, PREFIX_PRIORITY) > 1
                 || !argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, SortCommand.MESSAGE_USAGE));
         }
@@ -44,6 +45,9 @@ public class SortCommandParser implements Parser<SortCommand> {
         }
         if (argMultimap.getValue(PREFIX_DEADLINE_OF_APPLICATION).isPresent()) {
             parameter = "deadline";
+        }
+        if (argMultimap.getValue(PREFIX_INTERVIEW_DATE_AND_TIME).isPresent()) {
+            parameter = "interview";
         }
         if (argMultimap.getValue(PREFIX_PRIORITY).isPresent()) {
             parameter = "priority";

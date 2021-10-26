@@ -8,6 +8,8 @@ import static seedu.address.logic.commands.CommandTestUtil.VALID_DEADLINE_AMAZON
 import static seedu.address.logic.commands.CommandTestUtil.VALID_DEADLINE_BYTEDANCE;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_DEADLINE_GRAB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_DEADLINE_SHOPEE;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_INTERVIEW_DATE_AND_TIME_BYTEDANCE;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_INTERVIEW_DATE_AND_TIME_GRAB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_AMAZON;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BYTEDANCE;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_GRAB;
@@ -55,6 +57,7 @@ public class TypicalApplications {
             .withDeadline(VALID_DEADLINE_BYTEDANCE)
             .withCompletion(VALID_COMPLETION_BYTEDANCE)
             .withStatus(VALID_STATUS_BYTEDANCE)
+            .withInterviewDateAndTime(VALID_INTERVIEW_DATE_AND_TIME_BYTEDANCE)
             .withPriority(VALID_PRIORITY_BYTEDANCE)
             .withRequirements(VALID_REQUIREMENTS_BYTEDANCE).build();
     public static final Application GRAB = new ApplicationBuilder()
@@ -63,6 +66,7 @@ public class TypicalApplications {
             .withDeadline(VALID_DEADLINE_GRAB)
             .withCompletion(VALID_COMPLETION_GRAB)
             .withStatus(VALID_STATUS_GRAB)
+            .withInterviewDateAndTime(VALID_INTERVIEW_DATE_AND_TIME_GRAB)
             .withPriority(VALID_PRIORITY_GRAB)
             .withRequirements(VALID_REQUIREMENTS_GRAB).build();
     public static final Application SHOPEE = new ApplicationBuilder()
