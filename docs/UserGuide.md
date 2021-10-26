@@ -31,7 +31,7 @@ We hope you find InternSHIP to be very useful in your internship hunt!
 
 This section aims to provide some information on the purpose as well as target audience of our User Guide.
 
-## Purpose
+### Purpose
 
 This guide aims to:
 * Teach first-time users how to [start using InternSHIP](#quick-start).
@@ -41,7 +41,7 @@ This guide aims to:
 * Provide existing users with a comprehensive summary of all the [commands](#command-summary) they can use in InternSHIP and the [prefixes](#prefix-summary) used in these commands.
 * Show any interested party (e.g. other developers) the [references](#acknowledgements) used in the creation of InternSHIP.
 
-## Target Audience
+### Target Audience
 
 As the target audience of InternSHIP is university students, this User Guide is mainly targeted towards the same demographic. This guide is therefore aimed at users who:
 * Are familiar with navigating around a webpage using hyperlinks.
@@ -129,7 +129,7 @@ Parameter | Refers to | Required format | Application field? | Notes
 **COMPANY_DECISION** | The company's decision on the user's application. | It can only take 3 values: pending, accepted or rejected. | Yes | This is **up to the company, not the user**.
 **COMPANY_NAME** | The name of the company the application was made to. | It should only contain [alphanumeric](#glossary) characters and spaces, and should not be blank. | Yes
 **COMPLETION_STATUS** | Whether or not the application has been submitted by the user. | It can only take 2 values: completed or uncompleted. | Yes | Conversely to COMPANY_DECISION, this is **up to the user, not the company**.
-**DAYS** | WILLY FILL IN PLS HEHE | No
+**DAYS** | WILLY FILL IN PLS HEHE | blabla | No
 **FIELD** | Any one of the application fields. | It should be in its prefix form, as shown in the [prefix summary](#prefix-summary). | No
 **INDEX** The index number of the application as shown in the **currently displayed application list**. | It must be a **positive integer** 1, 2, 3, ... | No
 **INTERNSHIP_POSITION** | The job applied for in the application. | It should only contain alphanumeric characters and spaces, and should not be blank. | Yes
@@ -191,7 +191,7 @@ The commands are split in terms of InternSHIP's main features:
 Adds a new entry to the application list in InternSHIP. <br>
 
 <div markdown="span" class="alert alert-info"> 
-:information_source: **Info:**
+:information_source: **Info:** <br>
 Minimally, the following fields are required when a new entry is added: <br>
 - `COMPANY_NAME` <br>
 - `INTERNSHIP_POSITION` <br>
@@ -226,7 +226,7 @@ Examples:
 Edits the fields of a specified existing entry in the application list.
 
 <div markdown="span" class="alert alert-info"> 
-:information_source: **Info:**
+:information_source: **Info:** <br>
 The fields that can be edited using this command are: <br>
 - `COMPANY_NAME` <br>
 - `INTERNSHIP_POSITION` <br>
@@ -291,7 +291,7 @@ Only one field and one keyword can be provided each time.
 Format: `find FIELD keyword`
 
 <div markdown="span" class="alert alert-info">
-:information_source: **Info:** 
+:information_source: **Info:** <br>
 The fields available to be found are: <br>
 * COMPANY_NAME `c/` <br>
 * APPLIED_POSITION `p/` <br>
@@ -326,7 +326,7 @@ Format: `list`
 Sorts all entries in the **currently displayed** application list by a specified field.
 
 <div markdown="span" class="alert alert-info"> 
-:information_source: **Info:** 
+:information_source: **Info:** <br>
 The fields available to sort by are: <br>
 * COMPANY_NAME `c/` (ascending alphabetical order) <br>
 * APPLIED_POSITION `p/` (ascending alphabetical order) <br>
