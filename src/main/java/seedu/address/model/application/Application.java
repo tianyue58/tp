@@ -2,8 +2,11 @@ package seedu.address.model.application;
 
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
@@ -25,12 +28,14 @@ public class Application {
 
     // Optional fields
     private final Set<Requirement> requirements = new HashSet<>();
+    private final Set<InterviewDateAndTime> interviewDateAndTime = new HashSet<>();
 
     /**
      * Every field must be present and not null.
      */
     public Application(Company company, Position position, Deadline deadline, Completion completion, Status status,
-                       Priority priority, Set<Requirement> requirements) {
+                       Priority priority, Set<Requirement> requirements,
+                       Set<InterviewDateAndTime> interviewDateAndTime) {
         requireAllNonNull(company, position, deadline, completion, requirements);
         this.company = company;
         this.position = position;
@@ -39,6 +44,7 @@ public class Application {
         this.status = status;
         this.priority = priority;
         this.requirements.addAll(requirements);
+        this.interviewDateAndTime.addAll(interviewDateAndTime);
     }
 
     /**
@@ -92,6 +98,14 @@ public class Application {
     }
 
     /**
+     * Returns an immutable interview date and time set, which throws {@code UnsupportedOperationException}
+     * if modification is attempted.
+     */
+    public Set<InterviewDateAndTime> getInterviewDateAndTime() {
+        return Collections.unmodifiableSet(interviewDateAndTime);
+    }
+
+    /**
      * Returns true if both applications have the same name and position.
      * This defines a weaker notion of equality between two applications.
      */
@@ -125,12 +139,13 @@ public class Application {
                 && otherApplication.getDeadline().equals(getDeadline())
                 && otherApplication.getCompletion().equals(getCompletion())
                 && otherApplication.getStatus().equals(getStatus())
-                && otherApplication.getRequirements().equals(getRequirements());
+                && otherApplication.getRequirements().equals(getRequirements())
+                && otherApplication.getInterviewDateAndTime().equals(getInterviewDateAndTime());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(company, position, deadline, completion, status, requirements);
+        return Objects.hash(company, position, deadline, completion, status, requirements, interviewDateAndTime);
     }
 
     @Override
@@ -152,6 +167,16 @@ public class Application {
         if (!requirements.isEmpty()) {
             builder.append("; Requirements: ");
             requirements.forEach(builder::append);
+        }
+
+        Set<InterviewDateAndTime> interviewDateAndTimes = getInterviewDateAndTime();
+        if (!interviewDateAndTimes.isEmpty()) {
+            List<String> stringList = new ArrayList<>();
+            for (Iterator<InterviewDateAndTime> it = interviewDateAndTimes.iterator(); it.hasNext(); ) {
+                stringList.add(it.next().toFormattedString());
+            }
+            builder.append("; Interview Date and Time: ");
+            stringList.forEach(builder::append);
         }
 
         return builder.toString();

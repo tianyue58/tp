@@ -8,6 +8,7 @@ import seedu.address.logic.commands.EditCommand.EditApplicationDescriptor;
 import seedu.address.model.application.Application;
 import seedu.address.model.application.Company;
 import seedu.address.model.application.Deadline;
+import seedu.address.model.application.InterviewDateAndTime;
 import seedu.address.model.application.Position;
 import seedu.address.model.application.Priority;
 import seedu.address.model.application.Requirement;
@@ -76,6 +77,15 @@ public class EditApplicationDescriptorBuilder {
     public EditApplicationDescriptorBuilder withRequirements(String... requirements) {
         Set<Requirement> requirementSet = Stream.of(requirements).map(Requirement::new).collect(Collectors.toSet());
         descriptor.setRequirements(requirementSet);
+        return this;
+    }
+
+    /**
+     * Sets the {@code InterviewDateAndTime} of the {@code EditApplicationDescriptor} that we are building.
+     */
+    public EditApplicationDescriptorBuilder withInterviewDateAndTime(String... dt) {
+        Set<InterviewDateAndTime> dtSet = Stream.of(dt).map(InterviewDateAndTime::new).collect(Collectors.toSet());
+        descriptor.setInterviewDateAndTimes(dtSet);
         return this;
     }
 

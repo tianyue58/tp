@@ -14,6 +14,7 @@ import seedu.address.model.application.Application;
 import seedu.address.model.application.Company;
 import seedu.address.model.application.Completion;
 import seedu.address.model.application.Deadline;
+import seedu.address.model.application.InterviewDateAndTime;
 import seedu.address.model.application.Position;
 import seedu.address.model.application.Priority;
 import seedu.address.model.application.Requirement;
@@ -33,6 +34,7 @@ class JsonAdaptedApplication {
     private final String completion;
     private final String priority;
     private final List<JsonAdaptedRequirement> requirements = new ArrayList<>();
+    private final List<JsonAdaptedInterviewDateAndTime> interviewDateAndTimes = new ArrayList<>();
 
     /**
      * Constructs a {@code JsonAdaptedApplication} with the given application details.
@@ -44,7 +46,9 @@ class JsonAdaptedApplication {
                                   @JsonProperty("completion") String completion,
                                   @JsonProperty("status") String status,
                                   @JsonProperty("priority") String priority,
-                                  @JsonProperty("requirements") List<JsonAdaptedRequirement> requirements
+                                  @JsonProperty("requirements") List<JsonAdaptedRequirement> requirements,
+                                  @JsonProperty("interview date and time")
+                                              List<JsonAdaptedInterviewDateAndTime> interviewDateAndTimes
     ) {
         this.company = company;
         this.position = position;
@@ -54,6 +58,9 @@ class JsonAdaptedApplication {
         this.priority = priority;
         if (requirements != null) {
             this.requirements.addAll(requirements);
+        }
+        if (interviewDateAndTimes != null) {
+            this.interviewDateAndTimes.addAll(interviewDateAndTimes);
         }
     }
 
@@ -71,6 +78,9 @@ class JsonAdaptedApplication {
         requirements.addAll(source.getRequirements().stream()
                 .map(JsonAdaptedRequirement::new)
                 .collect(Collectors.toList()));
+        interviewDateAndTimes.addAll(source.getInterviewDateAndTime().stream()
+                .map(JsonAdaptedInterviewDateAndTime::new)
+                .collect(Collectors.toList()));
     }
 
     /**
@@ -83,7 +93,10 @@ class JsonAdaptedApplication {
         for (JsonAdaptedRequirement requirement : requirements) {
             applicationRequirements.add(requirement.toModelType());
         }
-
+        final List<InterviewDateAndTime> dateAndTimes = new ArrayList<>();
+        for (JsonAdaptedInterviewDateAndTime interviewDateAndTime : interviewDateAndTimes) {
+            dateAndTimes.add(interviewDateAndTime.toModelType());
+        }
         if (company == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
                     Company.class.getSimpleName()));
@@ -140,8 +153,10 @@ class JsonAdaptedApplication {
 
         final Set<Requirement> modelRequirement = new HashSet<>(applicationRequirements);
 
+        final Set<InterviewDateAndTime> modelInterviewDateAndTime = new HashSet<>(dateAndTimes);
+
         return new Application(modelName, modelPosition, modelDeadline, modelCompletion, modelStatus, modelPriority,
-                modelRequirement);
+                modelRequirement, modelInterviewDateAndTime);
     }
 
 }

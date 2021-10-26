@@ -13,6 +13,7 @@ import seedu.address.model.application.Application;
 import seedu.address.model.application.Company;
 import seedu.address.model.application.Completion;
 import seedu.address.model.application.Deadline;
+import seedu.address.model.application.InterviewDateAndTime;
 import seedu.address.model.application.Position;
 import seedu.address.model.application.Priority;
 import seedu.address.model.application.Requirement;
@@ -60,9 +61,10 @@ public class CompleteCommand extends Command {
         Status status = applicationToComplete.getStatus();
         Priority priority = applicationToComplete.getPriority();
         Set<Requirement> requirementList = applicationToComplete.getRequirements();
+        Set<InterviewDateAndTime> interviewDateAndTimeList = applicationToComplete.getInterviewDateAndTime();
 
         Application completedApplication = new Application(company, position, deadline, completion, status, priority,
-                requirementList);
+                requirementList, interviewDateAndTimeList);
         model.setApplication(applicationToComplete, completedApplication);
         model.commitInternship(model.getInternship());
 

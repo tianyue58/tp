@@ -44,6 +44,8 @@ public class ApplicationCard extends UiPart<Region> {
     private Label priority;
     @FXML
     private FlowPane requirements;
+    @FXML
+    private FlowPane interviewDateAndTime;
 
     /**
      * Creates an {@code ApplicationCode} with the given {@code Application} and index to display.
@@ -60,6 +62,10 @@ public class ApplicationCard extends UiPart<Region> {
         application.getRequirements().stream()
                 .sorted(Comparator.comparing(requirement -> requirement.value))
                 .forEach(requirement -> requirements.getChildren().add(new Label(requirement.value)));
+        application.getInterviewDateAndTime().stream()
+                .sorted(Comparator.comparing(dt -> dt.value))
+                .forEach(dateAndTime -> interviewDateAndTime.getChildren()
+                        .add(new Label(dateAndTime.toFormattedString())));
         completion.setText(application.getCompletion().value);
     }
 
