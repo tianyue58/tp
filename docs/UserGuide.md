@@ -114,7 +114,7 @@ Here is a summary of all the parameters used in InternSHIP commands:
 
 Parameter | Refers to | Required format | Notes
 --------|-------|-------|----
-**APPLICATION_DEADLINE** | The deadline for the application submission. | It should be a valid date in YYYY-MM-DD format. | An application field.
+**APPLICATION_DEADLINE** | The deadline for the application submission. | It should be a valid date in `YYYY-MM-DD` format. | An application field.
 **APPLICATION_PRIORITY** | The user-set priority of the application. | It can only take 3 values: high, medium or low. | An application field.
 **APPLICATION_REQUIREMENTS** | The required deliverables for the application submission. | It can take any value. | 
 * e.g. CV, portfolio...
@@ -130,6 +130,7 @@ Parameter | Refers to | Required format | Notes
 **FIELD** | Any one of the application fields. | It should be in its prefix form, as shown in the [prefix summary](#prefix-summary).
 **INDEX** The index number of the application as shown in the **currently displayed application list**. | It must be a **positive integer** 1, 2, 3, ...
 **INTERNSHIP_POSITION** | The job applied for in the application. | It should only contain alphanumeric characters and spaces, and should not be blank. | An application field.
+**INTERVIEW_DATE_AND_TIME** | The date and time of the interview(s) required for an application. | It should be a valid date and time in `YYYY-MM-DD HHmm` format. The date and time are separated by a space, and the time is represented in a 24-hour system. | An application field.
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -199,18 +200,22 @@ These fields can be changed later using the `edit`, `complete` or `accept/reject
 - `COMPLETION_STATUS`  set as `Uncompleted`
 - `COMPANY_DECISION` (i.e., application status) set as `Pending`
 
-Additionally, `APPLICATION_REQUIREMENTS` is an optional field that can either be specified or not.
-If not specified at this stage, it can still be added and edited later by the `edit` command.
+Additionally, `APPLICATION_REQUIREMENTS`, and `INTERVIEW_DATE_AND_TIME` are optional fields that can either be specified or not.
+If not specified at this stage, it can still be added and edited later using the `edit` command.
 </div>
 
 Format:
-`add c/COMPANY_NAME p/INTERNSHIP_POSITION d/APPLICATION_DEADLINE [r/APPLICATION_REQUIREMENTS]…​`
+`add c/COMPANY_NAME p/APPLIED_POSITION d/APPLICATION_DEADLINE [r/REQUIREMENTS]…​ [i/INTERVIEW_DATE_AND_TIME]…​`
 
 * Adds a new application with the specified field values to the list.
 
+<div markdown="span" class="alert alert-primary"> :bulb: **Tip:** The option to input more than one `INTERVIEW_DATE_AND_TIME` is provided because many companies have multiple rounds of interviews for a single application!
+</div>
+
 Examples:
 * `add c/Shopee p/software engineer d/2021-12-12` adds a new internship application to `Shopee` as a `software engineer`, with the application deadline `12 December 2021`.
-  * `add c/Shopee p/software engineer d/2021-12-12 r/resume` adds a new internship application with the same details as the previous example, but with an additional application requirement of a `resume`.
+* `add c/Shopee p/software engineer d/2021-12-12 r/resume` adds a new internship application with the same details as the previous example, but with an additional application requirement of a `resume`.
+* `add c/Shopee p/software engineer d/2021-12-12 r/resume i/2021-12-18 1030` adds a new internship application with the same details as the previous example, but with an interview on `18 Dec 2021 10:30`.
 
 
 #### Editing the details of an existing entry : `edit`
@@ -223,15 +228,15 @@ The fields that can be edited using this command are:
 - `COMPANY_NAME`
 - `INTERNSHIP_POSITION`
 - `APPLICATION_DEADLINE`
-- `APPLICATION_REQUIREMENTS` <br>
+- `APPLICATION_REQUIREMENTS`
+- `INTERVIEW_DATE_AND_TIME` <br>
   Editing any field is optional, but least one field must be edited each time.
   Multiple fields can be edited at the same time.
 
 For the edited fields, existing values will be overwritten and updated to the new input values. The values for the rest of the fields will remain the same.
 </div>
 
-Format: `edit INDEX [c/COMPANY_NAME] [p/INTERNSHIP_POSITION] [d/APPLICATION_DEADLINE] [pr/APPLICATION_PRIORITY]
-[r/APPLICATION_REQUIREMENTS]`
+Format: `edit INDEX [c/COMPANY_NAME] [p/APPLIED_POSITION] [d/APPLICATION_DEADLINE] [pr/APPLICATION_PRIORITY] [r/APPLICATION_REQUIREMENTS] [i/INTERVIEW_DATE_AND_TIME]`
 
 * Edits the application at the specified `INDEX`.
 
@@ -240,17 +245,16 @@ Examples:
 * `edit 2 p/UI designer` changes the internship position of the 2nd application to `UI designer`.
 
 
-#### Updating the application status(need to change this part hehe) : `accept/reject`
+#### Updating the application status `(COMPANY_DECISION)`: `accept/reject`
 
-Updates the status of an application.
+Updates the status (company decision) of an application. 
 
-**IMPORTANT NOTE** <br>
+:bulb: **Note:** <br>
 The status of an application is the **decision provided by the company**
 on whether the candidate has been `Accepted` or `Rejected`.
-
-<div markdown="span" class="alert alert-primary">:bulb: **Tip:**
-We can put the tip here! :D
-</div>
+It is different from the 'Completion Status', which represents whether the 
+user has completed submitting the application (and all related requirements) 
+or not.
 
 When a new application is added, the status is `Pending` by default as it is assumed that the user has not received
 the decision from the company yet. The status can later be changed to either `Accepted` or `Rejected` using the
@@ -263,8 +267,8 @@ Format: `accept INDEX` or `reject INDEX`
 - The index must be a **positive integer** 1, 2, 3, …​
 
 Examples:
-* `accept` followed by `1` marks the first entry as 'Accepted'.
-* `reject` followed by `2` marks the second entry as 'Rejected'.
+* `accept 1` marks the first entry as 'Accepted'.
+* `reject 2` marks the second entry as 'Rejected'.
 
 
 ### Viewing specific applications
@@ -293,6 +297,7 @@ The fields available to be found are:
 * COMPANY_DECISION (i.e. STATUS) `s/`
 * APPLICATION_PRIORITY `pr/`
 * APPLICATION_REQUIREMENTS `r/`
+* INTERVIEW_DATE_AND_TIME `i/`
 </div>
 
 Examples:
@@ -487,8 +492,8 @@ This section gives an overview of all the commands supported by InternSHIP.
 
 Action | Format | Example | Notes
 --------|-------|----|----
-**Add** | `add c/COMPANY_NAME p/INTERNSHIP_POSITION d/DEADLINE_OF_APPLICATION` | `add c/Shopee p/software engineer d/2021-12-12` |
-**Edit** | `edit INDEX [c/COMPANY_NAME] [p/INTERNSHIP_POSITION] [d/DEADLINE_OF_APPLICATION] [pr/PRIORITY] [r/REQUIREMENTS]` | `edit 1 c/Grab d/2021-12-20`
+**Add** | `add c/COMPANY_NAME p/INTERNSHIP_POSITION d/DEADLINE_OF_APPLICATION [r/REQUIREMENTS] [i/INTERVIEW_DATE_AND_TIME]` | `add c/Shopee p/software engineer d/2021-12-12` |
+**Edit** | `edit INDEX [c/COMPANY_NAME] [p/INTERNSHIP_POSITION] [d/DEADLINE_OF_APPLICATION] [pr/PRIORITY] [r/REQUIREMENTS] [i/INTERVIEW_DATE_AND_TIME]` | `edit 1 c/Grab d/2021-12-20`
 **Accept/Reject** | `DECISION INDEX` | `accept 2` | `DECISION` can only be either `accept` or `reject`
 
 
@@ -535,6 +540,7 @@ COMPANY_DECISION | **s/** `find`
 COMPANY_NAME | **c/** | `add`, `edit`, `find`, `sort`
 COMPLETION_STATUS | **c1/** | `find`
 INTERNSHIP_POSITION | **p/** | `add`, `edit`, `find`, `sort`
+INTERVIEW_DATE_AND_TIME | **i/** | `add`, `edit`, `find`, `sort`
 
 --------------------------------------------------------------------------------------------------------------------
 
