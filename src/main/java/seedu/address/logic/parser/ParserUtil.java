@@ -12,6 +12,7 @@ import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.application.Company;
 import seedu.address.model.application.Completion;
 import seedu.address.model.application.Deadline;
+import seedu.address.model.application.InterviewDateAndTime;
 import seedu.address.model.application.Position;
 import seedu.address.model.application.Priority;
 import seedu.address.model.application.Requirement;
@@ -35,6 +36,19 @@ public class ParserUtil {
             throw new ParseException(MESSAGE_INVALID_INDEX);
         }
         return Index.fromOneBased(Integer.parseInt(trimmedIndex));
+    }
+
+    /**
+     * Parses {@code zeroBasedIndex} into an {@code Index} and returns it. Leading and trailing whitespaces will be
+     * trimmed.
+     * @throws ParseException if the specified index is invalid (not non-zero unsigned integer).
+     */
+    public static Index parseDays(String zeroBasedIndex) throws ParseException {
+        String trimmedIndex = zeroBasedIndex.trim();
+        if (!StringUtil.isNonNegativeInteger(trimmedIndex)) {
+            throw new ParseException(MESSAGE_INVALID_INDEX);
+        }
+        return Index.fromZeroBased(Integer.parseInt(trimmedIndex));
     }
 
     /**
@@ -152,6 +166,34 @@ public class ParserUtil {
             tagSet.add(parseRequirement(tagName));
         }
         return tagSet;
+    }
+
+    /**
+     * Parses a {@code String dt} into a {@code InterviewDateAndTime}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code dt} is invalid.
+     */
+    public static InterviewDateAndTime parseInterviewDateAndTime(String dt) throws ParseException {
+        requireNonNull(dt);
+        String trimmedInterviewDateAndTime = dt.trim();
+        if (!InterviewDateAndTime.isValidInterviewDateAndTime(trimmedInterviewDateAndTime)) {
+            throw new ParseException(InterviewDateAndTime.MESSAGE_CONSTRAINTS);
+        }
+        return new InterviewDateAndTime(trimmedInterviewDateAndTime);
+    }
+
+    /**
+     * Parses {@code Collection<InterviewDateAndTime> interviewDateAndTimes} into a {@code Set<InterviewDateAndTime>}.
+     */
+    public static Set<InterviewDateAndTime>
+        parseInterviewDateAndTimes(Collection<String> interviewDateAndTimes) throws ParseException {
+        requireNonNull(interviewDateAndTimes);
+        final Set<InterviewDateAndTime> dtSet = new HashSet<>();
+        for (String dtName : interviewDateAndTimes) {
+            dtSet.add(parseInterviewDateAndTime(dtName));
+        }
+        return dtSet;
     }
 
 }

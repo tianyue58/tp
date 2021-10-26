@@ -62,6 +62,7 @@
               <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="130.0" />
               <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="150.0" />
               <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="150.0" />
+              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="150.0" />
             </columnConstraints>
             <HBox spacing="5" alignment="CENTER_LEFT">
               <Label fx:id="id" styleClass="cell_big_label">
@@ -80,9 +81,10 @@
             <Label fx:id="position" styleClass="cell_big_label" text="Position" GridPane.columnIndex="1"/>
             <Label fx:id="deadline" styleClass="cell_big_label" text="Deadline" GridPane.columnIndex="2"/>
             <Label fx:id="requirements" styleClass="cell_big_label" text="Requirements" GridPane.columnIndex="3"/>
-            <Label fx:id="priority" styleClass="cell_big_label" text="Priority" GridPane.columnIndex="4"/>
-            <Label fx:id="completion" styleClass="cell_big_label" text="Completed?" GridPane.columnIndex="5"/>
-            <Label fx:id="status" styleClass="cell_big_label" text="Status" GridPane.columnIndex="6"/>
+            <Label fx:id="interviewDateAndTime" styleClass="cell_big_label" text="Interview Time" GridPane.columnIndex="4"/>
+            <Label fx:id="priority" styleClass="cell_big_label" text="Priority" GridPane.columnIndex="5"/>
+            <Label fx:id="completion" styleClass="cell_big_label" text="Completed?" GridPane.columnIndex="6"/>
+            <Label fx:id="status" styleClass="cell_big_label" text="Status" GridPane.columnIndex="7"/>
           </GridPane>
         </StackPane>
         <VBox fx:id="applicationList" styleClass="pane-with-border" minWidth="340" prefWidth="340" VBox.vgrow="ALWAYS">

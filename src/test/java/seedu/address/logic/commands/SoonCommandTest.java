@@ -11,6 +11,7 @@ import seedu.address.model.Internship;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
+import seedu.address.model.application.SoonDeadlinePredicate;
 
 
 /**
@@ -31,7 +32,8 @@ public class SoonCommandTest {
     public void execute_emptyList() {
         model = new ModelManager(new Internship(), new UserPrefs());
         expectedModel = new ModelManager(model.getInternship(), new UserPrefs());
-        assertCommandSuccess(new SoonCommand(Index.fromZeroBased(1)), model,
-                SoonCommand.MESSAGE_EMPTY_LIST, expectedModel);
+        assertCommandSuccess(new SoonCommand(Index.fromZeroBased(1),
+                        new SoonDeadlinePredicate(Index.fromOneBased(1))),
+                model, SoonCommand.MESSAGE_EMPTY_LIST, expectedModel);
     }
 }

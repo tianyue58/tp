@@ -5,6 +5,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_COMPANY_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_COMPLETION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DEADLINE_OF_APPLICATION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_INTERNSHIP_POSITION;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_INTERVIEW_DATE_AND_TIME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PRIORITY;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_REQUIREMENT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_STATUS;
@@ -15,6 +16,7 @@ import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.application.CompletionContainsKeywordsPredicate;
 import seedu.address.model.application.DeadlineContainsKeywordsPredicate;
+import seedu.address.model.application.InterviewContainsKeywordsPredicate;
 import seedu.address.model.application.NameContainsKeywordsPredicate;
 import seedu.address.model.application.PositionContainsKeywordsPredicate;
 import seedu.address.model.application.PriorityContainsKeywordsPredicate;
@@ -111,6 +113,16 @@ public class FindCommandParser implements Parser<FindCommand> {
             }
             String[] requirementsKeywords = trimmedArgs.split("\\s+");
             return new FindCommand(new RequirementsContainsKeywordsPredicate(Arrays.asList(requirementsKeywords)));
+        }
+
+        if (argMultimap.getValue(PREFIX_INTERVIEW_DATE_AND_TIME).isPresent()) {
+            String trimmedArgs = argMultimap.getValue(PREFIX_INTERVIEW_DATE_AND_TIME).get().trim();
+            if (trimmedArgs.isEmpty()) {
+                throw new ParseException(
+                        String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindCommand.MESSAGE_USAGE));
+            }
+            String[] interviewKeywords = trimmedArgs.split("\\s+");
+            return new FindCommand(new InterviewContainsKeywordsPredicate(Arrays.asList(interviewKeywords)));
         }
 
         throw new ParseException(

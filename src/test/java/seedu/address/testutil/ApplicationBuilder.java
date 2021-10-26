@@ -7,6 +7,7 @@ import seedu.address.model.application.Application;
 import seedu.address.model.application.Company;
 import seedu.address.model.application.Completion;
 import seedu.address.model.application.Deadline;
+import seedu.address.model.application.InterviewDateAndTime;
 import seedu.address.model.application.Position;
 import seedu.address.model.application.Priority;
 import seedu.address.model.application.Requirement;
@@ -32,6 +33,7 @@ public class ApplicationBuilder {
     private Status status;
     private Priority priority;
     private Set<Requirement> requirements;
+    private Set<InterviewDateAndTime> interviewDateAndTime;
 
     /**
      * Creates a {@code ApplicationBuilder} with the default details.
@@ -44,6 +46,7 @@ public class ApplicationBuilder {
         status = new Status(DEFAULT_STATUS);
         priority = new Priority(DEFAULT_PRIORITY);
         requirements = new HashSet<>();
+        interviewDateAndTime = new HashSet<>();
     }
 
     /**
@@ -57,6 +60,7 @@ public class ApplicationBuilder {
         completion = applicationToCopy.getCompletion();
         priority = applicationToCopy.getPriority();
         requirements = new HashSet<>(applicationToCopy.getRequirements());
+        interviewDateAndTime = new HashSet<>(applicationToCopy.getInterviewDateAndTime());
     }
 
     /**
@@ -115,9 +119,20 @@ public class ApplicationBuilder {
         return this;
     }
 
+    /**
+     * Sets the {@code InterviewDateAndTime} of the {@code Application} that we are building.
+     */
+    public ApplicationBuilder withInterviewDateAndTime(String... dt) {
+        this.interviewDateAndTime = SampleDataUtil.getInterviewDateAndTimeSet(dt);
+        return this;
+    }
 
+    /**
+     * Builds the application.
+     */
     public Application build() {
-        return new Application(company, position, deadline, completion, status, priority, requirements);
+        return new Application(company, position, deadline, completion, status,
+                priority, requirements, interviewDateAndTime);
     }
 
 }
