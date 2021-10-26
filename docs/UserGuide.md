@@ -50,7 +50,7 @@ This guide aims to:
 
 As the target audience of InternSHIP is university students, this User Guide is mainly targeted towards the same demographic. This guide is therefore aimed at users who:
 * Are familiar with navigating around a webpage using hyperlinks.
-* Are comfortable with downloading and installing software on their computer.\
+* Are comfortable with downloading and installing software on their computer.
 * Can type fast and are comfortable using a CLI.
 This User Guide **does not assume that the reader has a technical background**. Therefore, university students of all majors should be able to use this guide. The definitions for certain technical terms can be found in the [glossary](#glossary).
 
