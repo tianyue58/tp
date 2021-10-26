@@ -284,7 +284,7 @@ Examples:
 
 Finds all entries from the application list that match the keyword in the given field.
 
-More than one keyword and field can be provided.
+Only one field and one keyword can be provided each time.
 
 Format: `find FIELD keyword`
 
@@ -303,7 +303,7 @@ The fields available to be found are:
 
 Examples:
 * `find pr/High` shows all the applications whose priority is High.
-* `find c1/Completed s/Pending` shows all the applications that match any of the given field and keyword.
+* `find c1/Completed` shows all the applications that are completed.
 
 
 #### Listing all entries : `list`
