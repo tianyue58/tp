@@ -2,8 +2,9 @@
 layout: page
 title: User Guide
 ---
+<div style="text-align: justify">
 
-##Table of Contents
+## Table of Contents
 
 * Table of Contents
 {:toc}
@@ -12,7 +13,12 @@ title: User Guide
 
 Are you a university student looking to score a holiday internship? Do you feel overwhelmed by all the application details you have to keep track of? Have you missed any application deadlines because there are just too many to remember? Have you ever wished that there were a comprehensive app that could help you track your entire internship application process? If you answered yes to any of these questions, we have just the application for you!
 
+<div style="text-align: center">
+
 ![Logo](images/InternSHIP.png)
+
+</div>
+
 InternSHIP is a **desktop app for university students to manage their internship applications.** Here are its main features:
 * Tracking all essential internship application details
 * Viewing specific applications
@@ -30,7 +36,8 @@ We hope you find InternSHIP to be very useful in your internship hunt!
 
 This section aims to provide some information on the purpose as well as target audience of our User Guide.
 
-##Purpose
+## Purpose
+
 This guide aims to:
 * Teach first-time users how to [start using InternSHIP](#quick-start).
 * Show users [how to use each command in detail](#features) should they encounter any difficulty using any of the commands in InternSHIP.
@@ -39,7 +46,8 @@ This guide aims to:
 * Provide existing users with a comprehensive summary of all the [commands](#command-summary) they can use in InternSHIP and the [prefixes](#prefix-summary) used in these commands.
 * Show any interested party (e.g. other developers) the [references](#acknowledgements) used in the creation of InternSHIP.
 
-##Target Audience
+## Target Audience
+
 As the target audience of InternSHIP is university students, this User Guide is mainly targeted towards the same demographic. This guide is therefore aimed at users who:
 * Are familiar with navigating around a webpage using hyperlinks.
 * Are comfortable with downloading and installing software on their computer.
@@ -65,19 +73,23 @@ For a more detailed overview, refer to this [Table of Contents](#table-of-conten
 
 Below are some special formats used throughout this User Guide:
 
-#### Information boxes
-<div markdown="span" class="alert alert-info"> :information_source: **Info** Information boxes provide extra information that might be useful!
+**Information boxes**
+
+<div markdown="span" class="alert alert-info"> :information_source: **Info:** Information boxes provide extra information that might be useful!
 </div>
 
-#### Tips
+**Tips**
+
 <div markdown="span" class="alert alert-primary"> :bulb: **Tip:** Tips are pointers that can help to improve your experience using InternSHIP!
 </div>
 
-#### Warnings
-<div markdown="span" class="alert alert-danger"> :warning: **Warning** Warnings are **very important** messages to take note of to avoid any unintended consequences of a command!!
+**Warnings**
+
+<div markdown="span" class="alert alert-danger"> :warning: **Warning:** Warnings are **very important** messages to take note of to avoid any unintended consequences of a command!!
 </div>
 
-#### Highlights
+**Highlights**
+
 `Highlights are used to emphasise special text such as parameters, field values, commands, file names or any user inputs.`
 
 ### Navigating the GUI
@@ -113,25 +125,19 @@ All the commands in the [Features](#features) section adhere to the following ru
 
 Here is a summary of all the parameters used in InternSHIP commands:
 
-Parameter | Refers to | Required format | Notes
---------|-------|-------|----
-**APPLICATION_DEADLINE** | The deadline for the application submission. | It should be a valid date in `YYYY-MM-DD` format. | An application field.
-**APPLICATION_PRIORITY** | The user-set priority of the application. | It can only take 3 values: high, medium or low. | An application field.
-**APPLICATION_REQUIREMENTS** | The required deliverables for the application submission. | It can take any value. | 
-* e.g. CV, portfolio...
-* An application field.
-**COMPANY_DECISION** | The company's decision on the user's application. | It can only take 3 values: pending, accepted or rejected. | 
-* This is **up to the company, not the user**.
-* An application field.
-**COMPANY_NAME** | The name of the company the application was made to. | It should only contain [alphanumeric](#glossary) characters and spaces, and should not be blank. | An application field.
-**COMPLETION_STATUS** | Whether or not the application has been submitted by the user. | It can only take 2 values: completed or uncompleted. | 
-* Conversely to COMPANY_DECISION, this is **up to the user, not the company**.
-* An application field.
-**DAYS** | WILLY FILL IN PLS HEHE
-**FIELD** | Any one of the application fields. | It should be in its prefix form, as shown in the [prefix summary](#prefix-summary).
-**INDEX** The index number of the application as shown in the **currently displayed application list**. | It must be a **positive integer** 1, 2, 3, ...
-**INTERNSHIP_POSITION** | The job applied for in the application. | It should only contain alphanumeric characters and spaces, and should not be blank. | An application field.
-**INTERVIEW_DATE_AND_TIME** | The date and time of the interview(s) required for an application. | It should be a valid date and time in `YYYY-MM-DD HHmm` format. The date and time are separated by a space, and the time is represented in a 24-hour system. | An application field.
+Parameter | Refers to | Required format | Application field? | Notes
+--------|-------|-------|----|-----
+**APPLICATION_DEADLINE** | The deadline for the application submission. | It should be a valid date in `YYYY-MM-DD` format. | Yes
+**APPLICATION_PRIORITY** | The user-set priority of the application. | It can only take 3 values: high, medium or low. | Yes
+**APPLICATION_REQUIREMENTS** | The required deliverables for the application submission. | It can take any value. | Yes | e.g. CV, portfolio...
+**COMPANY_DECISION** | The company's decision on the user's application. | It can only take 3 values: pending, accepted or rejected. | Yes | This is **up to the company, not the user**.
+**COMPANY_NAME** | The name of the company the application was made to. | It should only contain [alphanumeric](#glossary) characters and spaces, and should not be blank. | Yes
+**COMPLETION_STATUS** | Whether or not the application has been submitted by the user. | It can only take 2 values: completed or uncompleted. | Yes | Conversely to COMPANY_DECISION, this is **up to the user, not the company**.
+**DAYS** | WILLY FILL IN PLS HEHE | No
+**FIELD** | Any one of the application fields. | It should be in its prefix form, as shown in the [prefix summary](#prefix-summary). | No
+**INDEX** The index number of the application as shown in the **currently displayed application list**. | It must be a **positive integer** 1, 2, 3, ... | No
+**INTERNSHIP_POSITION** | The job applied for in the application. | It should only contain alphanumeric characters and spaces, and should not be blank. | Yes
+**INTERVIEW_DATE_AND_TIME** | The date and time of the interview(s) required for an application. | It should be a valid date and time in `YYYY-MM-DD HHmm` format. The date and time are separated by a space, and the time is represented in a 24-hour system. | Yes
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -189,19 +195,19 @@ The commands are split in terms of InternSHIP's main features:
 Adds a new entry to the application list in InternSHIP. <br>
 
 <div markdown="span" class="alert alert-info"> 
-:information_source: **Info**
-Minimally, the following fields are required when a new entry is added:
-- `COMPANY_NAME`
-- `INTERNSHIP_POSITION`
+:information_source: **Info:**
+Minimally, the following fields are required when a new entry is added: <br>
+- `COMPANY_NAME` <br>
+- `INTERNSHIP_POSITION` <br>
 - `APPLICATION_DEADLINE` <br>
-
-There are three fields that receive their default values.
-These fields can be changed later using the `edit`, `complete` or `accept/reject` commands respectively.
+<br>
+There are three fields that receive their default values. <br>
+These fields can be changed later using the `edit`, `complete` or `accept/reject` commands respectively. <br>
 - `APPLICATION_PRIORITY`: set as `Medium` <br>
-- `COMPLETION_STATUS`  set as `Uncompleted`
-- `COMPANY_DECISION` (i.e., application status) set as `Pending`
-
-Additionally, `APPLICATION_REQUIREMENTS`, and `INTERVIEW_DATE_AND_TIME` are optional fields that can either be specified or not.
+- `COMPLETION_STATUS`  set as `Uncompleted` <br>
+- `COMPANY_DECISION` (i.e., application status) set as `Pending` <br>
+<br>
+Additionally, `APPLICATION_REQUIREMENTS`, and `INTERVIEW_DATE_AND_TIME` are optional fields that can either be specified or not. <br>
 If not specified at this stage, it can still be added and edited later using the `edit` command.
 </div>
 
@@ -224,16 +230,16 @@ Examples:
 Edits the fields of a specified existing entry in the application list.
 
 <div markdown="span" class="alert alert-info"> 
-:information_source: **Info**
-The fields that can be edited using this command are:
-- `COMPANY_NAME`
-- `INTERNSHIP_POSITION`
-- `APPLICATION_DEADLINE`
-- `APPLICATION_REQUIREMENTS`
+:information_source: **Info:**
+The fields that can be edited using this command are: <br>
+- `COMPANY_NAME` <br>
+- `INTERNSHIP_POSITION` <br>
+- `APPLICATION_DEADLINE` <br>
+- `APPLICATION_REQUIREMENTS` <br>
 - `INTERVIEW_DATE_AND_TIME` <br>
-  Editing any field is optional, but least one field must be edited each time.
-  Multiple fields can be edited at the same time.
-
+Editing any field is optional, but least one field must be edited each time. <br>
+Multiple fields can be edited at the same time.<br>
+<br>
 For the edited fields, existing values will be overwritten and updated to the new input values. The values for the rest of the fields will remain the same.
 </div>
 
@@ -276,10 +282,10 @@ Examples:
 
 #### Finding entries by keyword(need to change this part hehe) : `find`
 
-<div markdown="span" class="alert alert-danger"> :warning: **Warning** This command cannot be undone! Use the `list` command (explained below) after this command to go back to displaying all the applications stored in InternSHIP!
+<div markdown="span" class="alert alert-danger"> :warning: **Warning:** This command cannot be undone! Use the `list` command (explained below) after this command to go back to displaying all the applications stored in InternSHIP!
 </div>
 
-<div markdown="span" class="alert alert-danger"> :warning: **Warning** This command changes the displayed list in InternSHIP! The index of the entries will change too! Make sure to check the index again before using commands like `delete` or `complete`!
+<div markdown="span" class="alert alert-danger"> :warning: **Warning:** This command changes the displayed list in InternSHIP! The index of the entries will change too! Make sure to check the index again before using commands like `delete` or `complete`!
 </div>
 
 Finds all entries from the application list that match the keyword in the given field.
@@ -289,15 +295,15 @@ More than one keyword and field can be provided.
 Format: `find FIELD keyword`
 
 <div markdown="span" class="alert alert-info">
-:information_source: **Info** 
-The fields available to be found are:
-* COMPANY_NAME `c/`
-* APPLIED_POSITION `p/`
-* APPLICATION_DEADLINE `d/`
-* COMPLETION_STATUS `c1/`
-* COMPANY_DECISION (i.e. STATUS) `s/`
-* APPLICATION_PRIORITY `pr/`
-* APPLICATION_REQUIREMENTS `r/`
+:information_source: **Info:** 
+The fields available to be found are: <br>
+* COMPANY_NAME `c/` <br>
+* APPLIED_POSITION `p/` <br>
+* APPLICATION_DEADLINE `d/` <br>
+* COMPLETION_STATUS `c1/` <br>
+* COMPANY_DECISION (i.e. STATUS) `s/` <br>
+* APPLICATION_PRIORITY `pr/` <br>
+* APPLICATION_REQUIREMENTS `r/` <br>
 * INTERVIEW_DATE_AND_TIME `i/`
 </div>
 
@@ -315,20 +321,20 @@ Format: `list`
 
 #### Sorting the entries : `sort`
 
-<div markdown="span" class="alert alert-danger"> :warning: **Warning** This command cannot be undone!
+<div markdown="span" class="alert alert-danger"> :warning: **Warning:** This command cannot be undone!
 </div>
 
-<div markdown="span" class="alert alert-danger"> :warning: **Warning** This command changes the displayed list in InternSHIP! The index of the entries will change too! Make sure to check the index again before using commands like `delete` or `complete`!
+<div markdown="span" class="alert alert-danger"> :warning: **Warning:** This command changes the displayed list in InternSHIP! The index of the entries will change too! Make sure to check the index again before using commands like `delete` or `complete`!
 </div>
 
 Sorts all entries in the **currently displayed** application list by a specified field.
 
 <div markdown="span" class="alert alert-info"> 
-:information_source: **Info** 
-The fields available to sort by are:
-* COMPANY_NAME `c/` (ascending alphabetical order)
-* APPLIED_POSITION `p/` (ascending alphabetical order)
-* APPLICATION_DEADLINE `d/` (sooner to later deadline)
+:information_source: **Info:** 
+The fields available to sort by are: <br>
+* COMPANY_NAME `c/` (ascending alphabetical order) <br>
+* APPLIED_POSITION `p/` (ascending alphabetical order) <br>
+* APPLICATION_DEADLINE `d/` (sooner to later deadline) <br>
 * APPLICATION_PRIORITY `pr/` (higher to lower priority)
 </div>
 
@@ -537,7 +543,7 @@ Field | Prefix | Used in
 APPLICATION_DEADLINE | **d/** | `add`, `edit`, `find`, `sort`
 APPLICATION_PRIORITY | **pr/** | `edit`, `find`, `sort`
 APPLICATION_REQUIREMENTS | **r/** | `add`, `edit`
-COMPANY_DECISION | **s/** `find`
+COMPANY_DECISION | **s/** | `find`
 COMPANY_NAME | **c/** | `add`, `edit`, `find`, `sort`
 COMPLETION_STATUS | **c1/** | `find`
 INTERNSHIP_POSITION | **p/** | `add`, `edit`, `find`, `sort`
@@ -569,6 +575,8 @@ Term | Definition | Notes
 * The formatting and content of this User Guide is referenced from [AY2021S2-CS2103T-T11-2/tp](https://github.com/AY2021S2-CS2103T-T11-2/tp/blob/master/docs/UserGuide.md)
 * The ship in the InternSHIP icon was obtained from [flaticon.com](https://www.flaticon.com/free-icon/ship_4012401?term=ship&page=1&position=66&page=1&position=66&related_id=4012401&origin=search)
 * [Canva](https://www.canva.com) was used to make the InternSHIP icon.
+
+</div>
 
 
 
