@@ -1,6 +1,7 @@
 package seedu.address.ui;
 
 import java.util.Comparator;
+import javax.swing.text.html.ImageView;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -46,6 +47,8 @@ public class ApplicationCard extends UiPart<Region> {
     private FlowPane requirements;
     @FXML
     private FlowPane interviewDateAndTime;
+    @FXML
+    private ImageView priorityLogo;
 
     /**
      * Creates an {@code ApplicationCode} with the given {@code Application} and index to display.
@@ -57,8 +60,9 @@ public class ApplicationCard extends UiPart<Region> {
         name.setText(application.getCompany().fullCompanyName);
         position.setText(application.getPosition().value);
         deadline.setText(application.getDeadline().toFormattedString());
-        status.setText(application.getStatus().value);
-        priority.setText(application.getPriority().value);
+        completion.setText(application.getCompletion().toDisplayString());
+        status.setText(application.getStatus().toDisplayString());
+        priority.setText(application.getPriority().toDisplayString());
         application.getRequirements().stream()
                 .sorted(Comparator.comparing(requirement -> requirement.value))
                 .forEach(requirement -> requirements.getChildren().add(new Label(requirement.value)));
@@ -66,7 +70,6 @@ public class ApplicationCard extends UiPart<Region> {
                 .sorted(Comparator.comparing(dt -> dt.value))
                 .forEach(dateAndTime -> interviewDateAndTime.getChildren()
                         .add(new Label(dateAndTime.toFormattedString())));
-        completion.setText(application.getCompletion().value);
     }
 
     @Override

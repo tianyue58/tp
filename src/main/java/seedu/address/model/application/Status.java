@@ -43,6 +43,21 @@ public class Status {
         return value;
     }
 
+    /**
+     * Converts the text into emoji for GUI display
+     * @return the corresponding emoji for each status
+     */
+    public String toDisplayString() {
+        if (value.equals("Pending")) {
+            return "❓";
+        } else if (value.equals("Accepted")) {
+            return "😊";
+        } else {
+            assert (value.equals("Rejected"));
+            return "😥";
+        }
+    }
+
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
