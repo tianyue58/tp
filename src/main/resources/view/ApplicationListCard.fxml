@@ -4,8 +4,6 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.image.Image?>
 <HBox id="cardPane" fx:id="cardPane" alignment="BOTTOM_RIGHT" xmlns="http://javafx.com/javafx/11.0.2"
       xmlns:fx="http://javafx.com/fxml/1">
   <GridPane alignment="CENTER_LEFT" prefHeight="75.0" HBox.hgrow="ALWAYS">
