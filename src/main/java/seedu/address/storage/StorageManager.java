@@ -47,7 +47,7 @@ public class StorageManager implements Storage {
     }
 
 
-    // ================ AddressBook methods ==============================
+    // ================ Internship methods ==============================
 
     @Override
     public Path getInternshipFilePath() {
