@@ -45,7 +45,7 @@ This guide aims to:
 As the target audience of InternSHIP is university students, this User Guide is mainly targeted towards the same demographic. This guide is therefore aimed at users who:
 * Are familiar with navigating around a webpage using hyperlinks.
 * Are comfortable with downloading and installing software on their computer.
-* Can type fast and are comfortable using a CLI.
+* Can type fast and are comfortable using a CLI. <br>
 This User Guide **does not assume that the reader has a technical background**. Therefore, university students of all majors should be able to use this guide. The definitions for certain technical terms can be found in the [glossary](#glossary).
 
 ## How to use this User Guide
@@ -211,7 +211,7 @@ Format:
 
 * Adds a new application with the specified field values to the list.
 
-<div markdown="span" class="alert alert-primary"> :bulb: **Tip:** The option to input more than one `INTERVIEW_DATE_AND_TIME` is provided because many companies have multiple rounds of interviews for a single application!
+<div markdown="span" class="alert alert-primary"> :bulb: **Tip:** You can input more than one `INTERVIEW_DATE_AND_TIME` since many companies have multiple rounds of interviews for a single application!
 </div>
 
 Examples:
@@ -295,14 +295,14 @@ Format: `find FIELD keyword`
 <div markdown="span" class="alert alert-info">
 :information_source: **Info:** <br>
 The fields available to be found are: <br>
-* COMPANY_NAME `c/` <br>
-* APPLIED_POSITION `p/` <br>
-* APPLICATION_DEADLINE `d/` <br>
-* COMPLETION_STATUS `c1/` <br>
-* COMPANY_DECISION (i.e. STATUS) `s/` <br>
-* APPLICATION_PRIORITY `pr/` <br>
-* APPLICATION_REQUIREMENTS `r/` <br>
-* INTERVIEW_DATE_AND_TIME `i/`
+- COMPANY_NAME `c/` <br>
+- APPLIED_POSITION `p/` <br>
+- APPLICATION_DEADLINE `d/` <br>
+- COMPLETION_STATUS `c1/` <br>
+- COMPANY_DECISION (i.e. STATUS) `s/` <br>
+- APPLICATION_PRIORITY `pr/` <br>
+- APPLICATION_REQUIREMENTS `r/` <br>
+- INTERVIEW_DATE_AND_TIME `i/`
 </div>
 
 Examples:
@@ -332,10 +332,11 @@ Sorts all entries in the **currently displayed** application list by a specified
 <div markdown="span" class="alert alert-info"> 
 :information_source: **Info:** <br>
 The fields available to sort by are: <br>
-* COMPANY_NAME `c/` (ascending alphabetical order) <br>
-* APPLIED_POSITION `p/` (ascending alphabetical order) <br>
-* APPLICATION_DEADLINE `d/` (sooner to later deadline) <br>
-* APPLICATION_PRIORITY `pr/` (higher to lower priority)
+- COMPANY_NAME `c/` (ascending alphabetical order) <br>
+- INTERNSHIP_POSITION `p/` (ascending alphabetical order) <br>
+- APPLICATION_DEADLINE `d/` (sooner to later deadline) <br>
+- INTERVIEW_DATE_AND_TIME `i/` (sooner to later interview) <br>
+- APPLICATION_PRIORITY `pr/` (higher to lower priority)
 </div>
 
 Format: `sort FIELD`
@@ -356,11 +357,11 @@ Shows all the applications that are close to the submission deadlines or intervi
 <div markdown="span" class="alert alert-info"> 
 :information_source: **Info:** <br>
 The available fields are: <br>
-* APPLICATION_DEADLINE `d/`  <br>
-* INTERVIEW_DATE_AND_TIME `i/`
+- APPLICATION_DEADLINE `d/`  <br>
+- INTERVIEW_DATE_AND_TIME `i/`
 </div>
 
-Format: `soon PREFIX DAYS`
+Format: `soon FIELD DAYS`
 
 * Find applications that are within `DAYS` days.
 * The number of days must be an **integer** 0, 1, 2, …​
