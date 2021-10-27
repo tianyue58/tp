@@ -9,7 +9,8 @@
 <?import javafx.scene.text.*?>
 <?import javafx.stage.*?>
 
-<fx:root minHeight="600" minWidth="450" onCloseRequest="#handleExit" title="InternSHIP" type="javafx.stage.Stage" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root minHeight="600" minWidth="450" onCloseRequest="#handleExit" title="InternSHIP"
+         type="javafx.stage.Stage" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1">
   <icons>
     <Image url="@/images/ship.png" />
   </icons>
@@ -49,7 +50,8 @@
             <Insets left="10" right="10" top="5" />
           </padding>
         </StackPane>
-        <StackPane fx:id="resultDisplayPlaceholder" maxHeight="60" minHeight="60" prefHeight="60" styleClass="pane-with-border" VBox.vgrow="NEVER">
+        <StackPane fx:id="resultDisplayPlaceholder" maxHeight="60" minHeight="60" prefHeight="60"
+                   styleClass="pane-with-border" VBox.vgrow="NEVER">
           <padding>
             <Insets bottom="10" left="10" right="10" top="2" />
           </padding>
@@ -85,7 +87,8 @@
             <Label fx:id="position" styleClass="cell_big_label" text="Position" GridPane.columnIndex="1" />
             <Label fx:id="deadline" styleClass="cell_big_label" text="Deadline" GridPane.columnIndex="2" />
             <Label fx:id="requirements" styleClass="cell_big_label" text="Requirements" GridPane.columnIndex="3" />
-            <Label fx:id="interviewDateAndTime" styleClass="cell_big_label" text="Interview Time" GridPane.columnIndex="4" />
+            <Label fx:id="interviewDateAndTime" styleClass="cell_big_label" text="Interview Time"
+                   GridPane.columnIndex="4" />
             <Label fx:id="priority" styleClass="cell_big_label" text="Priority" GridPane.columnIndex="5" />
             <Label fx:id="completion" styleClass="cell_big_label" text="Completed?" GridPane.columnIndex="6" />
             <Label fx:id="status" styleClass="cell_big_label" text="Status" GridPane.columnIndex="7" />
@@ -101,7 +104,6 @@
           <StackPane fx:id="applicationListPanelPlaceholder" VBox.vgrow="ALWAYS" />
         </VBox>
         <StackPane fx:id="statusbarPlaceholder" VBox.vgrow="NEVER" />
-
       </VBox>
     </Scene>
   </scene>
