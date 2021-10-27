@@ -75,6 +75,17 @@ public class Priority {
         return value;
     }
 
+    public String toDisplayString() {
+        if (value.equals("High")) {
+            return "❗❗❗";
+        } else if (value.equals("Medium")) {
+            return "❗❗";
+        } else {
+            assert(value.equals("Low"));
+            return "❗";
+        }
+    }
+
     @Override
     public boolean equals(Object other) {
         return other == this

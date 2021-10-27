@@ -36,6 +36,10 @@ public class Completion {
         return value;
     }
 
+    public String toDisplayString() {
+        return value.equals("Completed") ? "✔" : "❌";
+    }
+
     @Override
     public boolean equals(Object other) {
         return other == this
