@@ -25,6 +25,8 @@ public class SoonDeadlinePredicate implements Predicate<Application> {
     @Override
     public boolean test(Application application) {
         long diff = 0;
+        boolean isWithinDays = false;
+        boolean isCompleted = false;
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
         String deadline = application.getDeadline().value;
         try {
@@ -32,10 +34,12 @@ public class SoonDeadlinePredicate implements Predicate<Application> {
             Date currentDate = new Date();
             diff = TimeUnit.DAYS.convert(applicationDate.getTime()
                     - currentDate.getTime(), TimeUnit.MILLISECONDS);
+            isWithinDays = diff >= 0 && diff <= days.getZeroBased() - 1;
+            isCompleted = application.getCompletion().value.equals("Completed");
         } catch (java.text.ParseException e) {
             logger.info("Invalid deadline format");
         }
-        return diff >= 0 && diff <= days.getZeroBased() - 1;
+        return isWithinDays && !isCompleted;
     }
 
     @Override
