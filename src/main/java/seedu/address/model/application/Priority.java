@@ -75,6 +75,10 @@ public class Priority {
         return value;
     }
 
+    /**
+     * Converts the text into emoji for GUI display
+     * @return the corresponding emoji for each level of priority
+     */
     public String toDisplayString() {
         if (value.equals("High")) {
             return "❗❗❗";

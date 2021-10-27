@@ -1,7 +1,6 @@
 package seedu.address.ui;
 
 import java.util.Comparator;
-
 import javax.swing.text.html.ImageView;
 
 import javafx.fxml.FXML;

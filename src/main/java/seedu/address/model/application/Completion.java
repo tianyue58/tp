@@ -36,6 +36,10 @@ public class Completion {
         return value;
     }
 
+    /**
+     * Converts the text into emoji for GUI display
+     * @return the corresponding emoji for each completion status
+     */
     public String toDisplayString() {
         return value.equals("Completed") ? "✔" : "❌";
     }

@@ -43,6 +43,10 @@ public class Status {
         return value;
     }
 
+    /**
+     * Converts the text into emoji for GUI display
+     * @return the corresponding emoji for each status
+     */
     public String toDisplayString() {
         if (value.equals("Pending")) {
             return "❓";
