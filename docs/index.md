@@ -17,8 +17,11 @@ title: internSHIP
 
 ##Acknowledgements
 
-- This project is based on the AddressBook-Level3 project created by the [SE-EDU initiative](https://se-education.org).
-- Libraries used:
+* This project is based on the AddressBook-Level3 project created by the [SE-EDU initiative](https://se-education.org).
+* The formatting and content of this User Guide is referenced from [AY2021S2-CS2103T-T11-2/tp](https://github.com/AY2021S2-CS2103T-T11-2/tp/blob/master/docs/UserGuide.md)
+* The ship in the InternSHIP icon was obtained from [flaticon.com](https://www.flaticon.com/free-icon/ship_4012401?term=ship&page=1&position=66&page=1&position=66&related_id=4012401&origin=search)
+* [Canva](https://www.canva.com) was used to make the InternSHIP icon.
+* Libraries used:
   - [JavaFX](https://openjfx.io/)
   - [Jackson](https://github.com/FasterXML/jackson)
   - [JUnit5](https://github.com/junit-team/junit5)
