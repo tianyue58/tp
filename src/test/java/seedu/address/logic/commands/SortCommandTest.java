@@ -69,6 +69,17 @@ public class SortCommandTest {
     }
 
     @Test
+    public void execute_sortByInterview_success() {
+        Internship expectedInternship = new Internship();
+        expectedInternship.addApplication(BYTEDANCE);
+        expectedInternship.addApplication(GRAB);
+        expectedInternship.addApplication(AMAZON);
+        expectedModel = new ModelManager(expectedInternship, new UserPrefs());
+        assertCommandSuccess(new SortCommand("interview"), model,
+                String.format(SortCommand.MESSAGE_SUCCESS, "interview"), expectedModel);
+    }
+
+    @Test
     public void execute_sortByPriority_success() {
         Internship expectedInternship = new Internship();
         expectedInternship.addApplication(BYTEDANCE);

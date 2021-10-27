@@ -4,6 +4,7 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_COMPANY_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DEADLINE_OF_APPLICATION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_INTERNSHIP_POSITION;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_INTERVIEW_DATE_AND_TIME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PRIORITY;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_APPLICATIONS;
 
@@ -17,6 +18,7 @@ import seedu.address.model.Model;
 import seedu.address.model.application.Application;
 import seedu.address.model.application.Company;
 import seedu.address.model.application.Deadline;
+import seedu.address.model.application.InterviewDateAndTime;
 import seedu.address.model.application.Position;
 import seedu.address.model.application.Priority;
 
@@ -29,18 +31,21 @@ public class SortCommand extends Command {
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Sorts all applications in InternSHIP by the given application detail.\n"
-            + "Sorting by company name or position sorts applications in alphabetical order.\n"
-            + "Sorting by deadline sorts applications from closer deadlines to later deadlines.\n"
+            + "Sorting by company name or internship position sorts applications in alphabetical order.\n"
+            + "Sorting by application deadline sorts applications from closer deadlines to later deadlines.\n"
+            + "Sorting by interview date and time sorts applications from closer interviews to later interviews.\n"
             + "Sorting by priority sorts applications from higher to lower priority.\n"
             + "Parameters:\n"
             + PREFIX_COMPANY_NAME + " "
             + PREFIX_INTERNSHIP_POSITION + " "
             + PREFIX_DEADLINE_OF_APPLICATION + " "
+            + PREFIX_INTERVIEW_DATE_AND_TIME + " "
             + PREFIX_PRIORITY + "\n"
             + "Example:\n"
             + "Sort by company name: " + COMMAND_WORD + " " + PREFIX_COMPANY_NAME + "\n"
-            + "Sort by position: " + COMMAND_WORD + " " + PREFIX_INTERNSHIP_POSITION + "\n"
-            + "Sort by deadline: " + COMMAND_WORD + " " + PREFIX_DEADLINE_OF_APPLICATION + "\n"
+            + "Sort by internship position: " + COMMAND_WORD + " " + PREFIX_INTERNSHIP_POSITION + "\n"
+            + "Sort by application deadline: " + COMMAND_WORD + " " + PREFIX_DEADLINE_OF_APPLICATION + "\n"
+            + "Sort by interview date and time: " + COMMAND_WORD + " " + PREFIX_INTERVIEW_DATE_AND_TIME + "\n"
             + "Sort by priority: " + COMMAND_WORD + " " + PREFIX_PRIORITY + "\n";
 
     public static final String MESSAGE_SUCCESS = "Sorted applications by %s";
@@ -102,6 +107,8 @@ public class SortCommand extends Command {
             return Position.getComparator();
         case "deadline":
             return Deadline.getComparator();
+        case "interview":
+            return InterviewDateAndTime.getComparator();
         case "priority":
             return Priority.getComparator();
         default:

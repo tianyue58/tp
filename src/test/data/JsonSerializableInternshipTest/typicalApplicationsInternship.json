@@ -7,8 +7,7 @@
     "completion": "Uncompleted",
     "status": "Pending",
     "priority": "Medium",
-    "requirements": [ "Resume" ],
-    "tagged": [ "Important" ]
+    "requirements": [ "Resume" ]
   }, {
     "company": "ByteDance",
     "position": "Web Developer",
@@ -17,7 +16,7 @@
     "status": "Rejected",
     "priority": "High",
     "requirements": [ "CV" ],
-    "tagged": [ "Selective" ]
+    "interviewDateAndTimes": [ "2021-12-12 0530" ]
   }, {
     "company": "Grab",
     "position": "Backend Engineer",
@@ -26,6 +25,6 @@
     "status": "Pending",
     "priority": "Medium",
     "requirements": [ "Interview" ],
-    "tagged": [ "Essential" ]
+    "interviewDateAndTimes": [ "2021-12-12 0730" ]
   } ]
 }
