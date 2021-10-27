@@ -128,9 +128,9 @@ Parameter | Refers to | Required format | Application field? | Notes
 **COMPANY_DECISION** | The company's decision on the user's application. | It can only take 3 values: pending, accepted or rejected. | Yes | This is **up to the company, not the user**.
 **COMPANY_NAME** | The name of the company the application was made to. | It should only contain [alphanumeric](#glossary) characters and spaces, and should not be blank. | Yes
 **COMPLETION_STATUS** | Whether or not the application has been submitted by the user. | It can only take 2 values: completed or uncompleted. | Yes | Conversely to COMPANY_DECISION, this is **up to the user, not the company**.
-**DAYS** | WILLY FILL IN PLS HEHE | blabla | No
+**DAYS** | The number of days from today. | It must be a **non-negative integer** 0, 1, 2, ... | No
 **FIELD** | Any one of the application fields. | It should be in its prefix form, as shown in the [prefix summary](#prefix-summary). | No
-**INDEX** The index number of the application as shown in the **currently displayed application list**. | It must be a **positive integer** 1, 2, 3, ... | No
+**INDEX** | The index number of the application as shown in the **currently displayed application list**. | It must be a **positive integer** 1, 2, 3, ... | No
 **INTERNSHIP_POSITION** | The job applied for in the application. | It should only contain alphanumeric characters and spaces, and should not be blank. | Yes
 **INTERVIEW_DATE_AND_TIME** | The date and time of the interview(s) required for an application. | It should be a valid date and time in `YYYY-MM-DD HHmm` format. The date and time are separated by a space, and the time is represented in a 24-hour system. | Yes
 
@@ -219,6 +219,7 @@ Examples:
 * `add c/Shopee p/software engineer d/2021-12-12 r/resume` adds a new internship application with the same details as the previous example, but with an additional application requirement of a `resume`.
 * `add c/Shopee p/software engineer d/2021-12-12 r/resume i/2021-12-18 1030` adds a new internship application with the same details as the previous example, but with an interview on `18 Dec 2021 10:30`.
 
+<hr>
 
 #### Editing the details of an existing entry : `edit`
 
@@ -246,6 +247,7 @@ Examples:
 * `edit 1 c/Grab d/2021-12-20` changes the company name and deadline of the 1st application to `Grab` and `2021-12-20` respectively.
 * `edit 2 p/UI designer` changes the internship position of the 2nd application to `UI designer`.
 
+<hr>
 
 #### Updating the application status `(COMPANY_DECISION)`: `accept/reject`
 
@@ -272,6 +274,7 @@ Examples:
 * `accept 1` marks the first entry as 'Accepted'.
 * `reject 2` marks the second entry as 'Rejected'.
 
+<hr>
 
 ### Viewing specific applications
 
@@ -306,6 +309,7 @@ Examples:
 * `find pr/High` shows all the applications whose priority is High.
 * `find c1/Completed` shows all the applications that are completed.
 
+<hr>
 
 #### Listing all entries : `list`
 
@@ -313,6 +317,7 @@ Shows a list of all the entries in the application list in InternSHIP.
 
 Format: `list`
 
+<hr>
 
 #### Sorting the entries : `sort`
 
@@ -340,23 +345,32 @@ Format: `sort FIELD`
 Examples:
 * `sort c/` shows all the applications saved in the current InternSHIP sorted by company name, in alphabetical order.
 
+<hr>
 
 ### Finding upcoming deadlines
 
-#### SOON(need to change this part hehe) : `soon`
+#### Listing upcoming deadlines : `soon`
 
 Shows all the applications that are close to the submission deadlines or interview time within a specified number of days.
 
+<div markdown="span" class="alert alert-info"> 
+:information_source: **Info:** <br>
+The available fields are: <br>
+* APPLICATION_DEADLINE `d/`  <br>
+* INTERVIEW_DATE_AND_TIME `i/`
+</div>
+
 Format: `soon PREFIX DAYS`
-- Find applications that are within `DAYS` days
-- The number of days must be an **integer** 0, 1, 2, …​
-- The prefixes available are:
-    * APPLICATION_DEADLINE `d/`
-    * INTERVIEW_DATE_AND_TIME `i/`
+
+* Find applications that are within `DAYS` days.
+* The number of days must be an **integer** 0, 1, 2, …​
+* Only one field and one keyword can be provided each time.
 
 Examples:
 
 * `soon d/5` shows applications whose submission deadlines are within 5 days from today's date.
+
+<hr>
 
 #### Completing an application : `complete`
 
@@ -369,6 +383,7 @@ Format: `complete INDEX`
 Examples:
 * `complete 2` marks the 2nd entry in the application list as completed.
 
+<hr>
 
 ### Others
 
@@ -383,6 +398,7 @@ Format: `delete INDEX`
 Examples:
 * `delete 2` deletes the 2nd entry in the main application list.
 
+<hr>
 
 #### Clearing all entries : `clear`
 
@@ -390,6 +406,7 @@ Clears all entries from InternSHIP.
 
 Format: `clear`
 
+<hr>
 
 #### UNDO(need to change this part hehe) : `undo`
 
@@ -415,6 +432,8 @@ When successive changes are made, the `undo` command will undo the **most recent
 Successive `undo` commands will undo the previous changes from the most recent to the oldest, until there's no changes
 to be restored.
 
+<hr>
+
 Format: `undo`
 
 Examples:
@@ -422,6 +441,8 @@ Examples:
 in the application list.
 * `edit 1 p/tester` followed  by `undo` undoes the edition of the first entry's position field. 
 As a result, the `position` field of that entry will be restored to its previous value.
+
+<hr>
 
 #### REDO(need to change this part hehe) : `redo`
 
@@ -445,6 +466,7 @@ Examples:
   in the application list.
 * `edit 1 p/tester` followed  by `undo` undoes the edition of the first entry's position field.
 
+<hr>
 
 #### Exiting the program : `exit`
 
@@ -452,6 +474,7 @@ Exits the InternSHIP app.
 
 Format: `exit`
 
+<hr>
 
 #### Viewing help : `help`
 
