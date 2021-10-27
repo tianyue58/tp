@@ -19,9 +19,9 @@ InternSHIP is a **desktop app for university students to manage their internship
 
 ## Useful Webpages
 
-* [User Guide](https://ay2122s1-cs2103t-w17-1.github.io/tp/UserGuide.html)
-* [Developer Guide](https://ay2122s1-cs2103t-w17-1.github.io/tp/DeveloperGuide.html) 
-* [About Us](https://ay2122s1-cs2103t-w17-1.github.io/tp/AboutUs.html)
+* If you are interested in using InternSHIP, head over to the [_Quick Start_ section of the **User Guide**](UserGuide.md#quick-start).
+* If you are interested about developing InternSHIP, the [**Developer Guide**](DeveloperGuide.md) is a good place to start.
+* If you want to know more about the team behind InternSHIP, check out [**About Us**](https://ay2122s1-cs2103t-w17-1.github.io/tp/AboutUs.html).
 
 
 ## Acknowledgements
@@ -30,4 +30,9 @@ InternSHIP is a **desktop app for university students to manage their internship
 * The formatting and content of this User Guide is referenced from [AY2021S2-CS2103T-T11-2/tp](https://github.com/AY2021S2-CS2103T-T11-2/tp/blob/master/docs/UserGuide.md)
 * The ship in the InternSHIP icon was obtained from [flaticon.com](https://www.flaticon.com/free-icon/ship_4012401?term=ship&page=1&position=66&page=1&position=66&related_id=4012401&origin=search)
 * [Canva](https://www.canva.com) was used to make the InternSHIP icon.
+* Libraries used:
+    - [JavaFX](https://openjfx.io/)
+    - [Jackson](https://github.com/FasterXML/jackson)
+    - [JUnit5](https://github.com/junit-team/junit5)
+    - [TestFX](https://github.com/TestFX/TestFX)
 </div>
