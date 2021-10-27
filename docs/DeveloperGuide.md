@@ -287,6 +287,23 @@ The find feature is implemented by the `FindCommandParser` and `FindCommand` cla
 * **Alternative 2:** Uses different command word for finding different fields (e.g. findD for matching application with deadlines).
     * Pros: Shorter command for user to input.
     * Cons: Harder for user to remember the command word as this format is not used in other methods.
+
+### Soon feature
+The soon feature is implemented by the `SoonCommandParser` and `SoonCommand` classes.
+
+`SoonCommandParser` class is responsible for parsing the parameter received from the user.
+
+`SoonCommand` class is responsible for listing the applications whose submission or interview deadlines are within a certain number of days specified by the user.
+
+#### Design considerations:
+
+* **Alternative 1 (current choice):** Lists applications using a specified field (e.g. user can specify deadline field with d/ or interview field with i/) and number of days.
+    * Pros: User can specify a number to see applications that are due within the specified number of days.
+    * Cons: The `soon` command will require more parameters.
+
+* **Alternative 2:** List applications whose deadlines are within a pre-set number of days.
+    * Pros: Shorter command for user to input.
+    * Cons: Does not provide flexibility to the user.
     
 ### Undo/Redo feature
 
