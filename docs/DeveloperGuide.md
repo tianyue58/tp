@@ -445,6 +445,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* * *`  | student                                    | record the deadline of an application | better organize my time for preparation and complete the requirements in time                      |
 | `* * *`  | student                                    | record the position I have applied for an application | remember my responsibility for each application   
 | `* * *`  | student                                    | record the requirements for an application | better understand what I need to prepare in order to succeed during the application |
+| `* * *`  | student                                    | record the interview time for an application | better organize my time for interview preparation |
 | `* * *`  | student                                    | assign priority level to an application  | know clearly which applications I should prioritize and get started first |
 | `* * *`  | student                                    | view a list of all companies I have applied and the related details for each application | have a better picture about all the companies I have applied|
 | `* * *`  | student                                    | delete one of the applications in the application list | stop tracking an application that I have withdrawn from |                                               
