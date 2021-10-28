@@ -249,7 +249,7 @@ Examples:
 
 #### Completing an application : `complete`
 
-Marks the specified entry in the application list as completed, meaning the user has completed the application for that internship. Once an application is marked as completed, it will no longer appear in the `soon` command.
+Marks the specified entry in the application list as completed, meaning the user has completed the application for that internship.
 
 Format: `complete INDEX`
 
