@@ -176,6 +176,8 @@ class implements the `Parser` interface. The `CompleteCommandParser#parse()` met
 this class parses the index and returns an `CompleteCommand` object with the index
 as the parameter.
 
+![Interactions Inside the Logic Component for the `complete 1` Command](images/CompleteSequenceDiagram.png)
+
 #### Design considerations:
 
 * **Alternative 1 (current choice):** Completes an application after the application has been added
@@ -294,6 +296,8 @@ The soon feature is implemented by the `SoonCommandParser` and `SoonCommand` cla
 `SoonCommandParser` class is responsible for parsing the parameter received from the user.
 
 `SoonCommand` class is responsible for listing the applications whose submission or interview deadlines are within a certain number of days specified by the user.
+
+![Interactions Inside the Logic Component for the `soon d/ 1` Command](images/SoonSequenceDiagram.png)
 
 #### Design considerations:
 
