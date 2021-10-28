@@ -257,11 +257,12 @@ as the parameter.
     * Cons: The `add` command will require too many parameters.
 
 ### Sort feature
-The sort feature is implemented by the `SortCommandParser` and `SortCommand` classes.
 
-`SortCommandParser` class is responsible for parsing the parameter received from the user.
+The `Sort` command is facilitated by the `SortCommand` class. It extends the `Command` class and implements the `SortCommand#execute()` method which wraps the main logic of the command. This command can be used to sort the **currently displayed** list of applications according to the specified field.
 
-`SortCommand` class is responsible for sorting the list of applications according to the given parameter.
+The `SortCommandParser` class is responsible for parsing the field received from the user. This class implements the `Parser` interface. The `SortCommandParser#parse()` method of this class parses the field and returns a `SortCommand` object with the field as the parameter.
+
+![Interactions Inside the Logic Component for the `sort pr/` Command](images/SortSequenceDiagram.png)
 
 #### Design considerations:
 
