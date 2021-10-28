@@ -124,9 +124,9 @@ Parameter | Refers to | Required format | Application field? | Notes
 **APPLICATION_DEADLINE** | The deadline for the application submission. | It should be a valid date in `YYYY-MM-DD` format. | Yes
 **APPLICATION_PRIORITY** | The user-set priority of the application. | It can only take 3 values: high, medium or low. | Yes
 **APPLICATION_REQUIREMENTS** | The required deliverables for the application submission. | It can take any value. | Yes | e.g. CV, portfolio...
-**COMPANY_DECISION** | The company's decision on the user's application. | It can only take 3 values: pending, accepted or rejected. | Yes | This is **up to the company, not the user**.
+**APPLICATION_OUTCOME** | The outcome of the application (also called application status). This is the company's decision on whether the candidate has been accepted or rejected. | It can only take 3 values: Pending, Accepted or Rejected. | Yes | This is **up to the company, not the user**.
 **COMPANY_NAME** | The name of the company the application was made to. | It should only contain [alphanumeric](#glossary) characters and spaces, and should not be blank. | Yes
-**COMPLETION_STATUS** | Whether or not the application has been submitted by the user. | It can only take 2 values: completed or uncompleted. | Yes | Conversely to COMPANY_DECISION, this is **up to the user, not the company**.
+**COMPLETION_STATUS** | Whether or not the application has been submitted by the user. | It can only take 2 values: completed or uncompleted. | Yes | Unlike the APPLICATION_OUTCOME, this is **up to the user, not the company**.
 **DAYS** | The number of days from today. | It must be a **non-negative integer** 0, 1, 2, ... | No
 **FIELD** | Any one of the application fields. | It should be in its prefix form, as shown in the [prefix summary](#prefix-summary). | No
 **INDEX** | The index number of the application as shown in the **currently displayed application list**. | It must be a **positive integer** 1, 2, 3, ... | No
@@ -201,7 +201,7 @@ There are three fields that receive their default values. <br>
 These fields can be changed later using the `edit`, `complete` or `accept/reject` commands respectively. <br>
 - `APPLICATION_PRIORITY`: set as `Medium` <br>
 - `COMPLETION_STATUS`  set as `Uncompleted` <br>
-- `COMPANY_DECISION` (i.e., application status) set as `Pending` <br>
+- `APPLICATION_OUTCOME` (i.e., application status) set as `Pending` <br>
 <br>
 Additionally, `APPLICATION_REQUIREMENTS`, and `INTERVIEW_DATE_AND_TIME` are optional fields that can either be specified or not. <br>
 If not specified at this stage, it can still be added and edited later using the `edit` command.
@@ -268,30 +268,59 @@ Examples:
 
 <hr>
 
-#### Updating the application status `(COMPANY_DECISION)`: `accept/reject`
+#### Updating the application outcome to **'Accepted'**: `accept`
 
-Updates the status (company decision) of an application. 
+Updates the application outcome (status) of an application to **'Accepted'**.
 
-:bulb: **Note:** <br>
-The status of an application is the **decision provided by the company**
-on whether the candidate has been `Accepted` or `Rejected`.
-It is different from the 'Completion Status', which represents whether the 
-user has completed submitting the application (and all related requirements) 
-or not.
+<div markdown="span" class="alert alert-info"> 
+:information_source: **Info:** <br>
+The application outcome is the **decision/outcome provided by the company** <br>
+on whether the candidate has been `Accepted` or not for the role. <br>
+It is different from the 'Completion Status', which represents whether the <br>
+user has completed submitting the application (and all related requirements) or not. <br>
+<br>
+When a new application is added, the outcome is `Pending` by default as it is assumed <br>
+that the user has not received the decision from the company yet. The outcome can <br> 
+later be changed to `Accepted` using the `accept` command. <br>
+<br>
+</div>
 
-When a new application is added, the status is `Pending` by default as it is assumed that the user has not received
-the decision from the company yet. The status can later be changed to either `Accepted` or `Rejected` using the
-`accept` or `reject` command.
+Format: `accept INDEX`
 
-Format: `accept INDEX` or `reject INDEX`
-
-- Marks the entry at the specified `INDEX` as 'Accepted' or 'Rejected'.
+- Marks the entry at the specified `INDEX` as 'Accepted'.
 - The index refers to the index number shown in the currently displayed application list.
 - The index must be a **positive integer** 1, 2, 3, …​
 
 Examples:
 * `accept 1` marks the first entry as 'Accepted'.
-* `reject 2` marks the second entry as 'Rejected'.
+* `accept 4` marks the fourth entry as 'Accepted'.
+
+#### Updating the application outcome to **'Rejected'**: `reject`
+
+Updates the application outcome (status) of an application to **'Rejected'**.
+
+<div markdown="span" class="alert alert-info"> 
+:information_source: **Info:** <br>
+The application outcome is the **decision/outcome provided by the company** <br>
+on whether the candidate has been `Rejected` or not for the role. <br>
+It is different from the 'Completion Status', which represents whether the <br>
+user has completed submitting the application (and all related requirements) or not. <br>
+<br>
+When a new application is added, the outcome is `Pending` by default as it is assumed <br>
+that the user has not received the decision from the company yet. The outcome can <br> 
+later be changed to `Rejected` using the `reject` command. <br>
+<br>
+</div>
+
+Format: `reject INDEX`
+
+- Marks the entry at the specified `INDEX` as 'Rejected'.
+- The index refers to the index number shown in the currently displayed application list.
+- The index must be a **positive integer** 1, 2, 3, …​
+
+Examples:
+* `reject 1` marks the first entry as 'Rejected'.
+* `reject 4` marks the fourth entry as 'Rejected'.
 
 <hr>
 
@@ -348,7 +377,7 @@ The fields available to be found are: <br>
 - INTERNSHIP_POSITION `p/` <br>
 - APPLICATION_DEADLINE `d/` <br>
 - COMPLETION_STATUS `c1/` <br>
-- COMPANY_DECISION (i.e. STATUS) `s/` <br>
+- APPLICATION_OUTCOME (i.e. STATUS) `s/` <br>
 - APPLICATION_PRIORITY `pr/` <br>
 - APPLICATION_REQUIREMENTS `r/` <br>
 - INTERVIEW_DATE_AND_TIME `i/`
@@ -536,14 +565,15 @@ Action | Format | Example | Notes
 **Add** | `add c/COMPANY_NAME p/INTERNSHIP_POSITION d/APPLICATION_DEADLINE [r/REQUIREMENTS] [i/INTERVIEW_DATE_AND_TIME]` | `add c/Shopee p/software engineer d/2021-12-12` |
 **Edit** | `edit INDEX [c/COMPANY_NAME] [p/INTERNSHIP_POSITION] [d/APPLICATION_DEADLINE] [pr/APPLICATION_PRIORITY] [r/REQUIREMENTS] [i/INTERVIEW_DATE_AND_TIME]` | `edit 1 c/Grab d/2021-12-20`
 **Complete** | `complete INDEX` | `complete 1` |
-**Accept/Reject** | `DECISION INDEX` | `accept 2` | `DECISION` can only be either `accept` or `reject`
+**Accept** | `accept INDEX` | `accept 2` | `APPLICATION_OUTCOME` can only be either `Accepted`, `Rejected`, or `Pending`.
+**Reject** | `reject INDEX` | `reject 2` | `APPLICATION_OUTCOME` can only be either `Accepted`, `Rejected`, or `Pending`.
 
 
 ### Viewing specific applications
 
 Action | Format | Example | Notes
 --------|-------|----|----
-**Find** | `find PREFIX KEYWORD` |  `find pr/High` | `PREFIX` refers to the field to match the keyword (`c/` COMPANY_NAME, `p/` INTERNSHIP_POSITION, `d/` APPLICATION_DEADLINE, `c1/` COMPLETION_STATUS, `s/` COMPANY_DECISION (i.e. STATUS), `pr/` APPLICATION_PRIORITY, `r/` APPLICATION_REQUIREMENTS, `i/` INTERVIEW_DATE_AND_TIME)
+**Find** | `find PREFIX KEYWORD` |  `find pr/High` | `PREFIX` refers to the field to match the keyword (`c/` COMPANY_NAME, `p/` INTERNSHIP_POSITION, `d/` APPLICATION_DEADLINE, `c1/` COMPLETION_STATUS, `s/` APPLICATION_OUTCOME (i.e. STATUS), `pr/` APPLICATION_PRIORITY, `r/` APPLICATION_REQUIREMENTS, `i/` INTERVIEW_DATE_AND_TIME)
 **Soon** | `soon PREFIX DAYS`| `soon d/5` | `PREFIX` refers to the field with coming deadline or time (`d/` APPLICATION_DEADLINE, `i/` INTERVIEW_DATE_AND_TIME)
 **List** | `list`| `list`
 **Sort** | `sort PREFIX` | `sort c/` | `PREFIX` refers to the application detail to be sorted by (`c/` COMPANY_NAME, `p/` INTERNSHIP_POSITION, `d/` APPLICATION_DEADLINE, `pr/` APPLICATION_PRIORITY, `i/` INTERVIEW_DATE_AND_TIME)
@@ -571,7 +601,7 @@ Field | Prefix | Used in
 APPLICATION_DEADLINE | **d/** | `add`, `edit`, `find`, `sort`
 APPLICATION_PRIORITY | **pr/** | `edit`, `find`, `sort`
 APPLICATION_REQUIREMENTS | **r/** | `add`, `edit`
-COMPANY_DECISION | **s/** | `find`
+APPLICATION_OUTCOME (i.e. STATUS) | **s/** | `find`
 COMPANY_NAME | **c/** | `add`, `edit`, `find`, `sort`
 COMPLETION_STATUS | **c1/** | `find`
 INTERNSHIP_POSITION | **p/** | `add`, `edit`, `find`, `sort`
