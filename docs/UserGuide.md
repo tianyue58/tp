@@ -266,7 +266,7 @@ Updates the application outcome (status) of an application to **'Accepted'**.
 
 <div markdown="span" class="alert alert-info"> 
 :information_source: **Info:** <br>
-The application outcome is the **decision or outcome provided by the company** <br>
+The application outcome is the **decision/outcome provided by the company** <br>
 on whether the candidate has been `Accepted` or not for the role. <br>
 It is different from the 'Completion Status', which represents whether the <br>
 user has completed submitting the application (and all related requirements) or not. <br>
@@ -293,7 +293,7 @@ Updates the application outcome (status) of an application to **'Rejected'**.
 
 <div markdown="span" class="alert alert-info"> 
 :information_source: **Info:** <br>
-The application outcome is the **decision or outcome provided by the company** <br>
+The application outcome is the **decision/outcome provided by the company** <br>
 on whether the candidate has been `Rejected` or not for the role. <br>
 It is different from the 'Completion Status', which represents whether the <br>
 user has completed submitting the application (and all related requirements) or not. <br>
