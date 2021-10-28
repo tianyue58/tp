@@ -144,14 +144,14 @@ Parameter | Refers to | Required format | Application field? | Notes
 3. Copy the file to the folder you want to use as the _home folder_ for your InternSHIP app.
 
 4. Double-click the file to start the app. 
-   <div markdown="span" class="alert alert-primary"> :bulb: **Tip:** If double-clicking does not work for you, try to open the app via terminal. To do so, open the terminal, key in `java -jar InternSHIP.jar` and press `Enter`.
-   </div>
+   <div markdown="span" class="alert alert-primary"> :bulb: **Tip:** If double-clicking does not work for you, try to open the app via terminal. To do so, open the terminal, key in `java -jar InternSHIP.jar` and press `Enter`.</div>
+
 5. A GUI similar to the one shown below should appear in a few seconds. 
    Note how the app contains some sample data.<br>
    <br>
    ![Ui](images/Ui.png)
 
-<div markdown="span" class="alert alert-primary"> :bulb: **Tip:** Use the [`clear`](#clearing-all-entries--clear) command to erase all the sample data when you no longer need them.
+<div markdown="span" class="alert alert-primary"> :bulb: **Tip:** Use the [`clear`](#clearing-all-entries--clear) command to erase all the sample data when you no longer need them. </div>
 
 7. Type the command in the command box and press Enter to execute it. <br>
    Some example commands you can try:
@@ -408,29 +408,31 @@ Format: `clear`
 
 <hr>
 
-#### Undo(need to change this part hehe) : `undo`
+#### Undoing a change: `undo`
 
 Undoes a change made to the application list. 
 
-**IMPORTANT NOTE** <br>
-This command is to be used after a command that actually **does some change** to the application list. 
-Inappropriate use may result in unexpected behaviors.
+<div markdown="span" class="alert alert-danger"> :warning: **Warning:** This command is to be used after a command that actually **does some change** to the application list. Inappropriate use may result in unexpected behaviors. </div>
 
-Commands that 'actually does changes' to the application list:
+<div markdown="span" class="alert alert-info">   
+:information_source: **Info:** <br>
+Commands that actually 'does some changes' to the application list (thus can be undone):
 - `add`
 - `delete`
 - `edit`
 - `clear`
-
-Commands that make no change to the application list:
+Commands that make no change to the application list (thus is not supposed not be followed by `undo` command)
 - `list`
 - `find`
 - `sort`
 - `soon`
+</div>
 
+<div markdown="span" class="alert alert-danger"> :warning:
 When successive changes are made, the `undo` command will undo the **most recent** change. 
 Successive `undo` commands will undo the previous changes from the most recent to the oldest, until there's no changes
 to be restored.
+</div>
 
 <hr>
 
@@ -444,27 +446,29 @@ As a result, the `position` field of that entry will be restored to its previous
 
 <hr>
 
-#### REDO(need to change this part hehe) : `redo`
+#### Redoing a change : `redo`
 
 Redoes a change made to the application list.
 
-**IMPORTANT NOTE** <br>
+<div markdown="span" class="alert alert-danger"> :warning:
 This command is to be used **directly after** an `undo` command.
 If an `undo` command undoes a change (e.g., `delete 1` followed by `undo` restores the first entry), 
 and it is followed by a command that makes some new changes to the application list (e.g., `edit 2 pr/High` changes
 the priority of the second entry to 'High'), then the previous undone action cannot be redone (i.e., the `delete 1`
 command which is previously undone cannot be redone).
+</div>
 
+<div markdown="span" class="alert alert-danger"> :warning:
 When successive undone actions are made, the `redo` command will redo the **most recent** undone action.
 Successive `redo` commands will redo the undone actions from the most recent to the oldest, until there's no undone
 actions to be redone.
+</div>
 
 Format: `redo`
 
 Examples:
-* `delete 1` followed by `undo` undoes the deletion of the first entry. As a result, that entry will reappear
-  in the application list.
-* `edit 1 p/tester` followed  by `undo` undoes the edition of the first entry's position field.
+* `delete 1` followed by `undo` and then `redo` undoes the deletion of the first entry. As a result, that entry will reappear in the application list.
+* `edit 1 p/tester` followed by `undo` and then `redo` undoes the edition of the first entry's position field.
 
 <hr>
 
