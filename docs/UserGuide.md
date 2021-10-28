@@ -43,8 +43,8 @@ This guide aims to:
 
 As the target audience of InternSHIP is university students, this User Guide is mainly targeted towards the same demographic. This guide is therefore aimed at users who:
 * Are familiar with navigating around a webpage using hyperlinks.
-* Are comfortable with downloading and installing software on their computer.
-* Can type fast and are comfortable using a CLI. <br>
+* Are comfortable downloading and installing software on their computer.
+* Are able to type fast and are comfortable using a CLI. <br>
 This User Guide **does not assume that the reader has a technical background**. Therefore, university students of all majors should be able to use this guide. The definitions for certain technical terms can be found in the [glossary](#glossary).
 
 ## How to use this User Guide
@@ -109,7 +109,7 @@ All the commands in the [Features](#features) section adhere to the following ru
   e.g. if the command specifies `c/COMPANY_NAME p/INTERNSHIP_POSITION`, `p/INTERNSHIP_POSITION c/COMPANY_NAME`
   is also acceptable.
 
-* If a parameter is expected only once in the command but you specified it multiple times, only the last occurrence of the parameter will be taken.<br>
+* If a parameter is expected only once in the command while you specified it multiple times, only the last occurrence of the parameter will be taken.<br>
   e.g. if you specify `c/Grab c/Shopee`, only `c/Shopee` will be taken.
 
 * For commands that do not require any parameters (such as `list` and `clear`), any parameters input by the user will be ignored.<br>
@@ -143,14 +143,20 @@ Parameter | Refers to | Required format | Application field? | Notes
 
 3. Copy the file to the folder you want to use as the _home folder_ for your InternSHIP app.
 
-4. Double-click the file to start the app. A GUI similar to the one shown below should appear in a few seconds. 
+4. Double-click the file to start the app. 
+   <div markdown="span" class="alert alert-primary"> :bulb: **Tip:** If double-clicking does not work for you, try to open the app via terminal. To do so, open the terminal, key in `java -jar InternSHIP.jar` and press `Enter`.</div>
+
+5. A GUI similar to the one shown below should appear in a few seconds. 
    Note how the app contains some sample data.<br>
+   <br>
    ![Ui](images/Ui.png)
 
-5. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** 
-   and pressing Enter will open the help window.<br>
-   Some example commands you can try:
+<div markdown="span" class="alert alert-primary"> :bulb: **Tip:** Use the [`clear`](#clearing-all-entries--clear) command to erase all the sample data when you no longer need them. </div>
 
+7. Type the command in the command box and press Enter to execute it. <br>
+   Some example commands you can try:
+    
+    * **`help`** : Opens up the `Help` Window.
     * **`list`** : Lists all the entries in the internship list.
 
     * **`add c/shopee p/software engineer d/2021-12-12`**: 
@@ -162,10 +168,7 @@ Parameter | Refers to | Required format | Application field? | Notes
 
     * **`exit`** : Exits the app.
 
-6. Refer to the [Features](#features) below for details of each command.
-
-<div markdown="span" class="alert alert-primary"> :bulb: **Tip:** Use `clear` to erase all the sample entries from InternSHIP when they are no longer needed!
-</div>
+9. Refer to the [Features](#features) below for details of each command.
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -205,7 +208,7 @@ If not specified at this stage, it can still be added and edited later using the
 </div>
 
 Format:
-`add c/COMPANY_NAME p/APPLIED_POSITION d/APPLICATION_DEADLINE [r/REQUIREMENTS]…​ [i/INTERVIEW_DATE_AND_TIME]…​`
+`add c/COMPANY_NAME p/INTERNSHIP_POSITION d/APPLICATION_DEADLINE [r/APPLICATION_REQUIREMENTS]…​ [i/INTERVIEW_DATE_AND_TIME]…​`
 
 * Adds a new application with the specified field values to the list.
 
@@ -237,7 +240,12 @@ Multiple fields can be edited at the same time.<br>
 For the edited fields, existing values will be overwritten and updated to the new input values. The values for the rest of the fields will remain the same.
 </div>
 
-Format: `edit INDEX [c/COMPANY_NAME] [p/APPLIED_POSITION] [d/APPLICATION_DEADLINE] [pr/APPLICATION_PRIORITY] [r/APPLICATION_REQUIREMENTS] [i/INTERVIEW_DATE_AND_TIME]`
+<div markdown="span" class="alert alert-primary"> :bulb: **Tip:** <br>
+For the optional field `APPLICATION_REQUIREMENTS`, you can remove all the requirements at once by giving only `edit r/` without specifying anything after the prefix. 
+Similarly, the command `edit i/` will remove all the interview date and times of an application.
+</div>
+
+Format: `edit INDEX [c/COMPANY_NAME] [p/INTERNSHIP_POSITION] [d/APPLICATION_DEADLINE] [pr/APPLICATION_PRIORITY] [r/APPLICATION_REQUIREMENTS] [i/INTERVIEW_DATE_AND_TIME]`
 
 * Edits the application at the specified `INDEX`.
 
@@ -249,7 +257,7 @@ Examples:
 
 #### Completing an application : `complete`
 
-Marks the specified entry in the application list as completed, meaning the user has completed the application for that internship. Once an application is marked as completed, it will no longer appear in the `soon` command.
+Marks the specified entry in the application list as completed, meaning the user has completed the application for that internship.
 
 Format: `complete INDEX`
 
@@ -322,6 +330,9 @@ Examples:
 
 Shows all the applications that are close to the submission deadlines or interview time within a specified number of days.
 
+:bulb: **Note:** <br>
+`soon` will only show applications that are not completed yet.
+
 <div markdown="span" class="alert alert-info"> 
 :information_source: **Info:** <br>
 The available fields are: <br>
@@ -341,7 +352,7 @@ Examples:
 
 <hr>
 
-#### Finding entries by keyword(need to change this part hehe) : `find`
+#### Finding entries by keyword : `find`
 
 <div markdown="span" class="alert alert-danger"> :warning: **Warning:** This command cannot be undone! Use the `list` command (explained below) after this command to go back to displaying all the applications stored in InternSHIP!
 </div>
@@ -349,17 +360,21 @@ Examples:
 <div markdown="span" class="alert alert-danger"> :warning: **Warning:** This command changes the displayed list in InternSHIP! The index of the entries will change too! Make sure to check the index again before using commands like `delete` or `complete`!
 </div>
 
-Finds all entries from the application list that match the keyword in the given field.
+Finds application(s) from the application list.
 
-Only one field and one keyword can be provided each time.
+<div markdown="span" class="alert alert-primary"> :bulb: **Tip:** Only one field and one keyword can be provided each time!
+</div>
+
 
 Format: `find FIELD keyword`
+
+* Finds all application(s) from the application list that match the keyword in the given field.
 
 <div markdown="span" class="alert alert-info">
 :information_source: **Info:** <br>
 The fields available to be found are: <br>
 - COMPANY_NAME `c/` <br>
-- APPLIED_POSITION `p/` <br>
+- INTERNSHIP_POSITION `p/` <br>
 - APPLICATION_DEADLINE `d/` <br>
 - COMPLETION_STATUS `c1/` <br>
 - APPLICATION_OUTCOME (i.e. STATUS) `s/` <br>
@@ -434,29 +449,31 @@ Format: `clear`
 
 <hr>
 
-#### UNDO(need to change this part hehe) : `undo`
+#### Undoing a change: `undo`
 
 Undoes a change made to the application list. 
 
-**IMPORTANT NOTE** <br>
-This command is to be used after a command that actually **does some change** to the application list. 
-Inappropriate use may result in unexpected behaviors.
+<div markdown="span" class="alert alert-danger"> :warning: **Warning:** This command is to be used after a command that actually **does some change** to the application list. Inappropriate use may result in unexpected behaviors. </div>
 
-Commands that 'actually does changes' to the application list:
+<div markdown="span" class="alert alert-info">   
+:information_source: **Info:** <br>
+Commands that actually 'does some changes' to the application list (thus can be undone):
 - `add`
 - `delete`
 - `edit`
 - `clear`
-
-Commands that make no change to the application list:
+Commands that make no change to the application list (thus is not supposed not be followed by `undo` command)
 - `list`
 - `find`
 - `sort`
 - `soon`
+</div>
 
+<div markdown="span" class="alert alert-danger"> :warning:
 When successive changes are made, the `undo` command will undo the **most recent** change. 
 Successive `undo` commands will undo the previous changes from the most recent to the oldest, until there's no changes
 to be restored.
+</div>
 
 <hr>
 
@@ -470,27 +487,29 @@ As a result, the `position` field of that entry will be restored to its previous
 
 <hr>
 
-#### REDO(need to change this part hehe) : `redo`
+#### Redoing a change : `redo`
 
 Redoes a change made to the application list.
 
-**IMPORTANT NOTE** <br>
+<div markdown="span" class="alert alert-danger"> :warning:
 This command is to be used **directly after** an `undo` command.
 If an `undo` command undoes a change (e.g., `delete 1` followed by `undo` restores the first entry), 
 and it is followed by a command that makes some new changes to the application list (e.g., `edit 2 pr/High` changes
 the priority of the second entry to 'High'), then the previous undone action cannot be redone (i.e., the `delete 1`
 command which is previously undone cannot be redone).
+</div>
 
+<div markdown="span" class="alert alert-danger"> :warning:
 When successive undone actions are made, the `redo` command will redo the **most recent** undone action.
 Successive `redo` commands will redo the undone actions from the most recent to the oldest, until there's no undone
 actions to be redone.
+</div>
 
 Format: `redo`
 
 Examples:
-* `delete 1` followed by `undo` undoes the deletion of the first entry. As a result, that entry will reappear
-  in the application list.
-* `edit 1 p/tester` followed  by `undo` undoes the edition of the first entry's position field.
+* `delete 1` followed by `undo` and then `redo` undoes the deletion of the first entry. As a result, that entry will reappear in the application list.
+* `edit 1 p/tester` followed by `undo` and then `redo` undoes the edition of the first entry's position field.
 
 <hr>
 
@@ -543,8 +562,8 @@ This section gives an overview of all the commands supported by InternSHIP.
 
 Action | Format | Example | Notes
 --------|-------|----|----
-**Add** | `add c/COMPANY_NAME p/INTERNSHIP_POSITION d/DEADLINE_OF_APPLICATION [r/REQUIREMENTS] [i/INTERVIEW_DATE_AND_TIME]` | `add c/Shopee p/software engineer d/2021-12-12` |
-**Edit** | `edit INDEX [c/COMPANY_NAME] [p/INTERNSHIP_POSITION] [d/DEADLINE_OF_APPLICATION] [pr/PRIORITY] [r/REQUIREMENTS] [i/INTERVIEW_DATE_AND_TIME]` | `edit 1 c/Grab d/2021-12-20`
+**Add** | `add c/COMPANY_NAME p/INTERNSHIP_POSITION d/APPLICATION_DEADLINE [r/REQUIREMENTS] [i/INTERVIEW_DATE_AND_TIME]` | `add c/Shopee p/software engineer d/2021-12-12` |
+**Edit** | `edit INDEX [c/COMPANY_NAME] [p/INTERNSHIP_POSITION] [d/APPLICATION_DEADLINE] [pr/APPLICATION_PRIORITY] [r/REQUIREMENTS] [i/INTERVIEW_DATE_AND_TIME]` | `edit 1 c/Grab d/2021-12-20`
 **Complete** | `complete INDEX` | `complete 1` |
 **Accept** | `accept INDEX` | `accept 2` | `APPLICATION_OUTCOME` can only be either `Accepted`, `Rejected`, or `Pending`.
 **Reject** | `reject INDEX` | `reject 2` | `APPLICATION_OUTCOME` can only be either `Accepted`, `Rejected`, or `Pending`.
@@ -554,10 +573,10 @@ Action | Format | Example | Notes
 
 Action | Format | Example | Notes
 --------|-------|----|----
-**Soon** | `soon DAYS`| `soon 5` |
-**Find** | `find PREFIX KEYWORD` |  `find pr/High` | `PREFIX` refers to the field to match the keyword (`c/` COMPANY_NAME, `p/` APPLIED_POSITION, `d/` APPLICATION_DEADLINE, `c1/` COMPLETION_STATUS, `s/` APPLICATION_OUTCOME (i.e. STATUS), `pr/` APPLICATION_PRIORITY `r/` APPLICATION_REQUIREMENTS)
+**Find** | `find PREFIX KEYWORD` |  `find pr/High` | `PREFIX` refers to the field to match the keyword (`c/` COMPANY_NAME, `p/` INTERNSHIP_POSITION, `d/` APPLICATION_DEADLINE, `c1/` COMPLETION_STATUS, `s/` APPLICATION_OUTCOME (i.e. STATUS), `pr/` APPLICATION_PRIORITY, `r/` APPLICATION_REQUIREMENTS, `i/` INTERVIEW_DATE_AND_TIME)
+**Soon** | `soon PREFIX DAYS`| `soon d/5` | `PREFIX` refers to the field with coming deadline or time (`d/` APPLICATION_DEADLINE, `i/` INTERVIEW_DATE_AND_TIME)
 **List** | `list`| `list`
-**Sort** | `sort PREFIX` | `sort c/` | `PREFIX` refers to the application detail to be sorted by (`c/` COMPANY_NAME, `p/` APPLIED_POSITION, `d/` APPLICATION_DEADLINE, `pr/` APPLICATION_PRIORITY)
+**Sort** | `sort PREFIX` | `sort c/` | `PREFIX` refers to the application detail to be sorted by (`c/` COMPANY_NAME, `p/` INTERNSHIP_POSITION, `d/` APPLICATION_DEADLINE, `pr/` APPLICATION_PRIORITY, `i/` INTERVIEW_DATE_AND_TIME)
 
 
 ### Others
