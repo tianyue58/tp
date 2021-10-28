@@ -330,8 +330,8 @@ Examples:
 
 Shows all the applications that are close to the submission deadlines or interview time within a specified number of days.
 
-:bulb: **Note:** <br>
-`soon` will only show applications that are not completed yet.
+<div markdown="span" class="alert alert-primary"> :bulb: **Tip:** `soon` will only show applications that are not completed yet!
+</div>
 
 <div markdown="span" class="alert alert-info"> 
 :information_source: **Info:** <br>
