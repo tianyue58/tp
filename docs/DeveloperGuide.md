@@ -75,7 +75,7 @@ The **API** of this component is specified in [`Ui.java`](https://github.com/se-
 
 ![Structure of the UI Component](images/UiClassDiagram.png)
 
-The UI consists of a `MainWindow` that is made up of parts e.g.`CommandBox`, `ResultDisplay`, `PersonListPanel`, `StatusBarFooter` etc. All these, including the `MainWindow`, inherit from the abstract `UiPart` class which captures the commonalities between classes that represent parts of the visible GUI.
+The UI consists of a `MainWindow` that is made up of parts e.g.`CommandBox`, `ResultDisplay`, `ApplicationListPanel`, `StatusBarFooter` etc. All these, including the `MainWindow`, inherit from the abstract `UiPart` class which captures the commonalities between classes that represent parts of the visible GUI.
 
 The `UI` component uses the JavaFx UI framework. The layout of these UI parts are defined in matching `.fxml` files that are in the `src/main/resources/view` folder. For example, the layout of the [`MainWindow`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/ui/MainWindow.java) is specified in [`MainWindow.fxml`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/resources/view/MainWindow.fxml)
 
@@ -84,7 +84,7 @@ The `UI` component,
 * executes user commands using the `Logic` component.
 * listens for changes to `Model` data so that the UI can be updated with the modified data.
 * keeps a reference to the `Logic` component, because the `UI` relies on the `Logic` to execute commands.
-* depends on some classes in the `Model` component, as it displays `Person` object residing in the `Model`.
+* depends on some classes in the `Model` component, as it displays `Application` object residing in the `Model`.
 
 ### Logic component
 
@@ -123,12 +123,16 @@ How the parsing works:
 
 The `Model` component,
 
+<<<<<<< HEAD
+* stores the InternSHIP data i.e., all `Application` objects (which are contained in a `UniqueApplicationList` object).
+=======
 * stores the internship data i.e., all `Application` objects (which are contained in a `UniqueApplicationList` object).
+>>>>>>> 9e69da7bb1df9c61700bd73d1a3a2d7fe1989a02
 * stores the currently 'selected' `Application` objects (e.g., results of a search query) as a separate _filtered_ list which is exposed to outsiders as an unmodifiable `ObservableList<Application>` that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.
 * stores a `UserPref` object that represents the user’s preferences. This is exposed to the outside as a `ReadOnlyUserPref` objects.
 * does not depend on any of the other three components (as the `Model` represents data entities of the domain, they should make sense on their own without depending on other components)
 
-<div markdown="span" class="alert alert-info">:information_source: **Note:** An alternative (arguably, a more OOP) model is given below. It has a `Tag` list in the `Internship`, which `Person` references. This allows `Internship` to only require one `Tag` object per unique tag, instead of each `Person` needing their own `Tag` objects.<br>
+<div markdown="span" class="alert alert-info">:information_source: **Note:** An alternative (arguably, a more OOP) model is given below. It has a `Requirement` list in the `Internship`, which `Application` references. This allows `Internship` to only require one `Requirements` object per unique requirement, instead of each `Application` needing their own `Requirements` objects.<br>
 
 <img src="images/BetterModelClassDiagram.png" width="450" />
 
@@ -142,7 +146,11 @@ The `Model` component,
 <img src="images/StorageClassDiagram.png" width="550" />
 
 The `Storage` component,
+<<<<<<< HEAD
+* can save both InternSHIP data and user preference data in json format, and read them back into corresponding objects.
+=======
 * can save both internship data and user preference data in json format, and read them back into corresponding objects.
+>>>>>>> 9e69da7bb1df9c61700bd73d1a3a2d7fe1989a02
 * inherits from both `InternshipStorage` and `UserPrefStorage`, which means it can be treated as either one (if only the functionality of only one is needed).
 * depends on some classes in the `Model` component (because the `Storage` component's job is to save/retrieve objects that belong to the `Model`)
 
@@ -284,6 +292,8 @@ The find feature is implemented by the `FindCommandParser` and `FindCommand` cla
 `FindCommandParser` class is responsible for parsing the parameter received from the user.
 
 `FindCommand` class is responsible for finding the matching applications with specified fields according to the given syntax and keyword.
+
+![Interactions Inside the Logic Component for the `find p/tester` Command](images/FindSequenceDiagram.png)
 
 #### Design considerations:
 
@@ -435,6 +445,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* * *`  | student                                    | record the deadline of an application | better organize my time for preparation and complete the requirements in time                      |
 | `* * *`  | student                                    | record the position I have applied for an application | remember my responsibility for each application   
 | `* * *`  | student                                    | record the requirements for an application | better understand what I need to prepare in order to succeed during the application |
+| `* * *`  | student                                    | record the interview time for an application | better organize my time for interview preparation |
 | `* * *`  | student                                    | assign priority level to an application  | know clearly which applications I should prioritize and get started first |
 | `* * *`  | student                                    | view a list of all companies I have applied and the related details for each application | have a better picture about all the companies I have applied|
 | `* * *`  | student                                    | delete one of the applications in the application list | stop tracking an application that I have withdrawn from |                                               
