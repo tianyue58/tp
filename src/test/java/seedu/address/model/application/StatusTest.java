@@ -30,8 +30,8 @@ public class StatusTest {
         // invalid status
         assertFalse(Status.isValidStatus("")); // empty string
         assertFalse(Status.isValidStatus("       ")); // spaces only
-        assertFalse(Status.isValidStatus("done")); // not a valid completion value
-        assertFalse(Status.isValidStatus("sTatUS")); // not a valid completion value
+        assertFalse(Status.isValidStatus("done")); // not a valid Status value
+        assertFalse(Status.isValidStatus("random")); // not a valid Status value
         assertFalse(Status.isValidStatus("accepted")); // wrong capitalisation
 
         // valid status
