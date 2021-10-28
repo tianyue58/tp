@@ -257,7 +257,7 @@ Examples:
 
 #### Completing an application : `complete`
 
-Marks the specified entry in the application list as completed, meaning the user has completed the application for that internship. Once an application is marked as completed, it will no longer appear in the `soon` command.
+Marks the specified entry in the application list as completed, meaning the user has completed the application for that internship.
 
 Format: `complete INDEX`
 
@@ -300,6 +300,9 @@ Examples:
 #### Listing upcoming deadlines : `soon`
 
 Shows all the applications that are close to the submission deadlines or interview time within a specified number of days.
+
+:bulb: **Note:** <br>
+`soon` will only show applications that are not completed yet.
 
 <div markdown="span" class="alert alert-info"> 
 :information_source: **Info:** <br>
