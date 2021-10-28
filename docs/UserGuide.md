@@ -11,7 +11,7 @@ title: User Guide
 
 Are you a university student looking to score a holiday internship? Do you feel overwhelmed by all the application details you have to keep track of? Have you missed any application deadlines because there are just too many to remember? Have you ever wished that there were a comprehensive app that could help you track your entire internship application process? If you answered yes to any of these questions, we have just the application for you!
 
-![Logo](images/InternSHIP.png)
+![Logo](images/logos/InternSHIP.png)
 
 InternSHIP is a **desktop app for university students to manage their internship application deadlines.** Here are its main features:
 * Tracking all essential internship application details (e.g. submission deadlines, interview date and time, completion status, etc...)
@@ -220,6 +220,11 @@ Examples:
 * `add c/Shopee p/software engineer d/2021-12-12 r/resume` adds a new internship application with the same details as the previous example, but with an additional application requirement of a `resume`.
 * `add c/Shopee p/software engineer d/2021-12-12 r/resume i/2021-12-18 1030` adds a new internship application with the same details as the previous example, but with an interview on `18 Dec 2021 10:30`.
 
+![addBefore](images/features/addBefore.png)
+> Before the command `add c/Shopee p/software engineer d/2021-12-12`
+ 
+![addAfter](images/features/addAfter.png)
+> After the command `add c/Shopee p/software engineer d/2021-12-12`
 <hr>
 
 #### Editing the details of an existing entry : `edit`
@@ -253,6 +258,11 @@ Examples:
 * `edit 1 c/Grab d/2021-12-20` changes the company name and deadline of the 1st application to `Grab` and `2021-12-20` respectively.
 * `edit 2 p/UI designer` changes the internship position of the 2nd application to `UI designer`.
 
+![editBefore](images/features/editBefore.png)
+> Before the command `edit 1 c/Grab d/2021-12-20`
+
+![editAfter](images/features/editAfter.png)
+> After the command `edit 1 c/Grab d/2021-12-20`
 <hr>
 
 #### Completing an application : `complete`
@@ -264,7 +274,13 @@ Format: `complete INDEX`
 * Marks the entry at the specified `INDEX` as completed.
 
 Examples:
-* `complete 2` marks the 2nd entry in the application list as completed.
+* `complete 3` marks the 3rd entry in the application list as completed.
+
+![completeBefore](images/features/completeBefore.png)
+> Before the command `complete 3`
+
+![completeAfter](images/features/completeAfter.png)
+> After the command `complete 3`
 
 <hr>
 
@@ -294,6 +310,13 @@ Examples:
 * `accept 1` marks the first entry as 'Accepted'.
 * `accept 4` marks the fourth entry as 'Accepted'.
 
+
+![acceptBefore](images/features/acceptBefore.png)
+> Before the command `accept 4`
+
+![acceptAfter](images/features/acceptAfter.png)
+> After the command `accept 4`
+
 <hr>
 
 #### Updating the application outcome to 'Rejected': `reject`
@@ -320,7 +343,7 @@ Format: `reject INDEX`
 
 Examples:
 * `reject 1` marks the first entry as 'Rejected'.
-* `reject 4` marks the fourth entry as 'Rejected'.
+* `reject 3` marks the third entry as 'Rejected'.
 
 <hr>
 
@@ -350,6 +373,13 @@ Examples:
 
 * `soon d/5` shows applications whose submission deadlines are within 5 days from today's date.
 
+
+![soonBefore](images/features/soonBefore.png)
+> Before the command `soon d/5`
+
+![soonAfter](images/features/soonAfter.png)
+> After the command `soon d/5`
+ 
 <hr>
 
 #### Finding entries by keyword : `find`
@@ -387,6 +417,13 @@ Examples:
 * `find pr/High` shows all the applications whose priority is High.
 * `find c1/Completed` shows all the applications that are completed.
 
+
+![findBefore](images/features/findBefore.png)
+> Before the command `find pr/High`
+
+![findAfter](images/features/findAfter.png)
+> After the command `find pr/High`
+
 <hr>
 
 #### Listing all entries : `list`
@@ -395,6 +432,12 @@ Shows a list of all the entries in the application list in InternSHIP.
 
 Format: `list`
 
+![listBefore](images/features/listBefore.png)
+> Before the command `list` (assume the previous command results in only partial list being displayed)
+
+![listAfter](images/features/listAfter.png)
+> After the command `list` (full application list is displayed)
+> 
 <hr>
 
 #### Sorting the entries : `sort`
@@ -424,6 +467,12 @@ Format: `sort FIELD`
 Examples:
 * `sort c/` shows all the applications saved in the current InternSHIP sorted by company name, in alphabetical order.
 
+![sortBefore](images/features/sortBefore.png)
+> Before the command `sort c/`
+
+![sortAfter](images/features/sortAfter.png)
+> After the command `sort c/`
+> 
 <hr>
 
 ### Others
@@ -439,6 +488,12 @@ Format: `delete INDEX`
 Examples:
 * `delete 2` deletes the 2nd entry in the main application list.
 
+![deleteBefore](images/features/deleteBefore.png)
+> Before the command `delete 2`
+
+![deleteAfter](images/features/deleteAfter.png)
+> After the command `delete 2`
+
 <hr>
 
 #### Clearing all entries : `clear`
@@ -446,6 +501,12 @@ Examples:
 Clears all entries from InternSHIP.
 
 Format: `clear`
+
+![clearBefore](images/features/clearBefore.png)
+> Before the command `clear`
+
+![clearAfter](images/features/clearAfter.png)
+> After the command `clear`
 
 <hr>
 
@@ -469,7 +530,8 @@ Commands that make no change to the application list (thus is not supposed not b
 - `soon`
 </div>
 
-<div markdown="span" class="alert alert-danger"> :warning:
+
+<div markdown="span" class="alert alert-danger"> :warning: **Warnings**
 When successive changes are made, the `undo` command will undo the **most recent** change. 
 Successive `undo` commands will undo the previous changes from the most recent to the oldest, until there's no changes
 to be restored.
@@ -485,13 +547,19 @@ in the application list.
 * `edit 1 p/tester` followed  by `undo` undoes the edition of the first entry's position field. 
 As a result, the `position` field of that entry will be restored to its previous value.
 
+![undoBefore](images/features/undoBefore.png)
+> Before the command `undo` (application at index 1 is deleted)
+
+![undoAfter](images/features/undoAfter.png)
+> After the command `undo` (application at index 1 is added back to the list)
 <hr>
 
 #### Redoing a change : `redo`
 
 Redoes a change made to the application list.
 
-<div markdown="span" class="alert alert-danger"> :warning:
+
+<div markdown="span" class="alert alert-danger"> :warning: **Warnings**
 This command is to be used **directly after** an `undo` command.
 If an `undo` command undoes a change (e.g., `delete 1` followed by `undo` restores the first entry), 
 and it is followed by a command that makes some new changes to the application list (e.g., `edit 2 pr/High` changes
@@ -499,7 +567,8 @@ the priority of the second entry to 'High'), then the previous undone action can
 command which is previously undone cannot be redone).
 </div>
 
-<div markdown="span" class="alert alert-danger"> :warning:
+
+<div markdown="span" class="alert alert-danger"> :warning: **Warnings**
 When successive undone actions are made, the `redo` command will redo the **most recent** undone action.
 Successive `redo` commands will redo the undone actions from the most recent to the oldest, until there's no undone
 actions to be redone.
@@ -511,6 +580,12 @@ Examples:
 * `delete 1` followed by `undo` and then `redo` undoes the deletion of the first entry. As a result, that entry will reappear in the application list.
 * `edit 1 p/tester` followed by `undo` and then `redo` undoes the edition of the first entry's position field.
 
+![redoBefore](images/features/redoBefore.png)
+> Before the command `redo` (deletion of the first application was undone)
+
+![redoAfter](images/features/redoAfter.png)
+> After the command `redo` (the first application was deleted once again)
+> 
 <hr>
 
 #### Exiting the program : `exit`
@@ -525,7 +600,7 @@ Format: `exit`
 
 Shows a message directing the user to the [Command Summary](#command-summary) section of the help page.
 
-![help message](images/helpMessage.png)
+![help message](images/features/helpMessage.png)
 
 Format: `help`
 

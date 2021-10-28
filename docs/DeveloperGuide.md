@@ -73,7 +73,7 @@ The sections below give more details of each component.
 
 The **API** of this component is specified in [`Ui.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/ui/Ui.java)
 
-![Structure of the UI Component](images/UiClassDiagram.png)
+![Structure of the UI Component](images/umldiagrams/UiClassDiagram.png)
 
 The UI consists of a `MainWindow` that is made up of parts e.g.`CommandBox`, `ResultDisplay`, `ApplicationListPanel`, `StatusBarFooter` etc. All these, including the `MainWindow`, inherit from the abstract `UiPart` class which captures the commonalities between classes that represent parts of the visible GUI.
 
@@ -102,7 +102,7 @@ How the `Logic` component works:
 
 The Sequence Diagram below illustrates the interactions within the `Logic` component for the `execute("delete 1")` API call.
 
-![Interactions Inside the Logic Component for the `delete 1` Command](images/DeleteSequenceDiagram.png)
+![Interactions Inside the Logic Component for the `delete 1` Command](images/umldiagrams/DeleteSequenceDiagram.png)
 
 <div markdown="span" class="alert alert-info">:information_source: **Note:** The lifeline for `DeleteCommandParser` should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
 </div>
@@ -184,7 +184,7 @@ class implements the `Parser` interface. The `CompleteCommandParser#parse()` met
 this class parses the index and returns an `CompleteCommand` object with the index
 as the parameter.
 
-![Interactions Inside the Logic Component for the `complete 1` Command](images/CompleteSequenceDiagram.png)
+![Interactions Inside the Logic Component for the `complete 1` Command](images/umldiagrams/CompleteSequenceDiagram.png)
 
 #### Design considerations:
 
@@ -219,7 +219,7 @@ class implements the `Parser` interface. The `AcceptCommandParser#parse()` metho
 this class parses the index and returns an `AcceptCommand` object with the index
 as the parameter. 
 
-![Interactions Inside the Logic Component for the `accept 2` Command](images/AcceptSequenceDiagram.png)
+![Interactions Inside the Logic Component for the `accept 2` Command](images/umldiagrams/AcceptSequenceDiagram.png)
 
 #### Design considerations:
 
@@ -255,7 +255,7 @@ class implements the `Parser` interface. The `RejectCommandParser#parse()` metho
 this class parses the index and returns an `RejectCommand` object with the index
 as the parameter.
 
-![Interactions Inside the Logic Component for the `reject 2` Command](images/RejectSequenceDiagram.png)
+![Interactions Inside the Logic Component for the `reject 2` Command](images/umldiagrams/RejectSequenceDiagram.png)
 
 #### Design considerations:
 
@@ -274,7 +274,7 @@ The `Sort` command is facilitated by the `SortCommand` class. It extends the `Co
 
 The `SortCommandParser` class is responsible for parsing the field received from the user. This class implements the `Parser` interface. The `SortCommandParser#parse()` method of this class parses the field and returns a `SortCommand` object with the field as the parameter.
 
-![Interactions Inside the Logic Component for the `sort pr/` Command](images/SortSequenceDiagram.png)
+![Interactions Inside the Logic Component for the `sort pr/` Command](images/umldiagrams/SortSequenceDiagram.png)
 
 #### Design considerations:
 
@@ -293,7 +293,7 @@ The find feature is implemented by the `FindCommandParser` and `FindCommand` cla
 
 `FindCommand` class is responsible for finding the matching applications with specified fields according to the given syntax and keyword.
 
-![Interactions Inside the Logic Component for the `find p/tester` Command](images/FindSequenceDiagram.png)
+![Interactions Inside the Logic Component for the `find p/tester` Command](images/umldiagrams/FindSequenceDiagram.png)
 
 #### Design considerations:
 
@@ -312,7 +312,7 @@ The soon feature is implemented by the `SoonCommandParser` and `SoonCommand` cla
 
 `SoonCommand` class is responsible for listing the applications whose submission or interview deadlines are within a certain number of days specified by the user.
 
-![Interactions Inside the Logic Component for the `soon d/ 1` Command](images/SoonSequenceDiagram.png)
+![Interactions Inside the Logic Component for the `soon d/ 1` Command](images/umldiagrams/SoonSequenceDiagram.png)
 
 #### Design considerations:
 
@@ -338,15 +338,15 @@ Given below is an example usage scenario and how the undo/redo mechanism behaves
 
 Step 1. The user launches the application for the first time. The `VersionedInternship` will be initialized with the initial Internship state, and the `currentStatePointer` pointing to that single Internship state.
 
-![UndoRedoState0](images/UndoRedoState0.png)
+![UndoRedoState0](images/umldiagrams/UndoRedoState0.png)
 
 Step 2. The user executes `delete 5` command to delete the 5th application in the Internship. The `delete` command calls `Model#commitInternship()`, causing the modified state of the Internship after the `delete 5` command executes to be saved in the `internshipStateList`, and the `currentStatePointer` is shifted to the newly inserted Internship state.
 
-![UndoRedoState1](images/UndoRedoState1.png)
+![UndoRedoState1](images/umldiagrams/UndoRedoState1.png)
 
 Step 3. The user executes `add c/Amazon …​` to add a new application. The `add` command also calls `Model#commitInternship()`, causing another modified Internship state to be saved into the `internshipStateList`.
 
-![UndoRedoState2](images/UndoRedoState2.png)
+![UndoRedoState2](images/umldiagrams/UndoRedoState2.png)
 
 <div markdown="span" class="alert alert-info">:information_source: **Note:** If a command fails its execution, it will not call `Model#commitInternship()`, so the Internship state will not be saved into the `internshipStateList`.
 
@@ -354,7 +354,7 @@ Step 3. The user executes `add c/Amazon …​` to add a new application. The `a
 
 Step 4. The user now decides that adding the application was a mistake, and decides to undo that action by executing the `undo` command. The `undo` command will call `Model#undoInternship()`, which will shift the `currentStatePointer` once to the left, pointing it to the previous Internship state, and restores the Internship to that state.
 
-![UndoRedoState3](images/UndoRedoState3.png)
+![UndoRedoState3](images/umldiagrams/UndoRedoState3.png)
 
 <div markdown="span" class="alert alert-info">:information_source: **Note:** If the `currentStatePointer` is at index 0, pointing to the initial Internship state, then there are no previous Internship states to restore. The `undo` command uses `Model#canUndoInternship()` to check if this is the case. If so, it will return an error to the user rather
 than attempting to perform the undo.
@@ -363,7 +363,7 @@ than attempting to perform the undo.
 
 The following sequence diagram shows how the undo operation works:
 
-![UndoSequenceDiagram](images/UndoSequenceDiagram.png)
+![UndoSequenceDiagram](images/umldiagrams/UndoSequenceDiagram.png)
 
 <div markdown="span" class="alert alert-info">:information_source: **Note:** The lifeline for `UndoCommand` should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
 
@@ -377,11 +377,11 @@ The `redo` command does the opposite — it calls `Model#redoInternship()`, 
 
 Step 5. The user then decides to execute the command `list`. Commands that do not modify the Internship, such as `list`, `help`, `find`, will usually not call `Model#commitInternship()`, `Model#undoInternship()` or `Model#redoInternship()`. Thus, the `internshipStateList` remains unchanged.
 
-![UndoRedoState4](images/UndoRedoState4.png)
+![UndoRedoState4](images/umldiagrams/UndoRedoState4.png)
 
 Step 6. The user executes `clear`, which calls `Model#commitInternship()`. Since the `currentStatePointer` is not pointing at the end of the `internshipStateList`, all Internship states after the `currentStatePointer` will be purged. Reason: It no longer makes sense to redo the `add c/Amazon` command. This is the behavior that most modern desktop applications follow.
 
-![UndoRedoState5](images/UndoRedoState5.png)
+![UndoRedoState5](images/umldiagrams/UndoRedoState5.png)
 
 The following activity diagram summarizes what happens when a user executes a new command:
 
