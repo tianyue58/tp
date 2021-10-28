@@ -323,7 +323,7 @@ Examples:
 
 <hr>
 
-#### Finding entries by keyword(need to change this part hehe) : `find`
+#### Finding entries by keyword : `find`
 
 <div markdown="span" class="alert alert-danger"> :warning: **Warning:** This command cannot be undone! Use the `list` command (explained below) after this command to go back to displaying all the applications stored in InternSHIP!
 </div>
@@ -331,11 +331,15 @@ Examples:
 <div markdown="span" class="alert alert-danger"> :warning: **Warning:** This command changes the displayed list in InternSHIP! The index of the entries will change too! Make sure to check the index again before using commands like `delete` or `complete`!
 </div>
 
-Finds all entries from the application list that match the keyword in the given field.
+Finds application(s) from the application list.
 
-Only one field and one keyword can be provided each time.
+<div markdown="span" class="alert alert-primary"> :bulb: **Tip:** Only one field and one keyword can be provided each time!
+</div>
+
 
 Format: `find FIELD keyword`
+
+* Finds all application(s) from the application list that match the keyword in the given field.
 
 <div markdown="span" class="alert alert-info">
 :information_source: **Info:** <br>
@@ -539,10 +543,10 @@ Action | Format | Example | Notes
 
 Action | Format | Example | Notes
 --------|-------|----|----
-**Soon** | `soon DAYS`| `soon 5` |
-**Find** | `find PREFIX KEYWORD` |  `find pr/High` | `PREFIX` refers to the field to match the keyword (`c/` COMPANY_NAME, `p/` INTERNSHIP_POSITION, `d/` APPLICATION_DEADLINE, `c1/` COMPLETION_STATUS, `s/` COMPANY_DECISION (i.e. STATUS), `pr/` APPLICATION_PRIORITY `r/` APPLICATION_REQUIREMENTS)
+**Find** | `find PREFIX KEYWORD` |  `find pr/High` | `PREFIX` refers to the field to match the keyword (`c/` COMPANY_NAME, `p/` INTERNSHIP_POSITION, `d/` APPLICATION_DEADLINE, `c1/` COMPLETION_STATUS, `s/` COMPANY_DECISION (i.e. STATUS), `pr/` APPLICATION_PRIORITY, `r/` APPLICATION_REQUIREMENTS, `i/` INTERVIEW_DATE_AND_TIME)
+**Soon** | `soon PREFIX DAYS`| `soon d/5` | `PREFIX` refers to the field with coming deadline or time (`d/` APPLICATION_DEADLINE, `i/` INTERVIEW_DATE_AND_TIME)
 **List** | `list`| `list`
-**Sort** | `sort PREFIX` | `sort c/` | `PREFIX` refers to the application detail to be sorted by (`c/` COMPANY_NAME, `p/` INTERNSHIP_POSITION, `d/` APPLICATION_DEADLINE, `pr/` APPLICATION_PRIORITY)
+**Sort** | `sort PREFIX` | `sort c/` | `PREFIX` refers to the application detail to be sorted by (`c/` COMPANY_NAME, `p/` INTERNSHIP_POSITION, `d/` APPLICATION_DEADLINE, `pr/` APPLICATION_PRIORITY, `i/` INTERVIEW_DATE_AND_TIME)
 
 
 ### Others
