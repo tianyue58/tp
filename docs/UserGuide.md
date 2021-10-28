@@ -268,7 +268,7 @@ Examples:
 
 <hr>
 
-#### Updating the application outcome to **'Accepted'**: `accept`
+#### Updating the application outcome to 'Accepted': `accept`
 
 Updates the application outcome (status) of an application to **'Accepted'**.
 
@@ -281,8 +281,7 @@ user has completed submitting the application (and all related requirements) or 
 <br>
 When a new application is added, the outcome is `Pending` by default as it is assumed <br>
 that the user has not received the decision from the company yet. The outcome can <br> 
-later be changed to `Accepted` using the `accept` command. <br>
-<br>
+later be changed to `Accepted` using the `accept` command. 
 </div>
 
 Format: `accept INDEX`
@@ -295,7 +294,9 @@ Examples:
 * `accept 1` marks the first entry as 'Accepted'.
 * `accept 4` marks the fourth entry as 'Accepted'.
 
-#### Updating the application outcome to **'Rejected'**: `reject`
+<hr>
+
+#### Updating the application outcome to 'Rejected': `reject`
 
 Updates the application outcome (status) of an application to **'Rejected'**.
 
@@ -308,8 +309,7 @@ user has completed submitting the application (and all related requirements) or 
 <br>
 When a new application is added, the outcome is `Pending` by default as it is assumed <br>
 that the user has not received the decision from the company yet. The outcome can <br> 
-later be changed to `Rejected` using the `reject` command. <br>
-<br>
+later be changed to `Rejected` using the `reject` command.
 </div>
 
 Format: `reject INDEX`
