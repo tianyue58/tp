@@ -21,7 +21,8 @@ import seedu.address.model.application.Requirement;
 import seedu.address.model.application.Status;
 
 /**
- * Changes the status of an application in InternSHIP to Accepted.
+ * Changes the status (outcome or decision of the application
+ * provided by the company) of an application in InternSHIP to 'Accepted'.
  */
 public class AcceptCommand extends Command {
     public static final String COMMAND_WORD = "accept";
@@ -58,23 +59,23 @@ public class AcceptCommand extends Command {
             throw new CommandException(Messages.MESSAGE_INVALID_APPLICATION_DISPLAYED_INDEX);
         }
 
-        Application applicationToComplete = lastShownList.get(targetIndex.getZeroBased());
+        Application applicationToAccept = lastShownList.get(targetIndex.getZeroBased());
 
-        Company company = applicationToComplete.getCompany();
-        Position position = applicationToComplete.getPosition();
-        Deadline deadline = applicationToComplete.getDeadline();
+        Company company = applicationToAccept.getCompany();
+        Position position = applicationToAccept.getPosition();
+        Deadline deadline = applicationToAccept.getDeadline();
         Completion completion = new Completion("Completed");
         Status status = new Status("Accepted");
-        Priority priority = applicationToComplete.getPriority();
-        Set<Requirement> requirementList = applicationToComplete.getRequirements();
-        Set<InterviewDateAndTime> interviewDateAndTimeList = applicationToComplete.getInterviewDateAndTime();
+        Priority priority = applicationToAccept.getPriority();
+        Set<Requirement> requirementList = applicationToAccept.getRequirements();
+        Set<InterviewDateAndTime> interviewDateAndTimeList = applicationToAccept.getInterviewDateAndTime();
 
-        Application completedApplication = new Application(company, position, deadline, completion, status, priority,
+        Application acceptedApplication = new Application(company, position, deadline, completion, status, priority,
                 requirementList, interviewDateAndTimeList);
-        model.setApplication(applicationToComplete, completedApplication);
+        model.setApplication(applicationToAccept, acceptedApplication);
         model.commitInternship(model.getInternship());
 
-        return new CommandResult(String.format(MESSAGE_SUCCESS, completedApplication));
+        return new CommandResult(String.format(MESSAGE_SUCCESS, acceptedApplication));
     }
 
     @Override

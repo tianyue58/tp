@@ -211,6 +211,8 @@ class implements the `Parser` interface. The `AcceptCommandParser#parse()` metho
 this class parses the index and returns an `AcceptCommand` object with the index
 as the parameter. 
 
+![Interactions Inside the Logic Component for the `accept 2` Command](images/AcceptSequenceDiagram.png)
+
 #### Design considerations:
 
 * **Alternative 1 (current choice):** The default status when an application is added is `Pending`. 
@@ -244,6 +246,8 @@ The `RejectCommandParser` class is responsible for parsing the index received fr
 class implements the `Parser` interface. The `RejectCommandParser#parse()` method of
 this class parses the index and returns an `RejectCommand` object with the index
 as the parameter.
+
+![Interactions Inside the Logic Component for the `reject 2` Command](images/RejectSequenceDiagram.png)
 
 #### Design considerations:
 
