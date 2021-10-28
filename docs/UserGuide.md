@@ -13,12 +13,11 @@ Are you a university student looking to score a holiday internship? Do you feel 
 
 ![Logo](images/InternSHIP.png)
 
-InternSHIP is a **desktop app for university students to manage their internship applications.** Here are its main features:
-* Tracking all essential internship application details
+InternSHIP is a **desktop app for university students to manage their internship application deadlines.** Here are its main features:
+* Tracking all essential internship application details (e.g. submission deadlines, interview date and time, completion status, etc...)
 * Viewing specific applications
-* Finding upcoming deadlines
 
-Now you can keep track of your entire internship application process, from the application stage to the acceptance stage!
+Now you will never miss any internship application deadlines or interviews again!
 
 InternSHIP has been optimized for use via a Command Line Interface (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, InternSHIP can get your internship management tasks done faster than traditional GUI apps.
 
@@ -45,7 +44,7 @@ This guide aims to:
 As the target audience of InternSHIP is university students, this User Guide is mainly targeted towards the same demographic. This guide is therefore aimed at users who:
 * Are familiar with navigating around a webpage using hyperlinks.
 * Are comfortable with downloading and installing software on their computer.
-* Can type fast and are comfortable using a CLI.
+* Can type fast and are comfortable using a CLI. <br>
 This User Guide **does not assume that the reader has a technical background**. Therefore, university students of all majors should be able to use this guide. The definitions for certain technical terms can be found in the [glossary](#glossary).
 
 ## How to use this User Guide
@@ -177,7 +176,6 @@ This section shows all of InternSHIP's supported commands and how they should be
 The commands are split in terms of InternSHIP's main features:
 * [Tracking application details](#tracking-application-details)
 * [Viewing specific applications](#viewing-specific-applications)
-* [Finding upcoming deadlines](#finding-upcoming-deadlines)
 * [Others](#others)
 
 <div markdown="span" class="alert alert-primary"> :bulb: **Tip:** To make the best use of this section, make sure to familiarise yourself with the [command format rules](#command-format) and [parameters](#parameters) used!
@@ -211,7 +209,7 @@ Format:
 
 * Adds a new application with the specified field values to the list.
 
-<div markdown="span" class="alert alert-primary"> :bulb: **Tip:** The option to input more than one `INTERVIEW_DATE_AND_TIME` is provided because many companies have multiple rounds of interviews for a single application!
+<div markdown="span" class="alert alert-primary"> :bulb: **Tip:** You can input more than one `INTERVIEW_DATE_AND_TIME` since many companies have multiple rounds of interviews for a single application!
 </div>
 
 Examples:
@@ -249,6 +247,19 @@ Examples:
 
 <hr>
 
+#### Completing an application : `complete`
+
+Marks the specified entry in the application list as completed, meaning the user has completed the application for that internship. Once an application is marked as completed, it will no longer appear in the `soon` command.
+
+Format: `complete INDEX`
+
+* Marks the entry at the specified `INDEX` as completed.
+
+Examples:
+* `complete 2` marks the 2nd entry in the application list as completed.
+
+<hr>
+
 #### Updating the application status `(COMPANY_DECISION)`: `accept/reject`
 
 Updates the status (company decision) of an application. 
@@ -278,6 +289,29 @@ Examples:
 
 ### Viewing specific applications
 
+#### Listing upcoming deadlines : `soon`
+
+Shows all the applications that are close to the submission deadlines or interview time within a specified number of days.
+
+<div markdown="span" class="alert alert-info"> 
+:information_source: **Info:** <br>
+The available fields are: <br>
+- APPLICATION_DEADLINE `d/`  <br>
+- INTERVIEW_DATE_AND_TIME `i/`
+</div>
+
+Format: `soon FIELD DAYS`
+
+* Find applications that are within `DAYS` days.
+* The number of days must be an **integer** 0, 1, 2, …​
+* Only one field and one keyword can be provided each time.
+
+Examples:
+
+* `soon d/5` shows applications whose submission deadlines are within 5 days from today's date.
+
+<hr>
+
 #### Finding entries by keyword(need to change this part hehe) : `find`
 
 <div markdown="span" class="alert alert-danger"> :warning: **Warning:** This command cannot be undone! Use the `list` command (explained below) after this command to go back to displaying all the applications stored in InternSHIP!
@@ -295,14 +329,14 @@ Format: `find FIELD keyword`
 <div markdown="span" class="alert alert-info">
 :information_source: **Info:** <br>
 The fields available to be found are: <br>
-* COMPANY_NAME `c/` <br>
-* APPLIED_POSITION `p/` <br>
-* APPLICATION_DEADLINE `d/` <br>
-* COMPLETION_STATUS `c1/` <br>
-* COMPANY_DECISION (i.e. STATUS) `s/` <br>
-* APPLICATION_PRIORITY `pr/` <br>
-* APPLICATION_REQUIREMENTS `r/` <br>
-* INTERVIEW_DATE_AND_TIME `i/`
+- COMPANY_NAME `c/` <br>
+- APPLIED_POSITION `p/` <br>
+- APPLICATION_DEADLINE `d/` <br>
+- COMPLETION_STATUS `c1/` <br>
+- COMPANY_DECISION (i.e. STATUS) `s/` <br>
+- APPLICATION_PRIORITY `pr/` <br>
+- APPLICATION_REQUIREMENTS `r/` <br>
+- INTERVIEW_DATE_AND_TIME `i/`
 </div>
 
 Examples:
@@ -332,10 +366,11 @@ Sorts all entries in the **currently displayed** application list by a specified
 <div markdown="span" class="alert alert-info"> 
 :information_source: **Info:** <br>
 The fields available to sort by are: <br>
-* COMPANY_NAME `c/` (ascending alphabetical order) <br>
-* APPLIED_POSITION `p/` (ascending alphabetical order) <br>
-* APPLICATION_DEADLINE `d/` (sooner to later deadline) <br>
-* APPLICATION_PRIORITY `pr/` (higher to lower priority)
+- COMPANY_NAME `c/` (ascending alphabetical order) <br>
+- INTERNSHIP_POSITION `p/` (ascending alphabetical order) <br>
+- APPLICATION_DEADLINE `d/` (sooner to later deadline) <br>
+- INTERVIEW_DATE_AND_TIME `i/` (sooner to later interview) <br>
+- APPLICATION_PRIORITY `pr/` (higher to lower priority)
 </div>
 
 Format: `sort FIELD`
@@ -344,44 +379,6 @@ Format: `sort FIELD`
 
 Examples:
 * `sort c/` shows all the applications saved in the current InternSHIP sorted by company name, in alphabetical order.
-
-<hr>
-
-### Finding upcoming deadlines
-
-#### Listing upcoming deadlines : `soon`
-
-Shows all the applications that are close to the submission deadlines or interview time within a specified number of days.
-
-<div markdown="span" class="alert alert-info"> 
-:information_source: **Info:** <br>
-The available fields are: <br>
-* APPLICATION_DEADLINE `d/`  <br>
-* INTERVIEW_DATE_AND_TIME `i/`
-</div>
-
-Format: `soon PREFIX DAYS`
-
-* Find applications that are within `DAYS` days.
-* The number of days must be an **integer** 0, 1, 2, …​
-* Only one field and one keyword can be provided each time.
-
-Examples:
-
-* `soon d/5` shows applications whose submission deadlines are within 5 days from today's date.
-
-<hr>
-
-#### Completing an application : `complete`
-
-Marks the specified entry in the application list as completed, meaning the user has completed the application for that internship. Once an application is marked as completed, it will no longer appear in the `soon` command.
-
-Format: `complete INDEX`
-
-* Marks the entry at the specified `INDEX` as completed.
-
-Examples:
-* `complete 2` marks the 2nd entry in the application list as completed.
 
 <hr>
 
@@ -519,6 +516,7 @@ Action | Format | Example | Notes
 --------|-------|----|----
 **Add** | `add c/COMPANY_NAME p/INTERNSHIP_POSITION d/DEADLINE_OF_APPLICATION [r/REQUIREMENTS] [i/INTERVIEW_DATE_AND_TIME]` | `add c/Shopee p/software engineer d/2021-12-12` |
 **Edit** | `edit INDEX [c/COMPANY_NAME] [p/INTERNSHIP_POSITION] [d/DEADLINE_OF_APPLICATION] [pr/PRIORITY] [r/REQUIREMENTS] [i/INTERVIEW_DATE_AND_TIME]` | `edit 1 c/Grab d/2021-12-20`
+**Complete** | `complete INDEX` | `complete 1` |
 **Accept/Reject** | `DECISION INDEX` | `accept 2` | `DECISION` can only be either `accept` or `reject`
 
 
@@ -526,17 +524,10 @@ Action | Format | Example | Notes
 
 Action | Format | Example | Notes
 --------|-------|----|----
+**Soon** | `soon DAYS`| `soon 5` |
 **Find** | `find PREFIX KEYWORD` |  `find pr/High` | `PREFIX` refers to the field to match the keyword (`c/` COMPANY_NAME, `p/` APPLIED_POSITION, `d/` APPLICATION_DEADLINE, `c1/` COMPLETION_STATUS, `s/` COMPANY_DECISION (i.e. STATUS), `pr/` APPLICATION_PRIORITY `r/` APPLICATION_REQUIREMENTS)
 **List** | `list`| `list`
 **Sort** | `sort PREFIX` | `sort c/` | `PREFIX` refers to the application detail to be sorted by (`c/` COMPANY_NAME, `p/` APPLIED_POSITION, `d/` APPLICATION_DEADLINE, `pr/` APPLICATION_PRIORITY)
-
-
-### Finding upcoming deadlines & Others
-
-Action | Format | Example | Notes
---------|-------|----|----
-**Soon** | `soon DAYS`| `soon 5` |
-**Complete** | `complete INDEX` | `complete 1` |
 
 
 ### Others
@@ -593,3 +584,8 @@ Term | Definition | Notes
 * The formatting and content of this User Guide is referenced from [AY2021S2-CS2103T-T11-2/tp](https://github.com/AY2021S2-CS2103T-T11-2/tp/blob/master/docs/UserGuide.md)
 * The ship in the InternSHIP icon was obtained from [flaticon.com](https://www.flaticon.com/free-icon/ship_4012401?term=ship&page=1&position=66&page=1&position=66&related_id=4012401&origin=search)
 * [Canva](https://www.canva.com) was used to make the InternSHIP icon.
+* Libraries used:
+    - [JavaFX](https://openjfx.io/)
+    - [Jackson](https://github.com/FasterXML/jackson)
+    - [JUnit5](https://github.com/junit-team/junit5)
+    - [TestFX](https://github.com/TestFX/TestFX)
