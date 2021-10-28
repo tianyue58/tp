@@ -7,7 +7,7 @@
 
 <div style="text-align: center">
 
-![Logo](docs/images/InternSHIP.png)
+![Logo](docs/images/logos/InternSHIP.png)
 </div>
 
 InternSHIP is a **desktop app for university students to manage their internship applications.** It is optimized for use via a Command Line Interface (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, InternSHIP can get your internship management tasks done faster than traditional GUI apps.

@@ -6,7 +6,7 @@ title: InternSHIP
 [![CI Status](https://github.com/se-edu/addressbook-level3/workflows/Java%20CI/badge.svg)](https://github.com/se-edu/addressbook-level3/actions)
 [![codecov](https://codecov.io/gh/AY2122S1-CS2103T-W17-1/tp/branch/master/graph/badge.svg?token=BILLNCEE86)](https://codecov.io/gh/AY2122S1-CS2103T-W17-1/tp)
 
-![Logo](images/InternSHIP.png)
+![Logo](images/logos/InternSHIP.png)
 
 **InternSHIP is a desktop app for university students to manage their internship applications.** InternSHIP has been optimized for use via a Command Line Interface (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, InternSHIP can get your internship management tasks done faster than traditional GUI apps.
 
