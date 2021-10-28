@@ -18,17 +18,18 @@ public class AddCommand extends Command {
 
     public static final String COMMAND_WORD = "add";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds an application to InternSHIP. "
-            + "Parameters: "
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds an application to InternSHIP. \n"
+            + "Parameters:\n"
             + PREFIX_COMPANY_NAME + "COMPANY_NAME "
             + PREFIX_INTERNSHIP_POSITION + "INTERNSHIP_POSITION "
             + PREFIX_DEADLINE_OF_APPLICATION + "DEADLINE_OF_APPLICATION "
-            + "[" + PREFIX_REQUIREMENT + "REQUIREMENT]...\n"
+            + PREFIX_REQUIREMENT + "REQUIREMENT"
+            + PREFIX_INTERVIEW_DATE_AND_TIME + "INTERVIEW_TIME\n"
             + "Example: " + COMMAND_WORD + " "
             + PREFIX_COMPANY_NAME + "Shopee "
             + PREFIX_INTERNSHIP_POSITION + "software engineer "
             + PREFIX_DEADLINE_OF_APPLICATION + "2021-12-12 "
-            + PREFIX_REQUIREMENT + "Resume"
+            + PREFIX_REQUIREMENT + "Resume "
             + PREFIX_INTERVIEW_DATE_AND_TIME + "2021-12-12 0830";
 
     public static final String MESSAGE_SUCCESS = "New application added: %1$s";
