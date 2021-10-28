@@ -5,19 +5,16 @@ title: About Us
 
 We are a team based in the [School of Computing, National University of Singapore](http://www.comp.nus.edu.sg).
 
-You can reach us at the email `seer[at]comp.nus.edu.sg`
-
 ## Project team
 
 ### Willy Angga Prawira
 
 <img src="images/willyamped.png" width="200px">
 
-[[homepage](http://www.comp.nus.edu.sg/~damithch)]
 [[github](https://github.com/willyamped)]
 [[portfolio](team/willyamped.md)]
 
-* Role: Project Advisor
+* Role: Developer
 
 ### Modi Trushti Sanjaybhai
 
@@ -26,8 +23,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 [[github](http://github.com/tsm1820)]
 [[portfolio](team/tsm1820.md)]
 
-* Role: Team Lead
-* Responsibilities: UI
+* Role: Developer
 
 ### Hu Tianran
 
@@ -36,7 +32,6 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 [[github](http://github.com/nature711)] [[portfolio](team/hutianran.md)]
 
 * Role: Developer
-* Responsibilities: Data
 
 ### Qu Tianyue
 
@@ -46,7 +41,6 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 [[portfolio](team/johndoe.md)]
 
 * Role: Developer
-* Responsibilities: Dev Ops + Threading
 
 ### Felicia Ivane Pranoto
 
@@ -56,4 +50,3 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 [[portfolio](team/feliciaivane.md)]
 
 * Role: Developer
-* Responsibilities: UI

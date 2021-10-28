@@ -51,7 +51,7 @@ public class SortCommand extends Command {
     public static final String MESSAGE_SUCCESS = "Sorted applications by %s";
     public static final String MESSAGE_PARAMETER_NOT_SPECIFIED = "At least one parameter (application detail) "
             + "to sort by must be provided.\n";
-    public static final String MESSAGE_EMPTY_LIST = "There is no application in your Internship list to sort";
+    public static final String MESSAGE_EMPTY_LIST = "There are no applications in your internship list to sort";
 
     private final String parameter;
 

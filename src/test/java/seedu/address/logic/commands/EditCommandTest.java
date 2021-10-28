@@ -6,7 +6,6 @@ import static seedu.address.logic.commands.CommandTestUtil.DESC_AMAZON;
 import static seedu.address.logic.commands.CommandTestUtil.DESC_BYTEDANCE;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BYTEDANCE;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_POSITION_AMAZON;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_REQUIREMENTS_AMAZON;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.logic.commands.CommandTestUtil.showApplicationAtIndex;
@@ -35,9 +34,8 @@ public class EditCommandTest {
     private Model model = new ModelManager(getTypicalInternship(), new UserPrefs());
 
     @Test
-    public void execute_allFieldsSpecifiedUnfilteredList_success() {
-        Application editedApplication = new ApplicationBuilder()
-                .withRequirements(VALID_REQUIREMENTS_AMAZON).build();
+    public void execute_allCompulsoryFieldsSpecifiedUnfilteredList_success() {
+        Application editedApplication = new ApplicationBuilder().build();
 
         EditApplicationDescriptor descriptor = new EditApplicationDescriptorBuilder(editedApplication).build();
         EditCommand editCommand = new EditCommand(INDEX_FIRST_APPLICATION, descriptor);

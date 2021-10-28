@@ -15,7 +15,7 @@ import seedu.address.commons.util.JsonUtil;
 import seedu.address.model.ReadOnlyInternship;
 
 /**
- * A class to access AddressBook data stored as a json file on the hard disk.
+ * A class to access Internship data stored as a json file on the hard disk.
  */
 public class JsonInternshipStorage implements InternshipStorage {
 

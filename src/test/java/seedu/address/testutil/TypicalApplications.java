@@ -22,7 +22,6 @@ import static seedu.address.logic.commands.CommandTestUtil.VALID_PRIORITY_AMAZON
 import static seedu.address.logic.commands.CommandTestUtil.VALID_PRIORITY_BYTEDANCE;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_PRIORITY_GRAB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_PRIORITY_SHOPEE;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_REQUIREMENTS_AMAZON;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_REQUIREMENTS_BYTEDANCE;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_REQUIREMENTS_GRAB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_STATUS_AMAZON;
@@ -50,7 +49,8 @@ public class TypicalApplications {
             .withCompletion(VALID_COMPLETION_AMAZON)
             .withStatus(VALID_STATUS_AMAZON)
             .withPriority(VALID_PRIORITY_AMAZON)
-            .withRequirements(VALID_REQUIREMENTS_AMAZON).build();
+            //.withRequirements(VALID_REQUIREMENTS_AMAZON).build();
+            .build();
     public static final Application BYTEDANCE = new ApplicationBuilder()
             .withCompany(VALID_NAME_BYTEDANCE)
             .withPosition(VALID_POSITION_BYTEDANCE)
