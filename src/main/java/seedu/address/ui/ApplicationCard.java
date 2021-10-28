@@ -61,7 +61,7 @@ public class ApplicationCard extends UiPart<Region> {
         position.setText(application.getPosition().value);
         deadline.setText(application.getDeadline().toFormattedString());
         completion.setText(application.getCompletion().toDisplayString());
-        status.setText(application.getStatus().toDisplayString());
+        status.setText(application.getStatus().value);
         priority.setText(application.getPriority().toDisplayString());
         application.getRequirements().stream()
                 .sorted(Comparator.comparing(requirement -> requirement.value))

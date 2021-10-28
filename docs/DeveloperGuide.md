@@ -123,7 +123,11 @@ How the parsing works:
 
 The `Model` component,
 
+<<<<<<< HEAD
 * stores the InternSHIP data i.e., all `Application` objects (which are contained in a `UniqueApplicationList` object).
+=======
+* stores the internship data i.e., all `Application` objects (which are contained in a `UniqueApplicationList` object).
+>>>>>>> 9e69da7bb1df9c61700bd73d1a3a2d7fe1989a02
 * stores the currently 'selected' `Application` objects (e.g., results of a search query) as a separate _filtered_ list which is exposed to outsiders as an unmodifiable `ObservableList<Application>` that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.
 * stores a `UserPref` object that represents the user’s preferences. This is exposed to the outside as a `ReadOnlyUserPref` objects.
 * does not depend on any of the other three components (as the `Model` represents data entities of the domain, they should make sense on their own without depending on other components)
@@ -142,7 +146,11 @@ The `Model` component,
 <img src="images/StorageClassDiagram.png" width="550" />
 
 The `Storage` component,
+<<<<<<< HEAD
 * can save both InternSHIP data and user preference data in json format, and read them back into corresponding objects.
+=======
+* can save both internship data and user preference data in json format, and read them back into corresponding objects.
+>>>>>>> 9e69da7bb1df9c61700bd73d1a3a2d7fe1989a02
 * inherits from both `InternshipStorage` and `UserPrefStorage`, which means it can be treated as either one (if only the functionality of only one is needed).
 * depends on some classes in the `Model` component (because the `Storage` component's job is to save/retrieve objects that belong to the `Model`)
 
@@ -180,11 +188,11 @@ as the parameter.
 
 #### Design considerations:
 
-* **Alternative 1 (current choice):** Completes an application after the application has been added
+* **Alternative 1 (current choice):** Only allow users to complete an existing application in the list
     * Pros: Easy to implement.
     * Cons: User cannot add an application that has already been completed.
 
-* **Alternative 2:** Provides the ability to specify the completion status of an application when it is added to the list
+* **Alternative 2:** Provide the option to specify the completion status of an application when it is first added to the list
     * Pros: Everything can be done in one shot.
     * Cons: The `add` command will require too many parameters.
 
@@ -210,6 +218,8 @@ The `AcceptCommandParser` class is responsible for parsing the index received fr
 class implements the `Parser` interface. The `AcceptCommandParser#parse()` method of 
 this class parses the index and returns an `AcceptCommand` object with the index
 as the parameter. 
+
+![Interactions Inside the Logic Component for the `accept 2` Command](images/AcceptSequenceDiagram.png)
 
 #### Design considerations:
 
@@ -245,6 +255,8 @@ class implements the `Parser` interface. The `RejectCommandParser#parse()` metho
 this class parses the index and returns an `RejectCommand` object with the index
 as the parameter.
 
+![Interactions Inside the Logic Component for the `reject 2` Command](images/RejectSequenceDiagram.png)
+
 #### Design considerations:
 
 * **Alternative 1 (current choice):** The default status when an application is added is `Pending`.
@@ -257,19 +269,20 @@ as the parameter.
     * Cons: The `add` command will require too many parameters.
 
 ### Sort feature
-The sort feature is implemented by the `SortCommandParser` and `SortCommand` classes.
 
-`SortCommandParser` class is responsible for parsing the parameter received from the user.
+The `Sort` command is facilitated by the `SortCommand` class. It extends the `Command` class and implements the `SortCommand#execute()` method which wraps the main logic of the command. This command can be used to sort the **currently displayed** list of applications according to the specified field.
 
-`SortCommand` class is responsible for sorting the list of applications according to the given parameter.
+The `SortCommandParser` class is responsible for parsing the field received from the user. This class implements the `Parser` interface. The `SortCommandParser#parse()` method of this class parses the field and returns a `SortCommand` object with the field as the parameter.
+
+![Interactions Inside the Logic Component for the `sort pr/` Command](images/SortSequenceDiagram.png)
 
 #### Design considerations:
 
-* **Alternative 1 (current choice):** Only allows lists to be sorted in one direction per parameter (e.g. sooner to later for deadline, alphabetically for company name)
-    * Pros: Easier to implement. The implemented direction of sorting is also the more logical one. (e.g. users are unlikely to want to view their applications from lower to higher priority)
-    * Cons: User cannot specify the direction of sorting (e.g. later deadlines first)
+* **Alternative 1 (current choice):** Only allow lists to be sorted in one direction per field (e.g. sooner to later for deadline, alphabetically for company name)
+    * Pros: Easier to implement. The implemented direction of sorting is also the more logical one (users are unlikely to want to view their applications from lower to higher priority).
+    * Cons: The user cannot specify the direction of sorting (e.g. later deadlines first)
 
-* **Alternative 2:** Provides the ability to specify the parameter to sort the list by as well as the direction of sorting.
+* **Alternative 2:** Provide the option to specify the field to sort the list by as well as the direction of sorting.
     * Pros: Users have more options on how to view their list of applications.
     * Cons: The `sort` command will require more parameters.
 
@@ -387,8 +400,6 @@ The following activity diagram summarizes what happens when a user executes a ne
   * Pros: Will use less memory (e.g. for `delete`, just save the application being deleted).
   * Cons: Must ensure that the implementation of each individual command are correct.
 
-_{more aspects and alternatives to be added}_
-
 ### \[Proposed\] Data archiving
 
 _{Explain here how the data archiving feature will be implemented}_
@@ -406,19 +417,22 @@ _{Explain here how the data archiving feature will be implemented}_
 
 --------------------------------------------------------------------------------------------------------------------
 
-## **Appendix: Requirements**
+## **Appendix 1: Requirements**
 
 ### Product scope
 
 **Target user profile**:
-
+Our target user is a university student who: <br>
 * has a need to manage a significant number of internship applications
 * prefer desktop apps over other types
 * can type fast
 * prefers typing to mouse interactions
 * is reasonably comfortable using CLI apps
 
-**Value proposition**: manage internship applications faster than a typical mouse/GUI driven app
+**Value proposition**: 
+* Store all the information related to an internship application in one app.
+* View applications in different ways (e.g. view applications with nearby application deadlines, find uncompleted applications only, sort by priority) to facilitate organised management of internship applications and avoid missing any deadlines.
+* Manage internship applications faster than a typical mouse/GUI driven app.
 
 
 ### User stories
@@ -444,10 +458,6 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* *`    | student                                    | redo a change I have just undone | retrieve the changes I have made previously and not having to manually redo it |
 
 
-
-
-
-*{More to be added}*
 
 ### Use cases
 
@@ -522,19 +532,20 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 ### Non-Functional Requirements
 
-1.  Should work on any _mainstream OS_ as long as it has Java `11` or above installed.
-2.  Should be able to hold up to 1000 internship applications without a noticeable sluggishness in performance for typical usage.
-3.  A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
-
-*{More to be added}*
+1. InternSHIP should work on any _mainstream OS_ as long as it has Java `11` or above installed.
+2. InternSHIP should be able to hold up to 1000 internship applications without a noticeable sluggishness in performance for typical usage.
+3. Any user command in InternSHIP should be executed within 1 second.
+4. A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
+5. Any user within the target user profile should be able to use InternSHIP with the help of our [User Guide](https://ay2122s1-cs2103t-w17-1.github.io/tp/UserGuide.html).
 
 ### Glossary
 
-* **Mainstream OS**: Windows, Linux, Unix, OS-X
+* **Mainstream OS**: Windows, Linux, Unix, macOS
+* **MSS** : Main Success Scenario
 
 --------------------------------------------------------------------------------------------------------------------
 
-## **Appendix: Instructions for manual testing**
+## **Appendix 2: Instructions for manual testing**
 
 Given below are instructions to test the app manually.
 
@@ -547,18 +558,19 @@ testers are expected to do more *exploratory* testing.
 
 1. Initial launch
 
-   1. Download the jar file and copy into an empty folder
+   1. Download the jar file and copy into an empty folder.
 
-   1. Double-click the jar file Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.
+   2. Double-click the jar file. <br>
+   Expected: Shows the GUI with a set of sample applications. The window size may not be optimum.
 
-1. Saving window preferences
+2. Saving window preferences
 
    1. Resize the window to an optimum size. Move the window to a different location. Close the window.
 
-   1. Re-launch the app by double-clicking the jar file.<br>
+   2. Re-launch the app by double-clicking the jar file.<br>
        Expected: The most recent window size and location is retained.
 
-1. _{ more test cases …​ }_
+3. _{ more test cases …​ }_
 
 ### Deleting an application
 
@@ -566,16 +578,14 @@ testers are expected to do more *exploratory* testing.
 
    1. Prerequisites: List all applications using the `list` command. Multiple applications in the list.
 
-   1. Test case: `delete 1`<br>
+   2. Test case: `delete 1`<br>
       Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.
 
-   1. Test case: `delete 0`<br>
+   3. Test case: `delete 0`<br>
       Expected: No application is deleted. Error details shown in the status message. Status bar remains the same.
 
-   1. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
+   4. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
       Expected: Similar to previous.
-
-1. _{ more test cases …​ }_
 
 ### Saving data
 
@@ -583,4 +593,3 @@ testers are expected to do more *exploratory* testing.
 
    1. _{explain how to simulate a missing/corrupted file, and the expected behavior}_
 
-1. _{ more test cases …​ }_
