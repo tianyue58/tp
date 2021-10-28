@@ -240,6 +240,11 @@ Multiple fields can be edited at the same time.<br>
 For the edited fields, existing values will be overwritten and updated to the new input values. The values for the rest of the fields will remain the same.
 </div>
 
+<div markdown="span" class="alert alert-primary"> :bulb: **Tip:** <br>
+For the optional field `APPLICATION_REQUIREMENTS`, you can remove all the requirements at once by giving only `edit r/` without specifying anything after the prefix. 
+Similarly, the command `edit i/` will remove all the interview date and times of an application.
+</div>
+
 Format: `edit INDEX [c/COMPANY_NAME] [p/INTERNSHIP_POSITION] [d/APPLICATION_DEADLINE] [pr/APPLICATION_PRIORITY] [r/APPLICATION_REQUIREMENTS] [i/INTERVIEW_DATE_AND_TIME]`
 
 * Edits the application at the specified `INDEX`.
