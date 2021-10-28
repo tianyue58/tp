@@ -4,6 +4,7 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_COMPANY_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DEADLINE_OF_APPLICATION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_INTERNSHIP_POSITION;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_INTERVIEW_DATE_AND_TIME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PRIORITY;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_REQUIREMENT;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_APPLICATIONS;
@@ -42,11 +43,12 @@ public class EditCommand extends Command {
             + "by the index number used in the displayed application list. "
             + "Existing values will be overwritten by the input values.\n"
             + "Parameters: INDEX (must be a positive integer) "
-            + "[" + PREFIX_COMPANY_NAME + "COMPANY] "
-            + "[" + PREFIX_INTERNSHIP_POSITION + "POSITION] "
-            + "[" + PREFIX_DEADLINE_OF_APPLICATION + "DEADLINE] "
-            + "[" + PREFIX_PRIORITY + "PRIORITY] "
-            + "[" + PREFIX_REQUIREMENT + "REQUIREMENT]...\n"
+            + PREFIX_COMPANY_NAME + "COMPANY "
+            + PREFIX_INTERNSHIP_POSITION + "POSITION "
+            + PREFIX_DEADLINE_OF_APPLICATION + "DEADLINE "
+            + PREFIX_PRIORITY + "PRIORITY "
+            + PREFIX_REQUIREMENT + "REQUIREMENT "
+            + PREFIX_INTERVIEW_DATE_AND_TIME + "INTERVIEW_TIME\n"
             + "Example: " + COMMAND_WORD + " 1 "
             + PREFIX_INTERNSHIP_POSITION + "UI designer "
             + PREFIX_DEADLINE_OF_APPLICATION + "2021-12-23";

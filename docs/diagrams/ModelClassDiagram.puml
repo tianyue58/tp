@@ -24,7 +24,7 @@ Class Deadline
 Class Priority
 Class Completion
 Class Status
-Class RequirementList
+Class Requirement
 Class InterviewDateAndTime
 }
 
@@ -48,7 +48,7 @@ Application *--> Deadline
 Application *--> Priority
 Application *--> Completion
 Application *--> Status
-Application *-left> "1" RequirementList
+Application *-left> "*" Requirement
 Application *-right> "*" InterviewDateAndTime
 
 ModelManager -->"~* filtered" Application
