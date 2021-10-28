@@ -455,22 +455,20 @@ Undoes a change made to the application list.
 
 <div markdown="span" class="alert alert-danger"> :warning: **Warning:** This command is to be used after a command that actually **does some change** to the application list. Inappropriate use may result in unexpected behaviors. </div>
 
-<div markdown="span" class="alert alert-info">   
-:information_source: **Info:** <br>
-Commands that actually 'does some changes' to the application list (thus can be undone):
-- `add`
-- `delete`
-- `edit`
-- `clear`
-Commands that make no change to the application list (thus is not supposed not be followed by `undo` command)
-- `list`
-- `find`
-- `sort`
-- `soon`
+<div markdown="span" class="alert alert-info"> :information_source: **Info:** <br>
+Commands that actually 'does some changes' to the application list (thus can be undone): <br>
+- `add` <br>
+- `delete` <br>
+- `edit` <br>
+- `clear` <br>
+Commands that make no change to the application list (thus is not supposed not be followed by `undo` command) <br>
+- `list`<br>
+- `find` <br>
+- `sort` <br>
+- `soon` <br>
 </div>
 
-<div markdown="span" class="alert alert-danger"> :warning:
-When successive changes are made, the `undo` command will undo the **most recent** change. 
+<div markdown="span" class="alert alert-danger"> :warning: **Warning:** When successive changes are made, the `undo` command will undo the **most recent** change. 
 Successive `undo` commands will undo the previous changes from the most recent to the oldest, until there's no changes
 to be restored.
 </div>
@@ -491,16 +489,14 @@ As a result, the `position` field of that entry will be restored to its previous
 
 Redoes a change made to the application list.
 
-<div markdown="span" class="alert alert-danger"> :warning:
-This command is to be used **directly after** an `undo` command.
+<div markdown="span" class="alert alert-danger"> :warning: **Warning:** This command is to be used **directly after** an `undo` command.
 If an `undo` command undoes a change (e.g., `delete 1` followed by `undo` restores the first entry), 
 and it is followed by a command that makes some new changes to the application list (e.g., `edit 2 pr/High` changes
 the priority of the second entry to 'High'), then the previous undone action cannot be redone (i.e., the `delete 1`
 command which is previously undone cannot be redone).
 </div>
 
-<div markdown="span" class="alert alert-danger"> :warning:
-When successive undone actions are made, the `redo` command will redo the **most recent** undone action.
+<div markdown="span" class="alert alert-danger"> :warning: **Warning:** When successive undone actions are made, the `redo` command will redo the **most recent** undone action. <br>
 Successive `redo` commands will redo the undone actions from the most recent to the oldest, until there's no undone
 actions to be redone.
 </div>
