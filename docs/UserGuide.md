@@ -43,8 +43,8 @@ This guide aims to:
 
 As the target audience of InternSHIP is university students, this User Guide is mainly targeted towards the same demographic. This guide is therefore aimed at users who:
 * Are familiar with navigating around a webpage using hyperlinks.
-* Are comfortable with downloading and installing software on their computer.
-* Can type fast and are comfortable using a CLI. <br>
+* Are comfortable downloading and installing software on their computer.
+* Are able to type fast and are comfortable using a CLI. <br>
 This User Guide **does not assume that the reader has a technical background**. Therefore, university students of all majors should be able to use this guide. The definitions for certain technical terms can be found in the [glossary](#glossary).
 
 ## How to use this User Guide
@@ -109,7 +109,7 @@ All the commands in the [Features](#features) section adhere to the following ru
   e.g. if the command specifies `c/COMPANY_NAME p/INTERNSHIP_POSITION`, `p/INTERNSHIP_POSITION c/COMPANY_NAME`
   is also acceptable.
 
-* If a parameter is expected only once in the command but you specified it multiple times, only the last occurrence of the parameter will be taken.<br>
+* If a parameter is expected only once in the command while you specified it multiple times, only the last occurrence of the parameter will be taken.<br>
   e.g. if you specify `c/Grab c/Shopee`, only `c/Shopee` will be taken.
 
 * For commands that do not require any parameters (such as `list` and `clear`), any parameters input by the user will be ignored.<br>
@@ -143,14 +143,20 @@ Parameter | Refers to | Required format | Application field? | Notes
 
 3. Copy the file to the folder you want to use as the _home folder_ for your InternSHIP app.
 
-4. Double-click the file to start the app. A GUI similar to the one shown below should appear in a few seconds. 
+4. Double-click the file to start the app. 
+   <div markdown="span" class="alert alert-primary"> :bulb: **Tip:** If double-clicking does not work for you, try to open the app via terminal. To do so, open the terminal, key in `java -jar InternSHIP.jar` and press `Enter`.
+   </div>
+5. A GUI similar to the one shown below should appear in a few seconds. 
    Note how the app contains some sample data.<br>
+   <br>
    ![Ui](images/Ui.png)
 
-5. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** 
-   and pressing Enter will open the help window.<br>
-   Some example commands you can try:
+<div markdown="span" class="alert alert-primary"> :bulb: **Tip:** Use the [`clear`](#clearing-all-entries--clear) command to erase all the sample data when you no longer need them.
 
+7. Type the command in the command box and press Enter to execute it. <br>
+   Some example commands you can try:
+    
+    * **`help`** : Opens up the `Help` Window.
     * **`list`** : Lists all the entries in the internship list.
 
     * **`add c/shopee p/software engineer d/2021-12-12`**: 
@@ -162,10 +168,7 @@ Parameter | Refers to | Required format | Application field? | Notes
 
     * **`exit`** : Exits the app.
 
-6. Refer to the [Features](#features) below for details of each command.
-
-<div markdown="span" class="alert alert-primary"> :bulb: **Tip:** Use `clear` to erase all the sample entries from InternSHIP when they are no longer needed!
-</div>
+9. Refer to the [Features](#features) below for details of each command.
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -205,7 +208,7 @@ If not specified at this stage, it can still be added and edited later using the
 </div>
 
 Format:
-`add c/COMPANY_NAME p/APPLIED_POSITION d/APPLICATION_DEADLINE [r/REQUIREMENTS]…​ [i/INTERVIEW_DATE_AND_TIME]…​`
+`add c/COMPANY_NAME p/INTERNSHIP_POSITION d/APPLICATION_DEADLINE [r/APPLICATION_REQUIREMENTS]…​ [i/INTERVIEW_DATE_AND_TIME]…​`
 
 * Adds a new application with the specified field values to the list.
 
@@ -237,7 +240,7 @@ Multiple fields can be edited at the same time.<br>
 For the edited fields, existing values will be overwritten and updated to the new input values. The values for the rest of the fields will remain the same.
 </div>
 
-Format: `edit INDEX [c/COMPANY_NAME] [p/APPLIED_POSITION] [d/APPLICATION_DEADLINE] [pr/APPLICATION_PRIORITY] [r/APPLICATION_REQUIREMENTS] [i/INTERVIEW_DATE_AND_TIME]`
+Format: `edit INDEX [c/COMPANY_NAME] [p/INTERNSHIP_POSITION] [d/APPLICATION_DEADLINE] [pr/APPLICATION_PRIORITY] [r/APPLICATION_REQUIREMENTS] [i/INTERVIEW_DATE_AND_TIME]`
 
 * Edits the application at the specified `INDEX`.
 
@@ -330,7 +333,7 @@ Format: `find FIELD keyword`
 :information_source: **Info:** <br>
 The fields available to be found are: <br>
 - COMPANY_NAME `c/` <br>
-- APPLIED_POSITION `p/` <br>
+- INTERNSHIP_POSITION `p/` <br>
 - APPLICATION_DEADLINE `d/` <br>
 - COMPLETION_STATUS `c1/` <br>
 - COMPANY_DECISION (i.e. STATUS) `s/` <br>
@@ -405,7 +408,7 @@ Format: `clear`
 
 <hr>
 
-#### UNDO(need to change this part hehe) : `undo`
+#### Undo(need to change this part hehe) : `undo`
 
 Undoes a change made to the application list. 
 
@@ -514,8 +517,8 @@ This section gives an overview of all the commands supported by InternSHIP.
 
 Action | Format | Example | Notes
 --------|-------|----|----
-**Add** | `add c/COMPANY_NAME p/INTERNSHIP_POSITION d/DEADLINE_OF_APPLICATION [r/REQUIREMENTS] [i/INTERVIEW_DATE_AND_TIME]` | `add c/Shopee p/software engineer d/2021-12-12` |
-**Edit** | `edit INDEX [c/COMPANY_NAME] [p/INTERNSHIP_POSITION] [d/DEADLINE_OF_APPLICATION] [pr/PRIORITY] [r/REQUIREMENTS] [i/INTERVIEW_DATE_AND_TIME]` | `edit 1 c/Grab d/2021-12-20`
+**Add** | `add c/COMPANY_NAME p/INTERNSHIP_POSITION d/APPLICATION_DEADLINE [r/REQUIREMENTS] [i/INTERVIEW_DATE_AND_TIME]` | `add c/Shopee p/software engineer d/2021-12-12` |
+**Edit** | `edit INDEX [c/COMPANY_NAME] [p/INTERNSHIP_POSITION] [d/APPLICATION_DEADLINE] [pr/APPLICATION_PRIORITY] [r/REQUIREMENTS] [i/INTERVIEW_DATE_AND_TIME]` | `edit 1 c/Grab d/2021-12-20`
 **Complete** | `complete INDEX` | `complete 1` |
 **Accept/Reject** | `DECISION INDEX` | `accept 2` | `DECISION` can only be either `accept` or `reject`
 
@@ -525,9 +528,9 @@ Action | Format | Example | Notes
 Action | Format | Example | Notes
 --------|-------|----|----
 **Soon** | `soon DAYS`| `soon 5` |
-**Find** | `find PREFIX KEYWORD` |  `find pr/High` | `PREFIX` refers to the field to match the keyword (`c/` COMPANY_NAME, `p/` APPLIED_POSITION, `d/` APPLICATION_DEADLINE, `c1/` COMPLETION_STATUS, `s/` COMPANY_DECISION (i.e. STATUS), `pr/` APPLICATION_PRIORITY `r/` APPLICATION_REQUIREMENTS)
+**Find** | `find PREFIX KEYWORD` |  `find pr/High` | `PREFIX` refers to the field to match the keyword (`c/` COMPANY_NAME, `p/` INTERNSHIP_POSITION, `d/` APPLICATION_DEADLINE, `c1/` COMPLETION_STATUS, `s/` COMPANY_DECISION (i.e. STATUS), `pr/` APPLICATION_PRIORITY `r/` APPLICATION_REQUIREMENTS)
 **List** | `list`| `list`
-**Sort** | `sort PREFIX` | `sort c/` | `PREFIX` refers to the application detail to be sorted by (`c/` COMPANY_NAME, `p/` APPLIED_POSITION, `d/` APPLICATION_DEADLINE, `pr/` APPLICATION_PRIORITY)
+**Sort** | `sort PREFIX` | `sort c/` | `PREFIX` refers to the application detail to be sorted by (`c/` COMPANY_NAME, `p/` INTERNSHIP_POSITION, `d/` APPLICATION_DEADLINE, `pr/` APPLICATION_PRIORITY)
 
 
 ### Others
