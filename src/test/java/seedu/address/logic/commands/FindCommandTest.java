@@ -119,6 +119,39 @@ public class FindCommandTest {
     }
 
     @Test
+    public void execute_zeroRequirementKeywords_noApplicationFound() {
+        String expectedMessage = MESSAGE_NO_MATCHING;
+        RequirementsContainsKeywordsPredicate predicate = prepareRequirementsPredicate(" ");
+
+        FindCommand command = new FindCommand(predicate);
+        expectedModel.updateFilteredApplicationList(predicate);
+        assertCommandSuccess(command, model, expectedMessage, expectedModel);
+        assertEquals(Collections.emptyList(), model.getFilteredApplicationList());
+    }
+
+    @Test
+    public void execute_zeroPriorityKeywords_noApplicationFound() {
+        String expectedMessage = MESSAGE_NO_MATCHING;
+        PriorityContainsKeywordsPredicate predicate = preparePriorityPredicate(" ");
+
+        FindCommand command = new FindCommand(predicate);
+        expectedModel.updateFilteredApplicationList(predicate);
+        assertCommandSuccess(command, model, expectedMessage, expectedModel);
+        assertEquals(Collections.emptyList(), model.getFilteredApplicationList());
+    }
+
+    @Test
+    public void execute_zeroInterviewKeywords_noApplicationFound() {
+        String expectedMessage = MESSAGE_NO_MATCHING;
+        InterviewContainsKeywordsPredicate predicate = prepareInterviewPredicate(" ");
+
+        FindCommand command = new FindCommand(predicate);
+        expectedModel.updateFilteredApplicationList(predicate);
+        assertCommandSuccess(command, model, expectedMessage, expectedModel);
+        assertEquals(Collections.emptyList(), model.getFilteredApplicationList());
+    }
+
+    @Test
     public void execute_multipleKeywords_multipleApplicationsFound() {
         String expectedMessage = String.format(MESSAGE_APPLICATION_LISTED_OVERVIEW, 3, "applications");
         NameContainsKeywordsPredicate predicate = prepareNamePredicate("Amazon Bytedance Grab");
