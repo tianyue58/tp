@@ -30,7 +30,7 @@ Refer to the guide [_Setting up and getting started_](SettingUp.md).
 
 ### Architecture
 
-<img src="images/ArchitectureDiagram.png" width="280" />
+<img src="images/umldiagrams/ArchitectureDiagram.png" width="280" />
 
 The ***Architecture Diagram*** given above explains the high-level design of the App.
 
@@ -56,7 +56,7 @@ The rest of the App consists of four components.
 
 The *Sequence Diagram* below shows how the components interact with each other for the scenario where the user issues the command `delete 1`.
 
-<img src="images/ArchitectureSequenceDiagram.png" width="574" />
+<img src="images/umldiagrams/ArchitectureSequenceDiagram.png" width="574" />
 
 Each of the four main components (also shown in the diagram above),
 
@@ -65,7 +65,7 @@ Each of the four main components (also shown in the diagram above),
 
 For example, the `Logic` component defines its API in the `Logic.java` interface and implements its functionality using the `LogicManager.java` class which follows the `Logic` interface. Other components interact with a given component through its interface rather than the concrete class (reason: to prevent outside component's being coupled to the implementation of a component), as illustrated in the (partial) class diagram below.
 
-<img src="images/ComponentManagers.png" width="300" />
+<img src="images/umldiagrams/ComponentManagers.png" width="300" />
 
 The sections below give more details of each component.
 
@@ -92,7 +92,7 @@ The `UI` component,
 
 Here's a (partial) class diagram of the `Logic` component:
 
-<img src="images/LogicClassDiagram.png" width="550"/>
+<img src="images/umldiagrams/LogicClassDiagram.png" width="550"/>
 
 How the `Logic` component works:
 1. When `Logic` is called upon to execute a command, it uses the `InternshipParser` class to parse the user command.
@@ -118,7 +118,7 @@ How the parsing works:
 ### Model component
 **API** : [`Model.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/model/Model.java)
 
-<img src="images/ModelClassDiagram.png" width="450" />
+<img src="images/umldiagrams/ModelClassDiagram.png" width="450" />
 
 
 The `Model` component,
@@ -130,7 +130,7 @@ The `Model` component,
 
 <div markdown="span" class="alert alert-info">:information_source: **Note:** An alternative (arguably, a more OOP) model is given below. It has a `Requirement` list in the `Internship`, which `Application` references. This allows `Internship` to only require one `Requirements` object per unique requirement, instead of each `Application` needing their own `Requirements` objects.<br>
 
-<img src="images/BetterModelClassDiagram.png" width="450" />
+<img src="images/umldiagrams/BetterModelClassDiagram.png" width="450" />
 
 </div>
 
@@ -139,14 +139,10 @@ The `Model` component,
 
 **API** : [`Storage.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/storage/Storage.java)
 
-<img src="images/StorageClassDiagram.png" width="550" />
+<img src="images/umldiagrams/StorageClassDiagram.png" width="550" />
 
 The `Storage` component,
-<<<<<<< HEAD
 * can save both InternSHIP data and user preference data in json format, and read them back into corresponding objects.
-=======
-* can save both internship data and user preference data in json format, and read them back into corresponding objects.
->>>>>>> 9e69da7bb1df9c61700bd73d1a3a2d7fe1989a02
 * inherits from both `InternshipStorage` and `UserPrefStorage`, which means it can be treated as either one (if only the functionality of only one is needed).
 * depends on some classes in the `Model` component (because the `Storage` component's job is to save/retrieve objects that belong to the `Model`)
 
@@ -381,7 +377,7 @@ Step 6. The user executes `clear`, which calls `Model#commitInternship()`. Since
 
 The following activity diagram summarizes what happens when a user executes a new command:
 
-<img src="images/CommitActivityDiagram.png" width="250" />
+<img src="images/umldiagrams/CommitActivityDiagram.png" width="250" />
 
 #### Design considerations:
 
