@@ -9,7 +9,7 @@ We are a team based in the [School of Computing, National University of Singapor
 
 ### Willy Angga Prawira
 
-<img src="images/teammates/willyamped.png" width="200px">
+<img src="images/willyamped.png" width="200px">
 
 [[github](https://github.com/willyamped)]
 [[portfolio](team/willyamped.md)]
@@ -18,7 +18,7 @@ We are a team based in the [School of Computing, National University of Singapor
 
 ### Modi Trushti Sanjaybhai
 
-<img src="images/teammates/tsm1820.png" width="200px">
+<img src="images/tsm1820.png" width="200px">
 
 [[github](http://github.com/tsm1820)]
 [[portfolio](team/tsm1820.md)]
@@ -27,7 +27,7 @@ We are a team based in the [School of Computing, National University of Singapor
 
 ### Hu Tianran
 
-<img src="images/teammates/nature711.png" width="200px">
+<img src="images/nature711.png" width="200px">
 
 [[github](http://github.com/nature711)] [[portfolio](team/hutianran.md)]
 
@@ -35,7 +35,7 @@ We are a team based in the [School of Computing, National University of Singapor
 
 ### Qu Tianyue
 
-<img src="images/teammates/tianyue58.png" width="200px">
+<img src="images/tianyue58.png" width="200px">
 
 [[github](http://github.com/tianyue58)]
 [[portfolio](team/johndoe.md)]
@@ -44,7 +44,7 @@ We are a team based in the [School of Computing, National University of Singapor
 
 ### Felicia Ivane Pranoto
 
-<img src="images/teammates/feliciaivane.png" width="200px">
+<img src="images/feliciaivane.png" width="200px">
 
 [[github](http://github.com/feliciaivane)]
 [[portfolio](team/feliciaivane.md)]
