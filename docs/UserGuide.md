@@ -345,6 +345,12 @@ Examples:
 * `reject 1` marks the first entry as 'Rejected'.
 * `reject 3` marks the third entry as 'Rejected'.
 
+
+![rejectBefore](images/features/rejectBefore.png)
+> Before the command `reject 3`
+
+![rejectAfter](images/features/rejectAfter.png)
+> After the command `reject 3`
 <hr>
 
 ### Viewing specific applications
