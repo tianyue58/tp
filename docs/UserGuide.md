@@ -153,7 +153,7 @@ Parameter | Refers to | Required format | Application field? | Notes
 
 <div markdown="span" class="alert alert-primary"> :bulb: **Tip:** Use the [`clear`](#clearing-all-entries--clear) command to erase all the sample data when you no longer need them. </div>
 
-7. Type the command in the command box and press Enter to execute it. <br>
+6. Type the command in the command box and press Enter to execute it. <br>
    Some example commands you can try:
     
     * **`help`** : Opens up the `Help` Window.
@@ -168,7 +168,7 @@ Parameter | Refers to | Required format | Application field? | Notes
 
     * **`exit`** : Exits the app.
 
-9. Refer to the [Features](#features) below for details of each command.
+7. Refer to the [Features](#features) below for details of each command.
 
 --------------------------------------------------------------------------------------------------------------------
 
