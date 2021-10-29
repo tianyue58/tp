@@ -9,7 +9,7 @@ We are a team based in the [School of Computing, National University of Singapor
 
 ### Willy Angga Prawira
 
-<img src="images/willyamped.png" width="200px">
+<img src="images/teammates/willyamped.png" width="200px">
 
 [[github](https://github.com/willyamped)]
 [[portfolio](team/willyamped.md)]
