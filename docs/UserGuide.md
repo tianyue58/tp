@@ -153,7 +153,7 @@ Parameter | Refers to | Required format | Application field? | Notes
 
 <div markdown="span" class="alert alert-primary"> :bulb: **Tip:** Use the [`clear`](#clearing-all-entries--clear) command to erase all the sample data when you no longer need them. </div>
 
-7. Type the command in the command box and press Enter to execute it. <br>
+6. Type the command in the command box and press Enter to execute it. <br>
    Some example commands you can try:
     
     * **`help`** : Opens up the `Help` Window.
@@ -168,7 +168,7 @@ Parameter | Refers to | Required format | Application field? | Notes
 
     * **`exit`** : Exits the app.
 
-9. Refer to the [Features](#features) below for details of each command.
+7. Refer to the [Features](#features) below for details of each command.
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -634,8 +634,8 @@ This section gives an overview of all the commands supported by InternSHIP.
 
 Action | Format | Example | Notes
 --------|-------|----|----
-**Add** | `add c/COMPANY_NAME p/INTERNSHIP_POSITION d/APPLICATION_DEADLINE [r/REQUIREMENTS] [i/INTERVIEW_DATE_AND_TIME]` | `add c/Shopee p/software engineer d/2021-12-12` |
-**Edit** | `edit INDEX [c/COMPANY_NAME] [p/INTERNSHIP_POSITION] [d/APPLICATION_DEADLINE] [pr/APPLICATION_PRIORITY] [r/REQUIREMENTS] [i/INTERVIEW_DATE_AND_TIME]` | `edit 1 c/Grab d/2021-12-20`
+**Add** | `add c/COMPANY_NAME p/INTERNSHIP_POSITION d/APPLICATION_DEADLINE [r/APPLICATION_REQUIREMENTS] [i/INTERVIEW_DATE_AND_TIME]` | `add c/Shopee p/software engineer d/2021-12-12` |
+**Edit** | `edit INDEX [c/COMPANY_NAME] [p/INTERNSHIP_POSITION] [d/APPLICATION_DEADLINE] [pr/APPLICATION_PRIORITY] [r/APPLICATION_REQUIREMENTS] [i/INTERVIEW_DATE_AND_TIME]` | `edit 1 c/Grab d/2021-12-20`
 **Complete** | `complete INDEX` | `complete 1` |
 **Accept** | `accept INDEX` | `accept 2` | `APPLICATION_OUTCOME` can only be either `Accepted`, `Rejected`, or `Pending`.
 **Reject** | `reject INDEX` | `reject 2` | `APPLICATION_OUTCOME` can only be either `Accepted`, `Rejected`, or `Pending`.
