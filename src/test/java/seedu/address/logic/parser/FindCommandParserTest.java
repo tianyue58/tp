@@ -3,7 +3,6 @@ package seedu.address.logic.parser;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_COMPANY_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_COMPLETION;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_DEADLINE_OF_APPLICATION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_INTERNSHIP_POSITION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_REQUIREMENT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_STATUS;
@@ -16,7 +15,6 @@ import org.junit.jupiter.api.Test;
 
 import seedu.address.logic.commands.FindCommand;
 import seedu.address.model.application.CompletionContainsKeywordsPredicate;
-import seedu.address.model.application.DeadlineContainsKeywordsPredicate;
 import seedu.address.model.application.NameContainsKeywordsPredicate;
 import seedu.address.model.application.PositionContainsKeywordsPredicate;
 import seedu.address.model.application.RequirementsContainsKeywordsPredicate;
@@ -52,18 +50,6 @@ public class FindCommandParserTest {
         // multiple whitespaces between keywords
         assertParseSuccess(parser, " " + PREFIX_INTERNSHIP_POSITION
                 + " \n engineer \n \t designer  \t", expectedFindCommand);
-    }
-
-    @Test
-    public void parse_validDeadlineArgs_returnsFindCommand() {
-        // no leading and trailing whitespaces
-        FindCommand expectedFindCommand =
-                new FindCommand(new DeadlineContainsKeywordsPredicate(Arrays.asList("2021-11-12", "2021-11-13")));
-        assertParseSuccess(parser, " " + PREFIX_DEADLINE_OF_APPLICATION + "2021-11-12 2021-11-13", expectedFindCommand);
-
-        // multiple whitespaces between keywords
-        assertParseSuccess(parser, " " + PREFIX_DEADLINE_OF_APPLICATION
-                + " \n 2021-11-12 \n \t 2021-11-13  \t", expectedFindCommand);
     }
 
     @Test

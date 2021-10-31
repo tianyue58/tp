@@ -20,8 +20,6 @@ import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.application.CompletionContainsKeywordsPredicate;
-import seedu.address.model.application.DeadlineContainsKeywordsPredicate;
-import seedu.address.model.application.InterviewContainsKeywordsPredicate;
 import seedu.address.model.application.NameContainsKeywordsPredicate;
 import seedu.address.model.application.PositionContainsKeywordsPredicate;
 import seedu.address.model.application.PriorityContainsKeywordsPredicate;
@@ -86,17 +84,6 @@ public class FindCommandTest {
     }
 
     @Test
-    public void execute_zeroDeadlineKeywords_noApplicationFound() {
-        String expectedMessage = MESSAGE_NO_MATCHING;
-        DeadlineContainsKeywordsPredicate predicate = prepareDeadlinePredicate(" ");
-
-        FindCommand command = new FindCommand(predicate);
-        expectedModel.updateFilteredApplicationList(predicate);
-        assertCommandSuccess(command, model, expectedMessage, expectedModel);
-        assertEquals(Collections.emptyList(), model.getFilteredApplicationList());
-    }
-
-    @Test
     public void execute_zeroCompletionKeywords_noApplicationFound() {
         String expectedMessage = MESSAGE_NO_MATCHING;
         CompletionContainsKeywordsPredicate predicate = prepareCompletionPredicate(" ");
@@ -141,17 +128,6 @@ public class FindCommandTest {
     }
 
     @Test
-    public void execute_zeroInterviewKeywords_noApplicationFound() {
-        String expectedMessage = MESSAGE_NO_MATCHING;
-        InterviewContainsKeywordsPredicate predicate = prepareInterviewPredicate(" ");
-
-        FindCommand command = new FindCommand(predicate);
-        expectedModel.updateFilteredApplicationList(predicate);
-        assertCommandSuccess(command, model, expectedMessage, expectedModel);
-        assertEquals(Collections.emptyList(), model.getFilteredApplicationList());
-    }
-
-    @Test
     public void execute_multipleKeywords_multipleApplicationsFound() {
         String expectedMessage = String.format(MESSAGE_APPLICATION_LISTED_OVERVIEW, 3, "applications");
         NameContainsKeywordsPredicate predicate = prepareNamePredicate("Amazon Bytedance Grab");
@@ -173,13 +149,6 @@ public class FindCommandTest {
      */
     private PositionContainsKeywordsPredicate preparePositionPredicate(String userInput) {
         return new PositionContainsKeywordsPredicate(Arrays.asList(userInput.split("\\s+")));
-    }
-
-    /**
-     * Parses {@code userInput} into a {@code DeadlineContainsKeywordsPredicate}.
-     */
-    private DeadlineContainsKeywordsPredicate prepareDeadlinePredicate(String userInput) {
-        return new DeadlineContainsKeywordsPredicate(Arrays.asList(userInput.split("\\s+")));
     }
 
     /**
@@ -208,12 +177,5 @@ public class FindCommandTest {
      */
     private PriorityContainsKeywordsPredicate preparePriorityPredicate(String userInput) {
         return new PriorityContainsKeywordsPredicate(Arrays.asList(userInput.split("\\s+")));
-    }
-
-    /**
-     * Parses {@code userInput} into a {@code InterviewContainsKeywordsPredicate}.
-     */
-    private InterviewContainsKeywordsPredicate prepareInterviewPredicate(String userInput) {
-        return new InterviewContainsKeywordsPredicate(Arrays.asList(userInput.split("\\s+")));
     }
 }
