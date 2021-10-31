@@ -58,10 +58,6 @@
     -fx-opacity: 1;
 }
 
-.table-view:focused .table-row-cell:filled:focused:selected {
-    -fx-background-color: -fx-focus-color;
-}
-
 .split-pane:horizontal .split-pane-divider {
     -fx-background-color: derive(#1d1d1d, 20%);
     -fx-border-color: transparent transparent transparent #4d4d4d;
@@ -86,16 +82,15 @@
 }
 
 .list-cell:filled:even {
-    -fx-background-color: #87cefa;
+    -fx-background-color: #87cefa; /* even cells are filled with light-blue */
 }
 
 .list-cell:filled:odd {
-    -fx-background-color: #f0ffff;
+    -fx-background-color: #f0ffff; /* odd cells are filled with white */
 }
 
 .list-cell:filled:pressed {
-    -fx-border-color: #fa8072;
-    -fx-border-width: 3px;
+    -fx-background-color: #7fffd4; /* cell becomes light-green when pressed */
 }
 
 .list-cell:filled:selected #cardPane {
