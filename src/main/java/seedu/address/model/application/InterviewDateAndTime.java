@@ -101,8 +101,8 @@ public class InterviewDateAndTime {
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof Requirement // instanceof handles nulls
-                && value.equals(((Requirement) other).value)); // state check
+                || (other instanceof InterviewDateAndTime // instanceof handles nulls
+                && value.equals(((InterviewDateAndTime) other).value)); // state check
     }
 
     @Override
