@@ -23,18 +23,18 @@ import seedu.address.model.application.StatusContainsKeywordsPredicate;
  * Parses input arguments and creates a new FindCommand object
  */
 public class FindCommandParser implements Parser<FindCommand> {
-    private static final int PREFIX_AND_KEYWORD_SIZE = 2;
-    public static final String NAME_POSITION_VALIDATION_REGEX = "[\\p{Alnum}][\\p{Alnum} ]*";
-    public static final String NAME_MESSAGE_CONSTRAINTS =
-            "Company name should only contain alphanumeric characters and spaces, and it should not be blank.";
-    public static final String POSITION_MESSAGE_CONSTRAINTS =
-            "Position only contain alphanumeric characters and spaces, and it should not be blank.";
     public static final String COMPLETION_MESSAGE_CONSTRAINTS =
             "Completion can only exactly one of the take case-insensitive 'completed' or 'uncompleted'.";
-    public static final String STATUS_MESSAGE_CONSTRAINTS =
-            "Status can only take exactly one of the case-insensitive 'pending', 'accepted' or 'rejected'.";
+    public static final String NAME_MESSAGE_CONSTRAINTS =
+            "Company name should only contain alphanumeric characters and spaces, and it should not be blank.";
+    public static final String NAME_POSITION_VALIDATION_REGEX = "[\\p{Alnum}][\\p{Alnum} ]*";
+    public static final String POSITION_MESSAGE_CONSTRAINTS =
+            "Position only contain alphanumeric characters and spaces, and it should not be blank.";
+    private static final int PREFIX_AND_KEYWORD_SIZE = 2;
     public static final String PRIORITY_MESSAGE_CONSTRAINTS =
             "Priority can only take exactly one of the case-insensitive 'high', 'medium' or 'low'.";
+    public static final String STATUS_MESSAGE_CONSTRAINTS =
+            "Status can only take exactly one of the case-insensitive 'pending', 'accepted' or 'rejected'.";
 
     /**
      * Parses the given {@code String} of arguments in the context of the FindCommand
