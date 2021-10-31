@@ -85,7 +85,7 @@ public class FindCommandParserTest {
         assertParseSuccess(parser, " " + PREFIX_PRIORITY + "high", expectedFindCommand);
 
         // multiple whitespaces between keywords
-        assertParseSuccess(parser, " " + PREFIX_PRIORITY+ " \n high \n ", expectedFindCommand);
+        assertParseSuccess(parser, " " + PREFIX_PRIORITY + " \n high \n ", expectedFindCommand);
     }
 
     @Test
