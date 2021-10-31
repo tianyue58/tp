@@ -3,9 +3,7 @@ package seedu.address.logic.commands;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_COMPANY_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_COMPLETION;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_DEADLINE_OF_APPLICATION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_INTERNSHIP_POSITION;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_INTERVIEW_DATE_AND_TIME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PRIORITY;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_REQUIREMENT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_STATUS;
@@ -16,8 +14,6 @@ import seedu.address.commons.core.Messages;
 import seedu.address.model.Model;
 import seedu.address.model.application.Application;
 import seedu.address.model.application.CompletionContainsKeywordsPredicate;
-import seedu.address.model.application.DeadlineContainsKeywordsPredicate;
-import seedu.address.model.application.InterviewContainsKeywordsPredicate;
 import seedu.address.model.application.NameContainsKeywordsPredicate;
 import seedu.address.model.application.PositionContainsKeywordsPredicate;
 import seedu.address.model.application.PriorityContainsKeywordsPredicate;
@@ -33,15 +29,13 @@ public class FindCommand extends Command {
     public static final String COMMAND_WORD = "find";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Finds all applications whose names, positions, deadline, "
-            + "requirements, interview time, priority, completion or status contain any of "
+            + ": Finds all applications whose names, positions, "
+            + "requirements, priority, completion or status contain any of "
             + "the specified keywords (case-insensitive) and displays them as a list with index numbers.\n"
             + "Parameters:\n"
             + PREFIX_COMPANY_NAME + "COMPANY_NAME "
             + PREFIX_INTERNSHIP_POSITION + "INTERNSHIP_POSITION "
-            + PREFIX_DEADLINE_OF_APPLICATION + "DEADLINE_OF_APPLICATION "
             + PREFIX_REQUIREMENT + "APPLICATION_REQUIREMENTS "
-            + PREFIX_INTERVIEW_DATE_AND_TIME + "INTERVIEW_TIME "
             + PREFIX_PRIORITY + "PRIORITY "
             + PREFIX_COMPLETION + "APPLICATION_COMPLETION "
             + PREFIX_STATUS + "APPLICATION_STATUS\n"
@@ -49,9 +43,7 @@ public class FindCommand extends Command {
             + "Example:\n"
             + "Find by company name: " + COMMAND_WORD + " " + PREFIX_COMPANY_NAME + "Amazon ByteDance Google\n"
             + "Find by position: " + COMMAND_WORD + " " + PREFIX_INTERNSHIP_POSITION + "engineer\n"
-            + "Find by deadline: " + COMMAND_WORD + " " + PREFIX_DEADLINE_OF_APPLICATION + "2021-11-12\n"
             + "Find by requirement: " + COMMAND_WORD + " " + PREFIX_REQUIREMENT + "cv\n"
-            + "Find by interview time: " + COMMAND_WORD + " " + PREFIX_INTERVIEW_DATE_AND_TIME + "2021-12-16 1400\n"
             + "Find by priority: " + COMMAND_WORD + " " + PREFIX_PRIORITY + "High\n"
             + "Find by completion: " + COMMAND_WORD + " " + PREFIX_COMPLETION + "uncompleted\n"
             + "Find by status: " + COMMAND_WORD + " " + PREFIX_STATUS + "accepted\n";
@@ -72,13 +64,6 @@ public class FindCommand extends Command {
      * Creates a FindCommand to find the specified {@code Application} by position
      */
     public FindCommand(PositionContainsKeywordsPredicate predicate) {
-        this.predicate = predicate;
-    }
-
-    /**
-     * Creates a FindCommand to find the specified {@code Application} by deadline
-     */
-    public FindCommand(DeadlineContainsKeywordsPredicate predicate) {
         this.predicate = predicate;
     }
 
@@ -107,13 +92,6 @@ public class FindCommand extends Command {
      * Creates a FindCommand to find the specified {@code Application} by requirement
      */
     public FindCommand(RequirementsContainsKeywordsPredicate predicate) {
-        this.predicate = predicate;
-    }
-
-    /**
-     * Creates a FindCommand to find the specified {@code Application} by interview time
-     */
-    public FindCommand(InterviewContainsKeywordsPredicate predicate) {
         this.predicate = predicate;
     }
 
