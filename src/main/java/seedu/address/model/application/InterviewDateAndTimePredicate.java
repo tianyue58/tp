@@ -28,7 +28,6 @@ public class InterviewDateAndTimePredicate implements Predicate<Application> {
     public boolean test(Application application) {
         long diff = 0;
         boolean isWithinDays = false;
-        boolean isCompleted = false;
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
         Set<InterviewDateAndTime> set = application.getInterviewDateAndTime();
         Iterator<InterviewDateAndTime> iterator = set.iterator();
@@ -42,11 +41,10 @@ public class InterviewDateAndTimePredicate implements Predicate<Application> {
                 diff = TimeUnit.DAYS.convert(applicationDate.getTime()
                         - currentDate.getTime(), TimeUnit.MILLISECONDS);
                 isWithinDays = diff >= 0 && diff <= days.getZeroBased() - 1;
-                isCompleted = application.getCompletion().value.equals("Completed");
             } catch (java.text.ParseException e) {
                 logger.info("Invalid interview date and time format");
             }
-            return isWithinDays && !isCompleted;
+            return isWithinDays;
         }
         return false;
     }
