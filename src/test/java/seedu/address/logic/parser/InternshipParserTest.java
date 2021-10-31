@@ -33,7 +33,6 @@ import seedu.address.logic.commands.SortCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.application.Application;
 import seedu.address.model.application.CompletionContainsKeywordsPredicate;
-import seedu.address.model.application.DeadlineContainsKeywordsPredicate;
 import seedu.address.model.application.NameContainsKeywordsPredicate;
 import seedu.address.model.application.PositionContainsKeywordsPredicate;
 import seedu.address.model.application.StatusContainsKeywordsPredicate;
@@ -96,14 +95,6 @@ public class InternshipParserTest {
         FindCommand command = (FindCommand) parser.parseCommand(
                 FindCommand.COMMAND_WORD + " " + PREFIX_INTERNSHIP_POSITION + String.join(" ", keywords));
         assertEquals(new FindCommand(new PositionContainsKeywordsPredicate(keywords)), command);
-    }
-
-    @Test
-    public void parseCommand_findByDeadline() throws Exception {
-        List<String> keywords = Arrays.asList("2021-11-13", "2021-11-14", "2021-11-15");
-        FindCommand command = (FindCommand) parser.parseCommand(
-                FindCommand.COMMAND_WORD + " " + PREFIX_DEADLINE_OF_APPLICATION + String.join(" ", keywords));
-        assertEquals(new FindCommand(new DeadlineContainsKeywordsPredicate(keywords)), command);
     }
 
     @Test

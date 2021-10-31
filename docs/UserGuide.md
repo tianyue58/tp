@@ -411,12 +411,10 @@ Format: `find FIELD keyword`
 The fields available to be found are: <br>
 - COMPANY_NAME `c/` <br>
 - INTERNSHIP_POSITION `p/` <br>
-- APPLICATION_DEADLINE `d/` <br>
 - COMPLETION_STATUS `c1/` <br>
 - APPLICATION_OUTCOME (i.e. STATUS) `s/` <br>
 - APPLICATION_PRIORITY `pr/` <br>
 - APPLICATION_REQUIREMENTS `r/` <br>
-- INTERVIEW_DATE_AND_TIME `i/`
 </div>
 
 Examples:
@@ -651,7 +649,7 @@ Action | Format | Example | Notes
 
 Action | Format | Example | Notes
 --------|-------|----|----
-**Find** | `find PREFIX KEYWORD` |  `find pr/High` | `PREFIX` refers to the field to match the keyword (`c/` COMPANY_NAME, `p/` INTERNSHIP_POSITION, `d/` APPLICATION_DEADLINE, `c1/` COMPLETION_STATUS, `s/` APPLICATION_OUTCOME (i.e. STATUS), `pr/` APPLICATION_PRIORITY, `r/` APPLICATION_REQUIREMENTS, `i/` INTERVIEW_DATE_AND_TIME)
+**Find** | `find PREFIX KEYWORD` |  `find pr/High` | `PREFIX` refers to the field to match the keyword (`c/` COMPANY_NAME, `p/` INTERNSHIP_POSITION, `c1/` COMPLETION_STATUS, `s/` APPLICATION_OUTCOME (i.e. STATUS), `pr/` APPLICATION_PRIORITY, `r/` APPLICATION_REQUIREMENTS)
 **Soon** | `soon PREFIX DAYS`| `soon d/5` | `PREFIX` refers to the field with coming deadline or time (`d/` APPLICATION_DEADLINE, `i/` INTERVIEW_DATE_AND_TIME)
 **List** | `list`| `list`
 **Sort** | `sort PREFIX` | `sort c/` | `PREFIX` refers to the application detail to be sorted by (`c/` COMPANY_NAME, `p/` INTERNSHIP_POSITION, `d/` APPLICATION_DEADLINE, `pr/` APPLICATION_PRIORITY, `i/` INTERVIEW_DATE_AND_TIME)
@@ -676,14 +674,14 @@ This section provides a summary of all the fields and their corresponding prefix
 
 Field | Prefix | Used in
 --------|-------|----
-APPLICATION_DEADLINE | **d/** | `add`, `edit`, `find`, `sort`
+APPLICATION_DEADLINE | **d/** | `add`, `edit`, `sort`, `soon`
 APPLICATION_PRIORITY | **pr/** | `edit`, `find`, `sort`
 APPLICATION_REQUIREMENTS | **r/** | `add`, `edit`
 APPLICATION_OUTCOME (i.e. STATUS) | **s/** | `find`
 COMPANY_NAME | **c/** | `add`, `edit`, `find`, `sort`
 COMPLETION_STATUS | **c1/** | `find`
 INTERNSHIP_POSITION | **p/** | `add`, `edit`, `find`, `sort`
-INTERVIEW_DATE_AND_TIME | **i/** | `add`, `edit`, `find`, `sort`
+INTERVIEW_DATE_AND_TIME | **i/** | `add`, `edit`, `sort`, `soon`
 
 --------------------------------------------------------------------------------------------------------------------
 
