@@ -173,7 +173,7 @@ public class Application {
         if (!interviewDateAndTimes.isEmpty()) {
             List<String> stringList = new ArrayList<>();
             for (Iterator<InterviewDateAndTime> it = interviewDateAndTimes.iterator(); it.hasNext(); ) {
-                stringList.add(it.next().toFormattedString());
+                stringList.add("[" + it.next().toFormattedString() + "]");
             }
             builder.append("; Interview Date and Time: ");
             stringList.forEach(builder::append);
