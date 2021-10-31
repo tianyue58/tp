@@ -92,8 +92,9 @@ public class FindCommandParser implements Parser<FindCommand> {
                         String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindCommand.MESSAGE_USAGE));
             }
             String[] completionKeywords = trimmedArgs.split("\\s+");
-            boolean isValidCompletion = completionKeywords[0].toLowerCase().equals("completed")
-                    || completionKeywords[0].toLowerCase().equals("uncompleted");
+            boolean isValidCompletion = completionKeywords.length == 1
+                    && (completionKeywords[0].toLowerCase().equals("completed")
+                    || completionKeywords[0].toLowerCase().equals("uncompleted"));
 
             if (!isValidCompletion) {
                 throw new ParseException(
