@@ -9,7 +9,8 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
  */
 public class Requirement {
     public static final String MESSAGE_CONSTRAINTS = "Submission requirements is an optional field and "
-            + "you can add your requirements using '/r' in the add command.";
+            + "you can add your requirements using '/r' in the add command. " +
+            "Each requirement should not be longer than 20 characters.";
 
     /*
      * The first character of the position must not be a whitespace,
@@ -36,7 +37,7 @@ public class Requirement {
      * A valid requirement should be in String format.
      */
     public static boolean isValidRequirement(String test) {
-        return test.matches(VALIDATION_REGEX);
+        return test.matches(VALIDATION_REGEX) && test.length() <= 20;
     }
 
     /**

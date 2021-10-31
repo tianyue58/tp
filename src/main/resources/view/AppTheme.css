@@ -322,12 +322,22 @@
 }
 
 #requirements .label {
+/* each requirement is displayed as a tag */
     -fx-text-fill: white;
     -fx-background-color: #3e7b91;
     -fx-padding: 1 3 1 3;
     -fx-border-radius: 2;
     -fx-background-radius: 2;
     -fx-font-size: 11;
+    -fx-max-width: 100;
+}
+
+#interviewDateAndTime .label {
+/* each interview date and time is displayed as a small cell */
+    -fx-font-family: "Open Sans Regular";
+    -fx-font-size: 13px;
+    -fx-text-fill: #010504;
+    -fx-text-alignment: center;
 }
 
 .error {

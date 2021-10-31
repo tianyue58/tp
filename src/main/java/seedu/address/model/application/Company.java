@@ -12,7 +12,8 @@ import java.util.Comparator;
 public class Company {
 
     public static final String MESSAGE_CONSTRAINTS =
-            "Company name should only contain alphanumeric characters and spaces, and it should not be blank.";
+            "Company name should only contain alphanumeric characters and space. " +
+                    "It should not be blank or longer than 40 characters.";
 
     /*
      * The first character of the name must not be a whitespace,
@@ -37,7 +38,7 @@ public class Company {
      * Returns true if a given string is a valid name.
      */
     public static boolean isValidCompanyName(String test) {
-        return test.matches(VALIDATION_REGEX);
+        return test.matches(VALIDATION_REGEX) && test.length() <= 40;
     }
 
     /**

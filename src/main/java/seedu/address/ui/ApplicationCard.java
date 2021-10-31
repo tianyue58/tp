@@ -47,8 +47,6 @@ public class ApplicationCard extends UiPart<Region> {
     private FlowPane requirements;
     @FXML
     private FlowPane interviewDateAndTime;
-    @FXML
-    private ImageView priorityLogo;
 
     /**
      * Creates an {@code ApplicationCode} with the given {@code Application} and index to display.
