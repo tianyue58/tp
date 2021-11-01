@@ -1,6 +1,12 @@
 package seedu.address.model.application;
 
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import java.time.temporal.ChronoUnit;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.Set;
@@ -28,7 +34,7 @@ public class InterviewDateAndTimePredicate implements Predicate<Application> {
     public boolean test(Application application) {
         long diff = 0;
         boolean isWithinDays = false;
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         Set<InterviewDateAndTime> set = application.getInterviewDateAndTime();
         Iterator<InterviewDateAndTime> iterator = set.iterator();
         if (set.size() == 0) {
@@ -36,12 +42,12 @@ public class InterviewDateAndTimePredicate implements Predicate<Application> {
         }
         while (iterator.hasNext()) {
             try {
-                Date applicationDate = formatter.parse(iterator.next().value.substring(0, 10));
-                Date currentDate = new Date();
-                diff = TimeUnit.DAYS.convert(applicationDate.getTime()
-                        - currentDate.getTime(), TimeUnit.MILLISECONDS);
-                isWithinDays = diff >= 0 && diff <= days.getZeroBased() - 1;
-            } catch (java.text.ParseException e) {
+                LocalDate applicationDate = LocalDate.parse(
+                        iterator.next().value.substring(0, 10), formatter);
+                LocalDateTime currentDate = LocalDateTime.now();
+                diff = -ChronoUnit.DAYS.between(applicationDate, currentDate);
+                isWithinDays = diff >= 0 && diff <= days.getZeroBased();
+            } catch (DateTimeParseException e) {
                 logger.info("Invalid interview date and time format");
             }
             return isWithinDays;
