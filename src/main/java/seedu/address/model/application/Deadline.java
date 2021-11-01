@@ -8,9 +8,6 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.Comparator;
 
-import seedu.address.logic.parser.ParserUtil;
-import seedu.address.logic.parser.exceptions.ParseException;
-
 /**
  * Represents an Application's deadline in InternSHIP.
  * Guarantees: immutable; is valid as declared in {@link #isValidDeadline(String)}

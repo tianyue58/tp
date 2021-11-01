@@ -12,8 +12,8 @@ import java.util.Comparator;
 public class Position {
 
     public static final String MESSAGE_CONSTRAINTS =
-            "Position should only contain alphanumeric characters and space. " +
-            "It should not be blank or longer than 40 characters.";
+            "Position should only contain alphanumeric characters and space. "
+                    + "It should not be blank or longer than 40 characters.";
 
     /*
      * The first character of the position must not be a whitespace,

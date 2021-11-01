@@ -12,8 +12,8 @@ import java.util.Comparator;
 public class Company {
 
     public static final String MESSAGE_CONSTRAINTS =
-            "Company name should only contain alphanumeric characters and space. " +
-                    "It should not be blank or longer than 40 characters.";
+            "Company name should only contain alphanumeric characters and space. "
+                    + "It should not be blank or longer than 40 characters.";
 
     /*
      * The first character of the name must not be a whitespace,
