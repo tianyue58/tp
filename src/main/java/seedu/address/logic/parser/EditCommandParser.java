@@ -43,8 +43,9 @@ public class EditCommandParser implements Parser<EditCommand> {
         try {
             index = ParserUtil.parseIndex(argMultimap.getPreamble());
         } catch (ParseException pe) {
-            throw new ParseException(String.format(MESSAGE_INVALID_APPLICATION_DISPLAYED_INDEX,
-                    EditCommand.MESSAGE_USAGE), pe);
+            throw new ParseException(String.format(
+                    MESSAGE_INVALID_APPLICATION_DISPLAYED_INDEX + "\n%1$s",
+                            EditCommand.MESSAGE_USAGE), pe);
         }
 
         EditApplicationDescriptor editApplicationDescriptor = new EditApplicationDescriptor();
@@ -73,7 +74,8 @@ public class EditCommandParser implements Parser<EditCommand> {
 
 
         if (!editApplicationDescriptor.isAnyFieldEdited()) {
-            throw new ParseException(EditCommand.MESSAGE_NOT_EDITED);
+            throw new ParseException(String.format(EditCommand.MESSAGE_NOT_EDITED + "\n%1$s",
+                    EditCommand.MESSAGE_USAGE));
         }
 
         return new EditCommand(index, editApplicationDescriptor);
