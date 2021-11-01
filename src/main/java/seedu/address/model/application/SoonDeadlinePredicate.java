@@ -1,16 +1,10 @@
 package seedu.address.model.application;
 
-import java.lang.reflect.InvocationTargetException;
-import java.text.SimpleDateFormat;
-import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.time.temporal.ChronoUnit;
-import java.util.Date;
-import java.util.concurrent.TimeUnit;
 import java.util.function.Predicate;
 import java.util.logging.Logger;
 
@@ -43,10 +37,9 @@ public class SoonDeadlinePredicate implements Predicate<Application> {
             diff = -ChronoUnit.DAYS.between(applicationDate, currentDate);
             isWithinDays = diff >= 0 && diff <= days.getZeroBased();
             isCompleted = application.getCompletion().value.equals("Completed");
-        }
-        catch (DateTimeParseException e) {
+        } catch (DateTimeParseException e) {
             logger.info("Invalid deadline format");
-       }
+        }
         return isWithinDays && !isCompleted;
 
     }

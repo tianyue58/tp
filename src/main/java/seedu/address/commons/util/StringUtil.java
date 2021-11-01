@@ -1,7 +1,5 @@
 package seedu.address.commons.util;
 
-import seedu.address.logic.commands.exceptions.IntegerOverflowException;
-
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
