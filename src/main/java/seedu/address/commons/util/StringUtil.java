@@ -1,5 +1,7 @@
 package seedu.address.commons.util;
 
+import seedu.address.logic.commands.exceptions.IntegerOverflowException;
+
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
@@ -66,7 +68,7 @@ public class StringUtil {
     }
 
     /**
-     * Returns true if {@code s} represents a non-zero unsigned integer
+     * Returns true if {@code s} represents a non-negative unsigned integer
      * e.g. 0, 1, 2, 3, ..., {@code Integer.MAX_VALUE} <br>
      * Will return false for any other non-null string input
      * e.g. empty string, "-1", "+1", and " 2 " (untrimmed), "3 0" (contains whitespace), "1 a" (contains letters)
