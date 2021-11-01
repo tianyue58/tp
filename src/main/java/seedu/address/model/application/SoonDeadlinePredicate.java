@@ -1,8 +1,10 @@
 package seedu.address.model.application;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.concurrent.TimeUnit;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import java.time.temporal.ChronoUnit;
 import java.util.function.Predicate;
 import java.util.logging.Logger;
 
@@ -27,19 +29,19 @@ public class SoonDeadlinePredicate implements Predicate<Application> {
         long diff = 0;
         boolean isWithinDays = false;
         boolean isCompleted = false;
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         String deadline = application.getDeadline().value;
         try {
-            Date applicationDate = formatter.parse(deadline);
-            Date currentDate = new Date();
-            diff = TimeUnit.DAYS.convert(applicationDate.getTime()
-                    - currentDate.getTime(), TimeUnit.MILLISECONDS);
-            isWithinDays = diff >= 0 && diff <= days.getZeroBased() - 1;
+            LocalDate applicationDate = LocalDate.parse(deadline, formatter);
+            LocalDateTime currentDate = LocalDateTime.now();
+            diff = -ChronoUnit.DAYS.between(applicationDate, currentDate);
+            isWithinDays = diff >= 0 && diff <= days.getZeroBased();
             isCompleted = application.getCompletion().value.equals("Completed");
-        } catch (java.text.ParseException e) {
+        } catch (DateTimeParseException e) {
             logger.info("Invalid deadline format");
         }
         return isWithinDays && !isCompleted;
+
     }
 
     @Override

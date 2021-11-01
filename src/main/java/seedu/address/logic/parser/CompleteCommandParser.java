@@ -1,10 +1,12 @@
 package seedu.address.logic.parser;
 
-import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.address.commons.core.Messages.MESSAGE_INVALID_APPLICATION_DISPLAYED_INDEX;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.CompleteCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
+
+
 
 /**
  * Parses input arguments and creates a new CompleteCommand object
@@ -21,7 +23,8 @@ public class CompleteCommandParser implements Parser<CompleteCommand> {
             return new CompleteCommand(index);
         } catch (ParseException pe) {
             throw new ParseException(
-                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, CompleteCommand.MESSAGE_USAGE), pe);
+                    String.format(MESSAGE_INVALID_APPLICATION_DISPLAYED_INDEX + "\n%1$s",
+                            CompleteCommand.MESSAGE_USAGE), pe);
         }
     }
 }

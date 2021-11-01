@@ -2,6 +2,7 @@ package seedu.address.logic.commands;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static seedu.address.commons.core.Messages.MESSAGE_INVALID_APPLICATION_DISPLAYED_INDEX;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.testutil.TypicalApplications.getTypicalInternship;
@@ -12,7 +13,6 @@ import java.util.Set;
 
 import org.junit.jupiter.api.Test;
 
-import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
@@ -64,7 +64,9 @@ public class CompleteCommandTest {
         Index outOfBoundIndex = Index.fromOneBased(model.getFilteredApplicationList().size() + 1);
         CompleteCommand completeCommand = new CompleteCommand(outOfBoundIndex);
 
-        assertCommandFailure(completeCommand, model, Messages.MESSAGE_INVALID_APPLICATION_DISPLAYED_INDEX);
+        assertCommandFailure(completeCommand, model,
+                String.format(MESSAGE_INVALID_APPLICATION_DISPLAYED_INDEX + "\n%1$s",
+                        CompleteCommand.MESSAGE_USAGE));
     }
 
 

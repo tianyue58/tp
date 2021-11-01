@@ -372,7 +372,9 @@ The available fields are: <br>
 Format: `soon FIELD DAYS`
 
 * Find applications that are within `DAYS` days.
-* The number of days must be an **integer** 0, 1, 2, …​
+* The number of days must be an **integer** 0, 1, 2, …​ 
+* The number must not be more than the maximum integer value (i.e 2147483647). 
+* Other values will be considered invalid.
 * Only one field and one keyword can be provided each time.
 
 Examples:

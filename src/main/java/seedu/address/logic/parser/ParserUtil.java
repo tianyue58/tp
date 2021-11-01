@@ -24,6 +24,8 @@ import seedu.address.model.application.Status;
 public class ParserUtil {
 
     public static final String MESSAGE_INVALID_INDEX = "Index is not a non-zero unsigned integer.";
+    public static final String MESSAGE_INVALID_DAYS =
+            "Invalid days! \n%1$s: Days is not a non-negative unsigned integer.";
 
     /**
      * Parses {@code oneBasedIndex} into an {@code Index} and returns it. Leading and trailing whitespaces will be
@@ -46,7 +48,7 @@ public class ParserUtil {
     public static Index parseDays(String zeroBasedIndex) throws ParseException {
         String trimmedIndex = zeroBasedIndex.trim();
         if (!StringUtil.isNonNegativeInteger(trimmedIndex)) {
-            throw new ParseException(MESSAGE_INVALID_INDEX);
+            throw new ParseException(MESSAGE_INVALID_DAYS);
         }
         return Index.fromZeroBased(Integer.parseInt(trimmedIndex));
     }

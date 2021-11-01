@@ -1,7 +1,7 @@
 package seedu.address.logic.parser;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.address.commons.core.Messages.MESSAGE_INVALID_APPLICATION_DISPLAYED_INDEX;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_COMPANY_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DEADLINE_OF_APPLICATION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_INTERNSHIP_POSITION;
@@ -43,7 +43,9 @@ public class EditCommandParser implements Parser<EditCommand> {
         try {
             index = ParserUtil.parseIndex(argMultimap.getPreamble());
         } catch (ParseException pe) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditCommand.MESSAGE_USAGE), pe);
+            throw new ParseException(String.format(
+                    MESSAGE_INVALID_APPLICATION_DISPLAYED_INDEX + "\n%1$s",
+                            EditCommand.MESSAGE_USAGE), pe);
         }
 
         EditApplicationDescriptor editApplicationDescriptor = new EditApplicationDescriptor();
@@ -72,7 +74,8 @@ public class EditCommandParser implements Parser<EditCommand> {
 
 
         if (!editApplicationDescriptor.isAnyFieldEdited()) {
-            throw new ParseException(EditCommand.MESSAGE_NOT_EDITED);
+            throw new ParseException(String.format(EditCommand.MESSAGE_NOT_EDITED + "\n%1$s",
+                    EditCommand.MESSAGE_USAGE));
         }
 
         return new EditCommand(index, editApplicationDescriptor);

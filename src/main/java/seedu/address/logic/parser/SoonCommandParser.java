@@ -40,7 +40,7 @@ public class SoonCommandParser implements Parser<SoonCommand> {
                 return new SoonCommand(days, new SoonDeadlinePredicate(days));
             } catch (ParseException pe) {
                 throw new ParseException(
-                        String.format(MESSAGE_INVALID_COMMAND_FORMAT, SoonCommand.MESSAGE_USAGE), pe);
+                        String.format(pe.getMessage(), SoonCommand.MESSAGE_USAGE), pe);
             }
         }
         if (argMultimap.getValue(PREFIX_INTERVIEW_DATE_AND_TIME).isPresent()) {
@@ -52,7 +52,7 @@ public class SoonCommandParser implements Parser<SoonCommand> {
                 return new SoonCommand(days, new InterviewDateAndTimePredicate(days));
             } catch (ParseException pe) {
                 throw new ParseException(
-                        String.format(MESSAGE_INVALID_COMMAND_FORMAT, SoonCommand.MESSAGE_USAGE), pe);
+                        String.format(pe.getMessage(), SoonCommand.MESSAGE_USAGE), pe);
             }
         }
         throw new ParseException(
