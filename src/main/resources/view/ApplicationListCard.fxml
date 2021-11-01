@@ -4,8 +4,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<HBox id="cardPane" fx:id="cardPane" alignment="BOTTOM_RIGHT" xmlns="http://javafx.com/javafx/11.0.2"
-      xmlns:fx="http://javafx.com/fxml/1">
+<HBox id="cardPane" fx:id="cardPane" alignment="BOTTOM_RIGHT" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1">
   <GridPane alignment="CENTER_LEFT" prefHeight="75.0" HBox.hgrow="ALWAYS">
     <columnConstraints>
       <ColumnConstraints hgrow="SOMETIMES" minWidth="10" prefWidth="160.0" />
@@ -27,15 +26,25 @@
             <Region fx:constant="USE_PREF_SIZE" />
           </minWidth>
         </Label>
-        <Label fx:id="name" styleClass="cell_big_label" text="\$name" textOverrun="CLIP" wrapText="true" />
+        <Label fx:id="name" styleClass="cell_big_label" text="\$name" textOverrun="CLIP" wrapText="true">
+            <padding>
+               <Insets right="20.0" />
+            </padding>
+        </Label>
       </HBox>
-      <Label fx:id="position" styleClass="cell_small_label" text="\$position" textOverrun="CLIP" wrapText="true"
-             GridPane.columnIndex="1">
+      <Label fx:id="position" styleClass="cell_small_label" text="\$position" textOverrun="CLIP" wrapText="true" GridPane.columnIndex="1">
+        <padding>
+          <Insets right="20.0" />
+        </padding>
       </Label>
       <Label fx:id="deadline" styleClass="cell_small_label" text="\$deadline" GridPane.columnIndex="2">
       </Label>
-      <FlowPane fx:id="requirements" GridPane.columnIndex="3" />
-      <FlowPane fx:id="interviewDateAndTime" GridPane.columnIndex="4" />
+      <FlowPane fx:id="requirements" alignment="CENTER_LEFT" prefWrapLength="100.0" GridPane.columnIndex="3">
+        <padding>
+          <Insets right="20.0" />
+        </padding>
+      </FlowPane>
+      <FlowPane fx:id="interviewDateAndTime" alignment="CENTER_LEFT" GridPane.columnIndex="4" />
       <Label fx:id="priority" styleClass="cell_small_label" text="\$priority" GridPane.columnIndex="5">
         <padding>
           <Insets left="20.0" />

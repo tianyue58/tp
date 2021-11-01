@@ -1,7 +1,6 @@
 package seedu.address.ui;
 
 import java.util.Comparator;
-import javax.swing.text.html.ImageView;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -47,8 +46,6 @@ public class ApplicationCard extends UiPart<Region> {
     private FlowPane requirements;
     @FXML
     private FlowPane interviewDateAndTime;
-    @FXML
-    private ImageView priorityLogo;
 
     /**
      * Creates an {@code ApplicationCode} with the given {@code Application} and index to display.

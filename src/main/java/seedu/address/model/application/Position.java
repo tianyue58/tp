@@ -11,7 +11,9 @@ import java.util.Comparator;
  */
 public class Position {
 
-    public static final String MESSAGE_CONSTRAINTS = "Positions can take any values, and it should not be blank.";
+    public static final String MESSAGE_CONSTRAINTS =
+            "Position should only contain alphanumeric characters and space. "
+                    + "It should not be blank or longer than 40 characters.";
 
     /*
      * The first character of the position must not be a whitespace,
@@ -36,7 +38,7 @@ public class Position {
      * Returns true if a given string is a valid position.
      */
     public static boolean isValidPosition(String test) {
-        return test.matches(VALIDATION_REGEX);
+        return test.matches(VALIDATION_REGEX) && test.length() <= 40;
     }
 
     /**
