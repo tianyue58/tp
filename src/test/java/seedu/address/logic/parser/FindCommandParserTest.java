@@ -4,6 +4,7 @@ import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT
 import static seedu.address.logic.parser.CliSyntax.PREFIX_COMPANY_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_COMPLETION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_INTERNSHIP_POSITION;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_PRIORITY;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_REQUIREMENT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_STATUS;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;
@@ -17,6 +18,7 @@ import seedu.address.logic.commands.FindCommand;
 import seedu.address.model.application.CompletionContainsKeywordsPredicate;
 import seedu.address.model.application.NameContainsKeywordsPredicate;
 import seedu.address.model.application.PositionContainsKeywordsPredicate;
+import seedu.address.model.application.PriorityContainsKeywordsPredicate;
 import seedu.address.model.application.RequirementsContainsKeywordsPredicate;
 import seedu.address.model.application.StatusContainsKeywordsPredicate;
 
@@ -56,34 +58,34 @@ public class FindCommandParserTest {
     public void parse_validCompletionArgs_returnsFindCommand() {
         // no leading and trailing whitespaces
         FindCommand expectedFindCommand =
-                new FindCommand(new CompletionContainsKeywordsPredicate(Arrays.asList("Completed", "Uncompleted")));
-        assertParseSuccess(parser, " " + PREFIX_COMPLETION + "Completed Uncompleted", expectedFindCommand);
+                new FindCommand(new CompletionContainsKeywordsPredicate(Arrays.asList("completed")));
+        assertParseSuccess(parser, " " + PREFIX_COMPLETION + "completed", expectedFindCommand);
 
         // multiple whitespaces between keywords
         assertParseSuccess(parser, " " + PREFIX_COMPLETION
-                + " \n Completed \n \t Uncompleted  \t", expectedFindCommand);
+                + " \n completed \n ", expectedFindCommand);
     }
 
     @Test
     public void parse_validStatusArgs_returnsFindCommand() {
         // no leading and trailing whitespaces
         FindCommand expectedFindCommand =
-                new FindCommand(new StatusContainsKeywordsPredicate(Arrays.asList("accepted", "pending")));
-        assertParseSuccess(parser, " " + PREFIX_STATUS + "accepted pending", expectedFindCommand);
+                new FindCommand(new StatusContainsKeywordsPredicate(Arrays.asList("accepted")));
+        assertParseSuccess(parser, " " + PREFIX_STATUS + "accepted", expectedFindCommand);
 
         // multiple whitespaces between keywords
-        assertParseSuccess(parser, " " + PREFIX_STATUS + " \n accepted \n \t pending  \t", expectedFindCommand);
+        assertParseSuccess(parser, " " + PREFIX_STATUS + " \n accepted \n ", expectedFindCommand);
     }
 
     @Test
     public void parse_validPriorityArgs_returnsFindCommand() {
         // no leading and trailing whitespaces
         FindCommand expectedFindCommand =
-                new FindCommand(new StatusContainsKeywordsPredicate(Arrays.asList("High", "Medium")));
-        assertParseSuccess(parser, " " + PREFIX_STATUS + "High Medium", expectedFindCommand);
+                new FindCommand(new PriorityContainsKeywordsPredicate(Arrays.asList("high")));
+        assertParseSuccess(parser, " " + PREFIX_PRIORITY + "high", expectedFindCommand);
 
         // multiple whitespaces between keywords
-        assertParseSuccess(parser, " " + PREFIX_STATUS + " \n High \n \t Medium  \t", expectedFindCommand);
+        assertParseSuccess(parser, " " + PREFIX_PRIORITY + " \n high \n ", expectedFindCommand);
     }
 
     @Test
