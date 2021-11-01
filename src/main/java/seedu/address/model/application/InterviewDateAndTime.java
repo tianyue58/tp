@@ -15,7 +15,9 @@ import java.util.Comparator;
  */
 public class InterviewDateAndTime {
     public static final String MESSAGE_CONSTRAINTS = "The 'interview date and time' must be in YYYY-MM-DD HHmm format.";
-
+    public static final String MESSAGE_INVALIDDATEANDTIME = "The day-month-hour-minute combination is invalid.";
+    public static final String VALIDATION_REGEX =
+            "^\\d{4}\\-(0[1-9]|1[012])\\-(0[1-9]|[12][0-9]|3[01])\\ ([0-9][0-9][0-9][0-9])$";
     public final String value;
     public final LocalDateTime dateAndTime;
 
@@ -52,17 +54,27 @@ public class InterviewDateAndTime {
     }
 
     /**
-     * Returns true if a given string is a valid Interview date and time.
-     * A valid date and time should be in String format.
+     * Returns true if a given string is in YYYY-MM-DD HHmm format
+     * Only checks if the YYYY is a 4-bit digit, MM is from 1 to 12, DD is from 1 to 31, HHmm is a 4-bit digit,
+     * which doesn't account for invalid day-month-hour-minute combination
      */
     public static boolean isValidInterviewDateAndTime(String test) {
+        return test.matches(VALIDATION_REGEX);
+    }
+
+    /**
+     * Returns true if the given YYYY-MM-DD HHmm format actually forms a valid combination
+     * @param test a string in YYYY-MM-DD HHmm format
+     * @return whether the given YYYY-MM-DD HHmm format actually forms a valid combination
+     */
+    public static boolean isValidDateAndTime(String test) {
         try {
             LocalDateTime.parse(test, DateTimeFormatter.ofPattern("uuuu-MM-dd HHmm")
                     .withResolverStyle(ResolverStyle.STRICT));
-            return true;
         } catch (DateTimeParseException e) {
             return false;
         }
+        return true;
     }
 
     /**
@@ -85,7 +97,6 @@ public class InterviewDateAndTime {
             } else if (otherInterviewDateAndTime == null) {
                 return -1;
             }
-
             return interviewDateAndTime.dateAndTime.compareTo(otherInterviewDateAndTime.dateAndTime);
         };
     }

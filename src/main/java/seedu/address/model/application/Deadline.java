@@ -8,6 +8,9 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.Comparator;
 
+import seedu.address.logic.parser.ParserUtil;
+import seedu.address.logic.parser.exceptions.ParseException;
+
 /**
  * Represents an Application's deadline in InternSHIP.
  * Guarantees: immutable; is valid as declared in {@link #isValidDeadline(String)}
@@ -15,8 +18,8 @@ import java.util.Comparator;
 public class Deadline {
 
 
-    public static final String MESSAGE_CONSTRAINTS =
-            "Deadline should be in YYYY-MM-DD format.";
+    public static final String MESSAGE_CONSTRAINTS = "Deadline should be in YYYY-MM-DD format.";
+    public static final String MESSAGE_INVALIDDATE = "The day-month combination is invalid.";
     public static final String VALIDATION_REGEX = "^\\d{4}\\-(0[1-9]|1[012])\\-(0[1-9]|[12][0-9]|3[01])$";
     public final String value;
     public final LocalDate date;
@@ -43,18 +46,26 @@ public class Deadline {
     }
 
     /**
-     * Returns true if a given string is a valid deadline.
+     * Returns true if a given string is in YYYY-MM-DD format
+     * Only checks if the YYYY is a 4-bit digit, MM is from 1 to 12, DD is from 1 to 31, which doesn't account for
+     * invalid day-month combination
      */
     public static boolean isValidDeadline(String test) {
+        return test.matches(VALIDATION_REGEX);
+    }
+
+    /**
+     * Returns true if the given YYYY-MM-DD format actually forms a valid combination
+     * @param test a string in YYYY-MM-DD format
+     * @return whether the given YYYY-MM-DD format actually forms a valid combination
+     */
+    public static boolean isValidDate(String test) {
         try {
-            if (test.matches(VALIDATION_REGEX)) {
-                return true;
-            }
             LocalDate.parse(test);
-            return true;
         } catch (DateTimeParseException e) {
             return false;
         }
+        return true;
     }
 
     /**

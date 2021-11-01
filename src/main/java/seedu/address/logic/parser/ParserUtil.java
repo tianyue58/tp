@@ -92,7 +92,11 @@ public class ParserUtil {
         String trimmedDeadline = deadline.trim();
         if (!Deadline.isValidDeadline(trimmedDeadline)) {
             throw new ParseException(Deadline.MESSAGE_CONSTRAINTS);
-        }
+        } //only checks if the input string is in YYYY-MM-DD format
+        if (!Deadline.isValidDate(trimmedDeadline)) {
+            throw new ParseException(Deadline.MESSAGE_INVALIDDATE);
+        } //given that the string is in YYYY-MM-DD format, make sure the day-month combination is actually valid
+        //only if both checks passes can the deadline be considered as valid
         return new Deadline(trimmedDeadline);
     }
 
@@ -179,7 +183,11 @@ public class ParserUtil {
         String trimmedInterviewDateAndTime = dt.trim();
         if (!InterviewDateAndTime.isValidInterviewDateAndTime(trimmedInterviewDateAndTime)) {
             throw new ParseException(InterviewDateAndTime.MESSAGE_CONSTRAINTS);
-        }
+        } //only checks if the input string is in YYYY-MM-DD HHmm format
+        if (!InterviewDateAndTime.isValidDateAndTime(trimmedInterviewDateAndTime)) {
+            throw new ParseException(InterviewDateAndTime.MESSAGE_INVALIDDATEANDTIME);
+        } //given that the string is in YYYY-MM-DD HHmm format, make sure the combination is actually valid
+        //only if both checks passes can the dateAndTime be considered as valid
         return new InterviewDateAndTime(trimmedInterviewDateAndTime);
     }
 
