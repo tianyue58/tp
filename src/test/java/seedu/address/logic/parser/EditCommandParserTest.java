@@ -47,28 +47,49 @@ public class EditCommandParserTest {
     @Test
     public void parse_missingParts_failure() {
         // no index specified
-        assertParseFailure(parser, VALID_NAME_AMAZON, MESSAGE_INVALID_INDEX);
+        assertParseFailure(parser, VALID_NAME_AMAZON,
+                String.format(
+                        MESSAGE_INVALID_APPLICATION_DISPLAYED_INDEX + "\n%1$s",
+                                EditCommand.MESSAGE_USAGE));
 
         // no field specified
-        assertParseFailure(parser, "1", EditCommand.MESSAGE_NOT_EDITED);
+        assertParseFailure(parser, "1",
+                String.format(
+                        EditCommand.MESSAGE_NOT_EDITED + "\n%1$s",
+                                EditCommand.MESSAGE_USAGE));
 
         // no index and no field specified
-        assertParseFailure(parser, "", MESSAGE_INVALID_INDEX);
+        assertParseFailure(parser, "",
+                String.format(
+                        MESSAGE_INVALID_APPLICATION_DISPLAYED_INDEX + "\n%1$s",
+                                EditCommand.MESSAGE_USAGE));
     }
 
     @Test
     public void parse_invalidPreamble_failure() {
         // negative index
-        assertParseFailure(parser, "-5" + NAME_DESC_AMAZON, MESSAGE_INVALID_INDEX);
+        assertParseFailure(parser, "-5" + NAME_DESC_AMAZON,
+                String.format(
+                        MESSAGE_INVALID_APPLICATION_DISPLAYED_INDEX + "\n%1$s",
+                                EditCommand.MESSAGE_USAGE));
 
         // zero index
-        assertParseFailure(parser, "0" + NAME_DESC_AMAZON, MESSAGE_INVALID_INDEX);
+        assertParseFailure(parser, "0" + NAME_DESC_AMAZON,
+                String.format(
+                        MESSAGE_INVALID_APPLICATION_DISPLAYED_INDEX + "\n%1$s",
+                                EditCommand.MESSAGE_USAGE));
 
         // invalid arguments being parsed as preamble
-        assertParseFailure(parser, "1 some random string", MESSAGE_INVALID_INDEX);
+        assertParseFailure(parser, "1 some random string",
+                String.format(
+                        MESSAGE_INVALID_APPLICATION_DISPLAYED_INDEX + "\n%1$s",
+                                EditCommand.MESSAGE_USAGE));
 
         // invalid prefix being parsed as preamble
-        assertParseFailure(parser, "1 z/ string", MESSAGE_INVALID_INDEX);
+        assertParseFailure(parser, "1 z/ string",
+                String.format(
+                        MESSAGE_INVALID_APPLICATION_DISPLAYED_INDEX + "\n%1$s",
+                                EditCommand.MESSAGE_USAGE));
     }
 
     @Test
