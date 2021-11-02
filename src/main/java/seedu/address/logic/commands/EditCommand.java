@@ -78,7 +78,7 @@ public class EditCommand extends Command {
         List<Application> lastShownList = model.getFilteredApplicationList();
 
         if (index.getZeroBased() >= lastShownList.size()) {
-            throw new CommandException(Messages.MESSAGE_INVALID_APPLICATION_DISPLAYED_INDEX);
+            throw new CommandException(Messages.MESSAGE_INDEX_EXCEEDS_LIST_LENGTH);
         }
 
         Application applicationToEdit = lastShownList.get(index.getZeroBased());
