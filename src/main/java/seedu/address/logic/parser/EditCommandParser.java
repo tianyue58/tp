@@ -14,7 +14,6 @@ import java.util.Collections;
 import java.util.Optional;
 import java.util.Set;
 
-import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.EditCommand;
 import seedu.address.logic.commands.EditCommand.EditApplicationDescriptor;
@@ -47,11 +46,6 @@ public class EditCommandParser implements Parser<EditCommand> {
             throw new ParseException(String.format(
                     MESSAGE_INVALID_APPLICATION_DISPLAYED_INDEX + "\n%1$s",
                             EditCommand.MESSAGE_USAGE), pe);
-        }
-
-        if (index.isIndexAbsent()) {
-            throw new ParseException(String.format(Messages.MESSAGE_NO_INDEX_PROVIDED + "\n%1$s",
-                    EditCommand.MESSAGE_USAGE));
         }
 
         EditApplicationDescriptor editApplicationDescriptor = new EditApplicationDescriptor();

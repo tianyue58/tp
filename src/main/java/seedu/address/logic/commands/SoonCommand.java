@@ -35,8 +35,7 @@ public class SoonCommand extends Command {
             "There is no application close to the submission or interview deadlines";
     public static final String MESSAGE_SUCCESS =
             "Listed all applications that are close to the submission or interview deadlines";
-    public static final String MESSAGE_INVALID_DAY = "The DAY provided is invalid!";
-    public static final String MESSAGE_NO_DAY_PROVIDED = "No DAY is provided!";
+    public static final String MESSAGE_INVALID_DAY = "No valid DAY is provided!";
 
     private final Predicate<Application> predicate;
     private final Index days;

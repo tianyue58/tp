@@ -10,9 +10,7 @@ public class Messages {
 
     public static final String MESSAGE_INVALID_COMMAND_FORMAT = "Warning: Invalid command format! \n%1$s";
 
-    public static final String MESSAGE_NO_INDEX_PROVIDED = "Warning: No index is provided!";
-
-    public static final String MESSAGE_INVALID_APPLICATION_DISPLAYED_INDEX = "Warning: The index provided is invalid!";
+    public static final String MESSAGE_INVALID_APPLICATION_DISPLAYED_INDEX = "Warning: No valid index is provided!";
 
     public static final String MESSAGE_INDEX_EXCEEDS_LIST_LENGTH =
             "Warning: The index provided exceeds the length of the displayed list!";

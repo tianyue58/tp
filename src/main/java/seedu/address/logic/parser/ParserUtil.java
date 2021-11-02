@@ -33,9 +33,6 @@ public class ParserUtil {
      */
     public static Index parseIndex(String oneBasedIndex) throws ParseException {
         String trimmedIndex = oneBasedIndex.trim();
-        if (trimmedIndex.length() == 0) {
-            return Index.constructEmptyIndex();
-        }
         if (!StringUtil.isNonZeroUnsignedInteger(trimmedIndex)) {
             throw new ParseException(MESSAGE_INVALID_INDEX);
         }
@@ -49,9 +46,6 @@ public class ParserUtil {
      */
     public static Index parseDays(String zeroBasedIndex) throws ParseException {
         String trimmedIndex = zeroBasedIndex.trim();
-        if (trimmedIndex.length() == 0) {
-            return Index.constructEmptyIndex();
-        }
         if (!StringUtil.isNonNegativeInteger(trimmedIndex)) {
             throw new ParseException(MESSAGE_INVALID_DAYS);
         }

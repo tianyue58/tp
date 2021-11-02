@@ -1,7 +1,6 @@
 package seedu.address.logic.parser;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_APPLICATION_DISPLAYED_INDEX;
-import static seedu.address.commons.core.Messages.MESSAGE_NO_INDEX_PROVIDED;
 import static seedu.address.logic.commands.CommandTestUtil.DEADLINE_DESC_AMAZON;
 import static seedu.address.logic.commands.CommandTestUtil.DEADLINE_DESC_BYTEDANCE;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_DEADLINE_DESC;
@@ -42,7 +41,7 @@ public class EditCommandParserTest {
     public void parse_missingParts_failure() {
         //no index specified
         assertParseFailure(parser, POSITION_DESC_BYTEDANCE,
-                String.format(MESSAGE_NO_INDEX_PROVIDED + "\n%1$s", EditCommand.MESSAGE_USAGE));
+                String.format(MESSAGE_INVALID_APPLICATION_DISPLAYED_INDEX + "\n%1$s", EditCommand.MESSAGE_USAGE));
 
         // no field specified
         assertParseFailure(parser, "1",
@@ -50,7 +49,7 @@ public class EditCommandParserTest {
 
         // no index and no field specified
         assertParseFailure(parser, "",
-                String.format(MESSAGE_NO_INDEX_PROVIDED + "\n%1$s", EditCommand.MESSAGE_USAGE));
+                String.format(MESSAGE_INVALID_APPLICATION_DISPLAYED_INDEX + "\n%1$s", EditCommand.MESSAGE_USAGE));
     }
 
     @Test

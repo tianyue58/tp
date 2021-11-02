@@ -54,11 +54,6 @@ public class SoonCommandParser implements Parser<SoonCommand> {
                     SoonCommand.MESSAGE_USAGE), pe);
         }
 
-        if (days.isIndexAbsent()) {
-            throw new ParseException(String.format(SoonCommand.MESSAGE_NO_DAY_PROVIDED
-                    + "\n%1$s", SoonCommand.MESSAGE_USAGE));
-        }
-
         return prefix.equals(PREFIX_DEADLINE_OF_APPLICATION)
                 ? new SoonCommand(days, new SoonDeadlinePredicate(days))
                 : new SoonCommand(days, new InterviewDateAndTimePredicate(days));
