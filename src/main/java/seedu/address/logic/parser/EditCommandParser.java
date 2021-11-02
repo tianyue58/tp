@@ -74,7 +74,7 @@ public class EditCommandParser implements Parser<EditCommand> {
 
 
         if (!editApplicationDescriptor.isAnyFieldEdited()) {
-            throw new ParseException(String.format(EditCommand.MESSAGE_NOT_EDITED + "\n%1$s",
+            throw new ParseException(String.format(EditCommand.MESSAGE_NO_FILED_PROVIDED + "\n%1$s",
                     EditCommand.MESSAGE_USAGE));
         }
 
