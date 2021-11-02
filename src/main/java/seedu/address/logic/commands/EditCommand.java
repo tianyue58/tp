@@ -84,7 +84,7 @@ public class EditCommand extends Command {
 
         Application applicationToEdit = lastShownList.get(index.getZeroBased());
         Application editedApplication = createEditedApplication(applicationToEdit, editApplicationDescriptor);
-
+        
         if (applicationToEdit.equals(editedApplication)) {
             throw new CommandException(MESSAGE_NOTHING_EDITED);
         }

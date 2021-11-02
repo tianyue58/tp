@@ -143,6 +143,7 @@ public class Application {
                 && otherApplication.getDeadline().equals(getDeadline())
                 && otherApplication.getCompletion().equals(getCompletion())
                 && otherApplication.getStatus().equals(getStatus())
+                && otherApplication.getPriority().equals(getPriority())
                 && otherApplication.getRequirements().equals(getRequirements())
                 && otherApplication.getInterviewDateAndTime().equals(getInterviewDateAndTime());
     }
