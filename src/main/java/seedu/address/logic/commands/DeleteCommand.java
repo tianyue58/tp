@@ -18,8 +18,8 @@ public class DeleteCommand extends Command {
     public static final String COMMAND_WORD = "delete";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD.toUpperCase()
-            + " command: Deletes the details of the application at the specified index "
-            + "(as identified by the index in the displayed application list)\n"
+            + " command: Deletes the details of the application at the specified index"
+            + " (as identified by the index in the displayed application list)\n"
             + "Parameters: "
             + Messages.MESSAGE_INDEX_REQUIREMENT + "\n"
             + "Example: " + COMMAND_WORD + " 1";

@@ -2,8 +2,10 @@ package seedu.address.logic.parser;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_APPLICATION_DISPLAYED_INDEX;
 
+import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.CompleteCommand;
+import seedu.address.logic.commands.DeleteCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 
 
@@ -18,13 +20,22 @@ public class CompleteCommandParser implements Parser<CompleteCommand> {
      * @throws ParseException if the user input does not conform the expected format
      */
     public CompleteCommand parse(String args) throws ParseException {
+        Index index;
+
         try {
-            Index index = ParserUtil.parseIndex(args);
-            return new CompleteCommand(index);
+            index = ParserUtil.parseIndex(args);
+
         } catch (ParseException pe) {
-            throw new ParseException(
-                    String.format(MESSAGE_INVALID_APPLICATION_DISPLAYED_INDEX + "\n%1$s",
+            throw new ParseException(String.format(MESSAGE_INVALID_APPLICATION_DISPLAYED_INDEX + "\n%1$s",
                             CompleteCommand.MESSAGE_USAGE), pe);
         }
+
+        if (index.isIndexAbsent()) {
+            throw new ParseException(String.format(Messages.MESSAGE_NO_INDEX_PROVIDED
+                    + "\n%1$s", CompleteCommand.MESSAGE_USAGE));
+        }
+
+        return new CompleteCommand(index);
     }
+
 }

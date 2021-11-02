@@ -41,7 +41,8 @@ public class EditCommand extends Command {
             + " command: Edits the details of the application at the specified index "
             + "(as identified by the index in the displayed application list)\n"
             + "Existing values will be overwritten by the input values.\n"
-            + "Parameters: INDEX (must be a positive integer) "
+            + "Parameters: "
+            + Messages.MESSAGE_INDEX_REQUIREMENT + "\n"
             + PREFIX_COMPANY_NAME + "COMPANY_NAME "
             + PREFIX_INTERNSHIP_POSITION + "INTERNSHIP_POSITION "
             + PREFIX_DEADLINE_OF_APPLICATION + "APPLICATION_DEADLINE "
@@ -55,7 +56,7 @@ public class EditCommand extends Command {
     public static final String MESSAGE_EDIT_APPLICATION_SUCCESS = "Edited Application: %1$s";
     public static final String MESSAGE_NO_FILED_PROVIDED = "At least one field to be edited must be provided.";
     public static final String MESSAGE_DUPLICATE_APPLICATION = "This application already exists in the InternSHIP.";
-    public static final String MESSAGE_NOTHING_EDITED = "No information has been edited.";
+    public static final String MESSAGE_NOTHING_EDITED = "No information has been edited!";
 
     private final Index index;
     private final EditApplicationDescriptor editApplicationDescriptor;

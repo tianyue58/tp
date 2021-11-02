@@ -50,6 +50,9 @@ public class ParserUtil {
      */
     public static Index parseDays(String zeroBasedIndex) throws ParseException {
         String trimmedIndex = zeroBasedIndex.trim();
+        if (trimmedIndex.length() == 0) {
+            return Index.constructEmptyIndex();
+        }
         if (!StringUtil.isNonNegativeInteger(trimmedIndex)) {
             throw new ParseException(MESSAGE_INVALID_DAYS);
         }

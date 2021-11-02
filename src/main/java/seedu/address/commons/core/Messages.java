@@ -19,7 +19,7 @@ public class Messages {
 
     public static final String MESSAGE_APPLICATION_LISTED_OVERVIEW = "%1$d %2$s listed";
 
-    public static final String MESSAGE_INDEX_REQUIREMENT = "INDEX"
+    public static final String MESSAGE_INDEX_REQUIREMENT = "INDEX "
         + "(must be a positive integer that doesn't exceed the length of the displayed list)";
 
 }

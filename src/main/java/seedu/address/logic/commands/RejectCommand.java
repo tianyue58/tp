@@ -26,10 +26,11 @@ import seedu.address.model.application.Status;
 public class RejectCommand extends Command {
     public static final String COMMAND_WORD = "reject";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Marks the application identified by the index number as 'Rejected' "
-            + "in the displayed application list.\n"
-            + "Parameters: INDEX (must be a positive integer)\n"
+    public static final String MESSAGE_USAGE = COMMAND_WORD.toUpperCase()
+            + " command: Marks the application at a specified index"
+            + " (as identified by the index in the displayed application list) as 'Rejected'\n"
+            + "Parameters: "
+            + Messages.MESSAGE_INDEX_REQUIREMENT + "\n"
             + "Example: " + COMMAND_WORD + " 1";
 
     public static final String MESSAGE_SUCCESS = "Marked application as 'Rejected': %1$s";
@@ -52,7 +53,7 @@ public class RejectCommand extends Command {
         List<Application> lastShownList = model.getFilteredApplicationList();
 
         if (targetIndex.getZeroBased() >= lastShownList.size()) {
-            throw new CommandException(Messages.MESSAGE_INVALID_APPLICATION_DISPLAYED_INDEX);
+            throw new CommandException(Messages.MESSAGE_INDEX_EXCEEDS_LIST_LENGTH);
         }
 
         Application applicationToReject = lastShownList.get(targetIndex.getZeroBased());
