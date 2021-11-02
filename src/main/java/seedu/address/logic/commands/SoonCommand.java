@@ -18,21 +18,24 @@ import seedu.address.model.application.SoonDeadlinePredicate;
 public class SoonCommand extends Command {
 
     public static final String COMMAND_WORD = "soon";
-    public static final String MESSAGE_EMPTY_LIST =
-            "There is no application close to the submission or interview deadlines";
-    public static final String MESSAGE_SUCCESS =
-            "Listed all applications that are close to the submission or interview deadlines";
-    public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Shows the applications that are close to the submission or interview deadlines.\n"
+
+    public static final String MESSAGE_USAGE = COMMAND_WORD.toUpperCase()
+            + " command: Shows all applications that are close to the submission or interview deadlines.\n"
             + "Parameters: \n"
-            + PREFIX_DEADLINE_OF_APPLICATION + " DAYS (must be 0 or a positive integer)\n"
-            + PREFIX_INTERVIEW_DATE_AND_TIME + " DAYS (must be 0 or a positive integer)\n"
-            + "Only one prefix should be supplied \n"
+            + PREFIX_DEADLINE_OF_APPLICATION + " DAYS, or " + PREFIX_INTERVIEW_DATE_AND_TIME + " DAYS\n"
+            + "DAYS must be a non-negative integer.\n"
+            + "Only one prefix should be supplied each time. \n"
             + "Example: \n"
             + "Find by submission deadline: " + COMMAND_WORD + " "
             + PREFIX_DEADLINE_OF_APPLICATION + "1 \n"
             + "Find by interview deadline: " + COMMAND_WORD + " "
             + PREFIX_INTERVIEW_DATE_AND_TIME + "1 ";
+
+    public static final String MESSAGE_EMPTY_LIST =
+            "There is no application close to the submission or interview deadlines";
+    public static final String MESSAGE_SUCCESS =
+            "Listed all applications that are close to the submission or interview deadlines";
+    public static final String MESSAGE_INVALID_DAY = "No valid DAY is provided!";
 
     private final Predicate<Application> predicate;
     private final Index days;

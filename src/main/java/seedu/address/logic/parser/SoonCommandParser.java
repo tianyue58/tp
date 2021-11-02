@@ -31,31 +31,32 @@ public class SoonCommandParser implements Parser<SoonCommand> {
             throw new ParseException(
                     String.format(MESSAGE_INVALID_COMMAND_FORMAT, SoonCommand.MESSAGE_USAGE));
         }
+
+        Prefix prefix;
+
         if (argMultimap.getValue(PREFIX_DEADLINE_OF_APPLICATION).isPresent()) {
-            try {
-                Index days = ParserUtil.parseDays(argMultimap
-                        .getValue(PREFIX_DEADLINE_OF_APPLICATION)
-                        .get()
-                        .trim());
-                return new SoonCommand(days, new SoonDeadlinePredicate(days));
-            } catch (ParseException pe) {
-                throw new ParseException(
-                        String.format(pe.getMessage(), SoonCommand.MESSAGE_USAGE), pe);
-            }
+            prefix = PREFIX_DEADLINE_OF_APPLICATION;
+        } else if (argMultimap.getValue(PREFIX_INTERVIEW_DATE_AND_TIME).isPresent()) {
+            prefix = PREFIX_INTERVIEW_DATE_AND_TIME;
+        } else {
+            throw new ParseException(
+                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, SoonCommand.MESSAGE_USAGE));
         }
-        if (argMultimap.getValue(PREFIX_INTERVIEW_DATE_AND_TIME).isPresent()) {
-            try {
-                Index days = ParserUtil.parseDays(argMultimap
-                        .getValue(PREFIX_INTERVIEW_DATE_AND_TIME)
-                        .get()
-                        .trim());
-                return new SoonCommand(days, new InterviewDateAndTimePredicate(days));
-            } catch (ParseException pe) {
-                throw new ParseException(
-                        String.format(pe.getMessage(), SoonCommand.MESSAGE_USAGE), pe);
-            }
+
+        Index days;
+        try {
+            days = ParserUtil.parseDays(argMultimap
+                    .getValue(prefix)
+                    .get()
+                    .trim());
+        } catch (ParseException pe) {
+            throw new ParseException(String.format(SoonCommand.MESSAGE_INVALID_DAY + "\n%1$s",
+                    SoonCommand.MESSAGE_USAGE), pe);
         }
-        throw new ParseException(
-                String.format(MESSAGE_INVALID_COMMAND_FORMAT, SoonCommand.MESSAGE_USAGE));
+
+        return prefix.equals(PREFIX_DEADLINE_OF_APPLICATION)
+                ? new SoonCommand(days, new SoonDeadlinePredicate(days))
+                : new SoonCommand(days, new InterviewDateAndTimePredicate(days));
+
     }
 }

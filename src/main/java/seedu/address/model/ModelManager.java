@@ -181,4 +181,14 @@ public class ModelManager implements Model {
         return versionedInternship.canRedo();
     }
 
+    //=========== Other utility methods ===========================================================================
+    @Override
+    public boolean hasInterviewTimeInList() {
+        for (Application application: filteredApplications) {
+            if (application.hasInterviewTime()) {
+                return true;
+            }
+        }
+        return false;
+    }
 }

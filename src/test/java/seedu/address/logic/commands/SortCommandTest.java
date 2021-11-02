@@ -75,8 +75,8 @@ public class SortCommandTest {
         expectedInternship.addApplication(GRAB);
         expectedInternship.addApplication(AMAZON);
         expectedModel = new ModelManager(expectedInternship, new UserPrefs());
-        assertCommandSuccess(new SortCommand("interview"), model,
-                String.format(SortCommand.MESSAGE_SUCCESS, "interview"), expectedModel);
+        assertCommandSuccess(new SortCommand("interview date and time"), model,
+                String.format(SortCommand.MESSAGE_SUCCESS, "interview date and time"), expectedModel);
     }
 
     @Test

@@ -17,9 +17,11 @@ public class DeleteCommand extends Command {
 
     public static final String COMMAND_WORD = "delete";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Deletes the application identified by the index number used in the displayed application list.\n"
-            + "Parameters: INDEX (must be a positive integer)\n"
+    public static final String MESSAGE_USAGE = COMMAND_WORD.toUpperCase()
+            + " command: Deletes the details of the application at the specified index"
+            + " (as identified by the index in the displayed application list)\n"
+            + "Parameters: "
+            + Messages.MESSAGE_INDEX_REQUIREMENT + "\n"
             + "Example: " + COMMAND_WORD + " 1";
 
     public static final String MESSAGE_DELETE_APPLICATION_SUCCESS = "Deleted Application: %1$s";
@@ -41,7 +43,7 @@ public class DeleteCommand extends Command {
         List<Application> lastShownList = model.getFilteredApplicationList();
 
         if (targetIndex.getZeroBased() >= lastShownList.size()) {
-            throw new CommandException(Messages.MESSAGE_INVALID_APPLICATION_DISPLAYED_INDEX);
+            throw new CommandException(Messages.MESSAGE_INDEX_EXCEEDS_LIST_LENGTH);
         }
 
         Application applicationToDelete = lastShownList.get(targetIndex.getZeroBased());

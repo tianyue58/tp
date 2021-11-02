@@ -28,15 +28,15 @@ public class FindCommand extends Command {
 
     public static final String COMMAND_WORD = "find";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Finds all applications whose names, positions, "
+    public static final String MESSAGE_USAGE = COMMAND_WORD.toUpperCase()
+            + " command: Finds all applications whose names, positions, "
             + "requirements, priority, completion or status contain any of "
             + "the specified keywords (case-insensitive) and displays them as a list with index numbers.\n"
             + "Parameters:\n"
             + PREFIX_COMPANY_NAME + "COMPANY_NAME "
             + PREFIX_INTERNSHIP_POSITION + "INTERNSHIP_POSITION "
             + PREFIX_REQUIREMENT + "APPLICATION_REQUIREMENTS "
-            + PREFIX_PRIORITY + "PRIORITY "
+            + PREFIX_PRIORITY + "APPLICATION_PRIORITY "
             + PREFIX_COMPLETION + "APPLICATION_COMPLETION "
             + PREFIX_STATUS + "APPLICATION_STATUS\n"
             + "Only one criteria (prefix) should be supplied each time\n"

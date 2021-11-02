@@ -41,7 +41,7 @@ public class AcceptCommandTest {
         Index outOfBoundIndex = Index.fromOneBased(model.getFilteredApplicationList().size() + 1);
         AcceptCommand acceptCommand = new AcceptCommand(outOfBoundIndex);
 
-        assertCommandFailure(acceptCommand, model, Messages.MESSAGE_INVALID_APPLICATION_DISPLAYED_INDEX);
+        assertCommandFailure(acceptCommand, model, Messages.MESSAGE_INDEX_EXCEEDS_LIST_LENGTH);
     }
 
     @Test
@@ -54,7 +54,7 @@ public class AcceptCommandTest {
 
         AcceptCommand acceptCommand = new AcceptCommand(outOfBoundIndex);
 
-        assertCommandFailure(acceptCommand, model, Messages.MESSAGE_INVALID_APPLICATION_DISPLAYED_INDEX);
+        assertCommandFailure(acceptCommand, model, Messages.MESSAGE_INDEX_EXCEEDS_LIST_LENGTH);
     }
 
     @Test

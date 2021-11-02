@@ -171,6 +171,11 @@ public class AddCommandTest {
         public boolean canRedoInternship() {
             throw new AssertionError("This method should not be called.");
         }
+
+        @Override
+        public boolean hasInterviewTimeInList() {
+            throw new AssertionError("This method should not be called.");
+        }
     }
 
     /**

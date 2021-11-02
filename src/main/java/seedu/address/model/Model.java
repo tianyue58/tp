@@ -114,4 +114,12 @@ public interface Model {
      */
     boolean canRedoInternship();
 
+    /**
+     * Returns true if there is at least one application in the currently visible list whose
+     * interview time list is not empty
+     * @return true if there is at least one application in the currently visible list whose
+     *      * interview time list is not empty, and false otherwise
+     */
+    boolean hasInterviewTimeInList();
+
 }

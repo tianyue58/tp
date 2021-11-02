@@ -37,25 +37,26 @@ public class EditCommand extends Command {
 
     public static final String COMMAND_WORD = "edit";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Edits the details of "
-            + "the application identified "
-            + "by the index number used in the displayed application list. "
+    public static final String MESSAGE_USAGE = COMMAND_WORD.toUpperCase()
+            + " command: Edits the details of the application at the specified index "
+            + "(as identified by the index in the displayed application list)\n"
             + "Existing values will be overwritten by the input values.\n"
-            + "Parameters: INDEX (must be a positive integer) "
-            + PREFIX_COMPANY_NAME + "COMPANY "
-            + PREFIX_INTERNSHIP_POSITION + "POSITION "
-            + PREFIX_DEADLINE_OF_APPLICATION + "DEADLINE "
-            + PREFIX_PRIORITY + "PRIORITY "
-            + PREFIX_REQUIREMENT + "REQUIREMENT "
-            + PREFIX_INTERVIEW_DATE_AND_TIME + "INTERVIEW_TIME\n"
+            + "Parameters: "
+            + Messages.MESSAGE_INDEX_REQUIREMENT + "\n"
+            + PREFIX_COMPANY_NAME + "COMPANY_NAME "
+            + PREFIX_INTERNSHIP_POSITION + "INTERNSHIP_POSITION "
+            + PREFIX_DEADLINE_OF_APPLICATION + "APPLICATION_DEADLINE "
+            + PREFIX_PRIORITY + "APPLICATION_PRIORITY "
+            + PREFIX_REQUIREMENT + "APPLICATION_REQUIREMENTS "
+            + PREFIX_INTERVIEW_DATE_AND_TIME + "INTERVIEW_DATE_AND_TIME\n"
             + "Example: " + COMMAND_WORD + " 1 "
             + PREFIX_INTERNSHIP_POSITION + "UI designer "
             + PREFIX_DEADLINE_OF_APPLICATION + "2021-12-23";
 
     public static final String MESSAGE_EDIT_APPLICATION_SUCCESS = "Edited Application: %1$s";
-    public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
+    public static final String MESSAGE_NO_FILED_PROVIDED = "At least one field to be edited must be provided.";
     public static final String MESSAGE_DUPLICATE_APPLICATION = "This application already exists in the InternSHIP.";
+    public static final String MESSAGE_NOTHING_EDITED = "No information has been edited!";
 
     private final Index index;
     private final EditApplicationDescriptor editApplicationDescriptor;
@@ -78,11 +79,15 @@ public class EditCommand extends Command {
         List<Application> lastShownList = model.getFilteredApplicationList();
 
         if (index.getZeroBased() >= lastShownList.size()) {
-            throw new CommandException(Messages.MESSAGE_INVALID_APPLICATION_DISPLAYED_INDEX);
+            throw new CommandException(Messages.MESSAGE_INDEX_EXCEEDS_LIST_LENGTH);
         }
 
         Application applicationToEdit = lastShownList.get(index.getZeroBased());
         Application editedApplication = createEditedApplication(applicationToEdit, editApplicationDescriptor);
+
+        if (applicationToEdit.equals(editedApplication)) {
+            throw new CommandException(MESSAGE_NOTHING_EDITED);
+        }
 
         if (!applicationToEdit.isSameApplication(editedApplication) && model.hasApplication(editedApplication)) {
             throw new CommandException(MESSAGE_DUPLICATE_APPLICATION);
