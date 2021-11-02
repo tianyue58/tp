@@ -47,7 +47,7 @@ public class SortCommandParser implements Parser<SortCommand> {
             parameter = "deadline";
         }
         if (argMultimap.getValue(PREFIX_INTERVIEW_DATE_AND_TIME).isPresent()) {
-            parameter = "interview";
+            parameter = "interview date and time";
         }
         if (argMultimap.getValue(PREFIX_PRIORITY).isPresent()) {
             parameter = "priority";

@@ -105,6 +105,10 @@ public class Application {
         return Collections.unmodifiableSet(interviewDateAndTime);
     }
 
+    public boolean hasInterviewTime() {
+        return !interviewDateAndTime.isEmpty();
+    }
+
     /**
      * Returns true if both applications have the same name and position.
      * This defines a weaker notion of equality between two applications.

@@ -13,6 +13,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.function.Predicate;
 
+import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Internship;
 import seedu.address.model.Model;
 import seedu.address.model.application.Application;
@@ -29,12 +30,13 @@ public class SortCommand extends Command {
 
     public static final String COMMAND_WORD = "sort";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Sorts all applications in InternSHIP by the given application detail.\n"
+    public static final String MESSAGE_USAGE =
+            COMMAND_WORD.toUpperCase()
+            + "command: Sorts all the applications in InternSHIP by the given criteria.\n"
             + "Sorting by company name or internship position sorts applications in alphabetical order.\n"
             + "Sorting by application deadline sorts applications from closer deadlines to later deadlines.\n"
             + "Sorting by interview date and time sorts applications from closer interviews to later interviews.\n"
-            + "Sorting by priority sorts applications from higher to lower priority.\n"
+            + "Sorting by priority sorts applications from highest to lowest priority.\n"
             + "Parameters:\n"
             + PREFIX_COMPANY_NAME + " "
             + PREFIX_INTERNSHIP_POSITION + " "
@@ -51,7 +53,9 @@ public class SortCommand extends Command {
     public static final String MESSAGE_SUCCESS = "Sorted applications by %s";
     public static final String MESSAGE_PARAMETER_NOT_SPECIFIED = "At least one parameter (application detail) "
             + "to sort by must be provided.\n";
-    public static final String MESSAGE_EMPTY_LIST = "There are no applications in your internship list to sort";
+    public static final String MESSAGE_EMPTY_LIST = "There is no application in your internship list to sort!";
+    public static final String MESSAGE_NO_INTERVIEW_TIME = "There is no application in your internship list "
+            + "that has an interview date and time!";
 
     private final String parameter;
 
@@ -63,18 +67,24 @@ public class SortCommand extends Command {
      */
     public SortCommand(String parameter) {
         requireNonNull(parameter);
-
         this.parameter = parameter;
     }
 
     @Override
-    public CommandResult execute(Model model) {
+    public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
         List<Application> lastShownList = model.getFilteredApplicationList();
         final List<Application> immutableLastShownList = new ArrayList<>(lastShownList);
         final Predicate<Application> containedInLastShownListPredicate = immutableLastShownList::contains;
 
         model.updateFilteredApplicationList(PREDICATE_SHOW_ALL_APPLICATIONS);
+
+        if (parameter.equals("interview date and time")) {
+            if (!model.hasInterviewTimeInList()) {
+                throw new CommandException(MESSAGE_NO_INTERVIEW_TIME);
+            }
+        }
+
         List<Application> allApplications = model.getFilteredApplicationList();
 
         Comparator<Application> comparator = this.getComparator();
@@ -107,7 +117,7 @@ public class SortCommand extends Command {
             return Position.getComparator();
         case "deadline":
             return Deadline.getComparator();
-        case "interview":
+        case "interview date and time":
             return InterviewDateAndTime.getComparator();
         case "priority":
             return Priority.getComparator();
