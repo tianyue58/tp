@@ -10,6 +10,7 @@ package seedu.address.commons.core.index;
  */
 public class Index {
     private int zeroBasedIndex;
+    private boolean noIndex = false;
 
     /**
      * Index can only be created by calling {@link Index#fromZeroBased(int)} or
@@ -21,6 +22,10 @@ public class Index {
         }
 
         this.zeroBasedIndex = zeroBasedIndex;
+    }
+
+    private Index() {
+        this.noIndex = true;
     }
 
     public int getZeroBased() {
@@ -43,6 +48,14 @@ public class Index {
      */
     public static Index fromOneBased(int oneBasedIndex) {
         return new Index(oneBasedIndex - 1);
+    }
+
+    public static Index constructEmptyIndex() {
+        return new Index();
+    }
+
+    public boolean isIndexAbsent() {
+        return noIndex;
     }
 
     @Override
