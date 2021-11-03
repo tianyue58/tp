@@ -3,7 +3,7 @@ layout: page
 title: Willy's Project Portfolio Page
 ---
 
-### Project: internSHIP
+### Project: InternSHIP
 
 InternSHIP is a desktop app for university students to manage their internship applications. 
 InternSHIP has been optimized for use via a Command Line Interface (CLI) while still having the benefits of a Graphical User Interface (GUI).
@@ -34,15 +34,15 @@ Given below are my contributions to the project.
   * Highlights: This implementation of the new GUI was challenging as it needed to be constantly changed as more fields were added.
   * Several factors were also taken into consideration, such as the right width for each column, to allow the GUI to be displayed correctly on any platform.
 
-* **Code contributed**: [RepoSense link](https://nus-cs2103-ay2122s1.github.io/tp-dashboard/#breakdown=true&search=willyamped)
-
-* **Project management**:
-  * Managed releases `v1.3` - (1 release) on GitHub
-
 * **Enhancements to existing features**:
   * Updated the GUI layout (Pull request [\#117](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/117))
   * Wrote additional tests for existing features to increase coverage (Pull requests [\#103](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/103))
   * Fixed bugs from Practical Examination Dry Run (Pull request [\#216](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/216))
+  
+* **Code contributed**: [RepoSense link](https://nus-cs2103-ay2122s1.github.io/tp-dashboard/#breakdown=true&search=willyamped)
+
+* **Project management**:
+  * Managed releases `v1.3` - (1 release) on GitHub
 
 * **Documentation**:
   * User Guide:
