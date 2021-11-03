@@ -1,6 +1,7 @@
 package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.model.Model.PREDICATE_SHOW_ALL_APPLICATIONS;
 
 import java.util.List;
 import java.util.Set;
@@ -68,6 +69,7 @@ public class CompleteCommand extends Command {
         Application completedApplication = new Application(company, position, deadline, completion, status, priority,
                 requirementList, interviewDateAndTimeList);
         model.setApplication(applicationToComplete, completedApplication);
+        model.updateFilteredApplicationList(PREDICATE_SHOW_ALL_APPLICATIONS);
         model.commitInternship(model.getInternship());
 
         return new CommandResult(String.format(MESSAGE_SUCCESS, completedApplication));
