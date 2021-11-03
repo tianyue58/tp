@@ -40,24 +40,16 @@ Given below are my contributions to the project.
   * Managed releases `v1.3` - (1 release) on GitHub
 
 * **Enhancements to existing features**:
-  * Updated the GUI color scheme (Pull requests [\#33](), [\#34]())
-  * Wrote additional tests for existing features to increase coverage from 88% to 92% (Pull requests [\#36](), [\#38]())
+  * Updated the GUI layout (Pull request [\#117](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/117))
+  * Wrote additional tests for existing features to increase coverage (Pull requests [\#103](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/103))
+  * Fixed bugs from Practical Examination Dry Run (Pull request [\#216](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/216))
 
 * **Documentation**:
   * User Guide:
-    * Added documentation for the features `delete` and `find` [\#72]()
-    * Did cosmetic tweaks to existing documentation of features `clear`, `exit`: [\#74]()
+    * Added documentation for the features `soon` and `complete` (Pull request [\#126](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/126), [\#33](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/33))
   * Developer Guide:
-    * Added implementation details of the `delete` feature.
-
-* **Community**:
-  * PRs reviewed (with non-trivial review comments): [\#12](), [\#32](), [\#19](), [\#42]()
-  * Contributed to forum discussions (examples: [1](), [2](), [3](), [4]())
-  * Reported bugs and suggestions for other teams in the class (examples: [1](), [2](), [3]())
-  * Some parts of the history feature I added was adopted by several other class mates ([1](), [2]())
+    * Added implementation details of the `soon` and `complete` features. (Pull request [\#146](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/146), [\#96](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/96))
 
 * **Tools**:
-  * Integrated a third party library (Natty) to the project ([\#42]())
-  * Integrated a new Github plugin (CircleCI) to the team repo
+  * Integrated a third party library (DateTimeFormatter) to the project (Pull request [\#216](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/216))
 
-* _{you can add/remove categories in the list above}_
