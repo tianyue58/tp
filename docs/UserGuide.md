@@ -318,14 +318,10 @@ Updates the application outcome (status) of an application to **'Accepted'**.
 
 <div markdown="span" class="alert alert-info"> 
 :information_source: **Info:** <br>
-The application outcome is the **decision/outcome provided by the company** <br>
-on whether the candidate has been `Accepted` or not for the role. <br>
-It is different from the 'Completion Status', which represents whether the <br>
-user has completed submitting the application (and all related requirements) or not. <br>
+The application outcome is the **decision/outcome provided by the company** on whether the candidate has been `Accepted` or not for the role. <br>
+It is different from the 'Completion Status', which represents whether the user has completed submitting the application (and all related requirements) or not. <br>
 <br>
-When a new application is added, the outcome is `Pending` by default as it is assumed <br>
-that the user has not received the decision from the company yet. The outcome can <br> 
-later be changed to `Accepted` using the `accept` command. 
+When a new application is added, the outcome is `Pending` by default as it is assumed that the user has not received the decision from the company yet. The outcome can later be changed to `Accepted` using the `accept` command. 
 </div>
 
 Format: `accept INDEX`
@@ -353,14 +349,10 @@ Updates the application outcome (status) of an application to **'Rejected'**.
 
 <div markdown="span" class="alert alert-info"> 
 :information_source: **Info:** <br>
-The application outcome is the **decision/outcome provided by the company** <br>
-on whether the candidate has been `Rejected` or not for the role. <br>
-It is different from the 'Completion Status', which represents whether the <br>
-user has completed submitting the application (and all related requirements) or not. <br>
+The application outcome is the **decision/outcome provided by the company** on whether the candidate has been `Rejected` or not for the role. <br>
+It is different from the 'Completion Status', which represents whether the user has completed submitting the application (and all related requirements) or not. <br>
 <br>
-When a new application is added, the outcome is `Pending` by default as it is assumed <br>
-that the user has not received the decision from the company yet. The outcome can <br> 
-later be changed to `Rejected` using the `reject` command.
+When a new application is added, the outcome is `Pending` by default as it is assumed that the user has not received the decision from the company yet. The outcome can later be changed to `Rejected` using the `reject` command.
 </div>
 
 Format: `reject INDEX`
@@ -400,7 +392,7 @@ The available fields are: <br>
 Format: `soon FIELD DAYS`
 
 * Find applications that are within `DAYS` days.
-* The number of days must be an **integer** 0, 1, 2, …​ 
+* The number of days must be a **positive integer** 0, 1, 2, …​ 
 * The number must not be more than the maximum integer value (i.e 2147483647). 
 * Other values will be considered invalid.
 * Only one field and one keyword can be provided each time.
@@ -420,10 +412,7 @@ Examples:
 
 #### Finding entries by keyword : `find`
 
-<div markdown="span" class="alert alert-danger"> :warning: **Warning:** This command will display a filtered list. If you want to go back and view the full list of applications in InternSHIP, use the `list` command (explained below) after this command instead of `undo` command!
-</div>
-
-<div markdown="span" class="alert alert-danger"> :warning: **Warning:** This command changes the displayed list in InternSHIP! The index of the entries will change too! Make sure to check the index again before using commands like `delete` or `complete`!
+<div markdown="span" class="alert alert-danger"> :warning: **Warning:** This command will display a filtered list. If you want to go back and view the full list of applications in InternSHIP, use the `list` command (explained below) after this command instead of the `undo` command!
 </div>
 
 Finds application(s) from the application list.
@@ -484,10 +473,7 @@ Format: `list`
 
 #### Sorting the entries : `sort`
 
-<div markdown="span" class="alert alert-danger"> :warning: **Warning:** This command cannot be undone!
-</div>
-
-<div markdown="span" class="alert alert-danger"> :warning: **Warning:** This command changes the displayed list in InternSHIP! The index of the entries will change too! Make sure to check the index again before using commands like `delete` or `complete`!
+<div markdown="span" class="alert alert-danger"> :warning: **Warning:** The `undo` command cannot undo list sorting!
 </div>
 
 Sorts all entries in the **currently displayed** application list by a specified field.
