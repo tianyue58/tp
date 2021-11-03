@@ -204,7 +204,7 @@ These fields can be changed later using the `edit`, `complete` or `accept/reject
 - `APPLICATION_OUTCOME` (i.e., application status) set as `Pending` <br>
 <br>
 Additionally, `APPLICATION_REQUIREMENTS`, and `INTERVIEW_DATE_AND_TIME` are optional fields that can either be specified or not. <br>
-If not specified at this stage, it can still be added and edited later using the `edit` command.
+If not specified at this stage, it can still be added and edited later using the `edit` command.<br>
 <br>
 Entering an application entry with the same `COMPANY_NAME` and `INTERNSHIP_POSITION`  as an existing entry is not allowed. 
 </div>
@@ -239,6 +239,7 @@ The fields that can be edited using this command are: <br>
 - `COMPANY_NAME` <br>
 - `INTERNSHIP_POSITION` <br>
 - `APPLICATION_DEADLINE` <br>
+- `APPLICATION_PRIORITY` <br>
 - `APPLICATION_REQUIREMENTS` <br>
 - `INTERVIEW_DATE_AND_TIME` <br>
 Editing any field is optional, but least one field must be edited each time. <br>
@@ -273,9 +274,7 @@ So here the input for the first value of `APPLICATION_REQUIREMENTS` is changed t
 </div>
 
 <div markdown="span" class="alert alert-primary"> :bulb: **Tip:** <br>
-For the optional fields `APPLICATION_REQUIREMENTS` and `INTERVIEW_DATE_AND_TIME`, you can remove all 
-the requirements or interview date and times at once by giving only `edit r/` or `edit i/` commands 
-without specifying anything after the prefix.
+For the optional fields `APPLICATION_REQUIREMENTS` and `INTERVIEW_DATE_AND_TIME`, you can remove all the requirements or interview date and times by using `edit r/` or `edit i/` respectively without specifying anything after the prefix.
 </div>
 
 Format: `edit INDEX [c/COMPANY_NAME] [p/INTERNSHIP_POSITION] [d/APPLICATION_DEADLINE] [pr/APPLICATION_PRIORITY] [r/APPLICATION_REQUIREMENTS] [i/INTERVIEW_DATE_AND_TIME]`
