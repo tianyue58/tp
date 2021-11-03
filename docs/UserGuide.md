@@ -689,7 +689,7 @@ Action | Format | Example | Notes
 --------|-------|----|----
 **Find** | `find PREFIX KEYWORD` |  `find pr/High` | `PREFIX` refers to the field to match the keyword (`c/` COMPANY_NAME, `p/` INTERNSHIP_POSITION, `c1/` COMPLETION_STATUS, `s/` APPLICATION_OUTCOME (i.e. STATUS), `pr/` APPLICATION_PRIORITY, `r/` APPLICATION_REQUIREMENTS)
 **Soon** | `soon PREFIX DAYS`| `soon d/5` | `PREFIX` refers to the field with coming deadline or time (`d/` APPLICATION_DEADLINE, `i/` INTERVIEW_DATE_AND_TIME)
-**List** | `list`| `list`
+**List** | `list`| `list` | No parameter required.
 **Sort** | `sort PREFIX` | `sort c/` | `PREFIX` refers to the application detail to be sorted by (`c/` COMPANY_NAME, `p/` INTERNSHIP_POSITION, `d/` APPLICATION_DEADLINE, `pr/` APPLICATION_PRIORITY, `i/` INTERVIEW_DATE_AND_TIME)
 
 
@@ -698,11 +698,11 @@ Action | Format | Example | Notes
 Action | Format | Example | Notes
 --------|-------|----|----
 **Delete** | `delete INDEX` | `delete 3` |
-**Clear** | `clear`
-**Undo** | `undo`  | `undo`
-**Redo** | `redo` | `redo`
-**Exit** | `exit`
-**Help** | `help` | `help`
+**Clear** | `clear` | `clear` | No parameter required.
+**Undo** | `undo`  | `undo` | No parameter required.
+**Redo** | `redo` | `redo` | No parameter required.
+**Exit** | `exit` | `exit`  | No parameter required.
+**Help** | `help` | `help` | No parameter required.
 
 --------------------------------------------------------------------------------------------------------------------
 
