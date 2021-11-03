@@ -586,3 +586,32 @@ testers are expected to do more *exploratory* testing.
 
    1. _{explain how to simulate a missing/corrupted file, and the expected behavior}_
 
+## **Appendix 3: Effort**
+If the effort required to create **AB3** is 100, we would place the effort level required to implement the current version of **InternSHIP** at 150.
+
+Our team has put in a significant amount of effort to get InternSHIP to the current version. Below, we list some notable changes overall and notable features implemented by us.
+
+### Notable Changes in General
+
+1. **Morphed existing AB3 to align with our design for InternSHIP**
+
+   We have put in a significant amount of effort morphing the existing code base, AB3 to support the need of our application, which is about internship data management.
+   
+   Firstly, we had to create new classes for components related to an internship application, such as `Company`, `Position`, `Deadline`, `Requirements`, `InterviewDateAndTime`, `Priority`, `Completion` and `Status`. Each of these classes has different input format requirements and is related to different command.
+
+   Secondly, we had to remove all the irrelevant classes and update the existing test cases to fit our need.
+
+   Lastly, we had to integrate all these new classes with the existing code to save applications to a data file in InternSHIP. This required major refactoring of existing classes to support multiple new fields and commands.
+
+
+2. **Redesigned GUI**
+
+   Compared to AB3, InternSHIP displays each field of an internship application under a separate column. The entire internship list is displayed in a vertical list where each adjacent entry is highlighted with a different shade of blue.
+
+   In addition, the project icon and overall UI colour scheme is carefully chosen and designed to represent our value proposition. InternSHIP will help the users navigate through the sea of internship applications for their voyage to the desired company.
+
+### Notable Features
+
+Notable features we implemented from scratch include Complete, Accept, Reject, Sort, Find, Soon and Undo/Redo. We came up with hese features as they fit well in helping our target users solve problems they miay encounter in their internship data management. 
+
+The implemention details and design considerations for these features could be found in [Implementation](#implementation) section.
