@@ -420,7 +420,7 @@ Examples:
 
 #### Finding entries by keyword : `find`
 
-<div markdown="span" class="alert alert-danger"> :warning: **Warning:** This command cannot be undone! Use the `list` command (explained below) after this command to go back to displaying all the applications stored in InternSHIP!
+<div markdown="span" class="alert alert-danger"> :warning: **Warning:** This command will display a filtered list. If you want to go back and view the full list of applications in InternSHIP, use the `list` command (explained below) after this command instead of `undo` command!
 </div>
 
 <div markdown="span" class="alert alert-danger"> :warning: **Warning:** This command changes the displayed list in InternSHIP! The index of the entries will change too! Make sure to check the index again before using commands like `delete` or `complete`!
@@ -428,7 +428,7 @@ Examples:
 
 Finds application(s) from the application list.
 
-<div markdown="span" class="alert alert-primary"> :bulb: **Tip:** Only one field and one keyword can be provided each time!
+<div markdown="span" class="alert alert-primary"> :bulb: **Tip:** Only one field and its corresponding keyword can be provided each time!
 </div>
 
 
@@ -447,9 +447,17 @@ The fields available to be found are: <br>
 - APPLICATION_REQUIREMENTS `r/` <br>
 </div>
 
+Format of the keyword after each field should follow the required format in the Parameter Summary.
+
+For completion_status, application_outcome and application_priority, exactly one case-insensitive keyword is expected.
+
 Examples:
-* `find pr/High` shows all the applications whose priority is High.
+* `find c/Grab` shows all the applications whose company name is Grab.
+* `find p/software engineer` shows all the applications whose position is software engineer.
 * `find c1/Completed` shows all the applications that are completed.
+* `find s/Accepted` shows all the applications whose application outcome is Accepted.  
+* `find pr/High` shows all the applications whose priority is High.
+* `find r/cv` shows all the applications that include cv as a requirement.
 
 
 ![findBefore](images/features/findBefore.png)
