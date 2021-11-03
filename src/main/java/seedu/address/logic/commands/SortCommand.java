@@ -32,7 +32,7 @@ public class SortCommand extends Command {
 
     public static final String MESSAGE_USAGE =
             COMMAND_WORD.toUpperCase()
-            + "command: Sorts all the applications in InternSHIP by the given criteria.\n"
+            + " command: Sorts all the applications in InternSHIP by the given criteria.\n"
             + "Sorting by company name or internship position sorts applications in alphabetical order.\n"
             + "Sorting by application deadline sorts applications from closer deadlines to later deadlines.\n"
             + "Sorting by interview date and time sorts applications from closer interviews to later interviews.\n"
