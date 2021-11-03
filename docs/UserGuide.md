@@ -205,6 +205,8 @@ These fields can be changed later using the `edit`, `complete` or `accept/reject
 <br>
 Additionally, `APPLICATION_REQUIREMENTS`, and `INTERVIEW_DATE_AND_TIME` are optional fields that can either be specified or not. <br>
 If not specified at this stage, it can still be added and edited later using the `edit` command.
+<br>
+Entering an application entry with the same `COMPANY_NAME` and `INTERNSHIP_POSITION`  as an existing entry is not allowed. 
 </div>
 
 Format:
@@ -243,11 +245,37 @@ Editing any field is optional, but least one field must be edited each time. <br
 Multiple fields can be edited at the same time.<br>
 <br>
 For the edited fields, existing values will be overwritten and updated to the new input values. The values for the rest of the fields will remain the same.
+<br>
+Editing an application entry such that the `COMPANY_NAME` and `INTERNSHIP_POSITION` become the same as an existing entry is not allowed. 
+<br>
+<br>
+For the `INTERVIEW_DATE_AND_TIME` and `APPLICATION_REQUIREMENTS` fields, to edit one particular entry of the respective field,
+values for all other entries must be entered too. In order to change one value without affecting the others, the prefix, followed by the desired value, must be entered as 
+many times as the number of values that exist for that respective field. 
+<br>
+<br>
+For example, consider an application entry with index 9 
+that currently has `2021-12-12 0800` and 
+`2021-12-13 0900` for the `INTERVIEW_DATE_AND_TIME`,
+and `CV` and `Resume` for the `APPLICATION_REQUIREMENTS`:
+<br>
+- To edit the first `INTERVIEW_DATE_AND_TIME` i.e. `2021-12-12 0800`, this is the command that should be used:
+<br>
+`edit 9 i/2021-10-08 0700 i/2021-12-13 0900`
+<br>
+So here the input for the first value of `INTERVIEW_DATE_AND_TIME` is changed to the desired value, but the second value is entered unchanged.
+<br>
+- To edit the first `APPLICATION_REQUIREMENTS` i.e. `CV`, this is the command that should be used:
+<br>
+`edit 9 r/Coding Challenge i/Resume`
+<br>
+So here the input for the first value of `APPLICATION_REQUIREMENTS` is changed to the desired value, but the second value is entered unchanged.
 </div>
 
 <div markdown="span" class="alert alert-primary"> :bulb: **Tip:** <br>
-For the optional field `APPLICATION_REQUIREMENTS`, you can remove all the requirements at once by giving only `edit r/` without specifying anything after the prefix. 
-Similarly, the command `edit i/` will remove all the interview date and times of an application.
+For the optional fields `APPLICATION_REQUIREMENTS` and `INTERVIEW_DATE_AND_TIME`, you can remove all 
+the requirements or interview date and times at once by giving only `edit r/` or `edit i/` commands 
+without specifying anything after the prefix.
 </div>
 
 Format: `edit INDEX [c/COMPANY_NAME] [p/INTERNSHIP_POSITION] [d/APPLICATION_DEADLINE] [pr/APPLICATION_PRIORITY] [r/APPLICATION_REQUIREMENTS] [i/INTERVIEW_DATE_AND_TIME]`
