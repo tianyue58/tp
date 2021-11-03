@@ -205,6 +205,8 @@ These fields can be changed later using the `edit`, `complete` or `accept/reject
 <br>
 Additionally, `APPLICATION_REQUIREMENTS`, and `INTERVIEW_DATE_AND_TIME` are optional fields that can either be specified or not. <br>
 If not specified at this stage, it can still be added and edited later using the `edit` command.
+<br>
+Entering an application entry with the same `COMPANY_NAME` and `INTERNSHIP_POSITION`  as an existing entry is not allowed. 
 </div>
 
 Format:
@@ -243,11 +245,37 @@ Editing any field is optional, but least one field must be edited each time. <br
 Multiple fields can be edited at the same time.<br>
 <br>
 For the edited fields, existing values will be overwritten and updated to the new input values. The values for the rest of the fields will remain the same.
+<br>
+Editing an application entry such that the `COMPANY_NAME` and `INTERNSHIP_POSITION` become the same as an existing entry is not allowed. 
+<br>
+<br>
+For the `INTERVIEW_DATE_AND_TIME` and `APPLICATION_REQUIREMENTS` fields, to edit one particular entry of the respective field,
+values for all other entries must be entered too. In order to change one value without affecting the others, the prefix, followed by the desired value, must be entered as 
+many times as the number of values that exist for that respective field. 
+<br>
+<br>
+For example, consider an application entry with index 9 
+that currently has `2021-12-12 0800` and 
+`2021-12-13 0900` for the `INTERVIEW_DATE_AND_TIME`,
+and `CV` and `Resume` for the `APPLICATION_REQUIREMENTS`:
+<br>
+- To edit the first `INTERVIEW_DATE_AND_TIME` i.e. `2021-12-12 0800`, this is the command that should be used:
+<br>
+`edit 9 i/2021-10-08 0700 i/2021-12-13 0900`
+<br>
+So here the input for the first value of `INTERVIEW_DATE_AND_TIME` is changed to the desired value, but the second value is entered unchanged.
+<br>
+- To edit the first `APPLICATION_REQUIREMENTS` i.e. `CV`, this is the command that should be used:
+<br>
+`edit 9 r/Coding Challenge i/Resume`
+<br>
+So here the input for the first value of `APPLICATION_REQUIREMENTS` is changed to the desired value, but the second value is entered unchanged.
 </div>
 
 <div markdown="span" class="alert alert-primary"> :bulb: **Tip:** <br>
-For the optional field `APPLICATION_REQUIREMENTS`, you can remove all the requirements at once by giving only `edit r/` without specifying anything after the prefix. 
-Similarly, the command `edit i/` will remove all the interview date and times of an application.
+For the optional fields `APPLICATION_REQUIREMENTS` and `INTERVIEW_DATE_AND_TIME`, you can remove all 
+the requirements or interview date and times at once by giving only `edit r/` or `edit i/` commands 
+without specifying anything after the prefix.
 </div>
 
 Format: `edit INDEX [c/COMPANY_NAME] [p/INTERNSHIP_POSITION] [d/APPLICATION_DEADLINE] [pr/APPLICATION_PRIORITY] [r/APPLICATION_REQUIREMENTS] [i/INTERVIEW_DATE_AND_TIME]`
@@ -392,7 +420,7 @@ Examples:
 
 #### Finding entries by keyword : `find`
 
-<div markdown="span" class="alert alert-danger"> :warning: **Warning:** This command cannot be undone! Use the `list` command (explained below) after this command to go back to displaying all the applications stored in InternSHIP!
+<div markdown="span" class="alert alert-danger"> :warning: **Warning:** This command will display a filtered list. If you want to go back and view the full list of applications in InternSHIP, use the `list` command (explained below) after this command instead of `undo` command!
 </div>
 
 <div markdown="span" class="alert alert-danger"> :warning: **Warning:** This command changes the displayed list in InternSHIP! The index of the entries will change too! Make sure to check the index again before using commands like `delete` or `complete`!
@@ -400,7 +428,7 @@ Examples:
 
 Finds application(s) from the application list.
 
-<div markdown="span" class="alert alert-primary"> :bulb: **Tip:** Only one field and one keyword can be provided each time!
+<div markdown="span" class="alert alert-primary"> :bulb: **Tip:** Only one field and its corresponding keyword can be provided each time!
 </div>
 
 
@@ -419,9 +447,17 @@ The fields available to be found are: <br>
 - APPLICATION_REQUIREMENTS `r/` <br>
 </div>
 
+Format of the keyword after each field should follow the required format in the Parameter Summary.
+
+For completion_status, application_outcome and application_priority, exactly one case-insensitive keyword is expected.
+
 Examples:
-* `find pr/High` shows all the applications whose priority is High.
+* `find c/Grab` shows all the applications whose company name is Grab.
+* `find p/software engineer` shows all the applications whose position is software engineer.
 * `find c1/Completed` shows all the applications that are completed.
+* `find s/Accepted` shows all the applications whose application outcome is Accepted.  
+* `find pr/High` shows all the applications whose priority is High.
+* `find r/cv` shows all the applications that include cv as a requirement.
 
 
 ![findBefore](images/features/findBefore.png)
