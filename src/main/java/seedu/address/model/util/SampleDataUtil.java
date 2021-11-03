@@ -23,17 +23,17 @@ import seedu.address.model.application.Status;
 public class SampleDataUtil {
     public static Application[] getSampleApplications() {
         return new Application[] { new Application(new Company("Shopee"), new Position("software engineer"),
-                new Deadline("2021-12-23"), new Completion("Uncompleted"),
-                new Status("Pending"), new Priority("Medium"), getRequirementSet(), getInterviewDateAndTimeSet()),
+                new Deadline("2021-10-23"), new Completion("Completed"),
+                new Status("Accepted"), new Priority("Medium"), getRequirementSet(), getInterviewDateAndTimeSet("2021-10-31 1600")),
             new Application(new Company("Google"), new Position("frontend developer"),
                     new Deadline("2021-12-14"), new Completion("Uncompleted"),
-                    new Status("Pending"), new Priority("High"), getRequirementSet(), getInterviewDateAndTimeSet()),
+                    new Status("Pending"), new Priority("High"), getRequirementSet("resume", "portfolio"), getInterviewDateAndTimeSet()),
             new Application(new Company("Huawei"), new Position("software engineer"),
                     new Deadline("2021-12-30"), new Completion("Uncompleted"),
                     new Status("Pending"), new Priority("Medium"), getRequirementSet(), getInterviewDateAndTimeSet()),
             new Application(new Company("Deutsche Bank"), new Position("software engineer"),
-                    new Deadline("2021-12-25"), new Completion("Uncompleted"),
-                    new Status("Pending"), new Priority("Low"), getRequirementSet(), getInterviewDateAndTimeSet()),
+                    new Deadline("2021-12-25"), new Completion("Completed"),
+                    new Status("Pending"), new Priority("Low"), getRequirementSet("CV"), getInterviewDateAndTimeSet("2021-12-27 1300", "2022-01-05 1300")),
         };
     }
 
@@ -55,7 +55,7 @@ public class SampleDataUtil {
     }
 
     /**
-     * Returns a interview date and time set containing the list of strings given.
+     * Returns an interview date and time set containing the list of strings given.
      */
     public static Set<InterviewDateAndTime> getInterviewDateAndTimeSet(String... strings) {
         return Arrays.stream(strings)
