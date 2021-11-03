@@ -24,16 +24,16 @@ import seedu.address.model.application.StatusContainsKeywordsPredicate;
  */
 public class FindCommandParser implements Parser<FindCommand> {
     public static final String COMPLETION_MESSAGE_CONSTRAINTS =
-            "Completion can only exactly one of the take case-insensitive 'completed' or 'uncompleted'.";
+            "Completion can only be 'Completed' or 'Uncompleted' (case-insensitive).";
     public static final String NAME_MESSAGE_CONSTRAINTS =
             "Company name should only contain alphanumeric characters and spaces, and it should not be blank.";
     public static final String NAME_POSITION_VALIDATION_REGEX = "[\\p{Alnum}][\\p{Alnum} ]*";
     public static final String POSITION_MESSAGE_CONSTRAINTS =
             "Position only contain alphanumeric characters and spaces, and it should not be blank.";
     public static final String PRIORITY_MESSAGE_CONSTRAINTS =
-            "Priority can only take exactly one of the case-insensitive 'high', 'medium' or 'low'.";
+            "Priority can only be 'High', 'Medium' or 'Low' (case-insensitive).";
     public static final String STATUS_MESSAGE_CONSTRAINTS =
-            "Status can only take exactly one of the case-insensitive 'pending', 'accepted' or 'rejected'.";
+            "Status can only be 'Pending', 'Accepted' or 'Rejected' (case-insensitive).";
     private static final int PREFIX_AND_KEYWORD_SIZE = 2;
 
     /**
