@@ -109,8 +109,11 @@ All the commands in the [Features](#features) section adhere to the following ru
   e.g. if the command specifies `c/COMPANY_NAME p/INTERNSHIP_POSITION`, `p/INTERNSHIP_POSITION c/COMPANY_NAME`
   is also acceptable.
 
-* If a parameter is expected only once in the command while you specified it multiple times, only the last occurrence of the parameter will be taken.<br>
+* If a parameter is expected only once in the command but you specified it multiple times, only the last occurrence of the parameter will be taken.<br>
   e.g. if you specify `c/Grab c/Shopee`, only `c/Shopee` will be taken.
+
+* For parameters that can be specified any number of times(`APPLICATION_REQUIREMENTS` and `INTERVIEW_DATE_AND_TIME`), if the same values are specified multiple times, only one instance will be taken.<br>
+  e.g. if you specify `r/CV r/CV r/CV`, only `r/CV` will be taken.
 
 * For commands that do not require any parameters (such as `list` and `clear`), any parameters input by the user will be ignored.<br>
   e.g. `list 123` will be interpreted as just `list`.
