@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.commands.CommandTestUtil.DESC_AMAZON;
 import static seedu.address.logic.commands.CommandTestUtil.DESC_BYTEDANCE;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_AMAZON;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BYTEDANCE;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_POSITION_AMAZON;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
@@ -34,7 +35,7 @@ public class EditCommandTest {
     private Model model = new ModelManager(getTypicalInternship(), new UserPrefs());
 
     @Test
-    public void execute_allCompulsoryFieldsSpecifiedUnfilteredList_success() {
+    public void execute_allFieldsEditedUnfilteredList_success() {
         Application editedApplication = new ApplicationBuilder().build();
 
         EditApplicationDescriptor descriptor = new EditApplicationDescriptorBuilder(editedApplication).build();
@@ -70,12 +71,6 @@ public class EditCommandTest {
         assertCommandSuccess(editCommand, model, expectedMessage, expectedModel);
     }
 
-    @Test
-    public void execute_noFieldSpecifiedUnfilteredList_failure() {
-        EditCommand editCommand = new EditCommand(INDEX_FIRST_APPLICATION, new EditApplicationDescriptor());
-
-        assertCommandFailure(editCommand, model, EditCommand.MESSAGE_NOTHING_EDITED);
-    }
 
     @Test
     public void execute_filteredList_success() {
@@ -133,6 +128,19 @@ public class EditCommandTest {
                 new EditApplicationDescriptorBuilder().withCompany(VALID_NAME_BYTEDANCE).build());
 
         assertCommandFailure(editCommand, model, Messages.MESSAGE_INDEX_EXCEEDS_LIST_LENGTH);
+    }
+
+    /**
+     * Edits an application but the information provided is all the same as the old application
+     */
+    @Test
+    public void execute_nothingActuallyEditedUnfilteredList_failure() {
+        EditApplicationDescriptor descriptor = new EditApplicationDescriptorBuilder().
+                withCompany(VALID_NAME_AMAZON).build();
+
+        EditCommand editCommand = new EditCommand(INDEX_FIRST_APPLICATION, descriptor);
+
+        assertCommandFailure(editCommand, model, EditCommand.MESSAGE_NOTHING_EDITED);
     }
 
     @Test

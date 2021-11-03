@@ -39,17 +39,18 @@ public class EditCommandParserTest {
 
     @Test
     public void parse_missingParts_failure() {
+
+        // nothing specified
+        assertParseFailure(parser, "",
+                String.format(MESSAGE_INVALID_APPLICATION_DISPLAYED_INDEX + "\n%1$s", EditCommand.MESSAGE_USAGE));
+
         //no index specified
         assertParseFailure(parser, POSITION_DESC_BYTEDANCE,
                 String.format(MESSAGE_INVALID_APPLICATION_DISPLAYED_INDEX + "\n%1$s", EditCommand.MESSAGE_USAGE));
 
-        // no field specified
+        //no field specified
         assertParseFailure(parser, "1",
                 String.format(EditCommand.MESSAGE_NO_FILED_PROVIDED + "\n%1$s", EditCommand.MESSAGE_USAGE));
-
-        // no index and no field specified
-        assertParseFailure(parser, "",
-                String.format(MESSAGE_INVALID_APPLICATION_DISPLAYED_INDEX + "\n%1$s", EditCommand.MESSAGE_USAGE));
     }
 
     @Test
