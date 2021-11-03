@@ -17,7 +17,7 @@ public class Deadline {
 
     public static final String MESSAGE_CONSTRAINTS = "Deadline should be in YYYY-MM-DD format.";
     public static final String MESSAGE_INVALIDDATE = "The day-month combination is invalid.";
-    public static final String VALIDATION_REGEX = "^\\d{4}\\-(0[1-9]|1[012])\\-(0[1-9]|[12][0-9]|3[01])$";
+    public static final String VALIDATION_REGEX = "^\\d{4}\\-\\d{2}\\-\\d{2}$";
     public final String value;
     public final LocalDate date;
 
@@ -43,18 +43,18 @@ public class Deadline {
     }
 
     /**
-     * Returns true if a given string is in YYYY-MM-DD format
+     * Returns true if a given string is in YYYY-MM-DD format.
      * Only checks if the YYYY is a 4-bit digit, MM is from 1 to 12, DD is from 1 to 31, which doesn't account for
-     * invalid day-month combination
+     * invalid day-month combination.
      */
     public static boolean isValidDeadline(String test) {
         return test.matches(VALIDATION_REGEX);
     }
 
     /**
-     * Returns true if the given YYYY-MM-DD format actually forms a valid combination
+     * Returns true if the given YYYY-MM-DD format actually forms a valid date.
      * @param test a string in YYYY-MM-DD format
-     * @return whether the given YYYY-MM-DD format actually forms a valid combination
+     * @return whether the given YYYY-MM-DD format actually forms a valid date.
      */
     public static boolean isValidDate(String test) {
         try {
