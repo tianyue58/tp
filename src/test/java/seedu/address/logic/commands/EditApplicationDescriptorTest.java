@@ -8,8 +8,6 @@ import static seedu.address.logic.commands.CommandTestUtil.VALID_DEADLINE_BYTEDA
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BYTEDANCE;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_POSITION_BYTEDANCE;
 
-import java.util.HashSet;
-
 import org.junit.jupiter.api.Test;
 
 import seedu.address.testutil.EditApplicationDescriptorBuilder;

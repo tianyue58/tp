@@ -135,8 +135,8 @@ public class EditCommandTest {
      */
     @Test
     public void execute_nothingActuallyEditedUnfilteredList_failure() {
-        EditApplicationDescriptor descriptor = new EditApplicationDescriptorBuilder().
-                withCompany(VALID_NAME_AMAZON).build();
+        EditApplicationDescriptor descriptor = new EditApplicationDescriptorBuilder()
+                .withCompany(VALID_NAME_AMAZON).build();
 
         EditCommand editCommand = new EditCommand(INDEX_FIRST_APPLICATION, descriptor);
 

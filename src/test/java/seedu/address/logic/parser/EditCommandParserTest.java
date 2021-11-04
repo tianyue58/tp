@@ -202,7 +202,8 @@ public class EditCommandParserTest {
     public void noFieldSpecified_failure() {
         Index targetIndex = INDEX_FIRST_APPLICATION;
         String userInput = targetIndex.getOneBased() + "";
-        String errorMessage =  String.format(EditCommand.MESSAGE_NO_FILED_PROVIDED + "\n%1$s", EditCommand.MESSAGE_USAGE);
+        String errorMessage =
+                String.format(EditCommand.MESSAGE_NO_FILED_PROVIDED + "\n%1$s", EditCommand.MESSAGE_USAGE);
         assertParseFailure(parser, userInput, errorMessage);
     }
 
