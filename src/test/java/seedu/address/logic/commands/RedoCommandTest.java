@@ -50,7 +50,7 @@ public class RedoCommandTest {
             addCommand.execute(model);
             undoCommand.execute(model);
         } catch (CommandException e) {
-            System.out.println(e.getMessage());
+            System.out.println("Exception occurred in the command that is executed before Redo command");
         }
         expectedModel.addApplication(SHOPEE);
         assertCommandSuccess(new RedoCommand(), model, RedoCommand.MESSAGE_SUCCESS, expectedModel);
@@ -64,7 +64,7 @@ public class RedoCommandTest {
             deleteCommand.execute(model);
             undoCommand.execute(model);
         } catch (CommandException e) {
-            System.out.println(e.getMessage());
+            System.out.println("Exception occurred in the command that is executed before Redo command");
         }
         expectedModel.deleteApplication(AMAZON);
         assertCommandSuccess(new RedoCommand(), model, RedoCommand.MESSAGE_SUCCESS, expectedModel);
@@ -78,7 +78,7 @@ public class RedoCommandTest {
             clearCommand.execute(model);
             undoCommand.execute(model);
         } catch (CommandException e) {
-            System.out.println(e.getMessage());
+            System.out.println("Exception occurred in the command that is executed before Redo command");
         }
         expectedModel = new ModelManager(new Internship(), new UserPrefs());
         assertCommandSuccess(new RedoCommand(), model, RedoCommand.MESSAGE_SUCCESS, expectedModel);
@@ -92,7 +92,7 @@ public class RedoCommandTest {
             completeCommand.execute(model);
             undoCommand.execute(model);
         } catch (CommandException e) {
-            System.out.println(e.getMessage());
+            System.out.println("Exception occurred in the command that is executed before Redo command");
         }
         Application originalAmazon = model.getFilteredApplicationList().get(0);
         Application completedAmazon = new Application(originalAmazon.getCompany(), originalAmazon.getPosition(),
@@ -111,7 +111,7 @@ public class RedoCommandTest {
             acceptCommand.execute(model);
             undoCommand.execute(model);
         } catch (CommandException e) {
-            System.out.println(e.getMessage());
+            System.out.println("Exception occurred in the command that is executed before Redo command");
         }
         Application originalAmazon = model.getFilteredApplicationList().get(0);
         Application acceptedAmazon = new Application(originalAmazon.getCompany(), originalAmazon.getPosition(),
@@ -130,7 +130,7 @@ public class RedoCommandTest {
             rejectCommand.execute(model);
             undoCommand.execute(model);
         } catch (CommandException e) {
-            System.out.println(e.getMessage());
+            System.out.println("Exception occurred in the command that is executed before Redo command");
         }
         Application originalAmazon = model.getFilteredApplicationList().get(0);
         Application rejectedAmazon = new Application(originalAmazon.getCompany(),
@@ -156,7 +156,7 @@ public class RedoCommandTest {
             editCommand.execute(model);
             undoCommand.execute(model);
         } catch (CommandException e) {
-            System.out.println(e.getMessage());
+            System.out.println("Exception occurred in the command that is executed before Redo command");
         }
         expectedModel.setApplication(AMAZON, editedAmazon);
         assertCommandSuccess(new RedoCommand(), model, RedoCommand.MESSAGE_SUCCESS, expectedModel);
@@ -171,7 +171,7 @@ public class RedoCommandTest {
             deleteFirstApplication.execute(model);
             undoCommand.execute(model); //undo the deletion of the second application, but the first is still deleted
         } catch (CommandException e) {
-            System.out.println(e.getMessage());
+            System.out.println("Exception occurred in the command that is executed before Redo command");
         }
         expectedModel.deleteApplication(AMAZON);
         expectedModel.deleteApplication(BYTEDANCE);

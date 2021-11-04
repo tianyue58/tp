@@ -3,6 +3,9 @@ package seedu.address.logic.parser;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_APPLICATION_DISPLAYED_INDEX;
 import static seedu.address.logic.commands.CommandTestUtil.DEADLINE_DESC_AMAZON;
 import static seedu.address.logic.commands.CommandTestUtil.DEADLINE_DESC_BYTEDANCE;
+import static seedu.address.logic.commands.CommandTestUtil.EMPTY_INTERVIEW_DATE_AND_TIME_DESC;
+import static seedu.address.logic.commands.CommandTestUtil.EMPTY_REQUIREMENT_DESC;
+import static seedu.address.logic.commands.CommandTestUtil.INTERVIEW_DATE_AND_TIME_DESC_AMAZON;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_DEADLINE_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_NAME_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_POSITION_DESC;
@@ -11,17 +14,22 @@ import static seedu.address.logic.commands.CommandTestUtil.NAME_DESC_AMAZON;
 import static seedu.address.logic.commands.CommandTestUtil.POSITION_DESC_AMAZON;
 import static seedu.address.logic.commands.CommandTestUtil.POSITION_DESC_BYTEDANCE;
 import static seedu.address.logic.commands.CommandTestUtil.PRIORITY_DESC_AMAZON;
+import static seedu.address.logic.commands.CommandTestUtil.REQUIREMENTS_DESC_AMAZON;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_DEADLINE_AMAZON;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_DEADLINE_BYTEDANCE;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_INTERVIEW_DATE_AND_TIME_AMAZON;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_AMAZON;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_POSITION_AMAZON;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_POSITION_BYTEDANCE;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_PRIORITY_AMAZON;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_REQUIREMENTS_AMAZON;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_APPLICATION;
 import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_APPLICATION;
 import static seedu.address.testutil.TypicalIndexes.INDEX_THIRD_APPLICATION;
+
+import java.util.HashSet;
 
 import org.junit.jupiter.api.Test;
 
@@ -39,17 +47,18 @@ public class EditCommandParserTest {
 
     @Test
     public void parse_missingParts_failure() {
+
+        // nothing specified
+        assertParseFailure(parser, "",
+                String.format(MESSAGE_INVALID_APPLICATION_DISPLAYED_INDEX + "\n%1$s", EditCommand.MESSAGE_USAGE));
+
         //no index specified
         assertParseFailure(parser, POSITION_DESC_BYTEDANCE,
                 String.format(MESSAGE_INVALID_APPLICATION_DISPLAYED_INDEX + "\n%1$s", EditCommand.MESSAGE_USAGE));
 
-        // no field specified
+        //no field specified
         assertParseFailure(parser, "1",
                 String.format(EditCommand.MESSAGE_NO_FILED_PROVIDED + "\n%1$s", EditCommand.MESSAGE_USAGE));
-
-        // no index and no field specified
-        assertParseFailure(parser, "",
-                String.format(MESSAGE_INVALID_APPLICATION_DISPLAYED_INDEX + "\n%1$s", EditCommand.MESSAGE_USAGE));
     }
 
     @Test
@@ -130,7 +139,7 @@ public class EditCommandParserTest {
 
     @Test
     public void parse_oneFieldSpecified_success() {
-        // name
+        // company
         Index targetIndex = INDEX_THIRD_APPLICATION;
         String userInput = targetIndex.getOneBased() + NAME_DESC_AMAZON;
         EditApplicationDescriptor descriptor = new EditApplicationDescriptorBuilder()
@@ -155,6 +164,47 @@ public class EditCommandParserTest {
         descriptor = new EditApplicationDescriptorBuilder().withPriority(VALID_PRIORITY_AMAZON).build();
         expectedCommand = new EditCommand(targetIndex, descriptor);
         assertParseSuccess(parser, userInput, expectedCommand);
+
+        //requirement
+        userInput = targetIndex.getOneBased() + REQUIREMENTS_DESC_AMAZON;
+        descriptor = new EditApplicationDescriptorBuilder().withRequirements(VALID_REQUIREMENTS_AMAZON).build();
+        expectedCommand = new EditCommand(targetIndex, descriptor);
+        assertParseSuccess(parser, userInput, expectedCommand);
+
+        //interview date and time
+        userInput = targetIndex.getOneBased() + INTERVIEW_DATE_AND_TIME_DESC_AMAZON;
+        descriptor = new EditApplicationDescriptorBuilder()
+                .withInterviewDateAndTime(VALID_INTERVIEW_DATE_AND_TIME_AMAZON).build();
+        expectedCommand = new EditCommand(targetIndex, descriptor);
+        assertParseSuccess(parser, userInput, expectedCommand);
+    }
+
+    @Test
+    public void emptyOptionalField_success() {
+
+        //empty requirement
+        Index targetIndex = INDEX_THIRD_APPLICATION;
+        String userInput = targetIndex.getOneBased() + EMPTY_REQUIREMENT_DESC;
+        EditApplicationDescriptor emptyRequirementDescriptor = new EditApplicationDescriptor();
+        emptyRequirementDescriptor.setRequirements(new HashSet<>());
+        EditCommand expectedCommand = new EditCommand(targetIndex, emptyRequirementDescriptor);
+        assertParseSuccess(parser, userInput, expectedCommand);
+
+        //empty interview date and time
+        userInput = targetIndex.getOneBased() + EMPTY_INTERVIEW_DATE_AND_TIME_DESC;
+        EditApplicationDescriptor emptyInterviewTimeDescriptor = new EditApplicationDescriptor();
+        emptyInterviewTimeDescriptor.setInterviewDateAndTimes(new HashSet<>());
+        expectedCommand = new EditCommand(targetIndex, emptyInterviewTimeDescriptor);
+        assertParseSuccess(parser, userInput, expectedCommand);
+    }
+
+    @Test
+    public void noFieldSpecified_failure() {
+        Index targetIndex = INDEX_FIRST_APPLICATION;
+        String userInput = targetIndex.getOneBased() + "";
+        String errorMessage =
+                String.format(EditCommand.MESSAGE_NO_FILED_PROVIDED + "\n%1$s", EditCommand.MESSAGE_USAGE);
+        assertParseFailure(parser, userInput, errorMessage);
     }
 
     @Test
