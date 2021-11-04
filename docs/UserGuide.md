@@ -109,8 +109,11 @@ All the commands in the [Features](#features) section adhere to the following ru
   e.g. if the command specifies `c/COMPANY_NAME p/INTERNSHIP_POSITION`, `p/INTERNSHIP_POSITION c/COMPANY_NAME`
   is also acceptable.
 
-* If a parameter is expected only once in the command while you specified it multiple times, only the last occurrence of the parameter will be taken.<br>
+* If a parameter is expected only once in the command but you specified it multiple times, only the last occurrence of the parameter will be taken.<br>
   e.g. if you specify `c/Grab c/Shopee`, only `c/Shopee` will be taken.
+
+* For parameters that can be specified any number of times(`APPLICATION_REQUIREMENTS` and `INTERVIEW_DATE_AND_TIME`), if the same values are specified multiple times, only one instance will be taken.<br>
+  e.g. if you specify `r/CV r/CV r/CV`, only `r/CV` will be taken.
 
 * For commands that do not require any parameters (such as `list` and `clear`), any parameters input by the user will be ignored.<br>
   e.g. `list 123` will be interpreted as just `list`.
@@ -204,7 +207,7 @@ These fields can be changed later using the `edit`, `complete` or `accept/reject
 - `APPLICATION_OUTCOME` (i.e., application status) set as `Pending` <br>
 <br>
 Additionally, `APPLICATION_REQUIREMENTS`, and `INTERVIEW_DATE_AND_TIME` are optional fields that can either be specified or not. <br>
-If not specified at this stage, it can still be added and edited later using the `edit` command.
+If not specified at this stage, it can still be added and edited later using the `edit` command.<br>
 <br>
 Entering an application entry with the same `COMPANY_NAME` and `INTERNSHIP_POSITION`  as an existing entry is not allowed. 
 </div>
@@ -239,6 +242,7 @@ The fields that can be edited using this command are: <br>
 - `COMPANY_NAME` <br>
 - `INTERNSHIP_POSITION` <br>
 - `APPLICATION_DEADLINE` <br>
+- `APPLICATION_PRIORITY` <br>
 - `APPLICATION_REQUIREMENTS` <br>
 - `INTERVIEW_DATE_AND_TIME` <br>
 Editing any field is optional, but least one field must be edited each time. <br>
@@ -273,9 +277,7 @@ So here the input for the first value of `APPLICATION_REQUIREMENTS` is changed t
 </div>
 
 <div markdown="span" class="alert alert-primary"> :bulb: **Tip:** <br>
-For the optional fields `APPLICATION_REQUIREMENTS` and `INTERVIEW_DATE_AND_TIME`, you can remove all 
-the requirements or interview date and times at once by giving only `edit r/` or `edit i/` commands 
-without specifying anything after the prefix.
+For the optional fields `APPLICATION_REQUIREMENTS` and `INTERVIEW_DATE_AND_TIME`, you can remove all the requirements or interview date and times by using `edit r/` or `edit i/` respectively without specifying anything after the prefix.
 </div>
 
 Format: `edit INDEX [c/COMPANY_NAME] [p/INTERNSHIP_POSITION] [d/APPLICATION_DEADLINE] [pr/APPLICATION_PRIORITY] [r/APPLICATION_REQUIREMENTS] [i/INTERVIEW_DATE_AND_TIME]`
@@ -318,14 +320,10 @@ Updates the application outcome (status) of an application to **'Accepted'**.
 
 <div markdown="span" class="alert alert-info"> 
 :information_source: **Info:** <br>
-The application outcome is the **decision/outcome provided by the company** <br>
-on whether the candidate has been `Accepted` or not for the role. <br>
-It is different from the 'Completion Status', which represents whether the <br>
-user has completed submitting the application (and all related requirements) or not. <br>
+The application outcome is the **decision/outcome provided by the company** on whether the candidate has been `Accepted` or not for the role. <br>
+It is different from the 'Completion Status', which represents whether the user has completed submitting the application (and all related requirements) or not. <br>
 <br>
-When a new application is added, the outcome is `Pending` by default as it is assumed <br>
-that the user has not received the decision from the company yet. The outcome can <br> 
-later be changed to `Accepted` using the `accept` command. 
+When a new application is added, the outcome is `Pending` by default as it is assumed that the user has not received the decision from the company yet. The outcome can later be changed to `Accepted` using the `accept` command. 
 </div>
 
 Format: `accept INDEX`
@@ -353,14 +351,10 @@ Updates the application outcome (status) of an application to **'Rejected'**.
 
 <div markdown="span" class="alert alert-info"> 
 :information_source: **Info:** <br>
-The application outcome is the **decision/outcome provided by the company** <br>
-on whether the candidate has been `Rejected` or not for the role. <br>
-It is different from the 'Completion Status', which represents whether the <br>
-user has completed submitting the application (and all related requirements) or not. <br>
+The application outcome is the **decision/outcome provided by the company** on whether the candidate has been `Rejected` or not for the role. <br>
+It is different from the 'Completion Status', which represents whether the user has completed submitting the application (and all related requirements) or not. <br>
 <br>
-When a new application is added, the outcome is `Pending` by default as it is assumed <br>
-that the user has not received the decision from the company yet. The outcome can <br> 
-later be changed to `Rejected` using the `reject` command.
+When a new application is added, the outcome is `Pending` by default as it is assumed that the user has not received the decision from the company yet. The outcome can later be changed to `Rejected` using the `reject` command.
 </div>
 
 Format: `reject INDEX`
@@ -400,7 +394,7 @@ The available fields are: <br>
 Format: `soon FIELD DAYS`
 
 * Find applications that are within `DAYS` days.
-* The number of days must be an **integer** 0, 1, 2, …​ 
+* The number of days must be a **positive integer** 0, 1, 2, …​ 
 * The number must not be more than the maximum integer value (i.e 2147483647). 
 * Other values will be considered invalid.
 * Only one field and one keyword can be provided each time.
@@ -420,10 +414,7 @@ Examples:
 
 #### Finding entries by keyword : `find`
 
-<div markdown="span" class="alert alert-danger"> :warning: **Warning:** This command will display a filtered list. If you want to go back and view the full list of applications in InternSHIP, use the `list` command (explained below) after this command instead of `undo` command!
-</div>
-
-<div markdown="span" class="alert alert-danger"> :warning: **Warning:** This command changes the displayed list in InternSHIP! The index of the entries will change too! Make sure to check the index again before using commands like `delete` or `complete`!
+<div markdown="span" class="alert alert-danger"> :warning: **Warning:** This command will display a filtered list. If you want to go back and view the full list of applications in InternSHIP, use the `list` command (explained below) after this command instead of the `undo` command!
 </div>
 
 Finds application(s) from the application list.
@@ -484,10 +475,7 @@ Format: `list`
 
 #### Sorting the entries : `sort`
 
-<div markdown="span" class="alert alert-danger"> :warning: **Warning:** This command cannot be undone!
-</div>
-
-<div markdown="span" class="alert alert-danger"> :warning: **Warning:** This command changes the displayed list in InternSHIP! The index of the entries will change too! Make sure to check the index again before using commands like `delete` or `complete`!
+<div markdown="span" class="alert alert-danger"> :warning: **Warning:** The `undo` command cannot undo list sorting!
 </div>
 
 Sorts all entries in the **currently displayed** application list by a specified field.
