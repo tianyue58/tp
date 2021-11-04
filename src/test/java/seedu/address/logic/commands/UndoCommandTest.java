@@ -43,7 +43,7 @@ public class UndoCommandTest {
         try {
             addCommand.execute(model);
         } catch (CommandException e) {
-            System.out.println(e.getMessage());
+            System.out.println("Exception occurred in the command that is executed before Undo command");
         }
         assertCommandSuccess(new UndoCommand(), model, UndoCommand.MESSAGE_SUCCESS, expectedModel);
     }
@@ -54,7 +54,7 @@ public class UndoCommandTest {
         try {
             deleteCommand.execute(model);
         } catch (CommandException e) {
-            System.out.println(e.getMessage());
+            System.out.println("Exception occurred in the command that is executed before Undo command");
         }
         assertCommandSuccess(new UndoCommand(), model, UndoCommand.MESSAGE_SUCCESS, expectedModel);
     }
@@ -72,7 +72,7 @@ public class UndoCommandTest {
         try {
             completeCommand.execute(model);
         } catch (CommandException e) {
-            System.out.println(e.getMessage());
+            System.out.println("Exception occurred in the command that is executed before Undo command");
         }
         assertCommandSuccess(new UndoCommand(), model, UndoCommand.MESSAGE_SUCCESS, expectedModel);
     }
@@ -83,7 +83,7 @@ public class UndoCommandTest {
         try {
             acceptCommand.execute(model);
         } catch (CommandException e) {
-            System.out.println(e.getMessage());
+            System.out.println("Exception occurred in the command that is executed before Undo command");
         }
         assertCommandSuccess(new UndoCommand(), model, UndoCommand.MESSAGE_SUCCESS, expectedModel);
     }
@@ -94,7 +94,7 @@ public class UndoCommandTest {
         try {
             rejectCommand.execute(model);
         } catch (CommandException e) {
-            System.out.println(e.getMessage());
+            System.out.println("Exception occurred in the command that is executed before Undo command");
         }
         assertCommandSuccess(new UndoCommand(), model, UndoCommand.MESSAGE_SUCCESS, expectedModel);
     }
@@ -108,7 +108,7 @@ public class UndoCommandTest {
         try {
             editCommand.execute(model);
         } catch (CommandException e) {
-            System.out.println(e.getMessage());
+            System.out.println("Exception occurred in the command that is executed before Undo command");
         }
         assertCommandSuccess(new UndoCommand(), model, UndoCommand.MESSAGE_SUCCESS, expectedModel);
     }
@@ -120,7 +120,7 @@ public class UndoCommandTest {
             deleteFirstApplication.execute(model);
             deleteFirstApplication.execute(model);
         } catch (CommandException e) {
-            System.out.println(e.getMessage());
+            System.out.println("Exception occurred in the command that is executed before Undo command");
         }
         expectedModel.deleteApplication(AMAZON);
         assertCommandSuccess(new UndoCommand(), model, UndoCommand.MESSAGE_SUCCESS, expectedModel);
