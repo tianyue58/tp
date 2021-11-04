@@ -50,7 +50,7 @@ public class SoonCommandParser implements Parser<SoonCommand> {
                     .get()
                     .trim());
         } catch (ParseException pe) {
-            throw new ParseException(String.format(SoonCommand.MESSAGE_INVALID_DAY + "\n%1$s",
+            throw new ParseException(String.format(SoonCommand.MESSAGE_INVALID_DAYS + "\n%1$s",
                     SoonCommand.MESSAGE_USAGE), pe);
         }
 
