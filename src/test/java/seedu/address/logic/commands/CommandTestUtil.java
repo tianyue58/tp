@@ -85,11 +85,13 @@ public class CommandTestUtil {
 
     public static final String REQUIREMENTS_DESC_AMAZON = " " + PREFIX_REQUIREMENT + VALID_REQUIREMENTS_AMAZON;
     public static final String REQUIREMENTS_DESC_BYTEDANCE = " " + PREFIX_REQUIREMENT + VALID_REQUIREMENTS_BYTEDANCE;
+    public static final String EMPTY_REQUIREMENT_DESC = " " + PREFIX_REQUIREMENT;
 
     public static final String INTERVIEW_DATE_AND_TIME_DESC_AMAZON = " " + PREFIX_INTERVIEW_DATE_AND_TIME
             + VALID_INTERVIEW_DATE_AND_TIME_AMAZON;
     public static final String INTERVIEW_DATE_AND_TIME_DESC_BYTEDANCE = " " + PREFIX_INTERVIEW_DATE_AND_TIME
             + VALID_INTERVIEW_DATE_AND_TIME_BYTEDANCE;
+    public static final String EMPTY_INTERVIEW_DATE_AND_TIME_DESC = " " + PREFIX_INTERVIEW_DATE_AND_TIME;
 
     public static final String INVALID_NAME_DESC = " " + PREFIX_COMPANY_NAME + "Google&"; // '&' not allowed in names
     public static final String INVALID_POSITION_DESC = " "

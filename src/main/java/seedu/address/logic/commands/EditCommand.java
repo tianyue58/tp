@@ -263,7 +263,8 @@ public class EditCommand extends Command {
                     && getPosition().equals(e.getPosition())
                     && getDeadline().equals(e.getDeadline())
                     && getPriority().equals(e.getPriority())
-                    && getRequirements().equals(e.getRequirements());
+                    && getRequirements().equals(e.getRequirements())
+                    && getInterviewDateAndTimes().equals(e.getInterviewDateAndTimes());
         }
     }
 }
