@@ -709,6 +709,11 @@ COMPLETION_STATUS | **c1/** | `find`
 INTERNSHIP_POSITION | **p/** | `add`, `edit`, `find`, `sort`
 INTERVIEW_DATE_AND_TIME | **i/** | `add`, `edit`, `sort`, `soon`
 
+<div markdown="span" class="alert alert-danger"> :warning: **Warning:** Please ensure you have enter the prefix correctly! 
+The list above is a **complete list of all available prefixes** in InternSHIP commands. Any other prefixes that are not listed above are considered as **invalid**, 
+which may be interpreted incorrectly as part of the field value and lead to unexpected error messages.
+</div>
+
 --------------------------------------------------------------------------------------------------------------------
 
 ## Glossary
