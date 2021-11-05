@@ -116,7 +116,8 @@ public class ApplicationTest {
         assertFalse(AMAZON.equals(editedAmazon));
 
         // different interview date and times -> returns false
-        editedAmazon = new ApplicationBuilder(AMAZON).withInterviewDateAndTime(VALID_INTERVIEW_DATE_AND_TIME_BYTEDANCE).build();
+        editedAmazon = new ApplicationBuilder(AMAZON)
+                .withInterviewDateAndTime(VALID_INTERVIEW_DATE_AND_TIME_BYTEDANCE).build();
         assertFalse(AMAZON.equals(editedAmazon));
     }
 }

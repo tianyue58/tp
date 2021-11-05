@@ -13,7 +13,6 @@ import java.util.Map;
 import org.junit.jupiter.api.Test;
 
 import javafx.application.Application;
-import seedu.address.logic.parser.CompleteCommandParserTest;
 import seedu.address.model.Internship;
 
 public class AppParametersTest {
