@@ -18,6 +18,8 @@ import seedu.address.model.UserPrefs;
 import seedu.address.model.application.InterviewDateAndTimePredicate;
 import seedu.address.model.application.SoonDeadlinePredicate;
 
+import java.util.function.Predicate;
+
 
 /**
  * Contains integration tests (interaction with the Model) and unit tests for SoonCommand.
@@ -33,15 +35,36 @@ public class SoonCommandTest {
         expectedModel = new ModelManager(model.getInternship(), new UserPrefs());
     }
 
-//    @Test
-//    public void //success
+    @Test
+    public void execute_nonEmptyList_noApplicationFound() {
+        Index oneIndex = Index.fromZeroBased(1);
+        SoonDeadlinePredicate predicate = new SoonDeadlinePredicate(oneIndex);
+        SoonCommand soonCommand = new SoonCommand(Index.fromZeroBased(1), predicate);
+        String expectedMessage = SoonCommand.MESSAGE_EMPTY_LIST;
+
+        expectedModel.updateFilteredApplicationList(predicate);
+        assertCommandSuccess(soonCommand, model, expectedMessage, expectedModel);
+    }
+
+    @Test
+    public void execute_nonEmptyList_ApplicationFound() {
+        Index oneIndex = Index.fromZeroBased(100);
+        SoonDeadlinePredicate predicate = new SoonDeadlinePredicate(oneIndex);
+        SoonCommand soonCommand = new SoonCommand(Index.fromZeroBased(100), predicate);
+        String expectedMessage = SoonCommand.MESSAGE_SUCCESS;
+
+        expectedModel.updateFilteredApplicationList(predicate);
+        assertCommandSuccess(soonCommand, model, expectedMessage, expectedModel);
+    }
 
     @Test
     public void execute_emptyList() {
+        Index oneIndex = Index.fromZeroBased(1);
+        SoonDeadlinePredicate predicate = new SoonDeadlinePredicate(oneIndex);
+        SoonCommand soonCommand = new SoonCommand(Index.fromZeroBased(1), predicate);
         model = new ModelManager(new Internship(), new UserPrefs());
         expectedModel = new ModelManager(model.getInternship(), new UserPrefs());
-        assertCommandSuccess(new SoonCommand(Index.fromZeroBased(1),
-                        new SoonDeadlinePredicate(Index.fromOneBased(1))),
+        assertCommandSuccess(soonCommand,
                 model, SoonCommand.MESSAGE_EMPTY_LIST, expectedModel);
     }
 
