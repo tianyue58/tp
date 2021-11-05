@@ -26,8 +26,46 @@ public class SoonCommandParserTest {
 
     @Test
     public void parse_invalidArgs_throwsParseException() {
-        assertParseFailure(parser, "a",
-                String.format(MESSAGE_INVALID_COMMAND_FORMAT, SoonCommand.MESSAGE_USAGE));
+        assertParseFailure(parser, "d",
+                String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+                        SoonCommand.MESSAGE_USAGE));
+        assertParseFailure(parser, "i",
+                String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+                        SoonCommand.MESSAGE_USAGE));
+        assertParseFailure(parser, ";",
+                String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+                        SoonCommand.MESSAGE_USAGE));
+        assertParseFailure(parser, "1",
+                String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+                        SoonCommand.MESSAGE_USAGE));
+        assertParseFailure(parser, "-1",
+                String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+                        SoonCommand.MESSAGE_USAGE));
+        assertParseFailure(parser, "9999999999",
+                String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+                        SoonCommand.MESSAGE_USAGE));
+        assertParseFailure(parser, "d/",
+                String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+                        SoonCommand.MESSAGE_USAGE));
+        assertParseFailure(parser, "i/",
+                String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+                        SoonCommand.MESSAGE_USAGE));
+    }
+
+    @Test
+    public void parse_invalidDays_throwsParseException() {
+        assertParseFailure(parser, " d/-1",
+                String.format(SoonCommand.MESSAGE_INVALID_DAYS + "\n%1$s",
+                        SoonCommand.MESSAGE_USAGE));
+        assertParseFailure(parser, " d/999999999999",
+                String.format(SoonCommand.MESSAGE_INVALID_DAYS + "\n%1$s",
+                        SoonCommand.MESSAGE_USAGE));
+        assertParseFailure(parser, " i/-1",
+                String.format(SoonCommand.MESSAGE_INVALID_DAYS + "\n%1$s",
+                        SoonCommand.MESSAGE_USAGE));
+        assertParseFailure(parser, " i/999999999999",
+                String.format(SoonCommand.MESSAGE_INVALID_DAYS + "\n%1$s",
+                        SoonCommand.MESSAGE_USAGE));
     }
 
     @Test
@@ -53,10 +91,5 @@ public class SoonCommandParserTest {
         assertParseFailure(parser, "" + PREFIX_COMPLETION, expectedMessage);
     }
 
-    @Test
-    public void parse_nonEmptyPreamble_failure() {
-        String expectedMessage = String.format(MESSAGE_INVALID_COMMAND_FORMAT, SoonCommand.MESSAGE_USAGE);
 
-        assertParseFailure(parser, PREAMBLE_NON_EMPTY + "1", expectedMessage);
-    }
 }
