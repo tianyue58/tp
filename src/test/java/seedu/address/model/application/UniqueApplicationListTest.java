@@ -168,4 +168,13 @@ public class UniqueApplicationListTest {
         assertThrows(UnsupportedOperationException.class, ()
             -> uniqueApplicationList.asUnmodifiableObservableList().remove(0));
     }
+
+    @Test
+    public void equals() {
+        // same object -> return true
+        assertTrue(uniqueApplicationList.equals(uniqueApplicationList));
+
+        // null -> return false
+        assertFalse(uniqueApplicationList.equals(null));
+    }
 }

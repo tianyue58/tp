@@ -40,8 +40,8 @@ public class CommandTestUtil {
     public static final String VALID_POSITION_SHOPEE = "Frontend Engineer";
 
     public static final String VALID_DEADLINE_AMAZON = "2021-12-30";
-    public static final String VALID_DEADLINE_BYTEDANCE = "2021-12-29";
-    public static final String VALID_DEADLINE_GRAB = "2021-12-12";
+    public static final String VALID_DEADLINE_BYTEDANCE = "2021-11-29";
+    public static final String VALID_DEADLINE_GRAB = "2020-12-12";
     public static final String VALID_DEADLINE_SHOPEE = "2021-12-31";
 
     public static final String VALID_COMPLETION_AMAZON = "Uncompleted";
@@ -56,7 +56,7 @@ public class CommandTestUtil {
 
     public static final String VALID_PRIORITY_AMAZON = "Medium";
     public static final String VALID_PRIORITY_BYTEDANCE = "High";
-    public static final String VALID_PRIORITY_GRAB = "Medium";
+    public static final String VALID_PRIORITY_GRAB = "Low";
     public static final String VALID_PRIORITY_SHOPEE = "Low";
 
     public static final String VALID_REQUIREMENTS_AMAZON = "Resume";

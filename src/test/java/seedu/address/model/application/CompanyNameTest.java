@@ -18,8 +18,13 @@ public class CompanyNameTest {
 
     @Test
     public void constructor_invalidCompanyName_throwsIllegalArgumentException() {
+        // company name is blank
         String invalidCompanyName = "";
         assertThrows(IllegalArgumentException.class, () -> new Company(invalidCompanyName));
+
+        // company name too long
+        String tooLongCompanyName = "verylongcompanynamethatislongerthan40characters";
+        assertThrows(IllegalArgumentException.class, () -> new Company(tooLongCompanyName));
     }
 
     @Test
@@ -39,5 +44,22 @@ public class CompanyNameTest {
         assertTrue(Company.isValidCompanyName("Shopee123")); // alphanumeric characters
         assertTrue(Company.isValidCompanyName("Shopee")); // with capital letters
         assertTrue(Company.isValidCompanyName("The Best Company In the World")); // long names
+    }
+
+    @Test
+    public void equals() {
+        Company name = new Company("Grab");
+
+        // same object -> return true
+        assertTrue(name.equals(name));
+
+        // null -> return false
+        assertFalse(name.equals(null));
+
+        // different name -> return false
+        assertFalse(name.equals(new Company("Shopee")));
+
+        // same name -> return true
+        assertTrue(name.equals(new Company("Grab")));
     }
 }
