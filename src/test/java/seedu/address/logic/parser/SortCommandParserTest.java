@@ -38,7 +38,7 @@ public class SortCommandParserTest {
 
         // interview parameter
         assertParseSuccess(parser, " " + PREFIX_INTERVIEW_DATE_AND_TIME,
-                new SortCommand("interview date and time"));
+                new SortCommand("interview"));
 
         // priority parameter
         assertParseSuccess(parser, " " + PREFIX_PRIORITY,

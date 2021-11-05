@@ -49,7 +49,6 @@ public class TypicalApplications {
             .withCompletion(VALID_COMPLETION_AMAZON)
             .withStatus(VALID_STATUS_AMAZON)
             .withPriority(VALID_PRIORITY_AMAZON)
-            //.withRequirements(VALID_REQUIREMENTS_AMAZON).build();
             .build();
     public static final Application BYTEDANCE = new ApplicationBuilder()
             .withCompany(VALID_NAME_BYTEDANCE)
