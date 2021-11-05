@@ -22,7 +22,7 @@ public class SoonCommand extends Command {
     public static final String MESSAGE_USAGE = COMMAND_WORD.toUpperCase()
             + " command: Shows all applications that are close to the submission or interview deadlines.\n"
             + "Parameters: \n"
-            + PREFIX_DEADLINE_OF_APPLICATION + " DAYS, or " + PREFIX_INTERVIEW_DATE_AND_TIME + " DAYS\n"
+            + PREFIX_DEADLINE_OF_APPLICATION + "DAYS, or " + PREFIX_INTERVIEW_DATE_AND_TIME + "DAYS\n"
             + "DAYS must be a non-negative integer.\n"
             + "Only one prefix should be supplied each time. \n"
             + "Example: \n"
@@ -35,7 +35,7 @@ public class SoonCommand extends Command {
             "There is no application close to the submission or interview deadlines";
     public static final String MESSAGE_SUCCESS =
             "Listed all applications that are close to the submission or interview deadlines";
-    public static final String MESSAGE_INVALID_DAY = "No valid DAY is provided!";
+    public static final String MESSAGE_INVALID_DAYS = "No valid DAYS is provided!";
 
     private final Predicate<Application> predicate;
     private final Index days;
