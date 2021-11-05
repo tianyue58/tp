@@ -39,16 +39,24 @@ Given below are my contributions to the project.
   * Wrote additional tests for existing features to increase coverage (Pull requests [\#103](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/103))
   * Fixed bugs from Practical Examination Dry Run (Pull request [\#216](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/216))
   
-* **Code contributed**: [RepoSense link](https://nus-cs2103-ay2122s1.github.io/tp-dashboard/#breakdown=true&search=willyamped)
+* **Code contributed**: [RepoSense link](https://nus-cs2103-ay2122s1.github.io/tp-dashboard/?search=willyamped&sort=groupTitle&sortWithin=title&since=2021-09-17&timeframe=commit&mergegroup=&groupSelect=groupByRepos&breakdown=false)
 
 * **Project management**:
-  * Managed releases `v1.3` - (1 release) on GitHub
+  * Managed release `v1.3` - (1 release) on GitHub
 
 * **Documentation**:
   * User Guide:
     * Added documentation for the features `soon` and `complete` (Pull request [\#126](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/126), [\#33](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/33))
   * Developer Guide:
     * Added implementation details of the `soon` and `complete` features. (Pull request [\#146](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/146), [\#96](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/96))
+    * Added all user stories.
+  * Miscellaneous:
+    * Updated `index.md` file (Pull request [\#144](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/144))
+  
+* **Team tasks:**
+  * Created folders for UG and DG.
+  * Set up zoom for weekly meetings.
+  
 
 * **Tools**:
   * Integrated a third party library (DateTimeFormatter) to the project (Pull request [\#216](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/216))
