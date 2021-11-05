@@ -13,7 +13,6 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.function.Predicate;
 
-import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Internship;
 import seedu.address.model.Model;
 import seedu.address.model.application.Application;

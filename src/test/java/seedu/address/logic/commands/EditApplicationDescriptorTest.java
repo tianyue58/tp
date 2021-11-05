@@ -54,11 +54,13 @@ public class EditApplicationDescriptorTest {
         assertNotEquals(DESC_AMAZON, editedAmazon);
 
         // different requirements -> returns false
-        editedAmazon = new EditApplicationDescriptorBuilder(DESC_AMAZON).withRequirements(VALID_REQUIREMENTS_BYTEDANCE).build();
+        editedAmazon = new EditApplicationDescriptorBuilder(DESC_AMAZON)
+                .withRequirements(VALID_REQUIREMENTS_BYTEDANCE).build();
         assertNotEquals(DESC_AMAZON, editedAmazon);
 
         // different interview date and time -> returns false
-        editedAmazon = new EditApplicationDescriptorBuilder(DESC_AMAZON).withInterviewDateAndTime(VALID_INTERVIEW_DATE_AND_TIME_BYTEDANCE).build();
+        editedAmazon = new EditApplicationDescriptorBuilder(DESC_AMAZON)
+                .withInterviewDateAndTime(VALID_INTERVIEW_DATE_AND_TIME_BYTEDANCE).build();
         assertNotEquals(DESC_AMAZON, editedAmazon);
     }
 }
