@@ -32,11 +32,7 @@ public class SortCommand extends Command {
 
     public static final String MESSAGE_USAGE =
             COMMAND_WORD.toUpperCase()
-            + " command: Sorts all the applications in InternSHIP by the given criteria.\n"
-            + "Sorting by company name or internship position sorts applications in alphabetical order.\n"
-            + "Sorting by application deadline sorts applications from closer deadlines to later deadlines.\n"
-            + "Sorting by interview date and time sorts applications from closer interviews to later interviews.\n"
-            + "Sorting by priority sorts applications from highest to lowest priority.\n"
+            + " command: Sorts all the applications currently seen in InternSHIP by the given field.\n"
             + "Parameters:\n"
             + PREFIX_COMPANY_NAME + " "
             + PREFIX_INTERNSHIP_POSITION + " "
@@ -44,18 +40,20 @@ public class SortCommand extends Command {
             + PREFIX_INTERVIEW_DATE_AND_TIME + " "
             + PREFIX_PRIORITY + "\n"
             + "Example:\n"
-            + "Sort by company name: " + COMMAND_WORD + " " + PREFIX_COMPANY_NAME + "\n"
-            + "Sort by internship position: " + COMMAND_WORD + " " + PREFIX_INTERNSHIP_POSITION + "\n"
-            + "Sort by application deadline: " + COMMAND_WORD + " " + PREFIX_DEADLINE_OF_APPLICATION + "\n"
-            + "Sort by interview date and time: " + COMMAND_WORD + " " + PREFIX_INTERVIEW_DATE_AND_TIME + "\n"
-            + "Sort by priority: " + COMMAND_WORD + " " + PREFIX_PRIORITY + "\n";
+            + "Sort by company name: " + COMMAND_WORD + " " + PREFIX_COMPANY_NAME + "  (alphabetical order)\n"
+            + "Sort by internship position: " + COMMAND_WORD + " " + PREFIX_INTERNSHIP_POSITION
+                    + "  (alphabetical order)\n"
+            + "Sort by application deadline: " + COMMAND_WORD + " " + PREFIX_DEADLINE_OF_APPLICATION
+                    + "  (closer to later deadlines)\n"
+            + "Sort by interview date and time: " + COMMAND_WORD + " " + PREFIX_INTERVIEW_DATE_AND_TIME
+                    + "  (closer to later interviews)\n"
+            + "Sort by priority: " + COMMAND_WORD + " " + PREFIX_PRIORITY + "  (higher to lower priority)";
 
     public static final String MESSAGE_SUCCESS = "Sorted applications by %s";
-    public static final String MESSAGE_PARAMETER_NOT_SPECIFIED = "At least one parameter (application detail) "
-            + "to sort by must be provided.\n";
     public static final String MESSAGE_EMPTY_LIST = "There are no applications to sort!";
     public static final String MESSAGE_NO_INTERVIEWS = "There is no application in the list that has an "
             + "interview date and time!";
+    public static final String MESSAGE_MULTIPLE_PREFIXES = "InternSHIP cannot sort by multiple fields!";
 
     private final String parameter;
 

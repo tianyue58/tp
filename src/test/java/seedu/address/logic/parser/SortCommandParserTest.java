@@ -51,9 +51,9 @@ public class SortCommandParserTest {
 
     @Test
     public void parse_multipleParametersPresent_failure() {
-        String expectedMessage = String.format(MESSAGE_INVALID_COMMAND_FORMAT, SortCommand.MESSAGE_USAGE);
+        String expectedMessage = SortCommand.MESSAGE_MULTIPLE_PREFIXES;
 
-        assertParseFailure(parser, "" + PREFIX_PRIORITY + PREFIX_DEADLINE_OF_APPLICATION, expectedMessage);
+        assertParseFailure(parser, " " + PREFIX_COMPANY_NAME + " " + PREFIX_PRIORITY, expectedMessage);
     }
 
     @Test
@@ -77,6 +77,6 @@ public class SortCommandParserTest {
     public void parse_nonEmptyPreamble_failure() {
         String expectedMessage = String.format(MESSAGE_INVALID_COMMAND_FORMAT, SortCommand.MESSAGE_USAGE);
 
-        assertParseFailure(parser, PREAMBLE_NON_EMPTY + "company", expectedMessage);
+        assertParseFailure(parser, PREAMBLE_NON_EMPTY + PREFIX_COMPANY_NAME, expectedMessage);
     }
 }

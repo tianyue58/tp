@@ -16,12 +16,16 @@ import seedu.address.model.application.Priority;
 import seedu.address.model.application.Status;
 
 public class ParserUtilTest {
-    private static final String INVALID_COMPANY = "3$#*(";
+    private static final String INVALID_COMPANY = "superlongcompanynamethatisover40characterslong";
     private static final String INVALID_POSITION = " *A&#4";
     private static final String INVALID_DEADLINE = "21421341";
+    private static final String INVALID_DATE = "2012-02-30";
     private static final String INVALID_STATUS = "Maybe";
     private static final String INVALID_COMPLETION = "abc";
     private static final String INVALID_PRIORITY = "prioritised";
+    private static final String INVALID_REQUIREMENT = "   ";
+    private static final String INVALID_INTERVIEW_DATE_AND_TIME = "12-12-2012";
+    private static final String INVALID_DATE_AND_TIME = "2012-02-30 1600";
 
     private static final String VALID_COMPANY = "Shopee";
     private static final String VALID_POSITION = "Software Engineer";
@@ -104,8 +108,13 @@ public class ParserUtilTest {
     }
 
     @Test
-    public void parseDeadline_invalidValue_throwsParseException() {
+    public void parseDeadline_invalidDeadline_throwsParseException() {
         assertThrows(ParseException.class, () -> ParserUtil.parseDeadline(INVALID_DEADLINE));
+    }
+
+    @Test
+    public void parseDeadline_invalidDate_throwsParseException() {
+        assertThrows(ParseException.class, () -> ParserUtil.parseDeadline(INVALID_DATE));
     }
 
     @Test
@@ -188,6 +197,21 @@ public class ParserUtilTest {
         String nameWithWhitespace = WHITESPACE + VALID_PRIORITY + WHITESPACE;
         Priority expectedPriority = new Priority(VALID_PRIORITY);
         assertEquals(expectedPriority, ParserUtil.parsePriority(nameWithWhitespace));
+    }
+
+    @Test
+    public void parseRequirement_invalidRequirement_throwsParseException() {
+        assertThrows(ParseException.class, () -> ParserUtil.parseRequirement(INVALID_REQUIREMENT));
+    }
+
+    @Test
+    public void parseInterviewDateAndTime_invalidInterviewDateAndTime_throwsParseException() {
+        assertThrows(ParseException.class, () -> ParserUtil.parseInterviewDateAndTime(INVALID_INTERVIEW_DATE_AND_TIME));
+    }
+
+    @Test
+    public void parseInterviewDateAndTime_invalidDateAndTime_throwsParseException() {
+        assertThrows(ParseException.class, () -> ParserUtil.parseInterviewDateAndTime(INVALID_DATE_AND_TIME));
     }
 
 }
