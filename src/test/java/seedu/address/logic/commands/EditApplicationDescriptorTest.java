@@ -1,12 +1,15 @@
 package seedu.address.logic.commands;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static seedu.address.logic.commands.CommandTestUtil.DESC_AMAZON;
 import static seedu.address.logic.commands.CommandTestUtil.DESC_BYTEDANCE;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_DEADLINE_BYTEDANCE;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_INTERVIEW_DATE_AND_TIME_BYTEDANCE;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BYTEDANCE;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_POSITION_BYTEDANCE;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_PRIORITY_BYTEDANCE;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_REQUIREMENTS_BYTEDANCE;
 
 import org.junit.jupiter.api.Test;
 
@@ -19,32 +22,43 @@ public class EditApplicationDescriptorTest {
         // same values -> returns true
         EditCommand.EditApplicationDescriptor descriptorWithSameValues = new EditCommand
                 .EditApplicationDescriptor(DESC_AMAZON);
-        assertTrue(DESC_AMAZON.equals(descriptorWithSameValues));
+        assertEquals(DESC_AMAZON, descriptorWithSameValues);
 
         // same object -> returns true
-        assertTrue(DESC_AMAZON.equals(DESC_AMAZON));
+        assertEquals(DESC_AMAZON, DESC_AMAZON);
 
         // null -> returns false
-        assertFalse(DESC_AMAZON.equals(null));
+        assertNotEquals(null, DESC_AMAZON);
 
         // different types -> returns false
-        assertFalse(DESC_AMAZON.equals(5));
+        assertNotEquals(5, DESC_AMAZON);
 
         // different values -> returns false
-        assertFalse(DESC_AMAZON.equals(DESC_BYTEDANCE));
+        assertNotEquals(DESC_AMAZON, DESC_BYTEDANCE);
 
         // different name -> returns false
         EditCommand.EditApplicationDescriptor editedAmazon = new EditApplicationDescriptorBuilder(DESC_AMAZON)
                 .withCompany(VALID_NAME_BYTEDANCE).build();
-        assertFalse(DESC_AMAZON.equals(editedAmazon));
+        assertNotEquals(DESC_AMAZON, editedAmazon);
 
         // different position -> returns false
         editedAmazon = new EditApplicationDescriptorBuilder(DESC_AMAZON).withPosition(VALID_POSITION_BYTEDANCE).build();
-        assertFalse(DESC_AMAZON.equals(editedAmazon));
+        assertNotEquals(DESC_AMAZON, editedAmazon);
 
         // different deadline -> returns false
         editedAmazon = new EditApplicationDescriptorBuilder(DESC_AMAZON).withDeadline(VALID_DEADLINE_BYTEDANCE).build();
-        assertFalse(DESC_AMAZON.equals(editedAmazon));
+        assertNotEquals(DESC_AMAZON, editedAmazon);
 
+        // different priority -> returns false
+        editedAmazon = new EditApplicationDescriptorBuilder(DESC_AMAZON).withPriority(VALID_PRIORITY_BYTEDANCE).build();
+        assertNotEquals(DESC_AMAZON, editedAmazon);
+
+        // different requirements -> returns false
+        editedAmazon = new EditApplicationDescriptorBuilder(DESC_AMAZON).withRequirements(VALID_REQUIREMENTS_BYTEDANCE).build();
+        assertNotEquals(DESC_AMAZON, editedAmazon);
+
+        // different interview date and time -> returns false
+        editedAmazon = new EditApplicationDescriptorBuilder(DESC_AMAZON).withInterviewDateAndTime(VALID_INTERVIEW_DATE_AND_TIME_BYTEDANCE).build();
+        assertNotEquals(DESC_AMAZON, editedAmazon);
     }
 }
