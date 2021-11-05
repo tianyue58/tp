@@ -4,8 +4,6 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.testutil.TypicalApplications.getTypicalInternship;
-import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_APPLICATION;
-import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_APPLICATION;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -17,9 +15,6 @@ import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.application.InterviewDateAndTimePredicate;
 import seedu.address.model.application.SoonDeadlinePredicate;
-
-import java.util.function.Predicate;
-
 
 /**
  * Contains integration tests (interaction with the Model) and unit tests for SoonCommand.
@@ -47,7 +42,7 @@ public class SoonCommandTest {
     }
 
     @Test
-    public void execute_nonEmptyList_ApplicationFound() {
+    public void execute_nonEmptyList_applicationFound() {
         Index oneIndex = Index.fromZeroBased(100);
         SoonDeadlinePredicate predicate = new SoonDeadlinePredicate(oneIndex);
         SoonCommand soonCommand = new SoonCommand(Index.fromZeroBased(100), predicate);
