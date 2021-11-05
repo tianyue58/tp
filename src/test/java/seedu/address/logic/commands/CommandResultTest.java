@@ -9,30 +9,54 @@ import org.junit.jupiter.api.Test;
 
 public class CommandResultTest {
     @Test
+    public void isShowHelp_true_success() {
+        CommandResult commandResult = new CommandResult("feedback", true, false);
+        assertTrue(commandResult.isShowHelp());
+    }
+
+    @Test
+    public void isShowHelp_false_success() {
+        CommandResult commandResult = new CommandResult("feedback", false, false);
+        assertFalse(commandResult.isShowHelp());
+    }
+
+    @Test
+    public void isExit_true_success() {
+        CommandResult commandResult = new CommandResult("feedback", false, true);
+        assertTrue(commandResult.isExit());
+    }
+
+    @Test
+    public void isExit_false_success() {
+        CommandResult commandResult = new CommandResult("feedback", false, false);
+        assertFalse(commandResult.isExit());
+    }
+
+    @Test
     public void equals() {
         CommandResult commandResult = new CommandResult("feedback");
 
         // same values -> returns true
-        assertTrue(commandResult.equals(new CommandResult("feedback")));
-        assertTrue(commandResult.equals(new CommandResult("feedback", false, false)));
+        assertEquals(commandResult, new CommandResult("feedback"));
+        assertEquals(commandResult, new CommandResult("feedback", false, false));
 
         // same object -> returns true
-        assertTrue(commandResult.equals(commandResult));
+        assertEquals(commandResult, commandResult);
 
         // null -> returns false
-        assertFalse(commandResult.equals(null));
+        assertNotEquals(null, commandResult);
 
         // different types -> returns false
         assertFalse(commandResult.equals(0.5f));
 
         // different feedbackToUser value -> returns false
-        assertFalse(commandResult.equals(new CommandResult("different")));
+        assertNotEquals(commandResult, new CommandResult("different"));
 
         // different showHelp value -> returns false
-        assertFalse(commandResult.equals(new CommandResult("feedback", true, false)));
+        assertNotEquals(commandResult, new CommandResult("feedback", true, false));
 
         // different exit value -> returns false
-        assertFalse(commandResult.equals(new CommandResult("feedback", false, true)));
+        assertNotEquals(commandResult, new CommandResult("feedback", false, true));
     }
 
     @Test
