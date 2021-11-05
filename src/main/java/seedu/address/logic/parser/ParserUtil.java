@@ -21,7 +21,7 @@ import seedu.address.model.application.Status;
 /**
  * Contains utility methods used for parsing strings in the various *Parser classes.
  */
-public class ParserUtil {
+public final class ParserUtil {
 
     public static final String MESSAGE_INVALID_INDEX = "Index is not a non-zero unsigned integer.";
     public static final String MESSAGE_INVALID_DAYS = "Days is not a non-negative unsigned integer.";
