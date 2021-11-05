@@ -53,9 +53,9 @@ public class SortCommand extends Command {
     public static final String MESSAGE_SUCCESS = "Sorted applications by %s";
     public static final String MESSAGE_PARAMETER_NOT_SPECIFIED = "At least one parameter (application detail) "
             + "to sort by must be provided.\n";
-    public static final String MESSAGE_EMPTY_LIST = "There is no application in your internship list to sort!";
-    public static final String MESSAGE_NO_INTERVIEW_TIME = "There is no application in your internship list "
-            + "that has an interview date and time!";
+    public static final String MESSAGE_EMPTY_LIST = "There are no applications to sort!";
+    public static final String MESSAGE_NO_INTERVIEWS = "There is no application in the list that has an "
+            + "interview date and time!";
 
     private final String parameter;
 
@@ -73,17 +73,17 @@ public class SortCommand extends Command {
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
+        boolean noInterviews = false;
+        if (parameter.equals("interview")) {
+            if (!model.hasInterviewTimeInList()) {
+                noInterviews = true;
+            }
+        }
         List<Application> lastShownList = model.getFilteredApplicationList();
         final List<Application> immutableLastShownList = new ArrayList<>(lastShownList);
         final Predicate<Application> containedInLastShownListPredicate = immutableLastShownList::contains;
 
         model.updateFilteredApplicationList(PREDICATE_SHOW_ALL_APPLICATIONS);
-
-        if (parameter.equals("interview date and time")) {
-            if (!model.hasInterviewTimeInList()) {
-                throw new CommandException(MESSAGE_NO_INTERVIEW_TIME);
-            }
-        }
 
         List<Application> allApplications = model.getFilteredApplicationList();
 
@@ -101,7 +101,7 @@ public class SortCommand extends Command {
         int listSize = model.getFilteredApplicationList().size();
         return new CommandResult(listSize == 0
                 ? MESSAGE_EMPTY_LIST
-                : String.format(MESSAGE_SUCCESS, this.parameter));
+                : (noInterviews ? MESSAGE_NO_INTERVIEWS : String.format(MESSAGE_SUCCESS, this.parameter)));
     }
 
     /**
@@ -117,14 +117,13 @@ public class SortCommand extends Command {
             return Position.getComparator();
         case "deadline":
             return Deadline.getComparator();
-        case "interview date and time":
+        case "interview":
             return InterviewDateAndTime.getComparator();
         case "priority":
             return Priority.getComparator();
         default:
-            // Should not reach this line.
+            return null; // Should not reach this line.
         }
-        return null; // Should not reach this line.
     }
 
     @Override
