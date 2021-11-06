@@ -37,6 +37,7 @@ public class PositionTest {
         assertFalse(Position.isValidPosition(" ")); // spaces only
         assertFalse(Position.isValidPosition("^")); // only non-alphanumeric characters
         assertFalse(Position.isValidPosition("engineer*")); // contains non-alphanumeric characters
+        assertFalse(Position.isValidPosition("verylongpositionthatislongerthan40characters")); // too long
 
         // valid position
         assertTrue(Position.isValidPosition("photographer")); // alphabets only

@@ -37,6 +37,7 @@ public class CompanyNameTest {
         assertFalse(Company.isValidCompanyName(" ")); // spaces only
         assertFalse(Company.isValidCompanyName("^")); // only non-alphanumeric characters
         assertFalse(Company.isValidCompanyName("peter*")); // contains non-alphanumeric characters
+        assertFalse(Company.isValidCompanyName("verylongcompanynamethatislongerthan40characters")); // too long
 
         // valid name
         assertTrue(Company.isValidCompanyName("shopee")); // alphabets only
