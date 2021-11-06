@@ -36,7 +36,7 @@ public class CompleteCommand extends Command {
     public static final String MESSAGE_SUCCESS = "Completed application: %1$s";
 
     private static final String MESSAGE_ALREADY_COMPLETED =
-            "Application has already been completed!;
+            "Application has already been completed!";
 
     private final Index targetIndex;
 
