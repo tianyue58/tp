@@ -1,9 +1,9 @@
 ---
 layout: page
 title: Tianyue's Project Portfolio Page
- ---
+---
 
-### Project: internSHIP
+### Project: InternSHIP
 
 InternSHIP is a desktop app for university students to manage their internship applications.
 InternSHIP has been optimized for use via a Command Line Interface (CLI) while still having the benefits of a Graphical User Interface (GUI).
