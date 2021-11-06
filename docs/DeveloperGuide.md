@@ -456,7 +456,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 (For all use cases below, the **System** is `InternSHIP` and the **Actor** is the `user`, unless specified otherwise)
 
-**Use case: Adding an application entry**
+**Use case: Add an application entry**
 
 **MSS**
 
@@ -520,6 +520,22 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     * 3a1. InternSHIP shows an error message.
 
       Use case resumes at step 2.
+
+**Use case: List upcoming deadlines**
+
+**MSS**
+
+1.  User requests to list upcoming deadlines
+2.  InternSHIP shows a list of application entries whose deadlines are upcoming
+
+    Use case ends.
+
+**Extensions**
+
+* 1a. The user fails to enter the correct format.
+    * InternSHIP shows an error message.
+      Use case returns to step 1.
+      
 
 *{More to be added}*
 
