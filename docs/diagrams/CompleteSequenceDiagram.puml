@@ -5,7 +5,7 @@ box Logic LOGIC_COLOR_T1
 participant ":LogicManager" as LogicManager LOGIC_COLOR
 participant ":InternshipParser" as InternshipParser LOGIC_COLOR
 participant ":CompleteCommandParser" as CompleteCommandParser LOGIC_COLOR
-participant "d:CompleteCommand" as CompleteCommand LOGIC_COLOR
+participant "c:CompleteCommand" as CompleteCommand LOGIC_COLOR
 participant ":CommandResult" as CommandResult LOGIC_COLOR
 end box
 

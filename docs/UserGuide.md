@@ -324,6 +324,9 @@ The application outcome is the **decision/outcome provided by the company** on w
 It is different from the 'Completion Status', which represents whether the user has completed submitting the application (and all related requirements) or not. <br>
 <br>
 When a new application is added, the outcome is `Pending` by default as it is assumed that the user has not received the decision from the company yet. The outcome can later be changed to `Accepted` using the `accept` command. 
+<br>
+The `accept` command also automatically marks the application entry at the specified index as 'Completed', because it is assumed
+that if the user has already received the application outcome, then they must have completed and submitted the application.
 </div>
 
 Format: `accept INDEX`
@@ -355,6 +358,9 @@ The application outcome is the **decision/outcome provided by the company** on w
 It is different from the 'Completion Status', which represents whether the user has completed submitting the application (and all related requirements) or not. <br>
 <br>
 When a new application is added, the outcome is `Pending` by default as it is assumed that the user has not received the decision from the company yet. The outcome can later be changed to `Rejected` using the `reject` command.
+<br>
+The `reject` command also automatically marks the application entry at the specified index as 'Completed', because it is assumed
+that if the user has already received the application outcome, then they must have completed and submitted the application.
 </div>
 
 Format: `reject INDEX`
