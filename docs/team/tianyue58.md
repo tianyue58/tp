@@ -52,6 +52,8 @@ Given below are my contributions to the project.
     * Developer Guide:
         * Added implementation details of the `find` feature. (Pull request [\#105](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/105)
         * Updated the appendix for team effort summary (Pull request [\#223](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/223)
+        * Updated the uml diagram and use case for find command (Pull request [\#244](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/244)
+  
 
 * **Community**:
   * Reported an above-average number of bugs in the PE-D (Examples: Bug [#4](https://github.com/tianyue58/ped/issues/4), Bug [#10](https://github.com/tianyue58/ped/issues/10), Bug [#11](https://github.com/tianyue58/ped/issues/11)). 
