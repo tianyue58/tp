@@ -535,7 +535,23 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 * 1a. The user fails to enter the correct format.
     * InternSHIP shows an error message.
       Use case returns to step 1.
-      
+
+
+**Use case: Undo/Redo a change to the application list**
+
+**MSS**
+
+1. User requests to undo/redo a change that was just made. 
+2. InternSHIP undoes/redoes the most recent change, displays the success message, and shows the full application list.
+    
+    Use case ends.
+
+**Extensions**
+
+* 1a. There is no previous change to be undone/redone.
+  * 1a1. InternSHIP displays an error message.
+  Use case ends.
+
 
 *{More to be added}*
 
