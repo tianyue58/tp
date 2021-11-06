@@ -24,6 +24,11 @@ public class JsonUserPrefsStorageTest {
     public Path testFolder;
 
     @Test
+    public void getUserPrefsFilePath() {
+        assertEquals(TEST_DATA_FOLDER, new JsonUserPrefsStorage(TEST_DATA_FOLDER).getUserPrefsFilePath());
+    }
+
+    @Test
     public void readUserPrefs_nullFilePath_throwsNullPointerException() {
         assertThrows(NullPointerException.class, () -> readUserPrefs(null));
     }

@@ -12,14 +12,20 @@ import org.junit.jupiter.api.Test;
 
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.application.Company;
+import seedu.address.model.application.Completion;
 import seedu.address.model.application.Deadline;
 import seedu.address.model.application.Position;
+import seedu.address.model.application.Priority;
+import seedu.address.model.application.Status;
 
 public class JsonAdaptedApplicationTest {
 
     private static final String INVALID_COMPANY = "433#$%";
     private static final String INVALID_POSITION = " ";
     private static final String INVALID_DEADLINE = "243114";
+    private static final String INVALID_COMPLETION = "done";
+    private static final String INVALID_STATUS = "maybe";
+    private static final String INVALID_PRIORITY = "prioritised";
 
     private static final String VALID_COMPANY = AMAZON.getCompany().toString();
     private static final String VALID_POSITION = AMAZON.getPosition().toString();
@@ -95,5 +101,57 @@ public class JsonAdaptedApplicationTest {
         assertThrows(IllegalValueException.class, expectedMessage, application::toModelType);
     }
 
+    @Test
+    public void toModelType_invalidCompletion_throwsIllegalValueException() {
+        JsonAdaptedApplication application =
+                new JsonAdaptedApplication(VALID_COMPANY, VALID_POSITION, VALID_DEADLINE, INVALID_COMPLETION,
+                        VALID_STATUS, VALID_PRIORITY, VALID_REQUIREMENTS, VALID_INTERVIEW_DATE_AND_TIME);
+        String expectedMessage = Completion.MESSAGE_CONSTRAINTS;
+        assertThrows(IllegalValueException.class, expectedMessage, application::toModelType);
+    }
 
+    @Test
+    public void toModelType_nullCompletion_throwsIllegalValueException() {
+        JsonAdaptedApplication application = new JsonAdaptedApplication(VALID_COMPANY, VALID_POSITION,
+                VALID_DEADLINE, null, VALID_STATUS, VALID_PRIORITY,
+                VALID_REQUIREMENTS, VALID_INTERVIEW_DATE_AND_TIME);
+        String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, Completion.class.getSimpleName());
+        assertThrows(IllegalValueException.class, expectedMessage, application::toModelType);
+    }
+
+    @Test
+    public void toModelType_invalidStatus_throwsIllegalValueException() {
+        JsonAdaptedApplication application =
+                new JsonAdaptedApplication(VALID_COMPANY, VALID_POSITION, VALID_DEADLINE, VALID_COMPLETION,
+                        INVALID_STATUS, VALID_PRIORITY, VALID_REQUIREMENTS, VALID_INTERVIEW_DATE_AND_TIME);
+        String expectedMessage = Status.MESSAGE_CONSTRAINTS;
+        assertThrows(IllegalValueException.class, expectedMessage, application::toModelType);
+    }
+
+    @Test
+    public void toModelType_nullStatus_throwsIllegalValueException() {
+        JsonAdaptedApplication application = new JsonAdaptedApplication(VALID_COMPANY, VALID_POSITION,
+                VALID_DEADLINE, VALID_COMPLETION, null, VALID_PRIORITY,
+                VALID_REQUIREMENTS, VALID_INTERVIEW_DATE_AND_TIME);
+        String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, Status.class.getSimpleName());
+        assertThrows(IllegalValueException.class, expectedMessage, application::toModelType);
+    }
+
+    @Test
+    public void toModelType_invalidPriority_throwsIllegalValueException() {
+        JsonAdaptedApplication application =
+                new JsonAdaptedApplication(VALID_COMPANY, VALID_POSITION, VALID_DEADLINE, VALID_COMPLETION,
+                        VALID_STATUS, INVALID_PRIORITY, VALID_REQUIREMENTS, VALID_INTERVIEW_DATE_AND_TIME);
+        String expectedMessage = Priority.MESSAGE_CONSTRAINTS;
+        assertThrows(IllegalValueException.class, expectedMessage, application::toModelType);
+    }
+
+    @Test
+    public void toModelType_nullPriority_throwsIllegalValueException() {
+        JsonAdaptedApplication application = new JsonAdaptedApplication(VALID_COMPANY, VALID_POSITION,
+                VALID_DEADLINE, VALID_COMPLETION, VALID_STATUS, null,
+                VALID_REQUIREMENTS, VALID_INTERVIEW_DATE_AND_TIME);
+        String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, Priority.class.getSimpleName());
+        assertThrows(IllegalValueException.class, expectedMessage, application::toModelType);
+    }
 }
