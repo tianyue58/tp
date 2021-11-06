@@ -11,13 +11,13 @@ InternSHIP has been optimized for use via a Command Line Interface (CLI) while s
 Given below are my contributions to the project.
 
 * **New Feature**: Added the `Position` field.
-  * What it does: Allows the user to record internship position. (Pull request [\#51](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/51))
+  * What it does: Allows the user to record internship position (Pull request [\#51](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/51)).
   * Justification: Being able to remind users about application details on which role they applied for.
   * Highlights: This feature affected all existing commands as a new field had to be added to all commands. Many test cases needed to be changed too.
   * The implementation of this feature was later enhanced by the team.
 
 * **New Feature**: Added the `Deadline` fields.
-  * What it does: Allows the user to record application deadline. (Pull request [\#51](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/51))
+  * What it does: Allows the user to record application deadline (Pull request [\#51](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/51)).
   * Justification: Being able to remind user not to miss important deadlines.
   * Highlights: This feature affected all existing commands as a new field had to be added to all commands. Many test cases needed to be changed too.
   * The implementation of this feature was later enhanced by the team.
@@ -35,25 +35,24 @@ Given below are my contributions to the project.
 * **Code contributed**: [RepoSense link](https://nus-cs2103-ay2122s1.github.io/tp-dashboard/?search=tianyue58&sort=groupTitle&sortWithin=title&timeframe=commit&mergegroup=&groupSelect=groupByRepos&breakdown=true&checkedFileTypes=docs~functional-code~test-code~other&since=2021-09-17)
 
 * **Project management**:
-    * Set up the GitHub team codecov
-    * Updated Readme (Pull request [\#28](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/28))
-    * Added v1.2 demo in collaborative project notes  
-    * Managed deadlines and deliverables for each iteration, including updating the issue tracker and milestones
+    * Set up the GitHub team codecov.
+    * Updated Readme (Pull request [\#28](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/28)).
+    * Added v1.2 demo in collaborative project notes.  
+    * Managed deadlines and deliverables for each iteration, including updating the issue tracker and milestones.
 
 * **Enhancements to existing features**:
     * Refactored code base to remove all traces of AddressBook, including renaming of classes, methods, files, etc (Pull request [#51](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/51)).
-    * Changed the product icon (Pull request [\#51](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/51))
-    * Refactored the all the test cases to remove the tag functionality (Pull request [\#122](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/122))  
-    * Fixed bugs from Practical Examination Dry Run (Pull request [\#214](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/214))
+    * Changed the product icon (Pull request [\#51](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/51)).
+    * Refactored the all the test cases to remove the tag functionality (Pull request [\#122](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/122)).
+    * Fixed bugs from Practical Examination Dry Run (Pull request [\#214](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/214)).
 
 * **Documentation**:
     * User Guide:
-        * Added the documentation for the `find` feature (Pull request [\#113](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/113), [\#221](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/221))
+        * Added the documentation for the `find` feature (Pull request [\#113](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/113), [\#221](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/221)).
     * Developer Guide:
-        * Added implementation details of the `find` feature. (Pull request [\#105](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/105))
-        * Updated the appendix for team effort summary (Pull request [\#223](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/223))
-        * Updated the uml diagram and use case for find command (Pull request [\#245](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/245))
+        * Added implementation details of the `find` feature. (Pull request [\#105](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/105)).
+        * Updated the appendix for team effort summary (Pull request [\#223](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/223)).
+        * Updated the uml diagram and use case for find command (Pull request [\#245](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/245)).
   
-
 * **Community**:
   * Reported an above-average number of bugs in the PE-D (Examples: Bug [#4](https://github.com/tianyue58/ped/issues/4), Bug [#10](https://github.com/tianyue58/ped/issues/10), Bug [#11](https://github.com/tianyue58/ped/issues/11)). 
