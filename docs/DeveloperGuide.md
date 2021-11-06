@@ -456,6 +456,8 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 (For all use cases below, the **System** is `InternSHIP` and the **Actor** is the `user`, unless specified otherwise)
 
+**Tracking application details**
+
 **Use case: Add an application entry**
 
 **MSS**
@@ -475,28 +477,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case returns to step 1.
 
-**Use case: Delete an application entry**
-
-**MSS**
-
-1.  User requests to list all entries
-2.  InternSHIP shows a list of application entries
-3.  User requests to delete a specific entry in the list
-4.  InternSHIP deletes the entry
-
-    Use case ends.
-
-**Extensions**
-
-* 2a. The list is empty.
-
-  Use case ends. There is nothing to delete.
-
-* 3a. The given index is invalid.
-
-    * 3a1. InternSHIP shows an error message.
-
-      Use case resumes at step 2.
+**Viewing specific applications**
 
 **Use case: Update an application entry/ Complete an application/ Update application status**
 
@@ -535,7 +516,34 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 * 1a. The user fails to enter the correct format.
     * InternSHIP shows an error message.
       Use case returns to step 1.
+    
+**Others**
 
+**Use case: Delete an application entry**
+
+**MSS**
+
+1. User requests to delete an application entry at a specific index.
+2. InternSHIP removes the application entry at the specified index, displays a success message, and shows the application list with that application being removed. 
+
+    Use case ends.
+
+**Extensions**
+
+* 1a. The displayed list is already empty before the user enters the command.
+  * 1a1. InternSHIP displays an error message as there is nothing to be deleted.
+  Use case ends.
+
+* 1b. The index specified is invalid (i.e., not a non-negative integer, or exceeds the length of the displayed list). 
+  * 1b1. InternSHIP shows an error message. 
+  Use case ends.
+
+**Use case: Clear all application entries**
+
+**MSS** 
+
+1. User requests to clear all application entries in InternSHIP.
+2. InternSHIP wipes away all data in user's application list, displays a success message, and shows an empty list.
 
 **Use case: Undo/Redo a change to the application list**
 
@@ -551,9 +559,27 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 * 1a. There is no previous change to be undone/redone.
   * 1a1. InternSHIP displays an error message.
   Use case ends.
+  
+**Use case: Exit the program**
 
+**MSS**
 
-*{More to be added}*
+1. User requests to exit the program.
+2. InternSHIP exits. 
+    
+    Use case ends.
+
+**MSS**
+
+**Use case: View help**
+
+**MSS**
+
+1. User requests to view help.
+2. InternSHIP displays a pop-up, which contains the link to the User Guide.
+
+   Use case ends.
+
 
 ### Non-Functional Requirements
 
