@@ -290,9 +290,9 @@ The find feature is implemented by the `FindCommandParser` and `FindCommand` cla
 #### Design considerations:
 
 * **Alternative 1 (current choice):** Matches applications using specified fields (e.g. user can specify deadline field with d/) and keywords.
-    * Pros: User can specify fields to match similar to the way in `AddCommand` and `EditCommand`. 
+    * Pros: User can specify fields to match similar to the way in `AddCommand` and `EditCommand`.
     * Cons: The `find` command will require more parameters.
-
+    
 * **Alternative 2:** Uses different command word for finding different fields (e.g. findD for matching application with deadlines).
     * Pros: Shorter command for user to input.
     * Cons: Harder for user to remember the command word as this format is not used in other methods.
@@ -535,7 +535,27 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 * 1a. The user fails to enter the correct format.
     * InternSHIP shows an error message.
       Use case returns to step 1.
-      
+
+**Use case: Find an application entry by fields**
+
+**MSS**
+
+1. User requests to find internship application(s) by inputting a specific field and keyword(s). Fields can be the company name, internship position, completion status, application outcome, application priority and application requirements.
+2. Internship displays a list of applications whose field matches the given keyword(s).
+
+   Use case ends.
+
+**Extensions**
+
+* 1a. Format of the keyword after the given field does not follow the required format.
+
+    * 1a1. InternSHIP shows an error message.
+
+      Use case ends.
+
+* 2a. The filtered list is empty.
+
+    Use case ends.
 
 *{More to be added}*
 
@@ -603,7 +623,7 @@ testers are expected to do more *exploratory* testing.
    1. _{explain how to simulate a missing/corrupted file, and the expected behavior}_
 
 ## **Appendix 3: Effort**
-If the effort required to create **AB3** is 100, we would place the effort level required to implement the current version of **InternSHIP** at 150.
+If the effort required to create **AB3** is 10, we would place the effort level required to implement the current version of **InternSHIP** at 15.
 
 Our team has put in a significant amount of effort to get InternSHIP to the current version. Below, we list some notable changes overall and notable features implemented by us.
 
