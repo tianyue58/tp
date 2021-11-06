@@ -10,7 +10,7 @@
   }, {
     "company": "ByteDance",
     "position": "Web Developer",
-    "deadline": "2021-12-29",
+    "deadline": "2021-11-29",
     "completion": "Completed",
     "status": "Rejected",
     "priority": "High",
@@ -19,10 +19,10 @@
   }, {
     "company": "Grab",
     "position": "Backend Engineer",
-    "deadline": "2021-12-12",
+    "deadline": "2020-12-12",
     "completion": "Uncompleted",
     "status": "Pending",
-    "priority": "Medium",
+    "priority": "Low",
     "requirements": [ "Interview" ],
     "interviewDateAndTimes": [ "2021-12-12 0730" ]
   } ]

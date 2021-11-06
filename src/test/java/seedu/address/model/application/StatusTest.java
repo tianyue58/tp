@@ -35,7 +35,25 @@ public class StatusTest {
         assertFalse(Status.isValidStatus("accepted")); // wrong capitalisation
 
         // valid status
+        assertTrue(Status.isValidStatus("Pending"));
         assertTrue(Status.isValidStatus("Accepted"));
         assertTrue(Status.isValidStatus("Rejected"));
+    }
+
+    @Test
+    public void equals() {
+        Status s = new Status("Accepted");
+
+        // same object -> return true
+        assertTrue(s.equals(s));
+
+        // null -> return false
+        assertFalse(s.equals(null));
+
+        // different value -> return false
+        assertFalse(s.equals(new Status("Rejected")));
+
+        // same value -> return true
+        assertTrue(s.equals(new Status("Accepted")));
     }
 }
