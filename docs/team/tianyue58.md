@@ -50,9 +50,9 @@ Given below are my contributions to the project.
     * User Guide:
         * Added the documentation for the `find` feature (Pull request [\#113](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/113), [\#221](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/221))
     * Developer Guide:
-        * Added implementation details of the `find` feature. (Pull request [\#105](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/105)
-        * Updated the appendix for team effort summary (Pull request [\#223](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/223)
-        * Updated the uml diagram and use case for find command (Pull request [\#244](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/244)
+        * Added implementation details of the `find` feature. (Pull request [\#105](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/105))
+        * Updated the appendix for team effort summary (Pull request [\#223](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/223))
+        * Updated the uml diagram and use case for find command (Pull request [\#245](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/245))
   
 
 * **Community**:
