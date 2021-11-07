@@ -16,7 +16,6 @@ import java.util.Set;
 
 import org.junit.jupiter.api.Test;
 
-import seedu.address.logic.commands.CommandTestUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.application.Company;
 import seedu.address.model.application.Completion;
@@ -245,8 +244,8 @@ public class ParserUtilTest {
         Collection<String> interviewTimeSet = new HashSet<>();
         Set<InterviewDateAndTime> parsedInterviewTimeSet = new HashSet<>();
 
-        String[] interviewTimes = new String[]{VALID_INTERVIEW_DATE_AND_TIME_AMAZON,
-                VALID_INTERVIEW_DATE_AND_TIME_BYTEDANCE};
+        String[] interviewTimes =
+                new String[]{VALID_INTERVIEW_DATE_AND_TIME_AMAZON, VALID_INTERVIEW_DATE_AND_TIME_BYTEDANCE};
         Collections.addAll(interviewTimeSet, interviewTimes);
         for (String interviewTime: interviewTimes) {
             parsedInterviewTimeSet.add(new InterviewDateAndTime(interviewTime));

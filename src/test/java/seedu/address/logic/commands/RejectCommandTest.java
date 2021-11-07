@@ -8,7 +8,6 @@ import static seedu.address.logic.commands.CommandTestUtil.showApplicationAtInde
 import static seedu.address.testutil.TypicalApplications.getTypicalInternship;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_APPLICATION;
 import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_APPLICATION;
-import static seedu.address.testutil.TypicalIndexes.INDEX_THIRD_APPLICATION;
 
 import java.util.Set;
 
