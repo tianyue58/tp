@@ -77,6 +77,7 @@ public class SoonCommandParserTest {
     public void parse_multipleParametersPresent_failure() {
         String expectedMessage = String.format(MESSAGE_INVALID_COMMAND_FORMAT, SoonCommand.MESSAGE_USAGE);
         assertParseFailure(parser, "" + INDEX_FIRST_APPLICATION + " " + INDEX_SECOND_APPLICATION, expectedMessage);
+        assertParseFailure(parser, "d/1" + " i/1", expectedMessage);
     }
 
     @Test

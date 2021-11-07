@@ -10,8 +10,9 @@ title: User Guide
 ## Introduction
 
 Are you a university student looking to score a holiday internship? Do you feel overwhelmed by all the application details you have to keep track of? Have you missed any application deadlines because there are just too many to remember? Have you ever wished that there were a comprehensive app that could help you track your entire internship application process? If you answered yes to any of these questions, we have just the application for you!
-
-![Logo](images/logos/InternSHIP.png)
+<div align = "center">
+    <img alt="logo" src="images/logos/InternSHIP.png">
+</div>
 
 InternSHIP is a **desktop app for university students to manage their internship application deadlines.** Here are its main features:
 * Tracking all essential internship application details (e.g. submission deadlines, interview date and time, completion status, etc...)
@@ -87,7 +88,22 @@ Below are some special formats used throughout this User Guide:
 `Highlights are used to emphasise special text such as parameters, field values, commands, file names or any user inputs.`
 
 ### Navigating the GUI
-TO BE DONE AFTER WE FINALISE THE UI!!
+
+Different sections of the application window have been annotated in the image shown below:
+
+![Anotated UI](images/AnnotatedUi.png)
+
+The UI has been designed and optimized to be navigated via the Command Line Interface (CLI) although some buttons are clickable.
+
+Users can enter commands into the command box and press `ENTER` to execute them. The results will be displayed on the result box, showing appropriate messages. Depending on the command entered, the main panel may be updated accordingly.
+
+<div markdown="span" class="alert alert-primary">:bulb: **Tip:**
+To see the list of applications, users can do so by simply scrolling up and down or pressing the arrow keys `UP` or `DOWN`
+</div>
+
+<div markdown="span" class="alert alert-info">:information_source: **Info:**
+Only successfully executed commands will be saved.
+</div>
 
 ### Command format
 
