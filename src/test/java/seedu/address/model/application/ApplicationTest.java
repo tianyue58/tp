@@ -1,12 +1,15 @@
 package seedu.address.model.application;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_COMPLETION_BYTEDANCE;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_DEADLINE_BYTEDANCE;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_INTERVIEW_DATE_AND_TIME_BYTEDANCE;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BYTEDANCE;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_POSITION_BYTEDANCE;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_PRIORITY_BYTEDANCE;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_REQUIREMENTS_BYTEDANCE;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_STATUS_BYTEDANCE;
 import static seedu.address.testutil.TypicalApplications.AMAZON;
 import static seedu.address.testutil.TypicalApplications.BYTEDANCE;
 
@@ -70,30 +73,51 @@ public class ApplicationTest {
     public void equals() {
         // same values -> returns true
         Application amazonCopy = new ApplicationBuilder(AMAZON).build();
-        assertEquals(AMAZON, amazonCopy);
+        assertTrue(AMAZON.equals(amazonCopy));
 
         // same object -> returns true
-        assertEquals(AMAZON, AMAZON);
+        assertTrue(AMAZON.equals(AMAZON));
 
         // null -> returns false
-        assertNotEquals(null, AMAZON);
+        assertFalse(AMAZON.equals(null));
 
         // different type -> returns false
-        assertNotEquals(5, AMAZON);
+        assertFalse(AMAZON.equals(5));
 
         // different application -> returns false
-        assertNotEquals(AMAZON, BYTEDANCE);
+        assertFalse(AMAZON.equals(BYTEDANCE));
 
         // different name -> returns false
         Application editedAmazon = new ApplicationBuilder(AMAZON).withCompany(VALID_NAME_BYTEDANCE).build();
-        assertNotEquals(AMAZON, editedAmazon);
+        assertFalse(AMAZON.equals(editedAmazon));
 
         // different position -> returns false
         editedAmazon = new ApplicationBuilder(AMAZON).withPosition(VALID_POSITION_BYTEDANCE).build();
-        assertNotEquals(AMAZON, editedAmazon);
+        assertFalse(AMAZON.equals(editedAmazon));
 
         // different deadline -> returns false
         editedAmazon = new ApplicationBuilder(AMAZON).withDeadline(VALID_DEADLINE_BYTEDANCE).build();
-        assertNotEquals(AMAZON, editedAmazon);
+        assertFalse(AMAZON.equals(editedAmazon));
+
+        // different completion -> returns false
+        editedAmazon = new ApplicationBuilder(AMAZON).withCompletion(VALID_COMPLETION_BYTEDANCE).build();
+        assertFalse(AMAZON.equals(editedAmazon));
+
+        // different status -> returns false
+        editedAmazon = new ApplicationBuilder(AMAZON).withStatus(VALID_STATUS_BYTEDANCE).build();
+        assertFalse(AMAZON.equals(editedAmazon));
+
+        // different priority -> returns false
+        editedAmazon = new ApplicationBuilder(AMAZON).withPriority(VALID_PRIORITY_BYTEDANCE).build();
+        assertFalse(AMAZON.equals(editedAmazon));
+
+        // different requirements -> returns false
+        editedAmazon = new ApplicationBuilder(AMAZON).withRequirements(VALID_REQUIREMENTS_BYTEDANCE).build();
+        assertFalse(AMAZON.equals(editedAmazon));
+
+        // different interview date and times -> returns false
+        editedAmazon = new ApplicationBuilder(AMAZON)
+                .withInterviewDateAndTime(VALID_INTERVIEW_DATE_AND_TIME_BYTEDANCE).build();
+        assertFalse(AMAZON.equals(editedAmazon));
     }
 }

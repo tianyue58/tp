@@ -10,7 +10,7 @@ import java.util.Arrays;
 /**
  * Helper functions for handling strings.
  */
-public class StringUtil {
+public final class StringUtil {
 
     /**
      * Returns true if the {@code sentence} contains the {@code word}.

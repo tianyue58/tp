@@ -26,6 +26,8 @@ public class InterviewDateAndTimePredicateTest {
         // null -> returns false
         assertFalse(firstPredicate.equals(null));
 
+        // other InterviewDateAndTimePredicate -> returns true
+        assertTrue(firstPredicate.equals(new InterviewDateAndTimePredicate(Index.fromZeroBased(2))));
     }
 
     @Test

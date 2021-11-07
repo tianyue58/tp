@@ -3,11 +3,13 @@ package seedu.address.logic.commands;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_COMPANY_NAME;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_COMPLETION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DEADLINE_OF_APPLICATION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_INTERNSHIP_POSITION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_INTERVIEW_DATE_AND_TIME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PRIORITY;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_REQUIREMENT;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_STATUS;
 import static seedu.address.testutil.Assert.assertThrows;
 
 import java.text.SimpleDateFormat;
@@ -40,8 +42,8 @@ public class CommandTestUtil {
     public static final String VALID_POSITION_SHOPEE = "Frontend Engineer";
 
     public static final String VALID_DEADLINE_AMAZON = "2021-12-30";
-    public static final String VALID_DEADLINE_BYTEDANCE = "2021-12-29";
-    public static final String VALID_DEADLINE_GRAB = "2021-12-12";
+    public static final String VALID_DEADLINE_BYTEDANCE = "2021-11-29";
+    public static final String VALID_DEADLINE_GRAB = "2020-12-12";
     public static final String VALID_DEADLINE_SHOPEE = "2021-12-31";
 
     public static final String VALID_COMPLETION_AMAZON = "Uncompleted";
@@ -56,7 +58,7 @@ public class CommandTestUtil {
 
     public static final String VALID_PRIORITY_AMAZON = "Medium";
     public static final String VALID_PRIORITY_BYTEDANCE = "High";
-    public static final String VALID_PRIORITY_GRAB = "Medium";
+    public static final String VALID_PRIORITY_GRAB = "Low";
     public static final String VALID_PRIORITY_SHOPEE = "Low";
 
     public static final String VALID_REQUIREMENTS_AMAZON = "Resume";
@@ -69,37 +71,50 @@ public class CommandTestUtil {
 
     public static final String NAME_DESC_AMAZON = " " + PREFIX_COMPANY_NAME + VALID_NAME_AMAZON;
     public static final String NAME_DESC_BYTEDANCE = " " + PREFIX_COMPANY_NAME + VALID_NAME_BYTEDANCE;
+    public static final String EMPTY_NAME_DESC = " " + PREFIX_COMPANY_NAME;
 
     public static final String POSITION_DESC_AMAZON = " " + PREFIX_INTERNSHIP_POSITION + VALID_POSITION_AMAZON;
     public static final String POSITION_DESC_BYTEDANCE = " " + PREFIX_INTERNSHIP_POSITION + VALID_POSITION_BYTEDANCE;
+    public static final String EMPTY_POSITION_DESC = " " + PREFIX_INTERNSHIP_POSITION;
 
     public static final String DEADLINE_DESC_AMAZON = " " + PREFIX_DEADLINE_OF_APPLICATION + VALID_DEADLINE_AMAZON;
     public static final String DEADLINE_DESC_BYTEDANCE = " " + PREFIX_DEADLINE_OF_APPLICATION
             + VALID_DEADLINE_BYTEDANCE;
+    public static final String EMPTY_DEADLINE_DESC = " " + PREFIX_DEADLINE_OF_APPLICATION;
 
     public static final String PRIORITY_DESC_AMAZON = " " + PREFIX_PRIORITY + VALID_PRIORITY_AMAZON;
-    public static final String PRIORITY_DESC_BYTEDANCE = " " + PREFIX_PRIORITY + VALID_PRIORITY_BYTEDANCE;
+    public static final String EMPTY_PRIORITY_DESC = " " + PREFIX_PRIORITY;
+
+    public static final String COMPLETION_DESC_AMAZON = " " + VALID_COMPLETION_AMAZON;
+    public static final String EMPTY_COMPLETION_DESC = " " + PREFIX_COMPLETION;
 
     public static final String STATUS_DESC_AMAZON = " " + VALID_STATUS_AMAZON;
-    public static final String STATUS_DESC_BYTEDANCE = " " + VALID_STATUS_BYTEDANCE;
+    public static final String EMPTY_STATUS_DESC = " " + PREFIX_STATUS;
 
     public static final String REQUIREMENTS_DESC_AMAZON = " " + PREFIX_REQUIREMENT + VALID_REQUIREMENTS_AMAZON;
-    public static final String REQUIREMENTS_DESC_BYTEDANCE = " " + PREFIX_REQUIREMENT + VALID_REQUIREMENTS_BYTEDANCE;
     public static final String EMPTY_REQUIREMENT_DESC = " " + PREFIX_REQUIREMENT;
 
     public static final String INTERVIEW_DATE_AND_TIME_DESC_AMAZON = " " + PREFIX_INTERVIEW_DATE_AND_TIME
             + VALID_INTERVIEW_DATE_AND_TIME_AMAZON;
-    public static final String INTERVIEW_DATE_AND_TIME_DESC_BYTEDANCE = " " + PREFIX_INTERVIEW_DATE_AND_TIME
-            + VALID_INTERVIEW_DATE_AND_TIME_BYTEDANCE;
     public static final String EMPTY_INTERVIEW_DATE_AND_TIME_DESC = " " + PREFIX_INTERVIEW_DATE_AND_TIME;
 
     public static final String INVALID_NAME_DESC = " " + PREFIX_COMPANY_NAME + "Google&"; // '&' not allowed in names
     public static final String INVALID_POSITION_DESC = " "
-            + PREFIX_INTERNSHIP_POSITION; // empty string not allowed for positions
+            + PREFIX_INTERNSHIP_POSITION + "Tester#"; // '#' not allowed for positions
     public static final String INVALID_DEADLINE_DESC = " "
             + PREFIX_DEADLINE_OF_APPLICATION + "03-12-2001"; // wrong date format (DD-MM-YYY) not allowed
     public static final String INVALID_PRIORITY_DESC = " " + PREFIX_PRIORITY
             + "higher"; // not an allowed priority value
+    public static final String INVALID_COMPLETION_DESC = " " + PREFIX_COMPLETION
+            + "completing"; // not an allowed completion value
+    public static final String INVALID_STATUS_DESC = " " + PREFIX_STATUS
+            + "waiting"; // not an allowed status value
+    public static final String INVALID_INTERVIEW_DATE_AND_TIME_DESC = " " + PREFIX_INTERVIEW_DATE_AND_TIME
+            + "2021-12-21 09:00"; //wrong date format
+    public static final String INVALID_REQUIREMENT_DESC = " " + PREFIX_REQUIREMENT
+            + "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"; // requirement longer than 20 characters
+
+
 
     public static final String PREAMBLE_WHITESPACE = "\t  \r  \n";
     public static final String PREAMBLE_NON_EMPTY = "NonEmptyPreamble";

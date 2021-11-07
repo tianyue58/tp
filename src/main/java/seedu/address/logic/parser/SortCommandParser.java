@@ -29,10 +29,13 @@ public class SortCommandParser implements Parser<SortCommand> {
 
         if (numberOfPrefixesPresent(argMultimap, PREFIX_COMPANY_NAME, PREFIX_INTERNSHIP_POSITION,
                 PREFIX_DEADLINE_OF_APPLICATION, PREFIX_INTERVIEW_DATE_AND_TIME, PREFIX_PRIORITY) == 0
-                || numberOfPrefixesPresent(argMultimap, PREFIX_COMPANY_NAME, PREFIX_INTERNSHIP_POSITION,
-                PREFIX_DEADLINE_OF_APPLICATION, PREFIX_INTERVIEW_DATE_AND_TIME, PREFIX_PRIORITY) > 1
                 || !argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, SortCommand.MESSAGE_USAGE));
+        }
+
+        if (numberOfPrefixesPresent(argMultimap, PREFIX_COMPANY_NAME, PREFIX_INTERNSHIP_POSITION,
+                PREFIX_DEADLINE_OF_APPLICATION, PREFIX_INTERVIEW_DATE_AND_TIME, PREFIX_PRIORITY) > 1) {
+            throw new ParseException(SortCommand.MESSAGE_MULTIPLE_PREFIXES);
         }
 
         String parameter = null;
@@ -47,14 +50,10 @@ public class SortCommandParser implements Parser<SortCommand> {
             parameter = "deadline";
         }
         if (argMultimap.getValue(PREFIX_INTERVIEW_DATE_AND_TIME).isPresent()) {
-            parameter = "interview date and time";
+            parameter = "interview";
         }
         if (argMultimap.getValue(PREFIX_PRIORITY).isPresent()) {
             parameter = "priority";
-        }
-
-        if (parameter == null) {
-            throw new ParseException(SortCommand.MESSAGE_PARAMETER_NOT_SPECIFIED);
         }
 
         return new SortCommand(parameter);

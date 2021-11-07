@@ -12,6 +12,7 @@ import org.junit.jupiter.api.Test;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.SoonCommand;
+import seedu.address.model.application.InterviewDateAndTimePredicate;
 import seedu.address.model.application.SoonDeadlinePredicate;
 
 public class SoonCommandParserTest {
@@ -22,6 +23,10 @@ public class SoonCommandParserTest {
         assertParseSuccess(parser, " d/1",
                 new SoonCommand(Index.fromZeroBased(1),
                         new SoonDeadlinePredicate(Index.fromZeroBased(1))));
+
+        assertParseSuccess(parser, " i/1",
+                new SoonCommand(Index.fromZeroBased(1),
+                        new InterviewDateAndTimePredicate(Index.fromZeroBased(1))));
     }
 
     @Test

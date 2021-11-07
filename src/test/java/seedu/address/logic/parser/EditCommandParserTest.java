@@ -112,13 +112,13 @@ public class EditCommandParserTest {
     @Test
     public void parse_allFieldsSpecified_success() {
         Index targetIndex = INDEX_SECOND_APPLICATION;
-        String userInput = targetIndex.getOneBased() + POSITION_DESC_BYTEDANCE
-                + DEADLINE_DESC_AMAZON + PRIORITY_DESC_AMAZON + NAME_DESC_AMAZON;
+        String userInput = targetIndex.getOneBased() + NAME_DESC_AMAZON + POSITION_DESC_BYTEDANCE + DEADLINE_DESC_AMAZON
+                + PRIORITY_DESC_AMAZON + REQUIREMENTS_DESC_AMAZON + INTERVIEW_DATE_AND_TIME_DESC_AMAZON;
 
-        EditApplicationDescriptor descriptor = new EditApplicationDescriptorBuilder().withCompany(
-                VALID_NAME_AMAZON)
+        EditApplicationDescriptor descriptor = new EditApplicationDescriptorBuilder().withCompany(VALID_NAME_AMAZON)
                 .withPosition(VALID_POSITION_BYTEDANCE).withDeadline(VALID_DEADLINE_AMAZON)
-                .withPriority(VALID_PRIORITY_AMAZON).build();
+                .withPriority(VALID_PRIORITY_AMAZON).withRequirements(VALID_REQUIREMENTS_AMAZON)
+                .withInterviewDateAndTime(VALID_INTERVIEW_DATE_AND_TIME_AMAZON).build();
         EditCommand expectedCommand = new EditCommand(targetIndex, descriptor);
 
         assertParseSuccess(parser, userInput, expectedCommand);
@@ -195,6 +195,14 @@ public class EditCommandParserTest {
         EditApplicationDescriptor emptyInterviewTimeDescriptor = new EditApplicationDescriptor();
         emptyInterviewTimeDescriptor.setInterviewDateAndTimes(new HashSet<>());
         expectedCommand = new EditCommand(targetIndex, emptyInterviewTimeDescriptor);
+        assertParseSuccess(parser, userInput, expectedCommand);
+
+        //empty requirements and interview date and time
+        userInput = targetIndex.getOneBased() + EMPTY_REQUIREMENT_DESC + EMPTY_INTERVIEW_DATE_AND_TIME_DESC;
+        EditApplicationDescriptor emptyRequirementAndInterviewTimeDescriptor = new EditApplicationDescriptor();
+        emptyRequirementAndInterviewTimeDescriptor.setRequirements(new HashSet<>());
+        emptyRequirementAndInterviewTimeDescriptor.setInterviewDateAndTimes(new HashSet<>());
+        expectedCommand = new EditCommand(targetIndex, emptyRequirementAndInterviewTimeDescriptor);
         assertParseSuccess(parser, userInput, expectedCommand);
     }
 

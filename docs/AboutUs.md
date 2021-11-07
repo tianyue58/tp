@@ -29,7 +29,7 @@ We are a team based in the [School of Computing, National University of Singapor
 
 <img src="images/nature711.png" width="200px">
 
-[[github](http://github.com/nature711)] [[portfolio](team/hutianran.md)]
+[[github](http://github.com/nature711)] [[portfolio](team/nature711.md)]
 
 * Role: Developer
 
@@ -38,7 +38,7 @@ We are a team based in the [School of Computing, National University of Singapor
 <img src="images/tianyue58.png" width="200px">
 
 [[github](http://github.com/tianyue58)]
-[[portfolio](team/johndoe.md)]
+[[portfolio](team/tianyue58.md)]
 
 * Role: Developer
 
