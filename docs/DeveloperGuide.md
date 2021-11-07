@@ -807,26 +807,24 @@ Below are some limitations and future improvements of our product.
 
 ### Limitations
 1. **Commands not accepting multiple fields**
-    <br>Currently, our product does not support the functionality of accepting multiple fields. For example:
+
+    Currently, our product does not support the functionality of accepting multiple fields. For example:
    - `find c/DBS p/programmer`
    - `soon d/7 i/20`
- <br>
  The above commands will produce an error message, stating that the commands are invalid. This is because our initial implementation would only take one field (e.g c/) and ignore the rest. Thus, the workaround for this issue is to not allow the users to enter multiple fields.
      
 2. **Invalid prefix resulting in an unexpected error message**
-    <br>
+
    As pointed out in PE-D, our current product is not able to check for a typo in the prefixes. For example:
    - `edit 1 c/Grab zp/Engineer`
-    <br>
      The example above will produce an error message, stating that the company name should contain alphanumeric characters. This is because our current implementation will take `zp/Engineer` as a part of the company name.
      
 ### Future Improvements
 
 1. **Commands not accepting multiple fields**
-<br>
-This limitation could be improved by accepting both fields and showing the application(s) that satisfy both criteria. For example, `find c/DBS p/programmer` should show application(s) whose company name is "DBS" and position is "programmer".
+
+    This limitation could be improved by accepting both fields and showing the application(s) that satisfy both criteria. For example, `find c/DBS p/programmer`  should show application(s) whose company name is "DBS" and position is "programmer".
    
 2. **Invalid prefix resulting in an unexpected error message**
-
-<br>
-This limitation could be improved by checking if the fields entered by the users match any of the valid prefixes. Perhaps, for every `/` found, the preceding character(s) could be checked against all the valid prefixes.
+  
+   This limitation could be improved by checking if the fields entered by the users match any of the valid prefixes. Perhaps, for every `/` found, the preceding character(s) could be checked against all the valid prefixes.
