@@ -36,11 +36,9 @@ public class SoonCommandParser implements Parser<SoonCommand> {
 
         if (argMultimap.getValue(PREFIX_DEADLINE_OF_APPLICATION).isPresent()) {
             prefix = PREFIX_DEADLINE_OF_APPLICATION;
-        } else if (argMultimap.getValue(PREFIX_INTERVIEW_DATE_AND_TIME).isPresent()) {
-            prefix = PREFIX_INTERVIEW_DATE_AND_TIME;
         } else {
-            throw new ParseException(
-                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, SoonCommand.MESSAGE_USAGE));
+            assert(argMultimap.getValue(PREFIX_INTERVIEW_DATE_AND_TIME).isPresent());
+            prefix = PREFIX_INTERVIEW_DATE_AND_TIME;
         }
 
         Index days;
