@@ -75,8 +75,17 @@ public class SortCommandTest {
         expectedInternship.addApplication(GRAB);
         expectedInternship.addApplication(AMAZON);
         expectedModel = new ModelManager(expectedInternship, new UserPrefs());
-        assertCommandSuccess(new SortCommand("interview date and time"), model,
-                String.format(SortCommand.MESSAGE_SUCCESS, "interview date and time"), expectedModel);
+        assertCommandSuccess(new SortCommand("interview"), model,
+                String.format(SortCommand.MESSAGE_SUCCESS, "interview"), expectedModel);
+    }
+
+    @Test
+    public void execute_sortByInterviewNoInterviews_noInterviewMessage() {
+        Internship noInterviewInternship = new Internship();
+        noInterviewInternship.addApplication(AMAZON);
+        Model noInterviewModel = new ModelManager(noInterviewInternship, new UserPrefs());
+        assertCommandSuccess(new SortCommand("interview"), noInterviewModel,
+                SortCommand.MESSAGE_NO_INTERVIEWS, noInterviewModel);
     }
 
     @Test
@@ -89,6 +98,15 @@ public class SortCommandTest {
         assertCommandSuccess(new SortCommand("priority"), model,
                 String.format(SortCommand.MESSAGE_SUCCESS, "priority"), expectedModel);
     }
+
+    @Test
+    public void execute_sortEmptyList_emptyListMessage() {
+        Internship emptyInternship = new Internship();
+        Model emptyModel = new ModelManager(emptyInternship, new UserPrefs());
+        assertCommandSuccess(new SortCommand("priority"), emptyModel,
+                SortCommand.MESSAGE_EMPTY_LIST, emptyModel);
+    }
+
 
     @Test
     public void equals() {

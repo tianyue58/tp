@@ -1,5 +1,6 @@
 package seedu.address.model.application;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.testutil.Assert.assertThrows;
@@ -38,5 +39,34 @@ public class PriorityTest {
         assertTrue(Priority.isValidPriority("low")); // all lower case
         assertTrue(Priority.isValidPriority("MEDIUM")); // all upper case
         assertTrue(Priority.isValidPriority("HiGh")); // mix of lower and upper case
+    }
+
+    @Test
+    public void toDisplayString() {
+        // low priority
+        assertEquals("❗", new Priority("low").toDisplayString());
+
+        // medium priority
+        assertEquals("❗❗", new Priority("medium").toDisplayString());
+
+        // high priority
+        assertEquals("❗❗❗", new Priority("high").toDisplayString());
+    }
+
+    @Test
+    public void equals() {
+        Priority p = new Priority("low");
+
+        // same object -> return true
+        assertTrue(p.equals(p));
+
+        // null -> return false
+        assertFalse(p.equals(null));
+
+        // different value -> return false
+        assertFalse(p.equals(new Priority("medium")));
+
+        // same value -> return true
+        assertTrue(p.equals(new Priority("low")));
     }
 }

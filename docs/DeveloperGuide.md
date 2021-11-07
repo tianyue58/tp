@@ -3,15 +3,15 @@ layout: page
 title: Developer Guide
 ---
 * Table of Contents
-{:toc}
+  {:toc}
 
 --------------------------------------------------------------------------------------------------------------------
 
 ## **Acknowledgements**
 
-* While this product uses a generic application called [AddressBook-Level3 (AB3)](https://se-education.org) 
-as the starting point, the idea for some advanced features, such as `undo` and `redo`, are adopted from 
-[AddressBook-Level4 (AB4)](https://se-education.org/addressbook-level4).
+* While this product uses a generic application called [AddressBook-Level3 (AB3)](https://se-education.org)
+  as the starting point, the idea for some advanced features, such as `undo` and `redo`, are adopted from
+  [AddressBook-Level4 (AB4)](https://se-education.org/addressbook-level4).
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -158,7 +158,7 @@ This section describes some noteworthy details on how certain features are imple
 
 ### Complete feature
 The `complete` command is modelled by the `Completion` class which represents the
-'Completion' entity. The `Completion` field is also added as a private attribute to the 
+'Completion' entity. The `Completion` field is also added as a private attribute to the
 `Application` class. This field can take the following values:
 * `Completed`
 * `Uncompleted`
@@ -168,11 +168,11 @@ Note: When a new internship application is added, the value of the
 
 The `Complete` command is facilitated by the `CompleteCommand` class. It extends the `Command` class
 and implements the `CompleteCommand#execute()` method which wraps the main
-logic of the command. This command can be used to change the completion status of 
+logic of the command. This command can be used to change the completion status of
 the application from `Uncompleted` to `Completed`.
 
-The `CompleteCommandParser` class is responsible for parsing the index received from the user. This 
-class implements the `Parser` interface. The `CompleteCommandParser#parse()` method of 
+The `CompleteCommandParser` class is responsible for parsing the index received from the user. This
+class implements the `Parser` interface. The `CompleteCommandParser#parse()` method of
 this class parses the index and returns an `CompleteCommand` object with the index
 as the parameter.
 
@@ -190,7 +190,7 @@ as the parameter.
 
 ### Accept feature
 
-The `accept` command is modelled by the `Status` class which represents the 
+The `accept` command is modelled by the `Status` class which represents the
 'Status' entity. The `Status` field is also added as a private attribute to the
 `Application` class. This field can take the following values:
 * `Pending`
@@ -198,18 +198,18 @@ The `accept` command is modelled by the `Status` class which represents the
 * `Rejected`
 
 Note: When a new internship application is added, the value of the
-`Status` field is 'Pending' by default. 
+`Status` field is 'Pending' by default.
 
 The Accept command is facilitated by the `AcceptCommand` class. It extends the `Command` class
 and implements the `AcceptCommand#execute()` method which wraps the main
-logic of the command. This command can be used to change the status of 
+logic of the command. This command can be used to change the status of
 the application from `Pending` to `Accepted`. When the status changes, the application completion
 field would change from `Uncompleted` to `Completed` automatically.
 
-The `AcceptCommandParser` class is responsible for parsing the index received from the user. This 
-class implements the `Parser` interface. The `AcceptCommandParser#parse()` method of 
+The `AcceptCommandParser` class is responsible for parsing the index received from the user. This
+class implements the `Parser` interface. The `AcceptCommandParser#parse()` method of
 this class parses the index and returns an `AcceptCommand` object with the index
-as the parameter. 
+as the parameter.
 
 Below is a sequence diagram and an explanation of how the `AcceptCommand` is executed:
 
@@ -240,8 +240,8 @@ Step 8.Finally, the `CommandResult` is returned by the `LogicManager`.
 
 #### Design considerations:
 
-* **Alternative 1 (current choice):** The default status when an application is added is `Pending`. 
-It can later be changed to `Accepted` using the `accept` command.
+* **Alternative 1 (current choice):** The default status when an application is added is `Pending`.
+  It can later be changed to `Accepted` using the `accept` command.
     * Pros: Convenient for the user to use.
     * Cons: User cannot add an application whose status is already known.
 
@@ -335,12 +335,33 @@ The find feature is implemented by the `FindCommandParser` and `FindCommand` cla
 
 `FindCommand` class is responsible for finding the matching applications with specified fields according to the given syntax and keyword.
 
-![Interactions Inside the Logic Component for the `find p/tester` Command](images/umldiagrams/FindSequenceDiagram.png)
+Below is a sequence diagram and explanation of how the FindCommand is executed.
+![Interactions Inside the Logic Component for the `find pr/High` Command](images/umldiagrams/FindSequenceDiagram.png)
+
+Step 1. The user enters `find pr/High` command in the main window.
+
+Step 2. The command is handled by LogicManager#execute(String) method, which then calls the InternshipParser#parseCommand(String) method.
+
+Step 3. The InternshipParser matches the command word `find` in the string and extracts the argument string ` pr/High`.
+
+Step 4. The InternshipParser then calls FindCommandParser#parse(String) method and the argument string is converted to a List.
+
+Step 5. The FindCommandParser creates a new PriorityContainsKeywordsPredicate instance with the priority List to handle the filter.
+ 
+Step 6. The FindCommandParser creates a new FindCommand instance with the PriorityContainsKeywordsPredicate instance and returns it to InternshipParser, which in turn returns it to LogicManager.
+
+Step 7. The LogicManager calls the FindCommand#execute(Model) method.
+
+Step 8. The FindCommand calls the Model#updateFilteredMemberList(PriorityContainsKeywordsPredicate) method and filter applications by priority High.
+
+Step 9. The application lists the filtered applications that match the given field and keyword.
+
+Step 10. FindCommand then creates a CommandResult and returns it to LogicManager.
 
 #### Design considerations:
 
 * **Alternative 1 (current choice):** Matches applications using specified fields (e.g. user can specify deadline field with d/) and keywords.
-    * Pros: User can specify fields to match similar to the way in `AddCommand` and `EditCommand`. 
+    * Pros: User can specify fields to match similar to the way in `AddCommand` and `EditCommand`.
     * Cons: The `find` command will require more parameters.
 
 * **Alternative 2:** Uses different command word for finding different fields (e.g. findD for matching application with deadlines).
@@ -365,7 +386,7 @@ The soon feature is implemented by the `SoonCommandParser` and `SoonCommand` cla
 * **Alternative 2:** List applications whose deadlines are within a pre-set number of days.
     * Pros: Shorter command for user to input.
     * Cons: Does not provide flexibility to the user.
-    
+
 ### Undo/Redo feature
 
 The undo/redo mechanism is facilitated by `VersionedInternship`. It extends `Internship` with an undo/redo history, stored internally as an `internshipStateList` and `currentStatePointer`. Additionally, it implements the following operations:
@@ -434,13 +455,13 @@ The following activity diagram summarizes what happens when a user executes a ne
 **Aspect: How undo & redo executes:**
 
 * **Alternative 1 (current choice):** Saves the entire Internship.
-  * Pros: Easy to implement.
-  * Cons: May have performance issues in terms of memory usage.
+    * Pros: Easy to implement.
+    * Cons: May have performance issues in terms of memory usage.
 
 * **Alternative 2:** Individual command knows how to undo/redo by
   itself.
-  * Pros: Will use less memory (e.g. for `delete`, just save the application being deleted).
-  * Cons: Must ensure that the implementation of each individual command are correct.
+    * Pros: Will use less memory (e.g. for `delete`, just save the application being deleted).
+    * Cons: Must ensure that the implementation of each individual command are correct.
 
 ### \[Proposed\] Data archiving
 
@@ -471,7 +492,7 @@ Our target user is a university student who: <br>
 * prefers typing to mouse interactions
 * is reasonably comfortable using CLI apps
 
-**Value proposition**: 
+**Value proposition**:
 * Store all the information related to an internship application in one app.
 * View applications in different ways (e.g. view applications with nearby application deadlines, find uncompleted applications only, sort by priority) to facilitate organised management of internship applications and avoid missing any deadlines.
 * Manage internship applications faster than a typical mouse/GUI driven app.
@@ -485,7 +506,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | -------- | ------------------------------------------ | ------------------------------ | ---------------------------------------------------------------------- |
 | `* * *`  | student                                    | add a company I have applied  | keep track of the lists of companies I have applied                 |
 | `* * *`  | student                                    | record the deadline of an application | better organize my time for preparation and complete the requirements in time                      |
-| `* * *`  | student                                    | record the position I have applied for an application | remember my responsibility for each application   
+| `* * *`  | student                                    | record the position I have applied for an application | remember my responsibility for each application
 | `* * *`  | student                                    | record the requirements for an application | better understand what I need to prepare in order to succeed during the application |
 | `* * *`  | student                                    | record the interview date and time for an application | avoid scheduling clashes for future interviews and better organize my time for the interview preparation |
 | `* * *`  | student                                    | assign priority level to an application  | know clearly which applications I should prioritize and get started first |
@@ -506,6 +527,8 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 (For all use cases below, the **System** is `InternSHIP` and the **Actor** is the `user`, unless specified otherwise)
 
+**Tracking application details**
+
 **Use case: Add an application entry**
 
 **MSS**
@@ -515,7 +538,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 3. User requests to list all entries
 4. InternSHIP shows a list of all the application entries, including the newly added entry
 
-    Use case ends.
+   Use case ends.
 
 **Extensions**
 
@@ -525,28 +548,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case returns to step 1.
 
-**Use case: Delete an application entry**
-
-**MSS**
-
-1.  User requests to list all entries
-2.  InternSHIP shows a list of application entries
-3.  User requests to delete a specific entry in the list
-4.  InternSHIP deletes the entry
-
-    Use case ends.
-
-**Extensions**
-
-* 2a. The list is empty.
-
-  Use case ends. There is nothing to delete.
-
-* 3a. The given index is invalid.
-
-    * 3a1. InternSHIP shows an error message.
-
-      Use case resumes at step 2.
+**Viewing specific applications**
 
 **Use case: Update an application entry/ Complete an application/ Update the application outcome**
 
@@ -585,9 +587,96 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 * 1a. The user fails to enter the correct format.
     * InternSHIP shows an error message.
       Use case returns to step 1.
-      
 
-*{More to be added}*
+**Use case: Find an application entry by fields**
+
+**MSS**
+
+1. User requests to find internship application(s) by inputting a specific field and keyword(s). Fields can be the company name, internship position, completion status, application outcome, application priority and application requirements.
+2. Internship displays a list of applications whose field matches the given keyword(s).
+
+   Use case ends.
+
+**Extensions**
+
+* 1a. Format of the keyword after the given field does not follow the required format.
+
+    * 1a1. InternSHIP shows an error message.
+
+      Use case ends.
+
+* 2a. The filtered list is empty.
+
+  Use case ends.
+
+**Others**
+
+**Use case: Delete an application entry**
+
+**MSS**
+
+1. User requests to delete an application entry at a specific index.
+2. InternSHIP removes the application entry at the specified index, displays a success message, and shows the application list with that application being removed.
+
+   Use case ends.
+
+**Extensions**
+
+* 1a. The displayed list is already empty before the user enters the command.
+    * 1a1. InternSHIP displays an error message as there is nothing to be deleted.
+
+  Use case ends.
+
+* 1b. The index specified is invalid (i.e., not a non-negative integer, or exceeds the length of the displayed list).
+    * 1b1. InternSHIP shows an error message.
+
+  Use case ends.
+
+**Use case: Clear all application entries**
+
+**MSS**
+
+1. User requests to clear all application entries in InternSHIP.
+2. InternSHIP wipes away all data in user's application list, displays a success message, and shows an empty list.
+
+   Use case ends.
+
+**Use case: Undo/Redo a change to the application list**
+
+**MSS**
+
+1. User requests to undo/redo a change that was just made.
+2. InternSHIP undoes/redoes the most recent change, displays the success message, and shows the full application list.
+
+   Use case ends.
+
+**Extensions**
+
+* 1a. There is no previous change to be undone/redone.
+    * 1a1. InternSHIP displays an error message.
+
+  Use case ends.
+
+**Use case: Exit the program**
+
+**MSS**
+
+1. User requests to exit the program.
+2. InternSHIP exits.
+
+   Use case ends.
+
+**MSS**
+
+**Use case: View help**
+
+**MSS**
+
+1. User requests to view help.
+2. InternSHIP displays a pop-up, which contains the link to the User Guide.
+
+   Use case ends.
+
 
 ### Non-Functional Requirements
 
@@ -617,16 +706,16 @@ testers are expected to do more *exploratory* testing.
 
 1. Initial launch
 
-   1. Download the jar file and copy into an empty folder.
+    1. Download the jar file and copy into an empty folder.
 
-   2. Double-click the jar file. <br>
-   Expected: Shows the GUI with a set of sample applications. The window size may not be optimum.
+    2. Double-click the jar file. <br>
+       Expected: Shows the GUI with a set of sample applications. The window size may not be optimum.
 
 2. Saving window preferences
 
-   1. Resize the window to an optimum size. Move the window to a different location. Close the window.
+    1. Resize the window to an optimum size. Move the window to a different location. Close the window.
 
-   2. Re-launch the app by double-clicking the jar file.<br>
+    2. Re-launch the app by double-clicking the jar file.<br>
        Expected: The most recent window size and location is retained.
 
 3. _{ more test cases …​ }_
@@ -635,25 +724,25 @@ testers are expected to do more *exploratory* testing.
 
 1. Deleting an application while all applications are being shown
 
-   1. Prerequisites: List all applications using the `list` command. Multiple applications in the list.
+    1. Prerequisites: List all applications using the `list` command. Multiple applications in the list.
 
-   2. Test case: `delete 1`<br>
-      Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.
+    2. Test case: `delete 1`<br>
+       Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.
 
-   3. Test case: `delete 0`<br>
-      Expected: No application is deleted. Error details shown in the status message. Status bar remains the same.
+    3. Test case: `delete 0`<br>
+       Expected: No application is deleted. Error details shown in the status message. Status bar remains the same.
 
-   4. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
-      Expected: Similar to previous.
+    4. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
+       Expected: Similar to previous.
 
 ### Saving data
 
 1. Dealing with missing/corrupted data files
 
-   1. _{explain how to simulate a missing/corrupted file, and the expected behavior}_
+    1. _{explain how to simulate a missing/corrupted file, and the expected behavior}_
 
 ## **Appendix 3: Effort**
-If the effort required to create **AB3** is 100, we would place the effort level required to implement the current version of **InternSHIP** at 150.
+If the effort required to create **AB3** is 10, we would place the effort level required to implement the current version of **InternSHIP** at 15.
 
 Our team has put in a significant amount of effort to get InternSHIP to the current version. Below, we list some notable changes overall and notable features implemented by us.
 
@@ -662,7 +751,7 @@ Our team has put in a significant amount of effort to get InternSHIP to the curr
 1. **Morphed existing AB3 to align with our design for InternSHIP**
 
    We have put in a significant amount of effort morphing the existing code base, AB3 to support the need of our application, which is about internship data management.
-   
+
    Firstly, we had to create new classes for components related to an internship application, such as `Company`, `Position`, `Deadline`, `Requirements`, `InterviewDateAndTime`, `Priority`, `Completion` and `Status`. Each of these classes has different input format requirements and is related to different command.
 
    Secondly, we had to remove all the irrelevant classes and update the existing test cases to fit our need.
@@ -678,6 +767,6 @@ Our team has put in a significant amount of effort to get InternSHIP to the curr
 
 ### Notable Features
 
-Notable features we implemented from scratch include Complete, Accept, Reject, Sort, Find, Soon and Undo/Redo. We came up with hese features as they fit well in helping our target users solve problems they miay encounter in their internship data management. 
+Notable features we implemented from scratch include Complete, Accept, Reject, Sort, Find, Soon and Undo/Redo. We came up with hese features as they fit well in helping our target users solve problems they miay encounter in their internship data management.
 
 The implemention details and design considerations for these features could be found in [Implementation](#implementation) section.
