@@ -2,30 +2,32 @@
 layout: page
 title: Developer Guide
 ---
+## Table of Contents
+
 * Table of Contents
   {:toc}
 
 --------------------------------------------------------------------------------------------------------------------
 
-## **Acknowledgements**
+## Acknowledgements
 
-* While this product uses a generic application called [AddressBook-Level3 (AB3)](https://se-education.org)
+* While this product uses a generic application called [AddressBook-Level3 (AB3)](https://se-education.org/addressbook-level3/)
   as the starting point, the idea for some advanced features, such as `undo` and `redo`, are adopted from
   [AddressBook-Level4 (AB4)](https://se-education.org/addressbook-level4).
 
 --------------------------------------------------------------------------------------------------------------------
 
-## **Setting up, getting started**
+## Setting up, getting started
 
-Refer to the guide [_Setting up and getting started_](SettingUp.md).
+Refer to the guide [_Setting Up and Getting Started_](SettingUp.md).
 
 --------------------------------------------------------------------------------------------------------------------
 
-## **Design**
+## Design
 
 <div markdown="span" class="alert alert-primary">
 
-:bulb: **Tip:** The `.puml` files used to create diagrams in this document can be found in the [diagrams](https://github.com/se-edu/addressbook-level3/tree/master/docs/diagrams/) folder. Refer to the [_PlantUML Tutorial_ at se-edu/guides](https://se-education.org/guides/tutorials/plantUml.html) to learn how to create and edit diagrams.
+:bulb: **Tip:** The `.puml` files used to create diagrams in this document can be found in the [diagrams](https://github.com/AY2122S1-CS2103T-W17-1/tp/tree/master/docs/diagrams) folder. Refer to the [_PlantUML Tutorial_ at se-edu/guides](https://se-education.org/guides/tutorials/plantUml.html) to learn how to create and edit diagrams.
 </div>
 
 ### Architecture
@@ -148,11 +150,11 @@ The `Storage` component,
 
 ### Common classes
 
-Classes used by multiple components are in the `seedu.addressbook.commons` package.
+Classes used by multiple components are in the `seedu.address.commons` package.
 
 --------------------------------------------------------------------------------------------------------------------
 
-## **Implementation**
+## Implementation
 
 This section describes some noteworthy details on how certain features are implemented.
 
@@ -470,7 +472,7 @@ _{Explain here how the data archiving feature will be implemented}_
 
 --------------------------------------------------------------------------------------------------------------------
 
-## **Documentation, logging, testing, configuration, dev-ops**
+## Documentation, logging, testing, configuration, dev-ops
 
 * [Documentation guide](Documentation.md)
 * [Testing guide](Testing.md)
@@ -480,7 +482,7 @@ _{Explain here how the data archiving feature will be implemented}_
 
 --------------------------------------------------------------------------------------------------------------------
 
-## **Appendix 1: Requirements**
+## Appendix 1: Requirements
 
 ### Product scope
 
@@ -693,7 +695,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 --------------------------------------------------------------------------------------------------------------------
 
-## **Appendix 2: Instructions for manual testing**
+## Appendix 2: Instructions for manual testing
 
 Given below are instructions to test the app manually.
 
@@ -741,7 +743,7 @@ testers are expected to do more *exploratory* testing.
 
     1. _{explain how to simulate a missing/corrupted file, and the expected behavior}_
 
-## **Appendix 3: Effort**
+## Appendix 3: Effort
 If the effort required to create **AB3** is 10, we would place the effort level required to implement the current version of **InternSHIP** at 15.
 
 Our team has put in a significant amount of effort to get InternSHIP to the current version. Below, we list some notable changes overall and notable features implemented by us.
