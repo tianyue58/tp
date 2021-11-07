@@ -408,6 +408,18 @@ The `SortCommandParser` class is responsible for parsing the field received from
 
 ![Interactions Inside the Logic Component for the `sort pr/` Command](images/umldiagrams/SortSequenceDiagram.png)
 
+Step 1. The user enters `sort pr/` command in the main window.
+
+Step 2. The command is handled by LogicManager#execute(String) method, which then calls the InternshipParser#parseCommand(String) method.
+
+Step 3. The InternshipParser matches the command word `sort` in the string and extracts the argument string `pr/`.
+
+Step 4. The InternshipParser then calls SortCommandParser#parse(String) method and the argument string is converted to a Parameter instance.
+
+Step 5. The SortCommandParser creates a new SortCommand instance and returns it to InternshipParser, which in turn returns it to LogicManager.
+
+Step 6. The LogicManager calls the SortCommand#execute(Model) method to sort the application list by priority.
+
 #### Design considerations:
 
 * **Alternative 1 (current choice):** Only allow lists to be sorted in one direction per field (e.g. sooner to later for deadline, alphabetically for company name)
@@ -558,14 +570,14 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 (For all use cases below, the **System** is `InternSHIP` and the **Actor** is the `user`, unless specified otherwise)
 
-####Tracking application details
+#### Tracking application details
 
-**Use case: Add an application entry**
+**Use case 1: Add an application entry**
 
 **MSS**
 
 1. User requests to add a new internship application entry to track. User inputs the company name, role applied for and application deadline.
-2. Internship adds the entry to its list of entries.
+2. Internship adds the entry to its list of entries, displays the success message, and shows the full application list.
 
    Use case ends.
 
@@ -583,21 +595,21 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case resumes at step 1.
 
-* 2a. User decides to undo the update action.
+* 2a. User decides to undo the add action.
 
-    * 2a1. InternSHIP undoes the update action and restores the previous state.
+    * 2a1. InternSHIP undoes the add action and restores the previous state.
 
       Use case ends.
 
 
-**Use case: Update an application entry/ Complete an application/ Update the application outcome**
+**Use case 2: Update an application entry/ Complete an application/ Update the application outcome**
 
 **MSS**
 
 1.  User requests to list all entries.
 2.  InternSHIP shows a list of application entries.
 3.  User requests to update the details of a specific entry in the list/ mark the application as completed/ update the application outcome from pending to accepted or rejected.
-4.  InternSHIP updates the entry accordingly.
+4.  InternSHIP updates the entry accordingly, displays the success message, and shows the full application list.
 
     Use case ends.
 
@@ -605,7 +617,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * 2a. The list is empty.
 
-  Use case ends. There is nothing to update.
+  Use case ends. There is nothing to update/ complete.
 
 * 3a. The user fails to enter the correct format or valid argument.
 
@@ -619,28 +631,49 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case ends.
 
-* 4a. User decides to undo the update action.
+* 4a. User decides to undo the update/ complete action.
 
-    * 4a1. InternSHIP undoes the update action and restores the previous state.
+    * 4a1. InternSHIP undoes the update/ complete action and restores the previous state.
 
       Use case ends.
 
-####Viewing specific applications
+#### Viewing specific applications
 
-**Use case: Find an application entry by fields**
+**Use case 3: List applications with upcoming deadlines/ interviews**
+
+**MSS**
+
+1.  User requests to list applications with upcoming deadlines/ interviews.
+2.  InternSHIP shows a list of application entries whose deadlines/ interviews are upcoming, and the success message.
+
+    Use case ends.
+
+**Extensions**
+
+* 1a. The list is empty.
+
+  Use case ends. There is nothing to list.
+
+* 1b. The user fails to enter the correct format.
+
+    * 1b1. InternSHIP shows an error message.
+
+      Use case resumes at step 1.
+
+**Use case 4: Find an application entry by fields**
 
 **MSS**
 
 1. User requests to find internship application(s) by inputting a specific field and keyword(s). 
-2. Internship displays a list of applications whose field matches the given keyword(s).
+2. Internship displays a list of applications whose field matches the given keyword(s), and the success message.
 
    Use case ends.
 
 **Extensions**
 
-* 1a. The list is initially empty.
+* 1a. The list is empty.
 
-  Use case ends.
+  Use case ends. There is nothing to find.
 
 * 1b. The user fails to enter the correct format or valid argument.
 
@@ -652,77 +685,58 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
   
     Use case ends.
 
-**Use case: List upcoming deadlines**
-
-**MSS**
-
-1.  User requests to list upcoming deadlines.
-2.  InternSHIP shows a list of application entries whose deadlines are upcoming.
-
-    Use case ends.
-
-**Extensions**
-
-* 1a. The list is initially empty.
-
-  Use case ends.
-
-* 1b. The user fails to enter the correct format.
-
-    * 1b1. InternSHIP shows an error message.
-
-      Use case resumes at step 1.
-
-**Use case: List all applications**
+**Use case 5: List all applications**
 
 **MSS**
 
 1.  User requests to list all internship applications.
-2.  InternSHIP displays the full list of application entries.
+2.  InternSHIP displays the full list of application entries, and the success message.
 
     Use case ends.
 
 **Extensions**
 
-* 1a. The list is initially empty.
+* 2a. The list is empty.
 
   Use case ends.
 
-**Use case: Sort applications by a specific field**
+**Use case 6: Sort applications by a specific field**
 
 **MSS**
 
 1.  User requests to sort the application list by a field. 
-2.  InternSHIP shows the application list in sorted order.
+2.  InternSHIP shows the application list, sorted by the specified field, and displays a success message.
 
     Use case ends.
 
 **Extensions**
 
-* 1a. The list is initially empty.
+* 1a. The list is empty.
 
-    Use case ends.
+    Use case ends. There is nothing to sort.
 
-* 1b. The user fails to enter the correct format or valid argument.
+* 1b. The user fails to enter the correct format for the command or inputs an unsupported field to sort by.
 
     * 1b1. InternSHIP shows an error message.
 
       Use case resumes at step 1.
 
-####Others
+#### Others
 
-**Use case: Delete an application entry**
+**Use case 7: Delete an application entry**
 
 **MSS**
 
-1. User requests to delete an application entry at a specific index.
-2. InternSHIP removes the application entry at the specified index, displays a success message, and shows the application list with that application being removed.
+1. User requests to list all entries.
+2. InternSHIP shows a list of application entries.
+3. User requests to delete an application entry at a specific index.
+4. InternSHIP removes the application entry at the specified index, displays a success message, and shows the application list with that application being removed.
 
    Use case ends.
 
 **Extensions**
 
-* 1a. The list is initially empty.
+* 1a. The list is empty.
 
   Use case ends.
 
@@ -738,7 +752,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case ends.
 
-**Use case: Clear all application entries**
+**Use case 8: Clear all application entries**
 
 **MSS**
 
@@ -749,13 +763,13 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **Extensions**
 
-* 2a. User decides to undo the delete action.
+* 2a. User decides to undo the clear action.
 
-    * 2a1. InternSHIP undoes the delete action and restores the previous state.
+    * 2a1. InternSHIP undoes the clear action and restores the previous state.
 
       Use case ends.
 
-**Use case: Undo/Redo a change to the application list**
+**Use case 9: Undo/Redo a change to the application list**
 
 **MSS**
 
@@ -772,7 +786,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case ends.
 
-**Use case: Exit the program**
+**Use case 10: Exit the program**
 
 **MSS**
 
@@ -781,9 +795,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
    Use case ends.
 
-**MSS**
-
-**Use case: View help**
+**Use case 11: View help**
 
 **MSS**
 
@@ -852,7 +864,14 @@ testers are expected to do more *exploratory* testing.
 
 1. Dealing with missing/corrupted data files
 
-    1. Simulate missing data file: delete internship.json from ./data/internship.json
+    1. Test case: simulate missing data file 
+      How: Delete `internship.json` from `./data/internship.json`.
+   
+    2. Test case: simulate corrupted data file
+      How: Open `internship.json` in a text editor (e.g. IntelliJ), delete the first character `{` from the file and save the changes.
+   
+    3. Launch `InternSHIP.jar`.
+      Expected: The GUI should pop up, but with no entries in the application list. If terminal is used to open the jar file, warnings about incorrect data file format should be seen in the console output.
 
 ## Appendix 3: Effort
 If the effort required to create **AB3** is 10, we would place the effort level required to implement the current version of **InternSHIP** at 15.

@@ -550,14 +550,17 @@ Undoes a change made to the application list.
 <div markdown="span" class="alert alert-info"> :information_source: **Info:** <br>
 Commands that can be undone: <br>
 - `add` <br>
-- `delete` <br>
 - `edit` <br>
+- `complete` <br>
+- `accept` <br>
+- `reject` <br>
+- `delete` <br>
 - `clear` <br>
 Commands that cannot be undone and thus should not be followed by `undo`: <br>
-- `list`<br>
-- `find` <br>
-- `sort` <br>
 - `soon` <br>
+- `find` <br>
+- `list`<br>
+- `sort` <br>
 </div>
 
 
