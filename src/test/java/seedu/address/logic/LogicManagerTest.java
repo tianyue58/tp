@@ -10,7 +10,6 @@ import static seedu.address.testutil.TypicalApplications.AMAZON;
 
 import java.io.IOException;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -101,11 +100,11 @@ public class LogicManagerTest {
         assertEquals(logic.getInternship(), new Internship());
     }
 
-//    @Test
-//    public void getInternshipFilePath_success() {
-//        Path path = Paths.get("data\\internship.json");
-//        assertEquals(logic.getInternshipFilePath(), path);
-//    }
+    //    @Test
+    //    public void getInternshipFilePath_success() {
+    //        Path path = Paths.get("data\\internship.json");
+    //        assertEquals(logic.getInternshipFilePath(), path);
+    //   }
 
     @Test
     public void setGuiSettings_success() {
