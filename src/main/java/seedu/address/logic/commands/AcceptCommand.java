@@ -37,8 +37,7 @@ public class AcceptCommand extends Command {
 
     public static final String MESSAGE_SUCCESS = "Marked application as 'Accepted': %1$s";
 
-    private static final String MESSAGE_ALREADY_ACCEPTED =
-            "Application has already been marked as 'Accepted'!";
+    public static final String MESSAGE_ALREADY_ACCEPTED = "Application has already been marked as 'Accepted'!";
 
     private final Index targetIndex;
 
@@ -66,7 +65,7 @@ public class AcceptCommand extends Command {
 
         Application applicationToAccept = lastShownList.get(targetIndex.getZeroBased());
 
-        if (applicationToAccept.getStatus().value.equals("Accepted")) {
+        if (applicationToAccept.isAccepted()) {
             throw new CommandException(MESSAGE_ALREADY_ACCEPTED);
         }
 

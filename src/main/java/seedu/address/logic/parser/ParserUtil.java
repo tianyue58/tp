@@ -166,11 +166,11 @@ public final class ParserUtil {
      */
     public static Set<Requirement> parseRequirements(Collection<String> requirements) throws ParseException {
         requireNonNull(requirements);
-        final Set<Requirement> tagSet = new HashSet<>();
-        for (String tagName : requirements) {
-            tagSet.add(parseRequirement(tagName));
+        final Set<Requirement> requirementSet = new HashSet<>();
+        for (String requirement : requirements) {
+            requirementSet.add(parseRequirement(requirement));
         }
-        return tagSet;
+        return requirementSet;
     }
 
     /**
