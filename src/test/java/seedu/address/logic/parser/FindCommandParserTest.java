@@ -2,11 +2,14 @@ package seedu.address.logic.parser;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_COMPLETION_DESC;
+import static seedu.address.logic.commands.CommandTestUtil.INVALID_COMPLETION_DESC_2;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_NAME_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_POSITION_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_PRIORITY_DESC;
+import static seedu.address.logic.commands.CommandTestUtil.INVALID_PRIORITY_DESC_2;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_REQUIREMENT_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_STATUS_DESC;
+import static seedu.address.logic.commands.CommandTestUtil.INVALID_STATUS_DESC_2;
 import static seedu.address.logic.commands.CommandTestUtil.NAME_DESC_AMAZON;
 import static seedu.address.logic.commands.CommandTestUtil.POSITION_DESC_AMAZON;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_COMPANY_NAME;
@@ -135,11 +138,17 @@ public class FindCommandParserTest {
         //invalid priority
         assertParseFailure(parser, INVALID_PRIORITY_DESC, PRIORITY_MESSAGE_CONSTRAINTS);
 
+        assertParseFailure(parser, INVALID_PRIORITY_DESC_2, PRIORITY_MESSAGE_CONSTRAINTS);
+
         //invalid completion
         assertParseFailure(parser, INVALID_COMPLETION_DESC, COMPLETION_MESSAGE_CONSTRAINTS);
 
+        assertParseFailure(parser, INVALID_COMPLETION_DESC_2, COMPLETION_MESSAGE_CONSTRAINTS);
+
         //invalid status
         assertParseFailure(parser, INVALID_STATUS_DESC, STATUS_MESSAGE_CONSTRAINTS);
+
+        assertParseFailure(parser, INVALID_STATUS_DESC_2, STATUS_MESSAGE_CONSTRAINTS);
 
         //invalid requirement
         assertParseFailure(parser, INVALID_REQUIREMENT_DESC, Requirement.MESSAGE_CONSTRAINTS);

@@ -105,10 +105,16 @@ public class CommandTestUtil {
             + PREFIX_DEADLINE_OF_APPLICATION + "03-12-2001"; // wrong date format (DD-MM-YYY) not allowed
     public static final String INVALID_PRIORITY_DESC = " " + PREFIX_PRIORITY
             + "higher"; // not an allowed priority value
+    public static final String INVALID_PRIORITY_DESC_2 = " " + PREFIX_PRIORITY
+            + "high high"; // priority value number more than 1
     public static final String INVALID_COMPLETION_DESC = " " + PREFIX_COMPLETION
             + "completing"; // not an allowed completion value
+    public static final String INVALID_COMPLETION_DESC_2 = " " + PREFIX_COMPLETION
+            + "completed completed"; // completion value number more than 1
     public static final String INVALID_STATUS_DESC = " " + PREFIX_STATUS
             + "waiting"; // not an allowed status value
+    public static final String INVALID_STATUS_DESC_2 = " " + PREFIX_STATUS
+            + "pending pending"; // status value number more than 1
     public static final String INVALID_INTERVIEW_DATE_AND_TIME_DESC = " " + PREFIX_INTERVIEW_DATE_AND_TIME
             + "2021-12-21 09:00"; //wrong date format
     public static final String INVALID_REQUIREMENT_DESC = " " + PREFIX_REQUIREMENT
