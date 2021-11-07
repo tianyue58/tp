@@ -330,6 +330,11 @@ Examples:
 ![completeAfter](images/features/completeAfter.png)
 > After the command `complete 3`
 
+<div markdown="span" class="alert alert-info"> 
+:information_source: **Info:** <br>
+Completing an application that has already been completed will produce an error message.
+</div>
+
 <hr>
 
 #### Updating the application outcome to 'Accepted': `accept`

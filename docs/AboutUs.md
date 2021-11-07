@@ -15,6 +15,7 @@ We are a team based in the [School of Computing, National University of Singapor
 [[portfolio](team/willyamped.md)]
 
 * Role: Developer
+* Responsibilities: UI, Logic
 
 ### Modi Trushti Sanjaybhai
 
@@ -24,6 +25,7 @@ We are a team based in the [School of Computing, National University of Singapor
 [[portfolio](team/tsm1820.md)]
 
 * Role: Developer
+* Responsibilities: 
 
 ### Hu Tianran
 
