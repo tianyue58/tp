@@ -10,7 +10,7 @@ participant ":CommandResult" as CommandResult LOGIC_COLOR
 end box
 
 box Model MODEL_COLOR_T1
-participant ":Model" as Model MODEL_COLOR
+participant "model:Model" as Model MODEL_COLOR
 end box
 
 [-> LogicManager : execute("delete 1")
@@ -26,7 +26,7 @@ activate DeleteCommandParser
 DeleteCommandParser --> InternshipParser
 deactivate DeleteCommandParser
 
-InternshipParser -> DeleteCommandParser : parse("1")
+InternshipParser -> DeleteCommandParser : parse(" 1")
 activate DeleteCommandParser
 
 create DeleteCommand
@@ -45,7 +45,7 @@ destroy DeleteCommandParser
 InternshipParser --> LogicManager : d
 deactivate InternshipParser
 
-LogicManager -> DeleteCommand : execute()
+LogicManager -> DeleteCommand : execute(model)
 activate DeleteCommand
 
 DeleteCommand -> Model : deleteApplication(1)

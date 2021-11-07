@@ -4,23 +4,23 @@ skinparam arrowThickness 1.1
 skinparam arrowColor MODEL_COLOR
 skinparam classBackgroundColor MODEL_COLOR
 
-Internship *--up> "1" UniqueInterviewDateAndTimeList
-Internship *--right> "1" UniqueRequirementList
-Internship *-left> "1" UniqueApplicationList
+Internship *--up> "1" UniqueInterviewDateAndTimeSet
+Internship *--right> "1" UniqueRequirementSet
+Internship *-left> "1" UniqueApplicationSet
 
-UniqueApplicationList -left-> Application
+UniqueApplicationSet -left-> Application
 
 Application -up-> "*" InterviewDateAndTime
 Application -up-> "*" Requirement
 
-UniqueInterviewDateAndTimeList *-left-> "*" InterviewDateAndTime
-UniqueRequirementList *-right-> "*" Requirement
+UniqueInterviewDateAndTimeSet --left-> "*" InterviewDateAndTime
+UniqueRequirementSet --right-> "*" Requirement
 
-Application *--> Company
-Application *--> Position
-Application *--> Deadline
-Application *--> Priority
-Application *--> Completion
-Application *--> Status
+Application *--> "1" Company
+Application *--> "1" Position
+Application *--> "1" Deadline
+Application *--> "1" Priority
+Application *--> "1" Completion
+Application *--> "1" Status
 
 @enduml

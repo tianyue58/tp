@@ -10,7 +10,7 @@ participant ":CommandResult" as CommandResult LOGIC_COLOR
 end box
 
 box Model MODEL_COLOR_T1
-participant ":Model" as Model MODEL_COLOR
+participant "model:Model" as Model MODEL_COLOR
 end box
 
 [-> LogicManager : execute("sort pr/")
@@ -26,7 +26,7 @@ activate SortCommandParser
 SortCommandParser --> InternshipParser
 deactivate SortCommandParser
 
-InternshipParser -> SortCommandParser : parse("pr/")
+InternshipParser -> SortCommandParser : parse(" pr/")
 activate SortCommandParser
 
 create SortCommand
@@ -45,10 +45,10 @@ destroy SortCommandParser
 InternshipParser --> LogicManager : s
 deactivate InternshipParser
 
-LogicManager -> SortCommand : execute()
+LogicManager -> SortCommand : execute(model)
 activate SortCommand
 
-SortCommand -> Model : setInternship(newSortedInternship)
+SortCommand -> Model : setInternship(sortedInternship)
 activate Model
 
 Model --> SortCommand
