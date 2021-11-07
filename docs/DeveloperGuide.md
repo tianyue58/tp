@@ -328,23 +328,37 @@ Step 8. Finally, the `CommandResult` is returned by the `LogicManager`.
     * Pros: Easy to specify the desired status field while adding an application.
     * Cons: The `add` command will require too many parameters.
 
-### Sort feature
+### Soon feature
+The soon feature is implemented by the `SoonCommandParser` and `SoonCommand` classes.
 
-The `Sort` command is facilitated by the `SortCommand` class. It extends the `Command` class and implements the `SortCommand#execute()` method which wraps the main logic of the command. This command can be used to sort the **currently displayed** list of applications according to the specified field.
+`SoonCommandParser` class is responsible for parsing the parameter received from the user.
 
-The `SortCommandParser` class is responsible for parsing the field received from the user. This class implements the `Parser` interface. The `SortCommandParser#parse()` method of this class parses the field and returns a `SortCommand` object with the field as the parameter.
+`SoonCommand` class is responsible for listing the applications whose submission or interview deadlines are within a certain number of days specified by the user.
 
-![Interactions Inside the Logic Component for the `sort pr/` Command](images/umldiagrams/SortSequenceDiagram.png)
+Below is a sequence diagram and explanation of how the SoonCommand is executed.
+![Interactions Inside the Logic Component for the `soon d/ 1` Command](images/umldiagrams/SoonSequenceDiagram.png)
+
+Step 1. The user enters `soon d/1` command in the main window.
+
+Step 2. The command is handled by LogicManager#execute(String) method, which then calls the InternshipParser#parseCommand(String) method.
+
+Step 3. The InternshipParser matches the command word `soon` in the string and extracts the argument string ` d/1`.
+
+Step 4. The InternshipParser then calls SoonCommandParser#parse(String) method and the argument string is converted to a Predicate and Index instances.
+
+Step 5. The SoonCommandParser creates a new SoonCommand instance and returns it to InternshipParser, which in turn returns it to LogicManager.
+
+Step 6. The LogicManager calls the SoonCommand#execute(Model) method to update the application panel.
 
 #### Design considerations:
 
-* **Alternative 1 (current choice):** Only allow lists to be sorted in one direction per field (e.g. sooner to later for deadline, alphabetically for company name)
-    * Pros: Easier to implement. The implemented direction of sorting is also the more logical one (users are unlikely to want to view their applications from lower to higher priority).
-    * Cons: The user cannot specify the direction of sorting (e.g. later deadlines first)
+* **Alternative 1 (current choice):** Lists applications using a specified field (e.g. user can specify deadline field with d/ or interview field with i/) and number of days.
+    * Pros: User can specify a number to see applications that are due within the specified number of days.
+    * Cons: The `soon` command will require more parameters.
 
-* **Alternative 2:** Provide the option to specify the field to sort the list by as well as the direction of sorting.
-    * Pros: Users have more options on how to view their list of applications.
-    * Cons: The `sort` command will require more parameters.
+* **Alternative 2:** List applications whose deadlines are within a pre-set number of days.
+    * Pros: Shorter command for user to input.
+    * Cons: Does not provide flexibility to the user.
 
 ### Find feature
 The find feature is implemented by the `FindCommandParser` and `FindCommand` classes.
@@ -386,37 +400,23 @@ Step 10. FindCommand then creates a CommandResult and returns it to LogicManager
     * Pros: Shorter command for user to input.
     * Cons: Harder for user to remember the command word as this format is not used in other methods.
 
-### Soon feature
-The soon feature is implemented by the `SoonCommandParser` and `SoonCommand` classes.
+### Sort feature
 
-`SoonCommandParser` class is responsible for parsing the parameter received from the user.
+The `Sort` command is facilitated by the `SortCommand` class. It extends the `Command` class and implements the `SortCommand#execute()` method which wraps the main logic of the command. This command can be used to sort the **currently displayed** list of applications according to the specified field.
 
-`SoonCommand` class is responsible for listing the applications whose submission or interview deadlines are within a certain number of days specified by the user.
+The `SortCommandParser` class is responsible for parsing the field received from the user. This class implements the `Parser` interface. The `SortCommandParser#parse()` method of this class parses the field and returns a `SortCommand` object with the field as the parameter.
 
-Below is a sequence diagram and explanation of how the SoonCommand is executed.
-![Interactions Inside the Logic Component for the `soon d/ 1` Command](images/umldiagrams/SoonSequenceDiagram.png)
-
-Step 1. The user enters `soon d/1` command in the main window.
-
-Step 2. The command is handled by LogicManager#execute(String) method, which then calls the InternshipParser#parseCommand(String) method.
-
-Step 3. The InternshipParser matches the command word `soon` in the string and extracts the argument string ` d/1`.
-
-Step 4. The InternshipParser then calls SoonCommandParser#parse(String) method and the argument string is converted to a Predicate and Index instances.
-
-Step 5. The SoonCommandParser creates a new SoonCommand instance and returns it to InternshipParser, which in turn returns it to LogicManager.
-
-Step 6. The LogicManager calls the SoonCommand#execute(Model) method to update the application panel.
+![Interactions Inside the Logic Component for the `sort pr/` Command](images/umldiagrams/SortSequenceDiagram.png)
 
 #### Design considerations:
 
-* **Alternative 1 (current choice):** Lists applications using a specified field (e.g. user can specify deadline field with d/ or interview field with i/) and number of days.
-    * Pros: User can specify a number to see applications that are due within the specified number of days.
-    * Cons: The `soon` command will require more parameters.
+* **Alternative 1 (current choice):** Only allow lists to be sorted in one direction per field (e.g. sooner to later for deadline, alphabetically for company name)
+    * Pros: Easier to implement. The implemented direction of sorting is also the more logical one (users are unlikely to want to view their applications from lower to higher priority).
+    * Cons: The user cannot specify the direction of sorting (e.g. later deadlines first)
 
-* **Alternative 2:** List applications whose deadlines are within a pre-set number of days.
-    * Pros: Shorter command for user to input.
-    * Cons: Does not provide flexibility to the user.
+* **Alternative 2:** Provide the option to specify the field to sort the list by as well as the direction of sorting.
+    * Pros: Users have more options on how to view their list of applications.
+    * Cons: The `sort` command will require more parameters.
 
 ### Undo/Redo feature
 
@@ -503,11 +503,11 @@ _{Explain here how the data archiving feature will be implemented}_
 
 ## Documentation, logging, testing, configuration, dev-ops
 
-* [Documentation guide](Documentation.md)
-* [Testing guide](Testing.md)
-* [Logging guide](Logging.md)
-* [Configuration guide](Configuration.md)
-* [DevOps guide](DevOps.md)
+* [Documentation Guide](Documentation.md)
+* [Testing Guide](Testing.md)
+* [Logging Guide](Logging.md)
+* [Configuration Guide](Configuration.md)
+* [DevOps Guide](DevOps.md)
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -730,7 +730,6 @@ Given below are instructions to test the app manually.
 
 <div markdown="span" class="alert alert-info">:information_source: **Note:** These instructions only provide a starting point for testers to work on;
 testers are expected to do more *exploratory* testing.
-
 </div>
 
 ### Launch and shutdown
@@ -749,7 +748,6 @@ testers are expected to do more *exploratory* testing.
     2. Re-launch the app by double-clicking the jar file.<br>
        Expected: The most recent window size and location is retained.
 
-3. _{ more test cases …​ }_
 
 ### Deleting an application
 
@@ -758,10 +756,10 @@ testers are expected to do more *exploratory* testing.
     1. Prerequisites: List all applications using the `list` command. Multiple applications in the list.
 
     2. Test case: `delete 1`<br>
-       Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.
+       Expected: First application is deleted from the list. Details of the deleted application shown in the result box.
 
     3. Test case: `delete 0`<br>
-       Expected: No application is deleted. Error details shown in the status message. Status bar remains the same.
+       Expected: No application is deleted. Error message shown in the result box.
 
     4. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
        Expected: Similar to previous.
@@ -770,20 +768,20 @@ testers are expected to do more *exploratory* testing.
 
 1. Dealing with missing/corrupted data files
 
-    1. _{explain how to simulate a missing/corrupted file, and the expected behavior}_
+    1. Simulate missing data file: delete internship.json from ./data/internship.json
 
 ## Appendix 3: Effort
 If the effort required to create **AB3** is 10, we would place the effort level required to implement the current version of **InternSHIP** at 15.
 
 Our team has put in a significant amount of effort to get InternSHIP to the current version. Below, we list some notable changes overall and notable features implemented by us.
 
-### Notable Changes in General
+### Notable changes in general
 
 1. **Morphed existing AB3 to align with our design for InternSHIP**
 
    We have put in a significant amount of effort morphing the existing code base, AB3 to support the need of our application, which is about internship data management.
 
-   Firstly, we had to create new classes for components related to an internship application, such as `Company`, `Position`, `Deadline`, `Requirements`, `InterviewDateAndTime`, `Priority`, `Completion` and `Status`. Each of these classes has different input format requirements and is related to different command.
+   Firstly, we had to create new classes for fields related to an internship application, such as `Company`, `Position`, `Deadline`, `Requirements`, `InterviewDateAndTime`, `Priority`, `Completion` and `Status`. Each of these classes have different input format requirements and are related to different commands.
 
    Secondly, we had to remove all the irrelevant classes and update the existing test cases to fit our need.
 
@@ -794,17 +792,17 @@ Our team has put in a significant amount of effort to get InternSHIP to the curr
 
    Compared to AB3, InternSHIP displays each field of an internship application under a separate column. The entire internship list is displayed in a vertical list where each adjacent entry is highlighted with a different shade of blue.
 
-   In addition, the project icon and overall UI colour scheme is carefully chosen and designed to represent our value proposition. InternSHIP will help the users navigate through the sea of internship applications for their voyage to the desired company.
+   In addition, the project icon and overall GUI colour scheme were carefully chosen and designed to represent our value proposition. InternSHIP will help its users navigate through the sea of internship applications for their voyage to their desired company.
 
 ### Notable Features
 
-Notable features we implemented from scratch include Complete, Accept, Reject, Sort, Find, Soon and Undo/Redo. We came up with hese features as they fit well in helping our target users solve problems they miay encounter in their internship data management.
+Notable features we implemented from scratch include Complete, Accept, Reject, Sort, Find, Soon and Undo/Redo. We came up with these features as they fit well in helping our target users solve problems they may encounter in their internship data management.
 
-The implemention details and design considerations for these features could be found in [Implementation](#implementation) section.
+The implementation details and design considerations for these features can be found in the [Implementation](#implementation) section.
 
 ## **Appendix 4: Limitations and Future improvements**
 
-We acknowledge the fact that our current product is not perfect, and it still has rooms for improvement.
+We acknowledge the fact that our current product is not perfect, and it still has room for improvement.
 Below are some limitations and future improvements of our product.
 
 ### Limitations
@@ -813,13 +811,14 @@ Below are some limitations and future improvements of our product.
     Currently, our product does not support the functionality of accepting multiple fields. For example:
    - `find c/DBS p/programmer`
    - `soon d/7 i/20`
+   - `sort c/ d/`
  The above commands will produce an error message, stating that the commands are invalid. This is because our initial implementation would only take one field (e.g c/) and ignore the rest. Thus, the workaround for this issue is to not allow the users to enter multiple fields.
      
 2. **Invalid prefix resulting in an unexpected error message**
 
    As pointed out in PE-D, our current product is not able to check for a typo in the prefixes. For example:
    - `edit 1 c/Grab zp/Engineer`
-     The example above will produce an error message, stating that the company name should contain alphanumeric characters. This is because our current implementation will take `zp/Engineer` as a part of the company name.
+     The example above will produce an error message, stating that the company name should contain only alphanumeric characters. This is because our current implementation takes `zp/Engineer` as a part of the company name.
      
 ### Future Improvements
 
