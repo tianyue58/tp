@@ -811,12 +811,14 @@ Below are some limitations and future improvements of our product.
     Currently, our product does not support the functionality of accepting multiple fields. For example:
    - `find c/DBS p/programmer`
    - `soon d/7 i/20`
- The above commands will produce an error message, stating that the commands are invalid. This is because our initial implementation would only take one field (e.g c/) and ignore the rest. Thus, the workaround for this issue is to not allow the users to enter multiple fields.
+ 
+      The above commands will produce an error message, stating that the commands are invalid. This is because our initial implementation would only take one field (e.g c/) and ignore the rest. Thus, the workaround for this issue is to not allow the users to enter multiple fields.
      
 2. **Invalid prefix resulting in an unexpected error message**
 
    As pointed out in PE-D, our current product is not able to check for a typo in the prefixes. For example:
    - `edit 1 c/Grab zp/Engineer`
+     
      The example above will produce an error message, stating that the company name should contain alphanumeric characters. This is because our current implementation will take `zp/Engineer` as a part of the company name.
      
 ### Future Improvements
