@@ -33,7 +33,6 @@ public class CompletionTest {
         assertFalse(Completion.isValidCompletion("       ")); // spaces only
         assertFalse(Completion.isValidCompletion("done")); // not a valid completion value
         assertFalse(Completion.isValidCompletion("coMpLEting")); // not a valid completion value
-        assertFalse(Completion.isValidCompletion("completed")); // wrong capitalisation
 
         // valid completion
         assertTrue(Completion.isValidCompletion("Completed"));

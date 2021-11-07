@@ -12,28 +12,31 @@ import java.util.Arrays;
 
 import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.application.Company;
+import seedu.address.model.application.Completion;
 import seedu.address.model.application.CompletionContainsKeywordsPredicate;
 import seedu.address.model.application.NameContainsKeywordsPredicate;
+import seedu.address.model.application.Position;
 import seedu.address.model.application.PositionContainsKeywordsPredicate;
+import seedu.address.model.application.Priority;
 import seedu.address.model.application.PriorityContainsKeywordsPredicate;
+import seedu.address.model.application.Requirement;
 import seedu.address.model.application.RequirementsContainsKeywordsPredicate;
+import seedu.address.model.application.Status;
 import seedu.address.model.application.StatusContainsKeywordsPredicate;
 
 /**
  * Parses input arguments and creates a new FindCommand object
  */
 public class FindCommandParser implements Parser<FindCommand> {
-    public static final String COMPLETION_MESSAGE_CONSTRAINTS =
-            "Completion can only be 'Completed' or 'Uncompleted' (case-insensitive).";
-    public static final String NAME_MESSAGE_CONSTRAINTS =
-            "Company name should only contain alphanumeric characters and spaces, and it should not be blank.";
-    public static final String NAME_POSITION_VALIDATION_REGEX = "[\\p{Alnum}][\\p{Alnum} ]*";
-    public static final String POSITION_MESSAGE_CONSTRAINTS =
-            "Position only contain alphanumeric characters and spaces, and it should not be blank.";
+
     public static final String PRIORITY_MESSAGE_CONSTRAINTS =
             "Priority can only be 'High', 'Medium' or 'Low' (case-insensitive).";
     public static final String STATUS_MESSAGE_CONSTRAINTS =
             "Status can only be 'Pending', 'Accepted' or 'Rejected' (case-insensitive).";
+    public static final String COMPLETION_MESSAGE_CONSTRAINTS =
+            "Completion can only be 'Completed' or 'Uncompleted' (case-insensitive).";
+
     private static final int PREFIX_AND_KEYWORD_SIZE = 2;
 
     /**
@@ -54,15 +57,10 @@ public class FindCommandParser implements Parser<FindCommand> {
 
         if (argMultimap.getValue(PREFIX_COMPANY_NAME).isPresent()) {
             String trimmedArgs = argMultimap.getValue(PREFIX_COMPANY_NAME).get().trim();
-            if (trimmedArgs.isEmpty()) {
-                throw new ParseException(
-                        String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindCommand.MESSAGE_USAGE));
-            }
             String[] nameKeywords = trimmedArgs.split("\\s+");
-            for (int i = 0; i < nameKeywords.length; i++) {
-                if (!nameKeywords[i].matches(NAME_POSITION_VALIDATION_REGEX)) {
-                    throw new ParseException(
-                            String.format(NAME_MESSAGE_CONSTRAINTS));
+            for (String name : nameKeywords) {
+                if (!Company.isValidCompanyName(name)) {
+                    throw new ParseException(Company.MESSAGE_CONSTRAINTS);
                 }
             }
             return new FindCommand(new NameContainsKeywordsPredicate(Arrays.asList(nameKeywords)));
@@ -70,82 +68,57 @@ public class FindCommandParser implements Parser<FindCommand> {
 
         if (argMultimap.getValue(PREFIX_INTERNSHIP_POSITION).isPresent()) {
             String trimmedArgs = argMultimap.getValue(PREFIX_INTERNSHIP_POSITION).get().trim();
-            if (trimmedArgs.isEmpty()) {
-                throw new ParseException(
-                        String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindCommand.MESSAGE_USAGE));
-            }
             String[] positionKeywords = trimmedArgs.split("\\s+");
-            for (int i = 0; i < positionKeywords.length; i++) {
-                if (!positionKeywords[i].matches(NAME_POSITION_VALIDATION_REGEX)) {
-                    throw new ParseException(
-                            String.format(POSITION_MESSAGE_CONSTRAINTS));
+            for (String position : positionKeywords) {
+                if (!Position.isValidPosition(position)) {
+                    throw new ParseException(Position.MESSAGE_CONSTRAINTS);
                 }
             }
             return new FindCommand(new PositionContainsKeywordsPredicate(Arrays.asList(positionKeywords)));
         }
 
-
         if (argMultimap.getValue(PREFIX_COMPLETION).isPresent()) {
             String trimmedArgs = argMultimap.getValue(PREFIX_COMPLETION).get().trim();
-            if (trimmedArgs.isEmpty()) {
-                throw new ParseException(
-                        String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindCommand.MESSAGE_USAGE));
-            }
             String[] completionKeywords = trimmedArgs.split("\\s+");
-            boolean isValidCompletion = completionKeywords.length == 1
-                    && (completionKeywords[0].toLowerCase().equals("completed")
-                    || completionKeywords[0].toLowerCase().equals("uncompleted"));
-
-            if (!isValidCompletion) {
-                throw new ParseException(
-                        String.format(COMPLETION_MESSAGE_CONSTRAINTS));
+            for (String completion : completionKeywords) {
+                if (!Completion.isValidCompletion(completion)) {
+                    throw new ParseException(COMPLETION_MESSAGE_CONSTRAINTS);
+                }
             }
             return new FindCommand(new CompletionContainsKeywordsPredicate(Arrays.asList(completionKeywords)));
         }
 
         if (argMultimap.getValue(PREFIX_STATUS).isPresent()) {
             String trimmedArgs = argMultimap.getValue(PREFIX_STATUS).get().trim();
-            if (trimmedArgs.isEmpty()) {
-                throw new ParseException(
-                        String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindCommand.MESSAGE_USAGE));
-            }
             String[] statusKeywords = trimmedArgs.split("\\s+");
-            boolean isValidStatus = statusKeywords.length == 1
-                    && (statusKeywords[0].toLowerCase().equals("pending")
-                    || statusKeywords[0].toLowerCase().equals("accepted")
-                    || statusKeywords[0].toLowerCase().equals("rejected"));
-            if (!isValidStatus) {
-                throw new ParseException(
-                        String.format(STATUS_MESSAGE_CONSTRAINTS));
+            for (String status : statusKeywords) {
+                if (!Status.isValidStatus(status)) {
+                    throw new ParseException(STATUS_MESSAGE_CONSTRAINTS);
+                }
             }
             return new FindCommand(new StatusContainsKeywordsPredicate(Arrays.asList(statusKeywords)));
         }
 
         if (argMultimap.getValue(PREFIX_PRIORITY).isPresent()) {
             String trimmedArgs = argMultimap.getValue(PREFIX_PRIORITY).get().trim();
-            if (trimmedArgs.isEmpty()) {
-                throw new ParseException(
-                        String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindCommand.MESSAGE_USAGE));
-            }
             String[] priorityKeywords = trimmedArgs.split("\\s+");
-            boolean isValidPriority = priorityKeywords.length == 1
-                    && (priorityKeywords[0].toLowerCase().equals("high")
-                    || priorityKeywords[0].toLowerCase().equals("medium")
-                    || priorityKeywords[0].toLowerCase().equals("low"));
-            if (!isValidPriority) {
-                throw new ParseException(
-                        String.format(PRIORITY_MESSAGE_CONSTRAINTS));
+            for (String priority : priorityKeywords) {
+                if (!Priority.isValidPriority(priority)) {
+                    throw new ParseException(PRIORITY_MESSAGE_CONSTRAINTS);
+                }
             }
             return new FindCommand(new PriorityContainsKeywordsPredicate(Arrays.asList(priorityKeywords)));
         }
 
         if (argMultimap.getValue(PREFIX_REQUIREMENT).isPresent()) {
             String trimmedArgs = argMultimap.getValue(PREFIX_REQUIREMENT).get().trim();
-            if (trimmedArgs.isEmpty()) {
-                throw new ParseException(
-                        String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindCommand.MESSAGE_USAGE));
-            }
             String[] requirementsKeywords = trimmedArgs.split("\\s+");
+            for (String requirement : requirementsKeywords) {
+                System.out.println("requirement " + requirement);
+                if (!Requirement.isValidRequirement(requirement)) {
+                    throw new ParseException(Requirement.MESSAGE_CONSTRAINTS);
+                }
+            }
             return new FindCommand(new RequirementsContainsKeywordsPredicate(Arrays.asList(requirementsKeywords)));
         }
 
