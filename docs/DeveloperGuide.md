@@ -176,7 +176,21 @@ class implements the `Parser` interface. The `CompleteCommandParser#parse()` met
 this class parses the index and returns an `CompleteCommand` object with the index
 as the parameter.
 
+
+Below is a sequence diagram and an explanation of how the `CompleteCommand` is executed:
 ![Interactions Inside the Logic Component for the `complete 1` Command](images/umldiagrams/CompleteSequenceDiagram.png)
+
+Step 1. The user enters `complete 1` command in the main window.
+
+Step 2. The command is handled by LogicManager#execute(String) method, which then calls the InternshipParser#parseCommand(String) method.
+
+Step 3. The InternshipParser matches the command word `complete` in the string and extracts the argument string ` 1`.
+
+Step 4. The InternshipParser then calls CompleteCommandParser#parse(String) method and the argument string is converted to an Index instance.
+
+Step 5. The CompleteCommandParser creates a new CompleteCommand instance and returns it to InternshipParser, which in turn returns it to LogicManager.
+
+Step 6. The LogicManager calls the CompleteCommand#execute(Model) method to update the application panel.
 
 #### Design considerations:
 
@@ -375,7 +389,20 @@ The soon feature is implemented by the `SoonCommandParser` and `SoonCommand` cla
 
 `SoonCommand` class is responsible for listing the applications whose submission or interview deadlines are within a certain number of days specified by the user.
 
+Below is a sequence diagram and explanation of how the SoonCommand is executed.
 ![Interactions Inside the Logic Component for the `soon d/ 1` Command](images/umldiagrams/SoonSequenceDiagram.png)
+
+Step 1. The user enters `soon d/1` command in the main window.
+
+Step 2. The command is handled by LogicManager#execute(String) method, which then calls the InternshipParser#parseCommand(String) method.
+
+Step 3. The InternshipParser matches the command word `soon` in the string and extracts the argument string ` d/1`.
+
+Step 4. The InternshipParser then calls SoonCommandParser#parse(String) method and the argument string is converted to a Predicate and Index instances.
+
+Step 5. The SoonCommandParser creates a new SoonCommand instance and returns it to InternshipParser, which in turn returns it to LogicManager.
+
+Step 6. The LogicManager calls the SoonCommand#execute(Model) method to update the application panel.
 
 #### Design considerations:
 
