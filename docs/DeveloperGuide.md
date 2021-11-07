@@ -288,27 +288,25 @@ The find feature is implemented by the `FindCommandParser` and `FindCommand` cla
 Below is a sequence diagram and explanation of how the FindCommand is executed.
 ![Interactions Inside the Logic Component for the `find pr/High` Command](images/umldiagrams/FindSequenceDiagram.png)
 
-Step 1. The user executes `find pr/High` command to find applications with high priority in the application list.
+Step 1. The user enters `find pr/High` command in the main window.
 
-Step 2. The command is handled by LogicManager#execute(), which then calls the InternshipParser#parseCommand(String) method.
+Step 2. The command is handled by LogicManager#execute(String) method, which then calls the InternshipParser#parseCommand(String) method.
 
-Step 3. The InternshipParser detects the command word `find` in the string and extracts the argument string `pr/High`.
+Step 3. The InternshipParser matches the command word `find` in the string and extracts the argument string ` pr/High`.
 
-Step 4. The InternshipParser creates a new FindCommandParser instance to parse the argument string according to the format specified for FindCommand.
+Step 4. The InternshipParser then calls FindCommandParser#parse(String) method and the argument string is converted to a List.
 
-Step 5. The argument string is parsed to the array [High] using the FindCommandParser#parse(String) method.
+Step 5. The FindCommandParser creates a new PriorityContainsKeywordsPredicate instance with the priority List to handle the filter.
+ 
+Step 6. The FindCommandParser creates a new FindCommand instance with the PriorityContainsKeywordsPredicate instance and returns it to InternshipParser, which in turn returns it to LogicManager.
 
-Step 6. The FindCommandParser creates a new PriorityContainsKeywordsPredicate instance with the priority array [High] to handle the filter.
+Step 7. The LogicManager calls the FindCommand#execute(Model) method.
 
-Step 7. The FindCommandParser creates a new FindCommand instance with the PriorityContainsKeywordsPredicate instance and returns it to InternshipParser, which in turn returns it to LogicManager.
+Step 8. The FindCommand calls the Model#updateFilteredMemberList(PriorityContainsKeywordsPredicate) method and filter applications by priority High.
 
-Step 8. The LogicManager calls the FindCommand#execute() method.
+Step 9. The application lists the filtered applications that match the given field and keyword.
 
-Step 9. The FindCommand calls the Model#updateFilteredMemberList(PriorityContainsKeywordsPredicate) method and filter applications by priority High.
-
-Step 10. The application lists the filtered applications that match the given field and keyword.
-
-Step 11. FindCommand then creates a CommandResult with a SuccessMessage and returns it to LogicManager.
+Step 10. FindCommand then creates a CommandResult and returns it to LogicManager.
 
 #### Design considerations:
 
