@@ -44,6 +44,7 @@ Given below are my contributions to the project.
     * Refactored code base to remove all traces of AddressBook, including renaming of classes, methods, files, etc (Pull request [#51](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/51)).
     * Changed the product icon (Pull request [\#51](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/51)).
     * Refactored the all the test cases to remove the tag functionality (Pull request [\#122](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/122)).
+    * Wrote additional tests to increase test coverage (Pull requests [#250](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/250)).  
     * Fixed bugs from Practical Examination Dry Run (Pull request [\#214](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/214)).
 
 * **Documentation**:
@@ -52,7 +53,8 @@ Given below are my contributions to the project.
     * Developer Guide:
         * Added implementation details of the `find` feature. (Pull request [\#105](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/105)).
         * Updated the appendix for team effort summary (Pull request [\#223](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/223)).
-        * Updated the uml diagram and use case for find command (Pull request [\#245](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/245)).
+        * Updated the uml diagram and use case for find command (Pull request [\#245](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/245), [\#254](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/254)).
   
 * **Community**:
   * Reported an above-average number of bugs in the PE-D (Examples: Bug [#4](https://github.com/tianyue58/ped/issues/4), Bug [#10](https://github.com/tianyue58/ped/issues/10), Bug [#11](https://github.com/tianyue58/ped/issues/11)). 
+  * Contributed to forum discussions (Examples: Issue [#40](https://github.com/nus-cs2103-AY2122S1/forum/issues/40), Issue [#385](https://github.com/nus-cs2103-AY2122S1/forum/issues/385)).

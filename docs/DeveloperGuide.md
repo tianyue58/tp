@@ -558,37 +558,46 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 (For all use cases below, the **System** is `InternSHIP` and the **Actor** is the `user`, unless specified otherwise)
 
-**Tracking application details**
+####Tracking application details
 
 **Use case: Add an application entry**
 
 **MSS**
 
-1. User requests to add a new internship application entry to track. User inputs the company name, role applied for and application deadline
-2. Internship adds the entry to its list of entries. Application status is set as pending and application is marked as uncompleted by default
-3. User requests to list all entries
-4. InternSHIP shows a list of all the application entries, including the newly added entry
+1. User requests to add a new internship application entry to track. User inputs the company name, role applied for and application deadline.
+2. Internship adds the entry to its list of entries.
 
    Use case ends.
 
 **Extensions**
 
-* 1a. The user fails to specify the company name, role applied for or application deadline.
+* 1a. The user forgets to specify the company name, internship position or application deadline.
 
     * 1a1. InternSHIP shows an error message.
 
-      Use case returns to step 1.
+      Use case resumes at step 1.
 
-**Viewing specific applications**
+* 1b. The input argument by the user is invalid.
+
+    * 1b1. InternSHIP shows an error message.
+
+      Use case resumes at step 1.
+
+* 2a. User decides to undo the update action.
+
+    * 2a1. InternSHIP undoes the update action and restores the previous state.
+
+      Use case ends.
+
 
 **Use case: Update an application entry/ Complete an application/ Update the application outcome**
 
 **MSS**
 
-1.  User requests to list all entries
-2.  InternSHIP shows a list of application entries
-3.  User requests to update the details of a specific entry in the list/ mark the application as completed/ update the application outcome from pending to accepted or rejected
-4.  InternSHIP updates the entry accordingly
+1.  User requests to list all entries.
+2.  InternSHIP shows a list of application entries.
+3.  User requests to update the details of a specific entry in the list/ mark the application as completed/ update the application outcome from pending to accepted or rejected.
+4.  InternSHIP updates the entry accordingly.
 
     Use case ends.
 
@@ -598,49 +607,109 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
   Use case ends. There is nothing to update.
 
-* 3a. The given index is invalid.
+* 3a. The user fails to enter the correct format or valid argument.
 
     * 3a1. InternSHIP shows an error message.
 
       Use case resumes at step 2.
 
-**Use case: List upcoming deadlines**
+* 3b. The application specified by the user already contains all the information user want to edit.
 
-**MSS**
+    * 3b1. InternSHIP shows a warning message.
 
-1.  User requests to list upcoming deadlines
-2.  InternSHIP shows a list of application entries whose deadlines are upcoming
+      Use case ends.
 
-    Use case ends.
+* 4a. User decides to undo the update action.
 
-**Extensions**
+    * 4a1. InternSHIP undoes the update action and restores the previous state.
 
-* 1a. The user fails to enter the correct format.
-    * InternSHIP shows an error message.
-      Use case returns to step 1.
+      Use case ends.
+
+####Viewing specific applications
 
 **Use case: Find an application entry by fields**
 
 **MSS**
 
-1. User requests to find internship application(s) by inputting a specific field and keyword(s). Fields can be the company name, internship position, completion status, application outcome, application priority and application requirements.
+1. User requests to find internship application(s) by inputting a specific field and keyword(s). 
 2. Internship displays a list of applications whose field matches the given keyword(s).
 
    Use case ends.
 
 **Extensions**
 
-* 1a. Format of the keyword after the given field does not follow the required format.
-
-    * 1a1. InternSHIP shows an error message.
-
-      Use case ends.
-
-* 2a. The filtered list is empty.
+* 1a. The list is initially empty.
 
   Use case ends.
 
-**Others**
+* 1b. The user fails to enter the correct format or valid argument.
+
+    * 1b1. InternSHIP shows an error message.
+
+      Use case resumes at step 1.
+
+* 2a. The filtered list is empty. 
+  
+    Use case ends.
+
+**Use case: List upcoming deadlines**
+
+**MSS**
+
+1.  User requests to list upcoming deadlines.
+2.  InternSHIP shows a list of application entries whose deadlines are upcoming.
+
+    Use case ends.
+
+**Extensions**
+
+* 1a. The list is initially empty.
+
+  Use case ends.
+
+* 1b. The user fails to enter the correct format.
+
+    * 1b1. InternSHIP shows an error message.
+
+      Use case resumes at step 1.
+
+**Use case: List all applications**
+
+**MSS**
+
+1.  User requests to list all internship applications.
+2.  InternSHIP displays the full list of application entries.
+
+    Use case ends.
+
+**Extensions**
+
+* 1a. The list is initially empty.
+
+  Use case ends.
+
+**Use case: Sort applications by a specific field**
+
+**MSS**
+
+1.  User requests to sort the application list by a field. 
+2.  InternSHIP shows the application list in sorted order.
+
+    Use case ends.
+
+**Extensions**
+
+* 1a. The list is initially empty.
+
+    Use case ends.
+
+* 1b. The user fails to enter the correct format or valid argument.
+
+    * 1b1. InternSHIP shows an error message.
+
+      Use case resumes at step 1.
+
+####Others
 
 **Use case: Delete an application entry**
 
@@ -653,15 +722,21 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **Extensions**
 
-* 1a. The displayed list is already empty before the user enters the command.
-    * 1a1. InternSHIP displays an error message as there is nothing to be deleted.
+* 1a. The list is initially empty.
 
   Use case ends.
 
-* 1b. The index specified is invalid (i.e., not a non-negative integer, or exceeds the length of the displayed list).
+* 1b. The user fails to enter the correct format or valid argument.
+
     * 1b1. InternSHIP shows an error message.
 
-  Use case ends.
+      Use case resumes at step 1.
+
+* 2a. User decides to undo the delete action.
+
+    * 2a1. InternSHIP undoes the delete action and restores the previous state.
+
+      Use case ends.
 
 **Use case: Clear all application entries**
 
@@ -671,6 +746,14 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 2. InternSHIP wipes away all data in user's application list, displays a success message, and shows an empty list.
 
    Use case ends.
+
+**Extensions**
+
+* 2a. User decides to undo the delete action.
+
+    * 2a1. InternSHIP undoes the delete action and restores the previous state.
+
+      Use case ends.
 
 **Use case: Undo/Redo a change to the application list**
 
@@ -684,9 +767,10 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **Extensions**
 
 * 1a. There is no previous change to be undone/redone.
+
     * 1a1. InternSHIP displays an error message.
 
-  Use case ends.
+      Use case ends.
 
 **Use case: Exit the program**
 
@@ -811,14 +895,14 @@ Below are some limitations and future improvements of our product.
     Currently, our product does not support the functionality of accepting multiple fields. For example:
    - `find c/DBS p/programmer`
    - `soon d/7 i/20`
-   - `sort c/ d/`
- The above commands will produce an error message, stating that the commands are invalid. This is because our initial implementation would only take one field (e.g c/) and ignore the rest. Thus, the workaround for this issue is to not allow the users to enter multiple fields.
+   - `sort c/ d/`<br>
+   The above commands will produce an error message, stating that the commands are invalid. This is because our initial implementation would only take one field (e.g c/) and ignore the rest. Thus, the workaround for this issue is to not allow the users to enter multiple fields.
      
 2. **Invalid prefix resulting in an unexpected error message**
 
    As pointed out in PE-D, our current product is not able to check for a typo in the prefixes. For example:
-   - `edit 1 c/Grab zp/Engineer`
-     The example above will produce an error message, stating that the company name should contain only alphanumeric characters. This is because our current implementation takes `zp/Engineer` as a part of the company name.
+   - `edit 1 c/Grab zp/Engineer`<br>
+   The example above will produce an error message, stating that the company name should contain only alphanumeric characters. This is because our current implementation takes `zp/Engineer` as a part of the company name.
      
 ### Future Improvements
 
