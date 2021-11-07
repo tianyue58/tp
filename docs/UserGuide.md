@@ -7,6 +7,8 @@ title: User Guide
 * Table of Contents
 {:toc}
 
+--------------------------------------------------------------------------------------------------------------------
+
 ## Introduction
 
 Are you a university student looking to score a holiday internship? Do you feel overwhelmed by all the application details you have to keep track of? Have you missed any application deadlines because there are just too many to remember? Have you ever wished that there were a comprehensive app that could help you track your entire internship application process? If you answered yes to any of these questions, we have just the application for you!
@@ -47,6 +49,8 @@ As the target audience of InternSHIP is university students, this User Guide is 
 * Are comfortable downloading and installing software on their computer.
 * Are able to type fast and are comfortable using a CLI. <br>
 This User Guide **does not assume that the reader has a technical background**. Therefore, university students of all majors should be able to use this guide. The definitions for certain technical terms can be found in the [glossary](#glossary).
+
+--------------------------------------------------------------------------------------------------------------------
 
 ## How to use this User Guide
 
