@@ -109,8 +109,8 @@ public class CommandTestUtil {
             + "completing"; // not an allowed completion value
     public static final String INVALID_STATUS_DESC = " " + PREFIX_STATUS
             + "waiting"; // not an allowed status value
-    public static final String INVALID_INTERVIEW_DATE_AND_TIME_DESC = " " + PREFIX_INTERVIEW_DATE_AND_TIME +
-            "2021-12-21 09:00"; //wrong date format
+    public static final String INVALID_INTERVIEW_DATE_AND_TIME_DESC = " " + PREFIX_INTERVIEW_DATE_AND_TIME
+            + "2021-12-21 09:00"; //wrong date format
     public static final String INVALID_REQUIREMENT_DESC = " " + PREFIX_REQUIREMENT
             + "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"; // requirement longer than 20 characters
 

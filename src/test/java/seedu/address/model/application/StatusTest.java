@@ -32,7 +32,6 @@ public class StatusTest {
         assertFalse(Status.isValidStatus("       ")); // spaces only
         assertFalse(Status.isValidStatus("done")); // not a valid Status value
         assertFalse(Status.isValidStatus("random")); // not a valid Status value
-        assertFalse(Status.isValidStatus("accepted")); // wrong capitalisation
 
         // valid status
         assertTrue(Status.isValidStatus("Pending"));
