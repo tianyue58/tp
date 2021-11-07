@@ -69,6 +69,7 @@ public class SortCommand extends Command {
 
     @Override
     public CommandResult execute(Model model) {
+        //Solution below adapted from AY2122S1-CS2103T-T15-3
         requireNonNull(model);
         boolean noInterviews = false;
         if (parameter.equals("interview")) {
