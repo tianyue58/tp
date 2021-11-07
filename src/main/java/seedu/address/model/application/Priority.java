@@ -31,8 +31,9 @@ public class Priority {
      * Returns true if a given string is a valid priority. Capitalisation of characters is ignored.
      */
     public static boolean isValidPriority(String test) {
-        String lowerCaseTest = test.toLowerCase();
-        return lowerCaseTest.equals("low") || lowerCaseTest.equals("medium") || lowerCaseTest.equals("high");
+        return test.equalsIgnoreCase("low")
+                || test.equalsIgnoreCase("medium")
+                || test.equalsIgnoreCase("high");
     }
 
     /**

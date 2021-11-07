@@ -35,7 +35,9 @@ public class Status {
      * Returns true if a given string is a valid status ("Pending" or "Accepted" or "Rejected").
      */
     public static boolean isValidStatus(String test) {
-        return test.equals("Pending") || test.equals("Accepted") || test.equals("Rejected");
+        return test.equalsIgnoreCase("Pending")
+                || test.equalsIgnoreCase("Accepted")
+                || test.equalsIgnoreCase("Rejected");
     }
 
     @Override

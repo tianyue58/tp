@@ -28,7 +28,7 @@ public class Completion {
      * Returns true if a given string is a valid completion value.
      */
     public static boolean isValidCompletion(String test) {
-        return test.equals("Completed") || test.equals("Uncompleted");
+        return test.equalsIgnoreCase("Completed") || test.equalsIgnoreCase("Uncompleted");
     }
 
     @Override
