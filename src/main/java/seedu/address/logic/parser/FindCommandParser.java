@@ -31,11 +31,11 @@ import seedu.address.model.application.StatusContainsKeywordsPredicate;
 public class FindCommandParser implements Parser<FindCommand> {
 
     public static final String PRIORITY_MESSAGE_CONSTRAINTS =
-            "Priority can only be 'High', 'Medium' or 'Low' (case-insensitive).";
+            "Priority can only be exactly one of 'High', 'Medium' or 'Low' (case-insensitive).";
     public static final String STATUS_MESSAGE_CONSTRAINTS =
-            "Status can only be 'Pending', 'Accepted' or 'Rejected' (case-insensitive).";
+            "Status can only be exactly one of 'Pending', 'Accepted' or 'Rejected' (case-insensitive).";
     public static final String COMPLETION_MESSAGE_CONSTRAINTS =
-            "Completion can only be 'Completed' or 'Uncompleted' (case-insensitive).";
+            "Completion can only be exactly one of 'Completed' or 'Uncompleted' (case-insensitive).";
 
     private static final int PREFIX_AND_KEYWORD_SIZE = 2;
 
@@ -80,6 +80,9 @@ public class FindCommandParser implements Parser<FindCommand> {
         if (argMultimap.getValue(PREFIX_COMPLETION).isPresent()) {
             String trimmedArgs = argMultimap.getValue(PREFIX_COMPLETION).get().trim();
             String[] completionKeywords = trimmedArgs.split("\\s+");
+            if (completionKeywords.length != 1) {
+                throw new ParseException(COMPLETION_MESSAGE_CONSTRAINTS);
+            }
             for (String completion : completionKeywords) {
                 if (!Completion.isValidCompletion(completion)) {
                     throw new ParseException(COMPLETION_MESSAGE_CONSTRAINTS);
@@ -91,6 +94,9 @@ public class FindCommandParser implements Parser<FindCommand> {
         if (argMultimap.getValue(PREFIX_STATUS).isPresent()) {
             String trimmedArgs = argMultimap.getValue(PREFIX_STATUS).get().trim();
             String[] statusKeywords = trimmedArgs.split("\\s+");
+            if (statusKeywords.length != 1) {
+                throw new ParseException(STATUS_MESSAGE_CONSTRAINTS);
+            }
             for (String status : statusKeywords) {
                 if (!Status.isValidStatus(status)) {
                     throw new ParseException(STATUS_MESSAGE_CONSTRAINTS);
@@ -102,6 +108,9 @@ public class FindCommandParser implements Parser<FindCommand> {
         if (argMultimap.getValue(PREFIX_PRIORITY).isPresent()) {
             String trimmedArgs = argMultimap.getValue(PREFIX_PRIORITY).get().trim();
             String[] priorityKeywords = trimmedArgs.split("\\s+");
+            if (priorityKeywords.length != 1) {
+                throw new ParseException(PRIORITY_MESSAGE_CONSTRAINTS);
+            }
             for (String priority : priorityKeywords) {
                 if (!Priority.isValidPriority(priority)) {
                     throw new ParseException(PRIORITY_MESSAGE_CONSTRAINTS);
