@@ -234,11 +234,13 @@ input as the parameter.
 
 Step 2. In the method, `LogicManager` calls the `parseCommand` method of `InternshipParser` to parse the user input.
 
-Step 3. The `InternshipParser` parses the user input, recognizes it as an `AcceptCommand`, and instantiates 
-an `AcceptCommandParser` object. 
+Step 3. The `InternshipParser` parses the user input,recognizes it as an `AcceptCommand`, and instantiates
+an `AcceptCommandParser` object.
 
-Step 4. `InternshipParser` then calls the `parse` method of the `AcceptCommandParser` object to parse the 
-arguments provided. In the `parse` method, the `AcceptCommandParser` ensures that the
+Step 4. `InternshipParser` then calls the `parse` method of
+the `AcceptCommandParser` object to parse the
+arguments provided. In the `parse` method, the
+`AcceptCommandParser` ensures that the
 input is of the correct format and identifies the index of the application to be marked as 'Accepted'.
 
 Step 5. If the index specified by the user is valid, then a new `AcceptCommand` instance is created and 
@@ -825,5 +827,6 @@ Below are some limitations and future improvements of our product.
 This limitation could be improved by accepting both fields and showing the application(s) that satisfy both criteria. For example, `find c/DBS p/programmer` should show application(s) whose company name is "DBS" and position is "programmer".
    
 2. **Invalid prefix resulting in an unexpected error message**
-<br>
+
+   
 This limitation could be improved by checking if the fields entered by the users match any of the valid prefixes. Perhaps, for every `/` found, the preceding character(s) could be checked against all the valid prefixes.
