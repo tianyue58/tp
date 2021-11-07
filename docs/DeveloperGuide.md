@@ -629,7 +629,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **MSS**
 
-1. User requests to find internship application(s) by inputting a specific field and keyword(s). Fields can be the company name, internship position, completion status, application outcome, application priority and application requirements.
+1. User requests to find internship application(s) by inputting a specific field and keyword(s). 
 2. Internship displays a list of applications whose field matches the given keyword(s).
 
    Use case ends.
@@ -671,27 +671,6 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case resumes at step 1.
 
-**Use case: List upcoming deadlines**
-
-**MSS**
-
-1.  User requests to list upcoming deadlines.
-2.  InternSHIP shows a list of application entries whose deadlines are upcoming.
-
-    Use case ends.
-
-**Extensions**
-
-* 1a. The list is initially empty.
-
-  Use case ends.
-
-* 1b. The user fails to enter the correct format or valid argument.
-
-    * 1b1. InternSHIP shows an error message.
-
-      Use case resumes at step 1.
-
 **Use case: List all applications**
 
 **MSS**
@@ -711,7 +690,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **MSS**
 
-1.  User requests to sort the application list by a field. The fields can be the company name, internship position, application deadline, application priority and the interview date and time.
+1.  User requests to sort the application list by a field. 
 2.  InternSHIP shows the application list in sorted order.
 
     Use case ends.
@@ -745,7 +724,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
   Use case ends.
 
-* 1b. The user fails to enter the correct format or valid argument (i.e., not a non-negative integer, or exceeds the length of the displayed list).
+* 1b. The user fails to enter the correct format or valid argument.
 
     * 1b1. InternSHIP shows an error message.
 
