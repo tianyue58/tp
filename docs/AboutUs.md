@@ -15,7 +15,7 @@ We are a team based in the [School of Computing, National University of Singapor
 [[portfolio](team/willyamped.md)]
 
 * Role: Developer
-* Responsibilities: UI, Logic
+* Responsibilities: UI, Logic, Tests, Documentation
 
 ### Modi Trushti Sanjaybhai
 
@@ -25,7 +25,7 @@ We are a team based in the [School of Computing, National University of Singapor
 [[portfolio](team/tsm1820.md)]
 
 * Role: Developer
-* Responsibilities: 
+* Responsibilities: Logic, Tests, Documentation
 
 ### Hu Tianran
 
@@ -34,6 +34,7 @@ We are a team based in the [School of Computing, National University of Singapor
 [[github](http://github.com/nature711)] [[portfolio](team/nature711.md)]
 
 * Role: Developer
+* Responsibilities: UI, Logic, Tests, Documentation
 
 ### Qu Tianyue
 
@@ -43,6 +44,7 @@ We are a team based in the [School of Computing, National University of Singapor
 [[portfolio](team/tianyue58.md)]
 
 * Role: Developer
+* Responsibilities: Logic, Tests, Documentation
 
 ### Felicia Ivane Pranoto
 
@@ -52,3 +54,4 @@ We are a team based in the [School of Computing, National University of Singapor
 [[portfolio](team/feliciaivane.md)]
 
 * Role: Developer
+* Responsiblities: Logic, Tests, Documentation
