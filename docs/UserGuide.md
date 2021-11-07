@@ -88,7 +88,17 @@ Below are some special formats used throughout this User Guide:
 `Highlights are used to emphasise special text such as parameters, field values, commands, file names or any user inputs.`
 
 ### Navigating the GUI
-TO BE DONE AFTER WE FINALISE THE UI!!
+The UI has been designed and optimized to be navigated via the Command Line Interface (CLI) although some buttons are clickable.
+
+Users can enter commands into the command box and press `ENTER` to execute them. The results will be displayed on the result box, showing appropriate messages. Depending on the command entered, the main panel may be updated accordingly.
+
+<div markdown="span" class="alert alert-primary">:bulb: **Tip:**
+To see the list of applications, users can do so by simply scrolling up and down or pressing the arrow keys `UP` or `DOWN`
+</div>
+
+<div markdown="span" class="alert alert-info">:information_source: **Info:**
+Only successfully executed commands will be saved.
+</div>
 
 ### Command format
 
