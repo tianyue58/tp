@@ -11,7 +11,7 @@ participant ":CommandResult" as CommandResult LOGIC_COLOR
 end box
 
 box Model MODEL_COLOR_T1
-participant ":Model" as Model MODEL_COLOR
+participant "model:Model" as Model MODEL_COLOR
 end box
 
 [-> LogicManager : execute("reject 2")
@@ -27,7 +27,7 @@ activate RejectCommandParser
 RejectCommandParser --> InternshipParser
 deactivate RejectCommandParser
 
-InternshipParser -> RejectCommandParser : parse("2")
+InternshipParser -> RejectCommandParser : parse(" 2")
 activate RejectCommandParser
 
 create RejectCommand
@@ -46,7 +46,7 @@ destroy RejectCommandParser
 InternshipParser --> LogicManager : r
 deactivate InternshipParser
 
-LogicManager -> RejectCommand : execute()
+LogicManager -> RejectCommand : execute(model)
 activate RejectCommand
 
 RejectCommand -> Model : setApplication(applicationToReject, rejectedApplication)
