@@ -176,7 +176,21 @@ class implements the `Parser` interface. The `CompleteCommandParser#parse()` met
 this class parses the index and returns an `CompleteCommand` object with the index
 as the parameter.
 
+
+Below is a sequence diagram and an explanation of how the `CompleteCommand` is executed:
 ![Interactions Inside the Logic Component for the `complete 1` Command](images/umldiagrams/CompleteSequenceDiagram.png)
+
+Step 1. The user enters `complete 1` command in the main window.
+
+Step 2. The command is handled by LogicManager#execute(String) method, which then calls the InternshipParser#parseCommand(String) method.
+
+Step 3. The InternshipParser matches the command word `complete` in the string and extracts the argument string ` 1`.
+
+Step 4. The InternshipParser then calls CompleteCommandParser#parse(String) method and the argument string is converted to an Index instance.
+
+Step 5. The CompleteCommandParser creates a new CompleteCommand instance and returns it to InternshipParser, which in turn returns it to LogicManager.
+
+Step 6. The LogicManager calls the CompleteCommand#execute(Model) method to update the application panel.
 
 #### Design considerations:
 
@@ -220,11 +234,13 @@ input as the parameter.
 
 Step 2. In the method, `LogicManager` calls the `parseCommand` method of `InternshipParser` to parse the user input.
 
-Step 3. The `InternshipParser` parses the user input, recognizes it as an `AcceptCommand`, and instantiates 
-an `AcceptCommandParser` object. 
+Step 3. The `InternshipParser` parses the user input,recognizes it as an `AcceptCommand`, and instantiates
+an `AcceptCommandParser` object.
 
-Step 4. `InternshipParser` then calls the `parse` method of the `AcceptCommandParser` object to parse the 
-arguments provided. In the `parse` method, the `AcceptCommandParser` ensures that the
+Step 4. `InternshipParser` then calls the `parse` method of
+the `AcceptCommandParser` object to parse the
+arguments provided. In the `parse` method, the
+`AcceptCommandParser` ensures that the
 input is of the correct format and identifies the index of the application to be marked as 'Accepted'.
 
 Step 5. If the index specified by the user is valid, then a new `AcceptCommand` instance is created and 
@@ -375,7 +391,20 @@ The soon feature is implemented by the `SoonCommandParser` and `SoonCommand` cla
 
 `SoonCommand` class is responsible for listing the applications whose submission or interview deadlines are within a certain number of days specified by the user.
 
+Below is a sequence diagram and explanation of how the SoonCommand is executed.
 ![Interactions Inside the Logic Component for the `soon d/ 1` Command](images/umldiagrams/SoonSequenceDiagram.png)
+
+Step 1. The user enters `soon d/1` command in the main window.
+
+Step 2. The command is handled by LogicManager#execute(String) method, which then calls the InternshipParser#parseCommand(String) method.
+
+Step 3. The InternshipParser matches the command word `soon` in the string and extracts the argument string ` d/1`.
+
+Step 4. The InternshipParser then calls SoonCommandParser#parse(String) method and the argument string is converted to a Predicate and Index instances.
+
+Step 5. The SoonCommandParser creates a new SoonCommand instance and returns it to InternshipParser, which in turn returns it to LogicManager.
+
+Step 6. The LogicManager calls the SoonCommand#execute(Model) method to update the application panel.
 
 #### Design considerations:
 
@@ -770,3 +799,34 @@ Our team has put in a significant amount of effort to get InternSHIP to the curr
 Notable features we implemented from scratch include Complete, Accept, Reject, Sort, Find, Soon and Undo/Redo. We came up with hese features as they fit well in helping our target users solve problems they miay encounter in their internship data management.
 
 The implemention details and design considerations for these features could be found in [Implementation](#implementation) section.
+
+## **Appendix 4: Limitations and Future improvements**
+
+We acknowledge the fact that our current product is not perfect, and it still has rooms for improvement.
+Below are some limitations and future improvements of our product.
+
+### Limitations
+1. **Commands not accepting multiple fields**
+
+    Currently, our product does not support the functionality of accepting multiple fields. For example:
+   - `find c/DBS p/programmer`
+   - `soon d/7 i/20`
+ 
+      The above commands will produce an error message, stating that the commands are invalid. This is because our initial implementation would only take one field (e.g c/) and ignore the rest. Thus, the workaround for this issue is to not allow the users to enter multiple fields.
+     
+2. **Invalid prefix resulting in an unexpected error message**
+
+   As pointed out in PE-D, our current product is not able to check for a typo in the prefixes. For example:
+   - `edit 1 c/Grab zp/Engineer`
+     
+     The example above will produce an error message, stating that the company name should contain alphanumeric characters. This is because our current implementation will take `zp/Engineer` as a part of the company name.
+     
+### Future Improvements
+
+1. **Commands not accepting multiple fields**
+
+    This limitation could be improved by accepting both fields and showing the application(s) that satisfy both criteria. For example, `find c/DBS p/programmer`  should show application(s) whose company name is "DBS" and position is "programmer".
+   
+2. **Invalid prefix resulting in an unexpected error message**
+  
+   This limitation could be improved by checking if the fields entered by the users match any of the valid prefixes. Perhaps, for every `/` found, the preceding character(s) could be checked against all the valid prefixes.
