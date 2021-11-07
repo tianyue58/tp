@@ -123,7 +123,6 @@ public class FindCommandParser implements Parser<FindCommand> {
             String trimmedArgs = argMultimap.getValue(PREFIX_REQUIREMENT).get().trim();
             String[] requirementsKeywords = trimmedArgs.split("\\s+");
             for (String requirement : requirementsKeywords) {
-                System.out.println("requirement " + requirement);
                 if (!Requirement.isValidRequirement(requirement)) {
                     throw new ParseException(Requirement.MESSAGE_CONSTRAINTS);
                 }
