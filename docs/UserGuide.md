@@ -10,8 +10,9 @@ title: User Guide
 ## Introduction
 
 Are you a university student looking to score a holiday internship? Do you feel overwhelmed by all the application details you have to keep track of? Have you missed any application deadlines because there are just too many to remember? Have you ever wished that there were a comprehensive app that could help you track your entire internship application process? If you answered yes to any of these questions, we have just the application for you!
-
-![Logo](images/logos/InternSHIP.png)
+<div align = "center">
+    <img alt="logo" src="images/logos/InternSHIP.png">
+</div>
 
 InternSHIP is a **desktop app for university students to manage their internship application deadlines.** Here are its main features:
 * Tracking all essential internship application details (e.g. submission deadlines, interview date and time, completion status, etc...)
