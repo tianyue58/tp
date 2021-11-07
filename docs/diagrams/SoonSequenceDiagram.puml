@@ -10,7 +10,7 @@ participant ":CommandResult" as CommandResult LOGIC_COLOR
 end box
 
 box Model MODEL_COLOR_T1
-participant ":Model" as Model MODEL_COLOR
+participant "model:Model" as Model MODEL_COLOR
 end box
 
 [-> LogicManager : execute("soon d/1")
@@ -26,7 +26,7 @@ activate SoonCommandParser
 SoonCommandParser --> InternshipParser
 deactivate SoonCommandParser
 
-InternshipParser -> SoonCommandParser : parse("d/1")
+InternshipParser -> SoonCommandParser : parse(" d/1")
 activate SoonCommandParser
 
 create SoonCommand
@@ -45,7 +45,7 @@ destroy SoonCommandParser
 InternshipParser --> LogicManager : s
 deactivate InternshipParser
 
-LogicManager -> SoonCommand : execute()
+LogicManager -> SoonCommand : execute(model)
 activate SoonCommand
 
 SoonCommand -> Model : updateFilteredApplicationList(predicate)

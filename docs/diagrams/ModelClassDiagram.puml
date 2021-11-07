@@ -24,6 +24,8 @@ Class Deadline
 Class Priority
 Class Completion
 Class Status
+Class RequirementSet
+Class InterviewDateAndTimeSet
 Class Requirement
 Class InterviewDateAndTime
 }
@@ -42,14 +44,16 @@ UserPrefs .up.|> ReadOnlyUserPrefs
 
 Internship *--> "1" UniqueApplicationList
 UniqueApplicationList --> "~* all" Application
-Application *--> Company
-Application *--> Position
-Application *--> Deadline
-Application *--> Priority
-Application *--> Completion
-Application *--> Status
-Application *-left> "*" Requirement
-Application *-right> "*" InterviewDateAndTime
+Application *--> "1" Company
+Application *--> "1" Position
+Application *--> "1" Deadline
+Application *--> "1" Priority
+Application *--> "1" Completion
+Application *--> "1" Status
+Application *-left> "1" RequirementSet
+Application *-right> "1" InterviewDateAndTimeSet
+RequirementSet --left> "*" Requirement
+InterviewDateAndTimeSet --right> "*" InterviewDateAndTime
 
 ModelManager -->"~* filtered" Application
 @enduml
