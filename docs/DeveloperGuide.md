@@ -828,5 +828,5 @@ This limitation could be improved by accepting both fields and showing the appli
    
 2. **Invalid prefix resulting in an unexpected error message**
 
-   
+<br>
 This limitation could be improved by checking if the fields entered by the users match any of the valid prefixes. Perhaps, for every `/` found, the preceding character(s) could be checked against all the valid prefixes.
