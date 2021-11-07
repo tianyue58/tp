@@ -211,7 +211,32 @@ class implements the `Parser` interface. The `AcceptCommandParser#parse()` metho
 this class parses the index and returns an `AcceptCommand` object with the index
 as the parameter. 
 
+Below is a sequence diagram and an explanation of how the `AcceptCommand` is executed:
+
 ![Interactions Inside the Logic Component for the `accept 2` Command](images/umldiagrams/AcceptSequenceDiagram.png)
+
+Step 1. When the input is entered by the user, the `execute` method of `LogicManager` is invoked with the user
+input as the parameter.
+
+Step 2. In the method, `LogicManager` calls the `parseCommand` method of `InternshipParser` to parse the user input.
+
+Step 3. The `InternshipParser` parses the user input, recognizes it as an `AcceptCommand`, and instantiates 
+an `AcceptCommandParser` object. 
+
+Step 4. `InternshipParser` then calls the `parse` method of the `AcceptCommandParser` object to parse the 
+arguments provided. In the `parse` method, the `AcceptCommandParser` ensures that the
+input is of the correct format and identifies the index of the application to be marked as 'Accepted'.
+
+Step 5. If the index specified by the user is valid, then a new `AcceptCommand` instance is created and 
+returned to `LogicManager` through `InternshipParser`.
+
+Step 6. The `LogicManager` then calls the overridden `execute` method of `AcceptCommand`.
+
+Step 7. Next, the `AcceptCommand` object calls the `setApplication` method of `Model` with the application to accept,
+and the accepted application as arguments. It will then return a `CommandResult` object to 
+the `LogicManager`.
+
+Step 8.Finally, the `CommandResult` is returned by the `LogicManager`.
 
 #### Design considerations:
 
@@ -247,7 +272,32 @@ class implements the `Parser` interface. The `RejectCommandParser#parse()` metho
 this class parses the index and returns an `RejectCommand` object with the index
 as the parameter.
 
+Below is a sequence diagram and an explanation of how the `RejectCommand` is executed:
+
 ![Interactions Inside the Logic Component for the `reject 2` Command](images/umldiagrams/RejectSequenceDiagram.png)
+
+Step 1. When the input is entered by the user, the `execute` method of `LogicManager` is invoked with the user
+   input as the parameter.
+
+Step 2. In the method, `LogicManager` calls the `parseCommand` method of `InternshipParser` to parse the user input.
+
+Step 3. The `InternshipParser` parses the user input, recognizes it as an `RejectCommand`, and instantiates
+   an `RejectCommandParser` object.
+
+Step 4. `InternshipParser` then calls the `parse` method of the `RejectCommandParser` object to parse the
+   arguments provided. In the `parse` method, the `RejectCommandParser` ensures that the
+   input is of the correct format and identifies the index of the application to be marked as 'Accepted'.
+
+Step 5. If the index specified by the user is valid, then a new `RejectCommand` instance is created and
+   returned to `LogicManager` through `InternshipParser`.
+
+Step 6. The `LogicManager` then calls the overridden `execute` method of `RejectCommand`.
+
+Step 7. Next, the `RejectCommand` object calls the `setApplication` method of `Model` with the application to reject,
+   and the rejected application as arguments. It will then return a `CommandResult` object to
+   the `LogicManager`.
+
+Step 8. Finally, the `CommandResult` is returned by the `LogicManager`.
 
 #### Design considerations:
 
@@ -437,14 +487,14 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* * *`  | student                                    | record the deadline of an application | better organize my time for preparation and complete the requirements in time                      |
 | `* * *`  | student                                    | record the position I have applied for an application | remember my responsibility for each application   
 | `* * *`  | student                                    | record the requirements for an application | better understand what I need to prepare in order to succeed during the application |
-| `* * *`  | student                                    | record the interview time for an application | better organize my time for interview preparation |
+| `* * *`  | student                                    | record the interview date and time for an application | avoid scheduling clashes for future interviews and better organize my time for the interview preparation |
 | `* * *`  | student                                    | assign priority level to an application  | know clearly which applications I should prioritize and get started first |
 | `* * *`  | student                                    | view a list of all companies I have applied and the related details for each application | have a better picture about all the companies I have applied|
 | `* * *`  | student                                    | delete one of the applications in the application list | stop tracking an application that I have withdrawn from |                                               
 | `* * *`  | student                                    | clear the application list in the app | get rid of all sample data when I first start using the app, or start over with a brand new empty list |
-| `* * *`  | student                                    | edit the details of existing applications (e.g. company name/ applied position/ application deadline / requirement details, etc.) | rectify any mistakes I made initially, or update my entry to reflect new updates in my application |
+| `* * *`  | student                                    | edit the details of existing applications (e.g. company name/ applied position/ application deadline/ requirement details/ interview date and time, etc.) | rectify any mistakes I made initially, or update my entry to reflect new updates in my application |
 | `* * *`  | student                                    | set an application as completed once I have submitted all the requirements | shift my attention to the other uncompleted applications |
-| `* * *`  | student                                    | set the status of one of the existing applications (i.e., pending to accepted/ rejected) | update my entries to reflect the latest decision I received from the company | 
+| `* * *`  | student                                    | update the application outcome of an existing application (i.e., pending to accepted/ rejected) | update my entries to reflect the latest decision that I have received from the company, and make an informed choice as to which company to choose | 
 | `* * *`  | student                                    | sort the applications based on different criteria (e.g., closeness to deadline, level of priority, etc.) | view the application list displayed in different forms and prioritize the applications that appear at the top of the list |
 | `* * *`  | student                                    | find the applications based on different criteria (e.g., company name contains a specified word, requirements involve a specific item, etc.)  | highlight the applications of my current interest and temporarily filtering out other unrelated ones |
 | `* *`    | student                                    | undo a change I have accidentally made to the application list | restore the information that has been unintentionally rectified and not losing any important information |
@@ -498,13 +548,13 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case resumes at step 2.
 
-**Use case: Update an application entry/ Complete an application/ Update application status**
+**Use case: Update an application entry/ Complete an application/ Update the application outcome**
 
 **MSS**
 
 1.  User requests to list all entries
 2.  InternSHIP shows a list of application entries
-3.  User requests to update the details of a specific entry in the list/ mark the application as completed/ update the application status from pending to accepted
+3.  User requests to update the details of a specific entry in the list/ mark the application as completed/ update the application outcome from pending to accepted or rejected
 4.  InternSHIP updates the entry accordingly
 
     Use case ends.

@@ -209,7 +209,10 @@ These fields can be changed later using the `edit`, `complete` or `accept/reject
 Additionally, `APPLICATION_REQUIREMENTS`, and `INTERVIEW_DATE_AND_TIME` are optional fields that can either be specified or not. <br>
 If not specified at this stage, it can still be added and edited later using the `edit` command.<br>
 <br>
-Entering an application entry with the same `COMPANY_NAME` and `INTERNSHIP_POSITION`  as an existing entry is not allowed. 
+The `APPLICATION_DEADLINE` must be entered in the `YYYY-MM-DD` format. The `INTERVIEW_DATE_AND_TIME` must be entered in the
+`YYYY-MM-DD HHmm` format.
+<br>
+Adding an application entry with the same `COMPANY_NAME` and `INTERNSHIP_POSITION`  as an existing entry is not allowed. 
 </div>
 
 Format:
@@ -254,8 +257,7 @@ Editing an application entry such that the `COMPANY_NAME` and `INTERNSHIP_POSITI
 <br>
 <br>
 For the `INTERVIEW_DATE_AND_TIME` and `APPLICATION_REQUIREMENTS` fields, to edit one particular entry of the respective field,
-values for all other entries must be entered too. In order to change one value without affecting the others, the prefix, followed by the desired value, must be entered as 
-many times as the number of values that exist for that respective field. 
+values for all other entries must be copied over too. 
 <br>
 <br>
 For example, consider an application entry with index 9 
