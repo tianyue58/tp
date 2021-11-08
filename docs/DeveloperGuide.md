@@ -169,12 +169,12 @@ Note: When a new internship application is added, the value of the
 `Completion` field is 'Uncompleted' by default.
 
 The `Complete` command is facilitated by the `CompleteCommand` class. It extends the `Command` class
-and implements the `CompleteCommand#execute()` method which wraps the main
+and implements the `CompleteCommand#execute` method which wraps the main
 logic of the command. This command can be used to change the completion status of
 the application from `Uncompleted` to `Completed`.
 
 The `CompleteCommandParser` class is responsible for parsing the index received from the user. This
-class implements the `Parser` interface. The `CompleteCommandParser#parse()` method of
+class implements the `Parser` interface. The `CompleteCommandParser#parse` method of
 this class parses the index and returns an `CompleteCommand` object with the index
 as the parameter.
 
@@ -186,13 +186,13 @@ Step 1. The user enters `complete 1` command in the main window.
 
 Step 2. The command is handled by `LogicManager#execute` method, which then calls the `InternshipParser#parseCommand` method.
 
-Step 3. The InternshipParser matches the command word `complete` in the string and extracts the argument string `1`.
+Step 3. `InternshipParser` matches the command word `complete` in the string and extracts the argument string `1`.
 
-Step 4. The `InternshipParser` then calls `CompleteCommandParser#parse` method and the argument string is converted to an Index instance.
+Step 4. `InternshipParser` then calls `CompleteCommandParser#parse` method and the argument string is converted to an Index instance.
 
-Step 5. The `CompleteCommandParser` creates a new `CompleteCommand` instance and returns it to `InternshipParser`, which in turn returns it to `LogicManager`.
+Step 5. `CompleteCommandParser` creates a new `CompleteCommand` instance and returns it to `InternshipParser`, which in turn returns it to `LogicManager`.
 
-Step 6. The `LogicManager` calls the `CompleteCommand#execute` method to update the application panel.
+Step 6. `LogicManager` calls the `CompleteCommand#execute` method to update the application panel.
 
 #### Design considerations:
 
@@ -216,14 +216,14 @@ The `accept` command is modelled by the `Status` class which represents the
 Note: When a new internship application is added, the value of the
 `Status` field is 'Pending' by default.
 
-The Accept command is facilitated by the `AcceptCommand` class. It extends the `Command` class
-and implements the `AcceptCommand#execute()` method which wraps the main
+The `Accept` command is facilitated by the `AcceptCommand` class. It extends the `Command` class
+and implements the `AcceptCommand#execute` method which wraps the main
 logic of the command. This command can be used to change the status of
 the application from `Pending` to `Accepted`. When the status changes, the application completion
 field would change from `Uncompleted` to `Completed` automatically.
 
 The `AcceptCommandParser` class is responsible for parsing the index received from the user. This
-class implements the `Parser` interface. The `AcceptCommandParser#parse()` method of
+class implements the `Parser` interface. The `AcceptCommandParser#parse` method of
 this class parses the index and returns an `AcceptCommand` object with the index
 as the parameter.
 
@@ -235,18 +235,18 @@ Step 1. The user enters the `accept 2` command in the main window.
 
 Step 2. The command is handled by the `LogicManager#execute` method, which then calls the `InternshipParser#parseCommand` method.
 
-Step 3. The `InternshipParser` matches the command word `accept` in the string and extracts the argument string `2`.
+Step 3. `InternshipParser` matches the command word `accept` in the string and extracts the argument string `2`.
 
-Step 4. The `InternshipParser` then calls the `AcceptCommandParser#parse` method. In this method, it is ensured that the input is of the correct format, and the argument string is converted to an Index instance.
+Step 4. `InternshipParser` then calls the `AcceptCommandParser#parse` method. In this method, it is ensured that the input is of the correct format, and the argument string is converted to an Index instance.
 
 Step 5. If the index specified by the user is valid then the `AcceptCommandParser` creates a new `AcceptCommand` instance and returns it to `InternshipParser`, which in turn returns it to `LogicManager`.
 
-Step 6. The `LogicManager` then calls the `AcceptCommand#execute` method.
+Step 6. `LogicManager` then calls the `AcceptCommand#execute` method.
 
-Step 7. Next, the `AcceptCommand` object calls the `Model#setApplication` method with the application to accept and accepted application
+Step 7. Next, `AcceptCommand` object calls the `Model#setApplication` method with the application to accept and accepted application
 as arguments. It then returns a `CommandResult` object to the `LogicManager`.
 
-Step 8. Finally, the `CommandResult` is returned by the `LogicManager`.
+Step 8. Finally, the `CommandResult` object is returned by the `LogicManager`.
 
 #### Design considerations:
 
@@ -271,14 +271,14 @@ The `reject` command is modelled by the `Status` class which represents the
 Note: When a new internship application is added, the value of the
 `Status` field is 'Pending' by default.
 
-The Reject command is facilitated by the `RejectCommand` class. It extends the `Command` class
-and implements the `RejectCommand#execute()` method which wraps the main
+The `Reject` command is facilitated by the `RejectCommand` class. It extends the `Command` class
+and implements the `RejectCommand#execute` method which wraps the main
 logic of the command. This command can be used to change the status of
 the application from `Pending` to `Rejected`. When the status changes, the application completion
 field would change from `Uncompleted` to `Completed` automatically.
 
 The `RejectCommandParser` class is responsible for parsing the index received from the user. This
-class implements the `Parser` interface. The `RejectCommandParser#parse()` method of
+class implements the `Parser` interface. The `RejectCommandParser#parse` method of
 this class parses the index and returns an `RejectCommand` object with the index
 as the parameter.
 
@@ -290,18 +290,18 @@ Step 1. The user enters the `reject 2` command in the main window.
 
 Step 2. The command is handled by the `LogicManager#execute` method, which then calls the `InternshipParser#parseCommand` method.
 
-Step 3. The `InternshipParser` matches the command word `reject` in the string and extracts the argument string `2`.
+Step 3. `InternshipParser` matches the command word `reject` in the string and extracts the argument string `2`.
 
-Step 4. The `InternshipParser` then calls the `RejectCommandParser#parse` method. In this method, it is ensured that the input is of the correct format, and the argument string is converted to an Index instance.
+Step 4. `InternshipParser` then calls the `RejectCommandParser#parse` method. In this method, it is ensured that the input is of the correct format, and the argument string is converted to an Index instance.
 
 Step 5. If the index specified by the user is valid then the `RejectCommandParser` creates a new `RejectCommand` instance and returns it to `InternshipParser`, which in turn returns it to `LogicManager`.
 
-Step 6. The `LogicManager` then calls the `RejectCommand#execute` method.
+Step 6. `LogicManager` then calls the `RejectCommand#execute` method.
 
-Step 7. Next, the `RejectCommand` object calls the `Model#setApplication` method with the application to reject and rejected application
+Step 7. Next, `RejectCommand` object calls the `Model#setApplication` method with the application to reject and rejected application
 as arguments. It then returns a `CommandResult` object to the `LogicManager`.
 
-Step 8. Finally, the `CommandResult` is returned by the `LogicManager`.
+Step 8. Finally, the `CommandResult` object is returned by the `LogicManager`.
 
 #### Design considerations:
 
@@ -315,7 +315,7 @@ Step 8. Finally, the `CommandResult` is returned by the `LogicManager`.
     * Cons: The `add` command will require too many parameters.
 
 ### Soon feature
-The soon feature is implemented by the `SoonCommandParser` and `SoonCommand` classes.
+The `soon` feature is implemented by the `SoonCommandParser` and `SoonCommand` classes.
 
 `SoonCommandParser` class is responsible for parsing the parameter received from the user.
 
@@ -326,15 +326,19 @@ Below is a sequence diagram and explanation of how the SoonCommand is executed.
 
 Step 1. The user enters `soon d/1` command in the main window.
 
-Step 2. The command is handled by LogicManager#execute(String) method, which then calls the InternshipParser#parseCommand(String) method.
+Step 2. The command is handled by `LogicManager#execute` method, which then calls the `InternshipParser#parseCommand` method.
 
-Step 3. The InternshipParser matches the command word `soon` in the string and extracts the argument string `d/1`.
+Step 3. `InternshipParser` matches the command word `soon` in the string and extracts the argument string `d/1`.
 
-Step 4. The InternshipParser then calls SoonCommandParser#parse(String) method and the argument string is converted to a Predicate and Index instances.
+Step 4. `InternshipParser` then calls `SoonCommandParser#parse` method and the argument string is converted to a Predicate and Index instances.
 
-Step 5. The SoonCommandParser creates a new SoonCommand instance and returns it to InternshipParser, which in turn returns it to LogicManager.
+Step 5. `SoonCommandParser` creates a new `SoonCommand` instance and returns it to `InternshipParser`, which in turn returns it to `LogicManager`.
 
-Step 6. The LogicManager calls the SoonCommand#execute(Model) method to update the application panel.
+Step 6. Next, `LogicManager` calls `SoonCommand#execute`.
+
+Step 7. `SoonCommand` calls the `Model#updateFilteredApplicationList` method to update the application panel.
+
+Step 8. `SoonCommand` then creates a `CommandResult` instance and returns it to `LogicManager`.
 
 #### Design considerations:
 
@@ -347,7 +351,7 @@ Step 6. The LogicManager calls the SoonCommand#execute(Model) method to update t
     * Cons: Does not provide flexibility to the user.
 
 ### Find feature
-The find feature is implemented by the `FindCommandParser` and `FindCommand` classes.
+The `find` feature is implemented by the `FindCommandParser` and `FindCommand` classes.
 
 `FindCommandParser` class is responsible for parsing the parameter received from the user.
 
@@ -360,7 +364,7 @@ Step 1. The user enters `find pr/High` command in the main window.
 
 Step 2. The command is handled by `LogicManager#execute` method, which then calls the `InternshipParser#parseCommand` method.
 
-Step 3. The InternshipParser matches the command word `find` in the string and extracts the argument string `pr/High`.
+Step 3. The `InternshipParser` matches the command word `find` in the string and extracts the argument string `pr/High`.
 
 Step 4. The `InternshipParser` then calls `FindCommandParser#parse` method and the argument string is converted to a List.
 
@@ -370,7 +374,7 @@ Step 6. The `FindCommandParser` creates a new `FindCommand` instance with the `P
 
 Step 7. The `LogicManager` calls the `FindCommand#execute` method.
 
-Step 8. The FindCommand calls the Model#updateFilteredMemberList(PriorityContainsKeywordsPredicate) method and filters applications by priority High.
+Step 8. The `FindCommand` calls the `Model#updateFilteredApplicationList` method and filters applications by priority High.
 
 Step 9. The application lists the filtered applications that match the given field and keyword.
 
@@ -388,24 +392,30 @@ Step 10. `FindCommand` then creates a `CommandResult` and returns it to `LogicMa
 
 ### Sort feature
 
-The `Sort` command is facilitated by the `SortCommand` class. It extends the `Command` class and implements the `SortCommand#execute()` method which wraps the main logic of the command. This command can be used to sort the **currently displayed** list of applications according to the specified field.
+The `sort` command is facilitated by the `SortCommand` class. It extends the `Command` class and implements the `SortCommand#execute` method which wraps the main logic of the command. This command can be used to sort the **currently displayed** list of applications according to the specified field.
 
-The `SortCommandParser` class is responsible for parsing the field received from the user. This class implements the `Parser` interface. The `SortCommandParser#parse()` method of this class parses the field and returns a `SortCommand` object with the field as the parameter.
+The `SortCommandParser` class is responsible for parsing the field received from the user. This class implements the `Parser` interface. The `SortCommandParser#parse` method of this class parses the field and returns a `SortCommand` object with the field as the parameter.
 
 Below is a sequence diagram and explanation of how the SortCommand is executed.
 ![Interactions Inside the Logic Component for the `sort pr/` Command](images/umldiagrams/SortSequenceDiagram.png)
 
 Step 1. The user enters `sort pr/` command in the main window.
 
-Step 2. The command is handled by LogicManager#execute(String) method, which then calls the InternshipParser#parseCommand(String) method.
+Step 2. The command is handled by `LogicManager#execute` method, which then calls the `InternshipParser#parseCommand` method.
 
-Step 3. The InternshipParser matches the command word `sort` in the string and extracts the argument string " pr/".
+Step 3. `InternshipParser` matches the command word `sort` in the string and extracts the argument string " pr/".
 
-Step 4. The InternshipParser then calls SortCommandParser#parse(String) method and the argument string is converted to a Parameter instance.
+Step 4. `InternshipParser` then calls `SortCommandParser#parse` method and the argument string is converted to a Parameter instance.
 
-Step 5. The SortCommandParser creates a new SortCommand instance and returns it to InternshipParser, which in turn returns it to LogicManager.
+Step 5. `SortCommandParser` creates a new `SortCommand` instance and returns it to `InternshipParser`, which in turn returns it to `LogicManager`.
 
-Step 6. The LogicManager calls the SortCommand#execute(Model) method to sort the application list by priority.
+Step 6. Next, `LogicManager` calls the `SortCommand#execute`.
+
+Step 7. `SortCommand` calls the `Model#setInternship` method to sort the application list by priority.
+
+Step 8. The application shows the sorted list.
+
+Step 9. `SortCommand` then creates a `CommandResult` and returns it to `Logic Manager`.
 
 #### Design considerations:
 
