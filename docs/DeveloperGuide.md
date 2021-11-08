@@ -403,8 +403,6 @@ Step 10. `FindCommand` then creates a `CommandResult` and returns it to `LogicMa
     * Pros: Shorter command for user to input.
     * Cons: Harder for user to remember the command word as this format is not used in other methods.
 
-<div style="page-break-after: always;"></div>
-
 ### Sort feature
 
 The `sort` command is facilitated by the `SortCommand` class. It extends the `Command` class and implements the `SortCommand#execute` method which wraps the main logic of the command. This command can be used to sort the **currently displayed** list of applications according to the specified field.
