@@ -25,7 +25,7 @@ Given below are my contributions to the project.
 * **Major contribution in testing**: 
   * Refactor the existing testcases by removing all traces from AB3 and fit into our InternSHIP settings (Pull request [#59](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/59)).
   * Continuous increment and refinement in testcases whenever new features are added (Examples: Pull request [#72](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/72), Pull request [#78](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/78), Pull request [#115](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/115)).
-  * Final attempt to increase the project overall code coverage up to 85% (Pull request [#262](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/262)).
+  * Final attempt to increase the project overall code coverage up to 83% (Pull request [#262](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/262), Pull request [#270](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/270)).
   
 * **Code contributed**: [RepoSense link](https://nus-cs2103-ay2122s1.github.io/tp-dashboard/?search=nature&sort=groupTitle&sortWithin=title&timeframe=commit&mergegroup=&groupSelect=groupByRepos&breakdown=true&checkedFileTypes=docs~functional-code~test-code~other&since=2021-09-17)
 
