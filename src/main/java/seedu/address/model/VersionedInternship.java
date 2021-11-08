@@ -101,17 +101,12 @@ public class VersionedInternship extends Internship {
     }
 
     /**
-     * Prints the internalStateList in a more reader-friendly format
-     * Used for testing purpose only
-     * @return the internalStateList as displayed a more reader-friendly format
+     * Shifts the current state pointer by a certain amount
+     * Used for testing purposes only.
+     * @param amount the amount by which the current state pointer is shifted
      */
-    public String toString() {
-        String stateList = "===== View of Internship state history ===== \n";
-        for (ReadOnlyInternship internshipList: internshipStateList) {
-            stateList += internshipList + "\n";
-        }
-        stateList += "===== End of Internship state history list =====";
-        return stateList;
+    public void shiftCurrentStatePointer(int amount) {
+        currentStatePointer += amount;
     }
 
 }
