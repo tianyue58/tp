@@ -11,19 +11,19 @@ InternSHIP has been optimized for use via a Command Line Interface (CLI) while s
 Given below are my contributions to the project.
 
 * **New Feature**: Added the priority field.
-  * What it does: allows internship applications to be tagged with 3 possible priority levels: Low, Medium or High (Pull request [#107](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/107)).
+  * What it does: Allows internship applications to be tagged with 3 possible priority levels: Low, Medium or High (Pull request [#107](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/107)).
   * Justification: This feature improves the user experience significantly since users can now tag their applications with different priorities. This allows the user to see which applications are more important or should be completed first.
   * Highlights: This enhancement affected existing commands and many test cases needed to be changed too.
 
 * **New Feature**: Added the ability to sort applications in the list.
-    * What it does: allows the user to sort the currently displayed application list by a specified field (Pull request [#107](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/107)).
+    * What it does: Allows the user to sort the currently displayed application list by a specified field (Pull request [#107](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/107)).
     * Justification: This feature improves the product significantly since users can now view their applications in a more organised manner.
     * Highlights: This enhancement allows users to sort by almost all the fields in the application, including any new fields that might have been added after this enhancement was implemented.
     * For example, the Interview Time field was added after the initial implementation of this command, so additional changes had to be made to accommodate sorting by interview time as well (Pull request [#140](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/140)).
 
 * **Enhancements to existing features**:
   * Finished implementation of Complete class (Pull request [#58](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/58)).
-  * Refactor Complete class to Completion (Pull request [#58](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/58)).
+  * Refactored Complete class to Completion (Pull request [#58](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/58)).
   * Added validity checks for Completion and Status.
   * Made small changes to GUI to accommodate for changes in formatting when a JAR file is created (Pull request [#227](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/227)).
   * Wrote additional tests for existing features to increase coverage (Pull requests [#63](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/63), [#68](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/68), [#79](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/79), [#109](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/109), [#238](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/238)). Notably, pull request [#238](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/238) increased coverage by 6.62%.
