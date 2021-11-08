@@ -458,6 +458,7 @@ Format: `find FIELD keyword`
 * Only one field and keyword(s) can be provided each time. 
 * For completion status, application outcome and application priority, exactly one keyword can be provided each time.
 
+<div style="page-break-after: always;"></div>
 
 Examples:
 * `find c/Grab` shows all the applications whose company name is Grab.
