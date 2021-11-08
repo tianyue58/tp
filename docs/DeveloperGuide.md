@@ -235,7 +235,7 @@ Step 1. The user enters the `accept 2` command in the main window.
 
 Step 2. The command is handled by the `LogicManager#execute` method, which then calls the `InternshipParser#parseCommand` method.
 
-Step 3. `InternshipParser` matches the command word `accept` in the string and extracts the argument string ` 2`.
+Step 3. `InternshipParser` matches the command word `accept` in the string and extracts the argument string `2`.
 
 Step 4. `InternshipParser` then calls the `AcceptCommandParser#parse` method. In this method, it is ensured that the input is of the correct format, and the argument string is converted to an Index instance.
 
@@ -290,7 +290,7 @@ Step 1. The user enters the `reject 2` command in the main window.
 
 Step 2. The command is handled by the `LogicManager#execute` method, which then calls the `InternshipParser#parseCommand` method.
 
-Step 3. `InternshipParser` matches the command word `reject` in the string and extracts the argument string ` 2`.
+Step 3. `InternshipParser` matches the command word `reject` in the string and extracts the argument string `2`.
 
 Step 4. `InternshipParser` then calls the `RejectCommandParser#parse` method. In this method, it is ensured that the input is of the correct format, and the argument string is converted to an Index instance.
 
