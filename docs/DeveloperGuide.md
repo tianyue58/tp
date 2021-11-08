@@ -186,7 +186,7 @@ Step 1. The user enters `complete 1` command in the main window.
 
 Step 2. The command is handled by LogicManager#execute(String) method, which then calls the InternshipParser#parseCommand(String) method.
 
-Step 3. The InternshipParser matches the command word `complete` in the string and extracts the argument string " 1".
+Step 3. The InternshipParser matches the command word `complete` in the string and extracts the argument string `1`.
 
 Step 4. The InternshipParser then calls CompleteCommandParser#parse(String) method and the argument string is converted to an Index instance.
 
@@ -342,7 +342,7 @@ Step 1. The user enters `soon d/1` command in the main window.
 
 Step 2. The command is handled by LogicManager#execute(String) method, which then calls the InternshipParser#parseCommand(String) method.
 
-Step 3. The InternshipParser matches the command word `soon` in the string and extracts the argument string " d/1".
+Step 3. The InternshipParser matches the command word `soon` in the string and extracts the argument string `d/1`.
 
 Step 4. The InternshipParser then calls SoonCommandParser#parse(String) method and the argument string is converted to a Predicate and Index instances.
 
@@ -374,7 +374,7 @@ Step 1. The user enters `find pr/High` command in the main window.
 
 Step 2. The command is handled by LogicManager#execute(String) method, which then calls the InternshipParser#parseCommand(String) method.
 
-Step 3. The InternshipParser matches the command word `find` in the string and extracts the argument string " pr/High".
+Step 3. The InternshipParser matches the command word `find` in the string and extracts the argument string `pr/High`.
 
 Step 4. The InternshipParser then calls FindCommandParser#parse(String) method and the argument string is converted to a List.
 
@@ -569,7 +569,9 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 ### Use cases
 
-(For all use cases below, the **System** is `InternSHIP` and the **Actor** is the `user`, unless specified otherwise)
+For all use cases below, the **System** is `InternSHIP` and the **Actor** is the `user`, unless specified otherwise.<br>
+<br>
+(Similar use cases are grouped together as per the User Guide)
 
 #### Tracking application details
 
@@ -866,13 +868,12 @@ testers are expected to do more *exploratory* testing.
 1. Dealing with missing/corrupted data files
 
     1. Test case: simulate missing data file 
-      How: Delete `internship.json` from `./data/internship.json`.
+      How: Delete `internship.json` from `./data/internship.json`. Launch `InternSHIP.jar`.
+       Expected: The GUI should pop up, with the [default sample entries](https://ay2122s1-cs2103t-w17-1.github.io/tp/UserGuide.html#quick-start) in the application list. A new `internship.json` file containing the 4 sample entries will be created.
    
     2. Test case: simulate corrupted data file
-      How: Open `internship.json` in a text editor (e.g. IntelliJ), delete the first character `{` from the file and save the changes.
-   
-    3. Launch `InternSHIP.jar`.
-      Expected: The GUI should pop up, but with no entries in the application list. If terminal is used to open the jar file, warnings about incorrect data file format should be seen in the console output.
+      How: Open `internship.json` in a text editor (e.g. IntelliJ), delete the first character `{` from the file and save the changes. Launch `InternSHIP.jar`.
+      Expected: The GUI should pop up, but with no entries in the application list. If terminal is used to open the jar file, warnings about incorrect data file format should be seen in the console output. A new empty `internship.json` file will be created.
 
 ## Appendix 3: Effort
 If the effort required to create **AB3** is 10, we would place the effort level required to implement the current version of **InternSHIP** at 15.
