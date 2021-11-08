@@ -61,6 +61,6 @@ Given below are my contributions to the project.
   * Set up zoom for weekly meetings.
   
 * **Community:**
-  * Reported an above-average number of bugs in the PE-D (Examples: Bug [\#1](https://github.com/willyamped/ped/issues/1), Bug [\#5](https://github.com/willyamped/ped/issues/5), Bug [\#9](https://github.com/willyamped/ped/issues/1)). 
+  * Reported an above-average number of bugs in the PE-D (Examples: Bug [\#1](https://github.com/willyamped/ped/issues/1), Bug [\#5](https://github.com/willyamped/ped/issues/5), Bug [\#9](https://github.com/willyamped/ped/issues/9)). 
   * Contributed to forum discussions (Examples: [\#20](https://github.com/nus-cs2103-AY2122S1/forum/issues/20), [\#118](https://github.com/nus-cs2103-AY2122S1/forum/issues/118), [\#135](https://github.com/nus-cs2103-AY2122S1/forum/issues/135), [\#228](https://github.com/nus-cs2103-AY2122S1/forum/issues/228), [\#251](https://github.com/nus-cs2103-AY2122S1/forum/issues/251), [\#231](https://github.com/nus-cs2103-AY2122S1/forum/issues/231) [\#253](https://github.com/nus-cs2103-AY2122S1/forum/issues/253))
   
