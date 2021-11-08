@@ -28,6 +28,8 @@ We hope you find InternSHIP to be very useful in your internship hunt!
 
 --------------------------------------------------------------------------------------------------------------------
 
+<div style="page-break-after: always;"></div>
+
 ## Information about this User Guide
 
 This section aims to provide some information on the purpose as well as target audience of our User Guide.
@@ -51,6 +53,8 @@ As the target audience of InternSHIP is university students, this User Guide is 
 This User Guide **does not assume that the reader has a technical background**. Therefore, university students of all majors should be able to use this guide. The definitions for certain technical terms can be found in the [glossary](#glossary).
 
 --------------------------------------------------------------------------------------------------------------------
+
+<div style="page-break-after: always;"></div>
 
 ## How to use this User Guide
 
@@ -154,6 +158,8 @@ Parameter | Refers to | Required format | Application field? | Notes
 
 --------------------------------------------------------------------------------------------------------------------
 
+<div style="page-break-after: always;"></div>
+
 ## Quick start
 
 1. Ensure you have Java `11` or above installed in your Computer.
@@ -190,6 +196,8 @@ Parameter | Refers to | Required format | Application field? | Notes
 7. Refer to the [Features](#features) below for details of each command.
 
 --------------------------------------------------------------------------------------------------------------------
+
+<div style="page-break-after: always;"></div>
 
 ## Features
 
@@ -638,6 +646,8 @@ Format: `help`
 
 --------------------------------------------------------------------------------------------------------------------
 
+<div style="page-break-after: always;"></div>
+
 ## FAQ
 
 **Q**: How do I transfer my data to another Computer?<br>
@@ -650,6 +660,8 @@ There is no need to save manually.
 
 --------------------------------------------------------------------------------------------------------------------
 
+<div style="page-break-after: always;"></div>
+
 ## Tips :bulb:
 
 * Commands that change the displayed list in InternSHIP (e.g. `find`, `sort`) can be used in conjunction with commands that take in `INDEX` as a parameter (e.g. `delete`, `complete`) so that you can work faster!
@@ -660,6 +672,8 @@ There is no need to save manually.
 
 
 --------------------------------------------------------------------------------------------------------------------
+
+<div style="page-break-after: always;"></div>
 
 ## Command summary
 
@@ -699,6 +713,8 @@ Action | Format | Example | Notes
 
 --------------------------------------------------------------------------------------------------------------------
 
+<div style="page-break-after: always;"></div>
+
 ## Prefix summary
 
 This section provides a summary of all the fields and their corresponding prefixes as used in InternSHIP commands.
@@ -720,6 +736,8 @@ The list above is a complete list of **all** the prefixes used in InternSHIP com
 
 --------------------------------------------------------------------------------------------------------------------
 
+<div style="page-break-after: always;"></div>
+
 ## Glossary
 
 This section explains some terms used in this User Guide.
@@ -737,6 +755,8 @@ Term | Definition | Notes
 **alphanumeric** | A character that is either a letter or a number.
 
 --------------------------------------------------------------------------------------------------------------------
+
+<div style="page-break-after: always;"></div>
 
 ## Acknowledgements
 

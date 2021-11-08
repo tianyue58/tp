@@ -23,6 +23,8 @@ Refer to the guide [_Setting Up and Getting Started_](SettingUp.md).
 
 --------------------------------------------------------------------------------------------------------------------
 
+<div style="page-break-after: always;"></div>
+
 ## Design
 
 <div markdown="span" class="alert alert-primary">
@@ -153,6 +155,8 @@ The `Storage` component,
 Classes used by multiple components are in the `seedu.address.commons` package.
 
 --------------------------------------------------------------------------------------------------------------------
+
+<div style="page-break-after: always;"></div>
 
 ## Implementation
 
@@ -515,6 +519,8 @@ The following activity diagram summarizes what happens when a user executes a ne
 
 --------------------------------------------------------------------------------------------------------------------
 
+<div style="page-break-after: always;"></div>
+
 ## Appendix 1: Requirements
 
 ### Product scope
@@ -814,6 +820,8 @@ For all use cases below, the **System** is `InternSHIP` and the **Actor** is the
 
 --------------------------------------------------------------------------------------------------------------------
 
+<div style="page-break-after: always;"></div>
+
 ## Appendix 2: Instructions for manual testing
 
 Given below are instructions to test the app manually.
@@ -866,7 +874,10 @@ testers are expected to do more *exploratory* testing.
       How: Open `internship.json` in a text editor (e.g. IntelliJ), delete the first character `{` from the file and save the changes. Launch `InternSHIP.jar`.
       Expected: The GUI should pop up, but with no entries in the application list. If terminal is used to open the jar file, warnings about incorrect data file format should be seen in the console output. A new empty `internship.json` file will be created.
 
+<div style="page-break-after: always;"></div>
+
 ## Appendix 3: Effort
+
 If the effort required to create **AB3** is 10, we would place the effort level required to implement the current version of **InternSHIP** at 15.
 
 Our team has put in a significant amount of effort to get InternSHIP to the current version. Below, we list some notable changes overall and notable features implemented by us.
@@ -895,6 +906,8 @@ Our team has put in a significant amount of effort to get InternSHIP to the curr
 Notable features we implemented from scratch include Complete, Accept, Reject, Sort, Find, Soon and Undo/Redo. We came up with these features as they fit well in helping our target users solve problems they may encounter in their internship data management.
 
 The implementation details and design considerations for these features can be found in the [Implementation](#implementation) section.
+
+<div style="page-break-after: always;"></div>
 
 ## Appendix 4: Limitations and Future improvements
 
