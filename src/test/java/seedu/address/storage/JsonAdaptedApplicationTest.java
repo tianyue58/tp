@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static seedu.address.storage.JsonAdaptedApplication.MISSING_FIELD_MESSAGE_FORMAT;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalApplications.AMAZON;
+import static seedu.address.testutil.TypicalApplications.BYTEDANCE;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -42,9 +43,9 @@ public class JsonAdaptedApplicationTest {
             .collect(Collectors.toList());
 
     @Test
-    public void toModelType_validCompanyDetails_returnsCompany() throws Exception {
-        JsonAdaptedApplication application = new JsonAdaptedApplication(AMAZON);
-        assertEquals(AMAZON, application.toModelType());
+    public void toModelType_validApplication_success() throws Exception {
+        JsonAdaptedApplication application = new JsonAdaptedApplication(BYTEDANCE);
+        assertEquals(BYTEDANCE, application.toModelType());
     }
 
     @Test
@@ -154,4 +155,6 @@ public class JsonAdaptedApplicationTest {
         String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, Priority.class.getSimpleName());
         assertThrows(IllegalValueException.class, expectedMessage, application::toModelType);
     }
+
+
 }
