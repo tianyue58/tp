@@ -121,7 +121,10 @@ How the parsing works:
 * When called upon to parse a user command, the `InternshipParser` class creates an `XYZCommandParser` (`XYZ` is a placeholder for the specific command name e.g., `AddCommandParser`) which uses the other classes shown above to parse the user command and create a `XYZCommand` object (e.g., `AddCommand`) which the `InternshipParser` returns back as a `Command` object.
 * All `XYZCommandParser` classes (e.g., `AddCommandParser`, `DeleteCommandParser`, ...) inherit from the `Parser` interface so that they can be treated similarly where possible e.g, during testing.
 
+<div style="page-break-after: always;"></div>
+
 ### Model component
+
 **API** : [`Model.java`](https://github.com/AY2122S1-CS2103T-W17-1/tp/blob/master/src/main/java/seedu/address/model/Model.java)
 
 <img src="images/umldiagrams/ModelClassDiagram.png" width="450" />
@@ -571,7 +574,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* *`    | student                                    | undo a change I have accidentally made to the application list | restore the information that has been unintentionally rectified and not losing any important information |
 | `* *`    | student                                    | redo a change I have just undone | retrieve the changes I have made previously and not having to manually redo it |
 
-
+<div style="page-break-after: always;"></div>
 
 ### Use cases
 
