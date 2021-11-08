@@ -440,15 +440,16 @@ Format: `find FIELD keyword`
 
 * Finds all application(s) from the application list that match the keyword in the given field.
 * Format of `keyword` should follow the required format of the `FIELD` as specified in the [Parameter Summary](#parameters).
-* Only one field and one keyword can be provided each time.
+* Only one field and keyword(s) can be provided each time. 
+* For completion status, application outcome and application priority, exactly one keyword can be provided each time.
 
 
 Examples:
 * `find c/Grab` shows all the applications whose company name is Grab.
 * `find p/software engineer` shows all the applications whose position is software engineer.
 * `find c1/Completed` shows all the applications that are completed.
-* `find s/Accepted` shows all the applications whose application outcome is Accepted.  
-* `find pr/High` shows all the applications whose priority is High.
+* `find s/Accepted` shows all the applications whose application outcome is accepted.  
+* `find pr/High` shows all the applications whose priority is high.
 * `find r/cv` shows all the applications that include cv as a requirement.
 
 
