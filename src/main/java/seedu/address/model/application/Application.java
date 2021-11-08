@@ -109,6 +109,18 @@ public class Application {
         return !interviewDateAndTime.isEmpty();
     }
 
+    public boolean isAccepted() {
+        return status.value.equalsIgnoreCase("accepted");
+    }
+
+    public boolean isRejected() {
+        return status.value.equalsIgnoreCase("rejected");
+    }
+
+    public boolean isCompleted() {
+        return completion.value.equalsIgnoreCase("completed");
+    }
+
     /**
      * Returns true if both applications have the same name and position.
      * This defines a weaker notion of equality between two applications.

@@ -67,6 +67,15 @@ public class CompleteCommandTest {
         assertCommandFailure(completeCommand, model, Messages.MESSAGE_INDEX_EXCEEDS_LIST_LENGTH);
     }
 
+    @Test
+    public void execute_completeTwice_throwsCommandException() {
+
+        //the second application is an application that is already been completed
+        CompleteCommand completeCommand = new CompleteCommand(INDEX_SECOND_APPLICATION);
+
+        assertCommandFailure(completeCommand, model, CompleteCommand.MESSAGE_ALREADY_COMPLETED);
+    }
+
 
     @Test
     public void equals() {

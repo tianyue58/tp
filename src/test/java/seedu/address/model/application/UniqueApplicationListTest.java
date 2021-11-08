@@ -6,6 +6,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalApplications.AMAZON;
 import static seedu.address.testutil.TypicalApplications.BYTEDANCE;
+import static seedu.address.testutil.TypicalApplications.GRAB;
+import static seedu.address.testutil.TypicalApplications.getTypicalInternship;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -176,5 +178,13 @@ public class UniqueApplicationListTest {
 
         // null -> return false
         assertFalse(uniqueApplicationList.equals(null));
+    }
+
+    @Test
+    public void toHashCode_success() {
+        uniqueApplicationList.add(AMAZON);
+        uniqueApplicationList.add(BYTEDANCE);
+        uniqueApplicationList.add(GRAB);
+        assertEquals(getTypicalInternship().hashCode(), uniqueApplicationList.hashCode());
     }
 }

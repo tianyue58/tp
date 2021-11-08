@@ -1,9 +1,18 @@
 package seedu.address.logic.parser;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_INTERVIEW_DATE_AND_TIME_AMAZON;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_INTERVIEW_DATE_AND_TIME_BYTEDANCE;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_REQUIREMENTS_AMAZON;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_REQUIREMENTS_BYTEDANCE;
 import static seedu.address.logic.parser.ParserUtil.MESSAGE_INVALID_INDEX;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_APPLICATION;
+
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Set;
 
 import org.junit.jupiter.api.Test;
 
@@ -11,8 +20,10 @@ import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.application.Company;
 import seedu.address.model.application.Completion;
 import seedu.address.model.application.Deadline;
+import seedu.address.model.application.InterviewDateAndTime;
 import seedu.address.model.application.Position;
 import seedu.address.model.application.Priority;
+import seedu.address.model.application.Requirement;
 import seedu.address.model.application.Status;
 
 public class ParserUtilTest {
@@ -25,7 +36,7 @@ public class ParserUtilTest {
     private static final String INVALID_PRIORITY = "prioritised";
     private static final String INVALID_REQUIREMENT = "   ";
     private static final String INVALID_INTERVIEW_DATE_AND_TIME = "12-12-2012";
-    private static final String INVALID_DATE_AND_TIME = "2012-02-30 1600";
+    private static final String INVALID_DATE_AND_TIME = "2021-02-30 1200";
 
     private static final String VALID_COMPANY = "Shopee";
     private static final String VALID_POSITION = "Software Engineer";
@@ -205,6 +216,20 @@ public class ParserUtilTest {
     }
 
     @Test
+    public void parseRequirements_returnsRequirementSet() throws ParseException {
+        Collection<String> requirementSet = new HashSet<>();
+        Set<Requirement> parsedRequirementSet = new HashSet<>();
+
+        String[] requirements = new String[]{VALID_REQUIREMENTS_AMAZON, VALID_REQUIREMENTS_BYTEDANCE};
+        Collections.addAll(requirementSet, requirements);
+        for (String requirement: requirements) {
+            parsedRequirementSet.add(new Requirement(requirement));
+        }
+
+        assertEquals(parsedRequirementSet, ParserUtil.parseRequirements(requirementSet));
+    }
+
+    @Test
     public void parseInterviewDateAndTime_invalidInterviewDateAndTime_throwsParseException() {
         assertThrows(ParseException.class, () -> ParserUtil.parseInterviewDateAndTime(INVALID_INTERVIEW_DATE_AND_TIME));
     }
@@ -212,6 +237,21 @@ public class ParserUtilTest {
     @Test
     public void parseInterviewDateAndTime_invalidDateAndTime_throwsParseException() {
         assertThrows(ParseException.class, () -> ParserUtil.parseInterviewDateAndTime(INVALID_DATE_AND_TIME));
+    }
+
+    @Test
+    public void parseInterviewDateAndTimes_returnsInterviewDateAndTimeSet() throws ParseException {
+        Collection<String> interviewTimeSet = new HashSet<>();
+        Set<InterviewDateAndTime> parsedInterviewTimeSet = new HashSet<>();
+
+        String[] interviewTimes =
+                new String[]{VALID_INTERVIEW_DATE_AND_TIME_AMAZON, VALID_INTERVIEW_DATE_AND_TIME_BYTEDANCE};
+        Collections.addAll(interviewTimeSet, interviewTimes);
+        for (String interviewTime: interviewTimes) {
+            parsedInterviewTimeSet.add(new InterviewDateAndTime(interviewTime));
+        }
+
+        assertEquals(parsedInterviewTimeSet, ParserUtil.parseInterviewDateAndTimes(interviewTimeSet));
     }
 
 }

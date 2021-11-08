@@ -53,7 +53,7 @@ public class CommandTestUtil {
 
     public static final String VALID_STATUS_AMAZON = "Pending";
     public static final String VALID_STATUS_BYTEDANCE = "Rejected";
-    public static final String VALID_STATUS_GRAB = "Pending";
+    public static final String VALID_STATUS_GRAB = "Accepted";
     public static final String VALID_STATUS_SHOPEE = "Pending";
 
     public static final String VALID_PRIORITY_AMAZON = "Medium";

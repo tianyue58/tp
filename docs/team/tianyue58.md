@@ -16,14 +16,14 @@ Given below are my contributions to the project.
   * Highlights: This feature affected all existing commands as a new field had to be added to all commands. Many test cases needed to be changed too.
   * The implementation of this feature was later enhanced by the team.
 
-* **New Feature**: Added the `Deadline` fields.
+* **New Feature**: Added the `Deadline` field.
   * What it does: Allows the user to record application deadline (Pull request [\#51](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/51)).
   * Justification: Being able to remind user not to miss important deadlines.
   * Highlights: This feature affected all existing commands as a new field had to be added to all commands. Many test cases needed to be changed too.
   * The implementation of this feature was later enhanced by the team.
 
 * **New Feature**: Added the ability to find application(s).
-    * What it does: allows the user to find application(s) based on a given criterion and keyword.
+    * What it does: Allows the user to find application(s) based on a given criterion and keyword.
     * Justification: This feature improves the product significantly because a user could find applications with specific characteristics in a long list.
     * This serves as a filter feature as well, helping users to view only the entries of their current interest.
     * Highlights: This enhancement affects existing commands and many test cases needed to be changed too.
@@ -44,15 +44,17 @@ Given below are my contributions to the project.
     * Refactored code base to remove all traces of AddressBook, including renaming of classes, methods, files, etc (Pull request [#51](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/51)).
     * Changed the product icon (Pull request [\#51](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/51)).
     * Refactored the all the test cases to remove the tag functionality (Pull request [\#122](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/122)).
+    * Wrote additional tests to increase test coverage (Pull request [#250](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/250)).  
     * Fixed bugs from Practical Examination Dry Run (Pull request [\#214](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/214)).
 
 * **Documentation**:
     * User Guide:
-        * Added the documentation for the `find` feature (Pull request [\#113](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/113), [\#221](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/221)).
+        * Added the documentation for the `find` feature (Pull requests [\#113](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/113), [\#221](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/221)).
     * Developer Guide:
         * Added implementation details of the `find` feature. (Pull request [\#105](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/105)).
         * Updated the appendix for team effort summary (Pull request [\#223](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/223)).
-        * Updated the uml diagram and use case for find command (Pull request [\#245](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/245)).
+        * Updated the uml diagram and use case for find command (Pull requests [\#245](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/245), [\#254](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/254)).
   
 * **Community**:
-  * Reported an above-average number of bugs in the PE-D (Examples: Bug [#4](https://github.com/tianyue58/ped/issues/4), Bug [#10](https://github.com/tianyue58/ped/issues/10), Bug [#11](https://github.com/tianyue58/ped/issues/11)). 
+  * Reported an above-average number of bugs in the PE-D (Examples: Bugs [#4](https://github.com/tianyue58/ped/issues/4), [#10](https://github.com/tianyue58/ped/issues/10), [#11](https://github.com/tianyue58/ped/issues/11)). 
+  * Contributed to forum discussions (Examples: Issues [#40](https://github.com/nus-cs2103-AY2122S1/forum/issues/40), [#385](https://github.com/nus-cs2103-AY2122S1/forum/issues/385)).

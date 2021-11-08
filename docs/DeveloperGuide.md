@@ -2,30 +2,32 @@
 layout: page
 title: Developer Guide
 ---
+## Table of Contents
+
 * Table of Contents
-  {:toc}
+{:toc}
 
 --------------------------------------------------------------------------------------------------------------------
 
-## **Acknowledgements**
+## Acknowledgements
 
-* While this product uses a generic application called [AddressBook-Level3 (AB3)](https://se-education.org)
+* While this product uses a generic application called [AddressBook-Level3 (AB3)](https://se-education.org/addressbook-level3/)
   as the starting point, the idea for some advanced features, such as `undo` and `redo`, are adopted from
   [AddressBook-Level4 (AB4)](https://se-education.org/addressbook-level4).
 
 --------------------------------------------------------------------------------------------------------------------
 
-## **Setting up, getting started**
+## Setting up, getting started
 
-Refer to the guide [_Setting up and getting started_](SettingUp.md).
+Refer to the guide [_Setting Up and Getting Started_](SettingUp.md).
 
 --------------------------------------------------------------------------------------------------------------------
 
-## **Design**
+## Design
 
 <div markdown="span" class="alert alert-primary">
 
-:bulb: **Tip:** The `.puml` files used to create diagrams in this document can be found in the [diagrams](https://github.com/se-edu/addressbook-level3/tree/master/docs/diagrams/) folder. Refer to the [_PlantUML Tutorial_ at se-edu/guides](https://se-education.org/guides/tutorials/plantUml.html) to learn how to create and edit diagrams.
+:bulb: **Tip:** The `.puml` files used to create diagrams in this document can be found in the [diagrams](https://github.com/AY2122S1-CS2103T-W17-1/tp/tree/master/docs/diagrams) folder. Refer to the [_PlantUML Tutorial_ at se-edu/guides](https://se-education.org/guides/tutorials/plantUml.html) to learn how to create and edit diagrams.
 </div>
 
 ### Architecture
@@ -38,7 +40,7 @@ Given below is a quick overview of main components and how they interact with ea
 
 **Main components of the architecture**
 
-**`Main`** has two classes called [`Main`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/Main.java) and [`MainApp`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/MainApp.java). It is responsible for,
+**`Main`** has two classes called [`Main`](https://github.com/AY2122S1-CS2103T-W17-1/tp/blob/master/src/main/java/seedu/address/Main.java) and [`MainApp`](https://github.com/AY2122S1-CS2103T-W17-1/tp/blob/master/src/main/java/seedu/address/MainApp.java). It is responsible for,
 * At app launch: Initializes the components in the correct sequence, and connects them up with each other.
 * At shut down: Shuts down the components and invokes cleanup methods where necessary.
 
@@ -71,13 +73,13 @@ The sections below give more details of each component.
 
 ### UI component
 
-The **API** of this component is specified in [`Ui.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/ui/Ui.java)
+The **API** of this component is specified in [`Ui.java`](https://github.com/AY2122S1-CS2103T-W17-1/tp/blob/master/src/main/java/seedu/address/ui/Ui.java)
 
 ![Structure of the UI Component](images/umldiagrams/UiClassDiagram.png)
 
 The UI consists of a `MainWindow` that is made up of parts e.g.`CommandBox`, `ResultDisplay`, `ApplicationListPanel`, `StatusBarFooter` etc. All these, including the `MainWindow`, inherit from the abstract `UiPart` class which captures the commonalities between classes that represent parts of the visible GUI.
 
-The `UI` component uses the JavaFx UI framework. The layout of these UI parts are defined in matching `.fxml` files that are in the `src/main/resources/view` folder. For example, the layout of the [`MainWindow`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/ui/MainWindow.java) is specified in [`MainWindow.fxml`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/resources/view/MainWindow.fxml)
+The `UI` component uses the JavaFx UI framework. The layout of these UI parts are defined in matching `.fxml` files that are in the `src/main/resources/view` folder. For example, the layout of the [`MainWindow`](https://github.com/AY2122S1-CS2103T-W17-1/tp/blob/master/src/main/java/seedu/address/ui/MainWindow.java) is specified in [`MainWindow.fxml`](https://github.com/AY2122S1-CS2103T-W17-1/tp/blob/master/src/main/resources/view/MainWindow.fxml)
 
 The `UI` component,
 
@@ -88,7 +90,7 @@ The `UI` component,
 
 ### Logic component
 
-**API** : [`Logic.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/logic/Logic.java)
+**API** : [`Logic.java`](https://github.com/AY2122S1-CS2103T-W17-1/tp/blob/master/src/main/java/seedu/address/logic/Logic.java)
 
 Here's a (partial) class diagram of the `Logic` component:
 
@@ -116,7 +118,7 @@ How the parsing works:
 * All `XYZCommandParser` classes (e.g., `AddCommandParser`, `DeleteCommandParser`, ...) inherit from the `Parser` interface so that they can be treated similarly where possible e.g, during testing.
 
 ### Model component
-**API** : [`Model.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/model/Model.java)
+**API** : [`Model.java`](https://github.com/AY2122S1-CS2103T-W17-1/tp/blob/master/src/main/java/seedu/address/model/Model.java)
 
 <img src="images/umldiagrams/ModelClassDiagram.png" width="450" />
 
@@ -126,7 +128,7 @@ The `Model` component,
 * stores the InternSHIP data i.e., all `Application` objects (which are contained in a `UniqueApplicationList` object).
 * stores the currently 'selected' `Application` objects (e.g., results of a search query) as a separate _filtered_ list which is exposed to outsiders as an unmodifiable `ObservableList<Application>` that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.
 * stores a `UserPref` object that represents the user’s preferences. This is exposed to the outside as a `ReadOnlyUserPref` objects.
-* does not depend on any of the other three components (as the `Model` represents data entities of the domain, they should make sense on their own without depending on other components)
+* does not depend on any of the other three components (as the `Model` represents data entities of the domain, they should make sense on their own without depending on other components).
 
 <div markdown="span" class="alert alert-info">:information_source: **Note:** An alternative (arguably, a more OOP) model is given below. It has a `Requirement` set and `InterviewDateAndTime` set in the `Internship`, which `Application` references. This allows `Internship` to only require one `Requirement` object per unique requirement, and one `InterviewDateAndTime` object per unique `InterviewDateAndTime`, instead of each `Application` needing their own `Requirement` and `InterviewDateAndTime` objects.<br>
 
@@ -137,22 +139,22 @@ The `Model` component,
 
 ### Storage component
 
-**API** : [`Storage.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/storage/Storage.java)
+**API** : [`Storage.java`](https://github.com/AY2122S1-CS2103T-W17-1/tp/blob/master/src/main/java/seedu/address/storage/Storage.java)
 
 <img src="images/umldiagrams/StorageClassDiagram.png" width="550" />
 
 The `Storage` component,
 * can save both InternSHIP data and user preference data in json format, and read them back into corresponding objects.
 * inherits from both `InternshipStorage` and `UserPrefStorage`, which means it can be treated as either one (if only the functionality of only one is needed).
-* depends on some classes in the `Model` component (because the `Storage` component's job is to save/retrieve objects that belong to the `Model`)
+* depends on some classes in the `Model` component (because the `Storage` component's job is to save/retrieve objects that belong to the `Model`).
 
 ### Common classes
 
-Classes used by multiple components are in the `seedu.addressbook.commons` package.
+Classes used by multiple components are in the `seedu.address.commons` package.
 
 --------------------------------------------------------------------------------------------------------------------
 
-## **Implementation**
+## Implementation
 
 This section describes some noteworthy details on how certain features are implemented.
 
@@ -184,7 +186,7 @@ Step 1. The user enters `complete 1` command in the main window.
 
 Step 2. The command is handled by `LogicManager#execute` method, which then calls the `InternshipParser#parseCommand` method.
 
-Step 3. The `InternshipParser` matches the command word `complete` in the string and extracts the argument string ` 1`.
+Step 3. The InternshipParser matches the command word `complete` in the string and extracts the argument string `1`.
 
 Step 4. The `InternshipParser` then calls `CompleteCommandParser#parse` method and the argument string is converted to an Index instance.
 
@@ -225,7 +227,7 @@ class implements the `Parser` interface. The `AcceptCommandParser#parse()` metho
 this class parses the index and returns an `AcceptCommand` object with the index
 as the parameter.
 
-Below is a sequence diagram and an explanation of how the `AcceptCommand` is executed:
+Below is a sequence diagram and an explanation of how the `AcceptCommand` is executed.
 
 ![Interactions Inside the Logic Component for the `accept 2` Command](images/umldiagrams/AcceptSequenceDiagram.png)
 
@@ -280,7 +282,7 @@ class implements the `Parser` interface. The `RejectCommandParser#parse()` metho
 this class parses the index and returns an `RejectCommand` object with the index
 as the parameter.
 
-Below is a sequence diagram and an explanation of how the `RejectCommand` is executed:
+Below is a sequence diagram and an explanation of how the `RejectCommand` is executed.
 
 ![Interactions Inside the Logic Component for the `reject 2` Command](images/umldiagrams/RejectSequenceDiagram.png)
 
@@ -312,64 +314,6 @@ Step 8. Finally, the `CommandResult` is returned by the `LogicManager`.
     * Pros: Easy to specify the desired status field while adding an application.
     * Cons: The `add` command will require too many parameters.
 
-### Sort feature
-
-The `Sort` command is facilitated by the `SortCommand` class. It extends the `Command` class and implements the `SortCommand#execute()` method which wraps the main logic of the command. This command can be used to sort the **currently displayed** list of applications according to the specified field.
-
-The `SortCommandParser` class is responsible for parsing the field received from the user. This class implements the `Parser` interface. The `SortCommandParser#parse()` method of this class parses the field and returns a `SortCommand` object with the field as the parameter.
-
-![Interactions Inside the Logic Component for the `sort pr/` Command](images/umldiagrams/SortSequenceDiagram.png)
-
-#### Design considerations:
-
-* **Alternative 1 (current choice):** Only allow lists to be sorted in one direction per field (e.g. sooner to later for deadline, alphabetically for company name)
-    * Pros: Easier to implement. The implemented direction of sorting is also the more logical one (users are unlikely to want to view their applications from lower to higher priority).
-    * Cons: The user cannot specify the direction of sorting (e.g. later deadlines first)
-
-* **Alternative 2:** Provide the option to specify the field to sort the list by as well as the direction of sorting.
-    * Pros: Users have more options on how to view their list of applications.
-    * Cons: The `sort` command will require more parameters.
-
-### Find feature
-The find feature is implemented by the `FindCommandParser` and `FindCommand` classes.
-
-`FindCommandParser` class is responsible for parsing the parameter received from the user.
-
-`FindCommand` class is responsible for finding the matching applications with specified fields according to the given syntax and keyword.
-
-Below is a sequence diagram and explanation of how the FindCommand is executed.
-![Interactions Inside the Logic Component for the `find pr/High` Command](images/umldiagrams/FindSequenceDiagram.png)
-
-Step 1. The user enters `find pr/High` command in the main window.
-
-Step 2. The command is handled by `LogicManager#execute` method, which then calls the `InternshipParser#parseCommand` method.
-
-Step 3. The `InternshipParser` matches the command word `find` in the string and extracts the argument string ` pr/High`.
-
-Step 4. The `InternshipParser` then calls `FindCommandParser#parse` method and the argument string is converted to a List.
-
-Step 5. The `FindCommandParser` creates a new `PriorityContainsKeywordsPredicate` instance with the priority List to handle the filter.
- 
-Step 6. The `FindCommandParser` creates a new `FindCommand` instance with the `PriorityContainsKeywordsPredicate` instance and returns it to `InternshipParser`, which in turn returns it to `LogicManager`.
-
-Step 7. The `LogicManager` calls the `FindCommand#execute` method.
-
-Step 8. The `FindCommand` calls the `Model#updateFilteredApplicationList` method and filter applications by priority High.
-
-Step 9. The application lists the filtered applications that match the given field and keyword.
-
-Step 10. `FindCommand` then creates a `CommandResult` and returns it to `LogicManager`.
-
-#### Design considerations:
-
-* **Alternative 1 (current choice):** Matches applications using specified fields (e.g. user can specify deadline field with d/) and keywords.
-    * Pros: User can specify fields to match similar to the way in `AddCommand` and `EditCommand`.
-    * Cons: The `find` command will require more parameters.
-
-* **Alternative 2:** Uses different command word for finding different fields (e.g. findD for matching application with deadlines).
-    * Pros: Shorter command for user to input.
-    * Cons: Harder for user to remember the command word as this format is not used in other methods.
-
 ### Soon feature
 The soon feature is implemented by the `SoonCommandParser` and `SoonCommand` classes.
 
@@ -384,7 +328,7 @@ Step 1. The user enters `soon d/1` command in the main window.
 
 Step 2. The command is handled by LogicManager#execute(String) method, which then calls the InternshipParser#parseCommand(String) method.
 
-Step 3. The InternshipParser matches the command word `soon` in the string and extracts the argument string ` d/1`.
+Step 3. The InternshipParser matches the command word `soon` in the string and extracts the argument string `d/1`.
 
 Step 4. The InternshipParser then calls SoonCommandParser#parse(String) method and the argument string is converted to a Predicate and Index instances.
 
@@ -401,6 +345,77 @@ Step 6. The LogicManager calls the SoonCommand#execute(Model) method to update t
 * **Alternative 2:** List applications whose deadlines are within a pre-set number of days.
     * Pros: Shorter command for user to input.
     * Cons: Does not provide flexibility to the user.
+
+### Find feature
+The find feature is implemented by the `FindCommandParser` and `FindCommand` classes.
+
+`FindCommandParser` class is responsible for parsing the parameter received from the user.
+
+`FindCommand` class is responsible for finding the matching applications with specified fields according to the given syntax and keyword.
+
+Below is a sequence diagram and explanation of how the FindCommand is executed.
+![Interactions Inside the Logic Component for the `find pr/High` Command](images/umldiagrams/FindSequenceDiagram.png)
+
+Step 1. The user enters `find pr/High` command in the main window.
+
+Step 2. The command is handled by `LogicManager#execute` method, which then calls the `InternshipParser#parseCommand` method.
+
+Step 3. The InternshipParser matches the command word `find` in the string and extracts the argument string `pr/High`.
+
+Step 4. The `InternshipParser` then calls `FindCommandParser#parse` method and the argument string is converted to a List.
+
+Step 5. The `FindCommandParser` creates a new `PriorityContainsKeywordsPredicate` instance with the priority List to handle the filter.
+ 
+Step 6. The `FindCommandParser` creates a new `FindCommand` instance with the `PriorityContainsKeywordsPredicate` instance and returns it to `InternshipParser`, which in turn returns it to `LogicManager`.
+
+Step 7. The `LogicManager` calls the `FindCommand#execute` method.
+
+Step 8. The FindCommand calls the Model#updateFilteredMemberList(PriorityContainsKeywordsPredicate) method and filters applications by priority High.
+
+Step 9. The application lists the filtered applications that match the given field and keyword.
+
+Step 10. `FindCommand` then creates a `CommandResult` and returns it to `LogicManager`.
+
+#### Design considerations:
+
+* **Alternative 1 (current choice):** Matches applications using specified fields (e.g. user can specify deadline field with d/) and keywords.
+    * Pros: User can specify fields to match similar to the way in `AddCommand` and `EditCommand`.
+    * Cons: The `find` command will require more parameters.
+
+* **Alternative 2:** Uses different command word for finding different fields (e.g. findD for matching application with deadlines).
+    * Pros: Shorter command for user to input.
+    * Cons: Harder for user to remember the command word as this format is not used in other methods.
+
+### Sort feature
+
+The `Sort` command is facilitated by the `SortCommand` class. It extends the `Command` class and implements the `SortCommand#execute()` method which wraps the main logic of the command. This command can be used to sort the **currently displayed** list of applications according to the specified field.
+
+The `SortCommandParser` class is responsible for parsing the field received from the user. This class implements the `Parser` interface. The `SortCommandParser#parse()` method of this class parses the field and returns a `SortCommand` object with the field as the parameter.
+
+Below is a sequence diagram and explanation of how the SortCommand is executed.
+![Interactions Inside the Logic Component for the `sort pr/` Command](images/umldiagrams/SortSequenceDiagram.png)
+
+Step 1. The user enters `sort pr/` command in the main window.
+
+Step 2. The command is handled by LogicManager#execute(String) method, which then calls the InternshipParser#parseCommand(String) method.
+
+Step 3. The InternshipParser matches the command word `sort` in the string and extracts the argument string " pr/".
+
+Step 4. The InternshipParser then calls SortCommandParser#parse(String) method and the argument string is converted to a Parameter instance.
+
+Step 5. The SortCommandParser creates a new SortCommand instance and returns it to InternshipParser, which in turn returns it to LogicManager.
+
+Step 6. The LogicManager calls the SortCommand#execute(Model) method to sort the application list by priority.
+
+#### Design considerations:
+
+* **Alternative 1 (current choice):** Only allow lists to be sorted in one direction per field (e.g. sooner to later for deadline, alphabetically for company name)
+    * Pros: Easier to implement. The implemented direction of sorting is also the more logical one (users are unlikely to want to view their applications from lower to higher priority).
+    * Cons: The user cannot specify the direction of sorting (e.g. later deadlines first)
+
+* **Alternative 2:** Provide the option to specify the field to sort the list by as well as the direction of sorting.
+    * Pros: Users have more options on how to view their list of applications.
+    * Cons: The `sort` command will require more parameters.
 
 ### Undo/Redo feature
 
@@ -485,17 +500,17 @@ _{Explain here how the data archiving feature will be implemented}_
 
 --------------------------------------------------------------------------------------------------------------------
 
-## **Documentation, logging, testing, configuration, dev-ops**
+## Documentation, logging, testing, configuration, dev-ops
 
-* [Documentation guide](Documentation.md)
-* [Testing guide](Testing.md)
-* [Logging guide](Logging.md)
-* [Configuration guide](Configuration.md)
-* [DevOps guide](DevOps.md)
+* [Documentation Guide](Documentation.md)
+* [Testing Guide](Testing.md)
+* [Logging Guide](Logging.md)
+* [Configuration Guide](Configuration.md)
+* [DevOps Guide](DevOps.md)
 
 --------------------------------------------------------------------------------------------------------------------
 
-## **Appendix 1: Requirements**
+## Appendix 1: Requirements
 
 ### Product scope
 
@@ -540,39 +555,50 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 ### Use cases
 
-(For all use cases below, the **System** is `InternSHIP` and the **Actor** is the `user`, unless specified otherwise)
+For all use cases below, the **System** is `InternSHIP` and the **Actor** is the `user`, unless specified otherwise.<br>
+<br>
+(Similar use cases are grouped together as per the User Guide)
 
-**Tracking application details**
+#### Tracking application details
 
-**Use case: Add an application entry**
+**Use case 1: Add an application entry**
 
 **MSS**
 
-1. User requests to add a new internship application entry to track. User inputs the company name, role applied for and application deadline
-2. Internship adds the entry to its list of entries. Application status is set as pending and application is marked as uncompleted by default
-3. User requests to list all entries
-4. InternSHIP shows a list of all the application entries, including the newly added entry
+1. User requests to add a new internship application entry to track. User inputs the company name, role applied for and application deadline.
+2. Internship adds the entry to its list of entries, displays the success message, and shows the full application list.
 
    Use case ends.
 
 **Extensions**
 
-* 1a. The user fails to specify the company name, role applied for or application deadline.
+* 1a. The user forgets to specify the company name, internship position or application deadline.
 
     * 1a1. InternSHIP shows an error message.
 
-      Use case returns to step 1.
+      Use case resumes at step 1.
 
-**Viewing specific applications**
+* 1b. The input argument by the user is invalid.
 
-**Use case: Update an application entry/ Complete an application/ Update the application outcome**
+    * 1b1. InternSHIP shows an error message.
+
+      Use case resumes at step 1.
+
+* 2a. User decides to undo the add action.
+
+    * 2a1. InternSHIP undoes the add action and restores the previous state.
+
+      Use case ends.
+
+
+**Use case 2: Update an application entry/ Complete an application/ Update the application outcome**
 
 **MSS**
 
-1.  User requests to list all entries
-2.  InternSHIP shows a list of application entries
-3.  User requests to update the details of a specific entry in the list/ mark the application as completed/ update the application outcome from pending to accepted or rejected
-4.  InternSHIP updates the entry accordingly
+1.  User requests to list all entries.
+2.  InternSHIP shows a list of application entries.
+3.  User requests to update the details of a specific entry in the list/ mark the application as completed/ update the application outcome from pending to accepted or rejected.
+4.  InternSHIP updates the entry accordingly, displays the success message, and shows the full application list.
 
     Use case ends.
 
@@ -580,74 +606,142 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * 2a. The list is empty.
 
-  Use case ends. There is nothing to update.
+  Use case ends. 
 
-* 3a. The given index is invalid.
+* 3a. The user fails to enter the correct format or valid argument.
 
     * 3a1. InternSHIP shows an error message.
 
       Use case resumes at step 2.
 
-**Use case: List upcoming deadlines**
+* 3b. The application specified by the user already contains all the information user want to edit.
+
+    * 3b1. InternSHIP shows a warning message.
+
+      Use case ends.
+
+* 4a. User decides to undo the update/ complete action.
+
+    * 4a1. InternSHIP undoes the update/ complete action and restores the previous state.
+
+      Use case ends.
+
+#### Viewing specific applications
+
+**Use case 3: List applications with upcoming deadlines/ interviews**
 
 **MSS**
 
-1.  User requests to list upcoming deadlines
-2.  InternSHIP shows a list of application entries whose deadlines are upcoming
+1.  User requests to list applications with upcoming deadlines/ interviews.
+2.  InternSHIP shows a list of application entries whose deadlines/ interviews are upcoming, and the success message.
 
     Use case ends.
 
 **Extensions**
 
-* 1a. The user fails to enter the correct format.
-    * InternSHIP shows an error message.
-      Use case returns to step 1.
+* 1a. The list is empty.
 
-**Use case: Find an application entry by fields**
+  Use case ends. There is nothing to list.
+
+* 1b. The user fails to enter the correct format.
+
+    * 1b1. InternSHIP shows an error message.
+
+      Use case resumes at step 1.
+
+**Use case 4: Find an application entry by fields**
 
 **MSS**
 
-1. User requests to find internship application(s) by inputting a specific field and keyword(s). Fields can be the company name, internship position, completion status, application outcome, application priority and application requirements.
-2. Internship displays a list of applications whose field matches the given keyword(s).
+1. User requests to find internship application(s) by inputting a specific field and keyword(s). 
+2. Internship displays a list of applications whose field matches the given keyword(s), and the success message.
 
    Use case ends.
 
 **Extensions**
 
-* 1a. Format of the keyword after the given field does not follow the required format.
+* 1a. The list is empty.
 
-    * 1a1. InternSHIP shows an error message.
+  Use case ends. There is nothing to find.
+
+* 1b. The user fails to enter the correct format or valid argument.
+
+    * 1b1. InternSHIP shows an error message.
+
+      Use case resumes at step 1.
+
+* 2a. The filtered list is empty. 
+  
+    Use case ends.
+
+**Use case 5: List all applications**
+
+**MSS**
+
+1.  User requests to list all internship applications.
+2.  InternSHIP displays the full list of application entries, and the success message.
+
+    Use case ends.
+
+**Extensions**
+
+* 2a. The list is empty.
+
+  Use case ends.
+
+**Use case 6: Sort applications by a specific field**
+
+**MSS**
+
+1.  User requests to sort the application list by a field. 
+2.  InternSHIP shows the application list, sorted by the specified field, and displays a success message.
+
+    Use case ends.
+
+**Extensions**
+
+* 1a. The list is empty.
+
+    Use case ends. There is nothing to sort.
+
+* 1b. The user fails to enter the correct format for the command or inputs an unsupported field to sort by.
+
+    * 1b1. InternSHIP shows an error message.
+
+      Use case resumes at step 1.
+
+#### Others
+
+**Use case 7: Delete an application entry**
+
+**MSS**
+
+1. User requests to list all entries.
+2. InternSHIP shows a list of application entries.
+3. User requests to delete an application entry at a specific index.
+4. InternSHIP removes the application entry at the specified index, displays a success message, and shows the application list with that application being removed.
+
+   Use case ends.
+
+**Extensions**
+
+* 1a. The list is empty.
+
+  Use case ends.
+
+* 1b. The user fails to enter the correct format or valid argument.
+
+    * 1b1. InternSHIP shows an error message.
+
+      Use case resumes at step 1.
+
+* 2a. User decides to undo the delete action.
+
+    * 2a1. InternSHIP undoes the delete action and restores the previous state.
 
       Use case ends.
 
-* 2a. The filtered list is empty.
-
-  Use case ends.
-
-**Others**
-
-**Use case: Delete an application entry**
-
-**MSS**
-
-1. User requests to delete an application entry at a specific index.
-2. InternSHIP removes the application entry at the specified index, displays a success message, and shows the application list with that application being removed.
-
-   Use case ends.
-
-**Extensions**
-
-* 1a. The displayed list is already empty before the user enters the command.
-    * 1a1. InternSHIP displays an error message as there is nothing to be deleted.
-
-  Use case ends.
-
-* 1b. The index specified is invalid (i.e., not a non-negative integer, or exceeds the length of the displayed list).
-    * 1b1. InternSHIP shows an error message.
-
-  Use case ends.
-
-**Use case: Clear all application entries**
+**Use case 8: Clear all application entries**
 
 **MSS**
 
@@ -656,7 +750,15 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
    Use case ends.
 
-**Use case: Undo/Redo a change to the application list**
+**Extensions**
+
+* 2a. User decides to undo the clear action.
+
+    * 2a1. InternSHIP undoes the clear action and restores the previous state.
+
+      Use case ends.
+
+**Use case 9: Undo/Redo a change to the application list**
 
 **MSS**
 
@@ -668,11 +770,12 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **Extensions**
 
 * 1a. There is no previous change to be undone/redone.
+
     * 1a1. InternSHIP displays an error message.
 
-  Use case ends.
+      Use case ends.
 
-**Use case: Exit the program**
+**Use case 10: Exit the program**
 
 **MSS**
 
@@ -681,9 +784,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
    Use case ends.
 
-**MSS**
-
-**Use case: View help**
+**Use case 11: View help**
 
 **MSS**
 
@@ -708,13 +809,12 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 --------------------------------------------------------------------------------------------------------------------
 
-## **Appendix 2: Instructions for manual testing**
+## Appendix 2: Instructions for manual testing
 
 Given below are instructions to test the app manually.
 
 <div markdown="span" class="alert alert-info">:information_source: **Note:** These instructions only provide a starting point for testers to work on;
 testers are expected to do more *exploratory* testing.
-
 </div>
 
 ### Launch and shutdown
@@ -733,7 +833,6 @@ testers are expected to do more *exploratory* testing.
     2. Re-launch the app by double-clicking the jar file.<br>
        Expected: The most recent window size and location is retained.
 
-3. _{ more test cases …​ }_
 
 ### Deleting an application
 
@@ -742,10 +841,10 @@ testers are expected to do more *exploratory* testing.
     1. Prerequisites: List all applications using the `list` command. Multiple applications in the list.
 
     2. Test case: `delete 1`<br>
-       Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.
+       Expected: First application is deleted from the list. Details of the deleted application shown in the result box.
 
     3. Test case: `delete 0`<br>
-       Expected: No application is deleted. Error details shown in the status message. Status bar remains the same.
+       Expected: No application is deleted. Error message shown in the result box.
 
     4. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
        Expected: Similar to previous.
@@ -754,20 +853,26 @@ testers are expected to do more *exploratory* testing.
 
 1. Dealing with missing/corrupted data files
 
-    1. _{explain how to simulate a missing/corrupted file, and the expected behavior}_
+    1. Test case: simulate missing data file 
+      How: Delete `internship.json` from `./data/internship.json`. Launch `InternSHIP.jar`.
+       Expected: The GUI should pop up, with the [default sample entries](https://ay2122s1-cs2103t-w17-1.github.io/tp/UserGuide.html#quick-start) in the application list. A new `internship.json` file containing the 4 sample entries will be created.
+   
+    2. Test case: simulate corrupted data file
+      How: Open `internship.json` in a text editor (e.g. IntelliJ), delete the first character `{` from the file and save the changes. Launch `InternSHIP.jar`.
+      Expected: The GUI should pop up, but with no entries in the application list. If terminal is used to open the jar file, warnings about incorrect data file format should be seen in the console output. A new empty `internship.json` file will be created.
 
-## **Appendix 3: Effort**
+## Appendix 3: Effort
 If the effort required to create **AB3** is 10, we would place the effort level required to implement the current version of **InternSHIP** at 15.
 
 Our team has put in a significant amount of effort to get InternSHIP to the current version. Below, we list some notable changes overall and notable features implemented by us.
 
-### Notable Changes in General
+### Notable changes in general
 
 1. **Morphed existing AB3 to align with our design for InternSHIP**
 
    We have put in a significant amount of effort morphing the existing code base, AB3 to support the need of our application, which is about internship data management.
 
-   Firstly, we had to create new classes for components related to an internship application, such as `Company`, `Position`, `Deadline`, `Requirements`, `InterviewDateAndTime`, `Priority`, `Completion` and `Status`. Each of these classes has different input format requirements and is related to different command.
+   Firstly, we had to create new classes for fields related to an internship application, such as `Company`, `Position`, `Deadline`, `Requirements`, `InterviewDateAndTime`, `Priority`, `Completion` and `Status`. Each of these classes have different input format requirements and are related to different commands.
 
    Secondly, we had to remove all the irrelevant classes and update the existing test cases to fit our need.
 
@@ -778,41 +883,40 @@ Our team has put in a significant amount of effort to get InternSHIP to the curr
 
    Compared to AB3, InternSHIP displays each field of an internship application under a separate column. The entire internship list is displayed in a vertical list where each adjacent entry is highlighted with a different shade of blue.
 
-   In addition, the project icon and overall UI colour scheme is carefully chosen and designed to represent our value proposition. InternSHIP will help the users navigate through the sea of internship applications for their voyage to the desired company.
+   In addition, the project icon and overall GUI colour scheme were carefully chosen and designed to represent our value proposition. InternSHIP will help its users navigate through the sea of internship applications for their voyage to their desired company.
 
 ### Notable Features
 
-Notable features we implemented from scratch include Complete, Accept, Reject, Sort, Find, Soon and Undo/Redo. We came up with hese features as they fit well in helping our target users solve problems they miay encounter in their internship data management.
+Notable features we implemented from scratch include Complete, Accept, Reject, Sort, Find, Soon and Undo/Redo. We came up with these features as they fit well in helping our target users solve problems they may encounter in their internship data management.
 
-The implemention details and design considerations for these features could be found in [Implementation](#implementation) section.
+The implementation details and design considerations for these features can be found in the [Implementation](#implementation) section.
 
-## **Appendix 4: Limitations and Future improvements**
+## Appendix 4: Limitations and Future improvements
 
-We acknowledge the fact that our current product is not perfect, and it still has rooms for improvement.
+We acknowledge the fact that our current product is not perfect, and it still has room for improvement.
 Below are some limitations and future improvements of our product.
 
 ### Limitations
 1. **Commands not accepting multiple fields**
-    <br>Currently, our product does not support the functionality of accepting multiple fields. For example:
+
+    Currently, our product does not support the functionality of accepting multiple fields. For example:
    - `find c/DBS p/programmer`
    - `soon d/7 i/20`
- <br>
- The above commands will produce an error message, stating that the commands are invalid. This is because our initial implementation would only take one field (e.g c/) and ignore the rest. Thus, the workaround for this issue is to not allow the users to enter multiple fields.
+   - `sort c/ d/`<br>
+   The above commands will produce an error message, stating that the commands are invalid. This is because our initial implementation would only take one field (e.g c/) and ignore the rest. Thus, the workaround for this issue is to not allow the users to enter multiple fields.
      
 2. **Invalid prefix resulting in an unexpected error message**
-    <br>
+
    As pointed out in PE-D, our current product is not able to check for a typo in the prefixes. For example:
-   - `edit 1 c/Grab zp/Engineer`
-    <br>
-     The example above will produce an error message, stating that the company name should contain alphanumeric characters. This is because our current implementation will take `zp/Engineer` as a part of the company name.
+   - `edit 1 c/Grab zp/Engineer`<br>
+   The example above will produce an error message, stating that the company name should contain only alphanumeric characters. This is because our current implementation takes `zp/Engineer` as a part of the company name.
      
 ### Future Improvements
 
 1. **Commands not accepting multiple fields**
-<br>
-This limitation could be improved by accepting both fields and showing the application(s) that satisfy both criteria. For example, `find c/DBS p/programmer` should show application(s) whose company name is "DBS" and position is "programmer".
+
+    This limitation could be improved by accepting both fields and showing the application(s) that satisfy both criteria. For example, `find c/DBS p/programmer`  should show application(s) whose company name is "DBS" and position is "programmer".
    
 2. **Invalid prefix resulting in an unexpected error message**
-
-<br>
-This limitation could be improved by checking if the fields entered by the users match any of the valid prefixes. Perhaps, for every `/` found, the preceding character(s) could be checked against all the valid prefixes.
+  
+   This limitation could be improved by checking if the fields entered by the users match any of the valid prefixes. Perhaps, for every `/` found, the preceding character(s) could be checked against all the valid prefixes.

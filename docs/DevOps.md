@@ -1,10 +1,12 @@
 ---
 layout: page
-title: DevOps guide
+title: DevOps Guide
 ---
 
+## Table of Contents
+
 * Table of Contents
-{:toc}
+  {:toc}
 
 --------------------------------------------------------------------------------------------------------------------
 

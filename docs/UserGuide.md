@@ -7,6 +7,8 @@ title: User Guide
 * Table of Contents
 {:toc}
 
+--------------------------------------------------------------------------------------------------------------------
+
 ## Introduction
 
 Are you a university student looking to score a holiday internship? Do you feel overwhelmed by all the application details you have to keep track of? Have you missed any application deadlines because there are just too many to remember? Have you ever wished that there were a comprehensive app that could help you track your entire internship application process? If you answered yes to any of these questions, we have just the application for you!
@@ -47,6 +49,8 @@ As the target audience of InternSHIP is university students, this User Guide is 
 * Are comfortable downloading and installing software on their computer.
 * Are able to type fast and are comfortable using a CLI. <br>
 This User Guide **does not assume that the reader has a technical background**. Therefore, university students of all majors should be able to use this guide. The definitions for certain technical terms can be found in the [glossary](#glossary).
+
+--------------------------------------------------------------------------------------------------------------------
 
 ## How to use this User Guide
 
@@ -98,11 +102,7 @@ The UI has been designed and optimized to be navigated via the Command Line Inte
 Users can enter commands into the command box and press `ENTER` to execute them. The results will be displayed on the result box, showing appropriate messages. Depending on the command entered, the main panel may be updated accordingly.
 
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:**
-To see the list of applications, users can do so by simply scrolling up and down or pressing the arrow keys `UP` or `DOWN`
-</div>
-
-<div markdown="span" class="alert alert-info">:information_source: **Info:**
-Only successfully executed commands will be saved.
+To scroll through the list of applications, users can do so by simply scrolling up and down or clicking on an entry and pressing the arrow keys `UP` and `DOWN`
 </div>
 
 ### Command format
@@ -145,10 +145,10 @@ Parameter | Refers to | Required format | Application field? | Notes
 **APPLICATION_REQUIREMENTS** | The required deliverables for the application submission. | It can take any value. | Yes | e.g. CV, portfolio...
 **APPLICATION_OUTCOME** | The outcome of the application (also called application status). This is the company's decision on whether the candidate has been accepted or rejected. | It can only take 3 values: Pending, Accepted or Rejected. | Yes | This is **up to the company, not the user**.
 **COMPANY_NAME** | The name of the company the application was made to. | It should only contain [alphanumeric](#glossary) characters and spaces, and should not be blank. | Yes
-**COMPLETION_STATUS** | Whether or not the application has been submitted by the user. | It can only take 2 values: completed or uncompleted. | Yes | Unlike the APPLICATION_OUTCOME, this is **up to the user, not the company**.
-**DAYS** | The number of days from today. | It must be a **non-negative integer** 0, 1, 2, ... | No
+**COMPLETION_STATUS** | Whether or not the application has been completed and submitted by the user. | It can only take 2 values: completed or uncompleted. | Yes | Unlike the APPLICATION_OUTCOME, this is **up to the user, not the company**.
+**DAYS** | The number of days from today. | It must be a **non-negative integer** (e.g. 0, 1, 2, ...) and cannot be more than the maximum integer value (i.e 2147483647). Otherwise, it will be considered invalid. | No
 **FIELD** | Any one of the application fields. | It should be in its prefix form, as shown in the [prefix summary](#prefix-summary). | No
-**INDEX** | The index number of the application as shown in the **currently displayed application list**. | It must be a **positive integer** 1, 2, 3, ... | No
+**INDEX** | The index number of the application as shown in the **currently displayed application list**. |It must be a **positive integer** (e.g. 1, 2, 3, ...) and cannot be more than the maximum integer value (i.e 2147483647). Otherwise, it will be considered invalid. | No
 **INTERNSHIP_POSITION** | The job applied for in the application. | It should only contain alphanumeric characters and spaces, and should not be blank. | Yes
 **INTERVIEW_DATE_AND_TIME** | The date and time of the interview(s) required for an application. | It should be a valid date and time in `YYYY-MM-DD HHmm` format. The date and time are separated by a space, and the time is represented in a 24-hour system. | Yes
 
@@ -170,7 +170,7 @@ Parameter | Refers to | Required format | Application field? | Notes
    <br>
    ![Ui](images/Ui.png)
 
-<div markdown="span" class="alert alert-primary"> :bulb: **Tip:** Use the [`clear`](#clearing-all-entries--clear) command to erase all the sample data when you no longer need them. </div>
+    <div markdown="span" class="alert alert-primary"> :bulb: **Tip:** Use the [`clear`](#clearing-all-entries--clear) command to erase all the sample data when you no longer need them. </div>
 
 6. Type the command in the command box and press Enter to execute it. <br>
    Some example commands you can try:
@@ -225,9 +225,6 @@ These fields can be changed later using the `edit`, `complete` or `accept/reject
 Additionally, `APPLICATION_REQUIREMENTS`, and `INTERVIEW_DATE_AND_TIME` are optional fields that can either be specified or not. <br>
 If not specified at this stage, it can still be added and edited later using the `edit` command.<br>
 <br>
-The `APPLICATION_DEADLINE` must be entered in the `YYYY-MM-DD` format. The `INTERVIEW_DATE_AND_TIME` must be entered in the
-`YYYY-MM-DD HHmm` format.
-<br>
 Adding an application entry with the same `COMPANY_NAME` and `INTERNSHIP_POSITION`  as an existing entry is not allowed. 
 </div>
 
@@ -267,38 +264,20 @@ The fields that can be edited using this command are: <br>
 Editing any field is optional, but least one field must be edited each time. <br>
 Multiple fields can be edited at the same time.<br>
 <br>
-For the edited fields, existing values will be overwritten and updated to the new input values. The values for the rest of the fields will remain the same.
+For the edited fields, existing values will be overwritten and updated to the new input values. The values for the rest of the fields will remain the same.<br>
 <br>
 Editing an application entry such that the `COMPANY_NAME` and `INTERNSHIP_POSITION` become the same as an existing entry is not allowed. 
-<br>
-<br>
-For the `INTERVIEW_DATE_AND_TIME` and `APPLICATION_REQUIREMENTS` fields, to edit one particular entry of the respective field,
-values for all other entries must be copied over too. 
-<br>
-<br>
-For example, consider an application entry with index 9 
-that currently has `2021-12-12 0800` and 
-`2021-12-13 0900` for the `INTERVIEW_DATE_AND_TIME`,
-and `CV` and `Resume` for the `APPLICATION_REQUIREMENTS`:
-<br>
-- To edit the first `INTERVIEW_DATE_AND_TIME` i.e. `2021-12-12 0800`, this is the command that should be used:
-<br>
-`edit 9 i/2021-10-08 0700 i/2021-12-13 0900`
-<br>
-So here the input for the first value of `INTERVIEW_DATE_AND_TIME` is changed to the desired value, but the second value is entered unchanged.
-<br>
-- To edit the first `APPLICATION_REQUIREMENTS` i.e. `CV`, this is the command that should be used:
-<br>
-`edit 9 r/Coding Challenge i/Resume`
-<br>
-So here the input for the first value of `APPLICATION_REQUIREMENTS` is changed to the desired value, but the second value is entered unchanged.
+</div>
+
+<div markdown="span" class="alert alert-danger"> :warning: **Warning:** For the optional fields `INTERVIEW_DATE_AND_TIME` and `APPLICATION_REQUIREMENTS`, editing them overrides all their existing values! <br>
+To add on to the existing values, all the existing values need to be copied over (e.g. to add "CV" as a requirement to an entry that already has "resume" as a requirement, use `edit INDEX r/resume r/CV` instead of just `edit INDEX r/CV`, or else "resume" will disappear).
 </div>
 
 <div markdown="span" class="alert alert-primary"> :bulb: **Tip:** <br>
 For the optional fields `APPLICATION_REQUIREMENTS` and `INTERVIEW_DATE_AND_TIME`, you can remove all the requirements or interview date and times by using `edit r/` or `edit i/` respectively without specifying anything after the prefix.
 </div>
 
-Format: `edit INDEX [c/COMPANY_NAME] [p/INTERNSHIP_POSITION] [d/APPLICATION_DEADLINE] [pr/APPLICATION_PRIORITY] [r/APPLICATION_REQUIREMENTS] [i/INTERVIEW_DATE_AND_TIME]`
+Format: `edit INDEX [c/COMPANY_NAME] [p/INTERNSHIP_POSITION] [d/APPLICATION_DEADLINE] [pr/APPLICATION_PRIORITY] [r/APPLICATION_REQUIREMENTS]…​ [i/INTERVIEW_DATE_AND_TIME]…​`
 
 * Edits the application at the specified `INDEX`.
 
@@ -315,7 +294,12 @@ Examples:
 
 #### Completing an application : `complete`
 
-Marks the specified entry in the application list as completed, meaning the user has completed the application for that internship.
+Updates the completion status of an application from **'Uncompleted'** to **'Completed'**.
+
+<div markdown="span" class="alert alert-info"> 
+:information_source: **Info:** <br>
+The completion status of the application represents **whether the user has completed and submitted the application (and all related requirements)** or not.
+</div>
 
 Format: `complete INDEX`
 
@@ -330,6 +314,11 @@ Examples:
 ![completeAfter](images/features/completeAfter.png)
 > After the command `complete 3`
 
+<div markdown="span" class="alert alert-info"> 
+:information_source: **Info:** <br>
+Trying to mark an application as completed when it has already been marked as completed will produce an error message.
+</div>
+
 <hr>
 
 #### Updating the application outcome to 'Accepted': `accept`
@@ -339,9 +328,7 @@ Updates the application outcome (status) of an application to **'Accepted'**.
 <div markdown="span" class="alert alert-info"> 
 :information_source: **Info:** <br>
 The application outcome is the **decision/outcome provided by the company** on whether the candidate has been `Accepted` or not for the role. <br>
-It is different from the 'Completion Status', which represents whether the user has completed submitting the application (and all related requirements) or not. <br>
-<br>
-When a new application is added, the outcome is `Pending` by default as it is assumed that the user has not received the decision from the company yet. The outcome can later be changed to `Accepted` using the `accept` command. 
+It is different from the completion status! <br>
 <br>
 The `accept` command also automatically marks the application entry at the specified index as 'Completed', because it is assumed
 that if the user has already received the application outcome, then they must have completed and submitted the application.
@@ -350,12 +337,9 @@ that if the user has already received the application outcome, then they must ha
 Format: `accept INDEX`
 
 - Marks the entry at the specified `INDEX` as 'Accepted'.
-- The index refers to the index number shown in the currently displayed application list.
-- The index must be a **positive integer** 1, 2, 3, …​
 
 Examples:
-* `accept 1` marks the first entry as 'Accepted'.
-* `accept 4` marks the fourth entry as 'Accepted'.
+* `accept 4` marks the 4th entry in the application list as 'Accepted'.
 
 
 ![acceptBefore](images/features/acceptBefore.png)
@@ -363,6 +347,11 @@ Examples:
 
 ![acceptAfter](images/features/acceptAfter.png)
 > After the command `accept 4`
+
+<div markdown="span" class="alert alert-info"> 
+:information_source: **Info:** <br>
+Trying to mark an application as accepted when it has already been marked as accepted will produce an error message.
+</div>
 
 <hr>
 
@@ -373,9 +362,7 @@ Updates the application outcome (status) of an application to **'Rejected'**.
 <div markdown="span" class="alert alert-info"> 
 :information_source: **Info:** <br>
 The application outcome is the **decision/outcome provided by the company** on whether the candidate has been `Rejected` or not for the role. <br>
-It is different from the 'Completion Status', which represents whether the user has completed submitting the application (and all related requirements) or not. <br>
-<br>
-When a new application is added, the outcome is `Pending` by default as it is assumed that the user has not received the decision from the company yet. The outcome can later be changed to `Rejected` using the `reject` command.
+It is different from the completion status! <br>
 <br>
 The `reject` command also automatically marks the application entry at the specified index as 'Completed', because it is assumed
 that if the user has already received the application outcome, then they must have completed and submitted the application.
@@ -384,12 +371,9 @@ that if the user has already received the application outcome, then they must ha
 Format: `reject INDEX`
 
 - Marks the entry at the specified `INDEX` as 'Rejected'.
-- The index refers to the index number shown in the currently displayed application list.
-- The index must be a **positive integer** 1, 2, 3, …​
 
 Examples:
-* `reject 1` marks the first entry as 'Rejected'.
-* `reject 3` marks the third entry as 'Rejected'.
+* `reject 3` marks the 3rd entry in the application list as 'Rejected'.
 
 
 ![rejectBefore](images/features/rejectBefore.png)
@@ -397,16 +381,19 @@ Examples:
 
 ![rejectAfter](images/features/rejectAfter.png)
 > After the command `reject 3`
+
+<div markdown="span" class="alert alert-info"> 
+:information_source: **Info:** <br>
+Trying to mark an application as rejected when it has already been marked as rejected will produce an error message.
+</div>
+
 <hr>
 
 ### Viewing specific applications
 
 #### Listing upcoming deadlines : `soon`
 
-Shows all the applications that are close to the submission deadlines or interview time within a specified number of days.
-
-<div markdown="span" class="alert alert-primary"> :bulb: **Tip:** `soon` will only show applications that are not completed yet!
-</div>
+Shows all the applications with submission deadlines or interview times that are within a specified number of days from today.
 
 <div markdown="span" class="alert alert-info"> 
 :information_source: **Info:** <br>
@@ -415,12 +402,12 @@ The available fields are: <br>
 - INTERVIEW_DATE_AND_TIME `i/`
 </div>
 
+<div markdown="span" class="alert alert-primary"> :bulb: **Tip:** For `APPLICATION_DEADLINE`, `soon` will only show applications that are not completed yet!
+</div>
+
 Format: `soon FIELD DAYS`
 
 * Find applications that are within `DAYS` days.
-* The number of days must be a **positive integer** 0, 1, 2, …​ 
-* The number must not be more than the maximum integer value (i.e 2147483647). 
-* Other values will be considered invalid.
 * Only one field and one keyword can be provided each time.
 
 Examples:
@@ -443,14 +430,6 @@ Examples:
 
 Finds application(s) from the application list.
 
-<div markdown="span" class="alert alert-primary"> :bulb: **Tip:** Only one field and its corresponding keyword can be provided each time!
-</div>
-
-
-Format: `find FIELD keyword`
-
-* Finds all application(s) from the application list that match the keyword in the given field.
-
 <div markdown="span" class="alert alert-info">
 :information_source: **Info:** <br>
 The fields available to be found are: <br>
@@ -462,16 +441,20 @@ The fields available to be found are: <br>
 - APPLICATION_REQUIREMENTS `r/` <br>
 </div>
 
-Format of the keyword after each field should follow the required format in the Parameter Summary.
+Format: `find FIELD keyword`
 
-For completion_status, application_outcome and application_priority, exactly one case-insensitive keyword is expected.
+* Finds all application(s) from the application list that match the keyword in the given field.
+* Format of `keyword` should follow the required format of the `FIELD` as specified in the [Parameter Summary](#parameters).
+* Only one field and keyword(s) can be provided each time. 
+* For completion status, application outcome and application priority, exactly one keyword can be provided each time.
+
 
 Examples:
 * `find c/Grab` shows all the applications whose company name is Grab.
 * `find p/software engineer` shows all the applications whose position is software engineer.
 * `find c1/Completed` shows all the applications that are completed.
-* `find s/Accepted` shows all the applications whose application outcome is Accepted.  
-* `find pr/High` shows all the applications whose priority is High.
+* `find s/Accepted` shows all the applications whose application outcome is accepted.  
+* `find pr/High` shows all the applications whose priority is high.
 * `find r/cv` shows all the applications that include cv as a requirement.
 
 
@@ -568,36 +551,36 @@ Format: `clear`
 
 Undoes a change made to the application list. 
 
-<div markdown="span" class="alert alert-danger"> :warning: **Warning:** This command is to be used after a command that actually **does some change** to the application list. Inappropriate use may result in unexpected behaviors. </div>
+<div markdown="span" class="alert alert-danger"> :warning: **Warning:** This command is to be used after a command that actually **makes some change** to the application list. Inappropriate use may result in unexpected behaviors. </div>
 
 <div markdown="span" class="alert alert-info"> :information_source: **Info:** <br>
-Commands that actually 'does some changes' to the application list (thus can be undone): <br>
+Commands that can be undone: <br>
 - `add` <br>
-- `delete` <br>
 - `edit` <br>
+- `complete` <br>
+- `accept` <br>
+- `reject` <br>
+- `delete` <br>
 - `clear` <br>
-Commands that make no change to the application list (thus is not supposed not be followed by `undo` command) <br>
-- `list`<br>
-- `find` <br>
-- `sort` <br>
+Commands that cannot be undone and thus should not be followed by `undo`: <br>
 - `soon` <br>
+- `find` <br>
+- `list`<br>
+- `sort` <br>
 </div>
 
 
 <div markdown="span" class="alert alert-danger"> :warning: **Warning:** When successive changes are made, the `undo` command will undo the **most recent** change.
 
-Successive `undo` commands will undo the previous changes from the most recent to the oldest, until there's no changes
-to be restored.
+Successive `undo` commands will undo the previous changes from the most recent to the oldest, until there are no more changes that can be undone.
 </div>
 
-<hr>
 
 Format: `undo`
 
 Examples:
-* `delete 1` followed by `undo` undoes the deletion of the first entry. As a result, that entry will reappear
-in the application list.
-* `edit 1 p/tester` followed  by `undo` undoes the edition of the first entry's position field. 
+* `delete 1` followed by `undo` undoes the deletion of the first entry. As a result, that entry will reappear in the application list.
+* `edit 1 p/tester` followed  by `undo` undoes the change made to the first entry's position field. 
 As a result, the `position` field of that entry will be restored to its previous value.
 
 ![undoBefore](images/features/undoBefore.png)
@@ -612,24 +595,22 @@ As a result, the `position` field of that entry will be restored to its previous
 Redoes a change made to the application list.
 
 
-<div markdown="span" class="alert alert-danger"> :warning: **Warning:** This command is to be used **directly after** an `undo` command.
-If an `undo` command undoes a change (e.g., `delete 1` followed by `undo` restores the first entry), 
-and it is followed by a command that makes some new changes to the application list (e.g., `edit 2 pr/High` changes
-the priority of the second entry to 'High'), then the previous undone action cannot be redone (i.e., the `delete 1`
-command which is previously undone cannot be redone).
+<div markdown="span" class="alert alert-danger"> :warning: **Warning:** This command is to be used **directly after** the `undo` command.<br>
+If `undo` undoes a change (e.g., `delete 1` followed by `undo`), 
+and is then followed by a command that makes some new change to the application list (e.g., `edit 2 pr/High`), then `redo` can no longer redo the undone change (i.e. `delete 1` cannot be redone).
 </div>
 
 
-<div markdown="span" class="alert alert-danger"> :warning: **Warning:** When successive undone actions are made, the `redo` command will redo the **most recent** undone action. <br>
-Successive `redo` commands will redo the undone actions from the most recent to the oldest, until there's no undone
-actions to be redone.
+<div markdown="span" class="alert alert-danger"> :warning: **Warning:** If `undo` is used multiple times, `redo` will redo the **most recent** undone change. <br>
+Successive `redo` commands will redo the undone changes from the most recent to the oldest, until there are no more undone changes to be redone.
 </div>
 
 Format: `redo`
 
 Examples:
-* `delete 1` followed by `undo` and then `redo` undoes the deletion of the first entry. As a result, that entry will reappear in the application list.
-* `edit 1 p/tester` followed by `undo` and then `redo` undoes the edition of the first entry's position field.
+* `delete 1` followed by `undo` and then `redo` redoes the deletion of the first entry after it is restored by `undo`. As a result, that entry will no longer be in the application list.
+* `edit 1 p/tester` followed by `undo` and then `redo` redoes the change made to the first entry's position field after it is undone by `undo`.
+  As a result, the value of the `position` field of that entry will be changed to "tester".
 
 ![redoBefore](images/features/redoBefore.png)
 > Before the command `redo` (deletion of the first application was undone)
@@ -649,7 +630,7 @@ Format: `exit`
 
 #### Viewing help : `help`
 
-Shows a message directing the user to the [Command Summary](#command-summary) section of the help page.
+Shows a message directing the user to the [Command Summary](#command-summary) section of InternSHIP's User Guide.
 
 ![help message](images/features/helpMessage.png)
 
@@ -673,7 +654,7 @@ There is no need to save manually.
 
 * Commands that change the displayed list in InternSHIP (e.g. `find`, `sort`) can be used in conjunction with commands that take in `INDEX` as a parameter (e.g. `delete`, `complete`) so that you can work faster!
   * e.g. `find c/Grab` followed by `complete 1` can help you quickly find the application you made to Grab and mark it as completed, instead of slowly searching through your entire list of applications!
-
+<br>
 * Commands that change the displayed list in InternsHIP (e.g. `find`, `sort`) can also be used in conjunction with each other!
   * e.g. `find c/Grab` followed by `sort pr/` shows all the applications you made to Grab, sorted from higher to lower priority!
 
@@ -688,19 +669,19 @@ This section gives an overview of all the commands supported by InternSHIP.
 
 Action | Format | Example | Notes
 --------|-------|----|----
-**Add** | `add c/COMPANY_NAME p/INTERNSHIP_POSITION d/APPLICATION_DEADLINE [r/APPLICATION_REQUIREMENTS] [i/INTERVIEW_DATE_AND_TIME]` | `add c/Shopee p/software engineer d/2021-12-12` |
-**Edit** | `edit INDEX [c/COMPANY_NAME] [p/INTERNSHIP_POSITION] [d/APPLICATION_DEADLINE] [pr/APPLICATION_PRIORITY] [r/APPLICATION_REQUIREMENTS] [i/INTERVIEW_DATE_AND_TIME]` | `edit 1 c/Grab d/2021-12-20`
+**Add** | `add c/COMPANY_NAME p/INTERNSHIP_POSITION d/APPLICATION_DEADLINE [r/APPLICATION_REQUIREMENTS]…​ [i/INTERVIEW_DATE_AND_TIME]…​` | `add c/Shopee p/software engineer d/2021-12-12` |
+**Edit** | `edit INDEX [c/COMPANY_NAME] [p/INTERNSHIP_POSITION] [d/APPLICATION_DEADLINE] [pr/APPLICATION_PRIORITY] [r/APPLICATION_REQUIREMENTS]…​ [i/INTERVIEW_DATE_AND_TIME]…​` | `edit 1 c/Grab d/2021-12-20`
 **Complete** | `complete INDEX` | `complete 1` |
-**Accept** | `accept INDEX` | `accept 2` | `APPLICATION_OUTCOME` can only be either `Accepted`, `Rejected`, or `Pending`.
-**Reject** | `reject INDEX` | `reject 2` | `APPLICATION_OUTCOME` can only be either `Accepted`, `Rejected`, or `Pending`.
+**Accept** | `accept INDEX` | `accept 2` | 
+**Reject** | `reject INDEX` | `reject 2` | 
 
 
 ### Viewing specific applications
 
 Action | Format | Example | Notes
 --------|-------|----|----
-**Find** | `find PREFIX KEYWORD` |  `find pr/High` | `PREFIX` refers to the field to match the keyword (`c/` COMPANY_NAME, `p/` INTERNSHIP_POSITION, `c1/` COMPLETION_STATUS, `s/` APPLICATION_OUTCOME (i.e. STATUS), `pr/` APPLICATION_PRIORITY, `r/` APPLICATION_REQUIREMENTS)
-**Soon** | `soon PREFIX DAYS`| `soon d/5` | `PREFIX` refers to the field with coming deadline or time (`d/` APPLICATION_DEADLINE, `i/` INTERVIEW_DATE_AND_TIME)
+**Find** | `find PREFIX KEYWORD` |  `find pr/High` | `PREFIX` refers to the field to match the keyword to (`c/` COMPANY_NAME, `p/` INTERNSHIP_POSITION, `c1/` COMPLETION_STATUS, `s/` APPLICATION_OUTCOME (i.e. STATUS), `pr/` APPLICATION_PRIORITY, `r/` APPLICATION_REQUIREMENTS)
+**Soon** | `soon PREFIX DAYS`| `soon d/5` | `PREFIX` refers to the field with coming deadline or interview (`d/` APPLICATION_DEADLINE, `i/` INTERVIEW_DATE_AND_TIME)
 **List** | `list`| `list` | No parameter required.
 **Sort** | `sort PREFIX` | `sort c/` | `PREFIX` refers to the application detail to be sorted by (`c/` COMPANY_NAME, `p/` INTERNSHIP_POSITION, `d/` APPLICATION_DEADLINE, `pr/` APPLICATION_PRIORITY, `i/` INTERVIEW_DATE_AND_TIME)
 
@@ -733,9 +714,8 @@ COMPLETION_STATUS | **c1/** | `find`
 INTERNSHIP_POSITION | **p/** | `add`, `edit`, `find`, `sort`
 INTERVIEW_DATE_AND_TIME | **i/** | `add`, `edit`, `sort`, `soon`
 
-<div markdown="span" class="alert alert-danger"> :warning: **Warning:** Please ensure you have enter the prefix correctly! 
-The list above is a **complete list of all available prefixes** in InternSHIP commands. Any other prefixes that are not listed above are considered as **invalid**, 
-which may be interpreted incorrectly as part of the field value and lead to unexpected error messages.
+<div markdown="span" class="alert alert-danger"> :warning: **Warning:** Please make sure you enter the prefix correctly! <br> 
+The list above is a complete list of **all** the prefixes used in InternSHIP commands. Any other prefixes are considered **invalid**, and may be interpreted incorrectly or lead to unexpected error messages if used.
 </div>
 
 --------------------------------------------------------------------------------------------------------------------

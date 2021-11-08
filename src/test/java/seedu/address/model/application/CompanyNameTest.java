@@ -1,8 +1,13 @@
 package seedu.address.model.application;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.testutil.Assert.assertThrows;
+import static seedu.address.testutil.TypicalApplications.AMAZON;
+import static seedu.address.testutil.TypicalApplications.getTypicalApplications;
+
+import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
@@ -63,4 +68,17 @@ public class CompanyNameTest {
         // same name -> return true
         assertTrue(name.equals(new Company("Grab")));
     }
+
+    @Test
+    public void toHashCode_success() {
+        String amazonName = "Amazon";
+        assertEquals(amazonName.hashCode(), AMAZON.getCompany().hashCode());
+    }
+
+    @Test
+    public void getComparator_success() {
+        List<Application> applicationList = getTypicalApplications();
+        applicationList.sort(Company.getComparator());
+    }
+
 }

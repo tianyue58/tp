@@ -36,7 +36,7 @@ Given below are my contributions to the project.
 
 * **Enhancements to existing features**:
   * Updated the GUI layout (Pull request [\#117](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/117))
-  * Wrote additional tests for existing features to increase coverage (Pull requests [\#103](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/103))
+  * Wrote additional tests for existing features to increase coverage (Pull requests [\#103](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/103), [\#237](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/237))
   * Fixed bugs from Practical Examination Dry Run (Pull request [\#216](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/216))
   
 * **Code contributed**: [RepoSense link](https://nus-cs2103-ay2122s1.github.io/tp-dashboard/?search=willyamped&sort=groupTitle&sortWithin=title&since=2021-09-17&timeframe=commit&mergegroup=&groupSelect=groupByRepos&breakdown=false)
@@ -49,15 +49,18 @@ Given below are my contributions to the project.
     * Added documentation for the features `soon` and `complete` (Pull request [\#126](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/126), [\#33](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/33))
   * Developer Guide:
     * Added implementation details of the `soon` and `complete` features. (Pull request [\#146](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/146), [\#96](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/96))
-    * Added all user stories.
+    * Added detailed UML diagrams for `soon` and `complete` features. (Pull request [\#148](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/148))
+    * Added limitations and future improvements (Pull request [\#251](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/251))
+    * Added all user stories. 
   * Miscellaneous:
-    * Updated `index.md` file (Pull request [\#144](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/144))
+    * Updated `index.md` file. (Pull request [\#144](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/144))
+    * Updated `AboutUs.md` file. (Pull request [\#255](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/255))
   
 * **Team tasks:**
   * Created folders for UG and DG.
   * Set up zoom for weekly meetings.
   
-
-* **Tools**:
-  * Integrated a third party library (DateTimeFormatter) to the project (Pull request [\#216](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/216))
-
+* **Community:**
+  * Reported an above-average number of bugs in the PE-D (Examples: Bug [\#1](https://github.com/willyamped/ped/issues/1), Bug [\#5](https://github.com/willyamped/ped/issues/5), Bug [\#9](https://github.com/willyamped/ped/issues/1)). 
+  * Contributed to forum discussions (Examples: [\#20](https://github.com/nus-cs2103-AY2122S1/forum/issues/20), [\#118](https://github.com/nus-cs2103-AY2122S1/forum/issues/118), [\#135](https://github.com/nus-cs2103-AY2122S1/forum/issues/135), [\#228](https://github.com/nus-cs2103-AY2122S1/forum/issues/228), [\#251](https://github.com/nus-cs2103-AY2122S1/forum/issues/251), [\#231](https://github.com/nus-cs2103-AY2122S1/forum/issues/231) [\#253](https://github.com/nus-cs2103-AY2122S1/forum/issues/253))
+  
