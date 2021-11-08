@@ -4,8 +4,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.testutil.Assert.assertThrows;
+import static seedu.address.testutil.TypicalApplications.AMAZON;
+import static seedu.address.testutil.TypicalApplications.getTypicalApplications;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
@@ -63,4 +66,19 @@ public class DeadlineTest {
         // same value -> return true
         assertTrue(d.equals(new Deadline("2021-12-12")));
     }
+
+    @Test
+    public void getComparator_success() {
+        List<Application> applicationList = getTypicalApplications();
+        applicationList.sort(Deadline.getComparator());
+    }
+
+    @Test
+    public void toString_success() {
+        String deadlineString = "2021-12-30";
+        Deadline amazonDeadline = AMAZON.getDeadline();
+        assertEquals(deadlineString, amazonDeadline.toString());
+        assertEquals(deadlineString.hashCode(), amazonDeadline.hashCode());
+    }
+
 }

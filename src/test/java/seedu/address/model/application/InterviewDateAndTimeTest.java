@@ -4,9 +4,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.testutil.Assert.assertThrows;
+import static seedu.address.testutil.TypicalApplications.getTypicalApplications;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
@@ -74,4 +76,11 @@ public class InterviewDateAndTimeTest {
         // same value -> return true
         assertTrue(i.equals(new InterviewDateAndTime("2021-12-12 1600")));
     }
+
+    @Test
+    public void getComparator_success() {
+        List<Application> applicationList = getTypicalApplications();
+        applicationList.sort(InterviewDateAndTime.getComparator());
+    }
+
 }
