@@ -138,11 +138,10 @@ The `Model` component,
 * does not depend on any of the other three components (as the `Model` represents data entities of the domain, they should make sense on their own without depending on other components).
 
 <div markdown="span" class="alert alert-info">:information_source: **Note:** An alternative (arguably, a more OOP) model is given below. It has a `Requirement` set and `InterviewDateAndTime` set in the `Internship`, which `Application` references. This allows `Internship` to only require one `Requirement` object per unique requirement, and one `InterviewDateAndTime` object per unique `InterviewDateAndTime`, instead of each `Application` needing their own `Requirement` and `InterviewDateAndTime` objects.<br>
-
+<br>
 <img src="images/umldiagrams/BetterModelClassDiagram.png" width="450" />
 
 </div>
-
 
 ### Storage component
 
@@ -763,6 +762,8 @@ For all use cases below, the **System** is `InternSHIP` and the **Actor** is the
     * 2a1. InternSHIP undoes the delete action and restores the previous state.
 
       Use case ends.
+
+<div style="page-break-after: always;"></div>
 
 **Use case 8: Clear all application entries**
 
