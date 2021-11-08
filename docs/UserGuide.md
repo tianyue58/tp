@@ -653,8 +653,6 @@ Format: `help`
 
 --------------------------------------------------------------------------------------------------------------------
 
-<div style="page-break-after: always;"></div>
-
 ## FAQ
 
 **Q**: How do I transfer my data to another Computer?<br>
@@ -754,6 +752,8 @@ Term | Definition | Notes
 **alphanumeric** | A character that is either a letter or a number.
 
 --------------------------------------------------------------------------------------------------------------------
+
+<div style="page-break-after: always;"></div>
 
 ## Acknowledgements
 
