@@ -8,12 +8,9 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_INTERNSHIP_POSITION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_INTERVIEW_DATE_AND_TIME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PRIORITY;
 
-import java.sql.Array;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-
-import org.jetbrains.annotations.Nullable;
 
 import seedu.address.logic.commands.SortCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
@@ -48,7 +45,7 @@ public class SortCommandParser implements Parser<SortCommand> {
         String parameter = (String) getParamAndPrefix(argMultimap).get(0);
         Prefix prefix = (Prefix) getParamAndPrefix(argMultimap).get(1);
 
-        if(!argMultimap.getValue(prefix).equals(Optional.of(""))) {
+        if (!argMultimap.getValue(prefix).equals(Optional.of(""))) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, SortCommand.MESSAGE_USAGE));
         }
 
