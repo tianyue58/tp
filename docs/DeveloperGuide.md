@@ -903,7 +903,7 @@ Notable features we implemented from scratch include Complete, Accept, Reject, S
 
 The implementation details and design considerations for these features can be found in the [Implementation](#implementation) section.
 
-## **Appendix 4: Limitations and Future improvements**
+## Appendix 4: Limitations and Future improvements
 
 We acknowledge the fact that our current product is not perfect, and it still has room for improvement.
 Below are some limitations and future improvements of our product.
