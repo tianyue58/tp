@@ -96,11 +96,10 @@ public class Internship implements ReadOnlyInternship {
      */
     @Override
     public String toString() {
-        StringBuilder applicationList = new StringBuilder("===== Application List ===== \n");
+        StringBuilder applicationList = new StringBuilder();
         for (Application internship: applications) {
             applicationList.append(internship).append("\n");
         }
-        applicationList.append("===== End of Application list =====");
         return applicationList.toString();
     }
 
