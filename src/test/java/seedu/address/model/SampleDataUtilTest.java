@@ -1,10 +1,8 @@
 package seedu.address.model;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertLinesMatch;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
@@ -15,18 +13,18 @@ import seedu.address.testutil.ApplicationBuilder;
 
 public class SampleDataUtilTest {
 
-    private Application SHOPEE = new ApplicationBuilder().withCompany("Shopee").withPosition("software engineer")
+    private Application shopee = new ApplicationBuilder().withCompany("Shopee").withPosition("software engineer")
             .withDeadline("2021-10-23").withCompletion("Completed").withStatus("Accepted")
             .withInterviewDateAndTime("2021-10-31 1600").build();
-    private Application GOOGLE = new ApplicationBuilder().withCompany("Google").withPosition("frontend developer")
+    private Application google = new ApplicationBuilder().withCompany("Google").withPosition("frontend developer")
             .withDeadline("2021-12-14").withPriority("High").withRequirements("resume", "portfolio").build();
-    private Application HUAWEI = new ApplicationBuilder().withCompany("Huawei").withPosition("software engineer")
+    private Application huawei = new ApplicationBuilder().withCompany("Huawei").withPosition("software engineer")
             .withDeadline("2021-12-30").build();
-    private Application DEUTSCHE = new ApplicationBuilder().withCompany("Deutsche Bank")
+    private Application deutsche = new ApplicationBuilder().withCompany("Deutsche Bank")
             .withPosition("software engineer").withDeadline("2021-12-25").withCompletion("Completed")
             .withPriority("Low").withRequirements("CV")
             .withInterviewDateAndTime("2021-12-27 1300", "2022-01-05 1300").build();
-    private Application[] applications = new Application[]{SHOPEE, GOOGLE, HUAWEI, DEUTSCHE};
+    private Application[] applications = new Application[]{shopee, google, huawei, deutsche};
 
     @Test
     public void getSampleData_success() {
@@ -38,12 +36,12 @@ public class SampleDataUtilTest {
 
     @Test
     public void getSampleInternship_success() {
-         List<Application> applicationList = new ArrayList<>();
-         for (Application application: applications) {
-             applicationList.add(application);
-         }
-         Internship sampleInternship = new Internship();
-         sampleInternship.setApplications(applicationList);
-         assertEquals(sampleInternship, SampleDataUtil.getSampleInternship());
+        List<Application> applicationList = new ArrayList<>();
+        for (Application application: applications) {
+            applicationList.add(application);
+        }
+        Internship sampleInternship = new Internship();
+        sampleInternship.setApplications(applicationList);
+        assertEquals(sampleInternship, SampleDataUtil.getSampleInternship());
     }
 }

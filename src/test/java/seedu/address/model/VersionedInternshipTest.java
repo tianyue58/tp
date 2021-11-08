@@ -7,7 +7,6 @@ import static seedu.address.testutil.TypicalApplications.AMAZON;
 import static seedu.address.testutil.TypicalApplications.BYTEDANCE;
 import static seedu.address.testutil.TypicalApplications.GRAB;
 
-
 import java.util.ArrayList;
 import java.util.List;
 
