@@ -270,7 +270,7 @@ Editing an application entry such that the `COMPANY_NAME` and `INTERNSHIP_POSITI
 </div>
 
 <div markdown="span" class="alert alert-danger"> :warning: **Warning:** For the optional fields `INTERVIEW_DATE_AND_TIME` and `APPLICATION_REQUIREMENTS`, editing them overrides all their existing values! <br>
-To add on to the existing values, all the existing values need to be copied over (e.g. to add "CV" as a requirement to an entry that already has "resume" as a requirement, use `edit INDEX r/resume r/CV` instead of just `edit INDEX r/CV`, or else "resume" will disappear).
+To add on to the existing values or edit an existing value, all the existing values need to be copied over (e.g. to add "CV" as a requirement to an entry that already has "resume" as a requirement, use `edit INDEX r/resume r/CV` instead of just `edit INDEX r/CV`, or else "resume" will disappear).
 </div>
 
 <div markdown="span" class="alert alert-primary"> :bulb: **Tip:** <br>
