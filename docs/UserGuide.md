@@ -102,11 +102,7 @@ The UI has been designed and optimized to be navigated via the Command Line Inte
 Users can enter commands into the command box and press `ENTER` to execute them. The results will be displayed on the result box, showing appropriate messages. Depending on the command entered, the main panel may be updated accordingly.
 
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:**
-To see the list of applications, users can do so by simply scrolling up and down or pressing the arrow keys `UP` or `DOWN`
-</div>
-
-<div markdown="span" class="alert alert-info">:information_source: **Info:**
-Only successfully executed commands will be saved.
+To scroll through the list of applications, users can do so by simply scrolling up and down or clicking on an entry and pressing the arrow keys `UP` and `DOWN`
 </div>
 
 ### Command format
@@ -271,8 +267,6 @@ Multiple fields can be edited at the same time.<br>
 For the edited fields, existing values will be overwritten and updated to the new input values. The values for the rest of the fields will remain the same.<br>
 <br>
 Editing an application entry such that the `COMPANY_NAME` and `INTERNSHIP_POSITION` become the same as an existing entry is not allowed. 
-<br>
-<br>
 </div>
 
 <div markdown="span" class="alert alert-danger"> :warning: **Warning:** For the optional fields `INTERVIEW_DATE_AND_TIME` and `APPLICATION_REQUIREMENTS`, editing them overrides all their existing values! <br>
@@ -322,7 +316,7 @@ Examples:
 
 <div markdown="span" class="alert alert-info"> 
 :information_source: **Info:** <br>
-Completing an application that has already been completed will produce an error message.
+Trying to mark an application as completed when it has already been marked as completed will produce an error message.
 </div>
 
 <hr>
@@ -354,6 +348,11 @@ Examples:
 ![acceptAfter](images/features/acceptAfter.png)
 > After the command `accept 4`
 
+<div markdown="span" class="alert alert-info"> 
+:information_source: **Info:** <br>
+Trying to mark an application as accepted when it has already been marked as accepted will produce an error message.
+</div>
+
 <hr>
 
 #### Updating the application outcome to 'Rejected': `reject`
@@ -382,6 +381,12 @@ Examples:
 
 ![rejectAfter](images/features/rejectAfter.png)
 > After the command `reject 3`
+
+<div markdown="span" class="alert alert-info"> 
+:information_source: **Info:** <br>
+Trying to mark an application as rejected when it has already been marked as rejected will produce an error message.
+</div>
+
 <hr>
 
 ### Viewing specific applications
@@ -440,15 +445,16 @@ Format: `find FIELD keyword`
 
 * Finds all application(s) from the application list that match the keyword in the given field.
 * Format of `keyword` should follow the required format of the `FIELD` as specified in the [Parameter Summary](#parameters).
-* Only one field and one keyword can be provided each time.
+* Only one field and keyword(s) can be provided each time. 
+* For completion status, application outcome and application priority, exactly one keyword can be provided each time.
 
 
 Examples:
 * `find c/Grab` shows all the applications whose company name is Grab.
 * `find p/software engineer` shows all the applications whose position is software engineer.
 * `find c1/Completed` shows all the applications that are completed.
-* `find s/Accepted` shows all the applications whose application outcome is Accepted.  
-* `find pr/High` shows all the applications whose priority is High.
+* `find s/Accepted` shows all the applications whose application outcome is accepted.  
+* `find pr/High` shows all the applications whose priority is high.
 * `find r/cv` shows all the applications that include cv as a requirement.
 
 

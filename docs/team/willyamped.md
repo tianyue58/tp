@@ -54,7 +54,7 @@ Given below are my contributions to the project.
     * Added all user stories. 
   * Miscellaneous:
     * Updated `index.md` file. (Pull request [\#144](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/144))
-    * Updated `AboutUs.md` file.
+    * Updated `AboutUs.md` file. (Pull request [\#255](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/255))
   
 * **Team tasks:**
   * Created folders for UG and DG.
