@@ -435,11 +435,11 @@ Step 9. `SortCommand` then creates a `CommandResult` and returns it to `Logic Ma
 
 The undo/redo mechanism is facilitated by `VersionedInternship`. It extends `Internship` with an undo/redo history, stored internally as an `internshipStateList` and `currentStatePointer`. Additionally, it implements the following operations:
 
-* `VersionedInternship#commit()` — Saves the current internship state in its history.
-* `VersionedInternship#undo()` — Restores the previous internship state from its history.
-* `VersionedInternship#redo()` — Restores a previously undone internship state from its history.
+* `VersionedInternship#commit` — Saves the current internship state in its history.
+* `VersionedInternship#undo` — Restores the previous internship state from its history.
+* `VersionedInternship#redo` — Restores a previously undone internship state from its history.
 
-These operations are exposed in the `Model` interface as `Model#commitInternship()`, `Model#undoInternship()` and `Model#redoInternship()` respectively.
+These operations are exposed in the `Model` interface as `Model#commitInternship`, `Model#undoInternship` and `Model#redoInternship` respectively.
 
 Given below is an example usage scenario and how the undo/redo mechanism behaves at each step.
 
@@ -447,23 +447,23 @@ Step 1. The user launches the application for the first time. The `VersionedInte
 
 ![UndoRedoState0](images/umldiagrams/UndoRedoState0.png)
 
-Step 2. The user executes `delete 5` command to delete the 5th application in the Internship. The `delete` command calls `Model#commitInternship()`, causing the modified state of the Internship after the `delete 5` command executes to be saved in the `internshipStateList`, and the `currentStatePointer` is shifted to the newly inserted Internship state.
+Step 2. The user executes `delete 5` command to delete the 5th application in the Internship. The `delete` command calls `Model#commitInternship`, causing the modified state of the Internship after the `delete 5` command executes to be saved in the `internshipStateList`, and the `currentStatePointer` is shifted to the newly inserted Internship state.
 
 ![UndoRedoState1](images/umldiagrams/UndoRedoState1.png)
 
-Step 3. The user executes `add c/Amazon …​` to add a new application. The `add` command also calls `Model#commitInternship()`, causing another modified Internship state to be saved into the `internshipStateList`.
+Step 3. The user executes `add c/Amazon …​` to add a new application. The `add` command also calls `Model#commitInternship`, causing another modified Internship state to be saved into the `internshipStateList`.
 
 ![UndoRedoState2](images/umldiagrams/UndoRedoState2.png)
 
-<div markdown="span" class="alert alert-info">:information_source: **Note:** If a command fails its execution, it will not call `Model#commitInternship()`, so the Internship state will not be saved into the `internshipStateList`.
+<div markdown="span" class="alert alert-info">:information_source: **Note:** If a command fails its execution, it will not call `Model#commitInternship`, so the Internship state will not be saved into the `internshipStateList`.
 
 </div>
 
-Step 4. The user now decides that adding the application was a mistake, and decides to undo that action by executing the `undo` command. The `undo` command will call `Model#undoInternship()`, which will shift the `currentStatePointer` once to the left, pointing it to the previous Internship state, and restores the Internship to that state.
+Step 4. The user now decides that adding the application was a mistake, and decides to undo that action by executing the `undo` command. The `undo` command will call `Model#undoInternship`, which will shift the `currentStatePointer` once to the left, pointing it to the previous Internship state, and restores the Internship to that state.
 
 ![UndoRedoState3](images/umldiagrams/UndoRedoState3.png)
 
-<div markdown="span" class="alert alert-info">:information_source: **Note:** If the `currentStatePointer` is at index 0, pointing to the initial Internship state, then there are no previous Internship states to restore. The `undo` command uses `Model#canUndoInternship()` to check if this is the case. If so, it will return an error to the user rather
+<div markdown="span" class="alert alert-info">:information_source: **Note:** If the `currentStatePointer` is at index 0, pointing to the initial Internship state, then there are no previous Internship states to restore. The `undo` command uses `Model#canUndoInternship` to check if this is the case. If so, it will return an error to the user rather
 than attempting to perform the undo.
 
 </div>
@@ -476,17 +476,17 @@ The following sequence diagram shows how the undo operation works:
 
 </div>
 
-The `redo` command does the opposite — it calls `Model#redoInternship()`, which shifts the `currentStatePointer` once to the right, pointing to the previously undone state, and restores the Internship to that state.
+The `redo` command does the opposite — it calls `Model#redoInternship`, which shifts the `currentStatePointer` once to the right, pointing to the previously undone state, and restores the Internship to that state.
 
 <div markdown="span" class="alert alert-info">:information_source: **Note:** If the `currentStatePointer` is at index `internshipStateList.size() - 1`, pointing to the latest Internship state, then there are no undone Internship states to restore. The `redo` command uses `Model#canRedoInternship()` to check if this is the case. If so, it will return an error to the user rather than attempting to perform the redo.
 
 </div>
 
-Step 5. The user then decides to execute the command `list`. Commands that do not modify the Internship, such as `list`, `help`, `find`, will usually not call `Model#commitInternship()`, `Model#undoInternship()` or `Model#redoInternship()`. Thus, the `internshipStateList` remains unchanged.
+Step 5. The user then decides to execute the command `list`. Commands that do not modify the Internship, such as `list`, `help`, `find`, will usually not call `Model#commitInternship`, `Model#undoInternship` or `Model#redoInternship`. Thus, the `internshipStateList` remains unchanged.
 
 ![UndoRedoState4](images/umldiagrams/UndoRedoState4.png)
 
-Step 6. The user executes `clear`, which calls `Model#commitInternship()`. Since the `currentStatePointer` is not pointing at the end of the `internshipStateList`, all Internship states after the `currentStatePointer` will be purged. Reason: It no longer makes sense to redo the `add c/Amazon` command. This is the behavior that most modern desktop applications follow.
+Step 6. The user executes `clear`, which calls `Model#commitInternship`. Since the `currentStatePointer` is not pointing at the end of the `internshipStateList`, all Internship states after the `currentStatePointer` will be purged. Reason: It no longer makes sense to redo the `add c/Amazon` command. This is the behavior that most modern desktop applications follow.
 
 ![UndoRedoState5](images/umldiagrams/UndoRedoState5.png)
 
