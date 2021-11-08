@@ -75,10 +75,13 @@ public class DeadlineTest {
 
     @Test
     public void toString_success() {
-        String deadlineString = "2021-12-30";
+        String deadlineString = "2021-12-29";
+        String formattedDeadline = "Dec 29 2021";
         Deadline amazonDeadline = AMAZON.getDeadline();
         assertEquals(deadlineString, amazonDeadline.toString());
         assertEquals(deadlineString.hashCode(), amazonDeadline.hashCode());
+        assertEquals(formattedDeadline, amazonDeadline.toFormattedString());
     }
+
 
 }

@@ -183,7 +183,7 @@ this class parses the index and returns an `CompleteCommand` object with the ind
 as the parameter.
 
 
-Below is a sequence diagram and an explanation of how the `CompleteCommand` is executed:
+Below is a sequence diagram and an explanation of how the `CompleteCommand` is executed.
 ![Interactions Inside the Logic Component for the `complete 1` Command](images/umldiagrams/CompleteSequenceDiagram.png)
 
 Step 1. The user enters `complete 1` command in the main window.
@@ -407,7 +407,7 @@ Step 1. The user enters `sort pr/` command in the main window.
 
 Step 2. The command is handled by `LogicManager#execute` method, which then calls the `InternshipParser#parseCommand` method.
 
-Step 3. `InternshipParser` matches the command word `sort` in the string and extracts the argument string " pr/".
+Step 3. `InternshipParser` matches the command word `sort` in the string and extracts the argument string `pr/`.
 
 Step 4. `InternshipParser` then calls `SortCommandParser#parse` method and the argument string is converted to a Parameter instance.
 
