@@ -9,6 +9,8 @@ title: User Guide
 
 --------------------------------------------------------------------------------------------------------------------
 
+<div style="page-break-after: always;"></div>
+
 ## Introduction
 
 Are you a university student looking to score a holiday internship? Do you feel overwhelmed by all the application details you have to keep track of? Have you missed any application deadlines because there are just too many to remember? Have you ever wished that there were a comprehensive app that could help you track your entire internship application process? If you answered yes to any of these questions, we have just the application for you!
@@ -145,7 +147,7 @@ All the commands in the [Features](#features) section adhere to the following ru
 Here is a summary of all the parameters used in InternSHIP commands:
 
 Parameter | Refers to | Required format | Application field? | Notes
---------|-------|-------|----|-----
+--------|-------|-------|----|---
 **APPLICATION_DEADLINE** | The deadline for the application submission. | It should be a valid date in `YYYY-MM-DD` format. | Yes
 **APPLICATION_PRIORITY** | The user-set priority of the application. | It can only take 3 values: high, medium or low. | Yes
 **APPLICATION_REQUIREMENTS** | The required deliverables for the application submission. | It can take any value. | Yes | e.g. CV, portfolio...
@@ -199,6 +201,8 @@ Parameter | Refers to | Required format | Application field? | Notes
 
 --------------------------------------------------------------------------------------------------------------------
 
+<div style="page-break-after: always;"></div>
+
 ## Features
 
 This section shows all of InternSHIP's supported commands and how they should be used.
@@ -243,8 +247,6 @@ Format:
 
 <div markdown="span" class="alert alert-primary"> :bulb: **Tip:** You can input more than one `INTERVIEW_DATE_AND_TIME` since many companies have multiple rounds of interviews for a single application!
 </div>
-
-<div style="page-break-after: always;"></div>
 
 Examples:
 * `add c/Shopee p/software engineer d/2021-12-12` adds a new internship application to `Shopee` as a `software engineer`, with the application deadline `12 December 2021`.
@@ -735,8 +737,6 @@ The list above is a complete list of **all** the prefixes used in InternSHIP com
 
 --------------------------------------------------------------------------------------------------------------------
 
-<div style="page-break-after: always;"></div>
-
 ## Glossary
 
 This section explains some terms used in this User Guide.
@@ -754,8 +754,6 @@ Term | Definition | Notes
 **alphanumeric** | A character that is either a letter or a number.
 
 --------------------------------------------------------------------------------------------------------------------
-
-<div style="page-break-after: always;"></div>
 
 ## Acknowledgements
 
