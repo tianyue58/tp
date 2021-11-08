@@ -437,7 +437,7 @@ Step 9. `SortCommand` then creates a `CommandResult` and returns it to `Logic Ma
 
 * **Alternative 1 (current choice):** Only allow lists to be sorted in one direction per field (e.g. sooner to later for deadline, alphabetically for company name)
     * Pros: Easier to implement. The implemented direction of sorting is also the more logical one (users are unlikely to want to view their applications from lower to higher priority).
-    * Cons: The user cannot specify the direction of sorting (e.g. later deadlines first)
+    * Cons: The user cannot specify the direction of sorting (e.g. later deadlines first).
 
 * **Alternative 2:** Provide the option to specify the field to sort the list by as well as the direction of sorting.
     * Pros: Users have more options on how to view their list of applications.
@@ -540,7 +540,7 @@ The following activity diagram summarizes what happens when a user executes a ne
 **Target user profile**:
 Our target user is a university student who: <br>
 * has a need to manage a significant number of internship applications
-* prefer desktop apps over other types
+* prefers desktop apps over other types
 * can type fast
 * prefers typing to mouse interactions
 * is reasonably comfortable using CLI apps
@@ -614,20 +614,20 @@ For all use cases below, the **System** is `InternSHIP` and the **Actor** is the
       Use case ends.
 
 
-**Use case 2: Update an application entry/ Complete an application/ Update the application outcome**
+**Use case 2: Update an application entry/Complete an application/Update the application outcome**
 
 **MSS**
 
 1.  User requests to list all entries.
 2.  InternSHIP shows a list of application entries.
-3.  User requests to update the details of a specific entry in the list/ mark the application as completed/ update the application outcome from pending to accepted or rejected.
+3.  User requests to update the details of a specific entry in the list/mark the application as completed/ update the application outcome from pending to accepted or rejected.
 4.  InternSHIP updates the entry accordingly, displays the success message, and shows the full application list.
 
     Use case ends.
 
 **Extensions**
 
-* 2a. The list is empty.
+* 1a. The list is empty. There is nothing to update.
 
   Use case ends. 
 
@@ -643,15 +643,15 @@ For all use cases below, the **System** is `InternSHIP` and the **Actor** is the
 
       Use case ends.
 
-* 4a. User decides to undo the update/ complete action.
+* 4a. User decides to undo the update/complete action.
 
-    * 4a1. InternSHIP undoes the update/ complete action and restores the previous state.
+    * 4a1. InternSHIP undoes the update/complete action and restores the previous state.
 
       Use case ends.
 
 #### Viewing specific applications
 
-**Use case 3: List applications with upcoming deadlines/ interviews**
+**Use case 3: List applications with upcoming deadlines/interviews**
 
 **MSS**
 
@@ -662,9 +662,9 @@ For all use cases below, the **System** is `InternSHIP` and the **Actor** is the
 
 **Extensions**
 
-* 1a. The list is empty.
+* 1a. The list is empty. There is nothing to list.
 
-  Use case ends. There is nothing to list.
+  Use case ends. 
 
 * 1b. The user fails to enter the correct format.
 
@@ -683,9 +683,9 @@ For all use cases below, the **System** is `InternSHIP` and the **Actor** is the
 
 **Extensions**
 
-* 1a. The list is empty.
+* 1a. The list is empty. There is nothing to find.
 
-  Use case ends. There is nothing to find.
+  Use case ends. 
 
 * 1b. The user fails to enter the correct format or valid argument.
 
@@ -708,7 +708,7 @@ For all use cases below, the **System** is `InternSHIP` and the **Actor** is the
 
 **Extensions**
 
-* 2a. The list is empty.
+* 1a. The list is empty. There is nothing to list.
 
   Use case ends.
 
@@ -723,9 +723,9 @@ For all use cases below, the **System** is `InternSHIP` and the **Actor** is the
 
 **Extensions**
 
-* 1a. The list is empty.
+* 1a. The list is empty. There is nothing to sort.
 
-    Use case ends. There is nothing to sort.
+    Use case ends. 
 
 * 1b. The user fails to enter the correct format for the command or inputs an unsupported field to sort by.
 
@@ -748,7 +748,7 @@ For all use cases below, the **System** is `InternSHIP` and the **Actor** is the
 
 **Extensions**
 
-* 1a. The list is empty.
+* 1a. The list is empty. There is nothing to delete.
 
   Use case ends.
 
