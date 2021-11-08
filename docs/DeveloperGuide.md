@@ -128,7 +128,7 @@ The `Model` component,
 * stores the InternSHIP data i.e., all `Application` objects (which are contained in a `UniqueApplicationList` object).
 * stores the currently 'selected' `Application` objects (e.g., results of a search query) as a separate _filtered_ list which is exposed to outsiders as an unmodifiable `ObservableList<Application>` that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.
 * stores a `UserPref` object that represents the user’s preferences. This is exposed to the outside as a `ReadOnlyUserPref` objects.
-* does not depend on any of the other three components (as the `Model` represents data entities of the domain, they should make sense on their own without depending on other components)
+* does not depend on any of the other three components (as the `Model` represents data entities of the domain, they should make sense on their own without depending on other components).
 
 <div markdown="span" class="alert alert-info">:information_source: **Note:** An alternative (arguably, a more OOP) model is given below. It has a `Requirement` set and `InterviewDateAndTime` set in the `Internship`, which `Application` references. This allows `Internship` to only require one `Requirement` object per unique requirement, and one `InterviewDateAndTime` object per unique `InterviewDateAndTime`, instead of each `Application` needing their own `Requirement` and `InterviewDateAndTime` objects.<br>
 
@@ -146,7 +146,7 @@ The `Model` component,
 The `Storage` component,
 * can save both InternSHIP data and user preference data in json format, and read them back into corresponding objects.
 * inherits from both `InternshipStorage` and `UserPrefStorage`, which means it can be treated as either one (if only the functionality of only one is needed).
-* depends on some classes in the `Model` component (because the `Storage` component's job is to save/retrieve objects that belong to the `Model`)
+* depends on some classes in the `Model` component (because the `Storage` component's job is to save/retrieve objects that belong to the `Model`).
 
 ### Common classes
 
@@ -186,7 +186,7 @@ Step 1. The user enters `complete 1` command in the main window.
 
 Step 2. The command is handled by LogicManager#execute(String) method, which then calls the InternshipParser#parseCommand(String) method.
 
-Step 3. The InternshipParser matches the command word `complete` in the string and extracts the argument string ` 1`.
+Step 3. The InternshipParser matches the command word `complete` in the string and extracts the argument string " 1".
 
 Step 4. The InternshipParser then calls CompleteCommandParser#parse(String) method and the argument string is converted to an Index instance.
 
@@ -227,7 +227,7 @@ class implements the `Parser` interface. The `AcceptCommandParser#parse()` metho
 this class parses the index and returns an `AcceptCommand` object with the index
 as the parameter.
 
-Below is a sequence diagram and an explanation of how the `AcceptCommand` is executed:
+Below is a sequence diagram and an explanation of how the `AcceptCommand` is executed.
 
 ![Interactions Inside the Logic Component for the `accept 2` Command](images/umldiagrams/AcceptSequenceDiagram.png)
 
@@ -290,7 +290,7 @@ class implements the `Parser` interface. The `RejectCommandParser#parse()` metho
 this class parses the index and returns an `RejectCommand` object with the index
 as the parameter.
 
-Below is a sequence diagram and an explanation of how the `RejectCommand` is executed:
+Below is a sequence diagram and an explanation of how the `RejectCommand` is executed.
 
 ![Interactions Inside the Logic Component for the `reject 2` Command](images/umldiagrams/RejectSequenceDiagram.png)
 
@@ -342,7 +342,7 @@ Step 1. The user enters `soon d/1` command in the main window.
 
 Step 2. The command is handled by LogicManager#execute(String) method, which then calls the InternshipParser#parseCommand(String) method.
 
-Step 3. The InternshipParser matches the command word `soon` in the string and extracts the argument string ` d/1`.
+Step 3. The InternshipParser matches the command word `soon` in the string and extracts the argument string " d/1".
 
 Step 4. The InternshipParser then calls SoonCommandParser#parse(String) method and the argument string is converted to a Predicate and Index instances.
 
@@ -374,7 +374,7 @@ Step 1. The user enters `find pr/High` command in the main window.
 
 Step 2. The command is handled by LogicManager#execute(String) method, which then calls the InternshipParser#parseCommand(String) method.
 
-Step 3. The InternshipParser matches the command word `find` in the string and extracts the argument string ` pr/High`.
+Step 3. The InternshipParser matches the command word `find` in the string and extracts the argument string " pr/High".
 
 Step 4. The InternshipParser then calls FindCommandParser#parse(String) method and the argument string is converted to a List.
 
@@ -384,7 +384,7 @@ Step 6. The FindCommandParser creates a new FindCommand instance with the Priori
 
 Step 7. The LogicManager calls the FindCommand#execute(Model) method.
 
-Step 8. The FindCommand calls the Model#updateFilteredMemberList(PriorityContainsKeywordsPredicate) method and filter applications by priority High.
+Step 8. The FindCommand calls the Model#updateFilteredMemberList(PriorityContainsKeywordsPredicate) method and filters applications by priority High.
 
 Step 9. The application lists the filtered applications that match the given field and keyword.
 
@@ -406,13 +406,14 @@ The `Sort` command is facilitated by the `SortCommand` class. It extends the `Co
 
 The `SortCommandParser` class is responsible for parsing the field received from the user. This class implements the `Parser` interface. The `SortCommandParser#parse()` method of this class parses the field and returns a `SortCommand` object with the field as the parameter.
 
+Below is a sequence diagram and explanation of how the SortCommand is executed.
 ![Interactions Inside the Logic Component for the `sort pr/` Command](images/umldiagrams/SortSequenceDiagram.png)
 
 Step 1. The user enters `sort pr/` command in the main window.
 
 Step 2. The command is handled by LogicManager#execute(String) method, which then calls the InternshipParser#parseCommand(String) method.
 
-Step 3. The InternshipParser matches the command word `sort` in the string and extracts the argument string `pr/`.
+Step 3. The InternshipParser matches the command word `sort` in the string and extracts the argument string " pr/".
 
 Step 4. The InternshipParser then calls SortCommandParser#parse(String) method and the argument string is converted to a Parameter instance.
 
@@ -617,7 +618,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * 2a. The list is empty.
 
-  Use case ends. There is nothing to update/ complete.
+  Use case ends. 
 
 * 3a. The user fails to enter the correct format or valid argument.
 
