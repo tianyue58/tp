@@ -35,8 +35,7 @@ public class CompleteCommand extends Command {
 
     public static final String MESSAGE_SUCCESS = "Completed application: %1$s";
 
-    private static final String MESSAGE_ALREADY_COMPLETED =
-            "Application has already been completed!";
+    public static final String MESSAGE_ALREADY_COMPLETED = "Application has already been completed!";
 
     private final Index targetIndex;
 
@@ -60,7 +59,7 @@ public class CompleteCommand extends Command {
 
         Application applicationToComplete = lastShownList.get(targetIndex.getZeroBased());
 
-        if (applicationToComplete.getCompletion().value.equals("Completed")) {
+        if (applicationToComplete.isCompleted()) {
             throw new CommandException(MESSAGE_ALREADY_COMPLETED);
         }
 

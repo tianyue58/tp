@@ -8,6 +8,7 @@ import static seedu.address.logic.commands.CommandTestUtil.showApplicationAtInde
 import static seedu.address.testutil.TypicalApplications.getTypicalInternship;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_APPLICATION;
 import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_APPLICATION;
+import static seedu.address.testutil.TypicalIndexes.INDEX_THIRD_APPLICATION;
 
 import java.util.Set;
 
@@ -55,6 +56,15 @@ public class AcceptCommandTest {
         AcceptCommand acceptCommand = new AcceptCommand(outOfBoundIndex);
 
         assertCommandFailure(acceptCommand, model, Messages.MESSAGE_INDEX_EXCEEDS_LIST_LENGTH);
+    }
+
+    @Test
+    public void execute_acceptTwice_throwsCommandException() {
+
+        //the third application is an application that is already accepted
+        AcceptCommand acceptCommand = new AcceptCommand(INDEX_THIRD_APPLICATION);
+
+        assertCommandFailure(acceptCommand, model, AcceptCommand.MESSAGE_ALREADY_ACCEPTED);
     }
 
     @Test

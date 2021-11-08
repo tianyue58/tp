@@ -1,8 +1,13 @@
 package seedu.address.model.application;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.testutil.Assert.assertThrows;
+import static seedu.address.testutil.TypicalApplications.AMAZON;
+import static seedu.address.testutil.TypicalApplications.getTypicalApplications;
+
+import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
@@ -62,5 +67,18 @@ public class PositionTest {
         // same position -> return true
         assertTrue(p.equals(new Position("Dancer")));
     }
+
+    @Test
+    public void getComparator_success() {
+        List<Application> applicationList = getTypicalApplications();
+        applicationList.sort(Position.getComparator());
+    }
+
+    @Test
+    public void toHashCode_success() {
+        String positionString = "Software Engineer";
+        assertEquals(positionString.hashCode(), AMAZON.getPosition().hashCode());
+    }
+
 }
 

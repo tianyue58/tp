@@ -36,8 +36,7 @@ public class RejectCommand extends Command {
 
     public static final String MESSAGE_SUCCESS = "Marked application as 'Rejected': %1$s";
 
-    private static final String MESSAGE_ALREADY_REJECTED =
-            "Application has already been marked as 'Rejected'!";
+    public static final String MESSAGE_ALREADY_REJECTED = "Application has already been marked as 'Rejected'!";
 
 
     private final Index targetIndex;
@@ -62,8 +61,7 @@ public class RejectCommand extends Command {
 
         Application applicationToReject = lastShownList.get(targetIndex.getZeroBased());
 
-
-        if (applicationToReject.getStatus().value.equals("Rejected")) {
+        if (applicationToReject.isRejected()) {
             throw new CommandException(MESSAGE_ALREADY_REJECTED);
         }
 

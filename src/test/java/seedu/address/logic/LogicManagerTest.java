@@ -15,12 +15,14 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 
+import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.Messages;
 import seedu.address.logic.commands.AddCommand;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.ListCommand;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.Internship;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.ReadOnlyInternship;
@@ -39,12 +41,13 @@ public class LogicManagerTest {
 
     private final Model model = new ModelManager();
     private Logic logic;
+    private JsonInternshipStorage internshipStorage;
+    private JsonUserPrefsStorage userPrefsStorage;
 
     @BeforeEach
     public void setUp() {
-        JsonInternshipStorage internshipStorage =
-                new JsonInternshipStorage(temporaryFolder.resolve("internship.json"));
-        JsonUserPrefsStorage userPrefsStorage = new JsonUserPrefsStorage(temporaryFolder.resolve("userPrefs.json"));
+        internshipStorage = new JsonInternshipStorage(temporaryFolder.resolve("internship.json"));
+        userPrefsStorage = new JsonUserPrefsStorage(temporaryFolder.resolve("userPrefs.json"));
         StorageManager storage = new StorageManager(internshipStorage, userPrefsStorage);
         logic = new LogicManager(model, storage);
     }
@@ -90,6 +93,19 @@ public class LogicManagerTest {
     @Test
     public void getFilteredApplicationList_modifyList_throwsUnsupportedOperationException() {
         assertThrows(UnsupportedOperationException.class, () -> logic.getFilteredApplicationList().remove(0));
+    }
+
+    @Test
+    public void getInternship_success() {
+        assertEquals(logic.getInternship(), new Internship());
+    }
+
+
+    @Test
+    public void setGuiSettings_success() {
+        GuiSettings guiSettings = new GuiSettings(100, 100, 100, 100);
+        logic.setGuiSettings(guiSettings);
+        assertEquals(logic.getGuiSettings(), guiSettings);
     }
 
     /**

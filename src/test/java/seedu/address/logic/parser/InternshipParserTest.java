@@ -9,6 +9,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_COMPLETION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DEADLINE_OF_APPLICATION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_INTERNSHIP_POSITION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PRIORITY;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_REQUIREMENT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_STATUS;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_APPLICATION;
@@ -39,6 +40,8 @@ import seedu.address.model.application.Application;
 import seedu.address.model.application.CompletionContainsKeywordsPredicate;
 import seedu.address.model.application.NameContainsKeywordsPredicate;
 import seedu.address.model.application.PositionContainsKeywordsPredicate;
+import seedu.address.model.application.PriorityContainsKeywordsPredicate;
+import seedu.address.model.application.RequirementsContainsKeywordsPredicate;
 import seedu.address.model.application.StatusContainsKeywordsPredicate;
 import seedu.address.testutil.ApplicationBuilder;
 import seedu.address.testutil.ApplicationUtil;
@@ -116,6 +119,23 @@ public class InternshipParserTest {
                 FindCommand.COMMAND_WORD + " " + PREFIX_STATUS + String.join(" ", keywords));
         assertEquals(new FindCommand(new StatusContainsKeywordsPredicate(keywords)), command);
     }
+
+    @Test
+    public void parseCommand_findByRequirement() throws Exception {
+        List<String> keywords = Arrays.asList("resume", "cv", "interview");
+        FindCommand command = (FindCommand) parser.parseCommand(
+                FindCommand.COMMAND_WORD + " " + PREFIX_REQUIREMENT + String.join(" ", keywords));
+        assertEquals(new FindCommand(new RequirementsContainsKeywordsPredicate(keywords)), command);
+    }
+
+    @Test
+    public void parseCommand_findByPriority() throws Exception {
+        List<String> keywords = Arrays.asList("high");
+        FindCommand command = (FindCommand) parser.parseCommand(
+                FindCommand.COMMAND_WORD + " " + PREFIX_PRIORITY + String.join(" ", keywords));
+        assertEquals(new FindCommand(new PriorityContainsKeywordsPredicate(keywords)), command);
+    }
+
 
     @Test
     public void parseCommand_help() throws Exception {

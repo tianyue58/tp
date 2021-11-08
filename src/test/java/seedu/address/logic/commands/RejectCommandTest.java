@@ -58,6 +58,15 @@ public class RejectCommandTest {
     }
 
     @Test
+    public void execute_rejectTwice_throwsCommandException() {
+
+        //the second application is an application that is already rejected
+        RejectCommand rejectCommand = new RejectCommand(INDEX_SECOND_APPLICATION);
+
+        assertCommandFailure(rejectCommand, model, RejectCommand.MESSAGE_ALREADY_REJECTED);
+    }
+
+    @Test
     public void execute_validIndexApplicationList_success() {
         Application applicationToReject = model.getFilteredApplicationList()
                 .get(INDEX_FIRST_APPLICATION.getZeroBased());

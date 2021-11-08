@@ -1,9 +1,11 @@
 package seedu.address.model.application;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_COMPLETION_BYTEDANCE;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_DEADLINE_BYTEDANCE;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_INTERVIEW_DATE_AND_TIME_AMAZON;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_INTERVIEW_DATE_AND_TIME_BYTEDANCE;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BYTEDANCE;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_POSITION_BYTEDANCE;
@@ -120,4 +122,34 @@ public class ApplicationTest {
                 .withInterviewDateAndTime(VALID_INTERVIEW_DATE_AND_TIME_BYTEDANCE).build();
         assertFalse(AMAZON.equals(editedAmazon));
     }
+
+    @Test
+    public void getApplicationInfo_success() {
+        Application editedAmazon = new ApplicationBuilder(AMAZON)
+                .withCompletion("Completed").withStatus("Accepted")
+                .withInterviewDateAndTime(VALID_INTERVIEW_DATE_AND_TIME_AMAZON).build();
+
+        assertTrue(editedAmazon.isCompleted());
+
+        assertTrue(editedAmazon.isAccepted());
+
+        assertFalse(editedAmazon.isRejected());
+
+        assertTrue(editedAmazon.hasInterviewTime());
+    }
+
+    @Test
+    public void applicationToString_success() {
+        String bytedanceString = "Company: ByteDance; Position: Web Developer; Deadline: Nov 29 2021; "
+                + "Completion: Completed; Decision: Rejected; Priority: High; Requirements: [CV]; "
+                + "Interview Date and Time: [Dec 12 2021, 05:30]";
+        assertEquals(BYTEDANCE.toString(), bytedanceString);
+    }
+
+    @Test
+    public void toHashCode_success() {
+        Application amazonCopy = new ApplicationBuilder(AMAZON).build();
+        assertEquals(AMAZON.hashCode(), amazonCopy.hashCode());
+    }
+
 }

@@ -1,8 +1,10 @@
 package seedu.address.model.application;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.testutil.Assert.assertThrows;
+import static seedu.address.testutil.TypicalApplications.AMAZON;
 
 import org.junit.jupiter.api.Test;
 
@@ -54,5 +56,11 @@ public class StatusTest {
 
         // same value -> return true
         assertTrue(s.equals(new Status("Accepted")));
+    }
+
+    @Test
+    public void toHashCode_success() {
+        String statusString = "Pending";
+        assertEquals(statusString.hashCode(), AMAZON.getStatus().hashCode());
     }
 }
