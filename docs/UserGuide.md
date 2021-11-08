@@ -522,6 +522,8 @@ Examples:
 > 
 <hr>
 
+<div style="page-break-after: always;"></div>
+
 ### Others
 
 #### Deleting an entry : `delete`

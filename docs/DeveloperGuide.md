@@ -455,7 +455,7 @@ Step 3. The user executes `add c/Amazon …​` to add a new application. The `a
 
 ![UndoRedoState2](images/umldiagrams/UndoRedoState2.png)
 
-<div markdown="span" class="alert alert-info">:information_source: **Note:** If a command fails its execution, it will not call `Model#commitInternship()`, so the Internship state will not be saved into the `internshipStateList`.
+<div markdown="span" class="alert alert-info">:information_source: **Note:** If a command fails its execution, it will not call `Model#commitInternship`, so the Internship state will not be saved into the `internshipStateList`.
 
 </div>
 
@@ -463,7 +463,7 @@ Step 4. The user now decides that adding the application was a mistake, and deci
 
 ![UndoRedoState3](images/umldiagrams/UndoRedoState3.png)
 
-<div markdown="span" class="alert alert-info">:information_source: **Note:** If the `currentStatePointer` is at index 0, pointing to the initial Internship state, then there are no previous Internship states to restore. The `undo` command uses `Model#canUndoInternship()` to check if this is the case. If so, it will return an error to the user rather
+<div markdown="span" class="alert alert-info">:information_source: **Note:** If the `currentStatePointer` is at index 0, pointing to the initial Internship state, then there are no previous Internship states to restore. The `undo` command uses `Model#canUndoInternship` to check if this is the case. If so, it will return an error to the user rather
 than attempting to perform the undo.
 
 </div>
