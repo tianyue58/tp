@@ -37,6 +37,7 @@ Given below are my contributions to the project.
     * Developer Guide:
         * Added implementation details of `undo` and `redo` features (Pull requests [#100](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/100)).
         * Update class, object, sequence, activity diagrams (Pull request [#143](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/143)).
+        * Add instructions for manual testings (Pull request [#287](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/287)).
 
 * **Project management and Team tasks**:
     * Actively participated in weekly project meeting.
