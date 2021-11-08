@@ -182,15 +182,15 @@ Below is a sequence diagram and an explanation of how the `CompleteCommand` is e
 
 Step 1. The user enters `complete 1` command in the main window.
 
-Step 2. The command is handled by LogicManager#execute(String) method, which then calls the InternshipParser#parseCommand(String) method.
+Step 2. The command is handled by `LogicManager#execute` method, which then calls the `InternshipParser#parseCommand` method.
 
-Step 3. The InternshipParser matches the command word `complete` in the string and extracts the argument string ` 1`.
+Step 3. The `InternshipParser` matches the command word `complete` in the string and extracts the argument string ` 1`.
 
-Step 4. The InternshipParser then calls CompleteCommandParser#parse(String) method and the argument string is converted to an Index instance.
+Step 4. The `InternshipParser` then calls `CompleteCommandParser#parse` method and the argument string is converted to an Index instance.
 
-Step 5. The CompleteCommandParser creates a new CompleteCommand instance and returns it to InternshipParser, which in turn returns it to LogicManager.
+Step 5. The `CompleteCommandParser` creates a new `CompleteCommand` instance and returns it to `InternshipParser`, which in turn returns it to `LogicManager`.
 
-Step 6. The LogicManager calls the CompleteCommand#execute(Model) method to update the application panel.
+Step 6. The `LogicManager` calls the `CompleteCommand#execute` method to update the application panel.
 
 #### Design considerations:
 
@@ -229,30 +229,22 @@ Below is a sequence diagram and an explanation of how the `AcceptCommand` is exe
 
 ![Interactions Inside the Logic Component for the `accept 2` Command](images/umldiagrams/AcceptSequenceDiagram.png)
 
-Step 1. When the input is entered by the user, the `execute` method of `LogicManager` is invoked with the user
-input as the parameter.
+Step 1. The user enters the `accept 2` command in the main window.
 
-Step 2. In the method, `LogicManager` calls the `parseCommand` method of `InternshipParser` to parse the user input.
+Step 2. The command is handled by the `LogicManager#execute` method, which then calls the `InternshipParser#parseCommand` method.
 
-Step 3. The `InternshipParser` parses the user input,recognizes it as an `AcceptCommand`, and instantiates
-an `AcceptCommandParser` object.
+Step 3. The `InternshipParser` matches the command word `accept` in the string and extracts the argument string ` 2`.
 
-Step 4. `InternshipParser` then calls the `parse` method of
-the `AcceptCommandParser` object to parse the
-arguments provided. In the `parse` method, the
-`AcceptCommandParser` ensures that the
-input is of the correct format and identifies the index of the application to be marked as 'Accepted'.
+Step 4. The `InternshipParser` then calls the `AcceptCommandParser#parse` method. In this method, it is ensured that the input is of the correct format, and the argument string is converted to an Index instance.
 
-Step 5. If the index specified by the user is valid, then a new `AcceptCommand` instance is created and 
-returned to `LogicManager` through `InternshipParser`.
+Step 5. If the index specified by the user is valid then the `AcceptCommandParser` creates a new `AcceptCommand` instance and returns it to `InternshipParser`, which in turn returns it to `LogicManager`.
 
-Step 6. The `LogicManager` then calls the overridden `execute` method of `AcceptCommand`.
+Step 6. The `LogicManager` then calls the `AcceptCommand#execute` method.
 
-Step 7. Next, the `AcceptCommand` object calls the `setApplication` method of `Model` with the application to accept,
-and the accepted application as arguments. It will then return a `CommandResult` object to 
-the `LogicManager`.
+Step 7. Next, the `AcceptCommand` object calls the `Model#setApplication` method with the application to accept and accepted application
+as arguments. It then returns a `CommandResult` object to the `LogicManager`.
 
-Step 8.Finally, the `CommandResult` is returned by the `LogicManager`.
+Step 8. Finally, the `CommandResult` is returned by the `LogicManager`.
 
 #### Design considerations:
 
@@ -292,26 +284,20 @@ Below is a sequence diagram and an explanation of how the `RejectCommand` is exe
 
 ![Interactions Inside the Logic Component for the `reject 2` Command](images/umldiagrams/RejectSequenceDiagram.png)
 
-Step 1. When the input is entered by the user, the `execute` method of `LogicManager` is invoked with the user
-   input as the parameter.
+Step 1. The user enters the `reject 2` command in the main window.
 
-Step 2. In the method, `LogicManager` calls the `parseCommand` method of `InternshipParser` to parse the user input.
+Step 2. The command is handled by the `LogicManager#execute` method, which then calls the `InternshipParser#parseCommand` method.
 
-Step 3. The `InternshipParser` parses the user input, recognizes it as an `RejectCommand`, and instantiates
-   an `RejectCommandParser` object.
+Step 3. The `InternshipParser` matches the command word `reject` in the string and extracts the argument string ` 2`.
 
-Step 4. `InternshipParser` then calls the `parse` method of the `RejectCommandParser` object to parse the
-   arguments provided. In the `parse` method, the `RejectCommandParser` ensures that the
-   input is of the correct format and identifies the index of the application to be marked as 'Accepted'.
+Step 4. The `InternshipParser` then calls the `RejectCommandParser#parse` method. In this method, it is ensured that the input is of the correct format, and the argument string is converted to an Index instance.
 
-Step 5. If the index specified by the user is valid, then a new `RejectCommand` instance is created and
-   returned to `LogicManager` through `InternshipParser`.
+Step 5. If the index specified by the user is valid then the `RejectCommandParser` creates a new `RejectCommand` instance and returns it to `InternshipParser`, which in turn returns it to `LogicManager`.
 
-Step 6. The `LogicManager` then calls the overridden `execute` method of `RejectCommand`.
+Step 6. The `LogicManager` then calls the `RejectCommand#execute` method.
 
-Step 7. Next, the `RejectCommand` object calls the `setApplication` method of `Model` with the application to reject,
-   and the rejected application as arguments. It will then return a `CommandResult` object to
-   the `LogicManager`.
+Step 7. Next, the `RejectCommand` object calls the `Model#setApplication` method with the application to reject and rejected application
+as arguments. It then returns a `CommandResult` object to the `LogicManager`.
 
 Step 8. Finally, the `CommandResult` is returned by the `LogicManager`.
 
@@ -356,23 +342,23 @@ Below is a sequence diagram and explanation of how the FindCommand is executed.
 
 Step 1. The user enters `find pr/High` command in the main window.
 
-Step 2. The command is handled by LogicManager#execute(String) method, which then calls the InternshipParser#parseCommand(String) method.
+Step 2. The command is handled by `LogicManager#execute` method, which then calls the `InternshipParser#parseCommand` method.
 
-Step 3. The InternshipParser matches the command word `find` in the string and extracts the argument string ` pr/High`.
+Step 3. The `InternshipParser` matches the command word `find` in the string and extracts the argument string ` pr/High`.
 
-Step 4. The InternshipParser then calls FindCommandParser#parse(String) method and the argument string is converted to a List.
+Step 4. The `InternshipParser` then calls `FindCommandParser#parse` method and the argument string is converted to a List.
 
-Step 5. The FindCommandParser creates a new PriorityContainsKeywordsPredicate instance with the priority List to handle the filter.
+Step 5. The `FindCommandParser` creates a new `PriorityContainsKeywordsPredicate` instance with the priority List to handle the filter.
  
-Step 6. The FindCommandParser creates a new FindCommand instance with the PriorityContainsKeywordsPredicate instance and returns it to InternshipParser, which in turn returns it to LogicManager.
+Step 6. The `FindCommandParser` creates a new `FindCommand` instance with the `PriorityContainsKeywordsPredicate` instance and returns it to `InternshipParser`, which in turn returns it to `LogicManager`.
 
-Step 7. The LogicManager calls the FindCommand#execute(Model) method.
+Step 7. The `LogicManager` calls the `FindCommand#execute` method.
 
-Step 8. The FindCommand calls the Model#updateFilteredMemberList(PriorityContainsKeywordsPredicate) method and filter applications by priority High.
+Step 8. The `FindCommand` calls the `Model#updateFilteredApplicationList` method and filter applications by priority High.
 
 Step 9. The application lists the filtered applications that match the given field and keyword.
 
-Step 10. FindCommand then creates a CommandResult and returns it to LogicManager.
+Step 10. `FindCommand` then creates a `CommandResult` and returns it to `LogicManager`.
 
 #### Design considerations:
 
