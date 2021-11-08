@@ -522,8 +522,6 @@ Examples:
 > 
 <hr>
 
-<div style="page-break-after: always;"></div>
-
 ### Others
 
 #### Deleting an entry : `delete`
@@ -674,8 +672,6 @@ There is no need to save manually.
 
 
 --------------------------------------------------------------------------------------------------------------------
-
-<div style="page-break-after: always;"></div>
 
 ## Command summary
 
