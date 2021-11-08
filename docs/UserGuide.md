@@ -95,6 +95,8 @@ Below are some special formats used throughout this User Guide:
 
 `Highlights are used to emphasise special text such as parameters, field values, commands, file names or any user inputs.`
 
+<div style="page-break-after: always;"></div>
+
 ### Navigating the GUI
 
 Different sections of the application window have been annotated in the image shown below:
@@ -241,6 +243,8 @@ Format:
 
 <div markdown="span" class="alert alert-primary"> :bulb: **Tip:** You can input more than one `INTERVIEW_DATE_AND_TIME` since many companies have multiple rounds of interviews for a single application!
 </div>
+
+<div style="page-break-after: always;"></div>
 
 Examples:
 * `add c/Shopee p/software engineer d/2021-12-12` adds a new internship application to `Shopee` as a `software engineer`, with the application deadline `12 December 2021`.
