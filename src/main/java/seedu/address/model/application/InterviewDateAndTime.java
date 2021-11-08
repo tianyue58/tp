@@ -84,6 +84,7 @@ public class InterviewDateAndTime {
      * @return Comparator object that compares applications by their interview date and time.
      */
     public static Comparator<Application> getComparator() {
+        //Solution below adapted from AY2122S1-CS2103T-T15-3
         return (application, otherApplication) -> {
             InterviewDateAndTime interviewDateAndTime = application.getInterviewDateAndTime()
                     .stream().min(Comparator.comparing(dt -> dt.value)).orElse(null);

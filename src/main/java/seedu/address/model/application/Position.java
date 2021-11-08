@@ -49,6 +49,7 @@ public class Position {
      * @return Comparator object that compares applications by their internship positions.
      */
     public static Comparator<Application> getComparator() {
+        //Solution below adapted from AY2122S1-CS2103T-T15-3
         return (application, otherApplication) -> {
             String position = application.getPosition().value.toUpperCase();
             String otherPosition = otherApplication.getPosition().value.toUpperCase();

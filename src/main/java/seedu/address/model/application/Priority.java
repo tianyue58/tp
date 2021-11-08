@@ -44,6 +44,7 @@ public class Priority {
      */
     public static Comparator<Application> getComparator() {
         return new Comparator<>() {
+            //Solution below adapted from AY2122S1-CS2103T-T15-3
             @Override
             public int compare(Application application, Application otherApplication) {
                 String priority = application.getPriority().value;

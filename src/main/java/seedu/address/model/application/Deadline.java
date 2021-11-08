@@ -82,6 +82,7 @@ public class Deadline {
      * @return Comparator object that compares applications by their deadlines.
      */
     public static Comparator<Application> getComparator() {
+        //Solution below adapted from AY2122S1-CS2103T-T15-3
         return (application, otherApplication) -> {
             String deadline = application.getDeadline().value;
             String otherDeadline = otherApplication.getDeadline().value;

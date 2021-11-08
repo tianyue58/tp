@@ -49,6 +49,7 @@ public class Company {
      * @return Comparator object that compares applications by their company names.
      */
     public static Comparator<Application> getComparator() {
+        //Solution below adapted from AY2122S1-CS2103T-T15-3
         return (application, otherApplication) -> {
             String company = application.getCompany().fullCompanyName.toUpperCase();
             String otherCompany = otherApplication.getCompany().fullCompanyName.toUpperCase();
