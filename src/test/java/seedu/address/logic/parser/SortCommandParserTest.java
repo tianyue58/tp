@@ -43,10 +43,6 @@ public class SortCommandParserTest {
         // priority parameter
         assertParseSuccess(parser, " " + PREFIX_PRIORITY,
                 new SortCommand("priority"));
-
-        // text after parameter
-        assertParseSuccess(parser, " " + PREFIX_PRIORITY + PREAMBLE_NON_EMPTY,
-                new SortCommand("priority"));
     }
 
     @Test
@@ -78,5 +74,12 @@ public class SortCommandParserTest {
         String expectedMessage = String.format(MESSAGE_INVALID_COMMAND_FORMAT, SortCommand.MESSAGE_USAGE);
 
         assertParseFailure(parser, PREAMBLE_NON_EMPTY + PREFIX_COMPANY_NAME, expectedMessage);
+    }
+
+    @Test
+    public void parse_textAfterParameter_failure() {
+        String expectedMessage = String.format(MESSAGE_INVALID_COMMAND_FORMAT, SortCommand.MESSAGE_USAGE);
+
+        assertParseFailure(parser, " " + PREFIX_PRIORITY + PREAMBLE_NON_EMPTY, expectedMessage);
     }
 }

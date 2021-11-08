@@ -45,22 +45,23 @@ Given below are my contributions to the project.
         * Added "Glossary" section.
         * Updated "Acknowledgements" section to include all sources used.
         * Split "Command summary" section into different tables.<br>
-      (Pull requests [#32](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/32), [#108](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/108), [#129](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/129), [#132](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/132), [#138](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/138), [#147](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/147), [#162](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/162)).
+      (Pull requests [#32](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/32), [#108](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/108), [#129](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/129), [#132](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/132), [#138](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/138), [#147](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/147), [#162](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/162), [#257](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/257), [#260](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/260)).
     * Developer Guide:
-        * Added all use cases.
-        * Added implementation details of the `sort` features. <br>
-        (Pull requests [#40](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/40), [#104](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/104), [#150](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/150)).
+        * Added detailed UML diagram and implementation details of the `sort` feature.
+        * Added use cases for `add`, `edit`, `complete`, `accept`, `reject`, `delete` and `sort` commands.
+        * Updated Appendix 2: Instructions for manual testing.<br>
+        (Pull requests [#40](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/40), [#104](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/104), [#150](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/150), [#257](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/257), [#260](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/260)).
     * Miscellaneous:
       * Update other `.md` files to fit InternSHIP (e.g. `README.md`, `SettingUp.md`) <br> 
-      (Pull requests [#27](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/27), [#134](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/134), [#139](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/139)).
+      (Pull requests [#27](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/27), [#134](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/134), [#139](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/139), [#257](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/257)).
 
 * **Team tasks**:
   * Set up collaborative doc folder (Google Drive) for project notes.
   * Take meeting minutes for all meetings.
-  * Set up tP Team Organization.
+  * Set up [tP Team Organization](https://github.com/orgs/AY2122S1-CS2103T-W17-1/people).
   * Set up tP Team Repo.
-  * Set up and consistently update issue tracker on GitHub.
-  * Record video for v1.3 features demo.
+  * Set up and consistently update [project board on GitHub](https://github.com/AY2122S1-CS2103T-W17-1/tp/projects).
+  * Record video for [v1.3 features demo](https://drive.google.com/file/d/1s_Yq3-z0y3xv4j2otn74YgXDKLdJ1LPK/view?usp=sharing).
 
 * **Community**:
   * Reported an above-average number of bugs in the PE-D (Examples: Bug [#2](https://github.com/feliciaivane/ped/issues/2), Bug [#5](https://github.com/feliciaivane/ped/issues/5), Bug [#10](https://github.com/feliciaivane/ped/issues/10)).

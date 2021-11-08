@@ -8,6 +8,10 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_INTERNSHIP_POSITION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_INTERVIEW_DATE_AND_TIME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PRIORITY;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
 import seedu.address.logic.commands.SortCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 
@@ -27,36 +31,61 @@ public class SortCommandParser implements Parser<SortCommand> {
                 ArgumentTokenizer.tokenize(args, PREFIX_COMPANY_NAME, PREFIX_INTERNSHIP_POSITION,
                         PREFIX_DEADLINE_OF_APPLICATION, PREFIX_INTERVIEW_DATE_AND_TIME, PREFIX_PRIORITY);
 
-        if (numberOfPrefixesPresent(argMultimap, PREFIX_COMPANY_NAME, PREFIX_INTERNSHIP_POSITION,
-                PREFIX_DEADLINE_OF_APPLICATION, PREFIX_INTERVIEW_DATE_AND_TIME, PREFIX_PRIORITY) == 0
-                || !argMultimap.getPreamble().isEmpty()) {
+        int numberOfPrefixes = numberOfPrefixesPresent(argMultimap, PREFIX_COMPANY_NAME, PREFIX_INTERNSHIP_POSITION,
+                PREFIX_DEADLINE_OF_APPLICATION, PREFIX_INTERVIEW_DATE_AND_TIME, PREFIX_PRIORITY);
+
+        if (numberOfPrefixes == 0 || !argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, SortCommand.MESSAGE_USAGE));
         }
 
-        if (numberOfPrefixesPresent(argMultimap, PREFIX_COMPANY_NAME, PREFIX_INTERNSHIP_POSITION,
-                PREFIX_DEADLINE_OF_APPLICATION, PREFIX_INTERVIEW_DATE_AND_TIME, PREFIX_PRIORITY) > 1) {
+        if (numberOfPrefixes > 1) {
             throw new ParseException(SortCommand.MESSAGE_MULTIPLE_PREFIXES);
         }
 
-        String parameter = null;
+        String parameter = (String) getParamAndPrefix(argMultimap).get(0);
+        Prefix prefix = (Prefix) getParamAndPrefix(argMultimap).get(1);
 
-        if (argMultimap.getValue(PREFIX_COMPANY_NAME).isPresent()) {
-            parameter = "company";
-        }
-        if (argMultimap.getValue(PREFIX_INTERNSHIP_POSITION).isPresent()) {
-            parameter = "position";
-        }
-        if (argMultimap.getValue(PREFIX_DEADLINE_OF_APPLICATION).isPresent()) {
-            parameter = "deadline";
-        }
-        if (argMultimap.getValue(PREFIX_INTERVIEW_DATE_AND_TIME).isPresent()) {
-            parameter = "interview";
-        }
-        if (argMultimap.getValue(PREFIX_PRIORITY).isPresent()) {
-            parameter = "priority";
+        if (!argMultimap.getValue(prefix).equals(Optional.of(""))) {
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, SortCommand.MESSAGE_USAGE));
         }
 
         return new SortCommand(parameter);
+    }
+
+    /**
+     * Returns the matching parameter and corresponding prefix to the user input.
+     * @param argMultimap The ArgumentMultimap object that contains the prefixes inputted by the user.
+     * @return The parameter and prefix input by the user.
+     */
+    private List<Object> getParamAndPrefix(ArgumentMultimap argMultimap) {
+        String parameter = null;
+        Prefix prefix = null;
+
+        if (argMultimap.getValue(PREFIX_COMPANY_NAME).isPresent()) {
+            parameter = "company";
+            prefix = PREFIX_COMPANY_NAME;
+        }
+        if (argMultimap.getValue(PREFIX_INTERNSHIP_POSITION).isPresent()) {
+            parameter = "position";
+            prefix = PREFIX_INTERNSHIP_POSITION;
+        }
+        if (argMultimap.getValue(PREFIX_DEADLINE_OF_APPLICATION).isPresent()) {
+            parameter = "deadline";
+            prefix = PREFIX_DEADLINE_OF_APPLICATION;
+        }
+        if (argMultimap.getValue(PREFIX_INTERVIEW_DATE_AND_TIME).isPresent()) {
+            parameter = "interview";
+            prefix = PREFIX_INTERVIEW_DATE_AND_TIME;
+        }
+        if (argMultimap.getValue(PREFIX_PRIORITY).isPresent()) {
+            parameter = "priority";
+            prefix = PREFIX_PRIORITY;
+        }
+
+        List<Object> result = new ArrayList<>();
+        result.add(parameter);
+        result.add(prefix);
+        return result;
     }
 
     /**
