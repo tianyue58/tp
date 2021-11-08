@@ -54,8 +54,8 @@ public class EditCommand extends Command {
             + PREFIX_DEADLINE_OF_APPLICATION + "2021-12-23";
 
     public static final String MESSAGE_EDIT_APPLICATION_SUCCESS = "Edited Application: %1$s";
-    public static final String MESSAGE_NO_FILED_PROVIDED = "At least one field to be edited must be provided.";
-    public static final String MESSAGE_DUPLICATE_APPLICATION = "This application already exists in the InternSHIP.";
+    public static final String MESSAGE_NO_FILED_PROVIDED = "Warning: At least one field to be edited must be provided!";
+    public static final String MESSAGE_DUPLICATE_APPLICATION = "This application already exists in InternSHIP!";
     public static final String MESSAGE_NOTHING_EDITED = "No information has been edited!";
 
     private final Index index;

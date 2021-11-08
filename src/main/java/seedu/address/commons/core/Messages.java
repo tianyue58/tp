@@ -13,7 +13,7 @@ public class Messages {
     public static final String MESSAGE_INVALID_APPLICATION_DISPLAYED_INDEX = "Warning: No valid index is provided!";
 
     public static final String MESSAGE_INDEX_EXCEEDS_LIST_LENGTH =
-            "Warning: The index provided exceeds the length of the displayed list!";
+            "The index provided exceeds the length of the displayed list!";
 
     public static final String MESSAGE_APPLICATION_LISTED_OVERVIEW = "%1$d %2$s listed";
 
