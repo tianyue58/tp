@@ -912,6 +912,8 @@ Our team has put in a significant amount of effort to get InternSHIP to the curr
 
    In addition, the project icon and overall GUI colour scheme were carefully chosen and designed to represent our value proposition. InternSHIP will help its users navigate through the sea of internship applications for their voyage to their desired company.
 
+<div style="page-break-after: always;"></div>
+
 ### Notable Features
 
 Notable features we implemented from scratch include Complete, Accept, Reject, Sort, Find, Soon and Undo/Redo. We came up with these features as they fit well in helping our target users solve problems they may encounter in their internship data management.
