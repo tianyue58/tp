@@ -197,8 +197,6 @@ Parameter | Refers to | Required format | Application field? | Notes
 
 --------------------------------------------------------------------------------------------------------------------
 
-<div style="page-break-after: always;"></div>
-
 ## Features
 
 This section shows all of InternSHIP's supported commands and how they should be used.
@@ -520,6 +518,8 @@ Examples:
 > 
 <hr>
 
+<div style="page-break-after: always;"></div>
+
 ### Others
 
 #### Deleting an entry : `delete`
@@ -660,8 +660,6 @@ There is no need to save manually.
 
 --------------------------------------------------------------------------------------------------------------------
 
-<div style="page-break-after: always;"></div>
-
 ## Tips :bulb:
 
 * Commands that change the displayed list in InternSHIP (e.g. `find`, `sort`) can be used in conjunction with commands that take in `INDEX` as a parameter (e.g. `delete`, `complete`) so that you can work faster!
@@ -712,8 +710,6 @@ Action | Format | Example | Notes
 **Help** | `help` | `help` | No parameter required.
 
 --------------------------------------------------------------------------------------------------------------------
-
-<div style="page-break-after: always;"></div>
 
 ## Prefix summary
 
