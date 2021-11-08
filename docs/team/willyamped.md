@@ -11,15 +11,15 @@ InternSHIP has been optimized for use via a Command Line Interface (CLI) while s
 Given below are my contributions to the project.
 
 * **New Feature**: Added the ability to complete an application. 
-  * What it does: allows the user to mark an application as completed which means that the user has submitted all the documents required.
+  * What it does: Allows the user to mark an application as completed which means that the user has submitted all the documents required.
   * Justification: This feature improves the product significantly because a user can better organise the applications, differentiating completed and uncompleted applications.
   * Highlights: This enhancement affects existing commands.
   * For example, this feature also allows `soon` command to filter out completed applications.
   * The implementation too was challenging as it required changes to existing commands and perhaps future commands.
 
 * **New Feature**: Added the ability to show upcoming deadlines.
-  * What it does: allows the user to find application deadlines within specified number of days.
-  * Justification: This feature improves the product significantly because a user has the flexibility to enter a the number of days within which application submissions are due.
+  * What it does: Allows the user to find submission deadlines/ interview timings within a specified number of days.
+  * Justification: This feature improves the product significantly because a user has the flexibility to enter the number of days within which application submissions are due.
   * This serves as a reminder feature as well, helping to prevent the user from missing important deadlines.
   * Highlights: This enhancement affects existing command and many test cases needed to be changed too.
   * The implementation too was challenging as it required changes to existing commands and perhaps future commands.
@@ -28,14 +28,13 @@ Given below are my contributions to the project.
   * In the final version, the `soon` command can show both upcoming application submission deadlines and interview date and time as well.
 
 * **New GUI**: Changed the GUI from vertical to horizontal view.
-  * What it does: allows the user to see the applications more easily and clearly.
+  * What it does: Allows the user to see the applications more easily and clearly.
   * Justification: This feature improves the product significantly because the GUI is the first thing that a user sees when using the application.
   * Better GUI leaves a good first impression on the user, improving their overall user experience.
-  * Highlights: This implementation of the new GUI was challenging as it needed to be constantly changed as more fields were added.
+  * Highlights: this implementation of the new GUI was challenging as it needed to be constantly changed as more fields were added.
   * Several factors were also taken into consideration, such as the right width for each column, to allow the GUI to be displayed correctly on any platform.
 
 * **Enhancements to existing features**:
-  * Updated the GUI layout (Pull request [\#117](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/117))
   * Wrote additional tests for existing features to increase coverage (Pull requests [\#103](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/103), [\#237](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/237))
   * Fixed bugs from Practical Examination Dry Run (Pull request [\#216](https://github.com/AY2122S1-CS2103T-W17-1/tp/pull/216))
   
@@ -58,7 +57,7 @@ Given below are my contributions to the project.
   
 * **Team tasks:**
   * Created folders for UG and DG.
-  * Set up zoom for weekly meetings.
+  * Set up zoom for weekly meetings.<br><br><br>
   
 * **Community:**
   * Reported an above-average number of bugs in the PE-D (Examples: Bug [\#1](https://github.com/willyamped/ped/issues/1), Bug [\#5](https://github.com/willyamped/ped/issues/5), Bug [\#9](https://github.com/willyamped/ped/issues/9)). 
