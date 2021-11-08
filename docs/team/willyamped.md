@@ -57,7 +57,9 @@ Given below are my contributions to the project.
   
 * **Team tasks:**
   * Created folders for UG and DG.
-  * Set up zoom for weekly meetings.<br><br><br>
+  * Set up zoom for weekly meetings.
+  
+<div style="page-break-after: always;"></div>  
   
 * **Community:**
   * Reported an above-average number of bugs in the PE-D (Examples: Bug [\#1](https://github.com/willyamped/ped/issues/1), Bug [\#5](https://github.com/willyamped/ped/issues/5), Bug [\#9](https://github.com/willyamped/ped/issues/9)). 
