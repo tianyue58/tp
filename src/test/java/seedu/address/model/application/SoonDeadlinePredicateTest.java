@@ -49,5 +49,6 @@ public class SoonDeadlinePredicateTest {
         // Past deadline
         String pastDeadline = "2000-12-10";
         assertFalse(predicate.test(new ApplicationBuilder().withDeadline(pastDeadline).build()));
+
     }
 }

@@ -3,7 +3,7 @@
   "applications" : [ {
     "company": "Amazon",
     "position": "Software Engineer",
-    "deadline": "2021-12-30",
+    "deadline": "2021-12-29",
     "completion": "Uncompleted",
     "status": "Pending",
     "priority": "Medium"
