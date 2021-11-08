@@ -196,7 +196,12 @@ Step 4. `InternshipParser` then calls `CompleteCommandParser#parse` method and t
 
 Step 5. `CompleteCommandParser` creates a new `CompleteCommand` instance and returns it to `InternshipParser`, which in turn returns it to `LogicManager`.
 
-Step 6. `LogicManager` calls the `CompleteCommand#execute` method to update the application panel.
+Step 6. `LogicManager` then calls the `CompleteCommand#execute` method.
+
+Step 7. Next, `CompleteCommand` object calls the `Model#setApplication` method with the application to complete and completed application
+as arguments. It then returns a `CommandResult` object to the `LogicManager`.
+
+Step 8. Finally, the `CommandResult` object is returned by the `LogicManager`.
 
 #### Design considerations:
 
