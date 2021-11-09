@@ -857,21 +857,197 @@ testers are expected to do more *exploratory* testing.
     2. Re-launch the app by double-clicking the jar file.<br>
        Expected: The most recent window size and location is retained.
 
+### Adding an application
+
+1. Test case: `add c/Grab p/software engineer d/2021-12-21`
+- Expected output: An application entry is added to the InternSHIP application list, with company name `Grab`, position `software engineer`, deadline `2021-12-21` (as specified by the user), and completion `Uncompleted`, status `Pending`, priority `Medium` (by default), and an empty list for both `Requirement` and `InterviewDateAndTime`.
+A success message is shown in the `Result Box`, showing the details of the added application. The entire application list is displayed. 
+
+2. Test case: `add c/Grab p/software engineer d/2021-12-21 r/cv r/resume`
+- Expected output: An application entry is added to the InternSHIP application list, with company name `Grab`, position `software engineer`, deadline `2021-12-21`, requirement `cv` and `resume` (as specified by the user), and completion `Uncompleted`, status `Pending`, priority `Medium` (by default), and an empty list for `InterviewDateAndTime`.
+A success message is shown in the `Result Box`, showing the details of the added application. The entire application list is displayed.
+
+3. Test case: `add c/Grab p/software engineer`
+- Expected output: An error message is shown in the `Result Box`, as the compulsory field `Deadline` is not specified upon adding.
+
+4. Test case: `add c/Grab p/software engineer d/2021-12-21 r/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa`
+- Expected output: An error message is shown in the `Result Box`, as the `Requirement` field is not allowed to contain more than 20 characters.
+
+### Editing an application
+
+Prerequisites: The currently displayed application list is not empty.
+Assumptions: 
+- There are three applications in the full application list, which are all displayed at first.
+- The application at index `1` has company name `Amazon`.
+- The application at index `2` has requirement `cv` and `resume`.
+- The application at index `3` has position `tester`.
+
+1. Test case: `edit 1 c/Bytedance`
+- Expected output: The company name of the application at index `1` is changed to `Bytedance`. A success message is shown in the `Result Box`, showing the details of the edited application. The entire application list is displayed.
+
+2. Test case: `edit 2 r/`
+- Expected output: All requirements of the application at index `2` are removed. A success message is shown in the `Result Box`, showing the details of the edited application. The entire application list is displayed.
+
+3. Test case: `edit 10 c/Grab`
+- Expected output: An error message is shown in the `Result Box`, as the index specified exceeds the length of the displayed application list.
+
+4. Test case: `edit 3 p/tester`
+- Expected output: An error message is shown in the `Result Box`, as the field after editing is exactly the same as before.
+
+### Completing an application
+
+Prerequisites: The currently displayed application list is not empty.
+Assumptions: 
+- There are three applications in the full application list, which are all displayed at first.
+- The application at index `1` is `Uncompleted`.
+- The application at index `2` is `Completed`.
+
+1. Test case: `complete 1`
+- Expected output: The `Completion` of the application at index `1` is changed to `Completed`. A success message is shown in the `Result Box`, showing the details of the completed application. The entire application list is displayed.
+
+2. Test case: `complete 2`
+- Expected output: An error message is shown in the `Result Box`, as the application is already marked as `Completed`.
+
+3. Test case: `complete 10`
+- Expected output: An error message is shown in the `Result Box`, as the index specified exceeds the length of the displayed application list.
+
+### Accepting/Rejecting an application
+
+Prerequisites: The currently displayed application list is not empty.
+Assumptions:
+- There are three applications in the full application list, which are all displayed at first.
+- The status of the application at index `1` is `Pending`.
+- The status of the application at index `2` is `Accepted`.
+- The status of the application at index `3` is `Rejected`.
+
+1. Test case: `accept 1`
+- Expected output: The `Status` of the application at index `1` is changed to `Accepted`. A success message is shown in the `Result Box`, showing the details of the accepted application. The entire application list is displayed.
+
+2. Test case: `reject 2`
+- Expected output: The `Status` of the application at index `1` is changed to `Rejected`. A success message is shown in the `Result Box`, showing the details of the rejected application. The entire application list is displayed.
+
+3. Test case: `reject 3`
+   Expected output: An error message is shown in the `Result Box`, as the application at index `3` is already marked as `Rejected`.
+
+4. Test case: `accept 10`
+- Expected output: An error message is shown in the `Result Box`, as the index specified exceeds the length of the displayed application list.
+
+### Finding an application
+Prerequisites: The currently displayed application list is not empty.
+Assumptions:
+- There are three applications in the full application list, which are all displayed at first.
+- The company name of the application at index `1`, `2`, `3` are `Bytedance`, `Amazon`, and `Amazon Singapore` respectively.
+- The position of the application at index `1`, `2`, `3` are `frontend developer`, `backend developer`, and `tester` respectively.
+
+1. Test case: `find p/developer`
+- Expected output: The application list updates to only displaying the first two applications of the original list.  A success message is shown in the `Result Box`, describing that the currently displayed list is a result of filtering by position 
+
+2. Test case: `find p/engineer`
+- Expected output: A message is shown in the `Result Box` which indicates that there is no matching result. An empty application list is displayed.
+
+3. Test case: `find c/Amazon` 
+- Expected output: The application list updates to only displaying the last two applications of the original list.  A success message is shown in the `Result Box`, describing that the currently displayed list is a result of filtering by company name.
+
+4. Test case: `find d/2021-12-21`
+- Expected output: An error message is shown in the `Result Box`, as InternSHIP currently doesn't support finding applications by `Deadline`.
+
+## Listing all applications that are close to submission deadline or interview time
+Prerequisites: The currently displayed application list is not empty.
+Assumptions:
+- There are three applications in the full application list, which are all displayed at first.
+- The interview time of the application at index `1`, `2`, `3` are `2021-11-10 1200`, `2021-11-11 1200`, and `2021-11-12 1200` respectively.
+- The deadline of the application at index `1`, `2`, `3` are `2021-11-10`, `2021-11-11`, and `2021-11-12` respectively.
+- The current date and time when user enters the command is `2021-11-09 1200`
+
+1. Test case: `soon d/2`
+- Expected output: The application list updates to only displaying the last two applications of the original list.  A success message is shown in the `Result Box`, describing that the currently displayed list is showing all applications that are within 2 days of deadline.
+
+2. Test case: `soon i/1`
+- Expected output: The application list updates to only displaying the first application of the original list.  A success message is shown in the `Result Box`, describing that the currently displayed list is showing all applications that are within 1 day of interview time.
+
+3. Test case: `soon d/0`
+- Expected output: A message is shown in the `Result Box` which indicates that there is no application that is due in the specified deadline. An empty application list is displayed.
+
+4. Test case: `soon d/`
+- Expected output: An error is shown in the `Result Box`, as the day is not specified. 
+
+## Listing all applications
+
+1. Test case: `list`
+- Assumption: The application list is not empty.
+- Expected output: A success message is shown in the `Result Box`. The entire application list is displayed.
+
+2. Test case: `list`
+- Assumption: The application list is empty.
+- Expected output: An error message is shown in the `Result Box`, as there is no application to be displayed.
+
+## Soring the applications
+
+Prerequisites: The currently displayed application list is not empty.
+Assumptions:
+- There are three applications in the full application list, which are all displayed at first.
+- The company name of the application at index `1`, `2`, `3` are `Bytedance`, `Amazon`, and `Grab` respectively.
+- The interview time of all three applications are not specified.
+
+1. Test case: `sort c/`
+   - Expected output: The applications at index `1` and `2` switches their order. A success message is shown in the `Result Box`, indicating that the currently displayed list is sorted by company name in alphabetical order. 
+
+2. Test case: `sort i/`
+   - Expected output: An error message is shown in the `Result Box`, as there is no interview time specified for any of the applications. 
+
+3. Test case: `sort`
+- Expected output: An error message is shown in the `Result Box`, as the sorting criteria is not specified.
 
 ### Deleting an application
 
-1. Deleting an application while all applications are being shown
+Prerequisites: The currently displayed application list is not empty.
+Assumptions:
+- There are three applications in the full application list, which are all displayed at first.
 
-    1. Prerequisites: List all applications using the `list` command. Multiple applications in the list.
+1. Test case: `delete 1`
+- Expected output: The application at index `1` is removed from the application list. A success message is shown in the `Result Box`, showing the details of the deleted application.
 
-    2. Test case: `delete 1`<br>
-       Expected: First application is deleted from the list. Details of the deleted application shown in the result box.
+2. Test case: `delete 10`
+- Expected output: An error message is shown in the `Result Box`, as the index specified exceeds the length of the currently displayed list.
 
-    3. Test case: `delete 0`<br>
-       Expected: No application is deleted. Error message shown in the result box.
+3. Test case: `delete`
+- Expected output: An error message is shown in the `Result Box`, as the index of the application to be deleted is not specified. 
 
-    4. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
-       Expected: Similar to previous.
+## Clearing all applications
+
+1. Test case: `clear`
+- Expected output: All applications in the InternSHIP application list are cleared. A success message is shown in the `Result Box`. An empty application list is shown.
+
+## Undoing/redoing a change
+Assumptions: 
+- InternSHIP is just launched and the user has not typed in any command yet. 
+- There are three applications in the full application list, which are all displayed at first.
+
+1. Test case: `delete 1` followed by `undo`
+- Expected output: After `delete 1`, the application at `index 1` is deleted; after `undo`, it is retrieved back and reappear in the application list, so there is no change to the application list. A success message is shown in the `Result Box`, indicating the success of the undo action.
+
+2. Test case: `delete 1` followed by `undo` followed by `redo`
+- Expected output: After `delete 1`, the application at `index 1` is deleted; after `undo`, it is retrieved back and reappear in the application list; after `redo`, the previous deletion is redone, so eventually there are two applications in the application list (as the first application is already deleted). A success message is shown in the `Result Box`, indicating the success of the redo action.
+
+3. Test case: `delete 1` followed by `clear` followed by `undo`
+- Expected output: After `delete 1`, the application at index `1` is deleted; after `clear`, all applications are cleared and the application list is empty; after `undo`, the `clear` command (i.e., the most recent change) is undone, so eventually there are two applications in the application list (as the first application is already deleted). A success message is shown in the `Result Box`, indicating the success of the undo action.
+
+4. Test case: `undo`
+- Expected output: An error message is shown in the `Result Box`, as the app is just launched and there is no change to be undone.
+
+5. Test case: `redo`
+- Expected output: An error message is shown in the `Result Box`, as the app is just launched and there is no change to be redone.
+
+
+## Exiting the app
+
+1. Test case: `exit`
+-Expected output: The app shuts down.
+
+## Viewing help
+
+1. Test case: `help`
+-Expected output: The `Help` Window pops up, showing a link to the `User Guide`.
 
 ### Saving data
 
